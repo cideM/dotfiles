@@ -28,6 +28,8 @@ case $(hostname) in
     archminimal)
         makeNixpkgs
 
+        ln -sf "$DOTS_NIXOS"/archminimal/home.nix "$XDG_CONFIG_HOME"/nixpkgs/home.nix 
+
         "$GIT_ROOT"/scripts/stow.sh \
             ctags                   \
             emacs                   \
