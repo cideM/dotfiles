@@ -3,7 +3,7 @@ let
 
   pkgs = import sources.nixpkgs {
     overlays = [
-      (import ./programs/anki/overlay.nix)
+      # (import ./programs/anki/overlay.nix)
     ];
   };
 
@@ -20,9 +20,6 @@ let
     exa
     mpv
     fd
-    # TODO: Revert back to services.lorri once I've switched to unstable for home manager
-    lorri
-    anki
     fortune
     hack-font
     hexyl
@@ -44,7 +41,6 @@ let
     stow
     tig
     tldr
-    kubectl
     tokei
     tree
     universal-ctags

@@ -1,9 +1,8 @@
 # Lots of things are commented out because right now I don't want to have half
 # of my programs coming from pacman and the other half from home manager
 { pkgs, ... }:
-
 let
-  # shared = import ../../shared.nix;
+  shared = import ../../shared.nix;
 
   programs = import ../../programs/default.nix;
 
@@ -11,9 +10,10 @@ let
 
   sources = import ../../nix/sources.nix;
 
-  pkgs = import sources.nixpkgs {};
+  pkgs = import sources.nixpkgs { };
 
-in {
+in
+{
   imports = [
     programs.nvim.config
     programs.fish.config
@@ -24,14 +24,11 @@ in {
     programs.git.config
   ];
 
-  # home.packages = with pkgs; shared.pkgs ++ [
-  #   iotop
-  #   xclip
-  #   neofetch
-  #   jrnl
-  # ];
-  home.packages = with pkgs; [
-    niv
+  home.packages = with pkgs; shared.pkgs ++ [
+    iotop
+    xclip
+    neofetch
+    jrnl
   ];
 
   nixpkgs.overlays = [
