@@ -17,13 +17,9 @@ case $(hostname) in
 
         "$GIT_ROOT"/scripts/stow.sh \
             ctags                   \
-            alacritty_darwin        \
             emacs                   \
             git                     \
-            nixpkgs                 \
-            fish                    \
-            pandoc                  \
-            tmux
+            pandoc
         ;;
 
     archminimal)
@@ -34,7 +30,6 @@ case $(hostname) in
         "$GIT_ROOT"/scripts/stow.sh \
             ctags                   \
             emacs                   \
-            alacritty               \
             pam                     \
             pandoc                  \
             bspwm                   \
@@ -44,8 +39,7 @@ case $(hostname) in
             polybar                 \
             dunst                   \
             mime                    \
-            x                       \
-            tmux
+            x
         ;;
     nixos)
         makeNixpkgs

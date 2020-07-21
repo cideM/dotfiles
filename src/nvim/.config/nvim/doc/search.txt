@@ -1,0 +1,36 @@
+*search.txt*	Search functionality
+
+
+                  SEARCH DOCUMENTATION by Florian Beeres
+
+
+Help on using search functions                                        *search*
+
+    1. Usage ...................................... |search-usage|
+
+==============================================================================
+ 1. USAGE                                                       *search-usage*
+
+                                                          *<Plug>GrepOperator*
+
+Calls grep -F with either the content of the current motion or of the visual
+selection. Won't work with normal grep, since -F is a ripgrep option for
+fixed strings.
+
+Example: >
+
+    nmap <leader>s <Plug>GrepOperator
+    vmap <leader>s <Plug>GrepOperator
+
+------------------------------------------------------------------------------
+                                                          *<Plug>StarOperator*
+
+Perform slash search with either the content of the current motion or of the
+current visual selection.
+
+Example: >
+
+    nmap * <Plug>StarOperator
+    vmap * <Plug>StarOperator
+
+ vim:tw=78:ts=8:ft=help:norl:

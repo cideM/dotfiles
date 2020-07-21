@@ -30,7 +30,7 @@ let jb =
 
 in  Alacritty.Config::{
     , font = mono ⫽ { use_thin_strokes = True }
-    , shell = Some { program = "/usr/local/bin/fish", args = [ "-l" ] }
+    , shell = None : { program : Text, args : List Text }
     , colors = ./papercolor.dhall
     , key_bindings = ./keys_common.dhall
     }

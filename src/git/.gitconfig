@@ -1,10 +1,13 @@
 [push]
     default = simple
+
 [pull]
     rebase = false
+
 [user]
     email = yuuki@protonmail.com
     name = Florian Beeres
+
 [alias]
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
     recent = branch --sort=-committerdate
@@ -18,22 +21,44 @@
     d = diff
     pl = pull
     ps = push
+
 [difftool]
     prompt = false
+
 [difftool "nvim"]
     cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
 [mergetool]
     prompt = true
+
 [mergetool "nvim-merge"]
     cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
 [core]
     editor = nvim
     ignorecase = false
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    features = decorations
+    whitespace-error-style = 22 reverse
+    syntax-theme = "GitHub"
+    line-numbers = true
+
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+
 [filter "lfs"]
     smudge = git-lfs smudge -- %f
     process = git-lfs filter-process
     required = true
     clean = git-lfs clean -- %f
+
 [sendemail]
     smtpserver = 127.0.0.1
     smtpuser = yuuki@protonmail.com

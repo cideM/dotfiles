@@ -71,7 +71,7 @@ let
   # TODO: Remove the duplication here
   darwinConfig = pkgs.dhallPackages.buildDhallPackage {
     name = "alacritty_darwin";
-    code = "${./src}/darwin.dhall";
+    code = "${./src}/macos.dhall";
     # Important so I can pass this source file to dhall-to-json
     source = true;
     dependencies = [
@@ -104,7 +104,7 @@ let
     system = builtins.currentSystem;
   };
 
-  mac = derivation {
+  macos = derivation {
     name = "alacritty_darwin.yml";
     builder = "${pkgs.bash}/bin/bash";
     args = [ ./builder.sh ];
@@ -126,4 +126,4 @@ let
 
 
 in
-{ inherit linux mac nixos; }
+{ inherit linux macos nixos; }
