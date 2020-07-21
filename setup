@@ -18,7 +18,6 @@ case $(hostname) in
             alacritty_darwin        \
             emacs                   \
             git                     \
-            nvim                    \
             nixpkgs                 \
             fish                    \
             pandoc                  \
@@ -33,12 +32,8 @@ case $(hostname) in
         "$GIT_ROOT"/scripts/stow.sh \
             ctags                   \
             emacs                   \
-            git                     \
-            fish                    \
             alacritty               \
-            nvim                    \
             pam                     \
-            nixpkgs                 \
             pandoc                  \
             bspwm                   \
             rofi                    \

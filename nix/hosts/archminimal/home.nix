@@ -5,21 +5,23 @@
 let
   # shared = import ../../shared.nix;
 
-  # programs = import ../../programs/default.nix;
+  programs = import ../../programs/default.nix;
 
-  # clojure = import ../../languages/clojure/default.nix;
+  clojure = import ../../languages/clojure/default.nix;
 
-  # sources = import ../../nix/sources.nix;
+  sources = import ../../nix/sources.nix;
+
+  pkgs = import sources.nixpkgs {};
 
 in {
   imports = [
-    # programs.neovim.config
-    # programs.fish.config
-    # programs.redshift.config
-    # clojure.config
-    # programs.fzf.config
-    # programs.tmux.config
-    # programs.git.config
+    programs.nvim.config
+    programs.fish.config
+    programs.redshift.config
+    clojure.config
+    programs.fzf.config
+    programs.tmux.config
+    programs.git.config
   ];
 
   # home.packages = with pkgs; shared.pkgs ++ [
@@ -32,6 +34,11 @@ in {
     niv
   ];
 
+  nixpkgs.overlays = [
+    (import ../../programs/neovim/overlay.nix)
+  ];
+
+
   # https://github.com/rycee/home-manager/blob/master/modules/targets/generic-linux.nix#blob-path
   targets.genericLinux.enable = true;
 
@@ -40,8 +47,9 @@ in {
   # xdg.configFile."alacritty/alacritty.yml".source = (import ../../programs/alacritty/default.nix).linux;
 
   services.lorri.enable = true;
+  services.lorri.package = pkgs.lorri;
 
-  # programs.fzf.enable = true;
+  programs.fzf.enable = true;
 
   programs.home-manager = {
     enable = true;
