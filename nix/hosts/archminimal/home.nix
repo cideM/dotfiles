@@ -28,6 +28,9 @@ in {
   #   neofetch
   #   jrnl
   # ];
+  home.packages = with pkgs; [
+    niv
+  ];
 
   # https://github.com/rycee/home-manager/blob/master/modules/targets/generic-linux.nix#blob-path
   targets.genericLinux.enable = true;
@@ -45,9 +48,9 @@ in {
   };
 
   # https://gist.github.com/peti/2c818d6cb49b0b0f2fd7c300f8386bc3
-  # home.sessionVariables = {
-  #   LOCALE_ARCHIVE = "${pkgs.glibcLocales}/lib/locale/locale-archive";
-  # };
+  home.sessionVariables = {
+    LOCALE_ARCHIVE = "${pkgs.glibcLocales}/lib/locale/locale-archive";
+  };
 
   home.stateVersion = "20.03";
 }
