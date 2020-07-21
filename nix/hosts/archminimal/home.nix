@@ -1,42 +1,46 @@
-# Lots of things are commented out because right now I don't want to have half
-# of my programs coming from pacman and the other half from home manager
 { pkgs, ... }:
 let
   shared = import ../../shared.nix;
 
   programs = import ../../programs/default.nix;
 
-  clojure = import ../../languages/clojure/default.nix;
+  clojure = (import ../../languages/clojure/default.nix) { inherit pkgs sources; };
 
   sources = import ../../nix/sources.nix;
 
   pkgs = import sources.nixpkgs { };
 
-  alacrittyYaml = (import ../../programs/alacritty/default.nix).linux;
+  fish = programs.fish { inherit pkgs sources; };
+
+  alacrittyYaml = (import ../../programs/alacritty/default.nix { inherit pkgs sources ; }).linux;
 
 in
 {
   imports = [
-    programs.nvim.config
-    programs.fish.config
-    programs.redshift.config
+    (programs.nvim { inherit pkgs sources; })
+    fish.config
     clojure.config
     programs.fzf.config
     programs.tmux.config
-    programs.git.config
+    programs.redshift.config
+    (programs.git { inherit pkgs; })
   ];
 
   home.packages = with pkgs; shared.pkgs ++ [
     iotop
     xclip
-    neofetch
-    jrnl
   ];
 
   nixpkgs.overlays = [
-    (import ../../programs/neovim/overlay.nix)
+    (import ../../programs/neovim/overlay.nix { inherit pkgs sources; })
   ];
 
+  # Just append this to the actual config file with an overlay
+  programs.fish.interactiveShellInit = ''
+    set -x SHELL ${pkgs.fish}/bin/fish
+    set -x FISH_NOTES_DIR /data/fish_notes
+    set -x FISH_JOURNAL_DIR /data/fish_journal
+  '';
 
   # https://github.com/rycee/home-manager/blob/master/modules/targets/generic-linux.nix#blob-path
   targets.genericLinux.enable = true;
@@ -45,7 +49,7 @@ in
   # https://github.com/NixOS/nixpkgs/issues/9415
   # https://github.com/NixOS/nixpkgs/issues/80702
   # https://discourse.nixos.org/t/libgl-undefined-symbol-glxgl-core-functions/512/6
-  # programs.alacritty.enable = false;
+  programs.alacritty.enable = false;
   xdg.configFile."alacritty/alacritty.yml".text = "${builtins.readFile alacrittyYaml}" + ''
   shell:
     args:
@@ -56,165 +60,19 @@ in
   services.lorri.enable = true;
   services.lorri.package = pkgs.lorri;
 
+  programs.direnv.enable = true;
+  programs.direnv.enableFishIntegration = true;
+  programs.direnv.enableNixDirenvIntegration = true;
+
   programs.fzf.enable = true;
+
+  # https://github.com/rycee/home-manager/issues/432
+  programs.man.enable = false;
+  home.extraOutputsToInstall = [ "man" ];
 
   programs.home-manager = {
     enable = true;
   };
-
-  # programs.alacritty.settings = {
-  #   colors = {
-  #     primary = {
-  #       background = "0xeeeeee";
-  #       foreground = "0x878787";
-  #     };
-
-  #     normal = {
-  #       black = "0xeeeeee"; red = "0xaf0000";
-  #       green = "0x008700";
-  #       yellow = "0x5f8700";
-  #       blue = "0x0087af";
-  #       magenta = "0x878787";
-  #       cyan = "0x005f87";
-  #       white = "0x444444";
-  #     };
-
-  #     # Bright colors
-  #     bright = {
-  #       black = "0xbcbcbc";
-  #       red = "0xd70000";
-  #       green = "0xd70087";
-  #       yellow = "0x8700af";
-  #       blue = "0xd75f00";
-  #       magenta = "0xd75f00";
-  #       cyan = "0x005faf";
-  #       white = "0x005f87";
-  #     };
-  #   };
-  #   shell = {
-  #     args = [ "-l" ];
-  #     program = "${pkgs.fish}/bin/fish";
-  #   };
-  #   env = {
-  #     TERM = "alacritty";
-  #   };
-  #   font = {
-  #     bold = {
-  #       family = "Operator Mono SSm";
-  #       style = "Medium";
-  #     };
-  #     bold_italic = {
-  #       family = "Operator Mono SSm";
-  #       style = "Medium Italic";
-  #     };
-  #     glyph_offset = {
-  #       x = 0;
-  #       y = 2;
-  #     };
-  #     italic = {
-  #       family = "Operator Mono SSm";
-  #       style = "Light Italic";
-  #     };
-  #     normal = {
-  #       family = "Operator Mono SSm";
-  #       style = "Light";
-  #     };
-  #     offset = {
-  #       x = 0;
-  #       y = 4;
-  #     };
-  #     size = 12;
-  #     use_thin_strokes = true;
-  #   };
-  #   key_bindings = [
-  #     {
-  #       chars = "`";
-  #       key = "P";
-  #       mods = "Alt";
-  #     }
-  #     {
-  #       chars = "` ";
-  #       key = "N";
-  #       mods = "Alt";
-  #     }
-  #     {
-  #       chars = "\\u001bl";
-  #       key = "L";
-  #       mods = "Alt";
-  #     }
-  #     {
-  #       chars = "\\u001bh";
-  #       key = "H";
-  #       mods = "Alt";
-  #     }
-  #     {
-  #       chars = "\\u001bk";
-  #       key = "K";
-  #       mods = "Alt";
-  #     }
-  #     {
-  #       chars = "\\u001bj";
-  #       key = "J";
-  #       mods = "Alt";
-  #     }
-  #     {
-  #       chars = "`c";
-  #       key = "S";
-  #       mods = "Control|Shift";
-  #     }
-  #     {
-  #       chars = "`x";
-  #       key = "X";
-  #       mods = "Control|Shift";
-  #     }
-  #     {
-  #       chars = "`-";
-  #       key = "Subtract";
-  #       mods = "Control";
-  #     }
-  #     {
-  #       chars = "`-";
-  #       key = "Minus";
-  #       mods = "Control";
-  #     }
-  #     {
-  #       chars = "`|";
-  #       key = "Backslash";
-  #       mods = "Control";
-  #     }
-  #     {
-  #       chars = "`z";
-  #       key = "Grave";
-  #       mods = "Control";
-  #     }
-  #     {
-  #       action = "SpawnNewInstance";
-  #       key = "N";
-  #       mods = "Control|Alt";
-  #     }
-  #     {
-  #       action = "None";
-  #       key = "Minus";
-  #       mods = "Control";
-  #     }
-  #     {
-  #       action = "None";
-  #       key = "Subtract";
-  #       mods = "Control";
-  #     }
-  #   ];
-  #   window = {
-  #     padding = {
-  #       x = 10;
-  #       y = 10;
-  #     };
-  #     position = {
-  #       x = 0;
-  #       y = 0;
-  #     };
-  #     startup_mode = "Windowed";
-  #   };
-  # };
 
   # https://gist.github.com/peti/2c818d6cb49b0b0f2fd7c300f8386bc3
   home.sessionVariables = {

@@ -1,10 +1,242 @@
+{ pkgs, ... }:
+
+{ lib, config, ... }:
+
+# TODO: Use more plugins from nixpkgs, only use own source when not available
+# or too old
+
+with lib;
 let
-  sources = import ../../nix/sources.nix;
+  initvim = ''
+    if !exists("g:os")
+        if has("win64") || has("win32") || has("win16")
+            let g:os = "Windows"
+        else
+            let g:os = substitute(system("uname"), "\n", "", "")
+        endif
+    endif
 
-  pkgs = (import sources.nixpkgs) { };
+    packadd nvim-lsp-latest
+    lua << EOF
+    local nvim_lsp = require('nvim_lsp')
+    local buf_set_keymap = vim.api.nvim_buf_set_keymap
 
-  overlay = import ./overlay.nix;
+    local on_attach = function(_, bufnr)
+        vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+        -- Mappings.
+        local opts = { noremap=true, silent=true }
+        buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+        buf_set_keymap(bufnr, 'n', '<localleader>h', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+        buf_set_keymap(bufnr, 'n', '<localleader>r', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+        buf_set_keymap(bufnr, 'n', '[I',             '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+        buf_set_keymap(bufnr, 'n', ']I',             '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+        buf_set_keymap(bufnr, 'n', '<localleader>d', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+        buf_set_keymap(bufnr, 'n', '<localleader>t', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+        buf_set_keymap(bufnr, 'n', '<localleader>T', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+        buf_set_keymap(bufnr, 'n', '<localleader>D', '<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>', opts)
+    end
+
+    local configs = require'nvim_lsp/configs'
+
+    configs.dhall = {
+        default_config = {
+              cmd = {'${pkgs.haskellPackages.dhall-lsp-server}/bin/dhall-lsp-server'};
+              filetypes = {'dhall'};
+              root_dir = function(fname)
+                    return nvim_lsp.util.find_git_ancestor(fname) or vim.loop.os_homedir()
+              end;
+              settings = {};
+        };
+    }
+
+    local servers = {'gopls', 'rust_analyzer', 'dhall'}
+
+    for _, lsp in ipairs(servers) do
+        nvim_lsp[lsp].setup { on_attach = on_attach }
+    end
+    EOF
+
+    " SETTINGS {{{
+    if !isdirectory("$HOME/.config/nvim/.swap")
+        call mkdir($HOME . "/.config/nvim/.swap", "p", 0700)
+        set directory=~/.config/nvim/.swap//
+    endif
+
+    if !isdirectory("$HOME/.config/nvim/.backup")
+        call mkdir($HOME . "/.config/nvim/.backup", "p", 0700)
+        set backupdir=~/.config/nvim/.backup//
+    endif
+
+    if !isdirectory("$HOME/.config/nvim/.undo")
+        call mkdir($HOME . "/.config/nvim/.undo", "p", 0700)
+        set undodir=~/.config/nvim/.undo//
+    endif
+
+    set background=light
+    set shell=bash
+    " https://www.reddit.com/r/vim/comments/25g1sp/why_doesnt_vim_syntax_like_my_shell_files/
+    let g:is_posix = 1
+    set wildignore+=*/.git/*,
+                \tags,
+                \*/node_modules/*,
+                \*/build/*,
+                \*/dist/*,
+                \*/compiled/*,
+                \*/tmp/*
+    set diffopt=algorithm:patience,filler,iwhiteall,indent-heuristic
+    set expandtab
+    set fillchars=stl:\ ,vert:\|,fold:\ 
+    set grepprg=${pkgs.ripgrep}/bin/rg\ --vimgrep\ --no-heading\ --smart-case
+    set foldlevelstart=99
+    set hidden
+    set ignorecase
+    set noshowmode
+    set updatetime=100
+    set list
+    set listchars=tab:·\ ,extends:›,precedes:‹,nbsp:·,trail:·
+    set inccommand=split
+    set nocursorline
+    set nonumber
+    set path-=/usr/include
+    set path+=src/**,cmd/**,internal/**,app/**,source/**,lib/**
+    set shiftwidth=4
+    set shortmess+=c
+    set smartcase
+    set splitbelow
+    set splitright
+    set termguicolors
+    set undofile
+
+    " Automatically resize windows if host window changes (e.g., creating a tmux
+    " split)
+    augroup Resize
+        autocmd!
+        autocmd VimResized * wincmd =
+    augroup END
+    " }}}
+
+    " MAPPINGS {{{
+    command! FormatBuffer :normal msggVGgq`s
+
+    " KEEP THIS AT THE TOP OF ALL MAPPINGS
+    let mapleader = " "
+    let maplocalleader = ","
+
+    imap jk <Esc>
+
+    nnoremap H ^
+    vnoremap H ^
+    nnoremap L g_
+    vnoremap L g_
+
+    nnoremap <leader>gg :lgrep<space>
+    nnoremap <leader>gw :lgrep -wF \'\'<left>
+
+    vmap Q <Plug>FormatVisual
+    nmap Q <Plug>FormatMotion
+    nmap <leader>Q :FormatBuffer<cr>
+
+    vmap     <Enter>    <Plug>(EasyAlign)
+
+    nnoremap <leader>m :<C-u>marks<CR>:normal! `
+    nnoremap <leader>b :ls<cr>:b *
+    nnoremap <leader>f :find **/
+    nnoremap <leader>e :edit **/
+
+    nnoremap <leader>p :ptselect /
+    nnoremap <leader>t :tselect /
+
+    nnoremap <leader>R :set operatorfunc=reflow#Comment<cr>g@
+    vnoremap <leader>R :<C-u>call reflow#Comment(visualmode())<cr>
+
+    nnoremap <leader>; *``cgn
+    nnoremap <leader>, #``cgN
+
+    nnoremap <BS> <C-^>
+
+    " Neovim Terminal
+    " http://vimcasts.org/episodes/neovim-terminal-mappings/
+    tnoremap <Esc> <C-\><C-n>
+    tnoremap <M-[> <Esc>
+    tnoremap <C-v><Esc> <Esc>
+    " }}}
+
+    " PLUGINS {{{
+    "
+    " andymass/vim-matchup
+    " This is a feature which helps you see matches that are outside of the vim
+    " screen, similar to some IDEs.  If you wish to disable it, use >
+    let g:matchup_matchparen_offscreen = {}
+    let g:polyglot_disabled = ['latex', 'markdown', 'fish']
+    let g:gutentags_exclude_filetypes = ['haskell']
+
+    " romainl/vim-qf
+    let g:qf_auto_open_loclist = 1
+    nmap <leader>qq <Plug>QfCtoggle
+    nmap <leader>ll <Plug>QfLtoggle
+    " }}}
+
+    " STATUSLINE {{{
+    set statusline=
+    set statusline+=\ %t
+    set statusline+=\ %m 
+    set statusline+=\%{FugitiveStatusline()} 
+    set statusline+=\ %{mode()}\ 
+    set statusline+=%=
+    set statusline+=\%{gutentags#statusline('[',']\ ')}
+    set statusline+=%y\ " buffer type
+    set statusline+=%q\ 
+    set statusline+=%3l:%2c\ \|
+    set statusline+=%3p%%\ 
+    " }}}
+
+    let g:one_allow_italics = 1
+    colorscheme space_vim_theme
+  '';
+
+  vimPluginsSources = import ./nix/sources.nix;
+
+  conjure = (pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "conjure";
+    version = "latest";
+    src = vimPluginsSources.conjure;
+  });
+
+  # vimPluginsSources.vim-markdown-folding
+  nvim-lsp = (pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "nvim-lsp";
+    version = "latest";
+    src = vimPluginsSources.nvim-lsp;
+  });
+
+  vim-markdown-folding = (pkgs.vimUtils.buildVimPluginFrom2Nix {
+    pname = "vim-markdown-folding";
+    version = "latest";
+    src = vimPluginsSources.vim-markdown-folding;
+  });
+
+  parinfer-rust = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    pname = "parinfer";
+    version = "latest";
+    postInstall = ''
+      rtpPath=$out/share/vim-plugins/${pname}-${version}
+      mkdir -p $rtpPath/plugin
+      sed "s,let s:libdir = .*,let s:libdir = '${pkgs.parinfer-rust}/lib'," \
+        plugin/parinfer.vim >$rtpPath/plugin/parinfer.vim
+    '';
+    src = vimPluginsSources.parinfer;
+  });
+
+  onehalf = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    pname = "onehalf";
+    version = "latest";
+    src = "${vimPluginsSources.onehalf}/vim";
+  });
+
+  # TODO: I think this is rather silly. This should just be an attrs { css =
+  # "vim script stuff" } so I can easily refer to drvs. Or properly sort out
+  # buildInputs in case some of these have dependencies
   localPlugins =
     builtins.map
       (pkg: pkgs.vimUtils.buildVimPluginFrom2Nix {
@@ -17,7 +249,6 @@ let
         "css"
         "dhall"
         "find-utils"
-        "format"
         "go"
         "haskell"
         "javascript"
@@ -27,12 +258,12 @@ let
         "make"
         "markdown"
         "nix"
-        "nixpkgs-fmt-neoformat"
         "reflow"
         "rust"
         "sh"
         "typescript"
         "vim"
+        "syntax"
         "xml"
         "yaml"
         "zen"
@@ -52,80 +283,63 @@ let
           src = pkg;
         })
       [
-        sources.Apprentice
-        sources."cocopon/iceberg.vim"
-        sources.conjure
-        sources.deoplete
-        sources.deoplete-lsp
-        sources.editorconfig-vim
-        sources.fzf
-        sources."fzf.vim"
-        sources.neoformat
-        sources.nord-vim
-        sources."sad.vim"
-        sources."seoul256.vim"
-        sources."targets.vim"
-        sources.vim-apathy
-        sources.vim-asterisk
-        sources.vim-colortemplate
-        sources.vim-commentary
-        sources.vim-cool
-        sources.vim-dirvish
-        sources.vim-easy-align
-        sources.vim-eunuch
-        sources.vim-fugitive
-        sources.vim-gutentags
-        sources.vim-indent-object
-        sources.vim-markdown-folding
-        sources.vim-markdown-toc
-        sources.vim-matchup
-        sources.vim-one
-        sources.vim-polyglot
-        sources.vim-qf
-        sources.vim-repeat
-        sources.vim-rhubarb
-        sources.vim-sandwich
-        sources.vim-sneak
-        sources.vim-unimpaired
-        sources.yui
-        sources.float-preview
+        vimPluginsSources.Apprentice
+        vimPluginsSources."cocopon/iceberg.vim"
+        vimPluginsSources.editorconfig-vim
+        vimPluginsSources."targets.vim"
+        vimPluginsSources.vim-colortemplate
+        vimPluginsSources.vim-commentary
+        vimPluginsSources.vim-cool
+        vimPluginsSources.vim-dirvish
+        vimPluginsSources.vim-easy-align
+        vimPluginsSources.vim-eunuch
+        vimPluginsSources.vim-fugitive
+        vimPluginsSources.vim-gutentags
+        vimPluginsSources.vim-indent-object
+        vimPluginsSources.vim-matchup
+        vimPluginsSources.vim-polyglot
+        vimPluginsSources.vim-qf
+        vimPluginsSources.vim-repeat
+        vimPluginsSources.vim-rhubarb
+        vimPluginsSources.vim-sandwich
+        vimPluginsSources.spacevim
+        vimPluginsSources.yui
       ];
 
+in
+{
   config = {
     programs.neovim.enable = true;
 
     programs.neovim.configure = {
-      customRC = builtins.readFile ./init.vim;
+      # Remember to compare this to the init.vim in src every once in a while
+      # to make sure both are synced.
+      customRC = initvim;
 
-      packages.n = {
+      packages.markdown = {
+        opt = [
+          vim-markdown-folding
+        ];
+      };
+
+      packages.clojure = {
+        opt = [
+          conjure
+          parinfer-rust
+        ];
+      };
+
+      packages.foobar = {
         start = [
-
-          (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-            pname = "parinfer";
-            version = "latest";
-            postInstall = ''
-              rtpPath=$out/share/vim-plugins/${pname}-${version}
-              mkdir -p $rtpPath/plugin
-              sed "s,let s:libdir = .*,let s:libdir = '${pkgs.parinfer-rust}/lib'," \
-                plugin/parinfer.vim >$rtpPath/plugin/parinfer.vim
-            '';
-            src = sources.parinfer;
-          })
-
-        ] ++ localPlugins ++ remotePlugins;
+          onehalf
+        ]
+        ++ localPlugins
+        ++ remotePlugins;
 
         opt = [
-
-          (pkgs.vimUtils.buildVimPluginFrom2Nix {
-            pname = "nvim-lsp";
-            version = "latest";
-            src = sources.nvim-lsp;
-          })
-
+          nvim-lsp
         ];
       };
     };
   };
-
-in
-{ inherit overlay config remotePlugins; }
+}

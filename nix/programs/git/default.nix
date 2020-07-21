@@ -1,9 +1,5 @@
-let
-  sources = import ../../nix/sources.nix;
-
-  pkgs = import sources.nixpkgs {};
-
-in {
+{ pkgs, ... }:
+{
   config = {
     programs.git = {
       enable = true;

@@ -13,6 +13,8 @@ let
 
   pkgs-release = import sources."nixos-20.03" {};
 
+  alacrittyYaml = (import ../../programs/alacritty/default.nix { inherit pkgs sources ; }).nixos;
+
   operatorMono = pkgs.stdenv.mkDerivation {
     name = "operator-mono-font";
     src = builtins.path { name = "operator-mono-src"; path = (builtins.getEnv "HOME") + "/OperatorMono"; };
@@ -25,18 +27,18 @@ let
 
 in {
   imports = [
-    programs.nvim.config
+    (programs.nvim.config pkgs)
     programs.fish.config
     programs.redshift.config
     clojure.config
     programs.fzf.config
-    programs.git.config
+    (programs.git.config pkgs)
     programs.tmux.config
   ];
 
   nixpkgs.overlays = [
-    (import ../../programs/vscode/overlay.nix)
-    (import ../../programs/neovim/overlay.nix)
+    (import ../../programs/vscode/overlay.nix pkgs)
+    (import ../../programs/neovim/overlay.nix pkgs)
   ];
 
   nixpkgs.config = import ../../nixpkgs_config.nix;
@@ -75,11 +77,25 @@ in {
   programs.direnv.enableNixDirenvIntegration = true;
 
   programs.alacritty.enable = true;
-  xdg.configFile."alacritty/alacritty.yml".source = (import ../../programs/alacritty/default.nix).nixos;
+  xdg.configFile."alacritty/alacritty.yml".text = "${builtins.readFile alacrittyYaml}" + ''
+  shell:
+    args:
+      - "-l"
+    program: ${pkgs.fish}/bin/fish
+  '';
 
-  # services.lorri.enable = true;
+  # TODO: Just append this to the actual config file with an overlay
+  xdg.configFile."fish/nixos.fish" = {
+    text = ''
+      set -x SHELL ${pkgs.fish}/bin/fish
+      set -x FISH_NOTES_DIR /data/fish_notes
+      set -x FISH_JOURNAL_DIR /data/fish_journal
+    '';
+  };
+
+  services.lorri.enable = true;
   # Also not yet in 20.03 haiz
-  # services.lorri.package = pkgs.lorri;
+  services.lorri.package = pkgs.lorri;
 
   programs.home-manager = {
     enable = true;

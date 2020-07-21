@@ -1,6 +1,6 @@
-let
-  sources = import ../../nix/sources.nix;
+{ sources, ... }:
 
+let
   config = {
     xdg.configFile."clojure/deps.edn".source = "${sources.clj-deps}/deps.edn";
   };

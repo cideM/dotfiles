@@ -14,6 +14,19 @@ in  keys.showCommonBindings
           { key = "P", mods = Some [ Mod.Alt ], mode = None Mode, chars = "`" }
       , K.Chars
           { key = "N", mods = Some [ Mod.Alt ], mode = None Mode, chars = "` " }
+      -- https://github.com/jethrokuan/fzf/blob/master/conf.d/fzf_key_bindings.fish
+      -- Some of these are necessary since on MacOS I otherwise can't type
+      -- anything with alt + CHAR, since it instead draws special symbols.
+      , K.Chars
+          { key = "O", mods = Some [ Mod.Alt ], mode = None Mode, chars = "\u001bo" }
+      , K.Chars
+          { key = "O", mods = Some [ Mod.Shift, Mod.Alt ], mode = None Mode, chars = "\u001bO" }
+      , K.Chars
+          { key = "Key0", mods = Some [ Mod.Alt ], mode = None Mode, chars = "\u001b0" }
+      , K.Chars
+          { key = "C", mods = Some [ Mod.Alt ], mode = None Mode, chars = "\u001bc" }
+      , K.Chars
+          { key = "C", mods = Some [ Mod.Shift, Mod.Alt ], mode = None Mode, chars = "\u001bC" }
       , K.Chars
           { key = "L"
           , mods = Some [ Mod.Alt ]

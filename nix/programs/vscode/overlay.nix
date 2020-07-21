@@ -1,11 +1,6 @@
+{ pkgs, ... }:
 final: prev:
 
-let
-  sources = import ../../nix/sources.nix;
-
-  pkgs = sources.nixpkgs;
-  
-in
 {
   vscode = (prev.vscode.override {
     isInsiders = true;

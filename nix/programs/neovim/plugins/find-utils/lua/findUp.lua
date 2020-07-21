@@ -25,7 +25,7 @@ function findUp(query, start, stop)
            else
                -- Everything until final /, equivalent of "dirname"
                local p = path:match("(.*/)")
-               if p == stop then
+               if p == stop or p == "" or p == nil then
                    return false
                end
 

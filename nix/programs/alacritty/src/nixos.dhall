@@ -4,8 +4,7 @@ let Alacritty =
 in  Alacritty.Config::{
     , font = ./hack.dhall
     , colors = ./papercolor.dhall
-    , shell = Some
-      { program = "/home/tifa/.nix-profile/bin/fish", args = [ "-l" ] }
+    , shell = None { program : Text, args : List Text }
     , key_bindings = ./keys_common.dhall
     }
   with window.decorations = Alacritty.Window.Decoration.full

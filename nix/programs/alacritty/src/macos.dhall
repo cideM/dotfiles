@@ -14,7 +14,7 @@ let mono =
       with italic.style = "Light Italic"
       with offset = { x = +0, y = +4 }
       with glyph_offset = { x = +0, y = +2 }
-      with size = 12.0
+      with size = 14.0
 
 let menlo =
       ./menlo.dhall
@@ -30,8 +30,9 @@ let jb =
 
 in  Alacritty.Config::{
     , font = mono ⫽ { use_thin_strokes = True }
-    , shell = None : { program : Text, args : List Text }
-    , colors = ./papercolor.dhall
+    , shell = None { program : Text, args : List Text }
+    , env = [ { mapKey = "TERM", mapValue = "alacritty" } ]
+    , colors = ./spacemacs_light.dhall
     , key_bindings = ./keys_common.dhall
     }
   with window.decorations = Alacritty.Window.Decoration.full

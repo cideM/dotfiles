@@ -1,0 +1,170 @@
+{
+    "Apprentice": {
+        "ref": "master",
+        "repo": "git@github.com:romainl/Apprentice",
+        "rev": "bc53f2a7117d38457362d7cba815ec41caa2ec50",
+        "type": "git"
+    },
+    "cocopon/iceberg.vim": {
+        "ref": "master",
+        "repo": "git@github.com:cocopon/iceberg.vim",
+        "rev": "203d56849325fb0420587c9951859a755798aea3",
+        "type": "git"
+    },
+    "conjure": {
+        "ref": "master",
+        "repo": "git@github.com:Olical/conjure",
+        "rev": "d9d514db3ef7fcf36bacc402aba511663a73bfbc",
+        "type": "git"
+    },
+    "editorconfig-vim": {
+        "ref": "master",
+        "repo": "git@github.com:editorconfig/editorconfig-vim",
+        "rev": "0a3c1d8082e38a5ebadcba7bb3a608d88a9ff044",
+        "type": "git"
+    },
+    "nord-vim": {
+        "ref": "develop",
+        "repo": "git@github.com:arcticicestudio/nord-vim",
+        "rev": "8a9754ce6c3451c541fa165144c164b0d92ae45e",
+        "type": "git"
+    },
+    "nvim-lsp": {
+        "ref": "master",
+        "repo": "git@github.com:neovim/nvim-lsp",
+        "rev": "3f7223659f39273c5fe4f2f2d7ee8baa827a9cfb",
+        "type": "git"
+    },
+    "onehalf": {
+        "ref": "master",
+        "repo": "git@github.com:sonph/onehalf.git",
+        "rev": "3aa42a39ed3cddde0c53976a700b81b8a7067890",
+        "type": "git"
+    },
+    "parinfer": {
+        "ref": "master",
+        "repo": "git@github.com:eraserhd/parinfer-rust.git",
+        "rev": "ba373bb2962e808af46b142441a831dfa7846eec",
+        "type": "git"
+    },
+    "spacevim": {
+        "ref": "master",
+        "repo": "git@github.com:liuchengxu/space-vim-theme.git",
+        "rev": "4790dbba31f678f75af4f4c7a1465008542bd979",
+        "type": "git"
+    },
+    "targets.vim": {
+        "ref": "master",
+        "repo": "git@github.com:wellle/targets.vim",
+        "rev": "8d6ff2984cdfaebe5b7a6eee8f226a6dd1226f2d",
+        "type": "git"
+    },
+    "vim-colortemplate": {
+        "ref": "master",
+        "repo": "git@github.com:lifepillar/vim-colortemplate",
+        "rev": "66b44397af47c0a47f1ea28a676f006afeaef729",
+        "type": "git"
+    },
+    "vim-commentary": {
+        "ref": "master",
+        "repo": "git@github.com:tpope/vim-commentary",
+        "rev": "f8238d70f873969fb41bf6a6b07ca63a4c0b82b1",
+        "type": "git"
+    },
+    "vim-cool": {
+        "ref": "master",
+        "repo": "git@github.com:romainl/vim-cool",
+        "rev": "27ad4ecf7532b750fadca9f36e1c5498fc225af2",
+        "type": "git"
+    },
+    "vim-dirvish": {
+        "ref": "master",
+        "repo": "git@github.com:justinmk/vim-dirvish",
+        "rev": "7c4dc5945b15a6b97ebef860070d30e36da01788",
+        "type": "git"
+    },
+    "vim-easy-align": {
+        "ref": "master",
+        "repo": "git@github.com:junegunn/vim-easy-align",
+        "rev": "12dd6316974f71ce333e360c0260b4e1f81169c3",
+        "type": "git"
+    },
+    "vim-eunuch": {
+        "ref": "master",
+        "repo": "git@github.com:tpope/vim-eunuch",
+        "rev": "33e875b31c8b811a0a47908884a5e2339106bbe8",
+        "type": "git"
+    },
+    "vim-fugitive": {
+        "ref": "master",
+        "repo": "git@github.com:tpope/vim-fugitive",
+        "rev": "260182c65cae653ac20e6a69ba8cc6124e7ba6c2",
+        "type": "git"
+    },
+    "vim-gutentags": {
+        "ref": "master",
+        "repo": "git@github.com:ludovicchabant/vim-gutentags",
+        "rev": "8e69652c7a7e7aabd96cff21b6ee6b6a295c901c",
+        "type": "git"
+    },
+    "vim-indent-object": {
+        "ref": "master",
+        "repo": "git@github.com:michaeljsmith/vim-indent-object",
+        "rev": "5c5b24c959478929b54a9e831a8e2e651a465965",
+        "type": "git"
+    },
+    "vim-markdown-folding": {
+        "ref": "master",
+        "repo": "git@github.com:masukomi/vim-markdown-folding",
+        "rev": "3f35acfb753cc9ea22182400b075c5b6e896ad71",
+        "type": "git"
+    },
+    "vim-matchup": {
+        "ref": "master",
+        "repo": "git@github.com:andymass/vim-matchup",
+        "rev": "13dab02119bfc18e6fcaf62daae6b8e22abe8ad6",
+        "type": "git"
+    },
+    "vim-one": {
+        "ref": "master",
+        "repo": "git@github.com:rakr/vim-one",
+        "rev": "6695e135415c53a8fbe96672e382200aa1ffb4b4",
+        "type": "git"
+    },
+    "vim-polyglot": {
+        "ref": "master",
+        "repo": "git@github.com:sheerun/vim-polyglot",
+        "rev": "9c3c0bc082e0d58d15dc6f24d8a335931417e2f0",
+        "type": "git"
+    },
+    "vim-qf": {
+        "ref": "master",
+        "repo": "git@github.com:romainl/vim-qf",
+        "rev": "208d1cdafb3fdbdb91ac5a2aaadd1f0e68f619ba",
+        "type": "git"
+    },
+    "vim-repeat": {
+        "ref": "master",
+        "repo": "git@github.com:tpope/vim-repeat",
+        "rev": "c947ad2b6a16983724a0153bdf7f66d7a80a32ca",
+        "type": "git"
+    },
+    "vim-rhubarb": {
+        "ref": "master",
+        "repo": "git@github.com:tpope/vim-rhubarb",
+        "rev": "5130596a65330a4e8523d3ac1582f6c31ea6bc63",
+        "type": "git"
+    },
+    "vim-sandwich": {
+        "ref": "master",
+        "repo": "git@github.com:machakann/vim-sandwich",
+        "rev": "f0bb324395bf6e00ec17fc7af60d2ccb8d494595",
+        "type": "git"
+    },
+    "yui": {
+        "ref": "master",
+        "repo": "git@github.com:cidem/yui",
+        "rev": "7c6936cfc989cc14a5b2c2314337066093acb178",
+        "type": "git"
+    }
+}

@@ -10,34 +10,48 @@ let
   sharedPkgs = with pkgs; [
     awscli
     bat
+    coreutils
+    curl
     dhall
-    source-han-sans-japanese
-    source-han-serif-japanese
+    neofetch
+    jrnl
+    gitAndTools.delta
     dive
-    kanji-stroke-order-font
     docker-compose
     entr
     exa
-    mpv
     fd
     fortune
+    gawk
+    gnugrep
     hack-font
     hexyl
     htop
     jq
+    kanji-stroke-order-font
     lazygit
+    libuv
     miniserve
+    mpv
     nano
     ncdu
+    findutils
     niv
     nixpkgs-fmt
     pandoc
+    parinfer-rust
+    rclone
+    restic
     ripgrep
     rlwrap
     roboto
-    parinfer-rust
     roboto-mono
     rsync
+    rust-analyzer
+    s3cmd
+    shfmt
+    source-han-sans-japanese
+    source-han-serif-japanese
     stow
     tig
     tldr
@@ -45,6 +59,11 @@ let
     tree
     universal-ctags
     vim
+    perl
+    weechat
+    gzip
+    gitAndTools.hub
+    wget
   ];
 
 in {

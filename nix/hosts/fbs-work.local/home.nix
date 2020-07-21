@@ -6,210 +6,65 @@ let
 
   programs = import ../../programs/default.nix;
 
-  clojure = import ../../languages/clojure/default.nix;
+  fish = programs.fish { inherit pkgs sources; };
+
+  clojure = (import ../../languages/clojure/default.nix) { inherit pkgs sources; };
 
   sources = import ../../nix/sources.nix;
 
-  pkgs = import sources.nixpkgs { };
+  alacrittyYaml = (import ../../programs/alacritty/default.nix { inherit pkgs sources; }).macos;
 
 in
 {
   imports = [
-    programs.nvim.config
-    programs.fish.config
+    (programs.nvim { inherit pkgs sources; })
+    fish.config
     clojure.config
     programs.fzf.config
     programs.tmux.config
     # https://github.com/NixOS/nixpkgs/issues/62353
-    # programs.git.config
+    # (programs.git.config pkgs)
   ];
 
+  programs.fish.interactiveShellInit = ''
+    set -x SHELL ${pkgs.fish}/bin/fish
+    set -x FISH_NOTES_DIR ~/.local/share/fish_notes
+    set -x FISH_JOURNAL_DIR ~/.local/share/fish_journal
+
+    contains ${pkgs.coreutils}/bin $PATH
+    or set -x PATH ${pkgs.coreutils}/bin $PATH/
+  '';
+
+  # https://github.com/rycee/home-manager/issues/432
+  programs.man.enable = false;
+  home.extraOutputsToInstall = [ "man" ];
+
   home.packages = with pkgs; shared.pkgs ++ [
-    neofetch
-    jrnl
-    gitAndTools.delta
     lorri
   ];
 
   nixpkgs.overlays = [
-    (import ../../programs/neovim/overlay.nix)
+    (import ../../programs/neovim/overlay.nix { inherit pkgs sources; })
+    (import ../../programs/alacritty/overlay.nix { inherit pkgs sources; })
   ];
 
   nixpkgs.config = import ../../nixpkgs_config.nix;
   xdg.configFile."nixpkgs/config.nix".source = ../../nixpkgs_config.nix;
 
-  xdg.configFile."fish/fbs-work.local.fish" = {
-    text = ''
-      set -x SHELL ${pkgs.fish}/bin/fish
-
-      contains /usr/local/opt/coreutils/libexec/gnubin $PATH
-      or set -x PATH /usr/local/opt/coreutils/libexec/gnubin $PATH/
-
-      contains /opt/local/bin $PATH
-      or set -x PATH /opt/local/bin $PATH
-    '';
-  };
-
   programs.alacritty.enable = true;
-  # xdg.configFile."alacritty/alacritty.yml".source = (import ../../programs/alacritty/default.nix).macos;
+  xdg.configFile."alacritty/alacritty.yml".text = "${builtins.readFile alacrittyYaml}" + ''
+    shell:
+      args:
+        - "-l"
+      program: ${pkgs.fish}/bin/fish
+  '';
 
   programs.fzf.enable = true;
 
   programs.direnv.enable = true;
+  programs.direnv.enableFishIntegration = true;
+  programs.direnv.enableNixDirenvIntegration = true;
 
-  programs.alacritty.settings = {
-    colors = {
-      primary = {
-        background = "0xeeeeee";
-        foreground = "0x878787";
-      };
-
-      normal = {
-        black = "0xeeeeee"; red = "0xaf0000";
-        green = "0x008700";
-        yellow = "0x5f8700";
-        blue = "0x0087af";
-        magenta = "0x878787";
-        cyan = "0x005f87";
-        white = "0x444444";
-      };
-
-      # Bright colors
-      bright = {
-        black = "0xbcbcbc";
-        red = "0xd70000";
-        green = "0xd70087";
-        yellow = "0x8700af";
-        blue = "0xd75f00";
-        magenta = "0xd75f00";
-        cyan = "0x005faf";
-        white = "0x005f87";
-      };
-    };
-    shell = {
-      args = [ "-l" ];
-      program = "${pkgs.fish}/bin/fish";
-    };
-    env = {
-      TERM = "alacritty";
-    };
-    font = {
-      bold = {
-        family = "Operator Mono SSm";
-        style = "Medium";
-      };
-      bold_italic = {
-        family = "Operator Mono SSm";
-        style = "Medium Italic";
-      };
-      glyph_offset = {
-        x = 0;
-        y = 2;
-      };
-      italic = {
-        family = "Operator Mono SSm";
-        style = "Light Italic";
-      };
-      normal = {
-        family = "Operator Mono SSm";
-        style = "Light";
-      };
-      offset = {
-        x = 0;
-        y = 4;
-      };
-      size = 12;
-      use_thin_strokes = true;
-    };
-    key_bindings = [
-      {
-        chars = "`";
-        key = "P";
-        mods = "Alt";
-      }
-      {
-        chars = "` ";
-        key = "N";
-        mods = "Alt";
-      }
-      {
-        chars = "\\u001bl";
-        key = "L";
-        mods = "Alt";
-      }
-      {
-        chars = "\\u001bh";
-        key = "H";
-        mods = "Alt";
-      }
-      {
-        chars = "\\u001bk";
-        key = "K";
-        mods = "Alt";
-      }
-      {
-        chars = "\\u001bj";
-        key = "J";
-        mods = "Alt";
-      }
-      {
-        chars = "`c";
-        key = "S";
-        mods = "Control|Shift";
-      }
-      {
-        chars = "`x";
-        key = "X";
-        mods = "Control|Shift";
-      }
-      {
-        chars = "`-";
-        key = "Subtract";
-        mods = "Control";
-      }
-      {
-        chars = "`-";
-        key = "Minus";
-        mods = "Control";
-      }
-      {
-        chars = "`|";
-        key = "Backslash";
-        mods = "Control";
-      }
-      {
-        chars = "`z";
-        key = "Grave";
-        mods = "Control";
-      }
-      {
-        action = "SpawnNewInstance";
-        key = "N";
-        mods = "Control|Alt";
-      }
-      {
-        action = "None";
-        key = "Minus";
-        mods = "Control";
-      }
-      {
-        action = "None";
-        key = "Subtract";
-        mods = "Control";
-      }
-    ];
-    window = {
-      padding = {
-        x = 10;
-        y = 10;
-      };
-      position = {
-        x = 0;
-        y = 0;
-      };
-      startup_mode = "Windowed";
-    };
-  };
 
   programs.home-manager = {
     enable = true;
