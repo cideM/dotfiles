@@ -17,4 +17,3 @@ tags
 !**/.config/fish/conf.d/99_*.fish
 !**/.config/fish/functions/fish_greeting.fish
 !**/.config/fish/functions/fish_prompt.fish
-!**/.config/fish/functions/fisher.fish

@@ -1,0 +1,11 @@
+alacritty
+android-platform-tools
+emacs
+font-iosevka
+font-source-code-pro
+google-cloud-sdk
+graphiql
+hyper
+insomnia
+iterm2-nightly
+java

@@ -15,10 +15,12 @@ case $(hostname) in
 
         "$GIT_ROOT"/scripts/stow.sh \
             ctags                   \
+            alacritty_darwin        \
             emacs                   \
             git                     \
             nvim                    \
             nixpkgs                 \
+            fish                    \
             pandoc                  \
             tmux
         ;;
@@ -30,6 +32,8 @@ case $(hostname) in
             ctags                   \
             emacs                   \
             git                     \
+            fish                    \
+            alacritty               \
             nvim                    \
             pam                     \
             nixpkgs                 \
