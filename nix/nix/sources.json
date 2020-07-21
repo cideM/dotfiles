@@ -1,0 +1,338 @@
+{
+    "Apprentice": {
+        "ref": "master",
+        "repo": "git@github.com:romainl/Apprentice",
+        "rev": "bc53f2a7117d38457362d7cba815ec41caa2ec50",
+        "type": "git"
+    },
+    "clj-deps": {
+        "ref": "master",
+        "repo": "git@github.com:practicalli/clojure-deps-edn.git",
+        "rev": "dbd0c458e76fb5c8f7a4566b461d33c3d96454c4",
+        "type": "git"
+    },
+    "cocopon/iceberg.vim": {
+        "ref": "master",
+        "repo": "git@github.com:cocopon/iceberg.vim",
+        "rev": "b47e15796b57853eba8a327f05df99ba16addd55",
+        "type": "git"
+    },
+    "conjure": {
+        "ref": "master",
+        "repo": "git@github.com:Olical/conjure",
+        "rev": "95ae79d91365d6078a9f5b6ce235b685906aa55e",
+        "type": "git"
+    },
+    "deoplete": {
+        "ref": "master",
+        "repo": "git@github.com:Shougo/deoplete.nvim.git",
+        "rev": "14ebc58db0c6c0f7b5349a2ef5a4c47a61b8785f",
+        "type": "git"
+    },
+    "deoplete-lsp": {
+        "ref": "master",
+        "repo": "git@github.com:Shougo/deoplete-lsp.git",
+        "rev": "ae0b7d023a33f0692652a21f532051e8718e1800",
+        "type": "git"
+    },
+    "dhall-alacritty": {
+        "ref": "master",
+        "repo": "git@github.com:cideM/dhall-alacritty.git",
+        "rev": "585ae5e9323fc2ecfc1f302f2a54a8f21427b41e",
+        "type": "git"
+    },
+    "dhall-lang": {
+        "branch": "master",
+        "description": "Maintainable configuration files",
+        "homepage": "https://dhall-lang.org",
+        "owner": "dhall-lang",
+        "repo": "dhall-lang",
+        "rev": "f717c748b3751e5a1b22da8af3db31030e7dcd0d",
+        "sha256": "0fxhfvd9hqhrqg6khblh81ri4a0nqb07fx0kwyvgirjnxngick4i",
+        "type": "tarball",
+        "url": "https://github.com/dhall-lang/dhall-lang/archive/f717c748b3751e5a1b22da8af3db31030e7dcd0d.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "editorconfig-vim": {
+        "ref": "master",
+        "repo": "git@github.com:editorconfig/editorconfig-vim",
+        "rev": "0a3c1d8082e38a5ebadcba7bb3a608d88a9ff044",
+        "type": "git"
+    },
+    "fish-fzf": {
+        "ref": "master",
+        "repo": "git@github.com:jethrokuan/fzf.git",
+        "rev": "ee6c7ba4aff35949df380c9def6d1a6df76c3e24",
+        "type": "git"
+    },
+    "fish-journal": {
+        "ref": "master",
+        "repo": "git@github.com:cideM/fish-journal.git",
+        "rev": "5d0be5dc5e5361763be3d2c0ff18a7b4d4c038a7",
+        "type": "git"
+    },
+    "fish-nix-env": {
+        "ref": "master",
+        "repo": "git@github.com:lilyball/nix-env.fish.git",
+        "rev": "c239a69122c88797b34e3721659b2ba5060ca7e7",
+        "type": "git"
+    },
+    "fish-notes": {
+        "ref": "master",
+        "repo": "git@github.com:cideM/fish-notes.git",
+        "rev": "f49d48019ed87555a404800e982418f93e6c311a",
+        "type": "git"
+    },
+    "fish-nvm": {
+        "ref": "master",
+        "repo": "git@github.com:jorgebucaran/fish-nvm.git",
+        "rev": "f75808a92fa77b7dc3c740a538ce4884b4d4f7db",
+        "type": "git"
+    },
+    "fish-yvm": {
+        "ref": "master",
+        "repo": "git@github.com:cideM/fish-yvm.git",
+        "rev": "231100f7cc4c2ba99cc7c40a08ce930d4239f520",
+        "type": "git"
+    },
+    "float-preview": {
+        "ref": "master",
+        "repo": "git@github.com:ncm2/float-preview.nvim.git",
+        "rev": "3c2e230a3fe34b3a5fb74519797c29daa5a6a69a",
+        "type": "git"
+    },
+    "fzf": {
+        "ref": "master",
+        "repo": "git@github.com:junegunn/fzf",
+        "rev": "f79b1f71b86651fe5656eab1c360781e19e97826",
+        "type": "git"
+    },
+    "fzf.vim": {
+        "ref": "master",
+        "repo": "git@github.com:junegunn/fzf.vim",
+        "rev": "2bf85d25e203a536edb2c072c0d41b29e8e4cc1b",
+        "type": "git"
+    },
+    "neoformat": {
+        "ref": "master",
+        "repo": "git@github.com:sbdchd/neoformat.git",
+        "rev": "166ab5d9084d4beccd5bebbe407dbef621d96171",
+        "type": "git"
+    },
+    "neovim": {
+        "ref": "master",
+        "repo": "git@github.com:neovim/neovim",
+        "rev": "950ca6abcdb4421a36b701d847421cb1eb86d8f2",
+        "type": "git"
+    },
+    "niv": {
+        "branch": "master",
+        "description": "Easy dependency management for Nix projects",
+        "homepage": "https://github.com/nmattia/niv",
+        "owner": "nmattia",
+        "repo": "niv",
+        "rev": "febd3530f0c2f2fb74752ee4d9dd2518d302f618",
+        "sha256": "1gifi50k4h6wk9ix0yvp66p7jk8rrqgr39r5rf4lyha6pbs7dbk6",
+        "type": "tarball",
+        "url": "https://github.com/nmattia/niv/archive/febd3530f0c2f2fb74752ee4d9dd2518d302f618.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixos-20.03": {
+        "branch": "release-20.03",
+        "description": "Nix Packages collection",
+        "homepage": null,
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "a674930d15779ec0a989fa81edff98b6e2272dae",
+        "sha256": "1g04npvsf9f7jp9rjzwslibknh47fplq5nzrxgb7vcs90m978jks",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/a674930d15779ec0a989fa81edff98b6e2272dae.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixpkgs": {
+        "branch": "nixpkgs-unstable",
+        "description": "A read-only mirror of NixOS/nixpkgs tracking the released channels. Send issues and PRs to",
+        "homepage": "https://github.com/NixOS/nixpkgs",
+        "owner": "NixOS",
+        "repo": "nixpkgs-channels",
+        "rev": "d7e20ee25ed8aa1f0f24a9ca77026c6ef217f6ba",
+        "sha256": "1ar7prnrmmlqj17g57nqp82hgy5283dxb94akaqrwpbaz7qfwi4y",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs-channels/archive/d7e20ee25ed8aa1f0f24a9ca77026c6ef217f6ba.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nord-vim": {
+        "ref": "develop",
+        "repo": "git@github.com:arcticicestudio/nord-vim",
+        "rev": "8a9754ce6c3451c541fa165144c164b0d92ae45e",
+        "type": "git"
+    },
+    "nvim-lsp": {
+        "ref": "master",
+        "repo": "git@github.com:neovim/nvim-lsp",
+        "rev": "3f7223659f39273c5fe4f2f2d7ee8baa827a9cfb",
+        "type": "git"
+    },
+    "parinfer": {
+        "ref": "master",
+        "repo": "git@github.com:eraserhd/parinfer-rust.git",
+        "rev": "ba373bb2962e808af46b142441a831dfa7846eec",
+        "type": "git"
+    },
+    "sad.vim": {
+        "ref": "master",
+        "repo": "git@github.com:hauleth/sad.vim",
+        "rev": "2f5b33b239a566ffedaa81cee3051bb613482d1e",
+        "type": "git"
+    },
+    "seoul256.vim": {
+        "ref": "master",
+        "repo": "git@github.com:junegunn/seoul256.vim",
+        "rev": "24ed467ca6ef9ce7ede56c9ffb1c6b30cd0ee906",
+        "type": "git"
+    },
+    "targets.vim": {
+        "ref": "master",
+        "repo": "git@github.com:wellle/targets.vim",
+        "rev": "8d6ff2984cdfaebe5b7a6eee8f226a6dd1226f2d",
+        "type": "git"
+    },
+    "vim-apathy": {
+        "ref": "master",
+        "repo": "git@github.com:tpope/vim-apathy",
+        "rev": "ca90185a497088bbb62d933bb500cb2911c7be64",
+        "type": "git"
+    },
+    "vim-asterisk": {
+        "ref": "master",
+        "repo": "git@github.com:haya14busa/vim-asterisk",
+        "rev": "77e97061d6691637a034258cc415d98670698459",
+        "type": "git"
+    },
+    "vim-colortemplate": {
+        "ref": "master",
+        "repo": "git@github.com:lifepillar/vim-colortemplate",
+        "rev": "66b44397af47c0a47f1ea28a676f006afeaef729",
+        "type": "git"
+    },
+    "vim-commentary": {
+        "ref": "master",
+        "repo": "git@github.com:tpope/vim-commentary",
+        "rev": "f8238d70f873969fb41bf6a6b07ca63a4c0b82b1",
+        "type": "git"
+    },
+    "vim-cool": {
+        "ref": "master",
+        "repo": "git@github.com:romainl/vim-cool",
+        "rev": "27ad4ecf7532b750fadca9f36e1c5498fc225af2",
+        "type": "git"
+    },
+    "vim-dirvish": {
+        "ref": "master",
+        "repo": "git@github.com:justinmk/vim-dirvish",
+        "rev": "7c4dc5945b15a6b97ebef860070d30e36da01788",
+        "type": "git"
+    },
+    "vim-easy-align": {
+        "ref": "master",
+        "repo": "git@github.com:junegunn/vim-easy-align",
+        "rev": "12dd6316974f71ce333e360c0260b4e1f81169c3",
+        "type": "git"
+    },
+    "vim-eunuch": {
+        "ref": "master",
+        "repo": "git@github.com:tpope/vim-eunuch",
+        "rev": "33e875b31c8b811a0a47908884a5e2339106bbe8",
+        "type": "git"
+    },
+    "vim-fugitive": {
+        "ref": "master",
+        "repo": "git@github.com:tpope/vim-fugitive",
+        "rev": "1da7c133b109cd329060174a104e325e4d6bcc82",
+        "type": "git"
+    },
+    "vim-gutentags": {
+        "ref": "master",
+        "repo": "git@github.com:ludovicchabant/vim-gutentags",
+        "rev": "8e69652c7a7e7aabd96cff21b6ee6b6a295c901c",
+        "type": "git"
+    },
+    "vim-indent-object": {
+        "ref": "master",
+        "repo": "git@github.com:michaeljsmith/vim-indent-object",
+        "rev": "5c5b24c959478929b54a9e831a8e2e651a465965",
+        "type": "git"
+    },
+    "vim-markdown-folding": {
+        "ref": "master",
+        "repo": "git@github.com:masukomi/vim-markdown-folding",
+        "rev": "3f35acfb753cc9ea22182400b075c5b6e896ad71",
+        "type": "git"
+    },
+    "vim-markdown-toc": {
+        "ref": "master",
+        "repo": "git@github.com:mzlogin/vim-markdown-toc.git",
+        "rev": "2e86c7229dfee5b7062194ec3d08a79a6b07de02",
+        "type": "git"
+    },
+    "vim-matchup": {
+        "ref": "master",
+        "repo": "git@github.com:andymass/vim-matchup",
+        "rev": "13dab02119bfc18e6fcaf62daae6b8e22abe8ad6",
+        "type": "git"
+    },
+    "vim-one": {
+        "ref": "master",
+        "repo": "git@github.com:rakr/vim-one",
+        "rev": "6695e135415c53a8fbe96672e382200aa1ffb4b4",
+        "type": "git"
+    },
+    "vim-polyglot": {
+        "ref": "master",
+        "repo": "git@github.com:sheerun/vim-polyglot",
+        "rev": "9c3c0bc082e0d58d15dc6f24d8a335931417e2f0",
+        "type": "git"
+    },
+    "vim-qf": {
+        "ref": "master",
+        "repo": "git@github.com:romainl/vim-qf",
+        "rev": "208d1cdafb3fdbdb91ac5a2aaadd1f0e68f619ba",
+        "type": "git"
+    },
+    "vim-repeat": {
+        "ref": "master",
+        "repo": "git@github.com:tpope/vim-repeat",
+        "rev": "c947ad2b6a16983724a0153bdf7f66d7a80a32ca",
+        "type": "git"
+    },
+    "vim-rhubarb": {
+        "ref": "master",
+        "repo": "git@github.com:tpope/vim-rhubarb",
+        "rev": "5130596a65330a4e8523d3ac1582f6c31ea6bc63",
+        "type": "git"
+    },
+    "vim-sandwich": {
+        "ref": "master",
+        "repo": "git@github.com:machakann/vim-sandwich",
+        "rev": "bb5a3270ed010e0fe3343945c8d1f6c814341d72",
+        "type": "git"
+    },
+    "vim-sneak": {
+        "ref": "master",
+        "repo": "git@github.com:justinmk/vim-sneak",
+        "rev": "afe94543bb3bb95ef9ae2a58eebcbc17d69eb304",
+        "type": "git"
+    },
+    "vim-unimpaired": {
+        "ref": "master",
+        "repo": "git@github.com:tpope/vim-unimpaired",
+        "rev": "4afbe5ebf32ad85341b4c02b0e1d8ca96a64c561",
+        "type": "git"
+    },
+    "yui": {
+        "ref": "master",
+        "repo": "git@github.com:cidem/yui",
+        "rev": "b0a708522082af79137dd637c5e8fa006f5c8adf",
+        "type": "git"
+    }
+}

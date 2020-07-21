@@ -1,0 +1,57 @@
+#!/bin/sh
+
+GIT_ROOT=$(git rev-parse --show-toplevel)
+DOTS_NIXOS="$HOME/dotfiles/nix/hosts"
+
+makeNixpkgs() {
+    if ! test -d "$XDG_CONFIG_HOME"/nixpkgs; then
+        mkdir -p "$XDG_CONFIG_HOME"/nixpkgs
+    fi
+}
+
+case $(hostname) in
+    fbs-work.local)
+        makeNixpkgs
+
+        "$GIT_ROOT"/scripts/stow.sh \
+            ctags                   \
+            emacs                   \
+            git                     \
+            nvim                    \
+            nixpkgs                 \
+            pandoc                  \
+            tmux
+        ;;
+
+    archminimal)
+        makeNixpkgs
+
+        "$GIT_ROOT"/scripts/stow.sh \
+            ctags                   \
+            emacs                   \
+            git                     \
+            nvim                    \
+            pam                     \
+            nixpkgs                 \
+            pandoc                  \
+            bspwm                   \
+            rofi                    \
+            sxhkd                   \
+            picom                   \
+            polybar                 \
+            dunst                   \
+            mime                    \
+            x                       \
+            tmux
+        ;;
+    nixos)
+        makeNixpkgs
+
+        ln -sf "$DOTS_NIXOS"/nixos/home.nix "$XDG_CONFIG_HOME"/nixpkgs/home.nix 
+        sudo ln -sf "$DOTS_NIXOS"/nixos/configuration.nix /etc/nixos/configuration.nix
+
+        "$GIT_ROOT"/scripts/stow.sh \
+            ctags                   \
+            emacs
+        ;;
+esac

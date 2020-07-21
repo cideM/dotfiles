@@ -1,0 +1,20 @@
+tags
+
+.envrc
+
+**/nvim/pack
+**/nvim/.swap
+**/nvim/.undo
+**/nvim/.netrwhist
+
+# Only allow specific files in git for fish
+**/.config/fish/functions/*.fish
+**/.config/fish/completions/*.fish
+**/.config/fish/fish_variables
+**/.config/fish/conf.d/*.fish
+!**/.config/fish/conf.d/nixos.fish
+!**/.config/fish/conf.d/darwin.fish
+!**/.config/fish/conf.d/99_*.fish
+!**/.config/fish/functions/fish_greeting.fish
+!**/.config/fish/functions/fish_prompt.fish
+!**/.config/fish/functions/fisher.fish

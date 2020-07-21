@@ -1,0 +1,15 @@
+# This file sets environment variables that should be globally set on the system
+# That is, across graphical and non-graphical logins, and across all shell types
+#
+# Note that it is _not_ important to set things like FZF_DEFAULT_COMMAND here since
+# that is only relevant when using an interactive shell, so we may as well just set
+# that directly in the shell config.
+#
+# Also note that pam_env is _really_ picky about formatting.
+# Lines can _either_ be KEY=VALUE (no spaces!)
+#  _or_ they can be KEY DEFAULT="VALUE" where VALUE can then have spaces
+#  KEY="VALUE" does _not_ work!
+
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+XMODIFIERS=@im=fcitx

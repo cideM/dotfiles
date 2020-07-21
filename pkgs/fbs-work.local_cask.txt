@@ -1,0 +1,13 @@
+alacritty
+android-platform-tools
+anki
+emacs
+font-hack
+font-iosevka
+font-source-code-pro
+google-cloud-sdk
+graphiql
+hyper
+insomnia
+iterm2-nightly
+java
