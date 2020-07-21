@@ -13,6 +13,8 @@ case $(hostname) in
     fbs-work.local)
         makeNixpkgs
 
+        ln -sf "$DOTS_NIXOS"/fbs-work.local/home.nix "$XDG_CONFIG_HOME"/nixpkgs/home.nix 
+
         "$GIT_ROOT"/scripts/stow.sh \
             ctags                   \
             alacritty_darwin        \
