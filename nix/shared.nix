@@ -9,37 +9,43 @@ let
 
   sharedPkgs = with pkgs; [
     awscli
+    bash
     bat
     coreutils
     curl
     dhall
-    neofetch
-    jrnl
-    gitAndTools.delta
     dive
     docker-compose
     entr
     exa
     fd
+    findutils
     fortune
     gawk
+    gitAndTools.delta
+    gitAndTools.hub
     gnugrep
+    gnupg
+    gzip
     hack-font
     hexyl
     htop
     jq
+    jrnl
     kanji-stroke-order-font
+    kubernetes-helm
     lazygit
     libuv
     miniserve
     mpv
     nano
     ncdu
-    findutils
+    neofetch
     niv
     nixpkgs-fmt
     pandoc
     parinfer-rust
+    perl
     rclone
     restic
     ripgrep
@@ -59,10 +65,7 @@ let
     tree
     universal-ctags
     vim
-    perl
     weechat
-    gzip
-    gitAndTools.hub
     wget
   ];
 
