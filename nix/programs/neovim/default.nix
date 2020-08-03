@@ -74,7 +74,7 @@ let
     endif
 
     set background=light
-    set shell=bash
+    set shell=${pkgs.bash}/bin/bash
     " https://www.reddit.com/r/vim/comments/25g1sp/why_doesnt_vim_syntax_like_my_shell_files/
     let g:is_posix = 1
     set wildignore+=*/.git/*,
