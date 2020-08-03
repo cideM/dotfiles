@@ -67,6 +67,7 @@ let
     vim
     weechat
     wget
+    yamllint
   ];
 
 in {
