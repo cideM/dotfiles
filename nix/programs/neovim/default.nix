@@ -99,7 +99,6 @@ let
     set nocursorline
     set nonumber
     set path-=/usr/include
-    set path+=src/**,cmd/**,internal/**,app/**,source/**,lib/**
     set shiftwidth=4
     set shortmess+=c
     set smartcase
