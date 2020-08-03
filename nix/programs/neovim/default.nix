@@ -139,19 +139,8 @@ let
 
     vmap     <Enter>    <Plug>(EasyAlign)
 
-    nnoremap <leader>m :<C-u>marks<CR>:normal! `
-    nnoremap <leader>b :ls<cr>:b *
-    nnoremap <leader>f :find **/
-    nnoremap <leader>e :edit **/
-
-    nnoremap <leader>p :ptselect /
-    nnoremap <leader>t :tselect /
-
     nnoremap <leader>R :set operatorfunc=reflow#Comment<cr>g@
     vnoremap <leader>R :<C-u>call reflow#Comment(visualmode())<cr>
-
-    nnoremap <leader>; *``cgn
-    nnoremap <leader>, #``cgN
 
     nnoremap <BS> <C-^>
 
@@ -163,10 +152,13 @@ let
     " }}}
 
     " PLUGINS {{{
-    "
+    " sad
+    nmap <leader>c <Plug>(sad-change-forward)
+    nmap <leader>C <Plug>(sad-change-backward)
+    xmap <leader>c <Plug>(sad-change-forward)
+    xmap <leader>C <Plug>(sad-change-backward)
+
     " andymass/vim-matchup
-    " This is a feature which helps you see matches that are outside of the vim
-    " screen, similar to some IDEs.  If you wish to disable it, use >
     let g:matchup_matchparen_offscreen = {}
     let g:polyglot_disabled = ['latex', 'markdown', 'fish']
     let g:gutentags_exclude_filetypes = ['haskell']
@@ -175,6 +167,48 @@ let
     let g:qf_auto_open_loclist = 1
     nmap <leader>qq <Plug>QfCtoggle
     nmap <leader>ll <Plug>QfLtoggle
+
+    " fzf
+    command! -bang -nargs=? -complete=dir Files
+                \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+    autocmd! FileType fzf set laststatus=0 noshowmode noruler
+                \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
+    nnoremap <leader>f :Files<CR>
+    nnoremap <leader>b :Buffers<CR>
+    nnoremap <leader>G :GFiles<CR>
+    nnoremap <leader>m :Marks<CR>
+    nnoremap <leader>t :Tags<CR>
+
+    let g:fzf_colors =
+        \ { 'fg':      ['fg', 'Normal'],
+        \ 'bg':      ['bg', 'Normal'],
+        \ 'hl':      ['fg', 'Comment'],
+        \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+        \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+        \ 'hl+':     ['fg', 'Statement'],
+        \ 'info':    ['fg', 'PreProc'],
+        \ 'border':  ['fg', 'Ignore'],
+        \ 'prompt':  ['fg', 'Conditional'],
+        \ 'pointer': ['fg', 'Exception'],
+        \ 'marker':  ['fg', 'Keyword'],
+        \ 'spinner': ['fg', 'Label'],
+        \ 'header':  ['fg', 'Comment'] }
+
+    " vim-sneak
+    let g:sneak#label      = 1
+    let g:sneak#use_ic_scs = 1
+    nmap gs <Plug>Sneak_s
+    nmap gS <Plug>Sneak_S
+    xmap gs <Plug>Sneak_s
+    xmap gS <Plug>Sneak_S
+    omap gs <Plug>Sneak_s
+    omap gS <Plug>Sneak_S
+    map f <Plug>Sneak_f
+    map F <Plug>Sneak_F
+    map t <Plug>Sneak_t
+    map T <Plug>Sneak_T
     " }}}
 
     " STATUSLINE {{{
@@ -203,7 +237,6 @@ let
     src = vimPluginsSources.conjure;
   });
 
-  # vimPluginsSources.vim-markdown-folding
   nvim-lsp = (pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "nvim-lsp";
     version = "latest";
@@ -284,26 +317,14 @@ let
         })
       [
         vimPluginsSources.Apprentice
-        vimPluginsSources."cocopon/iceberg.vim"
-        vimPluginsSources.editorconfig-vim
-        vimPluginsSources."targets.vim"
         vimPluginsSources.vim-colortemplate
-        vimPluginsSources.vim-commentary
         vimPluginsSources.vim-cool
-        vimPluginsSources.vim-dirvish
-        vimPluginsSources.vim-easy-align
-        vimPluginsSources.vim-eunuch
-        vimPluginsSources.vim-fugitive
-        vimPluginsSources.vim-gutentags
-        vimPluginsSources.vim-indent-object
         vimPluginsSources.vim-matchup
         vimPluginsSources.vim-polyglot
         vimPluginsSources.vim-qf
-        vimPluginsSources.vim-repeat
-        vimPluginsSources.vim-rhubarb
-        vimPluginsSources.vim-sandwich
         vimPluginsSources.spacevim
         vimPluginsSources.yui
+        vimPluginsSources.sad
       ];
 
 in
@@ -316,12 +337,6 @@ in
       # to make sure both are synced.
       customRC = initvim;
 
-      packages.markdown = {
-        opt = [
-          vim-markdown-folding
-        ];
-      };
-
       packages.clojure = {
         opt = [
           conjure
@@ -332,6 +347,24 @@ in
       packages.foobar = {
         start = [
           onehalf
+          vim-markdown-folding
+          pkgs.vimPlugins.fzfWrapper
+          pkgs.vimPlugins.fzf-vim
+          pkgs.vimPlugins.vim-sneak
+          pkgs.vimPlugins.vim-unimpaired
+          pkgs.vimPlugins.vim-fugitive
+          pkgs.vimPlugins.vim-commentary
+          pkgs.vimPlugins.vim-dirvish
+          pkgs.vimPlugins.iceberg-vim
+          pkgs.vimPlugins.targets-vim
+          pkgs.vimPlugins.vim-eunuch
+          pkgs.vimPlugins.editorconfig-vim
+          pkgs.vimPlugins.vim-easy-align
+          pkgs.vimPlugins.vim-gutentags
+          pkgs.vimPlugins.vim-rhubarb
+          pkgs.vimPlugins.vim-repeat
+          pkgs.vimPlugins.vim-sandwich
+          pkgs.vimPlugins.vim-indent-object
         ]
         ++ localPlugins
         ++ remotePlugins;

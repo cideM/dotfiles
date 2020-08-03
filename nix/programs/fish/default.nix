@@ -97,18 +97,8 @@ let
 
     plugins = [
       {
-        name = "nvm";
-        src = sources.fish-nvm;
-      }
-
-      {
         name = "journal";
         src = sources.fish-journal;
-      }
-
-      {
-        name = "yvm";
-        src = sources.fish-yvm;
       }
 
       {

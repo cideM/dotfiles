@@ -47,6 +47,12 @@
         "rev": "ba373bb2962e808af46b142441a831dfa7846eec",
         "type": "git"
     },
+    "sad": {
+        "ref": "master",
+        "repo": "git@github.com:hauleth/sad.vim.git",
+        "rev": "2f5b33b239a566ffedaa81cee3051bb613482d1e",
+        "type": "git"
+    },
     "spacevim": {
         "ref": "master",
         "repo": "git@github.com:liuchengxu/space-vim-theme.git",
