@@ -1,5 +1,5 @@
-let
-  redshift = {
+{
+  services.redshift = {
     enable = true;
     provider = "geoclue2";
 
@@ -13,11 +13,4 @@ let
       day = 5500;
     };
   };
-
-  config = {
-    services.redshift = redshift;
-  };
-
-in {
-  inherit config;
 }

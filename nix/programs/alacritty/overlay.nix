@@ -1,4 +1,6 @@
-{ pkgs, ... }:
+# For some reason the outputHash is different on NixOS than on MacOS even
+# though both are using the same HM and Nixpkgs channels.
+{ outputHash ? "17lyzcj07f0vyki3091vgjd0w8ki11sw5m8gb3bxdph1dl04rria", ... }:
 
 final: prev:
 {
@@ -10,12 +12,11 @@ final: prev:
       owner = "alacritty";
       repo = pname;
       rev = "v${version}";
-      sha256 = "0pn1lm0gmvwgwvvmzpsrgqfbzk52lavxz4y619dnh59f22n7625z";
+      sha256 = "1948j57xhqvc5y876s929x9rhd6j0xnw5c91g1zqw2rfncn602g2";
     };
 
     cargoDeps = drv.cargoDeps.overrideAttrs (prev.lib.const {
-      inherit src;
-      outputHash = "0ngixk8qh83y2b3b2d1f5cdlpmymaqy0vg4c12mhqb9vy6zrjwyc";
+      inherit src outputHash;
     });
   });
 }

@@ -1,6 +1,8 @@
-{ pkgs, ... }:
+{ ... }:
 let
   shared = import ../../shared.nix;
+
+  pkgs = import sources.nixpkgs { };
 
   programs = import ../../programs/default.nix;
 
@@ -8,36 +10,40 @@ let
 
   sources = import ../../nix/sources.nix;
 
-  pkgs = import sources.nixpkgs { };
-
   fish = programs.fish { inherit pkgs sources; };
 
-  alacrittyYaml = (import ../../programs/alacritty/default.nix { inherit pkgs sources ; }).linux;
+  alacritty = (programs.alacritty { inherit pkgs; });
 
 in
 {
   imports = [
-    (programs.nvim { inherit pkgs sources; })
-    fish.config
+    (import ../../modules/neovim.nix)
     clojure.config
-    programs.fzf.config
-    programs.tmux.config
-    programs.redshift.config
+    fish.config
+    programs.ctags
     (programs.git { inherit pkgs; })
+    (programs.nvim { inherit pkgs sources; })
+    shared.sharedSettings
+    (programs.pandoc { inherit sources; })
+    programs.redshift
+    programs.tmux.config
   ];
 
   home.packages = with pkgs; shared.pkgs ++ [
     iotop
     xclip
+    feh
+    escrotum
+    kanji-stroke-order-font
+    source-han-sans-japanese
+    source-han-serif-japanese
   ];
 
   nixpkgs.overlays = [
     (import ../../programs/neovim/overlay.nix { inherit pkgs sources; })
   ];
 
-  # Just append this to the actual config file with an overlay
-  programs.fish.interactiveShellInit = ''
-    set -x SHELL ${pkgs.fish}/bin/fish
+  programs.fish.shellInit = ''
     set -x FISH_NOTES_DIR /data/fish_notes
     set -x FISH_JOURNAL_DIR /data/fish_journal
   '';
@@ -45,39 +51,54 @@ in
   # https://github.com/rycee/home-manager/blob/master/modules/targets/generic-linux.nix#blob-path
   targets.genericLinux.enable = true;
 
-  # TODO: alacritty.config like with neovim but merge with enable = false
-  # https://github.com/NixOS/nixpkgs/issues/9415
-  # https://github.com/NixOS/nixpkgs/issues/80702
-  # https://discourse.nixos.org/t/libgl-undefined-symbol-glxgl-core-functions/512/6
-  programs.alacritty.enable = false;
-  xdg.configFile."alacritty/alacritty.yml".text = "${builtins.readFile alacrittyYaml}" + ''
-  shell:
-    args:
-      - "-l"
-    program: ${pkgs.fish}/bin/fish
+  pam.sessionVariables = {
+    GTK_IM_MODULE = "fcitx";
+    QT_IM_MODULE = "fcitx";
+    XMODIFIERS = "@im=fcitx";
+  };
+
+  home.file.".profile".text = ''
+    export XDG_DATA_DIRS="/home/cloud/.nix-profile/share:$XDG_DATA_DIRS"
   '';
+
+  programs.alacritty.enable = false;
+  xdg.configFile."alacritty/alacritty.yml".text =
+    builtins.replaceStrings [ "\\\\" ] [ "\\" ] (builtins.toJSON ( alacritty.shared // {
+      colors = alacritty.themes.spacemacsLight;
+      font = {
+        bold = {
+          family = "Hack";
+          style = "Bold";
+        };
+        bold_italic = {
+          family = "Hack";
+          style = "Bold Italic";
+        };
+        glyph_offset = {
+          x = 0;
+          y = 1;
+        };
+        italic = {
+          family = "Hack";
+          style = "Italic";
+        };
+        normal = {
+          family = "Hack";
+          style = "Regular";
+        };
+        offset = {
+          x = 0;
+          y = 2;
+        };
+        size = 12;
+      };
+    }));
 
   services.lorri.enable = true;
   services.lorri.package = pkgs.lorri;
-
-  programs.direnv.enable = true;
-  programs.direnv.enableFishIntegration = true;
-  programs.direnv.enableNixDirenvIntegration = true;
-
-  programs.fzf.enable = true;
-
-  # https://github.com/rycee/home-manager/issues/432
-  programs.man.enable = false;
-  home.extraOutputsToInstall = [ "man" ];
-
-  programs.home-manager = {
-    enable = true;
-  };
 
   # https://gist.github.com/peti/2c818d6cb49b0b0f2fd7c300f8386bc3
   home.sessionVariables = {
     LOCALE_ARCHIVE = "${pkgs.glibcLocales}/lib/locale/locale-archive";
   };
-
-  home.stateVersion = "20.03";
 }

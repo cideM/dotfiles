@@ -12,7 +12,11 @@ let
   redshift = import ./redshift/default.nix;
 
   tmux = import ./tmux/default.nix;
+
+  ctags = import ./ctags/default.nix;
+
+  pandoc = import ./pandoc/default.nix;
 in
 {
-  inherit alacritty fish fzf git nvim redshift tmux;
+  inherit alacritty fish fzf git nvim redshift tmux ctags pandoc;
 }

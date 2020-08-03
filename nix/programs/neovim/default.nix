@@ -2,21 +2,26 @@
 
 { lib, config, ... }:
 
-# TODO: Use more plugins from nixpkgs, only use own source when not available
-# or too old
-
 with lib;
+with builtins;
+
 let
-  initvim = ''
+  init = ''
+    " Fix an issue with polyglot and dhall ft
+    augroup dhall
+    augroup END
+
     if !exists("g:os")
         if has("win64") || has("win32") || has("win16")
             let g:os = "Windows"
         else
-            let g:os = substitute(system("uname"), "\n", "", "")
+            let g:os = substitute(system('uname'), '\n', "", "")
         endif
     endif
 
-    packadd nvim-lsp-latest
+    " LSP {{{
+    packadd nvim-lsp
+
     lua << EOF
     local nvim_lsp = require('nvim_lsp')
     local buf_set_keymap = vim.api.nvim_buf_set_keymap
@@ -41,12 +46,12 @@ let
 
     configs.dhall = {
         default_config = {
-              cmd = {'${pkgs.haskellPackages.dhall-lsp-server}/bin/dhall-lsp-server'};
-              filetypes = {'dhall'};
-              root_dir = function(fname)
+                cmd = {'${pkgs.haskellPackages.dhall-lsp-server}/bin/dhall-lsp-server'};
+                filetypes = {'dhall'};
+                root_dir = function(fname)
                     return nvim_lsp.util.find_git_ancestor(fname) or vim.loop.os_homedir()
-              end;
-              settings = {};
+                end;
+                settings = {};
         };
     }
 
@@ -77,11 +82,10 @@ let
     endif
 
     set background=light
-    set shell=${pkgs.bash}/bin/bash
+    set shell=bash
     " https://www.reddit.com/r/vim/comments/25g1sp/why_doesnt_vim_syntax_like_my_shell_files/
     let g:is_posix = 1
     set wildignore+=*/.git/*,
-                \tags,
                 \*/node_modules/*,
                 \*/build/*,
                 \*/dist/*,
@@ -96,8 +100,8 @@ let
     set ignorecase
     set noshowmode
     set updatetime=100
-    set list
-    set listchars=tab:·\ ,extends:›,precedes:‹,nbsp:·,trail:·
+    set nolist
+    " set listchars=tab:·\ ,extends:›,precedes:‹,nbsp:·,trail:·
     set inccommand=split
     set nocursorline
     set nonumber
@@ -118,6 +122,8 @@ let
     augroup END
     " }}}
 
+    let g:rainbow_active = 1
+
     " MAPPINGS {{{
     command! FormatBuffer :normal msggVGgq`s
 
@@ -127,16 +133,55 @@ let
 
     imap jk <Esc>
 
+    " asterisk
+    map *   <Plug>(asterisk-*)
+    map #   <Plug>(asterisk-#)
+    map g*  <Plug>(asterisk-g*)
+    map g#  <Plug>(asterisk-g#)
+    map z*  <Plug>(asterisk-z*)
+    map gz* <Plug>(asterisk-gz*)
+    map z#  <Plug>(asterisk-z#)
+    map gz# <Plug>(asterisk-gz#)
+
+    " Drawer style, does not have opener
+    nmap <leader>ee :Fern . -drawer<CR>
+    " Current file
+    nmap <leader>eh :Fern %:h<CR>
+    " Focus Fern
+    nmap <leader>ef :FernDo :<CR>
+
     nnoremap H ^
     vnoremap H ^
     nnoremap L g_
     vnoremap L g_
 
-    nnoremap <leader>gg :lgrep<space>
-    nnoremap <leader>gw :lgrep -wF \'\'<left>
+    " deoplete and friends
+    let g:deoplete#enable_at_startup = 1
+    " https://github.com/Shougo/deoplete.nvim/issues/1105
+    let g:neosnippet#enable_completed_snippet = 1
+    let g:neosnippet#enable_complete_done = 1
 
-    vmap Q <Plug>FormatVisual
-    nmap Q <Plug>FormatMotion
+    imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+    smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+    xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+    " SuperTab like snippets behavior.
+    " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+    "imap <expr><TAB>
+    " \ pumvisible() ? "\<C-n>" :
+    " \ neosnippet#expandable_or_jumpable() ?
+    " \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+    smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+    \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+    " For conceal markers.
+    if has('conceal')
+        set conceallevel=2 concealcursor=niv
+    endif
+
+    nnoremap <leader>gg :grep<space>
+    nnoremap <leader>gw :grep -wF ""<left>
+
     nmap <leader>Q :FormatBuffer<cr>
 
     vmap     <Enter>    <Plug>(EasyAlign)
@@ -180,6 +225,21 @@ let
     nmap <leader>qq <Plug>QfCtoggle
     nmap <leader>ll <Plug>QfLtoggle
 
+    " sandwich
+    let g:sandwich_no_default_key_mappings = 1
+    silent! nmap <unique><silent> gk <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
+    silent! nmap <unique><silent> gr <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
+    silent! nmap <unique><silent> gkb <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
+    silent! nmap <unique><silent> grb <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
+
+    let g:operator_sandwich_no_default_key_mappings = 1
+    " add
+    silent! map <unique> ga <Plug>(operator-sandwich-add)
+    " delete
+    silent! xmap <unique> gd <Plug>(operator-sandwich-delete)
+    " replace
+    silent! xmap <unique> gr <Plug>(operator-sandwich-replace)
+
     " fzf
     command! -bang -nargs=? -complete=dir Files
                 \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
@@ -188,10 +248,14 @@ let
                 \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
     nnoremap <leader>f :Files<CR>
+    nnoremap <leader>F :GFiles<CR>
     nnoremap <leader>b :Buffers<CR>
-    nnoremap <leader>G :GFiles<CR>
     nnoremap <leader>m :Marks<CR>
     nnoremap <leader>t :Tags<CR>
+
+    " Open full screen fugitive status in new tab
+    command! -bar GitStatusTab execute 'tabnew | Gedit :'
+    nnoremap <leader>Gt :GitStatusTab<cr>
 
     let g:fzf_colors =
         \ { 'fg':      ['fg', 'Normal'],
@@ -211,17 +275,14 @@ let
     " vim-sneak
     let g:sneak#label      = 1
     let g:sneak#use_ic_scs = 1
-    nmap gs <Plug>Sneak_s
-    nmap gS <Plug>Sneak_S
-    xmap gs <Plug>Sneak_s
-    xmap gS <Plug>Sneak_S
-    omap gs <Plug>Sneak_s
-    omap gS <Plug>Sneak_S
     map f <Plug>Sneak_f
     map F <Plug>Sneak_F
     map t <Plug>Sneak_t
     map T <Plug>Sneak_T
     " }}}
+
+    let g:undotree_WindowLayout = 2
+    nnoremap U :UndotreeToggle<CR>
 
     " STATUSLINE {{{
     set statusline=
@@ -238,50 +299,18 @@ let
     " }}}
 
     let g:one_allow_italics = 1
+    let g:yui_comments = "emphasize"
     colorscheme space_vim_theme
   '';
 
-  vimPluginsSources = import ./nix/sources.nix;
+  ftPluginDir = toString ./ftplugin;
 
-  conjure = (pkgs.vimUtils.buildVimPluginFrom2Nix {
-    pname = "conjure";
-    version = "latest";
-    src = vimPluginsSources.conjure;
-  });
+  # For ./. see https://github.com/NixOS/nix/issues/1074 otherwise it's not an
+  # absolute path
+  readFtplugin = name: builtins.readFile ("${ftPluginDir}/${name}.vim");
 
-  nvim-lsp = (pkgs.vimUtils.buildVimPluginFrom2Nix {
-    pname = "nvim-lsp";
-    version = "latest";
-    src = vimPluginsSources.nvim-lsp;
-  });
+  plugins = (import ./plugins.nix { inherit pkgs; });
 
-  vim-markdown-folding = (pkgs.vimUtils.buildVimPluginFrom2Nix {
-    pname = "vim-markdown-folding";
-    version = "latest";
-    src = vimPluginsSources.vim-markdown-folding;
-  });
-
-  parinfer-rust = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    pname = "parinfer";
-    version = "latest";
-    postInstall = ''
-      rtpPath=$out/share/vim-plugins/${pname}-${version}
-      mkdir -p $rtpPath/plugin
-      sed "s,let s:libdir = .*,let s:libdir = '${pkgs.parinfer-rust}/lib'," \
-        plugin/parinfer.vim >$rtpPath/plugin/parinfer.vim
-    '';
-    src = vimPluginsSources.parinfer;
-  });
-
-  onehalf = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    pname = "onehalf";
-    version = "latest";
-    src = "${vimPluginsSources.onehalf}/vim";
-  });
-
-  # TODO: I think this is rather silly. This should just be an attrs { css =
-  # "vim script stuff" } so I can easily refer to drvs. Or properly sort out
-  # buildInputs in case some of these have dependencies
   localPlugins =
     builtins.map
       (pkg: pkgs.vimUtils.buildVimPluginFrom2Nix {
@@ -290,53 +319,10 @@ let
         src = ./. + "/plugins" + ("/" + pkg);
       })
       [
-        "clojure"
-        "css"
-        "dhall"
         "find-utils"
-        "go"
-        "haskell"
-        "javascript"
-        "jenkinsfile"
-        "json"
-        "lua"
-        "make"
-        "markdown"
-        "nix"
         "reflow"
-        "rust"
-        "sh"
-        "typescript"
-        "vim"
         "syntax"
-        "xml"
-        "yaml"
         "zen"
-      ];
-
-  remotePlugins = with builtins;
-    map
-      (pkg:
-        let
-          repoName = elemAt (split ":" pkg.repo) 2;
-        in
-        pkgs.vimUtils.buildVimPluginFrom2Nix {
-          # repo should have colon, so split at that and then get 2nd elements
-          # git@github.com:foo/bar -> foo/bar
-          pname = elemAt (split "/" repoName) 2;
-          version = "latest";
-          src = pkg;
-        })
-      [
-        vimPluginsSources.Apprentice
-        vimPluginsSources.vim-colortemplate
-        vimPluginsSources.vim-cool
-        vimPluginsSources.vim-matchup
-        vimPluginsSources.vim-polyglot
-        vimPluginsSources.vim-qf
-        vimPluginsSources.spacevim
-        vimPluginsSources.yui
-        vimPluginsSources.sad
       ];
 
 in
@@ -344,46 +330,87 @@ in
   config = {
     programs.neovim.enable = true;
 
-    programs.neovim.configure = {
-      # Remember to compare this to the init.vim in src every once in a while
-      # to make sure both are synced.
-      customRC = initvim;
+    programs.neovim.ftPlugins =
+      trivial.pipe
+        [
+          "css"
+          "clojure"
+          "dhall"
+          "go"
+          "haskell"
+          "javascript"
+          "Jenkinsfile"
+          "json"
+          "lua"
+          "make"
+          "markdown"
+          "rust"
+          "sh"
+          "nix"
+          "typescript"
+          "vim"
+          "xml"
+          "yaml"
+        ]
+        [ (builtins.map (name: attrsets.nameValuePair name (readFtplugin name))) (builtins.listToAttrs) ];
 
-      packages.clojure = {
-        opt = [
-          conjure
-          parinfer-rust
-        ];
-      };
+    programs.neovim.configure = {
+      customRC = init;
 
       packages.foobar = {
         start = [
-          onehalf
-          vim-markdown-folding
-          pkgs.vimPlugins.fzfWrapper
+          pkgs.vimPlugins.ale
+          pkgs.vimPlugins.vim-asterisk
+          pkgs.vimPlugins.deoplete-lsp
+          pkgs.vimPlugins.deoplete-nvim
+          pkgs.vimPlugins.editorconfig-vim
           pkgs.vimPlugins.fzf-vim
-          pkgs.vimPlugins.vim-sneak
-          pkgs.vimPlugins.vim-unimpaired
-          pkgs.vimPlugins.vim-fugitive
+          pkgs.vimPlugins.fzfWrapper
+          pkgs.vimPlugins.iceberg-vim
+          pkgs.vimPlugins.neosnippet-snippets
+          pkgs.vimPlugins.neosnippet-vim
+          pkgs.vimPlugins.targets-vim
           pkgs.vimPlugins.vim-commentary
           pkgs.vimPlugins.vim-dirvish
-          pkgs.vimPlugins.iceberg-vim
-          pkgs.vimPlugins.targets-vim
-          pkgs.vimPlugins.vim-eunuch
-          pkgs.vimPlugins.editorconfig-vim
           pkgs.vimPlugins.vim-easy-align
+          pkgs.vimPlugins.vim-eunuch
+          pkgs.vimPlugins.vim-fugitive
           pkgs.vimPlugins.vim-gutentags
-          pkgs.vimPlugins.vim-rhubarb
-          pkgs.vimPlugins.vim-repeat
-          pkgs.vimPlugins.vim-sandwich
-          pkgs.vimPlugins.ale
           pkgs.vimPlugins.vim-indent-object
+          pkgs.vimPlugins.vim-repeat
+          pkgs.vimPlugins.vim-rhubarb
+          pkgs.vimPlugins.vim-sandwich
+          pkgs.vimPlugins.vim-sneak
+          pkgs.vimPlugins.vim-signify
+          pkgs.vimPlugins.undotree
+          pkgs.vimPlugins.rainbow
+          pkgs.vimPlugins.vim-snippets
+          pkgs.vimPlugins.vim-unimpaired
+          pkgs.vimPlugins.vim-peekaboo
+          pkgs.vimPlugins.limelight-vim
+          pkgs.vimPlugins.git-messenger-vim
+          plugins.gina
+          plugins.vim-markdown-toc
+          plugins.fern
+          plugins.sad
+          plugins.yui
+          plugins.spacevim
+          plugins.edge-theme
+          plugins.conjure
+          plugins.vim-markdown-folding
+          plugins.parinfer-rust
+          plugins.onehalf
+          plugins.apprentice
+          plugins.vim-colortemplate
+          plugins.vim-cool
+          plugins.vim-matchup
+          plugins.vim-polyglot
+          plugins.vim-qf
         ]
-        ++ localPlugins
-        ++ remotePlugins;
+        ++ localPlugins;
 
         opt = [
-          nvim-lsp
+          plugins.nvim-lsp
         ];
       };
     };

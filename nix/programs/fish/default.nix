@@ -2,14 +2,17 @@
 
 let
 
+  # These options are set by home manager programs.fzf
+  # https://github.com/rycee/home-manager/blob/master/modules/programs/fzf.nix#blob-path
+  # It's pointless to use home manager programs.fzf if I'm setting these anyway
   fishConfig = ''
   set -x FZF_DEFAULT_COMMAND '${pkgs.fd}/bin/fd --type f 2> /dev/null'
-  set -x FZF_PREVIEW_FILE_CMD '${pkgs.bat}/bin/bat'
-  set -x FZF_ENABLE_OPEN_PREVIEW 1
-  set -x FZF_FIND_FILE_COMMAND '${pkgs.fd}/bin/fd --type f --type d --hidden 2> /dev/null'
-  set -x FZF_CD_COMMAND '${pkgs.fd}/bin/fd --type d 2> /dev/null'
-  set -x FZF_CD_WITH_HIDDEN_COMMAND '${pkgs.fd}/bin/fd --type d --hidden 2> /dev/null'
-  set -x FZF_LEGACY_KEYBINDINGS 0
+  set -x FZF_DEFAULT_TOPS '--height 40% --layout=reverse --border'
+  set -x FZF_CTRL_T_OPTS "--preview '${pkgs.bat}/bin/bat {}'"
+  set -x FZF_ALT_C_OPTS "--preview 'tree -a -C {} | head -200'"
+  set -x FZF_CTRL_T_COMMAND '${pkgs.fd}/bin/fd -L $dir --type f 2> /dev/null'
+
+  set -x SHELL ${pkgs.fish}/bin/fish
 
   # https://github.com/fish-shell/fish-shell/issues/3412
   # https://github.com/fish-shell/fish-shell/issues/5313
@@ -23,8 +26,8 @@ let
 
   set -x GO111MODULE on
 
-  set -x VISUAL ${pkgs.neovim}/bin/nvim
-  set -x EDITOR ${pkgs.neovim}/bin/nvim
+  set -x VISUAL nvim
+  set -x EDITOR nvim
 
   # https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
   # XDG_RUNTIME_DIR should be set by pam_systemd
@@ -47,13 +50,12 @@ let
   alias fzf 'fzf --color=light'
   alias ls exa
 
+  source ${pkgs.fzf}/share/fzf/key-bindings.fish && fzf_key_bindings
+
   # opam configuration
   if test -d /home/tifa/.opam/opam-init/init.fish 
       source /home/tifa/.opam/opam-init/init.fish >/dev/null 2>/dev/null; or true
   end
-
-  # https://direnv.net/docs/hook.html
-  eval (${pkgs.direnv}/bin/direnv hook fish)
 
   # Source hostname specific stuff
   set -l hostname_file $XDG_CONFIG_HOME/fish/(hostname).fish
@@ -91,7 +93,7 @@ let
           echo -n (basename $PWD)
           fish_git_prompt
           set_color normal
-          echo -n ' λ '
+          echo -n ' $ '
       end
     '';
 
@@ -109,11 +111,6 @@ let
       {
         name = "fish-notes";
         src = sources.fish-notes;
-      }
-
-      {
-        name = "fish-fzf";
-        src = sources.fish-fzf;
       }
     ];
   };

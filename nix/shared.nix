@@ -9,20 +9,20 @@ let
 
   sharedPkgs = with pkgs; [
     awscli
-    bash
+    bash_5
     bat
     coreutils
     curl
     dhall
+    fzf
+    haskellPackages.dhall-lsp-server
     dive
     docker-compose
     entr
     exa
     fd
     findutils
-    fortune
     gawk
-    gitAndTools.delta
     gitAndTools.hub
     gnugrep
     gnupg
@@ -31,12 +31,14 @@ let
     hexyl
     htop
     jq
+    go
+    golangci-lint
+    gopls
     jrnl
-    kanji-stroke-order-font
     kubernetes-helm
     lazygit
     libuv
-    miniserve
+    # Anki doesn't see this mpv and therefore refuses to play sound
     mpv
     nano
     ncdu
@@ -44,8 +46,8 @@ let
     niv
     nixpkgs-fmt
     pandoc
-    parinfer-rust
     perl
+    ranger
     rclone
     restic
     ripgrep
@@ -56,8 +58,8 @@ let
     rust-analyzer
     s3cmd
     shfmt
-    source-han-sans-japanese
-    source-han-serif-japanese
+    shellcheck
+	luajitPackages.luacheck
     stow
     tig
     tldr
@@ -70,6 +72,30 @@ let
     yamllint
   ];
 
+  sharedSettings = {
+    nixpkgs.config = import ./nixpkgs_config.nix;
+    xdg.configFile."nixpkgs/config.nix".source = ./nixpkgs_config.nix;
+
+    programs.direnv.enable = true;
+    # This adds the fish shell hook to programs.fish.shellInit
+    # https://github.com/rycee/home-manager/blob/master/modules/programs/direnv.nix#blob-path
+    programs.direnv.enableFishIntegration = true;
+    programs.direnv.enableNixDirenvIntegration = true;
+
+    programs.home-manager = {
+      enable = true;
+    };
+
+    # https://github.com/rycee/home-manager/issues/432
+    programs.man.enable = false;
+    home.extraOutputsToInstall = [ "man" ];
+
+    home.stateVersion = "20.03";
+
+    fonts.fontconfig.enable = true;
+  };
+
 in {
   pkgs = sharedPkgs;
+  inherit sharedSettings;
 }

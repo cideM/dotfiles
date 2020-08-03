@@ -1,88 +1,193 @@
-{ pkgs, sources, ...}:
-
+{ pkgs, ... }:
 let
-  # The Dhall offline caching I use here is explained in
-  # - https://discourse.dhall-lang.org/t/help-with-builddhallpackage/297/2
-  # - https://github.com/Gabriel439/nixpkgs/blob/9f2dd99705546b075f1d95b50331c613ca36e300/pkgs/development/interpreters/dhall/build-dhall-package.nix
-  # - https://discourse.dhall-lang.org/t/offline-use-of-prelude/137
-
-  prelude = pkgs.dhallPackages.buildDhallPackage {
-    name = "dhall-lang-prelude";
-    code = "${sources.dhall-lang}/Prelude/package.dhall";
+  papercolor = {
+    bright = {
+      black = "0xbcbcbc";
+      blue = "0xd75f00";
+      cyan = "0x005faf";
+      green = "0xd70087";
+      magenta = "0xd75f00";
+      red = "0xd70000";
+      white = "0x005f87";
+      yellow = "0x8700af";
+    };
+    cursor = {
+      cursor = "0x878787";
+      text = "0xeeeeee";
+    };
+    indexed_colors = [ ];
+    normal = {
+      black = "0xeeeeee";
+      blue = "0x0087af";
+      cyan = "0x005f87";
+      green = "0x008700";
+      magenta = "0x878787";
+      red = "0xaf0000";
+      white = "0x444444";
+      yellow = "0x5f8700";
+    };
+    primary = {
+      background = "0xeeeeee";
+      foreground = "0x878787";
+    };
+    vi_mode_cursor = {
+      cursor = "0x878787";
+      text = "0xeeeeee";
+    };
   };
 
-  # TODO: Fix in source so I can just cache prelude above
-  preludeMap = pkgs.dhallPackages.buildDhallPackage {
-    name = "dhall-lang-prelude";
-    code = "${sources.dhall-lang}/Prelude/Map/Type";
+  spacemacsLight = {
+    primary = {
+      foreground = "#64526F";
+      background = "#FAF7EE";
+    };
+
+    cursor = {
+      cursor = "#64526F";
+      text = "#FAF7EE";
+    };
+    normal = {
+      black = "#FAF7EE";
+      red = "#DF201C";
+      green = "#29A0AD";
+      yellow = "#DB742E";
+      blue = "#3980C2";
+      magenta = "#2C9473";
+      cyan = "#6B3062";
+      white = "#64526F";
+    };
+
+    bright = {
+      black = "#9F93A1";
+      red = "#DF201C";
+      green = "#29A0AD";
+      yellow = "#DB742E";
+      blue = "#3980C2";
+      magenta = "#2C9473";
+      cyan = "#6B3062";
+      white = "#64526F";
+    };
   };
 
-  #################################
-  # Cache dhall-alacritty imports #
-  #################################
+  shared = {
+    colors = spacemacsLight;
 
-  alacrittyColors = pkgs.dhallPackages.buildDhallPackage {
-    name = "dhall-alacritty-colors";
-    code = "${sources.dhall-alacritty}/colors.dhall";
-  };
-
-  alacrittyKeys = pkgs.dhallPackages.buildDhallPackage {
-    name = "dhall-alacritty-keys";
-    code = "${sources.dhall-alacritty}/keys/common.dhall";
-    dependencies = [
-      prelude
+    key_bindings = [
+      {
+        chars = "`";
+        key = "P";
+        mods = "Alt";
+      }
+      {
+        chars = "` ";
+        key = "N";
+        mods = "Alt";
+      }
+      # https://discourse.nixos.org/t/how-to-write-single-backslash/8604
+      {
+        chars = "\\u001bo";
+        key = "O";
+        mods = "Alt";
+      }
+      {
+        chars = "\\u001bO";
+        key = "O";
+        mods = "Shift|Alt";
+      }
+      {
+        chars = "\\u001b0";
+        key = "Key0";
+        mods = "Alt";
+      }
+      {
+        chars = "\\u001bl";
+        key = "L";
+        mods = "Alt";
+      }
+      {
+        chars = "\\u001bh";
+        key = "H";
+        mods = "Alt";
+      }
+      {
+        chars = "\\u001bk";
+        key = "K";
+        mods = "Alt";
+      }
+      {
+        chars = "\\u001bj";
+        key = "J";
+        mods = "Alt";
+      }
+      {
+        chars = "`c";
+        key = "S";
+        mods = "Control|Shift";
+      }
+      {
+        chars = "`x";
+        key = "X";
+        mods = "Control|Shift";
+      }
+      {
+        chars = "`-";
+        key = "Subtract";
+        mods = "Control";
+      }
+      {
+        chars = "`-";
+        key = "Minus";
+        mods = "Control";
+      }
+      {
+        chars = "`|";
+        key = "Backslash";
+        mods = "Control";
+      }
+      {
+        chars = "`z";
+        key = "Grave";
+        mods = "Control";
+      }
+      {
+        action = "SpawnNewInstance";
+        key = "N";
+        mods = "Control|Alt";
+      }
+      {
+        action = "None";
+        key = "Minus";
+        mods = "Control";
+      }
+      {
+        action = "None";
+        key = "Subtract";
+        mods = "Control";
+      }
     ];
+
+    window = {
+      dynamic_padding = true;
+      padding = {
+        x = 40;
+        y = 40;
+      };
+    };
+
+    env = {
+      TERM = "alacritty";
+    };
+
+    shell = {
+      args = [ "-l" ];
+      program = "${pkgs.fish}/bin/fish";
+    };
   };
 
-  base = filename: pkgs.dhallPackages.buildDhallPackage {
-    name = "dhall-alacritty-base";
-    code = "${sources.dhall-alacritty}/${filename}.dhall";
-    dependencies = [
-      prelude
-      preludeMap
-    ];
+  themes = {
+    inherit papercolor spacemacsLight;
   };
-
-  alacrittyLinuxBase = base "linux";
-
-  alacrittyDarwinBase = base "macos";
-
-  ##################################
-  # Evaluate the config expression #
-  ##################################
-  makeConfig = os: baseDependency: pkgs.dhallPackages.buildDhallPackage {
-    name = "alacritty_${os}";
-    code = "${./src}/${os}.dhall";
-    # Important so I can pass this source file to dhall-to-json
-    source = true;
-    dependencies = [
-      baseDependency
-      alacrittyColors
-      alacrittyKeys
-    ];
-  };
-
-  linuxConfig = makeConfig "linux" alacrittyLinuxBase;
-
-  darwinConfig = makeConfig "macos" alacrittyDarwinBase;
-
-  nixosConfig = makeConfig "nixos" alacrittyLinuxBase;
-
-  makeDerivation = name: config: derivation {
-    name = name;
-    builder = "${pkgs.bash}/bin/bash";
-    args = [ ./builder.sh ];
-    dhalljson = pkgs.dhall-json;
-    config = config;
-    src = ./src;
-    system = builtins.currentSystem;
-  };
-
-  linux = makeDerivation "alacritty_linux.yml" linuxConfig;
-
-  macos = makeDerivation "alacritty_macos.yml" darwinConfig;
-
-  nixos = makeDerivation "alacritty_nixos.yml" nixosConfig;
-
 in
-{ inherit linux macos nixos; }
+{
+  inherit themes shared;
+}

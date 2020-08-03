@@ -1,19 +1,24 @@
-{ pkgs, ... }:
-
+{ ... }:
 let
   shared = import ../../shared.nix;
 
-  sources = import ../../nix/sources.nix;
+  pkgs = import sources.nixpkgs {
+    overlays = [
+      (import ../../programs/goland/overlay.nix { inherit pkgs sources; })
+    ];
+  };
 
-  clojure = import ../../languages/clojure/default.nix;
+  sources = import ../../nix/sources.nix;
 
   programs = import ../../programs/default.nix;
 
-  pkgs = import sources.nixpkgs {};
+  fish = programs.fish { inherit pkgs sources; };
 
-  pkgs-release = import sources."nixos-20.03" {};
+  clojure = (import ../../languages/clojure/default.nix) { inherit pkgs sources; };
 
-  alacrittyYaml = (import ../../programs/alacritty/default.nix { inherit pkgs sources ; }).nixos;
+  pkgs-release = import sources."nixos-20.03" { };
+
+  alacritty = (programs.alacritty { inherit pkgs; });
 
   operatorMono = pkgs.stdenv.mkDerivation {
     name = "operator-mono-font";
@@ -25,24 +30,29 @@ let
     '';
   };
 
-in {
+in
+{
   imports = [
-    (programs.nvim.config pkgs)
-    programs.fish.config
-    programs.redshift.config
+    (import ../../modules/neovim.nix)
     clojure.config
-    programs.fzf.config
-    (programs.git.config pkgs)
+    fish.config
+    programs.ctags
+    (programs.git { inherit pkgs; })
+    (programs.nvim { inherit pkgs sources; })
+    shared.sharedSettings
+    (programs.pandoc { inherit sources; })
+    programs.redshift
     programs.tmux.config
   ];
 
   nixpkgs.overlays = [
+    (import ../../programs/neovim/overlay.nix { inherit pkgs sources; })
+    (import ../../programs/alacritty/overlay.nix {
+      outputHash = "12hilj671zj6j6ywmrrsfbay4r695kskkhzdjswdfrwcdlyymp8d";
+      inherit pkgs sources;
+    })
     (import ../../programs/vscode/overlay.nix pkgs)
-    (import ../../programs/neovim/overlay.nix pkgs)
   ];
-
-  nixpkgs.config = import ../../nixpkgs_config.nix;
-  xdg.configFile."nixpkgs/config.nix".source = ../../nixpkgs_config.nix;
 
   home.packages = with pkgs; shared.pkgs ++ [
     iotop
@@ -58,9 +68,13 @@ in {
     # TODO: Test on Arch and MacOS
     pkgs-release.slack
     operatorMono
+    jetbrains.webstorm
+    jetbrains.goland
+    jetbrains.clion
+    jetbrains.rider
+    anki
+    jetbrains.pycharm-professional
   ];
-
-  fonts.fontconfig.enable = true;
 
   # TODO: Extract programs below into own folders in programs/
 
@@ -72,34 +86,47 @@ in {
 
   programs.vscode.enable = true;
 
-  programs.direnv.enable = true;
-  programs.direnv.enableFishIntegration = true;
-  programs.direnv.enableNixDirenvIntegration = true;
-
   programs.alacritty.enable = true;
-  xdg.configFile."alacritty/alacritty.yml".text = "${builtins.readFile alacrittyYaml}" + ''
-  shell:
-    args:
-      - "-l"
-    program: ${pkgs.fish}/bin/fish
-  '';
+  # TODO: Can just use programs.alacritty config
+  xdg.configFile."alacritty/alacritty.yml".text =
+    builtins.toJSON ( alacritty.shared // {
+      colors = alacritty.themes.spacemacsLight;
+      font = {
+        bold = {
+          family = "Hack";
+          style = "Bold";
+        };
+        bold_italic = {
+          family = "Hack";
+          style = "Bold Italic";
+        };
+        glyph_offset = {
+          x = 0;
+          y = 1;
+        };
+        italic = {
+          family = "Hack";
+          style = "Italic";
+        };
+        normal = {
+          family = "Hack";
+          style = "Regular";
+        };
+        offset = {
+          x = 0;
+          y = 2;
+        };
+        size = 12;
+      };
+    });
 
-  # TODO: Just append this to the actual config file with an overlay
-  xdg.configFile."fish/nixos.fish" = {
-    text = ''
-      set -x SHELL ${pkgs.fish}/bin/fish
-      set -x FISH_NOTES_DIR /data/fish_notes
-      set -x FISH_JOURNAL_DIR /data/fish_journal
-    '';
-  };
+  # Just append this to the actual config file with an overlay
+  programs.fish.interactiveShellInit = ''
+    set -x FISH_NOTES_DIR /data/fish_notes
+    set -x FISH_JOURNAL_DIR /data/fish_journal
+  '';
 
   services.lorri.enable = true;
   # Also not yet in 20.03 haiz
-  services.lorri.package = pkgs.lorri;
-
-  programs.home-manager = {
-    enable = true;
-  };
-
-  home.stateVersion = "20.03";
+  # services.lorri.package = pkgs.lorri;
 }
