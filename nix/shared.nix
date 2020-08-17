@@ -74,7 +74,7 @@ let
 
   sharedSettings = {
     nixpkgs.config = import ./nixpkgs_config.nix;
-    xdg.configFile."nixpkgs/config.nix".source = ./nixpkgs_config.nix;
+    # xdg.configFile."nixpkgs/config.nix".source = ./nixpkgs_config.nix;
 
     programs.direnv.enable = true;
     # This adds the fish shell hook to programs.fish.shellInit
@@ -93,6 +93,8 @@ let
     home.stateVersion = "20.03";
 
     fonts.fontconfig.enable = true;
+
+    xdg.mime.enable = true;
   };
 
 in {

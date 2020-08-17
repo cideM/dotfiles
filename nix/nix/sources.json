@@ -5,24 +5,6 @@
         "rev": "e00a6c730357131601c0493e1794d0ff78de44c4",
         "type": "git"
     },
-    "dhall-alacritty": {
-        "ref": "master",
-        "repo": "git@github.com:cideM/dhall-alacritty.git",
-        "rev": "ebcad9a93c6e77504366ace553fa1dfec0a6d119",
-        "type": "git"
-    },
-    "dhall-lang": {
-        "branch": "master",
-        "description": "Maintainable configuration files",
-        "homepage": "https://dhall-lang.org",
-        "owner": "dhall-lang",
-        "repo": "dhall-lang",
-        "rev": "ccb9f5d54b0ecba05a6493e84442ce445e411e9e",
-        "sha256": "18qwibsgyha728ymyipxvxgcksyaw4mb5pdbafg903myvgfwh8g0",
-        "type": "tarball",
-        "url": "https://github.com/dhall-lang/dhall-lang/archive/ccb9f5d54b0ecba05a6493e84442ce445e411e9e.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "fish-journal": {
         "ref": "master",
         "repo": "git@github.com:cideM/fish-journal.git",
@@ -46,6 +28,14 @@
         "repo": "git@github.com:patrickf3139/fzf-fish-integration.git",
         "rev": "b7b759b448c1896ba5ee9813895ae783708e9621",
         "type": "git"
+    },
+    "goland": {
+        "name": "goland",
+        "sha256": "09fbk1s6p785rjw6sgnrbl861qk0nmjnb8d6gal3brpyphi46avd",
+        "type": "tarball",
+        "url": "https://download.jetbrains.com/go/goland-2020.2.tar.gz",
+        "url_template": "https://download.jetbrains.com/go/<name>-<version>.tar.gz",
+        "version": "2020.2"
     },
     "neovim": {
         "ref": "master",
@@ -81,7 +71,7 @@
         "branch": "nixpkgs-unstable",
         "ref": "master",
         "repo": "git@github.com:NixOS/nixpkgs.git",
-        "rev": "541565180585457b5b51116f6e7f7cfab1a45d46",
+        "rev": "240db8476ad536da42190db1a6dc4e95065e4d48",
         "type": "git"
     },
     "pandoc-template-eisvogel": {
@@ -95,5 +85,12 @@
         "repo": "git@github.com:tajmone/pandoc-goodies.git",
         "rev": "c7963da8590c2815d733ddf194d82d950ba94648",
         "type": "git"
+    },
+    "vscode": {
+        "builtin": true,
+        "sha256": "1lmp5mp6amgjhqy775h7l8dc5jmrh6mj5r97g67508gnmg5zk17g",
+        "type": "tarball",
+        "url": "https://vscode-update.azurewebsites.net/latest/linux-x64/insider",
+        "url_template": "https://vscode-update.azurewebsites.net/latest/linux-x64/insider"
     }
 }

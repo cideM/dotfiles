@@ -35,6 +35,7 @@ As much as possible is managed through Nix and Home Manager (HM) but especially 
 
 -   Visual Studio Code when installed through Nix requires [patching](https://discourse.nixos.org/t/vs-code-liveshare/7022) for the Liveshare feature to work
     -   [ ] https://github.com/MicrosoftDocs/live-share/issues/3501
+    -   [ ] https://github.com/NixOS/nixpkgs/issues/41189
 -   Alacritty doesn't work with OpenGL see:
     -   [ ] https://github.com/NixOS/nixpkgs/issues/9415
     -   [x] https://github.com/NixOS/nixpkgs/issues/80702

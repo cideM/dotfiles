@@ -47,11 +47,7 @@ in
 
   nixpkgs.overlays = [
     (import ../../programs/neovim/overlay.nix { inherit pkgs sources; })
-    (import ../../programs/alacritty/overlay.nix {
-      outputHash = "12hilj671zj6j6ywmrrsfbay4r695kskkhzdjswdfrwcdlyymp8d";
-      inherit pkgs sources;
-    })
-    (import ../../programs/vscode/overlay.nix pkgs)
+    (import ../../programs/vscode/overlay.nix { inherit pkgs sources; })
   ];
 
   home.packages = with pkgs; shared.pkgs ++ [
@@ -87,38 +83,36 @@ in
   programs.vscode.enable = true;
 
   programs.alacritty.enable = true;
-  # TODO: Can just use programs.alacritty config
-  xdg.configFile."alacritty/alacritty.yml".text =
-    builtins.toJSON ( alacritty.shared // {
-      colors = alacritty.themes.spacemacsLight;
-      font = {
-        bold = {
-          family = "Hack";
-          style = "Bold";
-        };
-        bold_italic = {
-          family = "Hack";
-          style = "Bold Italic";
-        };
-        glyph_offset = {
-          x = 0;
-          y = 1;
-        };
-        italic = {
-          family = "Hack";
-          style = "Italic";
-        };
-        normal = {
-          family = "Hack";
-          style = "Regular";
-        };
-        offset = {
-          x = 0;
-          y = 2;
-        };
-        size = 12;
+  programs.alacritty.settings = (alacritty.shared // {
+    colors = alacritty.themes.spacemacsLight;
+    font = {
+      bold = {
+        family = "Hack";
+        style = "Bold";
       };
-    });
+      bold_italic = {
+        family = "Hack";
+        style = "Bold Italic";
+      };
+      glyph_offset = {
+        x = 0;
+        y = 1;
+      };
+      italic = {
+        family = "Hack";
+        style = "Italic";
+      };
+      normal = {
+        family = "Hack";
+        style = "Regular";
+      };
+      offset = {
+        x = 0;
+        y = 2;
+      };
+      size = 12;
+    };
+  });
 
   # Just append this to the actual config file with an overlay
   programs.fish.interactiveShellInit = ''
@@ -127,6 +121,5 @@ in
   '';
 
   services.lorri.enable = true;
-  # Also not yet in 20.03 haiz
-  # services.lorri.package = pkgs.lorri;
+  services.lorri.package = pkgs.lorri;
 }
