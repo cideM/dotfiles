@@ -14,32 +14,31 @@ let
     coreutils
     curl
     dhall
-    fzf
-    haskellPackages.dhall-lsp-server
     dive
     docker-compose
     entr
     exa
     fd
     findutils
+    fzf
     gawk
     gitAndTools.hub
     gnugrep
     gnupg
-    gzip
-    hack-font
-    hexyl
-    htop
-    jq
     go
     golangci-lint
     gopls
+    gzip
+    hack-font
+    haskellPackages.dhall-lsp-server
+    hexyl
+    htop
+    jq
     jrnl
     kubernetes-helm
     lazygit
     libuv
-    # Anki doesn't see this mpv and therefore refuses to play sound
-    mpv
+	luajitPackages.luacheck
     nano
     ncdu
     neofetch
@@ -57,11 +56,11 @@ let
     rsync
     rust-analyzer
     s3cmd
-    shfmt
     shellcheck
-	luajitPackages.luacheck
+    shfmt
     stow
     tig
+    time
     tldr
     tokei
     tree

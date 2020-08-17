@@ -2,15 +2,12 @@ escrotum-git
 gtypist
 insomnia
 jetbrains-toolbox
-polybar
 qmk
 sendmail
 slack-desktop
 spotify
-stack-bin
 sublime-merge
 systemd-boot-pacman-hook
-tmux-git
 ttf-iosevka
 ttf-iosevka-term
 ttf-kanjistrokeorders
