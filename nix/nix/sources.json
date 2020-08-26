@@ -2,7 +2,7 @@
     "clj-deps": {
         "ref": "live",
         "repo": "git@github.com:practicalli/clojure-deps-edn.git",
-        "rev": "e00a6c730357131601c0493e1794d0ff78de44c4",
+        "rev": "1de823d094a421e456958efeb29500e3e1b41687",
         "type": "git"
     },
     "fish-journal": {
@@ -20,13 +20,7 @@
     "fish-notes": {
         "ref": "master",
         "repo": "git@github.com:cideM/fish-notes.git",
-        "rev": "f49d48019ed87555a404800e982418f93e6c311a",
-        "type": "git"
-    },
-    "fzf-fish": {
-        "ref": "master",
-        "repo": "git@github.com:patrickf3139/fzf-fish-integration.git",
-        "rev": "b7b759b448c1896ba5ee9813895ae783708e9621",
+        "rev": "f93c4f877f5beb584ed5699e56b3b59960334e28",
         "type": "git"
     },
     "goland": {
@@ -40,7 +34,7 @@
     "neovim": {
         "ref": "master",
         "repo": "git@github.com:neovim/neovim",
-        "rev": "94b7ff730a1914c14f347f5dc75175dc34a4b3f5",
+        "rev": "43202964f39eed4e28fd8ad6ad0ec79a1868c33f",
         "type": "git"
     },
     "niv": {
@@ -49,10 +43,10 @@
         "homepage": "https://github.com/nmattia/niv",
         "owner": "nmattia",
         "repo": "niv",
-        "rev": "84827485e2eff1681b9a2834ef10b8eba6bf341c",
-        "sha256": "0qjrf0bqr1lis0kl2vnwvr745qiy9dbm7kdj0i2rhq4r9bngqnrl",
+        "rev": "89ae775e9dfc2571f912156dd2f8627e14d4d507",
+        "sha256": "0ssw6byyn79fpyzswi28s5b85x66xh4xsfhmcfl5mkdxxpmyy0ns",
         "type": "tarball",
-        "url": "https://github.com/nmattia/niv/archive/84827485e2eff1681b9a2834ef10b8eba6bf341c.tar.gz",
+        "url": "https://github.com/nmattia/niv/archive/89ae775e9dfc2571f912156dd2f8627e14d4d507.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixos-20.03": {
@@ -61,17 +55,17 @@
         "homepage": null,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "05195accdc596c6c9eadfa7d283d7b780f87f96f",
-        "sha256": "19yd3v8p6gb64gawzqkfq840gzwvq3jylfz56gy33qsm2awcfn8g",
+        "rev": "14006b724f3d1f25ecf38238ee723d38b0c2f4ce",
+        "sha256": "07hfbilyh818pigfn342v2r05n8061wpjaf1m4h291lf6ydjagis",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/05195accdc596c6c9eadfa7d283d7b780f87f96f.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/14006b724f3d1f25ecf38238ee723d38b0c2f4ce.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
         "branch": "nixpkgs-unstable",
         "ref": "master",
         "repo": "git@github.com:NixOS/nixpkgs.git",
-        "rev": "240db8476ad536da42190db1a6dc4e95065e4d48",
+        "rev": "5df33396e74f6721b89ed80641e05a86b8ed9f99",
         "type": "git"
     },
     "pandoc-template-eisvogel": {

@@ -101,6 +101,5 @@ in
     vim-cool
     vim-matchup
     vim-scratch
-    vim-polyglot
     vim-qf;
 }
