@@ -13,6 +13,64 @@ let
   sources = import ../../nix/sources.nix;
 
   alacritty = (programs.alacritty { inherit pkgs; });
+
+  hackFont = {
+    bold = {
+      family = "Hack";
+      style = "Bold";
+    };
+    bold_italic = {
+      family = "Hack";
+      style = "Bold Italic";
+    };
+    glyph_offset = {
+      x = 0;
+      y = 1;
+    };
+    italic = {
+      family = "Hack";
+      style = "Italic";
+    };
+    normal = {
+      family = "Hack";
+      style = "Regular";
+    };
+    offset = {
+      x = 0;
+      y = 2;
+    };
+    size = 13;
+    use_thin_strokes = true;
+  };
+
+  monoFont = {
+    bold = {
+      family = "Operator Mono SSm";
+      style = "Medium";
+    };
+    bold_italic = {
+      family = "Operator Mono SSm";
+      style = "Medium Italic";
+    };
+    glyph_offset = {
+      x = 0;
+      y = 1;
+    };
+    italic = {
+      family = "Operator Mono SSm";
+      style = "Book Italic";
+    };
+    normal = {
+      family = "Operator Mono SSm";
+      style = "Book";
+    };
+    offset = {
+      x = 0;
+      y = 2;
+    };
+    size = 12;
+    use_thin_strokes = true;
+  };
 in
 {
   imports = [
@@ -20,7 +78,9 @@ in
     fish.config
     (import ../../modules/neovim.nix)
     programs.ctags
-    (programs.nvim { inherit pkgs sources; })
+    (programs.nvim {
+      inherit pkgs sources;
+    })
     shared.sharedSettings
     (programs.pandoc { inherit sources; })
     programs.tmux.config
@@ -47,36 +107,18 @@ in
   # Install through casks for Alacritty.app etc
   programs.alacritty.enable = false;
   xdg.configFile."alacritty/alacritty.yml".text =
-    builtins.replaceStrings [ "\\\\" ] [ "\\" ] (builtins.toJSON ( alacritty.shared // {
-      font = {
-        bold = {
-          family = "Hack";
-          style = "Bold";
+    # https://discourse.nixos.org/t/how-to-write-single-backslash/8604/2
+    builtins.replaceStrings [ "\\\\" ] [ "\\" ] (builtins.toJSON (pkgs.lib.recursiveUpdate alacritty.shared {
+      font = monoFont;
+
+      window = {
+        padding = {
+          x = 10;
+          y = 10;
         };
-        bold_italic = {
-          family = "Hack";
-          style = "Bold Italic";
-        };
-        glyph_offset = {
-          x = 0;
-          y = 1;
-        };
-        italic = {
-          family = "Hack";
-          style = "Italic";
-        };
-        normal = {
-          family = "Hack";
-          style = "Regular";
-        };
-        offset = {
-          x = 0;
-          y = 2;
-        };
-        size = 13;
-        use_thin_strokes = true;
       };
-    }));
+    }
+    ));
 
   # Can't use programs.git because https://github.com/NixOS/nixpkgs/issues/62353
   xdg.configFile."git/config".text = ''

@@ -12,6 +12,7 @@ let
     bash_5
     bat
     coreutils
+    google-cloud-sdk
     curl
     dhall
     dive
@@ -25,6 +26,7 @@ let
     gitAndTools.hub
     gnugrep
     gnupg
+    nodePackages_latest.purescript-language-server
     go
     golangci-lint
     gopls
