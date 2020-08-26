@@ -120,6 +120,8 @@ in
     set -x FISH_JOURNAL_DIR /data/fish_journal
   '';
 
+  xdg.mime.enable = true;
+   
   services.lorri.enable = true;
   services.lorri.package = pkgs.lorri;
 }

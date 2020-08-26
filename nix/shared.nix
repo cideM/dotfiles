@@ -86,14 +86,11 @@ let
     };
 
     # https://github.com/rycee/home-manager/issues/432
-    programs.man.enable = false;
-    home.extraOutputsToInstall = [ "man" ];
+    home.extraOutputsToInstall = [ "man" "doc" "share" ];
 
     home.stateVersion = "20.03";
 
     fonts.fontconfig.enable = true;
-
-    xdg.mime.enable = true;
   };
 
 in {

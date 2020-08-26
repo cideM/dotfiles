@@ -97,6 +97,8 @@ in
   services.lorri.enable = true;
   services.lorri.package = pkgs.lorri;
 
+  xdg.mime.enable = true;
+
   # https://gist.github.com/peti/2c818d6cb49b0b0f2fd7c300f8386bc3
   home.sessionVariables = {
     LOCALE_ARCHIVE = "${pkgs.glibcLocales}/lib/locale/locale-archive";
