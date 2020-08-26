@@ -1,6 +1,5 @@
 # TODO: Add to Nixpkgs on GitHub
-{ pkgs, ...}:
-
+{ pkgs, ... }:
 let
   vimPluginsSources = import ./nix/sources.nix;
 
@@ -55,11 +54,6 @@ let
     src = vimPluginsSources.vim-matchup;
   });
 
-  vim-polyglot = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "vim-polyglot";
-    src = vimPluginsSources.vim-polyglot;
-  });
-
   vim-qf = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "vim-qf";
     src = vimPluginsSources.vim-qf;
@@ -85,32 +79,14 @@ let
     src = vimPluginsSources.sad;
   });
 
-  fern = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "fern";
-    src = vimPluginsSources.fern;
-  });
-
-  gina = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "gina";
-    src = vimPluginsSources.gina;
-  });
-
-  vim-markdown-toc = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "vim-markdown-toc";
-    src = vimPluginsSources.vim-markdown-toc;
-  });
-
-  vim-gtfo = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "vim-gtfo";
-    src = vimPluginsSources.vim-gtfo;
+  vim-scratch = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "vim-scratch";
+    src = vimPluginsSources.vim-scratch;
   });
 
 in
 {
   inherit
-    vim-markdown-toc
-    gina
-    fern
     sad
     yui
     spacevim
@@ -124,6 +100,7 @@ in
     vim-colortemplate
     vim-cool
     vim-matchup
-    vim-gtfo
-    vim-polyglot vim-qf;
+    vim-scratch
+    vim-polyglot
+    vim-qf;
 }

@@ -125,6 +125,12 @@
         "rev": "208d1cdafb3fdbdb91ac5a2aaadd1f0e68f619ba",
         "type": "git"
     },
+    "vim-scratch": {
+        "ref": "master",
+        "repo": "git@github.com:mtth/scratch.vim.git",
+        "rev": "6df617ebc0695bd9839a4fe365a08df13d24bc05",
+        "type": "git"
+    },
     "yui": {
         "ref": "master",
         "repo": "git@github.com:cidem/yui",

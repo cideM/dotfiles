@@ -4,13 +4,8 @@
 
 with lib;
 with builtins;
-
 let
   init = ''
-    " Fix an issue with polyglot and dhall ft
-    augroup dhall
-    augroup END
-
     if !exists("g:os")
         if has("win64") || has("win32") || has("win16")
             let g:os = "Windows"
@@ -55,13 +50,12 @@ let
         };
     }
 
-    local servers = {'gopls', 'rust_analyzer', 'dhall'}
+    local servers = {'gopls', 'rust_analyzer', 'dhall', 'purescriptls'}
 
     for _, lsp in ipairs(servers) do
         nvim_lsp[lsp].setup { on_attach = on_attach }
     end
 
-    -- disable diagnostics since I use Ale for this
     vim.lsp.callbacks["textDocument/publishDiagnostics"] = function() end
     EOF
 
@@ -97,6 +91,7 @@ let
     set grepprg=${pkgs.ripgrep}/bin/rg\ --vimgrep\ --no-heading\ --smart-case
     set foldlevelstart=99
     set hidden
+    set signcolumn=yes:1
     set ignorecase
     set noshowmode
     set updatetime=100
@@ -122,10 +117,19 @@ let
     augroup END
     " }}}
 
-    let g:rainbow_active = 1
+    augroup SetPath
+        autocmd!
+        autocmd VimEnter * call pathutils#SetPath()
+    augroup END
 
     " MAPPINGS {{{
-    command! FormatBuffer :normal msggVGgq`s
+    function! FormatBuffer()
+      let view = winsaveview()
+      normal ggVGgq
+      call winrestview(view)
+    endfunction
+
+    let g:EditorConfig_max_line_indicator = "exceeding"
 
     " KEEP THIS AT THE TOP OF ALL MAPPINGS
     let mapleader = " "
@@ -133,56 +137,19 @@ let
 
     imap jk <Esc>
 
-    " asterisk
-    map *   <Plug>(asterisk-*)
-    map #   <Plug>(asterisk-#)
-    map g*  <Plug>(asterisk-g*)
-    map g#  <Plug>(asterisk-g#)
-    map z*  <Plug>(asterisk-z*)
-    map gz* <Plug>(asterisk-gz*)
-    map z#  <Plug>(asterisk-z#)
-    map gz# <Plug>(asterisk-gz#)
-
-    " Drawer style, does not have opener
-    nmap <leader>ee :Fern . -drawer<CR>
-    " Current file
-    nmap <leader>eh :Fern %:h<CR>
-    " Focus Fern
-    nmap <leader>ef :FernDo :<CR>
-
     nnoremap H ^
     vnoremap H ^
     nnoremap L g_
     vnoremap L g_
 
-    " deoplete and friends
-    let g:deoplete#enable_at_startup = 1
-    " https://github.com/Shougo/deoplete.nvim/issues/1105
-    let g:neosnippet#enable_completed_snippet = 1
-    let g:neosnippet#enable_complete_done = 1
-
-    imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-    smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-    xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-    " SuperTab like snippets behavior.
-    " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-    "imap <expr><TAB>
-    " \ pumvisible() ? "\<C-n>" :
-    " \ neosnippet#expandable_or_jumpable() ?
-    " \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-    smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-    \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-    " For conceal markers.
-    if has('conceal')
-        set conceallevel=2 concealcursor=niv
-    endif
-
     nnoremap <leader>gg :grep<space>
     nnoremap <leader>gw :grep -wF ""<left>
 
-    nmap <leader>Q :FormatBuffer<cr>
+    nmap <leader>Q :call FormatBuffer()<cr>
+
+    nnoremap <leader>f :find *
+    nnoremap <leader>b :buffer *
+    nnoremap <leader>gb :ls<cr>:buffer<Space>
 
     vmap     <Enter>    <Plug>(EasyAlign)
 
@@ -198,17 +165,6 @@ let
     tnoremap <C-v><Esc> <Esc>
     " }}}
 
-    " PLUGINS {{{
-    " ale
-    let g:ale_sign_column_always = 1
-    let g:ale_lint_on_text_changed = 'never'
-    let g:ale_fix_on_save = 1
-    let g:ale_go_golangci_lint_options = 'fast'
-    nmap <leader>ad <Plug>(ale_detail)
-    nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-    nmap <silent> <C-j> <Plug>(ale_next_wrap)
-    nmap <silent> <C-f> <Plug>(ale_fix)
-
     " sad
     nmap <leader>c <Plug>(sad-change-forward)
     nmap <leader>C <Plug>(sad-change-backward)
@@ -217,8 +173,9 @@ let
 
     " andymass/vim-matchup
     let g:matchup_matchparen_offscreen = {}
-    let g:polyglot_disabled = ['latex', 'markdown', 'fish']
+
     let g:gutentags_exclude_filetypes = ['haskell']
+    let g:gutentags_file_list_command = '${pkgs.ripgrep}/bin/rg\ --files'
 
     " romainl/vim-qf
     let g:qf_auto_open_loclist = 1
@@ -240,38 +197,6 @@ let
     " replace
     silent! xmap <unique> gr <Plug>(operator-sandwich-replace)
 
-    " fzf
-    command! -bang -nargs=? -complete=dir Files
-                \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-
-    autocmd! FileType fzf set laststatus=0 noshowmode noruler
-                \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-
-    nnoremap <leader>f :Files<CR>
-    nnoremap <leader>F :GFiles<CR>
-    nnoremap <leader>b :Buffers<CR>
-    nnoremap <leader>m :Marks<CR>
-    nnoremap <leader>t :Tags<CR>
-
-    " Open full screen fugitive status in new tab
-    command! -bar GitStatusTab execute 'tabnew | Gedit :'
-    nnoremap <leader>Gt :GitStatusTab<cr>
-
-    let g:fzf_colors =
-        \ { 'fg':      ['fg', 'Normal'],
-        \ 'bg':      ['bg', 'Normal'],
-        \ 'hl':      ['fg', 'Comment'],
-        \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-        \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-        \ 'hl+':     ['fg', 'Statement'],
-        \ 'info':    ['fg', 'PreProc'],
-        \ 'border':  ['fg', 'Ignore'],
-        \ 'prompt':  ['fg', 'Conditional'],
-        \ 'pointer': ['fg', 'Exception'],
-        \ 'marker':  ['fg', 'Keyword'],
-        \ 'spinner': ['fg', 'Label'],
-        \ 'header':  ['fg', 'Comment'] }
-
     " vim-sneak
     let g:sneak#label      = 1
     let g:sneak#use_ic_scs = 1
@@ -281,12 +206,11 @@ let
     map T <Plug>Sneak_T
     " }}}
 
-    let g:undotree_WindowLayout = 2
-    nnoremap U :UndotreeToggle<CR>
+    nnoremap <leader>u :MundoToggle<CR>
 
     " STATUSLINE {{{
     set statusline=
-    set statusline+=\ %t
+    set statusline+=\ %f
     set statusline+=\ %m 
     set statusline+=\%{FugitiveStatusline()} 
     set statusline+=\ %{mode()}\ 
@@ -320,6 +244,7 @@ let
       })
       [
         "find-utils"
+        "path-utils"
         "reflow"
         "syntax"
         "zen"
@@ -330,6 +255,7 @@ in
   config = {
     programs.neovim.enable = true;
 
+    # TODO: Should just add all automatically
     programs.neovim.ftPlugins =
       trivial.pipe
         [
@@ -343,6 +269,7 @@ in
           "json"
           "lua"
           "make"
+          "purescript"
           "markdown"
           "rust"
           "sh"
@@ -359,53 +286,48 @@ in
 
       packages.foobar = {
         start = [
-          pkgs.vimPlugins.ale
-          pkgs.vimPlugins.vim-asterisk
-          pkgs.vimPlugins.deoplete-lsp
-          pkgs.vimPlugins.deoplete-nvim
           pkgs.vimPlugins.editorconfig-vim
-          pkgs.vimPlugins.fzf-vim
-          pkgs.vimPlugins.fzfWrapper
-          pkgs.vimPlugins.iceberg-vim
-          pkgs.vimPlugins.neosnippet-snippets
-          pkgs.vimPlugins.neosnippet-vim
           pkgs.vimPlugins.targets-vim
           pkgs.vimPlugins.vim-commentary
           pkgs.vimPlugins.vim-dirvish
           pkgs.vimPlugins.vim-easy-align
           pkgs.vimPlugins.vim-eunuch
-          pkgs.vimPlugins.vim-fugitive
           pkgs.vimPlugins.vim-gutentags
           pkgs.vimPlugins.vim-indent-object
           pkgs.vimPlugins.vim-repeat
-          pkgs.vimPlugins.vim-rhubarb
           pkgs.vimPlugins.vim-sandwich
           pkgs.vimPlugins.vim-sneak
-          pkgs.vimPlugins.vim-signify
-          pkgs.vimPlugins.undotree
-          pkgs.vimPlugins.rainbow
-          pkgs.vimPlugins.vim-snippets
           pkgs.vimPlugins.vim-unimpaired
           pkgs.vimPlugins.vim-peekaboo
           pkgs.vimPlugins.limelight-vim
-          pkgs.vimPlugins.git-messenger-vim
-          plugins.gina
-          plugins.vim-markdown-toc
-          plugins.fern
+          pkgs.vimPlugins.vim-mundo
           plugins.sad
-          plugins.yui
-          plugins.spacevim
-          plugins.edge-theme
-          plugins.conjure
-          plugins.vim-markdown-folding
-          plugins.parinfer-rust
-          plugins.onehalf
-          plugins.apprentice
+          plugins.vim-scratch
           plugins.vim-colortemplate
           plugins.vim-cool
           plugins.vim-matchup
-          plugins.vim-polyglot
           plugins.vim-qf
+
+          # Git
+          pkgs.vimPlugins.vim-fugitive
+          pkgs.vimPlugins.vim-rhubarb
+
+          # Language Tooling
+          plugins.parinfer-rust
+          plugins.vim-markdown-folding
+          plugins.conjure
+
+          # Themes
+          plugins.onehalf
+          plugins.apprentice
+          pkgs.vimPlugins.iceberg-vim
+          plugins.yui
+          plugins.spacevim
+
+          # Languages
+          pkgs.vimPlugins.purescript-vim
+          pkgs.vimPlugins.vim-nix
+          pkgs.vimPlugins.dhall-vim
         ]
         ++ localPlugins;
 

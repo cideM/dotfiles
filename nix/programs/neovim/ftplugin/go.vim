@@ -19,7 +19,23 @@ set errorformat+=%-Z%p^
 set errorformat+=%-C%.%#
 let b:undo_ftplugin .= '|setlocal errorformat<'
 
-nnoremap <buffer> <localleader>i :%!goimports<CR>
+func! Goimports()
+    let view = winsaveview()
+    execute '%!goimports'
+    call winrestview(view)
+endfunc
+
+func! Goformat()
+    let view = winsaveview()
+    execute '%!gofmt'
+    call winrestview(view)
+endfunc
+
+func! GoimportsAndFormat()
+    let view = winsaveview()
+    execute '%!goimports | gofmt'
+    call winrestview(view)
+endfunc
 
 command! -buffer GolangCILint :lgetexpr system('golangci-lint --fast --out-format=line-number run ./...')
 nnoremap <buffer> <localleader>L :GolangCILint<cr>
@@ -27,9 +43,6 @@ nnoremap <buffer> <localleader>L :GolangCILint<cr>
 command! -buffer Lint :lgetexpr system('golint ' . shellescape(expand('%')))
 nnoremap <buffer> <localleader>l :Lint<cr>
 
-nnoremap <buffer> <localleader>f ms:%!gofmt<CR>`s
+nnoremap <buffer> <localleader>f :call GoimportsAndFormat()<cr>
 
 nnoremap <buffer> <silent> <localleader>m :make<cr>
-
-let b:ale_linters = ['gobuild', 'gopls', 'golangci-lint']
-let b:ale_fixers = ['goimports', 'gofmt']
