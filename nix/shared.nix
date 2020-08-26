@@ -75,7 +75,7 @@ let
 
   sharedSettings = {
     nixpkgs.config = import ./nixpkgs_config.nix;
-    # xdg.configFile."nixpkgs/config.nix".source = ./nixpkgs_config.nix;
+    xdg.configFile."nixpkgs/config.nix".source = ./nixpkgs_config.nix;
 
     programs.direnv.enable = true;
     # This adds the fish shell hook to programs.fish.shellInit
@@ -88,7 +88,7 @@ let
     };
 
     # https://github.com/rycee/home-manager/issues/432
-    home.extraOutputsToInstall = [ "man" "doc" "share" ];
+    home.extraOutputsToInstall = [ "man" "share" "icons" "doc" ];
 
     home.stateVersion = "20.03";
 
