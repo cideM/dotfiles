@@ -69,6 +69,64 @@ let
     };
   };
 
+  mono = {
+    bold = {
+      family = "Operator Mono SSm";
+      style = "Medium";
+    };
+    bold_italic = {
+      family = "Operator Mono SSm";
+      style = "Medium Italic";
+    };
+    glyph_offset = {
+      x = 0;
+      y = 1;
+    };
+    italic = {
+      family = "Operator Mono SSm";
+      style = "Book Italic";
+    };
+    normal = {
+      family = "Operator Mono SSm";
+      style = "Book";
+    };
+    offset = {
+      x = 0;
+      y = 2;
+    };
+    size = 12;
+    use_thin_strokes = true;
+  };
+
+  hack = {
+    bold = {
+      family = "Hack";
+      style = "Bold";
+    };
+    bold_italic = {
+      family = "Hack";
+      style = "Bold Italic";
+    };
+    glyph_offset = {
+      x = 0;
+      y = 1;
+    };
+    italic = {
+      family = "Hack";
+      style = "Italic";
+    };
+    normal = {
+      family = "Hack";
+      style = "Regular";
+    };
+    offset = {
+      x = 0;
+      y = 2;
+    };
+    size = 13;
+    use_thin_strokes = true;
+  };
+
   shared = {
     colors = spacemacsLight;
 
@@ -187,7 +245,11 @@ let
   themes = {
     inherit papercolor spacemacsLight;
   };
+
+  fonts = {
+    inherit mono hack;
+  };
 in
 {
-  inherit themes shared;
+  inherit themes shared fonts;
 }

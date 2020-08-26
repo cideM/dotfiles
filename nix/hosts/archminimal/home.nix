@@ -71,33 +71,7 @@ in
   xdg.configFile."alacritty/alacritty.yml".text =
     builtins.replaceStrings [ "\\\\" ] [ "\\" ] (builtins.toJSON ( alacritty.shared // {
       colors = alacritty.themes.spacemacsLight;
-      font = {
-        bold = {
-          family = "Hack";
-          style = "Bold";
-        };
-        bold_italic = {
-          family = "Hack";
-          style = "Bold Italic";
-        };
-        glyph_offset = {
-          x = 0;
-          y = 1;
-        };
-        italic = {
-          family = "Hack";
-          style = "Italic";
-        };
-        normal = {
-          family = "Hack";
-          style = "Regular";
-        };
-        offset = {
-          x = 0;
-          y = 2;
-        };
-        size = 12;
-      };
+      font = alacritty.fonts.mono;
     }));
 
   services.lorri.enable = true;
