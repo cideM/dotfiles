@@ -328,6 +328,9 @@ in
           pkgs.vimPlugins.purescript-vim
           pkgs.vimPlugins.vim-nix
           pkgs.vimPlugins.dhall-vim
+          plugins.vim-js
+          pkgs.vimPlugins.yats-vim
+          pkgs.vimPlugins.vim-jsx-pretty
         ]
         ++ localPlugins;
 

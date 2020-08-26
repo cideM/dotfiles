@@ -89,6 +89,12 @@
         "rev": "d85e7a2f7e017c54bc5467a3946ca5065d17113d",
         "type": "git"
     },
+    "vim-js": {
+        "ref": "master",
+        "repo": "git@github.com:yuezk/vim-js.git",
+        "rev": "5e14eb65d6e898658b95001581473326309a23fd",
+        "type": "git"
+    },
     "vim-markdown-folding": {
         "ref": "master",
         "repo": "git@github.com:masukomi/vim-markdown-folding",

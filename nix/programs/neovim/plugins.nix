@@ -84,6 +84,11 @@ let
     src = vimPluginsSources.vim-scratch;
   });
 
+  vim-js = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "vim-js";
+    src = vimPluginsSources.vim-js;
+  });
+
 in
 {
   inherit
@@ -101,5 +106,6 @@ in
     vim-cool
     vim-matchup
     vim-scratch
+    vim-js
     vim-qf;
 }
