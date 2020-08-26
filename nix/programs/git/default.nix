@@ -25,6 +25,13 @@
       enable = true;
     };
 
+    delta = {
+      enable = true;
+      options = {
+        line-numbers = true;
+      };
+    };
+
     extraConfig = {
       push = {
         default = "simple";
@@ -32,6 +39,10 @@
 
       pull = {
         rebase = false;
+      };
+
+      diff = {
+        colorMoved = "default";
       };
 
       difftool = {
