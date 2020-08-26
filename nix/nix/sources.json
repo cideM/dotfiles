@@ -85,6 +85,7 @@
         "sha256": "1lmp5mp6amgjhqy775h7l8dc5jmrh6mj5r97g67508gnmg5zk17g",
         "type": "tarball",
         "url": "https://vscode-update.azurewebsites.net/latest/linux-x64/insider",
-        "url_template": "https://vscode-update.azurewebsites.net/latest/linux-x64/insider"
+        "url_template": "https://vscode-update.azurewebsites.net/<version>/linux-x64/insider",
+        "version": "1.49.0-insider"
     }
 }
