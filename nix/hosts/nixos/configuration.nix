@@ -56,7 +56,6 @@
     wget
     curl
     nano
-    spotify
     gnumake
     stow
     vim

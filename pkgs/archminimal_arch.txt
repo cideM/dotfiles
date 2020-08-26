@@ -11,9 +11,7 @@ base
 bison
 chromium
 dhcpcd
-discord
 emacs
-eog
 epiphany
 fakeroot
 fcitx-configtool

@@ -48,6 +48,8 @@ As much as possible is managed through Nix and Home Manager (HM) but especially 
     -   [ ] https://github.com/NixOS/nixpkgs/issues/62353
 -   [Spotify Desktop](https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/networking/instant-messengers/slack/default.nix) file is wrong and needs to mirror [Slack](https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/audio/spotify/default.nix#L147)
     -   [ ] TODO: Create a PR
+-   [Discord](https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/networking/instant-messengers/discord/base.nix) has the same issue as spotify
+    -   [ ] TODO: Create a PR
 -   I don't know how to type a single `\` right now
     -   [x] https://discourse.nixos.org/t/how-to-write-single-backslash/8604
 

@@ -1,16 +1,8 @@
-escrotum-git
 gtypist
-insomnia
 jetbrains-toolbox
 qmk
 sendmail
-slack-desktop
-spotify
-sublime-merge
 systemd-boot-pacman-hook
-ttf-iosevka
-ttf-iosevka-term
-ttf-kanjistrokeorders
 visual-studio-code-insiders
 yay
 zoom
