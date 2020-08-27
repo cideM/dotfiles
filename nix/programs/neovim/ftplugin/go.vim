@@ -46,3 +46,6 @@ nnoremap <buffer> <localleader>l :Lint<cr>
 nnoremap <buffer> <localleader>f :call GoimportsAndFormat()<cr>
 
 nnoremap <buffer> <silent> <localleader>m :make<cr>
+
+" https://stackoverflow.com/questions/40945136/stop-highlighting-trailing-whitespace-for-go-files-in-vim
+let g:go_highlight_trailing_whitespace_error=0

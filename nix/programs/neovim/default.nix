@@ -100,6 +100,10 @@ let
     set inccommand=split
     set nocursorline
     set nonumber
+    set completeopt-=preview
+    set completeopt+=noinsert
+    set completeopt+=noselect
+    set complete-=t
     set path-=/usr/include
     set shiftwidth=4
     set shortmess+=c
@@ -149,6 +153,8 @@ let
 
     nnoremap <leader>f :find *
     nnoremap <leader>b :buffer *
+    nnoremap <leader>tt :ts *
+    nnoremap <leader>ts :sts *
     nnoremap <leader>gb :ls<cr>:buffer<Space>
 
     vmap     <Enter>    <Plug>(EasyAlign)
@@ -321,6 +327,7 @@ in
           plugins.onehalf
           plugins.apprentice
           pkgs.vimPlugins.iceberg-vim
+          pkgs.vimPlugins.papercolor-theme
           plugins.yui
           plugins.spacevim
 
