@@ -4,7 +4,7 @@ local module = {}
 function module.set_path()
     -- Run system command and read result without newlines
     -- Careful if command returns a newline delimited list
-    local handle = io.popen("git rev-parse --show-toplevel")
+    local handle = io.popen("git rev-parse --show-toplevel 2> /dev/null")
     local result = string.gsub(handle:read("*a"), "\n", "")
 
     if result ~= "" then
