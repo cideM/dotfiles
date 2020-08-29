@@ -32,7 +32,7 @@ let
     gopls
     gzip
     hack-font
-    haskellPackages.dhall-lsp-server
+    dhall-lsp-server
     hexyl
     htop
     jq

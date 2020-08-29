@@ -2,7 +2,7 @@
     "Apprentice": {
         "ref": "master",
         "repo": "git@github.com:romainl/Apprentice",
-        "rev": "bc53f2a7117d38457362d7cba815ec41caa2ec50",
+        "rev": "dec7ab6de48d9e4b15bf0c1680cc993285ba36a4",
         "type": "git"
     },
     "cocopon/iceberg.vim": {
@@ -20,19 +20,7 @@
     "edge-theme": {
         "ref": "master",
         "repo": "git@github.com:sainnhe/edge.git",
-        "rev": "3231c168038ef34936f74472efbac4ea3ab54e32",
-        "type": "git"
-    },
-    "fern": {
-        "ref": "master",
-        "repo": "git@github.com:lambdalisue/fern.vim.git",
-        "rev": "e8f6327037148bc24bfda2c4ab5027120b22cc8f",
-        "type": "git"
-    },
-    "gina": {
-        "ref": "master",
-        "repo": "git@github.com:lambdalisue/gina.vim.git",
-        "rev": "0b2d34364710de9b61882f93282d902a44418e25",
+        "rev": "3c8959e5494b984b705bced68065dc6270913ab1",
         "type": "git"
     },
     "nord-vim": {
@@ -56,7 +44,7 @@
     "parinfer": {
         "ref": "master",
         "repo": "git@github.com:eraserhd/parinfer-rust.git",
-        "rev": "ba373bb2962e808af46b142441a831dfa7846eec",
+        "rev": "33cc52be147a5d56a802cb7f975d67afbe162716",
         "type": "git"
     },
     "sad": {
@@ -74,19 +62,13 @@
     "vim-colortemplate": {
         "ref": "master",
         "repo": "git@github.com:lifepillar/vim-colortemplate",
-        "rev": "a2ed0c8196bd95415490c534fca0ebb7cf932416",
+        "rev": "343eb9870c18abfa27d3c1dcea1c97bf99c1932e",
         "type": "git"
     },
     "vim-cool": {
         "ref": "master",
         "repo": "git@github.com:romainl/vim-cool",
         "rev": "27ad4ecf7532b750fadca9f36e1c5498fc225af2",
-        "type": "git"
-    },
-    "vim-gtfo": {
-        "ref": "master",
-        "repo": "git@github.com:justinmk/vim-gtfo.git",
-        "rev": "d85e7a2f7e017c54bc5467a3946ca5065d17113d",
         "type": "git"
     },
     "vim-js": {
@@ -101,28 +83,16 @@
         "rev": "3f35acfb753cc9ea22182400b075c5b6e896ad71",
         "type": "git"
     },
-    "vim-markdown-toc": {
-        "ref": "master",
-        "repo": "git@github.com:mzlogin/vim-markdown-toc.git",
-        "rev": "2e86c7229dfee5b7062194ec3d08a79a6b07de02",
-        "type": "git"
-    },
     "vim-matchup": {
         "ref": "master",
         "repo": "git@github.com:andymass/vim-matchup",
-        "rev": "0d9d3b5f5ac98b6d4263268ef37896b5b39a4c33",
+        "rev": "b1af5a28242ae58ece98d833a2bf28e030d57230",
         "type": "git"
     },
     "vim-one": {
         "ref": "master",
         "repo": "git@github.com:rakr/vim-one",
         "rev": "f8bcef1968f01842d92abbcb098ec28ad3931ea5",
-        "type": "git"
-    },
-    "vim-polyglot": {
-        "ref": "master",
-        "repo": "git@github.com:sheerun/vim-polyglot",
-        "rev": "34e01b8b62701afbd6b4ab1ffb4057617f540dce",
         "type": "git"
     },
     "vim-qf": {

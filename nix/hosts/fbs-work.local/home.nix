@@ -51,7 +51,7 @@ in
   xdg.configFile."alacritty/alacritty.yml".text =
     # https://discourse.nixos.org/t/how-to-write-single-backslash/8604/2
     builtins.replaceStrings [ "\\\\" ] [ "\\" ] (builtins.toJSON (pkgs.lib.recursiveUpdate alacritty.shared {
-      font = alacritty.fonts.monoFont;
+      font = alacritty.fonts.mono;
 
       window = {
         padding = {
