@@ -12,6 +12,7 @@ let
     bash_5
     bat
     coreutils
+    haskellPackages.brittany
     google-cloud-sdk
     curl
     dhall

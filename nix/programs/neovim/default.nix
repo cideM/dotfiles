@@ -157,6 +157,8 @@ let
     nnoremap <leader>ts :sts *
     nnoremap <leader>gb :ls<cr>:buffer<Space>
 
+    nnoremap <leader>vt :tabnew <Bar> Gedit :<cr>
+
     vmap     <Enter>    <Plug>(EasyAlign)
 
     nnoremap <leader>R :set operatorfunc=reflow#Comment<cr>g@
