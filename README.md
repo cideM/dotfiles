@@ -55,7 +55,7 @@ As much as possible is managed through Nix and Home Manager (HM) but especially 
 
 ## TODO
 
--   [ ] Replace `vim-polyglot` with individual plugins
--   [ ] Clean up init.vim
+-   [x] Replace `vim-polyglot` with individual plugins
+-   [x] Clean up init.vim
 -   [ ] Try using firefox through Nix
 -   [ ] Try using Alacritty through Nix on MacOS
