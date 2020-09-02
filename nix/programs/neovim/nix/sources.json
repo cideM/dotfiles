@@ -107,6 +107,18 @@
         "rev": "6df617ebc0695bd9839a4fe365a08df13d24bc05",
         "type": "git"
     },
+    "vim-visual-split": {
+        "ref": "master",
+        "repo": "git@github.com:wellle/visual-split.vim.git",
+        "rev": "423a25911b3e8da04a28d29f205e1059a06e6afa",
+        "type": "git"
+    },
+    "vim-fern": {
+        "ref": "master",
+        "repo": "git@github.com:lambdalisue/fern.vim.git",
+        "rev": "d3d9412d641590036e12d4d803ef922acd026c6a",
+        "type": "git"
+    },
     "yui": {
         "ref": "master",
         "repo": "git@github.com:cidem/yui",

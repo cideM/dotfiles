@@ -91,7 +91,7 @@ let
     set grepprg=${pkgs.ripgrep}/bin/rg\ --vimgrep\ --no-heading\ --smart-case
     set foldlevelstart=99
     set hidden
-    set signcolumn=yes:1
+    set signcolumn=auto:2
     set ignorecase
     set noshowmode
     set updatetime=100
@@ -102,8 +102,6 @@ let
     set nonumber
     set completeopt-=preview
     set completeopt+=noinsert
-    set completeopt+=noselect
-    set complete-=t
     set path-=/usr/include
     set shiftwidth=4
     set shortmess+=c
@@ -160,6 +158,26 @@ let
     nnoremap <leader>vt :tabnew <Bar> Gedit :<cr>
 
     vmap     <Enter>    <Plug>(EasyAlign)
+
+    " asterisk
+      map *   <Plug>(asterisk-*)
+      map #   <Plug>(asterisk-#)
+      map g*  <Plug>(asterisk-g*)
+      map g#  <Plug>(asterisk-g#)
+      map z*  <Plug>(asterisk-z*)
+      map gz* <Plug>(asterisk-gz*)
+      map z#  <Plug>(asterisk-z#)
+      map gz# <Plug>(asterisk-gz#)
+
+    " Fern
+      " Drawer style, does not have opener
+      nmap <leader>ee :Fern . -drawer<CR>
+      " Current file
+      nmap <leader>eh :Fern %:h<CR>
+      " Focus Fern
+      nmap <leader>ef :FernDo :<CR>
+      nmap <leader>el <Plug>(fern-action-leave)
+      nmap <leader>eo <Plug>(fern-action-open:select)
 
     nnoremap <leader>R :set operatorfunc=reflow#Comment<cr>g@
     vnoremap <leader>R :<C-u>call reflow#Comment(visualmode())<cr>
@@ -232,7 +250,7 @@ let
 
     let g:one_allow_italics = 1
     let g:yui_comments = "emphasize"
-    colorscheme space_vim_theme
+    colorscheme iceberg
   '';
 
   ftPluginDir = toString ./ftplugin;
@@ -304,6 +322,7 @@ in
           pkgs.vimPlugins.vim-indent-object
           pkgs.vimPlugins.vim-repeat
           pkgs.vimPlugins.vim-sandwich
+          pkgs.vimPlugins.vim-asterisk
           pkgs.vimPlugins.vim-sneak
           pkgs.vimPlugins.vim-unimpaired
           pkgs.vimPlugins.vim-peekaboo
@@ -313,8 +332,10 @@ in
           plugins.vim-scratch
           plugins.vim-colortemplate
           plugins.vim-cool
+          plugins.vim-visual-split
           plugins.vim-matchup
           plugins.vim-qf
+          plugins.fern
 
           # Git
           pkgs.vimPlugins.vim-fugitive

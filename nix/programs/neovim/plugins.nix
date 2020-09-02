@@ -64,6 +64,7 @@ let
     src = vimPluginsSources.edge-theme;
   });
 
+  # This is the spacevim theme not the spacevim plugin
   spacevim = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "spacevim";
     src = vimPluginsSources.spacevim;
@@ -89,23 +90,35 @@ let
     src = vimPluginsSources.vim-js;
   });
 
+  fern = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "fern";
+    src = vimPluginsSources.vim-fern;
+  });
+
+  vim-visual-split = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "vim-visual-split";
+    src = vimPluginsSources.vim-visual-split;
+  });
+
 in
 {
   inherit
-    sad
-    yui
-    spacevim
-    edge-theme
-    conjure
-    nvim-lsp
-    vim-markdown-folding
-    parinfer-rust
-    onehalf
     apprentice
+    conjure
+    edge-theme
+    fern
+    nvim-lsp
+    onehalf
+    parinfer-rust
+    sad
+    spacevim
     vim-colortemplate
     vim-cool
-    vim-matchup
-    vim-scratch
     vim-js
-    vim-qf;
+    vim-markdown-folding
+    vim-matchup
+    vim-qf
+    vim-scratch
+    vim-visual-split
+    yui;
 }
