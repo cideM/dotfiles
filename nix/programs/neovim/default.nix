@@ -53,7 +53,9 @@ let
     local servers = {'gopls', 'rust_analyzer', 'dhall', 'purescriptls'}
 
     for _, lsp in ipairs(servers) do
-        nvim_lsp[lsp].setup { on_attach = on_attach }
+        if nvim_lsp[lsp].setup ~= nil then
+          nvim_lsp[lsp].setup { on_attach = on_attach }
+        end
     end
 
     EOF
