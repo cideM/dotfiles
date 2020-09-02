@@ -70,7 +70,7 @@ in
   programs.alacritty.enable = false;
   xdg.configFile."alacritty/alacritty.yml".text =
     builtins.replaceStrings [ "\\\\" ] [ "\\" ] (builtins.toJSON ( alacritty.shared // {
-      colors = alacritty.themes.spacemacsLight;
+      colors = alacritty.themes.iceberg-light;
       font = alacritty.fonts.mono;
     }));
 
