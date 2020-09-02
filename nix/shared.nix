@@ -9,15 +9,16 @@ let
 
   sharedPkgs = with pkgs; [
     awscli
+    bandwhich
     bash_5
     bat
     coreutils
-    haskellPackages.brittany
-    google-cloud-sdk
     curl
     dhall
+    dhall-lsp-server
     dive
     docker-compose
+    du-dust
     entr
     exa
     fd
@@ -27,15 +28,16 @@ let
     gitAndTools.hub
     gnugrep
     gnupg
-    nodePackages_latest.purescript-language-server
     go
     golangci-lint
+    google-cloud-sdk
     gopls
     gzip
     hack-font
-    dhall-lsp-server
+    haskellPackages.brittany
     hexyl
     htop
+    hyperfine
     jq
     jrnl
     kubernetes-helm
@@ -47,6 +49,7 @@ let
     neofetch
     niv
     nixpkgs-fmt
+    nodePackages_latest.purescript-language-server
     pandoc
     perl
     ranger
@@ -59,6 +62,7 @@ let
     rsync
     rust-analyzer
     s3cmd
+    sd
     shellcheck
     shfmt
     stow
