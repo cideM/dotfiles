@@ -49,7 +49,3 @@ nnoremap <buffer> <silent> <localleader>m :make<cr>
 
 " https://stackoverflow.com/questions/40945136/stop-highlighting-trailing-whitespace-for-go-files-in-vim
 let g:go_highlight_trailing_whitespace_error=0
-
-let b:ale_linters = ['gobuild', 'gopls', 'golangci-lint']
-let b:ale_fixers = ['goimports', 'gofmt']
-
