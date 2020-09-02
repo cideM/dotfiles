@@ -26,7 +26,7 @@ let
 
         -- Mappings.
         local opts = { noremap=true, silent=true }
-        buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+        buf_set_keymap(bufnr, 'n', '<localleader>k', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
         buf_set_keymap(bufnr, 'n', '<localleader>h', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
         buf_set_keymap(bufnr, 'n', '<localleader>r', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
         buf_set_keymap(bufnr, 'n', '[I',             '<cmd>lua vim.lsp.buf.references()<CR>', opts)
@@ -56,7 +56,6 @@ let
         nvim_lsp[lsp].setup { on_attach = on_attach }
     end
 
-    vim.lsp.callbacks["textDocument/publishDiagnostics"] = function() end
     EOF
 
     " SETTINGS {{{
