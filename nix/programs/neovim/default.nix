@@ -91,7 +91,7 @@ let
     set grepprg=${pkgs.ripgrep}/bin/rg\ --vimgrep\ --no-heading\ --smart-case
     set foldlevelstart=99
     set hidden
-    set signcolumn=yes:1
+    set signcolumn=auto:2
     set ignorecase
     set noshowmode
     set updatetime=100
@@ -126,6 +126,10 @@ let
         autocmd VimEnter * call pathutils#SetPath()
     augroup END
 
+    " KEEP THIS AT THE TOP OF ALL MAPPINGS
+    let mapleader = " "
+    let maplocalleader = ","
+
     " MAPPINGS {{{
     function! FormatBuffer()
       let view = winsaveview()
@@ -135,9 +139,52 @@ let
 
     let g:EditorConfig_max_line_indicator = "exceeding"
 
-    " KEEP THIS AT THE TOP OF ALL MAPPINGS
-    let mapleader = " "
-    let maplocalleader = ","
+    " rainbow
+      let g:rainbow_active = 1
+
+    " neomake
+      packadd neomake
+      call neomake#configure#automake('w')
+      nnoremap <leader>F :Neoformat<CR>
+      augroup my_neomake_highlights
+          au!
+          autocmd ColorScheme *
+            \ highlight link NeomakeErrorSign ALEErrorSign |
+            \ highlight link NeomakeWarningSign ALEWarningSign
+      augroup END
+
+    " neoformat
+      let g:neoformat_only_msg_on_error = 1
+
+    " fzf
+      command! -bang -nargs=? -complete=dir Files
+                  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+      autocmd! FileType fzf set laststatus=0 noshowmode noruler
+                  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
+      nnoremap <leader>f :Files<CR>
+      nnoremap <leader>L :Lines<CR>
+      nnoremap <leader>C :Commits<CR>
+      nnoremap <leader>b :Buffers<CR>
+      nnoremap <leader>G :GFiles<CR>
+      nnoremap <leader>m :Marks<CR>
+      nnoremap <leader>t :Tags<CR>
+
+      let g:fzf_colors =
+          \ { 'fg':      ['fg', 'Normal'],
+          \ 'bg':      ['bg', 'Normal'],
+          \ 'hl':      ['fg', 'Comment'],
+          \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+          \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+          \ 'hl+':     ['fg', 'Statement'],
+          \ 'info':    ['fg', 'PreProc'],
+          \ 'border':  ['fg', 'Ignore'],
+          \ 'prompt':  ['fg', 'Conditional'],
+          \ 'pointer': ['fg', 'Exception'],
+          \ 'marker':  ['fg', 'Keyword'],
+          \ 'spinner': ['fg', 'Label'],
+          \ 'header':  ['fg', 'Comment'] }
 
     imap jk <Esc>
 
@@ -149,13 +196,13 @@ let
     nnoremap <leader>gg :grep<space>
     nnoremap <leader>gw :grep -wF ""<left>
 
-    nmap <leader>Q :call FormatBuffer()<cr>
+    " nmap <leader>Q :call FormatBuffer()<cr>
 
-    nnoremap <leader>f :find *
-    nnoremap <leader>b :buffer *
-    nnoremap <leader>tt :ts *
-    nnoremap <leader>ts :sts *
-    nnoremap <leader>gb :ls<cr>:buffer<Space>
+    " nnoremap <leader>f :find *
+    " nnoremap <leader>b :buffer *
+    " nnoremap <leader>tt :ts *
+    " nnoremap <leader>ts :sts *
+    " nnoremap <leader>gb :ls<cr>:buffer<Space>
 
     nnoremap <leader>vt :tabnew <Bar> Gedit :<cr>
 
@@ -197,6 +244,39 @@ let
     silent! nmap <unique><silent> gkb <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
     silent! nmap <unique><silent> grb <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
 
+    " asterisk
+      map *   <Plug>(asterisk-*)
+      map #   <Plug>(asterisk-#)
+      map g*  <Plug>(asterisk-g*)
+      map g#  <Plug>(asterisk-g#)
+      map z*  <Plug>(asterisk-z*)
+      map gz* <Plug>(asterisk-gz*)
+      map z#  <Plug>(asterisk-z#)
+      map gz# <Plug>(asterisk-gz#)
+
+    " deoplete and friends
+      let g:deoplete#enable_at_startup = 1
+      " https://github.com/Shougo/deoplete.nvim/issues/1105
+      let g:neosnippet#enable_completed_snippet = 1
+      let g:neosnippet#enable_complete_done = 1
+      
+      imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+      smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+      xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+      set conceallevel=2 concealcursor=niv
+    
+    " Fern
+      " Drawer style, does not have opener
+      nmap <leader>ee :Fern . -drawer<CR>
+      " Current file
+      nmap <leader>eh :Fern %:h<CR>
+      " Focus Fern
+      nmap <leader>ef :FernDo :<CR>
+      nmap <leader>el <Plug>(fern-action-leave)
+      nmap <leader>eo <Plug>(fern-action-open:select)
+    
+
     let g:operator_sandwich_no_default_key_mappings = 1
     " add
     silent! map <unique> ga <Plug>(operator-sandwich-add)
@@ -232,7 +312,7 @@ let
 
     let g:one_allow_italics = 1
     let g:yui_comments = "emphasize"
-    colorscheme space_vim_theme
+    colorscheme iceberg
   '';
 
   ftPluginDir = toString ./ftplugin;
@@ -301,6 +381,7 @@ in
           pkgs.vimPlugins.vim-easy-align
           pkgs.vimPlugins.vim-eunuch
           pkgs.vimPlugins.vim-gutentags
+          pkgs.vimPlugins.rainbow
           pkgs.vimPlugins.vim-indent-object
           pkgs.vimPlugins.vim-repeat
           pkgs.vimPlugins.vim-sandwich
@@ -309,12 +390,32 @@ in
           pkgs.vimPlugins.vim-peekaboo
           pkgs.vimPlugins.limelight-vim
           pkgs.vimPlugins.vim-mundo
+          pkgs.vimPlugins.vim-asterisk
+          pkgs.vimPlugins.neoformat
+          pkgs.vimPlugins.fzf-vim
+          pkgs.vimPlugins.fzfWrapper
           plugins.sad
+          plugins.vim-visual-split
           plugins.vim-scratch
           plugins.vim-colortemplate
           plugins.vim-cool
           plugins.vim-matchup
           plugins.vim-qf
+          plugins.nvim-colorizer
+          plugins.fern
+
+          # git
+          pkgs.vimPlugins.gv-vim
+          pkgs.vimPlugins.vim-signify
+          plugins.gina
+
+          # Completion
+          pkgs.vimPlugins.float-preview-nvim
+          pkgs.vimPlugins.deoplete-lsp
+          pkgs.vimPlugins.deoplete-nvim
+          pkgs.vimPlugins.neosnippet-snippets
+          pkgs.vimPlugins.neosnippet-vim
+          pkgs.vimPlugins.vim-snippets
 
           # Git
           pkgs.vimPlugins.vim-fugitive
@@ -344,6 +445,7 @@ in
         ++ localPlugins;
 
         opt = [
+          pkgs.vimPlugins.neomake
           plugins.nvim-lsp
         ];
       };

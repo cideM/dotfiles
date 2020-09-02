@@ -89,23 +89,47 @@ let
     src = vimPluginsSources.vim-js;
   });
 
+  vim-visual-split = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "vim-visual-split";
+    src = vimPluginsSources.vim-visual-split;
+  });
+
+  nvim-colorizer = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "nvim-colorizer";
+    src = vimPluginsSources.nvim-colorizer;
+  });
+
+  fern = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "fern";
+    src = vimPluginsSources.vim-fern;
+  });
+
+  gina = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "gina";
+    src = vimPluginsSources.gina;
+  });
+
 in
 {
   inherit
-    sad
-    yui
-    spacevim
-    edge-theme
-    conjure
-    nvim-lsp
-    vim-markdown-folding
-    parinfer-rust
-    onehalf
     apprentice
+    conjure
+    edge-theme
+    fern
+    gina
+    nvim-colorizer
+    nvim-lsp
+    onehalf
+    parinfer-rust
+    sad
+    spacevim
     vim-colortemplate
     vim-cool
-    vim-matchup
-    vim-scratch
     vim-js
-    vim-qf;
+    vim-markdown-folding
+    vim-matchup
+    vim-qf
+    vim-scratch
+    vim-visual-split
+    yui;
 }

@@ -23,10 +23,22 @@
         "rev": "3c8959e5494b984b705bced68065dc6270913ab1",
         "type": "git"
     },
+    "gina": {
+        "ref": "master",
+        "repo": "git@github.com:lambdalisue/gina.vim.git",
+        "rev": "0b2d34364710de9b61882f93282d902a44418e25",
+        "type": "git"
+    },
     "nord-vim": {
         "ref": "develop",
         "repo": "git@github.com:arcticicestudio/nord-vim",
         "rev": "b3c46c8793f1f774a22011e70f9019decc4462ed",
+        "type": "git"
+    },
+    "nvim-colorizer": {
+        "ref": "master",
+        "repo": "git@github.com:norcalli/nvim-colorizer.lua.git",
+        "rev": "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6",
         "type": "git"
     },
     "nvim-lsp": {
@@ -71,6 +83,12 @@
         "rev": "27ad4ecf7532b750fadca9f36e1c5498fc225af2",
         "type": "git"
     },
+    "vim-fern": {
+        "ref": "master",
+        "repo": "git@github.com:lambdalisue/fern.vim.git",
+        "rev": "d3d9412d641590036e12d4d803ef922acd026c6a",
+        "type": "git"
+    },
     "vim-js": {
         "ref": "master",
         "repo": "git@github.com:yuezk/vim-js.git",
@@ -105,6 +123,12 @@
         "ref": "master",
         "repo": "git@github.com:mtth/scratch.vim.git",
         "rev": "6df617ebc0695bd9839a4fe365a08df13d24bc05",
+        "type": "git"
+    },
+    "vim-visual-split": {
+        "ref": "master",
+        "repo": "git@github.com:wellle/visual-split.vim.git",
+        "rev": "423a25911b3e8da04a28d29f205e1059a06e6afa",
         "type": "git"
     },
     "yui": {
