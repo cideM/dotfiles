@@ -251,7 +251,7 @@ let
 
     let g:one_allow_italics = 1
     let g:yui_comments = "emphasize"
-    colorscheme iceberg
+    colorscheme space_vim_theme
   '';
 
   ftPluginDir = toString ./ftplugin;
@@ -354,6 +354,7 @@ in
           pkgs.vimPlugins.papercolor-theme
           plugins.yui
           plugins.spacevim
+          plugins.vim-one-theme
 
           # Languages
           pkgs.vimPlugins.purescript-vim

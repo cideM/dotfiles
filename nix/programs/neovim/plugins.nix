@@ -100,6 +100,11 @@ let
     src = vimPluginsSources.vim-visual-split;
   });
 
+  vim-one-theme = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "vim-one-theme";
+    src = vimPluginsSources.vim-one-colors;
+  });
+
 in
 {
   inherit
@@ -113,6 +118,7 @@ in
     sad
     spacevim
     vim-colortemplate
+    vim-one-theme
     vim-cool
     vim-js
     vim-markdown-folding

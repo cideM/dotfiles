@@ -71,6 +71,12 @@
         "rev": "27ad4ecf7532b750fadca9f36e1c5498fc225af2",
         "type": "git"
     },
+    "vim-fern": {
+        "ref": "master",
+        "repo": "git@github.com:lambdalisue/fern.vim.git",
+        "rev": "d3d9412d641590036e12d4d803ef922acd026c6a",
+        "type": "git"
+    },
     "vim-js": {
         "ref": "master",
         "repo": "git@github.com:yuezk/vim-js.git",
@@ -95,6 +101,12 @@
         "rev": "f8bcef1968f01842d92abbcb098ec28ad3931ea5",
         "type": "git"
     },
+    "vim-one-colors": {
+        "ref": "master",
+        "repo": "git@github.com:rakr/vim-one.git",
+        "rev": "f8bcef1968f01842d92abbcb098ec28ad3931ea5",
+        "type": "git"
+    },
     "vim-qf": {
         "ref": "master",
         "repo": "git@github.com:romainl/vim-qf",
@@ -111,12 +123,6 @@
         "ref": "master",
         "repo": "git@github.com:wellle/visual-split.vim.git",
         "rev": "423a25911b3e8da04a28d29f205e1059a06e6afa",
-        "type": "git"
-    },
-    "vim-fern": {
-        "ref": "master",
-        "repo": "git@github.com:lambdalisue/fern.vim.git",
-        "rev": "d3d9412d641590036e12d4d803ef922acd026c6a",
         "type": "git"
     },
     "yui": {
