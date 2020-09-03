@@ -47,6 +47,8 @@ let
   abbr -a g 'git'
   abbr -a nsc 'notes search_content | rg body | xargs bat'
   abbr -a nst 'notes search_tags | rg body | xargs bat'
+  abbr -a todo 'nvim $FISH_NOTES_DIR/916797/body.md'
+  abbr -a ideas 'nvim $FISH_NOTES_DIR/785479/body.md'
   alias fzf 'fzf --color=light'
   alias ls exa
 

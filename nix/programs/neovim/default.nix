@@ -58,6 +58,7 @@ let
         end
     end
 
+    vim.lsp.callbacks["textDocument/publishDiagnostics"] = function() end
     EOF
 
     " SETTINGS {{{

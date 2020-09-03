@@ -29,6 +29,7 @@
       enable = true;
       options = {
         line-numbers = true;
+        syntax-theme = "GitHub";
       };
     };
 

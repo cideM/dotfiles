@@ -8,6 +8,7 @@ let
   };
 
   sharedPkgs = with pkgs; [
+    aerc
     awscli
     bandwhich
     bash_5
