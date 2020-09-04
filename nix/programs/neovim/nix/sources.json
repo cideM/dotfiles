@@ -20,7 +20,7 @@
     "edge-theme": {
         "ref": "master",
         "repo": "git@github.com:sainnhe/edge.git",
-        "rev": "3c8959e5494b984b705bced68065dc6270913ab1",
+        "rev": "8e2fadda1a9e7b6ce4f8bd2273e93e65c8bdf731",
         "type": "git"
     },
     "nord-vim": {
@@ -32,7 +32,7 @@
     "nvim-lsp": {
         "ref": "master",
         "repo": "git@github.com:neovim/nvim-lsp",
-        "rev": "fc9d94ef006e082596c2e8724eb3f1c92ff203c7",
+        "rev": "419fa4006e7c15cbc2f81f5110952de562494cd4",
         "type": "git"
     },
     "onehalf": {
@@ -62,7 +62,7 @@
     "vim-colortemplate": {
         "ref": "master",
         "repo": "git@github.com:lifepillar/vim-colortemplate",
-        "rev": "343eb9870c18abfa27d3c1dcea1c97bf99c1932e",
+        "rev": "493379f12e82fca3bccae5a76bfbb7c1a3e265a2",
         "type": "git"
     },
     "vim-cool": {

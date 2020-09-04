@@ -1,7 +1,12 @@
 gtypist
+insomnia
 jetbrains-toolbox
+protonmail-bridge-beta-bin
 qmk
 sendmail
+slack-desktop
+spotify
+sublime-merge
 systemd-boot-pacman-hook
 visual-studio-code-insiders
 yay

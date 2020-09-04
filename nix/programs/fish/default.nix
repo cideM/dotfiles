@@ -45,8 +45,7 @@ let
 
   abbr -a pbc 'xclip -selection clipboard'
   abbr -a g 'git'
-  abbr -a nsc 'notes search_content | rg body | xargs bat'
-  abbr -a nst 'notes search_tags | rg body | xargs bat'
+  abbr -a n "notes search | xargs -I _ sh -c 'nvim _/body*'"
   abbr -a todo 'nvim $FISH_NOTES_DIR/916797/body.md'
   abbr -a ideas 'nvim $FISH_NOTES_DIR/785479/body.md'
   alias fzf 'fzf --color=light'

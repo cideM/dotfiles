@@ -2,7 +2,7 @@
     "clj-deps": {
         "ref": "live",
         "repo": "git@github.com:practicalli/clojure-deps-edn.git",
-        "rev": "9336a035f160895d765a1ba857e914a36a2444f1",
+        "rev": "63ffc32d45e4cd74b735dc4fe610f529739d2a6d",
         "type": "git"
     },
     "fish-journal": {
@@ -20,7 +20,7 @@
     "fish-notes": {
         "ref": "master",
         "repo": "git@github.com:cideM/fish-notes.git",
-        "rev": "f93c4f877f5beb584ed5699e56b3b59960334e28",
+        "rev": "28af0ecca8dfa67b8b334c01fe11c20c9b0a7302",
         "type": "git"
     },
     "goland": {
@@ -34,7 +34,7 @@
     "neovim": {
         "ref": "master",
         "repo": "git@github.com:neovim/neovim",
-        "rev": "46e74142abe6d731c0456eb7680163ac7feccfa1",
+        "rev": "3acfefb63ee70c8eac13bf6b308a0e73e6fb8007",
         "type": "git"
     },
     "niv": {
@@ -55,17 +55,17 @@
         "homepage": null,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "f9c449328840fe949c035f275b6c6d8fec077280",
-        "sha256": "042k7fjvn71db0fs2sjkdz00fv1085abqg8hspclm1f7hirzdwsy",
+        "rev": "10aede9bcfe0bcc7c999b598057552f928c31767",
+        "sha256": "186ycr2gn4hwgbw53ahld5lvrdrcpf8cmd7dniwijj6gvflx9nms",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/f9c449328840fe949c035f275b6c6d8fec077280.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/10aede9bcfe0bcc7c999b598057552f928c31767.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
         "branch": "nixpkgs-unstable",
         "ref": "master",
         "repo": "git@github.com:NixOS/nixpkgs.git",
-        "rev": "43612e8e1abc4ea473b5e10efc10500c865d99e3",
+        "rev": "e30287c590de2d65595c47e142af08d8030ca240",
         "type": "git"
     },
     "pandoc-template-eisvogel": {

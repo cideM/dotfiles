@@ -14,7 +14,6 @@ let
         endif
     endif
 
-    " LSP {{{
     packadd nvim-lsp
 
     lua << EOF
@@ -61,7 +60,6 @@ let
     vim.lsp.callbacks["textDocument/publishDiagnostics"] = function() end
     EOF
 
-    " SETTINGS {{{
     if !isdirectory("$HOME/.config/nvim/.swap")
         call mkdir($HOME . "/.config/nvim/.swap", "p", 0700)
         set directory=~/.config/nvim/.swap//
@@ -102,8 +100,6 @@ let
     set inccommand=split
     set nocursorline
     set nonumber
-    set completeopt-=preview
-    set completeopt+=noinsert
     set path-=/usr/include
     set shiftwidth=4
     set shortmess+=c
@@ -119,14 +115,12 @@ let
         autocmd!
         autocmd VimResized * wincmd =
     augroup END
-    " }}}
 
     augroup SetPath
         autocmd!
         autocmd VimEnter * call pathutils#SetPath()
     augroup END
 
-    " MAPPINGS {{{
     function! FormatBuffer()
       let view = winsaveview()
       normal ggVGgq
@@ -151,7 +145,7 @@ let
 
     nmap <leader>Q :call FormatBuffer()<cr>
 
-    nnoremap <leader>f :find *
+    nnoremap <leader>F :find *
     nnoremap <leader>b :buffer *
     nnoremap <leader>tt :ts *
     nnoremap <leader>ts :sts *
@@ -170,7 +164,7 @@ let
       map gz* <Plug>(asterisk-gz*)
       map z#  <Plug>(asterisk-z#)
       map gz# <Plug>(asterisk-gz#)
-
+    
     " Fern
       " Drawer style, does not have opener
       nmap <leader>ee :Fern . -drawer<CR>
@@ -180,6 +174,36 @@ let
       nmap <leader>ef :FernDo :<CR>
       nmap <leader>el <Plug>(fern-action-leave)
       nmap <leader>eo <Plug>(fern-action-open:select)
+
+    " FZF
+      command! -bang -nargs=? -complete=dir Files
+                  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+      autocmd! FileType fzf set laststatus=0 noshowmode noruler
+                  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
+      nnoremap <leader>ff :Files<CR>
+      nnoremap <leader>fl :Lines<CR>
+      nnoremap <leader>fc :Commits<CR>
+      nnoremap <leader>fb :Buffers<CR>
+      nnoremap <leader>fg :GFiles<CR>
+      nnoremap <leader>fm :Marks<CR>
+      nnoremap <leader>ft :Tags<CR>
+
+      let g:fzf_colors =
+          \ { 'fg':      ['fg', 'Normal'],
+          \ 'bg':      ['bg', 'Normal'],
+          \ 'hl':      ['fg', 'Comment'],
+          \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+          \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+          \ 'hl+':     ['fg', 'Statement'],
+          \ 'info':    ['fg', 'PreProc'],
+          \ 'border':  ['fg', 'Ignore'],
+          \ 'prompt':  ['fg', 'Conditional'],
+          \ 'pointer': ['fg', 'Exception'],
+          \ 'marker':  ['fg', 'Keyword'],
+          \ 'spinner': ['fg', 'Label'],
+          \ 'header':  ['fg', 'Comment'] }
 
     nnoremap <leader>R :set operatorfunc=reflow#Comment<cr>g@
     vnoremap <leader>R :<C-u>call reflow#Comment(visualmode())<cr>
@@ -191,52 +215,49 @@ let
     tnoremap <Esc> <C-\><C-n>
     tnoremap <M-[> <Esc>
     tnoremap <C-v><Esc> <Esc>
-    " }}}
 
     " sad
-    nmap <leader>c <Plug>(sad-change-forward)
-    nmap <leader>C <Plug>(sad-change-backward)
-    xmap <leader>c <Plug>(sad-change-forward)
-    xmap <leader>C <Plug>(sad-change-backward)
+      nmap <leader>c <Plug>(sad-change-forward)
+      nmap <leader>C <Plug>(sad-change-backward)
+      xmap <leader>c <Plug>(sad-change-forward)
+      xmap <leader>C <Plug>(sad-change-backward)
 
     " andymass/vim-matchup
-    let g:matchup_matchparen_offscreen = {}
+      let g:matchup_matchparen_offscreen = {}
 
-    let g:gutentags_exclude_filetypes = ['haskell']
-    let g:gutentags_file_list_command = '${pkgs.ripgrep}/bin/rg\ --files'
+    " gutentags
+      let g:gutentags_exclude_filetypes = ['haskell']
+      let g:gutentags_file_list_command = '${pkgs.ripgrep}/bin/rg\ --files'
 
     " romainl/vim-qf
-    let g:qf_auto_open_loclist = 1
-    nmap <leader>qq <Plug>QfCtoggle
-    nmap <leader>ll <Plug>QfLtoggle
+      let g:qf_auto_open_loclist = 1
+      nmap <leader>qq <Plug>QfCtoggle
+      nmap <leader>ll <Plug>QfLtoggle
 
     " sandwich
-    let g:sandwich_no_default_key_mappings = 1
-    silent! nmap <unique><silent> gk <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
-    silent! nmap <unique><silent> gr <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
-    silent! nmap <unique><silent> gkb <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
-    silent! nmap <unique><silent> grb <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
-
-    let g:operator_sandwich_no_default_key_mappings = 1
-    " add
-    silent! map <unique> ga <Plug>(operator-sandwich-add)
-    " delete
-    silent! xmap <unique> gd <Plug>(operator-sandwich-delete)
-    " replace
-    silent! xmap <unique> gr <Plug>(operator-sandwich-replace)
+      let g:sandwich_no_default_key_mappings = 1
+      silent! nmap <unique><silent> gk <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
+      silent! nmap <unique><silent> gr <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
+      silent! nmap <unique><silent> gkb <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
+      silent! nmap <unique><silent> grb <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
+      let g:operator_sandwich_no_default_key_mappings = 1
+      " add
+      silent! map <unique> ga <Plug>(operator-sandwich-add)
+      " delete
+      silent! xmap <unique> gd <Plug>(operator-sandwich-delete)
+      " replace
+      silent! xmap <unique> gr <Plug>(operator-sandwich-replace)
 
     " vim-sneak
-    let g:sneak#label      = 1
-    let g:sneak#use_ic_scs = 1
-    map f <Plug>Sneak_f
-    map F <Plug>Sneak_F
-    map t <Plug>Sneak_t
-    map T <Plug>Sneak_T
-    " }}}
+      let g:sneak#label      = 1
+      let g:sneak#use_ic_scs = 1
+      map f <Plug>Sneak_f
+      map F <Plug>Sneak_F
+      map t <Plug>Sneak_t
+      map T <Plug>Sneak_T
 
     nnoremap <leader>u :MundoToggle<CR>
 
-    " STATUSLINE {{{
     set statusline=
     set statusline+=\ %f
     set statusline+=\ %m 
@@ -248,7 +269,6 @@ let
     set statusline+=%q\ 
     set statusline+=%3l:%2c\ \|
     set statusline+=%3p%%\ 
-    " }}}
 
     let g:one_allow_italics = 1
     let g:yui_comments = "emphasize"
@@ -330,6 +350,8 @@ in
           pkgs.vimPlugins.vim-peekaboo
           pkgs.vimPlugins.limelight-vim
           pkgs.vimPlugins.vim-mundo
+          pkgs.vimPlugins.fzf-vim
+          pkgs.vimPlugins.fzfWrapper
           plugins.sad
           plugins.vim-scratch
           plugins.vim-colortemplate
@@ -341,6 +363,7 @@ in
 
           # Git
           pkgs.vimPlugins.vim-fugitive
+          pkgs.vimPlugins.gv-vim
           pkgs.vimPlugins.vim-rhubarb
 
           # Language Tooling

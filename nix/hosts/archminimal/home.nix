@@ -38,11 +38,13 @@ in
     source-han-sans-japanese
     source-han-serif-japanese
     iosevka
-    slack
-    discord
-    spotify
-    insomnia
-    sublime-merge-dev
+
+    # GUI
+    # slack
+    # discord
+    # spotify
+    # insomnia
+    # sublime-merge-dev
   ];
 
   nixpkgs.overlays = [

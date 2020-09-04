@@ -20,6 +20,7 @@ let
     dive
     docker-compose
     du-dust
+    emacs
     entr
     exa
     fd
