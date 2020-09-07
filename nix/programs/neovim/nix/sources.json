@@ -31,7 +31,7 @@
     },
     "nvim-lsp": {
         "ref": "master",
-        "repo": "git@github.com:neovim/nvim-lsp",
+        "repo": "git@github.com:neovim/nvim-lspconfig.git",
         "rev": "419fa4006e7c15cbc2f81f5110952de562494cd4",
         "type": "git"
     },
@@ -62,7 +62,7 @@
     "vim-colortemplate": {
         "ref": "master",
         "repo": "git@github.com:lifepillar/vim-colortemplate",
-        "rev": "493379f12e82fca3bccae5a76bfbb7c1a3e265a2",
+        "rev": "f5b03a642b2b7f47eaf29570fe4e8afc59f60fe0",
         "type": "git"
     },
     "vim-cool": {

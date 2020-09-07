@@ -1,1 +1,2 @@
-setlocal foldmethod=marker
+setlocal foldmethod=indent
+

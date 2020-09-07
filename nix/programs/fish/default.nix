@@ -44,8 +44,10 @@ let
   set -x NIX_PATH ~/.nix-defexpr/channels $NIX_PATH
 
   abbr -a pbc 'xclip -selection clipboard'
+  abbr -a gotest 'fd -e go | entr -rc go test ./...'
+  abbr -a gocheck 'fd -e go | entr -rc go build ./...'
   abbr -a g 'git'
-  abbr -a n "notes search | xargs -I _ sh -c 'nvim _/body*'"
+  abbr -a n "nvim (notes search)/body*"
   abbr -a todo 'nvim $FISH_NOTES_DIR/916797/body.md'
   abbr -a ideas 'nvim $FISH_NOTES_DIR/785479/body.md'
   alias fzf 'fzf --color=light'
