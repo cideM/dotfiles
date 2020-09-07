@@ -25,14 +25,6 @@
       enable = true;
     };
 
-    delta = {
-      enable = true;
-      options = {
-        line-numbers = true;
-        syntax-theme = "GitHub";
-      };
-    };
-
     extraConfig = {
       push = {
         default = "simple";
