@@ -49,6 +49,7 @@ set inccommand=split
 set nocursorline
 set nonumber
 set path-=/usr/include
+set path+=./
 set complete-=preview
 set shiftwidth=4
 set shortmess+=c

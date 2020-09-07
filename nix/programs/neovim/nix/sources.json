@@ -32,7 +32,7 @@
     "nvim-lsp": {
         "ref": "master",
         "repo": "git@github.com:neovim/nvim-lspconfig.git",
-        "rev": "419fa4006e7c15cbc2f81f5110952de562494cd4",
+        "rev": "60133c47e0fd82556d7ca092546ebfa8d047466e",
         "type": "git"
     },
     "onehalf": {
@@ -62,7 +62,7 @@
     "vim-colortemplate": {
         "ref": "master",
         "repo": "git@github.com:lifepillar/vim-colortemplate",
-        "rev": "f5b03a642b2b7f47eaf29570fe4e8afc59f60fe0",
+        "rev": "fb18136ef219b0748b7fd164a09cf18e8e2bc3ff",
         "type": "git"
     },
     "vim-cool": {
@@ -74,7 +74,7 @@
     "vim-fern": {
         "ref": "master",
         "repo": "git@github.com:lambdalisue/fern.vim.git",
-        "rev": "d3d9412d641590036e12d4d803ef922acd026c6a",
+        "rev": "2d213764b5f1bf5ebaf24a14d5527aa155c5ced7",
         "type": "git"
     },
     "vim-js": {
@@ -92,7 +92,7 @@
     "vim-matchup": {
         "ref": "master",
         "repo": "git@github.com:andymass/vim-matchup",
-        "rev": "b1af5a28242ae58ece98d833a2bf28e030d57230",
+        "rev": "9e0b6f37113e21fecd42ef6b04762de4aafe2cf3",
         "type": "git"
     },
     "vim-one": {

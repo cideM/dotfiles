@@ -1,8 +1,5 @@
 let b:undo_ftplugin = ""
 
-let b:ale_fixers = ['eslint', 'prettier']
-let b:ale_linters = ['eslint']
-
 let node_modules = luaeval(
             \'require("findUp").findUp(unpack(_A))', 
             \['node_modules',expand('%:p:h'), '/']

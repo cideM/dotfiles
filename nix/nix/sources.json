@@ -2,7 +2,7 @@
     "clj-deps": {
         "ref": "live",
         "repo": "git@github.com:practicalli/clojure-deps-edn.git",
-        "rev": "63ffc32d45e4cd74b735dc4fe610f529739d2a6d",
+        "rev": "46d48e5fb814fd8da9c233d5c6cf83bc33358bd8",
         "type": "git"
     },
     "fish-journal": {
@@ -34,7 +34,7 @@
     "neovim": {
         "ref": "master",
         "repo": "git@github.com:neovim/neovim",
-        "rev": "3acfefb63ee70c8eac13bf6b308a0e73e6fb8007",
+        "rev": "d8e6a0396a1bdc19c9e15adb233540816274487d",
         "type": "git"
     },
     "niv": {
@@ -43,10 +43,10 @@
         "homepage": "https://github.com/nmattia/niv",
         "owner": "nmattia",
         "repo": "niv",
-        "rev": "fad2a6cbfb2e7cdebb7cb0ad2f5cc91e2c9bc06b",
-        "sha256": "0mghc1j0rd15spdjx81bayjqr0khc062cs25y5dcfzlxk4ynyc6m",
+        "rev": "b50a0107691487d4948c2078a77afdc0d1f20e8b",
+        "sha256": "0cr2a6rp9g8jjadwvb65j5fjlby64mqj48wyfm5p265iqjhvqn9q",
         "type": "tarball",
-        "url": "https://github.com/nmattia/niv/archive/fad2a6cbfb2e7cdebb7cb0ad2f5cc91e2c9bc06b.tar.gz",
+        "url": "https://github.com/nmattia/niv/archive/b50a0107691487d4948c2078a77afdc0d1f20e8b.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixos-20.03": {
@@ -55,17 +55,17 @@
         "homepage": null,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "10aede9bcfe0bcc7c999b598057552f928c31767",
-        "sha256": "186ycr2gn4hwgbw53ahld5lvrdrcpf8cmd7dniwijj6gvflx9nms",
+        "rev": "4bd1938e03e1caa49a6da1ec8cff802348458f05",
+        "sha256": "0529npmibafjr80i2bhqg22pjr3d5qz1swjcq2jkdla1njagkq2k",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/10aede9bcfe0bcc7c999b598057552f928c31767.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/4bd1938e03e1caa49a6da1ec8cff802348458f05.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
         "branch": "nixpkgs-unstable",
         "ref": "master",
         "repo": "git@github.com:NixOS/nixpkgs.git",
-        "rev": "e30287c590de2d65595c47e142af08d8030ca240",
+        "rev": "8b1690a77ef62abfb7dd8c9fef0d9c8b23e96c93",
         "type": "git"
     },
     "pandoc-template-eisvogel": {

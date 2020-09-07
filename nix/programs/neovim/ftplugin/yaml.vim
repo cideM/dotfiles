@@ -1,5 +1,8 @@
 let b:undo_ftplugin = ""
 
+setlocal foldmethod=indent
+let b:undo_ftplugin .= '|setlocal foldmethod<'
+
 let node_modules = luaeval(
             \'require("findUp").findUp(unpack(_A))', 
             \['node_modules',expand('%:p:h'), '/']
