@@ -23,10 +23,10 @@ function module.set_path()
         end
       end
 
-      -- Add current path as well, we're gonna make this unique
-      -- Split string by matching all consecutive non-comma chars
-      if vim.o.path ~= nil then
-          for v in string.gmatch(vim.o.path, "[^,]+") do
+      local path = pcall(vim.bo,"path") or ""
+
+      if path ~= nil then
+          for v in string.gmatch(path, "[^,]+") do
             if v ~= "" then
               table.insert(paths, v)
             end
@@ -45,7 +45,7 @@ function module.set_path()
       end
 
       -- Set path and clean up
-      vim.o.path = table.concat(unique, ",")
+      vim.bo.path = table.concat(unique, ",")
       fd_handle:close()
     end
 

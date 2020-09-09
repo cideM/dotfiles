@@ -49,8 +49,7 @@ set inccommand=split
 set nocursorline
 set nonumber
 set path-=/usr/include
-set path+=./
-set complete-=preview
+set completeopt-=preview
 set shiftwidth=4
 set shortmess+=c
 set smartcase
@@ -68,7 +67,7 @@ augroup END
 
 augroup SetPath
     autocmd!
-    autocmd VimEnter * call pathutils#SetPath()
+    autocmd BufEnter,DirChanged * call pathutils#SetPath()
 augroup END
 
 function! FormatBuffer()
@@ -96,10 +95,10 @@ nnoremap <leader>gw :grep -wF ""<left>
 nmap <leader>Q :call FormatBuffer()<cr>
 
 nnoremap <leader>f :find *
-nnoremap <leader>b :buffer *
+" nnoremap <leader>b :buffer *
 nnoremap <leader>tt :ts *
 nnoremap <leader>ts :sts *
-nnoremap <leader>gb :ls<cr>:buffer<Space>
+nnoremap <leader>b :ls<cr>:buffer<Space>
 
 nnoremap <leader>vt :tabnew <Bar> Gedit :<cr>
 
@@ -109,7 +108,7 @@ vmap     <Enter>    <Plug>(EasyAlign)
     " Drawer style, does not have opener
     nmap <leader>ee :Fern . -drawer<CR>
     " Current file
-    nmap <leader>eh :Fern %:h<CR>
+    nmap <leader>eh :Fern %:h -drawer<CR>
     " Focus Fern
     nmap <leader>ef :FernDo :<CR>
     nmap <leader>el <Plug>(fern-action-leave)

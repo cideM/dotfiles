@@ -12,8 +12,6 @@ setlocal formatprg=gofmt
 let b:undo_ftplugin .= '|setlocal formatprg<'
 
 " https://github.com/leeren/dotfiles/blob/master/vim/.vim/ftplugin/go.vim
-
-" invoke buildifier for formatting
 command! -buffer -range=% Gofmt let b:winview = winsaveview() |
   \ silent! execute <line1> . "," . <line2> . "!gofmt " | 
   \ call winrestview(b:winview)
@@ -30,3 +28,10 @@ augroup END
 
 " https://stackoverflow.com/questions/40945136/stop-highlighting-trailing-whitespace-for-go-files-in-vim
 let g:go_highlight_trailing_whitespace_error=0
+
+nnoremap <silent> <localleader>tw :call goutils#RunTestAtCursor()<CR>
+nnoremap <silent> <localleader>ta :call goutils#RunAllTests()<CR>
+" make current directory
+nnoremap <silent> <localleader>mm :execute 'make ' . expand('%:p:h')<CR>
+" make entire project
+nnoremap <silent> <localleader>mp :make ./...<CR>

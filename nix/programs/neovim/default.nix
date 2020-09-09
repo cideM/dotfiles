@@ -30,6 +30,7 @@ let
         "reflow"
         "syntax"
         "zen"
+        "goutils"
       ];
 
 in
