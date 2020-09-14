@@ -30,10 +30,7 @@ let
     gitAndTools.hub
     gnugrep
     gnupg
-    go
-    golangci-lint
     google-cloud-sdk
-    gopls
     gzip
     hack-font
     haskellPackages.brittany

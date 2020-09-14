@@ -156,6 +156,35 @@ let
     use_thin_strokes = true;
   };
 
+  dejavuSansMono = {
+    bold = {
+      family = "DejaVu Sans Mono";
+      style = "Bold";
+    };
+    bold_italic = {
+      family = "DejaVu Sans Mono";
+      style = "Bold Oblique";
+    };
+    glyph_offset = {
+      x = 0;
+      y = 1;
+    };
+    italic = {
+      family = "DejaVu Sans Mono";
+      style = "Oblique";
+    };
+    normal = {
+      family = "DejaVu Sans Mono";
+      style = "Book";
+    };
+    offset = {
+      x = 0;
+      y = 2;
+    };
+    size = 12;
+    use_thin_strokes = true;
+  };
+
   hack = {
     bold = {
       family = "Hack";
@@ -305,7 +334,7 @@ let
   };
 
   fonts = {
-    inherit mono hack;
+    inherit mono hack dejavuSansMono;
   };
 in
 {

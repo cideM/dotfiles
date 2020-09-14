@@ -86,6 +86,7 @@ in
           pkgs.vimPlugins.vim-peekaboo
           pkgs.vimPlugins.limelight-vim
           pkgs.vimPlugins.vim-mundo
+          pkgs.vimPlugins.goyo-vim
           plugins.sad
           plugins.vim-scratch
           plugins.vim-colortemplate
