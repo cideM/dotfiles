@@ -77,6 +77,17 @@ let
     yamllint
   ];
 
+  sharedLinux = with pkgs; [
+    iotop
+    xclip
+    feh
+    escrotum
+    kanji-stroke-order-font
+    source-han-sans-japanese
+    source-han-serif-japanese
+    iosevka
+  ];
+
   sharedSettings = {
     nixpkgs.config = import ./nixpkgs_config.nix;
     xdg.configFile."nixpkgs/config.nix".source = ./nixpkgs_config.nix;
@@ -101,5 +112,6 @@ let
 
 in {
   pkgs = sharedPkgs;
+  pkgsLinux = sharedLinux;
   inherit sharedSettings;
 }

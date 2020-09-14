@@ -50,18 +50,12 @@ in
     (import ../../programs/vscode/overlay.nix { inherit pkgs sources; })
   ];
 
-  home.packages = with pkgs; shared.pkgs ++ [
-    iotop
+  home.packages = with pkgs; shared.pkgsLinux ++ shared.pkgs ++ [
     pkgs-release.insomnia
-    xclip
-    neofetch
-    jrnl
     # If this doesn't match the system then things break because of some audio
     # libs it seems
     pkgs-release.spotify
-    # TODO: Test on Arch and MacOS
     pkgs-release.zoom-us
-    # TODO: Test on Arch and MacOS
     pkgs-release.slack
     operatorMono
     jetbrains.webstorm
@@ -71,8 +65,6 @@ in
     anki
     jetbrains.pycharm-professional
   ];
-
-  # TODO: Extract programs below into own folders in programs/
 
   # On first install this needs to be disabled for allowUnfree to work. I
   # shouldn't have to do this but nothing in
@@ -85,33 +77,7 @@ in
   programs.alacritty.enable = true;
   programs.alacritty.settings = (alacritty.shared // {
     colors = alacritty.themes.spacemacsLight;
-    font = {
-      bold = {
-        family = "Hack";
-        style = "Bold";
-      };
-      bold_italic = {
-        family = "Hack";
-        style = "Bold Italic";
-      };
-      glyph_offset = {
-        x = 0;
-        y = 1;
-      };
-      italic = {
-        family = "Hack";
-        style = "Italic";
-      };
-      normal = {
-        family = "Hack";
-        style = "Regular";
-      };
-      offset = {
-        x = 0;
-        y = 2;
-      };
-      size = 12;
-    };
+    font = alacritty.fonts.mono;
   });
 
   # Just append this to the actual config file with an overlay
@@ -121,7 +87,7 @@ in
   '';
 
   xdg.mime.enable = true;
-   
+
   services.lorri.enable = true;
   services.lorri.package = pkgs.lorri;
 }

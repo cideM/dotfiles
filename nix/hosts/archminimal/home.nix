@@ -29,23 +29,7 @@ in
     programs.tmux.config
   ];
 
-  home.packages = with pkgs; shared.pkgs ++ [
-    iotop
-    xclip
-    feh
-    escrotum
-    kanji-stroke-order-font
-    source-han-sans-japanese
-    source-han-serif-japanese
-    iosevka
-
-    # GUI
-    # slack
-    # discord
-    # spotify
-    # insomnia
-    # sublime-merge-dev
-  ];
+  home.packages = with pkgs; shared.pkgs ++ shared.pkgsLinux;
 
   nixpkgs.overlays = [
     (import ../../programs/neovim/overlay.nix { inherit pkgs sources; })
@@ -71,7 +55,7 @@ in
 
   programs.alacritty.enable = false;
   xdg.configFile."alacritty/alacritty.yml".text =
-    builtins.replaceStrings [ "\\\\" ] [ "\\" ] (builtins.toJSON ( alacritty.shared // {
+    builtins.replaceStrings [ "\\\\" ] [ "\\" ] (builtins.toJSON (alacritty.shared // {
       colors = alacritty.themes.spacemacsLight;
       font = alacritty.fonts.mono;
     }));
