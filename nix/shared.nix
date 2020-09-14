@@ -31,6 +31,8 @@ let
     gnugrep
     gnupg
     google-cloud-sdk
+    gopls
+    golangci-lint
     gzip
     hack-font
     haskellPackages.brittany
