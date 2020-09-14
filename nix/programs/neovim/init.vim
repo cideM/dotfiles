@@ -9,6 +9,9 @@ endif
 packadd nvim-lsp
 luafile ~/.config/nvim/lsp.lua
 
+packadd nvim-treesitter
+luafile ~/.config/nvim/treesitter.lua
+
 " backup files
     if !isdirectory("$HOME/.config/nvim/.swap")
         call mkdir($HOME . "/.config/nvim/.swap", "p", 0700)

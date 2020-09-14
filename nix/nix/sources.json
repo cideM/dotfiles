@@ -34,7 +34,7 @@
     "neovim": {
         "ref": "master",
         "repo": "git@github.com:neovim/neovim",
-        "rev": "d8e6a0396a1bdc19c9e15adb233540816274487d",
+        "rev": "7ba28b1aedcb88ef5643b32dc4a6bf92ac090fed",
         "type": "git"
     },
     "niv": {
@@ -43,10 +43,10 @@
         "homepage": "https://github.com/nmattia/niv",
         "owner": "nmattia",
         "repo": "niv",
-        "rev": "b50a0107691487d4948c2078a77afdc0d1f20e8b",
-        "sha256": "0cr2a6rp9g8jjadwvb65j5fjlby64mqj48wyfm5p265iqjhvqn9q",
+        "rev": "dd13098d01eaa6be68237e7e38f96782b0480755",
+        "sha256": "1cfjdbsn0219fjzam1k7nqzkz8fb1ypab50rhyj026qbklqq2kvq",
         "type": "tarball",
-        "url": "https://github.com/nmattia/niv/archive/b50a0107691487d4948c2078a77afdc0d1f20e8b.tar.gz",
+        "url": "https://github.com/nmattia/niv/archive/dd13098d01eaa6be68237e7e38f96782b0480755.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixos-20.03": {
@@ -55,10 +55,10 @@
         "homepage": null,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "4bd1938e03e1caa49a6da1ec8cff802348458f05",
-        "sha256": "0529npmibafjr80i2bhqg22pjr3d5qz1swjcq2jkdla1njagkq2k",
+        "rev": "0da54872f9da4649099118b8f59e85a4256cc45c",
+        "sha256": "17f63bz3l6j8iyxifmk12qvn0rkxi53yrv294q8sghcqrw0qhr98",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/4bd1938e03e1caa49a6da1ec8cff802348458f05.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/0da54872f9da4649099118b8f59e85a4256cc45c.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {

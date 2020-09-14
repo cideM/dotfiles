@@ -5,7 +5,25 @@
 with lib;
 with builtins;
 let
+  # Figure out where to put this
+  srcs = import ./nix/sources.nix;
+  treesitterGo = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    version = "latest";
+    name = "tree-sitter-go-${version}";
+    src = srcs.treesitter-go;
+    buildPhase = ''
+      mkdir -p parser/
+      cc -o parser/go.so -I./src -shared -Os -lstdc++ src/parser.c
+    '';
+    # installPhase = ''
+    #   mkdir -p $out/parsers
+    #   cp parser.so $out/parsers/
+    # '';
+  };
+
   luaLsp = builtins.readFile ./lsp.lua;
+
+  treesitter = builtins.readFile ./treesitter.lua;
 
   init = builtins.readFile ./init.vim;
 
@@ -65,6 +83,7 @@ in
         [ (builtins.map (name: attrsets.nameValuePair name (readFtplugin name))) (builtins.listToAttrs) ];
 
     xdg.configFile."nvim/lsp.lua".text = luaLsp;
+    xdg.configFile."nvim/treesitter.lua".text = treesitter;
 
     programs.neovim.configure = {
       customRC = init;
@@ -115,17 +134,20 @@ in
           plugins.spacevim
           plugins.vim-one-theme
 
-          # Languages
+          # Languages & Syntax
           pkgs.vimPlugins.purescript-vim
           pkgs.vimPlugins.vim-nix
           pkgs.vimPlugins.dhall-vim
           plugins.vim-js
           pkgs.vimPlugins.yats-vim
           pkgs.vimPlugins.vim-jsx-pretty
+
+          treesitterGo
         ]
         ++ localPlugins;
 
         opt = [
+          plugins.nvim-treesitter
           plugins.nvim-lsp
         ];
       };

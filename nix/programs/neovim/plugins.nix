@@ -105,6 +105,14 @@ let
     src = vimPluginsSources.vim-one-colors;
   });
 
+  nvim-treesitter = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "nvim-treesitter";
+    src = vimPluginsSources.nvim-treesitter;
+    postInstall = ''
+      sed -i -e 's/api.nvim_err_writeln(cmd.err)/api.nvim_err_writeln(vim.inspect(cmd))/' $out/share/vim-plugins/nvim-treesitter/lua/nvim-treesitter/install.lua
+    '';
+  });
+
 in
 {
   inherit
@@ -126,5 +134,6 @@ in
     vim-qf
     vim-scratch
     vim-visual-split
+    nvim-treesitter
     yui;
 }

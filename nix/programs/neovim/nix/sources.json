@@ -35,6 +35,12 @@
         "rev": "60133c47e0fd82556d7ca092546ebfa8d047466e",
         "type": "git"
     },
+    "nvim-treesitter": {
+        "ref": "master",
+        "repo": "git@github.com:nvim-treesitter/nvim-treesitter.git",
+        "rev": "4b578c52bd2208269114a98f4b16358b3fc495a0",
+        "type": "git"
+    },
     "onehalf": {
         "ref": "master",
         "repo": "git@github.com:sonph/onehalf.git",
@@ -57,6 +63,12 @@
         "ref": "master",
         "repo": "git@github.com:liuchengxu/space-vim-theme.git",
         "rev": "4790dbba31f678f75af4f4c7a1465008542bd979",
+        "type": "git"
+    },
+    "treesitter-go": {
+        "ref": "master",
+        "repo": "git@github.com:tree-sitter/tree-sitter-go.git",
+        "rev": "34181774b3e86b7801c939c79c7b80a82df91a2b",
         "type": "git"
     },
     "vim-colortemplate": {
