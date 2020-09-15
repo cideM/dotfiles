@@ -113,6 +113,11 @@ let
     '';
   });
 
+  vim-lua = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "vim-lua";
+    src = vimPluginsSources.vim-lua;
+  });
+
 in
 {
   inherit
@@ -131,6 +136,7 @@ in
     vim-js
     vim-markdown-folding
     vim-matchup
+    vim-lua
     vim-qf
     vim-scratch
     vim-visual-split

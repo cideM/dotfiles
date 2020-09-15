@@ -139,6 +139,7 @@ in
           pkgs.vimPlugins.vim-nix
           pkgs.vimPlugins.dhall-vim
           plugins.vim-js
+          plugins.vim-lua
           pkgs.vimPlugins.yats-vim
           pkgs.vimPlugins.vim-jsx-pretty
 

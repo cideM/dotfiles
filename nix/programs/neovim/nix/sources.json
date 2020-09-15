@@ -95,6 +95,12 @@
         "rev": "5e14eb65d6e898658b95001581473326309a23fd",
         "type": "git"
     },
+    "vim-lua": {
+        "ref": "master",
+        "repo": "git@github.com:tbastos/vim-lua.git",
+        "rev": "fa810f85437525bcea0fc4ff22c634935721d86d",
+        "type": "git"
+    },
     "vim-markdown-folding": {
         "ref": "master",
         "repo": "git@github.com:masukomi/vim-markdown-folding",
