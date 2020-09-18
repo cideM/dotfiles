@@ -55,17 +55,17 @@
         "homepage": null,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "3709ab3b48e95bafc74c2dee4e534c74f8d336a3",
-        "sha256": "0x8093j0gn506hh6im9hngxads590icd999zdnqkij7qiw9bhiwx",
+        "rev": "e82b1de75a195856945cadff4f40b7bea9530f67",
+        "sha256": "1l3pq4w5xcdwbj6pdsxkq8spacy91ds28f7svgcsc836v959jcv7",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/3709ab3b48e95bafc74c2dee4e534c74f8d336a3.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/e82b1de75a195856945cadff4f40b7bea9530f67.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
         "branch": "nixpkgs-unstable",
         "ref": "master",
         "repo": "git@github.com:NixOS/nixpkgs.git",
-        "rev": "00bf6abad17bd07c29576f382d77797a973f3be1",
+        "rev": "f1325cdfe7da80f809c4c6f6d22a4d1a22c7422e",
         "type": "git"
     },
     "pandoc-template-eisvogel": {
