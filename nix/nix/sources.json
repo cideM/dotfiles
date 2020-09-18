@@ -34,7 +34,7 @@
     "neovim": {
         "ref": "master",
         "repo": "git@github.com:neovim/neovim",
-        "rev": "7ba28b1aedcb88ef5643b32dc4a6bf92ac090fed",
+        "rev": "f34eeba2d85b4382d7504e1f3e12a7afb0788c1d",
         "type": "git"
     },
     "niv": {
@@ -55,17 +55,17 @@
         "homepage": null,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "0da54872f9da4649099118b8f59e85a4256cc45c",
-        "sha256": "17f63bz3l6j8iyxifmk12qvn0rkxi53yrv294q8sghcqrw0qhr98",
+        "rev": "3709ab3b48e95bafc74c2dee4e534c74f8d336a3",
+        "sha256": "0x8093j0gn506hh6im9hngxads590icd999zdnqkij7qiw9bhiwx",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/0da54872f9da4649099118b8f59e85a4256cc45c.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/3709ab3b48e95bafc74c2dee4e534c74f8d336a3.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
         "branch": "nixpkgs-unstable",
         "ref": "master",
         "repo": "git@github.com:NixOS/nixpkgs.git",
-        "rev": "8b1690a77ef62abfb7dd8c9fef0d9c8b23e96c93",
+        "rev": "00bf6abad17bd07c29576f382d77797a973f3be1",
         "type": "git"
     },
     "pandoc-template-eisvogel": {

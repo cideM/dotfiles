@@ -52,7 +52,7 @@ set inccommand=split
 set nocursorline
 set nonumber
 set path-=/usr/include
-set completeopt-=preview
+set completeopt=menu,menuone,noselect
 set shiftwidth=4
 set shortmess+=c
 set smartcase

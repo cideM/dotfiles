@@ -57,7 +57,7 @@ in
   xdg.configFile."alacritty/alacritty.yml".text =
     builtins.replaceStrings [ "\\\\" ] [ "\\" ] (builtins.toJSON (alacritty.shared // {
       colors = alacritty.themes.spacemacsLight;
-      font = alacritty.fonts.mono;
+      font = alacritty.fonts.hack;
     }));
 
   services.lorri.enable = true;
