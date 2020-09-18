@@ -40,6 +40,7 @@ in
 
   home.packages = with pkgs; shared.pkgs ++ [
     lorri
+    unixtools.watch
   ];
 
   nixpkgs.overlays = [
@@ -51,7 +52,7 @@ in
   xdg.configFile."alacritty/alacritty.yml".text =
     # https://discourse.nixos.org/t/how-to-write-single-backslash/8604/2
     builtins.replaceStrings [ "\\\\" ] [ "\\" ] (builtins.toJSON (pkgs.lib.recursiveUpdate alacritty.shared {
-      font = alacritty.fonts.mono // { size = 12; };
+      font = alacritty.fonts.hack // { size = 14; };
 
       window = {
         padding = {
