@@ -44,7 +44,7 @@ function module.run_tests(testname)
 
     local cmd = testname and ("go test -run " .. testname) or "go test"
 
-    local stdio = vim.loop.new_pipe(false)
+    local stdin = vim.loop.new_pipe(false)
     local stdout = vim.loop.new_pipe(false)
     local stderr = vim.loop.new_pipe(false)
 
@@ -54,7 +54,7 @@ function module.run_tests(testname)
     local pid
     handle, pid = vim.loop.spawn("go", {
             args = {"test"},
-            stdio = {stdio, stdout, stderr}
+            stdio = {stdin, stdout, stderr}
         }, 
         vim.schedule_wrap(function()
             stdout:read_stop()
@@ -95,4 +95,71 @@ function module.run_tests(testname)
     vim.cmd("silent cd " .. cwd)
 end
 
-    return module
+local function has_non_whitespace(str)
+  return str:match("[^%s]")
+end
+
+local function fill_qflist(lines, makeprg, efm)
+  vim.fn.setqflist({}, "a", {
+    title = makeprg,
+    lines = vim.tbl_filter(has_non_whitespace, lines),
+    efm = efm
+  })
+
+  vim.api.nvim_command("doautocmd QuickFixCmdPost")
+end
+
+local function onread(makeprg, efm)
+    return function(err, data)
+      if err then
+        local echoerr = "echoerr '%s'"
+        vim.api.nvim_command(echoerr:format(err))
+      elseif data then
+        local lines = vim.split(data, "\n")
+        fill_qflist(lines, makeprg, efm)
+      end
+  end
+end
+
+function module.make(target)
+  local makeprg = vim.bo.makeprg
+  local efm = vim.bo.errorformat
+
+  local cmd = vim.fn.expandcmd(makeprg)
+  local program, args = string.match(cmd, "([^%s]+)%s+(.+)")
+
+  if target ~= nil and target ~= "" then
+      args = args .. " " .. target
+  end
+
+  local stdin = vim.loop.new_pipe(false)
+  local stdout = vim.loop.new_pipe(false)
+  local stderr = vim.loop.new_pipe(false)
+
+  handle, pid = vim.loop.spawn(program, {
+    args = vim.split(args, ' '),
+    stdio = { stdin, stdout, stderr }
+  },
+  function(code, signal)
+    stdout:read_stop()
+    stdout:close()
+    stderr:read_stop()
+    stderr:close()
+    stdin:close()
+    handle:close()
+  end
+  )
+
+  if vim.fn.getqflist({title = ''}).title == makeprg then
+    vim.fn.setqflist({}, "r")
+  else
+    vim.fn.setqflist({}, " ")
+  end
+
+  local onread_ = onread(makeprg, efm)
+
+  stderr:read_start(vim.schedule_wrap(onread_))
+  stdout:read_start(vim.schedule_wrap(onread_))
+end
+
+return module

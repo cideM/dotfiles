@@ -26,12 +26,21 @@ augroup Goupdate
   autocmd BufWritePre <buffer> Goimport
 augroup END
 
+augroup LSP
+    autocmd!
+    autocmd CursorHold <buffer> lua vim.lsp.util.show_line_diagnostics()
+    autocmd CursorHoldI <buffer> lua vim.lsp.util.show_line_diagnostics()
+augroup END
+
 " https://stackoverflow.com/questions/40945136/stop-highlighting-trailing-whitespace-for-go-files-in-vim
 let g:go_highlight_trailing_whitespace_error=0
+
+command! -buffer GolangCILint :lgetexpr system('golangci-lint run --print-issued-lines=false')
+nnoremap <buffer> <localleader>L :GolangCILint<cr>
 
 nnoremap <silent> <localleader>tw :call goutils#RunTestAtCursor()<CR>
 nnoremap <silent> <localleader>ta :call goutils#RunAllTests()<CR>
 " make current directory
 nnoremap <silent> <localleader>mm :execute 'make ' . expand('%:p:h')<CR>
 " make entire project
-nnoremap <silent> <localleader>mp :make ./...<CR>
+nnoremap <silent> <localleader>mp :call goutils#MakeprgAsyncProject()<CR>

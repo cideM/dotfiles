@@ -1,150 +1,150 @@
 {
     "Apprentice": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:romainl/Apprentice",
         "rev": "dec7ab6de48d9e4b15bf0c1680cc993285ba36a4",
         "type": "git"
     },
     "cocopon/iceberg.vim": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:cocopon/iceberg.vim",
         "rev": "203d56849325fb0420587c9951859a755798aea3",
         "type": "git"
     },
     "conjure": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:Olical/conjure",
         "rev": "566915cc545edd68bab2ad76eb59dfa43648a8b3",
         "type": "git"
     },
     "edge-theme": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:sainnhe/edge.git",
         "rev": "8e2fadda1a9e7b6ce4f8bd2273e93e65c8bdf731",
         "type": "git"
     },
     "nord-vim": {
-        "ref": "develop",
+        "branch": "develop",
         "repo": "git@github.com:arcticicestudio/nord-vim",
         "rev": "b3c46c8793f1f774a22011e70f9019decc4462ed",
         "type": "git"
     },
     "nvim-lsp": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:neovim/nvim-lspconfig.git",
         "rev": "60133c47e0fd82556d7ca092546ebfa8d047466e",
         "type": "git"
     },
     "nvim-treesitter": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:nvim-treesitter/nvim-treesitter.git",
-        "rev": "2fe1f2877e4c4160a40b63cf8e2ffceaed397d12",
+        "rev": "b4abf6b07d1c4b99dd12118d16f72ffdc438fb53",
         "type": "git"
     },
     "onehalf": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:sonph/onehalf.git",
         "rev": "3aa42a39ed3cddde0c53976a700b81b8a7067890",
         "type": "git"
     },
     "parinfer": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:eraserhd/parinfer-rust.git",
-        "rev": "33cc52be147a5d56a802cb7f975d67afbe162716",
+        "rev": "d7d1c4f05fcaf72f3b56eccddc94e3f76b0003a3",
         "type": "git"
     },
     "sad": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:hauleth/sad.vim.git",
         "rev": "2f5b33b239a566ffedaa81cee3051bb613482d1e",
         "type": "git"
     },
     "spacevim": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:liuchengxu/space-vim-theme.git",
         "rev": "4790dbba31f678f75af4f4c7a1465008542bd979",
         "type": "git"
     },
     "treesitter-go": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:tree-sitter/tree-sitter-go.git",
         "rev": "34181774b3e86b7801c939c79c7b80a82df91a2b",
         "type": "git"
     },
     "vim-colortemplate": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:lifepillar/vim-colortemplate",
-        "rev": "552b8c0f46d58a8ed1cf0386be13c7fdbe9b75ac",
+        "rev": "d1670a5c1500e9c87b87152fdbf353ae3ac0786a",
         "type": "git"
     },
     "vim-cool": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:romainl/vim-cool",
         "rev": "27ad4ecf7532b750fadca9f36e1c5498fc225af2",
         "type": "git"
     },
     "vim-fern": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:lambdalisue/fern.vim.git",
         "rev": "d08fece0da264e9db65ab46940645484a782a78a",
         "type": "git"
     },
     "vim-js": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:yuezk/vim-js.git",
         "rev": "5e14eb65d6e898658b95001581473326309a23fd",
         "type": "git"
     },
     "vim-lua": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:tbastos/vim-lua.git",
         "rev": "fa810f85437525bcea0fc4ff22c634935721d86d",
         "type": "git"
     },
     "vim-markdown-folding": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:masukomi/vim-markdown-folding",
         "rev": "3f35acfb753cc9ea22182400b075c5b6e896ad71",
         "type": "git"
     },
     "vim-matchup": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:andymass/vim-matchup",
         "rev": "9e0b6f37113e21fecd42ef6b04762de4aafe2cf3",
         "type": "git"
     },
     "vim-one": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:rakr/vim-one",
         "rev": "f8bcef1968f01842d92abbcb098ec28ad3931ea5",
         "type": "git"
     },
     "vim-one-colors": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:rakr/vim-one.git",
         "rev": "f8bcef1968f01842d92abbcb098ec28ad3931ea5",
         "type": "git"
     },
     "vim-qf": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:romainl/vim-qf",
         "rev": "208d1cdafb3fdbdb91ac5a2aaadd1f0e68f619ba",
         "type": "git"
     },
     "vim-scratch": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:mtth/scratch.vim.git",
         "rev": "6df617ebc0695bd9839a4fe365a08df13d24bc05",
         "type": "git"
     },
     "vim-visual-split": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:wellle/visual-split.vim.git",
         "rev": "423a25911b3e8da04a28d29f205e1059a06e6afa",
         "type": "git"
     },
     "yui": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:cidem/yui",
         "rev": "7c6936cfc989cc14a5b2c2314337066093acb178",
         "type": "git"
