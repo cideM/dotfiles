@@ -34,7 +34,6 @@ As much as possible is managed through Nix and Home Manager (HM) but especially 
 ## Things That Don't Work So Well
 
 -   Visual Studio Code (VSC) when installed through Nix requires [patching](https://discourse.nixos.org/t/vs-code-liveshare/7022) for the Liveshare feature to work
-    -   `clj-kondo` for VSC requires `openjdk` and it obviously only picks it up under a non-nix path -> `brew install openjdk`. Visual Studio Code is generally best installed through the native package manager
     -   [ ] https://github.com/MicrosoftDocs/live-share/issues/3501
     -   [ ] https://github.com/NixOS/nixpkgs/issues/41189
 -   Alacritty doesn't work with OpenGL on **Arch**:
@@ -47,12 +46,4 @@ As much as possible is managed through Nix and Home Manager (HM) but especially 
 -   Git when installed through HM on MacOS uses Linux Git which doesn't understand `use_keychain` -> `brew install git`
     -   [ ] https://github.com/NixOS/nixpkgs/issues/62353
 -   [ ] Desktop files aren't picked up on Arch GNOME. Not sure why or rather I have no idea how to add the relevant paths to Gnome
--   I don't know how to type a single `\` right now
-    -   [x] https://discourse.nixos.org/t/how-to-write-single-backslash/8604
-
-## TODO
-
--   [x] Replace `vim-polyglot` with individual plugins
--   [x] Clean up init.vim
--   [ ] Try using firefox through Nix
--   [ ] Try using Alacritty through Nix on MacOS
+    - https://github.com/nix-community/home-manager/issues/1439
