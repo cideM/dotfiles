@@ -1,24 +1,24 @@
 {
     "clj-deps": {
-        "ref": "live",
+        "branch": "live",
         "repo": "git@github.com:practicalli/clojure-deps-edn.git",
         "rev": "46d48e5fb814fd8da9c233d5c6cf83bc33358bd8",
         "type": "git"
     },
     "fish-journal": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:cideM/fish-journal.git",
         "rev": "35f1e634c586d797b4871d22ae56b404a291bfa2",
         "type": "git"
     },
     "fish-nix-env": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:lilyball/nix-env.fish.git",
         "rev": "c239a69122c88797b34e3721659b2ba5060ca7e7",
         "type": "git"
     },
     "fish-notes": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:cideM/fish-notes.git",
         "rev": "28af0ecca8dfa67b8b334c01fe11c20c9b0a7302",
         "type": "git"
@@ -32,9 +32,9 @@
         "version": "2020.2"
     },
     "neovim": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:neovim/neovim",
-        "rev": "f34eeba2d85b4382d7504e1f3e12a7afb0788c1d",
+        "rev": "4a996bc431163b2a7b8e4bf3351d862887a78f83",
         "type": "git"
     },
     "niv": {
@@ -43,10 +43,10 @@
         "homepage": "https://github.com/nmattia/niv",
         "owner": "nmattia",
         "repo": "niv",
-        "rev": "dd13098d01eaa6be68237e7e38f96782b0480755",
-        "sha256": "1cfjdbsn0219fjzam1k7nqzkz8fb1ypab50rhyj026qbklqq2kvq",
+        "rev": "29ddaaf4e099c3ac0647f5b652469dfc79cd3b53",
+        "sha256": "1va6myp07gkspgxfch8z3rs9nyvys6jmgzkys6a2c4j09qxp1bs0",
         "type": "tarball",
-        "url": "https://github.com/nmattia/niv/archive/dd13098d01eaa6be68237e7e38f96782b0480755.tar.gz",
+        "url": "https://github.com/nmattia/niv/archive/29ddaaf4e099c3ac0647f5b652469dfc79cd3b53.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixos-20.03": {
@@ -55,27 +55,26 @@
         "homepage": null,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e82b1de75a195856945cadff4f40b7bea9530f67",
-        "sha256": "1l3pq4w5xcdwbj6pdsxkq8spacy91ds28f7svgcsc836v959jcv7",
+        "rev": "c8561e5c0a677c001d86d6c170a118b68c422a5d",
+        "sha256": "1hnd88h5j1vfdz3447nmh2vija8ywxdm1q263mx8b99p8kh7lrap",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/e82b1de75a195856945cadff4f40b7bea9530f67.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/c8561e5c0a677c001d86d6c170a118b68c422a5d.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
         "branch": "nixpkgs-unstable",
-        "ref": "master",
         "repo": "git@github.com:NixOS/nixpkgs.git",
-        "rev": "f1325cdfe7da80f809c4c6f6d22a4d1a22c7422e",
+        "rev": "72b9660dc18ba347f7cd41a9504fc181a6d87dc3",
         "type": "git"
     },
     "pandoc-template-eisvogel": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:Wandmalfarbe/pandoc-latex-template.git",
-        "rev": "2b989366b546d9ae5851739f6fb67b10060965f4",
+        "rev": "e6e5890494607458f79ec9a5100d7ac7fd3e9b98",
         "type": "git"
     },
     "pandoc-template-github": {
-        "ref": "master",
+        "branch": "master",
         "repo": "git@github.com:tajmone/pandoc-goodies.git",
         "rev": "c7963da8590c2815d733ddf194d82d950ba94648",
         "type": "git"

@@ -14,7 +14,7 @@
     "conjure": {
         "branch": "master",
         "repo": "git@github.com:Olical/conjure",
-        "rev": "566915cc545edd68bab2ad76eb59dfa43648a8b3",
+        "rev": "a9431410d74f2281ae626727342a5d23d4a12552",
         "type": "git"
     },
     "edge-theme": {
@@ -38,7 +38,7 @@
     "nvim-treesitter": {
         "branch": "master",
         "repo": "git@github.com:nvim-treesitter/nvim-treesitter.git",
-        "rev": "b4abf6b07d1c4b99dd12118d16f72ffdc438fb53",
+        "rev": "98c12ec23a6df2f2f505304b61c4b2eefc0a568f",
         "type": "git"
     },
     "onehalf": {
@@ -68,13 +68,13 @@
     "treesitter-go": {
         "branch": "master",
         "repo": "git@github.com:tree-sitter/tree-sitter-go.git",
-        "rev": "34181774b3e86b7801c939c79c7b80a82df91a2b",
+        "rev": "aab5d65edee6195a844e75f44de6cc45dc6606d3",
         "type": "git"
     },
     "vim-colortemplate": {
         "branch": "master",
         "repo": "git@github.com:lifepillar/vim-colortemplate",
-        "rev": "d1670a5c1500e9c87b87152fdbf353ae3ac0786a",
+        "rev": "e233f443f133b2b47aa445decf9893b9bcbb61cc",
         "type": "git"
     },
     "vim-cool": {
@@ -86,7 +86,7 @@
     "vim-fern": {
         "branch": "master",
         "repo": "git@github.com:lambdalisue/fern.vim.git",
-        "rev": "d08fece0da264e9db65ab46940645484a782a78a",
+        "rev": "c379b31e2894356eb1dfdf59239c8c4abd7f0ccf",
         "type": "git"
     },
     "vim-js": {
@@ -128,7 +128,7 @@
     "vim-qf": {
         "branch": "master",
         "repo": "git@github.com:romainl/vim-qf",
-        "rev": "208d1cdafb3fdbdb91ac5a2aaadd1f0e68f619ba",
+        "rev": "d5d7bb2e230b2098fdb2b28cfaa1b48a83d11a69",
         "type": "git"
     },
     "vim-scratch": {
