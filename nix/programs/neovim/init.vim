@@ -75,7 +75,11 @@ augroup END
 
 function! FormatBuffer()
   let view = winsaveview()
-  normal ggVGgq
+  " https://vim.fandom.com/wiki/Restore_the_cursor_position_after_undoing_text_change_made_by_a_script
+  normal ix
+  normal x
+  try | silent undojoin | catch | endtry
+  keepjumps normal ggVGgq
   call winrestview(view)
 endfunction
 
