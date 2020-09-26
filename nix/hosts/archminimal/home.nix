@@ -29,7 +29,9 @@ in
     programs.tmux.config
   ];
 
-  home.packages = with pkgs; shared.pkgs ++ shared.pkgsLinux;
+  home.packages = with pkgs; shared.pkgs ++ shared.pkgsLinux ++ [
+    slack
+  ];
 
   nixpkgs.overlays = [
     (import ../../programs/neovim/overlay.nix { inherit pkgs sources; })
