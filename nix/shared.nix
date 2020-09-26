@@ -30,9 +30,9 @@ let
     gitAndTools.hub
     gnugrep
     gnupg
+    golangci-lint
     google-cloud-sdk
     gopls
-    golangci-lint
     gzip
     hack-font
     haskellPackages.brittany
@@ -77,6 +77,7 @@ let
     weechat
     wget
     yamllint
+    ytop
   ];
 
   sharedLinux = with pkgs; [
