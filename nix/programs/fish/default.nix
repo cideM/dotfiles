@@ -12,22 +12,11 @@ let
   set -x FZF_ALT_C_OPTS "--preview 'tree -a -C {} | head -200'"
   set -x FZF_CTRL_T_COMMAND '${pkgs.fd}/bin/fd -L $dir --type f 2> /dev/null'
 
-  set -x SHELL ${pkgs.fish}/bin/fish
-
   # https://github.com/fish-shell/fish-shell/issues/3412
   # https://github.com/fish-shell/fish-shell/issues/5313
   set -u fish_pager_color_prefix 'red' '--underline'
 
   set -x BAT_THEME "Monokai Extended Light"
-
-  set -x LANG en_US.UTF-8
-  set -x LC_ALL en_US.UTF-8
-  set -x LC_CTYPE en_US.UTF-8
-
-  set -x GO111MODULE on
-
-  set -x VISUAL nvim
-  set -x EDITOR nvim
 
   # https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
   # XDG_RUNTIME_DIR should be set by pam_systemd

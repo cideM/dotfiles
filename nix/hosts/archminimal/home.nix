@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 let
   shared = import ../../shared.nix;
 
@@ -49,10 +49,6 @@ in
     XMODIFIERS = "@im=fcitx";
   };
 
-  home.file.".profile".text = ''
-    export XDG_DATA_DIRS="/home/cloud/.nix-profile/share:$XDG_DATA_DIRS"
-  '';
-
   programs.alacritty.enable = false;
   xdg.configFile."alacritty/alacritty.yml".text =
     builtins.replaceStrings [ "\\\\" ] [ "\\" ] (builtins.toJSON (alacritty.shared // {
@@ -68,5 +64,11 @@ in
   # https://gist.github.com/peti/2c818d6cb49b0b0f2fd7c300f8386bc3
   home.sessionVariables = {
     LOCALE_ARCHIVE = "${pkgs.glibcLocales}/lib/locale/locale-archive";
+    LANG = "en_US.UTF-8";
+    LC_ALL = "en_US.UTF-8";
+    LC_CTYPE = "en_US.UTF-8";
+    VISUAL = "nvim";
+    EDITOR = "nvim";
+    SHELL = "${pkgs.fish}/bin/fish";
   };
 }

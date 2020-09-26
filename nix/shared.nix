@@ -106,7 +106,7 @@ let
     };
 
     # https://github.com/rycee/home-manager/issues/432
-    home.extraOutputsToInstall = [ "man" "share" "icons" "doc" ];
+    home.extraOutputsToInstall = [ "info" "man" "share" "icons" "doc" ];
 
     home.stateVersion = "20.03";
 
