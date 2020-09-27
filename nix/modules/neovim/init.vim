@@ -73,6 +73,11 @@ augroup SetPath
     autocmd BufEnter,DirChanged * call pathutils#SetPath()
 augroup END
 
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+augroup END
+
 function! FormatBuffer()
   let view = winsaveview()
   " https://vim.fandom.com/wiki/Restore_the_cursor_position_after_undoing_text_change_made_by_a_script

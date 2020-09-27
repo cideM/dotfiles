@@ -110,6 +110,7 @@ in
             pkgs.vimPlugins.limelight-vim
             pkgs.vimPlugins.vim-mundo
             pkgs.vimPlugins.goyo-vim
+            pkgs.vimPlugins.colorizer
             plugins.sad
             plugins.vim-scratch
             plugins.vim-colortemplate
@@ -121,6 +122,7 @@ in
 
             # Git
             pkgs.vimPlugins.vim-fugitive
+            pkgs.vimPlugins.vim-signify
             pkgs.vimPlugins.gv-vim
             pkgs.vimPlugins.vim-rhubarb
             pkgs.vimPlugins.vim-gist
