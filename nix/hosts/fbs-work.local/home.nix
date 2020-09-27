@@ -78,4 +78,6 @@
         required = true
         clean = git-lfs clean -- %f
   '';
+
+  fonts.fontconfig.enable = true;
 }

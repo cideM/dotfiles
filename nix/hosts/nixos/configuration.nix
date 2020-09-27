@@ -2,8 +2,19 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, operatorMono, ... }:
+let
+  operatorMonoFontPkg = pkgs.stdenv.mkDerivation {
+    name = "operator-mono-font";
+    src = operatorMono;
+    buildPhases = [ "installPhase" ];
+    installPhase = ''
+      mkdir -p $out/share/fonts/operator-mono
+      cp -R "$src" "$out/share/fonts/operator-mono"
+    '';
+  };
 
+in
 {
 
   imports =
@@ -25,7 +36,8 @@
   networking.useDHCP = false;
 
   fonts = {
-    enableFontDir = true;
+    enableFontDir = false;
+    fonts = [ operatorMonoFontPkg ];
   };
 
   # Configure network proxy if necessary

@@ -4,14 +4,12 @@ let
 
 in
 {
-  programs.vscode.enable = true;
-
   programs.vscode = {
     enable = true;
 
-    package = pkgs.vscode.override {
+    package = (pkgs.vscode.override {
       isInsiders = true;
-    }.overrideAttrs
+    }).overrideAttrs
       (_: rec {
         src = sources.vscode;
       });

@@ -1,16 +1,5 @@
 { pkgs, ... }:
-let
-  operatorMono = pkgs.stdenv.mkDerivation {
-    name = "operator-mono-font";
-    src = builtins.path { name = "operator-mono-src"; path = (builtins.getEnv "HOME") + "/OperatorMono"; };
-    buildPhases = [ "installPhase" ];
-    installPhase = ''
-      mkdir -p $out/share/fonts/operator-mono
-      cp -R "$src" "$out/share/fonts/operator-mono"
-    '';
-  };
 
-in
 {
   imports = [
     (import ../../modules/alacritty.nix)
@@ -35,7 +24,6 @@ in
     spotify
     zoom-us
     slack
-    # operatorMono
     jetbrains.webstorm
     jetbrains.clion
     jetbrains.rider

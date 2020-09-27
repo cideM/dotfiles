@@ -27,6 +27,4 @@
   home.extraOutputsToInstall = [ "info" "man" "share" "icons" "doc" ];
 
   home.stateVersion = "20.03";
-
-  fonts.fontconfig.enable = true;
 }

@@ -1,11 +1,15 @@
-# This does not work right now
 {
   description = "Nix. All. The. Things.";
 
   inputs = {
     home-manager = {
-      url = "github:rycee/home-manager";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "/unstable";
+    };
+
+    operatorMono = {
+      url = "/home/tifa/OperatorMono";
+      flake = false;
     };
 
     # nixpkgs = {
@@ -17,9 +21,12 @@
     };
   };
 
-  outputs = { self, unstable, home-manager }@inputs:
+  outputs = { self, unstable, home-manager, operatorMono }:
     let
-      pkgs = import unstable { };
+      pkgs = import unstable {
+        system = "x86_64-linux";
+        config = { allowUnfree = true; };
+      };
 
     in
     {
@@ -28,7 +35,7 @@
           system = "x86_64-linux";
 
           specialArgs = {
-            inherit pkgs;
+            inherit pkgs operatorMono;
           };
 
           # https://github.com/nix-community/home-manager
@@ -39,8 +46,8 @@
           hm-nixos-as-super = { config, ... }: {
             # Submodules have merge semantics, making it possible to amend
             # the `home-manager.users` submodule for additional functionality.
-            options.home-manager.users = nixpkgs.lib.mkOption {
-              type = nixpkgs.lib.types.attrsOf (nixpkgs.lib.types.submoduleWith {
+            options.home-manager.users = unstable.lib.mkOption {
+              type = unstable.lib.types.attrsOf (unstable.lib.types.submoduleWith {
                 modules = [ ];
                 # Makes specialArgs available to Home Manager modules as well.
                 specialArgs = specialArgs // {
@@ -57,7 +64,7 @@
             ./nix/hosts/nixos/configuration.nix
           ];
         in
-        nixpkgs.lib.nixosSystem { inherit system modules specialArgs; };
+        unstable.lib.nixosSystem { inherit system modules specialArgs; };
 
     };
 }

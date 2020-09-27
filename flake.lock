@@ -9,37 +9,33 @@
       "locked": {
         "lastModified": 1600992519,
         "narHash": "sha256-Y9wlciB/g1QUquVpTZXQq23I5r8qJ4nZArfczTYBo24=",
-        "owner": "rycee",
+        "owner": "nix-community",
         "repo": "home-manager",
         "rev": "abfb4cde51856dbee909f373b59cd941f51c2170",
         "type": "github"
       },
       "original": {
-        "owner": "rycee",
+        "owner": "nix-community",
         "repo": "home-manager",
         "type": "github"
       }
     },
-    "nixpkgs": {
+    "operatorMono": {
+      "flake": false,
       "locked": {
-        "lastModified": 1600952868,
-        "narHash": "sha256-U1HfLLrV7gs2u0hU1YjU4aDGbTC1uYtxyNu2TWXKXMY=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "5659cb448e9b615d642c5fe52779c2223e72f7eb",
-        "type": "github"
+        "narHash": "sha256-JpcVhbFCI7yuXkyo/3cN6QhFGGIfS6ew4Tf879et5pY=",
+        "path": "/home/tifa/OperatorMono",
+        "type": "path"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "nixos-20.03",
-        "repo": "nixpkgs",
-        "type": "github"
+        "path": "/home/tifa/OperatorMono",
+        "type": "path"
       }
     },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs",
+        "operatorMono": "operatorMono",
         "unstable": "unstable"
       }
     },

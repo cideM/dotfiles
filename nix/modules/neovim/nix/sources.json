@@ -1,157 +1,157 @@
 {
     "Apprentice": {
         "branch": "master",
-        "repo": "git@github.com:romainl/Apprentice",
+        "repo": "ssh://git@github.com/romainl/Apprentice",
         "rev": "dec7ab6de48d9e4b15bf0c1680cc993285ba36a4",
         "type": "git"
     },
     "cocopon/iceberg.vim": {
         "branch": "master",
-        "repo": "git@github.com:cocopon/iceberg.vim",
+        "repo": "ssh://git@github.com/cocopon/iceberg.vim",
         "rev": "203d56849325fb0420587c9951859a755798aea3",
         "type": "git"
     },
     "conjure": {
         "branch": "master",
-        "repo": "git@github.com:Olical/conjure",
+        "repo": "ssh://git@github.com/Olical/conjure",
         "rev": "a9431410d74f2281ae626727342a5d23d4a12552",
         "type": "git"
     },
     "edge-theme": {
         "branch": "master",
-        "repo": "git@github.com:sainnhe/edge.git",
+        "repo": "ssh://git@github.com/sainnhe/edge.git",
         "rev": "8e2fadda1a9e7b6ce4f8bd2273e93e65c8bdf731",
         "type": "git"
     },
     "neovim": {
         "branch": "master",
-        "repo": "git@github.com:neovim/neovim",
+        "repo": "ssh://git@github.com/neovim/neovim",
         "rev": "430ad9ab20b97b4c9a60732117e618bbe5236765",
         "type": "git"
     },
     "nord-vim": {
         "branch": "develop",
-        "repo": "git@github.com:arcticicestudio/nord-vim",
+        "repo": "ssh://git@github.com/arcticicestudio/nord-vim",
         "rev": "b3c46c8793f1f774a22011e70f9019decc4462ed",
         "type": "git"
     },
     "nvim-lsp": {
         "branch": "master",
-        "repo": "git@github.com:neovim/nvim-lspconfig.git",
+        "repo": "ssh://git@github.com/neovim/nvim-lspconfig.git",
         "rev": "60133c47e0fd82556d7ca092546ebfa8d047466e",
         "type": "git"
     },
     "nvim-treesitter": {
         "branch": "master",
-        "repo": "git@github.com:nvim-treesitter/nvim-treesitter.git",
+        "repo": "ssh://git@github.com/nvim-treesitter/nvim-treesitter.git",
         "rev": "18fca90457ba46ed99d05c2218736c63c0fb41cd",
         "type": "git"
     },
     "onehalf": {
         "branch": "master",
-        "repo": "git@github.com:sonph/onehalf.git",
+        "repo": "ssh://git@github.com/sonph/onehalf.git",
         "rev": "3aa42a39ed3cddde0c53976a700b81b8a7067890",
         "type": "git"
     },
     "parinfer": {
         "branch": "master",
-        "repo": "git@github.com:eraserhd/parinfer-rust.git",
+        "repo": "ssh://git@github.com/eraserhd/parinfer-rust.git",
         "rev": "d7d1c4f05fcaf72f3b56eccddc94e3f76b0003a3",
         "type": "git"
     },
     "sad": {
         "branch": "master",
-        "repo": "git@github.com:hauleth/sad.vim.git",
+        "repo": "ssh://git@github.com/hauleth/sad.vim.git",
         "rev": "2f5b33b239a566ffedaa81cee3051bb613482d1e",
         "type": "git"
     },
     "spacevim": {
         "branch": "master",
-        "repo": "git@github.com:liuchengxu/space-vim-theme.git",
+        "repo": "ssh://git@github.com/liuchengxu/space-vim-theme.git",
         "rev": "4790dbba31f678f75af4f4c7a1465008542bd979",
         "type": "git"
     },
     "treesitter-go": {
         "branch": "master",
-        "repo": "git@github.com:tree-sitter/tree-sitter-go.git",
+        "repo": "ssh://git@github.com/tree-sitter/tree-sitter-go.git",
         "rev": "aab5d65edee6195a844e75f44de6cc45dc6606d3",
         "type": "git"
     },
     "vim-colortemplate": {
         "branch": "master",
-        "repo": "git@github.com:lifepillar/vim-colortemplate",
+        "repo": "ssh://git@github.com/lifepillar/vim-colortemplate",
         "rev": "d122d85576677fccfb1223f93246e0d306f100ba",
         "type": "git"
     },
     "vim-cool": {
         "branch": "master",
-        "repo": "git@github.com:romainl/vim-cool",
+        "repo": "ssh://git@github.com/romainl/vim-cool",
         "rev": "27ad4ecf7532b750fadca9f36e1c5498fc225af2",
         "type": "git"
     },
     "vim-fern": {
         "branch": "master",
-        "repo": "git@github.com:lambdalisue/fern.vim.git",
+        "repo": "ssh://git@github.com/lambdalisue/fern.vim.git",
         "rev": "5cd3e31465754dbf459b5622a8a44e42ae61acca",
         "type": "git"
     },
     "vim-js": {
         "branch": "master",
-        "repo": "git@github.com:yuezk/vim-js.git",
+        "repo": "ssh://git@github.com/yuezk/vim-js.git",
         "rev": "5e14eb65d6e898658b95001581473326309a23fd",
         "type": "git"
     },
     "vim-lua": {
         "branch": "master",
-        "repo": "git@github.com:tbastos/vim-lua.git",
+        "repo": "ssh://git@github.com/tbastos/vim-lua.git",
         "rev": "fa810f85437525bcea0fc4ff22c634935721d86d",
         "type": "git"
     },
     "vim-markdown-folding": {
         "branch": "master",
-        "repo": "git@github.com:masukomi/vim-markdown-folding",
+        "repo": "ssh://git@github.com/masukomi/vim-markdown-folding",
         "rev": "3f35acfb753cc9ea22182400b075c5b6e896ad71",
         "type": "git"
     },
     "vim-matchup": {
         "branch": "master",
-        "repo": "git@github.com:andymass/vim-matchup",
+        "repo": "ssh://git@github.com/andymass/vim-matchup",
         "rev": "9e0b6f37113e21fecd42ef6b04762de4aafe2cf3",
         "type": "git"
     },
     "vim-one": {
         "branch": "master",
-        "repo": "git@github.com:rakr/vim-one",
+        "repo": "ssh://git@github.com/rakr/vim-one",
         "rev": "f8bcef1968f01842d92abbcb098ec28ad3931ea5",
         "type": "git"
     },
     "vim-one-colors": {
         "branch": "master",
-        "repo": "git@github.com:rakr/vim-one.git",
+        "repo": "ssh://git@github.com/rakr/vim-one.git",
         "rev": "f8bcef1968f01842d92abbcb098ec28ad3931ea5",
         "type": "git"
     },
     "vim-qf": {
         "branch": "master",
-        "repo": "git@github.com:romainl/vim-qf",
+        "repo": "ssh://git@github.com/romainl/vim-qf",
         "rev": "d5d7bb2e230b2098fdb2b28cfaa1b48a83d11a69",
         "type": "git"
     },
     "vim-scratch": {
         "branch": "master",
-        "repo": "git@github.com:mtth/scratch.vim.git",
+        "repo": "ssh://git@github.com/mtth/scratch.vim.git",
         "rev": "6df617ebc0695bd9839a4fe365a08df13d24bc05",
         "type": "git"
     },
     "vim-visual-split": {
         "branch": "master",
-        "repo": "git@github.com:wellle/visual-split.vim.git",
+        "repo": "ssh://git@github.com/wellle/visual-split.vim.git",
         "rev": "423a25911b3e8da04a28d29f205e1059a06e6afa",
         "type": "git"
     },
     "yui": {
         "branch": "master",
-        "repo": "git@github.com:cidem/yui",
+        "repo": "ssh://git@github.com/cidem/yui",
         "rev": "7c6936cfc989cc14a5b2c2314337066093acb178",
         "type": "git"
     }
