@@ -1,7 +1,5 @@
-{ ... }:
+{ pkgs, ... }:
 let
-  pkgsStable = import <nixos-20.03> { };
-
   operatorMono = pkgs.stdenv.mkDerivation {
     name = "operator-mono-font";
     src = builtins.path { name = "operator-mono-src"; path = (builtins.getEnv "HOME") + "/OperatorMono"; };
@@ -33,13 +31,11 @@ in
   ];
 
   home.packages = with pkgs; [
-    pkgsStable.insomnia
-    # If this doesn't match the system then things break because of some audio
-    # libs it seems
-    pkgsStable.spotify
-    pkgsStable.zoom-us
-    pkgsStable.slack
-    operatorMono
+    insomnia
+    spotify
+    zoom-us
+    slack
+    # operatorMono
     jetbrains.webstorm
     jetbrains.clion
     jetbrains.rider

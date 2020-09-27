@@ -5,9 +5,11 @@
 { config, pkgs, ... }:
 
 {
+
   imports =
-    [ # Include the results of the hardware scan.
-      /etc/nixos/hardware-configuration.nix
+    [
+      # Include the results of the hardware scan.
+      ./hardware-configuration.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -28,7 +30,7 @@
 
   # Configure network proxy if necessary
   networking.hostName = "nixos"; # Define your hostname.
-  networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
+  networking.wireless.enable = false; # Enables wireless support via wpa_supplicant.
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -48,6 +50,13 @@
 
   nixpkgs.config = {
     allowUnfree = true;
+  };
+
+  nix = {
+    package = pkgs.nixUnstable;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
   };
 
   # List packages installed in system profile. To search, run:
@@ -81,7 +90,7 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
-  xdg.mime.enable = true; 
+  xdg.mime.enable = true;
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -102,6 +111,8 @@
     extraGroups = [ "wheel" "networkmanager" "docker" ]; # Enable ‘sudo’ for the user.
   };
 
+  home-manager.users.tifa = ./home.nix;
+
   virtualisation.docker.enable = true;
 
   # This value determines the NixOS release from which the default
@@ -113,4 +124,3 @@
   system.stateVersion = "20.03"; # Did you read the comment?
 
 }
-
