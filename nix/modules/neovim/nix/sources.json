@@ -77,6 +77,12 @@
         "rev": "aab5d65edee6195a844e75f44de6cc45dc6606d3",
         "type": "git"
     },
+    "treesitter-yaml": {
+        "branch": "master",
+        "repo": "ssh://git@github.com/ikatyang/tree-sitter-yaml",
+        "rev": "b26d567070cfb40cb3138a57cf12a4e2e3c854ef",
+        "type": "git"
+    },
     "vim-colortemplate": {
         "branch": "master",
         "repo": "ssh://git@github.com/lifepillar/vim-colortemplate",

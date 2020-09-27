@@ -115,6 +115,28 @@ let
     src = vimPluginsSources.vim-lua;
   });
 
+  # TODO: Add all from https://github.com/nvim-treesitter/nvim-treesitter/blob/master/lua/nvim-treesitter/parsers.lua
+  # TODO: Add them to nixpkgs once I've figured out how
+  treesitterGo = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    version = "latest";
+    name = "tree-sitter-go-${version}";
+    src = vimPluginsSources.treesitter-go;
+    buildPhase = ''
+      mkdir -p parser/
+      cc -o parser/go.so -I./src -shared -Os -lstdc++ src/parser.c
+    '';
+  };
+
+  treesitterYaml = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    version = "latest";
+    name = "tree-sitter-yaml-${version}";
+    src = vimPluginsSources.treesitter-yaml;
+    buildPhase = ''
+      mkdir -p parser/
+      cc -o parser/yaml.so -I./src -shared -Os -lstdc++ src/parser.c src/scanner.cc
+    '';
+  };
+
 in
 {
   inherit
@@ -138,5 +160,7 @@ in
     vim-scratch
     vim-visual-split
     nvim-treesitter
+    treesitterGo
+    treesitterYaml
     yui;
 }

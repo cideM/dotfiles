@@ -3,18 +3,6 @@
 with lib;
 with types;
 let
-  # TODO: Figure out where to put this
-  sources = import ./nix/sources.nix;
-  treesitterGo = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    version = "latest";
-    name = "tree-sitter-go-${version}";
-    src = sources.treesitter-go;
-    buildPhase = ''
-      mkdir -p parser/
-      cc -o parser/go.so -I./src -shared -Os -lstdc++ src/parser.c
-    '';
-  };
-
   luaLsp = builtins.readFile ./lsp.lua;
 
   treesitter = builtins.readFile ./treesitter.lua;
@@ -89,21 +77,16 @@ in
     xdg.configFile = (
       ftPluginsAttrs // {
         "nvim/lsp.lua".text = luaLsp;
-
         "nvim/treesitter.lua".text = treesitter;
       }
     );
-
-    # xdg.configFile."nvim/lsp.lua".text = luaLsp;
-
-    # xdg.configFile."nvim/treesitter.lua".text = treesitter;
 
     programs.neovim = {
       enable = true;
 
       package = pkgs.neovim-unwrapped.overrideAttrs (oldAttrs: rec {
         version = "master";
-        src = sources.neovim;
+        src = (import ./nix/sources.nix).neovim;
       });
 
       configure = {
@@ -164,8 +147,10 @@ in
             plugins.vim-lua
             pkgs.vimPlugins.yats-vim
             pkgs.vimPlugins.vim-jsx-pretty
+            ## Treesitter
+            plugins.treesitterGo
+            plugins.treesitterYaml
 
-            treesitterGo
           ]
           ++ localPlugins;
 
