@@ -1,7 +1,6 @@
 alacritty
 android-platform-tools
 anki
-background-music
 emacs
 font-hack
 font-iosevka
@@ -10,3 +9,4 @@ font-roboto-mono
 font-source-code-pro
 insomnia
 iterm2-nightly
+texstudio
