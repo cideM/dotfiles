@@ -1,9 +1,7 @@
 { pkgs, ... }:
 
 {
-  # https://gist.github.com/peti/2c818d6cb49b0b0f2fd7c300f8386bc3
   home.sessionVariables = {
-    LOCALE_ARCHIVE = "${pkgs.glibcLocales}/lib/locale/locale-archive";
     LANG = "en_US.UTF-8";
     LC_ALL = "en_US.UTF-8";
     LC_CTYPE = "en_US.UTF-8";

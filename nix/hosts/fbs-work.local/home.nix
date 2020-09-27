@@ -1,12 +1,10 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     (import ../../modules/alacritty.nix)
     (import ../../modules/neovim)
     # https://github.com/NixOS/nixpkgs/issues/62353
     # (import ../../modules/git.nix)
-    (import ../../modules/redshift.nix)
-    (import ../../modules/fcitx.nix)
     (import ../../modules/tmux)
     (import ../../modules/ctags.nix)
     (import ../../modules/clojure)
@@ -15,7 +13,6 @@
     (import ../../modules/sharedPackages.nix)
     (import ../../modules/sharedSettings.nix)
   ];
-
 
   programs.fish.interactiveShellInit = ''
     set -x FISH_NOTES_DIR ~/.local/share/fish_notes
