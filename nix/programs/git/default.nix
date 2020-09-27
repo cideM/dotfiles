@@ -26,6 +26,8 @@
     };
 
     extraConfig = {
+      github.user = "yuuki@protonmail.com";
+
       push = {
         default = "simple";
       };

@@ -119,6 +119,7 @@ in
           pkgs.vimPlugins.vim-fugitive
           pkgs.vimPlugins.gv-vim
           pkgs.vimPlugins.vim-rhubarb
+          pkgs.vimPlugins.vim-gist
 
           # Language Tooling
           plugins.parinfer-rust
