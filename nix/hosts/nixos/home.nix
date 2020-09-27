@@ -1,24 +1,6 @@
 { ... }:
 let
-  shared = import ../../shared.nix;
-
-  pkgs = import sources.nixpkgs {
-    overlays = [
-      (import ../../programs/goland/overlay.nix { inherit pkgs sources; })
-    ];
-  };
-
-  sources = import ../../nix/sources.nix;
-
-  programs = import ../../programs/default.nix;
-
-  fish = programs.fish { inherit pkgs sources; };
-
-  clojure = (import ../../languages/clojure/default.nix) { inherit pkgs sources; };
-
-  pkgs-release = import sources."nixos-20.03" { };
-
-  alacritty = (programs.alacritty { inherit pkgs; });
+  pkgsStable = import <nixos-20.03> { };
 
   operatorMono = pkgs.stdenv.mkDerivation {
     name = "operator-mono-font";
@@ -33,33 +15,32 @@ let
 in
 {
   imports = [
-    (import ../../modules/neovim.nix)
-    clojure.config
-    fish.config
-    programs.ctags
-    (programs.git { inherit pkgs; })
-    (programs.nvim { inherit pkgs sources; })
-    shared.sharedSettings
-    (programs.pandoc { inherit sources; })
-    programs.redshift
-    programs.tmux.config
+    (import ../../modules/alacritty.nix)
+    (import ../../modules/neovim)
+    (import ../../modules/git.nix)
+    (import ../../modules/redshift.nix)
+    (import ../../modules/fcitx.nix)
+    (import ../../modules/tmux)
+    (import ../../modules/ctags.nix)
+    (import ../../modules/clojure)
+    (import ../../modules/pandoc)
+    (import ../../modules/fish)
+    (import ../../modules/sharedPackages.nix)
+    (import ../../modules/sharedPackagesLinux.nix)
+    (import ../../modules/sharedSettings.nix)
+    (import ../../modules/goland)
+    (import ../../modules/vscode)
   ];
 
-  nixpkgs.overlays = [
-    (import ../../programs/neovim/overlay.nix { inherit pkgs sources; })
-    (import ../../programs/vscode/overlay.nix { inherit pkgs sources; })
-  ];
-
-  home.packages = with pkgs; shared.pkgsLinux ++ shared.pkgs ++ [
-    pkgs-release.insomnia
+  home.packages = with pkgs; [
+    pkgsStable.insomnia
     # If this doesn't match the system then things break because of some audio
     # libs it seems
-    pkgs-release.spotify
-    pkgs-release.zoom-us
-    pkgs-release.slack
+    pkgsStable.spotify
+    pkgsStable.zoom-us
+    pkgsStable.slack
     operatorMono
     jetbrains.webstorm
-    jetbrains.goland
     jetbrains.clion
     jetbrains.rider
     anki
@@ -72,13 +53,7 @@ in
   programs.firefox.enable = true;
   programs.firefox.package = pkgs.firefox-devedition-bin;
 
-  programs.vscode.enable = true;
-
   programs.alacritty.enable = true;
-  programs.alacritty.settings = (alacritty.shared // {
-    colors = alacritty.themes.spacemacsLight;
-    font = alacritty.fonts.mono;
-  });
 
   # Just append this to the actual config file with an overlay
   programs.fish.interactiveShellInit = ''
@@ -89,5 +64,4 @@ in
   xdg.mime.enable = true;
 
   services.lorri.enable = true;
-  services.lorri.package = pkgs.lorri;
 }

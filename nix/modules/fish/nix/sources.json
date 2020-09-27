@@ -1,0 +1,32 @@
+{
+    "fish-journal": {
+        "branch": "master",
+        "repo": "git@github.com:cideM/fish-journal.git",
+        "rev": "35f1e634c586d797b4871d22ae56b404a291bfa2",
+        "type": "git"
+    },
+    "fish-nix-env": {
+        "branch": "master",
+        "repo": "git@github.com:lilyball/nix-env.fish.git",
+        "rev": "c239a69122c88797b34e3721659b2ba5060ca7e7",
+        "type": "git"
+    },
+    "fish-notes": {
+        "branch": "master",
+        "repo": "git@github.com:cideM/fish-notes.git",
+        "rev": "28af0ecca8dfa67b8b334c01fe11c20c9b0a7302",
+        "type": "git"
+    },
+    "niv": {
+        "branch": "master",
+        "description": "Easy dependency management for Nix projects",
+        "homepage": "https://github.com/nmattia/niv",
+        "owner": "nmattia",
+        "repo": "niv",
+        "rev": "29ddaaf4e099c3ac0647f5b652469dfc79cd3b53",
+        "sha256": "1va6myp07gkspgxfch8z3rs9nyvys6jmgzkys6a2c4j09qxp1bs0",
+        "type": "tarball",
+        "url": "https://github.com/nmattia/niv/archive/29ddaaf4e099c3ac0647f5b652469dfc79cd3b53.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    }
+}

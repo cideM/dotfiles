@@ -1,0 +1,22 @@
+{
+    "goland": {
+        "name": "goland",
+        "sha256": "09fbk1s6p785rjw6sgnrbl861qk0nmjnb8d6gal3brpyphi46avd",
+        "type": "tarball",
+        "url": "https://download.jetbrains.com/go/goland-2020.2.tar.gz",
+        "url_template": "https://download.jetbrains.com/go/<name>-<version>.tar.gz",
+        "version": "2020.2"
+    },
+    "niv": {
+        "branch": "master",
+        "description": "Easy dependency management for Nix projects",
+        "homepage": "https://github.com/nmattia/niv",
+        "owner": "nmattia",
+        "repo": "niv",
+        "rev": "29ddaaf4e099c3ac0647f5b652469dfc79cd3b53",
+        "sha256": "1va6myp07gkspgxfch8z3rs9nyvys6jmgzkys6a2c4j09qxp1bs0",
+        "type": "tarball",
+        "url": "https://github.com/nmattia/niv/archive/29ddaaf4e099c3ac0647f5b652469dfc79cd3b53.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    }
+}
