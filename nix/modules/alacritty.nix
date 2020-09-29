@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, fontSize ? 12, ... }:
 let
   papercolor = {
     bright = {
@@ -152,7 +152,7 @@ let
       x = 0;
       y = 2;
     };
-    size = 12;
+    size = fontSize;
     use_thin_strokes = true;
   };
 
@@ -181,7 +181,7 @@ let
       x = 0;
       y = 2;
     };
-    size = 12;
+    size = fontSize;
     use_thin_strokes = true;
   };
 
@@ -210,7 +210,7 @@ let
       x = 0;
       y = 2;
     };
-    size = 13;
+    size = fontSize;
     use_thin_strokes = true;
   };
 
