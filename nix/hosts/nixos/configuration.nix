@@ -30,19 +30,18 @@ in
     "vm.max_map_count" = 262144;
   };
 
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = false;
-
   fonts = {
     enableFontDir = false;
     fonts = [ operatorMonoFontPkg ];
   };
 
-  # Configure network proxy if necessary
-  networking.hostName = "nixos"; # Define your hostname.
-  networking.wireless.enable = false; # Enables wireless support via wpa_supplicant.
+  networking = {
+    useDHCP = false;
+    interfaces.wlp7s0.useDHCP = true;
+    hostName = "nixos";
+    wireless.iwd.enable = true;
+    networkmanager.enable = true;
+  };
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -110,9 +109,20 @@ in
   services.xserver.videoDrivers = [ "nvidia" ];
   # services.xserver.xkbOptions = "eurosign:e";
 
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.displayManager.gdm.wayland = false;
-  services.xserver.desktopManager.gnome3.enable = true;
+  services.xserver.displayManager = {
+    defaultSession = "home-manager";
+    lightdm.enable = true;
+  };
+
+  services.xserver.desktopManager = {
+    session = [{
+      name = "home-manager";
+      start = ''
+        ${pkgs.runtimeShell} $HOME/.hm-xsession &
+        waitPID=$!
+      '';
+    }];
+  };
 
   services.udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
 
