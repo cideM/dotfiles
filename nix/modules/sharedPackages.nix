@@ -33,6 +33,7 @@ with pkgs;
     hack-font
     haskellPackages.brittany
     hexyl
+    haskellPackages.nix-derivation
     htop
     hyperfine
     jq
