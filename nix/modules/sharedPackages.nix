@@ -25,6 +25,7 @@ with pkgs;
     gawk
     gitAndTools.hub
     gnugrep
+    graphviz
     gnupg
     golangci-lint
     google-cloud-sdk
