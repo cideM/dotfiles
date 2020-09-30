@@ -38,6 +38,7 @@ in
   networking = {
     useDHCP = false;
     interfaces.wlp7s0.useDHCP = true;
+    networkmanager.wifi.backend = "iwd";
     hostName = "nixos";
     wireless.iwd.enable = true;
     networkmanager.enable = true;
