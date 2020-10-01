@@ -26,7 +26,7 @@
     "neovim": {
         "branch": "master",
         "repo": "ssh://git@github.com/neovim/neovim",
-        "rev": "430ad9ab20b97b4c9a60732117e618bbe5236765",
+        "rev": "36a5c394a59d333bf26780d03f182e79e73d33f5",
         "type": "git"
     },
     "nord-vim": {
@@ -44,7 +44,7 @@
     "nvim-treesitter": {
         "branch": "master",
         "repo": "ssh://git@github.com/nvim-treesitter/nvim-treesitter.git",
-        "rev": "18fca90457ba46ed99d05c2218736c63c0fb41cd",
+        "rev": "5debe931333b20fe2b352dd92c03ded837e3df4b",
         "type": "git"
     },
     "onehalf": {
@@ -80,13 +80,13 @@
     "treesitter-yaml": {
         "branch": "master",
         "repo": "ssh://git@github.com/ikatyang/tree-sitter-yaml",
-        "rev": "b26d567070cfb40cb3138a57cf12a4e2e3c854ef",
+        "rev": "5a437c8f28a8a4b2a0b2f9cc92b80f404cac6ab2",
         "type": "git"
     },
     "vim-colortemplate": {
         "branch": "master",
         "repo": "ssh://git@github.com/lifepillar/vim-colortemplate",
-        "rev": "d122d85576677fccfb1223f93246e0d306f100ba",
+        "rev": "3ae7fd3d8559958742b1c968e17d23404eb0b1b4",
         "type": "git"
     },
     "vim-cool": {
