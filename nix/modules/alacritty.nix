@@ -1,4 +1,4 @@
-{ pkgs, fontSize ? 12, ... }:
+{ pkgs, padding ? 40, fontSize ? 12, ... }:
 let
   papercolor = {
     bright = {
@@ -314,8 +314,8 @@ let
     window = {
       dynamic_padding = true;
       padding = {
-        x = 40;
-        y = 40;
+        x = padding;
+        y = padding;
       };
     };
 

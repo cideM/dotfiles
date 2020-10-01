@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
-    (import ../../modules/alacritty.nix)
+    (import ../../modules/alacritty.nix { inherit pkgs; padding = 10; fontSize = 15; })
     (import ../../modules/neovim)
     # https://github.com/NixOS/nixpkgs/issues/62353
     # (import ../../modules/git.nix)
