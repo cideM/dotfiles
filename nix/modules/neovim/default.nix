@@ -104,25 +104,19 @@ in
             pkgs.vimPlugins.vim-indent-object
             pkgs.vimPlugins.vim-repeat
             pkgs.vimPlugins.vim-sandwich
-            pkgs.vimPlugins.vim-sneak
             pkgs.vimPlugins.vim-unimpaired
             pkgs.vimPlugins.vim-peekaboo
-            pkgs.vimPlugins.limelight-vim
             pkgs.vimPlugins.vim-mundo
-            pkgs.vimPlugins.goyo-vim
             pkgs.vimPlugins.colorizer
             plugins.sad
-            plugins.vim-scratch
             plugins.vim-colortemplate
             plugins.vim-cool
             plugins.vim-visual-split
             plugins.vim-matchup
             plugins.vim-qf
-            plugins.fern
 
             # Git
             pkgs.vimPlugins.vim-fugitive
-            pkgs.vimPlugins.vim-signify
             pkgs.vimPlugins.gv-vim
             pkgs.vimPlugins.vim-rhubarb
             pkgs.vimPlugins.vim-gist
@@ -133,10 +127,7 @@ in
             plugins.conjure
 
             # Themes
-            plugins.onehalf
             plugins.apprentice
-            pkgs.vimPlugins.iceberg-vim
-            pkgs.vimPlugins.papercolor-theme
             plugins.yui
             plugins.spacevim
             plugins.vim-one-theme
@@ -149,6 +140,7 @@ in
             plugins.vim-lua
             pkgs.vimPlugins.yats-vim
             pkgs.vimPlugins.vim-jsx-pretty
+
             ## Treesitter
             plugins.treesitterGo
             plugins.treesitterYaml

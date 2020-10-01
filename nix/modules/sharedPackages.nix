@@ -6,20 +6,26 @@ with pkgs;
   home.packages = [
     aerc
     awscli
-    bandwhich
     bash_5
-    bat
+
+    # Rust CLI replacements
+    bat     # cat
+    du-dust # du
+    exa     # ls
+    fd      # find
+    sd      # sed
+    ripgrep # grep
+    ytop    # top
+
+    bandwhich
     coreutils
     curl
     dhall
     dhall-lsp-server
     dive
     docker-compose
-    du-dust
     emacs
     entr
-    exa
-    fd
     findutils
     fzf
     gawk
@@ -54,14 +60,12 @@ with pkgs;
     ranger
     rclone
     restic
-    ripgrep
     rlwrap
     roboto
     roboto-mono
     rsync
     rust-analyzer
     s3cmd
-    sd
     shellcheck
     shfmt
     stow
@@ -75,6 +79,5 @@ with pkgs;
     weechat
     wget
     yamllint
-    ytop
   ];
 }

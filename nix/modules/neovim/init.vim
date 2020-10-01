@@ -112,19 +112,7 @@ nnoremap <leader>tt :ts *
 nnoremap <leader>ts :sts *
 nnoremap <leader>b :ls<cr>:buffer<Space>
 
-nnoremap <leader>vt :tabnew <Bar> Gedit :<cr>
-
 vmap     <Enter>    <Plug>(EasyAlign)
-
-" Fern
-    " Drawer style, does not have opener
-    nmap <leader>ee :Fern . -drawer<CR>
-    " Current file
-    nmap <leader>eh :Fern %:h -drawer<CR>
-    " Focus Fern
-    nmap <leader>ef :FernDo :<CR>
-    nmap <leader>el <Plug>(fern-action-leave)
-    nmap <leader>eo <Plug>(fern-action-open:select)
 
 nnoremap <leader>R :set operatorfunc=reflow#Comment<cr>g@
 vnoremap <leader>R :<C-u>call reflow#Comment(visualmode())<cr>
@@ -158,29 +146,8 @@ nnoremap <BS> <C-^>
     nmap <leader>qq <Plug>QfCtoggle
     nmap <leader>ll <Plug>QfLtoggle
 
-" sandwich
-    let g:sandwich_no_default_key_mappings = 1
-    silent! nmap <unique><silent> gk <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
-    silent! nmap <unique><silent> gr <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
-    silent! nmap <unique><silent> gkb <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
-    silent! nmap <unique><silent> grb <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
-    let g:operator_sandwich_no_default_key_mappings = 1
-    " add
-    silent! map <unique> ga <Plug>(operator-sandwich-add)
-    " delete
-    silent! xmap <unique> gd <Plug>(operator-sandwich-delete)
-    " replace
-    silent! xmap <unique> gr <Plug>(operator-sandwich-replace)
-
-" vim-sneak
-    let g:sneak#label      = 1
-    let g:sneak#use_ic_scs = 1
-    map f <Plug>Sneak_f
-    map F <Plug>Sneak_F
-    map t <Plug>Sneak_t
-    map T <Plug>Sneak_T
-
-nnoremap <leader>u :MundoToggle<CR>
+" mundo
+    nnoremap <leader>u :MundoToggle<CR>
 
 function! LspCount() abort
     let sl = ''
@@ -221,4 +188,4 @@ set statusline+=%3p%%\
 
 let g:one_allow_italics = 1
 let g:yui_comments = "emphasize"
-colorscheme space_vim_theme
+colorscheme yui
