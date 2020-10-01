@@ -120,6 +120,7 @@ vnoremap <leader>R :<C-u>call reflow#Comment(visualmode())<cr>
 nnoremap <BS> <C-^>
 
 " Neovim Terminal
+  command! -nargs=0 Term execute 'split | lcd ' . expand('%:p:h') . ' | term fish'
   " http://vimcasts.org/episodes/neovim-terminal-mappings/
   tnoremap <Esc> <C-\><C-n>
   tnoremap <M-[> <Esc>
