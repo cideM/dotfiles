@@ -133,7 +133,7 @@ let
     src = vimPluginsSources.treesitter-yaml;
     buildPhase = ''
       mkdir -p parser/
-      cc -o parser/yaml.so -I./src -shared -Os -lstdc++ src/parser.c src/scanner.cc
+      ${pkgs.clang}/bin/clang++ -o parser/yaml.so -I./src -shared -Os -lstdc++ src/parser.c src/scanner.cc
     '';
   };
 
