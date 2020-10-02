@@ -3,23 +3,33 @@
 with pkgs;
 
 {
+  nixpkgs.overlays = [
+    (final: prev: {
+      dash = prev.dash.overrideAttrs (_: {
+        buildInputs = [ pkgs.libedit ];
+        configureFlags = [ "--with-libedit" ];
+      });
+    })
+  ];
+
   home.packages = [
     aerc
     awscli
     bash_5
 
     # Rust CLI replacements
-    bat     # cat
+    bat # cat
     du-dust # du
-    exa     # ls
-    fd      # find
-    sd      # sed
+    exa # ls
+    fd # find
+    sd # sed
     ripgrep # grep
-    ytop    # top
+    ytop # top
 
     bandwhich
     coreutils
     curl
+    dash
     dhall
     dhall-lsp-server
     dive
