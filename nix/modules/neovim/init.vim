@@ -96,11 +96,6 @@ let maplocalleader = ","
 
 imap jk <Esc>
 
-nnoremap H ^
-vnoremap H ^
-nnoremap L g_
-vnoremap L g_
-
 nnoremap <leader>gg :grep<space>
 nnoremap <leader>gw :grep -wF ""<left>
 
@@ -120,7 +115,7 @@ vnoremap <leader>R :<C-u>call reflow#Comment(visualmode())<cr>
 nnoremap <BS> <C-^>
 
 " Neovim Terminal
-  command! -nargs=0 Term execute 'split | lcd ' . expand('%:p:h') . ' | term fish'
+  command! -nargs=0 TermHere execute 'split | lcd ' . expand('%:p:h') . ' | term fish'
   " http://vimcasts.org/episodes/neovim-terminal-mappings/
   tnoremap <Esc> <C-\><C-n>
   tnoremap <M-[> <Esc>

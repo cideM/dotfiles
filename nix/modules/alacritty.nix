@@ -1,5 +1,40 @@
 { pkgs, padding ? 40, fontSize ? 12, ... }:
 let
+  # https://github.com/alacritty/alacritty/issues/62#issuecomment-347552058
+  optionAsMetaBindings = map
+    (char: {
+      chars = "\\u001b${char}";
+      key = pkgs.lib.strings.toUpper char;
+      mods = "Alt";
+    }) [
+    "a"
+    "b"
+    "c"
+    "d"
+    "e"
+    "f"
+    "g"
+    "h"
+    "i"
+    "j"
+    "k"
+    "l"
+    "m"
+    "n"
+    "o"
+    "p"
+    "q"
+    "r"
+    "s"
+    "t"
+    "u"
+    "v"
+    "w"
+    "x"
+    "y"
+    "z"
+  ];
+
   papercolor = {
     bright = {
       black = "0xbcbcbc";
@@ -33,6 +68,33 @@ let
     vi_mode_cursor = {
       cursor = "0x878787";
       text = "0xeeeeee";
+    };
+  };
+
+  pencil = {
+    bright = {
+      black = "0x212121";
+      red = "0xfb007a";
+      green = "0x5fd7af";
+      yellow = "0xf3e430";
+      blue = "0x20bbfc";
+      magenta = "0x6855de";
+      cyan = "0x4fb8cc";
+      white = "0xf1f1f1";
+    };
+    normal = {
+      black = "0x212121";
+      red = "0xc30771";
+      green = "0x10a778";
+      yellow = "0xa89c14";
+      blue = "0x008ec4";
+      magenta = "0x523c79";
+      cyan = "0x20a5ba";
+      white = "0xe0e0e0";
+    };
+    primary = {
+      background = "0xf1f1f1";
+      foreground = "0x424242";
     };
   };
 
@@ -228,12 +290,6 @@ let
         key = "N";
         mods = "Alt";
       }
-      # https://discourse.nixos.org/t/how-to-write-single-backslash/8604
-      {
-        chars = "\\u001bo";
-        key = "O";
-        mods = "Alt";
-      }
       {
         chars = "\\u001bO";
         key = "O";
@@ -242,26 +298,6 @@ let
       {
         chars = "\\u001b0";
         key = "Key0";
-        mods = "Alt";
-      }
-      {
-        chars = "\\u001bl";
-        key = "L";
-        mods = "Alt";
-      }
-      {
-        chars = "\\u001bh";
-        key = "H";
-        mods = "Alt";
-      }
-      {
-        chars = "\\u001bk";
-        key = "K";
-        mods = "Alt";
-      }
-      {
-        chars = "\\u001bj";
-        key = "J";
         mods = "Alt";
       }
       {
@@ -309,7 +345,7 @@ let
         key = "Subtract";
         mods = "Control";
       }
-    ];
+    ] ++ optionAsMetaBindings;
 
     window = {
       dynamic_padding = true;
@@ -332,7 +368,7 @@ in
 {
   xdg.configFile."alacritty/alacritty.yml".text =
     builtins.replaceStrings [ "\\\\" ] [ "\\" ] (builtins.toJSON (shared // {
-      colors = spacemacsLight;
+      colors = pencil;
       font = hack;
     }));
 }

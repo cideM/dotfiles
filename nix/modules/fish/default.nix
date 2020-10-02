@@ -39,6 +39,7 @@ let
     abbr -a n "nvim (notes search)/body*"
     abbr -a todo 'nvim $FISH_NOTES_DIR/916797/body.md'
     abbr -a ideas 'nvim $FISH_NOTES_DIR/785479/body.md'
+    abbr -a kubedebug 'kubectl run -i --tty --rm debug --image=ubuntu --restart=Never -- bash'
     alias fzf 'fzf --color=light'
     alias ls exa
 
