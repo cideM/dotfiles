@@ -42,6 +42,7 @@ let
     abbr -a kubedebug 'kubectl run -i --tty --rm debug --image=ubuntu --restart=Never -- bash'
     alias fzf 'fzf --color=light'
     alias ls exa
+    alias dash 'dash -E'
 
     source ${pkgs.fzf}/share/fzf/key-bindings.fish && fzf_key_bindings
 
