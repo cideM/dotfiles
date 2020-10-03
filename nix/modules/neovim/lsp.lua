@@ -1,5 +1,47 @@
 local nvim_lsp = require('nvim_lsp')
 local buf_set_keymap = vim.api.nvim_buf_set_keymap
+local api = vim.api
+local util = require 'vim.lsp.util'
+local buf = require 'vim.lsp.buf'
+
+-- https://github.com/neovim/neovim/blob/master/runtime/lua/vim/lsp/callbacks.lua
+local onPublishDiagnostics = function(_, _, result)
+  if not result then return end
+  local uri = result.uri
+  local bufnr = vim.uri_to_bufnr(uri)
+  if not bufnr then
+    err_message("LSP.publishDiagnostics: Couldn't find buffer for ", uri)
+    return
+  end
+
+  -- Unloaded buffers should not handle diagnostics.
+  --    When the buffer is loaded, we'll call on_attach, which sends textDocument/didOpen.
+  --    This should trigger another publish of the diagnostics.
+  --
+  -- In particular, this stops a ton of spam when first starting a server for current
+  -- unloaded buffers.
+  if not api.nvim_buf_is_loaded(bufnr) then
+    return
+  end
+
+  util.buf_clear_diagnostics(bufnr)
+
+  -- https://microsoft.github.io/language-server-protocol/specifications/specification-current/#diagnostic
+  -- The diagnostic's severity. Can be omitted. If omitted it is up to the
+  -- client to interpret diagnostics as error, warning, info or hint.
+  -- TODO: Replace this with server-specific heuristics to infer severity.
+  for _, diagnostic in ipairs(result.diagnostics) do
+    if diagnostic.severity == nil then
+      diagnostic.severity = protocol.DiagnosticSeverity.Error
+    end
+  end
+
+  util.buf_diagnostics_save_positions(bufnr, result.diagnostics)
+  util.buf_diagnostics_underline(bufnr, result.diagnostics)
+  -- util.buf_diagnostics_virtual_text(bufnr, result.diagnostics)
+  util.buf_diagnostics_signs(bufnr, result.diagnostics)
+  vim.api.nvim_command("doautocmd User LspDiagnosticsChanged")
+end
 
 local on_attach = function(_, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -26,6 +68,8 @@ local on_attach = function(_, bufnr)
 end
 
 local configs = require'nvim_lsp/configs'
+
+vim.lsp.callbacks["textDocument/publishDiagnostics"] = onPublishDiagnostics
 
 configs.dhall = {
     default_config = {
