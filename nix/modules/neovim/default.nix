@@ -104,6 +104,7 @@ in
             pkgs.vimPlugins.vim-indent-object
             pkgs.vimPlugins.vim-repeat
             pkgs.vimPlugins.vim-sandwich
+            pkgs.vimPlugins.vim-sneak
             pkgs.vimPlugins.vim-unimpaired
             pkgs.vimPlugins.vim-peekaboo
             pkgs.vimPlugins.vim-mundo

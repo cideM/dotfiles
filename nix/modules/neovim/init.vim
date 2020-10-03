@@ -114,6 +114,37 @@ vnoremap <leader>R :<C-u>call reflow#Comment(visualmode())<cr>
 
 nnoremap <BS> <C-^>
 
+" sandwich
+    let g:sandwich_no_default_key_mappings = 1
+    silent! nmap <unique><silent> <C-s>a <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
+    silent! nmap <unique><silent> <C-s>r <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
+    silent! nmap <unique><silent> <C-s>d <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
+    silent! nmap <unique><silent> grb <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
+    
+    let g:textobj_sandwich_no_default_key_mappings = 1
+    xmap ic <Plug>(textobj-sandwich-query-i)
+    omap ic <Plug>(textobj-sandwich-query-i)
+    xmap ac <Plug>(textobj-sandwich-query-a)
+    omap ac <Plug>(textobj-sandwich-query-a)
+
+    let g:operator_sandwich_no_default_key_mappings = 1
+    " add
+    silent! map <unique> ga <Plug>(operator-sandwich-add)
+    " delete
+    silent! xmap <unique> gd <Plug>(operator-sandwich-delete)
+    " replace
+    silent! xmap <unique> gr <Plug>(operator-sandwich-replace)
+
+" vim-sneak
+    let g:sneak#label      = 1
+    let g:sneak#use_ic_scs = 1
+    map f <Plug>Sneak_f
+    map F <Plug>Sneak_F
+    map t <Plug>Sneak_t
+    map T <Plug>Sneak_T
+    omap o <Plug>Sneak_s
+    omap O <Plug>Sneak_S
+
 " Neovim Terminal
   command! -nargs=0 TermHere execute 'split | lcd ' . expand('%:p:h') . ' | term fish'
   " http://vimcasts.org/episodes/neovim-terminal-mappings/
