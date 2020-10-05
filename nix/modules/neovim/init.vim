@@ -145,6 +145,10 @@ nnoremap <BS> <C-^>
     omap o <Plug>Sneak_s
     omap O <Plug>Sneak_S
 
+" LSP
+  " https://neovim.io/doc/user/lsp.html
+  command! -bar -nargs=0 RestartLSP :lua vim.lsp.stop_client(vim.lsp.get_active_clients()); vim.cmd("edit")
+
 " Neovim Terminal
   command! -nargs=0 TermHere execute 'split | lcd ' . expand('%:p:h') . ' | term fish'
   " http://vimcasts.org/episodes/neovim-terminal-mappings/
