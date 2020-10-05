@@ -368,7 +368,7 @@ in
 {
   xdg.configFile."alacritty/alacritty.yml".text =
     builtins.replaceStrings [ "\\\\" ] [ "\\" ] (builtins.toJSON (shared // {
-      colors = pencil;
+      colors = iceberg-light;
       font = hack;
     }));
 }

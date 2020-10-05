@@ -26,12 +26,6 @@ augroup Goupdate
   autocmd BufWritePre <buffer> Goimport
 augroup END
 
-augroup LSP
-    autocmd!
-    autocmd CursorHold <buffer> lua vim.lsp.util.show_line_diagnostics()
-    autocmd CursorHoldI <buffer> lua vim.lsp.util.show_line_diagnostics()
-augroup END
-
 " https://stackoverflow.com/questions/40945136/stop-highlighting-trailing-whitespace-for-go-files-in-vim
 let g:go_highlight_trailing_whitespace_error=0
 
