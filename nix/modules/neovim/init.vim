@@ -43,7 +43,7 @@ set fillchars=stl:\ ,vert:\|,fold:\
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set foldlevelstart=99
 set hidden
-set signcolumn=auto:2
+set signcolumn=yes:2
 set ignorecase
 set noshowmode
 set updatetime=100
@@ -61,6 +61,19 @@ set splitbelow
 set splitright
 set termguicolors
 set undofile
+
+function! MyHighlights() abort
+    highlight LspDiagnosticsUnderline gui=undercurl
+    " Those are the actual messages in the popup, not the text/code in the
+    " buffer
+    " highlight link LspDiagnosticsWarning WarningMsg
+    " highlight link LspDiagnosticsError ErrorMsg
+endfunction
+
+augroup MyColors
+    autocmd!
+    autocmd ColorScheme * call MyHighlights()
+augroup END
 
 " Automatically resize windows if host window changes (e.g., creating a tmux
 " split)
@@ -90,6 +103,7 @@ function! FormatBuffer()
 endfunction
 
 let g:EditorConfig_max_line_indicator = "exceeding"
+let g:EditorConfig_preserve_formatoptions = 1
 
 " KEEP THIS AT THE TOP OF ALL MAPPINGS
 let mapleader = " "
@@ -233,4 +247,4 @@ set statusline+=%3p%%\
 
 let g:one_allow_italics = 1
 let g:yui_comments = "emphasize"
-colorscheme iceberg
+colorscheme yui

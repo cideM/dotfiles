@@ -2,10 +2,9 @@ local nvim_lsp = require('nvim_lsp')
 local buf_set_keymap = vim.api.nvim_buf_set_keymap
 local api = vim.api
 local util = require 'vim.lsp.util'
-local buf = require 'vim.lsp.buf'
 
 -- https://github.com/neovim/neovim/blob/master/runtime/lua/vim/lsp/callbacks.lua
-local onPublishDiagnostics = function(_, _, result)
+local onPublishDiagnostics = function(err, method, result, client_id)
   if not result then return end
   local uri = result.uri
   local bufnr = vim.uri_to_bufnr(uri)
@@ -26,14 +25,14 @@ local onPublishDiagnostics = function(_, _, result)
 
   util.buf_clear_diagnostics(bufnr)
 
-  -- https://microsoft.github.io/language-server-protocol/specifications/specification-current/#diagnostic
-  -- The diagnostic's severity. Can be omitted. If omitted it is up to the
-  -- client to interpret diagnostics as error, warning, info or hint.
-  -- TODO: Replace this with server-specific heuristics to infer severity.
-  for _, diagnostic in ipairs(result.diagnostics) do
-    if diagnostic.severity == nil then
-      diagnostic.severity = protocol.DiagnosticSeverity.Error
-    end
+  if result.diagnostics then
+      for _, v in ipairs(result.diagnostics) do
+        v.bufnr = client_id
+        v.lnum = v.range.start.line + 1
+        v.col = v.range.start.character + 1
+        v.text = v.message
+      end
+      util.set_loclist(result.diagnostics)
   end
 
   util.buf_diagnostics_save_positions(bufnr, result.diagnostics)
@@ -76,7 +75,7 @@ configs.dhall = {
             cmd = {'dhall-lsp-server'};
             filetypes = {'dhall'};
             root_dir = function(fname)
-                return nvim_lsp.util.find_git_ancestor(fname) or vim.loop.os_homedir()
+                return util.find_git_ancestor(fname) or vim.loop.os_homedir()
             end;
             settings = {};
     };
