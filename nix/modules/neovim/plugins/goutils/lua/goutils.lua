@@ -140,16 +140,15 @@ function module.make(target)
     args = vim.split(args, ' '),
     stdio = { stdin, stdout, stderr }
   },
-  function(code, signal)
+  vim.schedule_wrap(function(code, signal)
+    vim.cmd("echom 'Done!'")
     stdout:read_stop()
     stdout:close()
     stderr:read_stop()
     stderr:close()
     stdin:close()
     handle:close()
-    vim.cmd("echo 'Done!'")
-  end
-  )
+  end))
 
   if vim.fn.getqflist({title = ''}).title == makeprg then
     vim.fn.setqflist({}, "r")
