@@ -114,6 +114,7 @@ in
             plugins.vim-visual-split
             plugins.vim-matchup
             plugins.vim-qf
+            plugins.nvim-colorizer
 
             # Git
             pkgs.vimPlugins.vim-fugitive

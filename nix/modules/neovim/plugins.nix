@@ -137,6 +137,11 @@ let
     '';
   };
 
+  nvim-colorizer = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "nvim-colorizer";
+    src = vimPluginsSources.nvim-colorizer;
+  });
+
 in
 {
   inherit
@@ -162,5 +167,6 @@ in
     nvim-treesitter
     treesitterGo
     treesitterYaml
+    nvim-colorizer
     yui;
 }

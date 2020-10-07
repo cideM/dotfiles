@@ -160,5 +160,11 @@
         "repo": "ssh://git@github.com/cidem/yui",
         "rev": "7c6936cfc989cc14a5b2c2314337066093acb178",
         "type": "git"
+    },
+    "nvim-colorizer": {
+        "ref": "master",
+        "repo": "git@github.com:norcalli/nvim-colorizer.lua.git",
+        "rev": "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6",
+        "type": "git"
     }
 }
