@@ -108,7 +108,6 @@ in
             pkgs.vimPlugins.vim-unimpaired
             pkgs.vimPlugins.vim-peekaboo
             pkgs.vimPlugins.vim-mundo
-            pkgs.vimPlugins.colorizer
             plugins.sad
             plugins.vim-colortemplate
             plugins.vim-cool
