@@ -28,6 +28,7 @@ luafile ~/.config/nvim/treesitter.lua
 
 set background=light
 set shell=bash
+set formatoptions-=t
 " https://www.reddit.com/r/vim/comments/25g1sp/why_doesnt_vim_syntax_like_my_shell_files/
 let g:is_posix = 1
 set wildignore+=*/.git/*,
@@ -42,7 +43,7 @@ set fillchars=stl:\ ,vert:\|,fold:\
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set foldlevelstart=99
 set hidden
-set signcolumn=yes:2
+set signcolumn=auto:2
 set ignorecase
 set noshowmode
 set updatetime=100
@@ -115,25 +116,38 @@ vnoremap <leader>R :<C-u>call reflow#Comment(visualmode())<cr>
 nnoremap <BS> <C-^>
 
 " sandwich
+    " https://github.com/machakann/vim-sandwich/blob/master/plugin/sandwich.vim
     let g:sandwich_no_default_key_mappings = 1
-    silent! nmap <unique><silent> <C-s>a <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
+    silent! nmap <unique><silent> <C-s>d <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
     silent! nmap <unique><silent> <C-s>r <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
-    silent! nmap <unique><silent> <C-s>d <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
-    silent! nmap <unique><silent> grb <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
+    silent! nmap <unique><silent> <C-s>db <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
+    silent! nmap <unique><silent> <C-s>rb <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
     
+    " https://github.com/machakann/vim-sandwich/blob/master/plugin/textobj/sandwich.vim
     let g:textobj_sandwich_no_default_key_mappings = 1
-    xmap ic <Plug>(textobj-sandwich-query-i)
-    omap ic <Plug>(textobj-sandwich-query-i)
-    xmap ac <Plug>(textobj-sandwich-query-a)
-    omap ac <Plug>(textobj-sandwich-query-a)
+    " same as original
+    silent! omap <unique> ib <Plug>(textobj-sandwich-auto-i)
+    silent! xmap <unique> ib <Plug>(textobj-sandwich-auto-i)
+    silent! omap <unique> ab <Plug>(textobj-sandwich-auto-a)
+    silent! xmap <unique> ab <Plug>(textobj-sandwich-auto-a)
 
+    silent! omap <unique> ic <Plug>(textobj-sandwich-query-i)
+    silent! xmap <unique> ic <Plug>(textobj-sandwich-query-i)
+    silent! omap <unique> ac <Plug>(textobj-sandwich-query-a)
+    silent! xmap <unique> ac <Plug>(textobj-sandwich-query-a)
+
+    " https://github.com/machakann/vim-sandwich/blob/master/plugin/operator/sandwich.vim
     let g:operator_sandwich_no_default_key_mappings = 1
     " add
-    silent! map <unique> ga <Plug>(operator-sandwich-add)
+    silent! nmap <unique> <C-s>a <Plug>(operator-sandwich-add)
+    silent! xmap <unique> <C-s>a <Plug>(operator-sandwich-add)
+    silent! omap <unique> <C-s>a <Plug>(operator-sandwich-g@)
+
     " delete
-    silent! xmap <unique> gd <Plug>(operator-sandwich-delete)
+    silent! xmap <unique> <C-s>d <Plug>(operator-sandwich-delete)
+
     " replace
-    silent! xmap <unique> gr <Plug>(operator-sandwich-replace)
+    silent! xmap <unique> <C-s>r <Plug>(operator-sandwich-replace)
 
 " vim-sneak
     let g:sneak#label      = 1
@@ -219,4 +233,4 @@ set statusline+=%3p%%\
 
 let g:one_allow_italics = 1
 let g:yui_comments = "emphasize"
-colorscheme yui
+colorscheme iceberg

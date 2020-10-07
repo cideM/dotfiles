@@ -147,6 +147,7 @@ function module.make(target)
     stderr:close()
     stdin:close()
     handle:close()
+    vim.cmd("echo 'Done!'")
   end
   )
 

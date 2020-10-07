@@ -132,6 +132,7 @@ in
             plugins.yui
             plugins.spacevim
             plugins.vim-one-theme
+            pkgs.vimPlugins.iceberg-vim
 
             # Languages & Syntax
             pkgs.vimPlugins.purescript-vim
@@ -141,6 +142,7 @@ in
             plugins.vim-lua
             pkgs.vimPlugins.yats-vim
             pkgs.vimPlugins.vim-jsx-pretty
+            pkgs.vimPlugins.Jenkinsfile-vim-syntax
 
             ## Treesitter
             plugins.treesitterGo

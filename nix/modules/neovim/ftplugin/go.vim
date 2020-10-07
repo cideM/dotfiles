@@ -20,11 +20,12 @@ command! -buffer -range=% Goimport let b:winview = winsaveview() |
   \ silent! execute <line1> . "," . <line2> . "!goimports " | 
   \ call winrestview(b:winview)
 
-augroup Goupdate
-  autocmd!
-  autocmd BufWritePre <buffer> Gofmt
-  autocmd BufWritePre <buffer> Goimport
-augroup END
+" I don't like stuff that just happens
+" augroup Goupdate
+"   autocmd!
+"   autocmd BufWritePre <buffer> Gofmt
+"   autocmd BufWritePre <buffer> Goimport
+" augroup END
 
 " https://stackoverflow.com/questions/40945136/stop-highlighting-trailing-whitespace-for-go-files-in-vim
 let g:go_highlight_trailing_whitespace_error=0
@@ -38,3 +39,4 @@ nnoremap <silent> <localleader>ta :call goutils#RunAllTests()<CR>
 nnoremap <silent> <localleader>mm :execute 'make ' . expand('%:p:h')<CR>
 " make entire project
 nnoremap <silent> <localleader>mp :call goutils#MakeprgAsyncProject()<CR>
+" nnoremap <silent> <localleader>mp :make ./...<CR>
