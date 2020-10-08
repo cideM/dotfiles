@@ -132,6 +132,7 @@ in
             plugins.yui
             plugins.spacevim
             plugins.vim-one-theme
+            plugins.onehalf
             pkgs.vimPlugins.iceberg-vim
 
             # Languages & Syntax
