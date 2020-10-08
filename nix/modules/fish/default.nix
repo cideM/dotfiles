@@ -66,6 +66,24 @@ in
     interactiveShellInit = fishConfig;
 
     functions = {
+      mono_gap = {
+        body = ''
+          bspc config top_monocle_padding    100
+          bspc config right_monocle_padding  300
+          bspc config left_monocle_padding   300
+          bspc config bottom_monocle_padding 100
+        '';
+      };
+
+      mono_nogap = {
+        body = ''
+          bspc config top_monocle_padding    0
+          bspc config right_monocle_padding  0
+          bspc config left_monocle_padding   0
+          bspc config bottom_monocle_padding 0
+        '';
+      };
+
       fish_greeting = {
         body = ''
         '';

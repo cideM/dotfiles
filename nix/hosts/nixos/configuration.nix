@@ -38,9 +38,9 @@ in
   networking = {
     useDHCP = false;
     interfaces.wlp7s0.useDHCP = true;
-    networkmanager.wifi.backend = "iwd";
+    # networkmanager.wifi.backend = "iwd";
+    # wireless.iwd.enable = true;
     hostName = "nixos";
-    wireless.iwd.enable = true;
     networkmanager.enable = true;
   };
 
@@ -97,6 +97,8 @@ in
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
+  services.geoclue2.enable = true;
 
   # Enable sound.
   sound.enable = true;

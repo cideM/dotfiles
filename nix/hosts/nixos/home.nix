@@ -106,6 +106,13 @@
     super + alt + p
         notify-send "DUNST_COMMAND_TOGGLE"
 
+    # Increase and decrease gaps
+    super + ctrl + w
+        set next (math (bspc config window_gap) + 5); if test $next -lt 200; bspc config window_gap $next; end
+
+    super + ctrl + n
+        set next (math (bspc config window_gap) - 5); if test $next -gt 0; bspc config window_gap $next; end
+
     # Send node to different layer
     super + alt + {u,d,m}
         bspc node -l {above,below,normal}
@@ -350,20 +357,8 @@
     };
   };
 
-  xdg.configFile."picom.conf".text = ''
-    backend = "glx";
-    blur: {
-        method = "gaussian";
-        strength = 10;
-        background = false;
-        background-frame = false;
-        background-fixed = false;
-    }
-  '';
-
-  # Usual problem, can't find my GLX stuff in Arch host
   services.picom = {
-    enable = false;
+    enable = true;
     backend = "glx";
     extraOptions = ''
       blur: {
