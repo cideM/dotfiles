@@ -2,21 +2,21 @@
     "fish-journal": {
         "branch": "master",
         "ref": "master",
-        "repo": "ssh://git@github.com/cideM/fish-journal.git",
+        "repo": "https://git@github.com/cideM/fish-journal.git",
         "rev": "35f1e634c586d797b4871d22ae56b404a291bfa2",
         "type": "git"
     },
     "fish-nix-env": {
         "branch": "master",
         "ref": "master",
-        "repo": "ssh://git@github.com/lilyball/nix-env.fish.git",
+        "repo": "https://git@github.com/lilyball/nix-env.fish.git",
         "rev": "c239a69122c88797b34e3721659b2ba5060ca7e7",
         "type": "git"
     },
     "fish-notes": {
         "branch": "master",
         "ref": "master",
-        "repo": "ssh://git@github.com/cideM/fish-notes.git",
+        "repo": "https://git@github.com/cideM/fish-notes.git",
         "rev": "28af0ecca8dfa67b8b334c01fe11c20c9b0a7302",
         "type": "git"
     },
