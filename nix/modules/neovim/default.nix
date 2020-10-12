@@ -3,10 +3,6 @@
 with lib;
 with types;
 let
-  luaLsp = builtins.readFile ./lsp.lua;
-
-  treesitter = builtins.readFile ./treesitter.lua;
-
   init = builtins.readFile ./init.vim;
 
   ftPluginDir = toString ./ftplugin;
@@ -75,10 +71,7 @@ in
 
   config = {
     xdg.configFile = (
-      ftPluginsAttrs // {
-        "nvim/lsp.lua".text = luaLsp;
-        "nvim/treesitter.lua".text = treesitter;
-      }
+      ftPluginsAttrs
     );
 
     programs.neovim = {
@@ -100,21 +93,22 @@ in
             pkgs.vimPlugins.vim-dirvish
             pkgs.vimPlugins.vim-easy-align
             pkgs.vimPlugins.vim-eunuch
+            pkgs.vimPlugins.limelight-vim
             pkgs.vimPlugins.vim-gutentags
             pkgs.vimPlugins.vim-indent-object
             pkgs.vimPlugins.vim-repeat
             pkgs.vimPlugins.vim-sandwich
-            pkgs.vimPlugins.vim-sneak
             pkgs.vimPlugins.vim-unimpaired
             pkgs.vimPlugins.vim-peekaboo
             pkgs.vimPlugins.vim-mundo
             plugins.sad
             plugins.vim-colortemplate
-            plugins.vim-cool
+            pkgs.vimPlugins.vim-slash
             plugins.vim-visual-split
             plugins.vim-matchup
-            plugins.vim-qf
-            plugins.nvim-colorizer
+            ## Treesitter
+            plugins.treesitterGo
+            plugins.treesitterYaml
 
             # Git
             pkgs.vimPlugins.vim-fugitive
@@ -125,15 +119,17 @@ in
             # Language Tooling
             plugins.parinfer-rust
             plugins.vim-markdown-folding
-            plugins.conjure
+            pkgs.vimPlugins.conjure
 
             # Themes
             plugins.apprentice
             plugins.yui
             plugins.spacevim
-            plugins.vim-one-theme
+            pkgs.vimPlugins.vim-one
             plugins.onehalf
             pkgs.vimPlugins.iceberg-vim
+            pkgs.vimPlugins.papercolor-theme
+            pkgs.vimPlugins.seoul256-vim
 
             # Languages & Syntax
             pkgs.vimPlugins.purescript-vim
@@ -144,17 +140,13 @@ in
             pkgs.vimPlugins.yats-vim
             pkgs.vimPlugins.vim-jsx-pretty
             pkgs.vimPlugins.Jenkinsfile-vim-syntax
-
-            ## Treesitter
-            plugins.treesitterGo
-            plugins.treesitterYaml
-
           ]
           ++ localPlugins;
 
           opt = [
-            plugins.nvim-treesitter
+            pkgs.vimPlugins.nvim-treesitter
             plugins.nvim-lsp
+            plugins.nvim-colorizer
           ];
         };
       };

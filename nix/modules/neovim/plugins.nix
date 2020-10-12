@@ -105,10 +105,10 @@ let
     src = vimPluginsSources.vim-one-colors;
   });
 
-  nvim-treesitter = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "nvim-treesitter";
-    src = vimPluginsSources.nvim-treesitter;
-  });
+  # nvim-treesitter = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+  #   name = "nvim-treesitter";
+  #   src = vimPluginsSources.nvim-treesitter;
+  # });
 
   vim-lua = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "vim-lua";
@@ -122,8 +122,10 @@ let
     name = "tree-sitter-go-${version}";
     src = vimPluginsSources.treesitter-go;
     buildPhase = ''
+      runHook preBuild
       mkdir -p parser/
-      cc -o parser/go.so -I./src -shared -Os -lstdc++ src/parser.c
+      $CC -o parser/go.so -I$src/src $src/src/parser.c -shared  -Os -lstdc++ -fPIC
+      runHook postBuild
     '';
   };
 
@@ -164,7 +166,6 @@ in
     vim-qf
     vim-scratch
     vim-visual-split
-    nvim-treesitter
     treesitterGo
     treesitterYaml
     nvim-colorizer

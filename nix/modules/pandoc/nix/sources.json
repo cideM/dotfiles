@@ -13,14 +13,12 @@
     },
     "pandoc-template-eisvogel": {
         "branch": "master",
-        "ref": "master",
         "repo": "https://git@github.com/Wandmalfarbe/pandoc-latex-template.git",
         "rev": "e6e5890494607458f79ec9a5100d7ac7fd3e9b98",
         "type": "git"
     },
     "pandoc-template-github": {
         "branch": "master",
-        "ref": "master",
         "repo": "https://git@github.com/tajmone/pandoc-goodies.git",
         "rev": "c7963da8590c2815d733ddf194d82d950ba94648",
         "type": "git"

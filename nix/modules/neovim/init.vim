@@ -1,36 +1,8 @@
-if !exists("g:os")
-    if has("win64") || has("win32") || has("win16")
-        let g:os = "Windows"
-    else
-        let g:os = substitute(system('uname'), '\n', "", "")
-    endif
-endif
-
-packadd nvim-lsp
-luafile ~/.config/nvim/lsp.lua
-
-packadd nvim-treesitter
-luafile ~/.config/nvim/treesitter.lua
-
-" backup files
-    if !isdirectory("$HOME/.config/nvim/.swap")
-        call mkdir($HOME . "/.config/nvim/.swap", "p", 0700)
-        set directory=~/.config/nvim/.swap//
-    endif
-    if !isdirectory("$HOME/.config/nvim/.backup")
-        call mkdir($HOME . "/.config/nvim/.backup", "p", 0700)
-        set backupdir=~/.config/nvim/.backup//
-    endif
-    if !isdirectory("$HOME/.config/nvim/.undo")
-        call mkdir($HOME . "/.config/nvim/.undo", "p", 0700)
-        set undodir=~/.config/nvim/.undo//
-    endif
-
+" ==============================
+" =       GENERAL SETTINGS     =
+" ==============================
 set background=light
-set shell=bash
 set formatoptions-=t
-" https://www.reddit.com/r/vim/comments/25g1sp/why_doesnt_vim_syntax_like_my_shell_files/
-let g:is_posix = 1
 set wildignore+=*/.git/*,
             \*/node_modules/*,
             \*/build/*,
@@ -38,29 +10,28 @@ set wildignore+=*/.git/*,
             \*/compiled/*,
             \*/tmp/*
 set diffopt=algorithm:patience,filler,iwhiteall,indent-heuristic
-set expandtab
-set fillchars=stl:\ ,vert:\|,fold:\ 
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
-set foldlevelstart=99
 set hidden
 set signcolumn=yes:2
 set ignorecase
-set noshowmode
-set updatetime=100
-set nolist
-" set listchars=tab:·\ ,extends:›,precedes:‹,nbsp:·,trail:·
-set inccommand=split
-set nocursorline
-set nonumber
-set path-=/usr/include
-set completeopt=menu,menuone,noselect
-set shiftwidth=4
-set shortmess+=c
 set smartcase
+set inccommand=split
+set path-=/usr/include
 set splitbelow
 set splitright
 set termguicolors
 set undofile
+
+" ==============================
+" =        COLORSCHEME         =
+" ==============================
+let g:one_allow_italics = 1
+let g:yui_comments = "emphasize"
+
+if has('unix')
+	let g:seoul256_srgb = 1
+endif
+colorscheme seoul256-light
 
 function! MyHighlights() abort
     highlight LspDiagnosticsUnderline gui=undercurl
@@ -75,23 +46,22 @@ augroup MyColors
     autocmd ColorScheme * call MyHighlights()
 augroup END
 
-" Automatically resize windows if host window changes (e.g., creating a tmux
-" split)
-augroup Resize
-    autocmd!
-    autocmd VimResized * wincmd =
-augroup END
-
+" Call my own SetPath function so that every git file is added to path. Let's
+" me get most of FZF without using FZF
 augroup SetPath
     autocmd!
     autocmd BufEnter,DirChanged * call pathutils#SetPath()
 augroup END
 
+" Built-in Neovim feature that highlights yanked code.
 augroup highlight_yank
     autocmd!
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 augroup END
 
+" Format the buffer with the current formatprg. Most of the custom code here
+" is just so my jump list isn't cluttered and I always end up at the first
+" line when undoing a FormatBuffer call. See the linked post.
 function! FormatBuffer()
   let view = winsaveview()
   " https://vim.fandom.com/wiki/Restore_the_cursor_position_after_undoing_text_change_made_by_a_script
@@ -102,149 +72,189 @@ function! FormatBuffer()
   call winrestview(view)
 endfunction
 
-let g:EditorConfig_max_line_indicator = "exceeding"
-let g:EditorConfig_preserve_formatoptions = 1
-
-" KEEP THIS AT THE TOP OF ALL MAPPINGS
+" ==============================
+" =          MAPPINGS          =
+" ==============================
 let mapleader = " "
 let maplocalleader = ","
 
+" ==============================
+" =          TERMINAL          =
+" ==============================
+tnoremap <Esc> <C-\><C-n>
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
+inoremap <A-h> <C-\><C-N><C-w>h
+inoremap <A-j> <C-\><C-N><C-w>j
+inoremap <A-k> <C-\><C-N><C-w>k
+inoremap <A-l> <C-\><C-N><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+
+" Leave insert mode with jk
 imap jk <Esc>
 
+" Convenience mappings for calling :grep
 nnoremap <leader>gg :grep<space>
 nnoremap <leader>gw :grep -wF ""<left>
 
+" Just calls formatprg on entire buffer
 nmap <leader>Q :call FormatBuffer()<cr>
 
 nnoremap <leader>f :find *
-" nnoremap <leader>b :buffer *
-nnoremap <leader>tt :ts *
-nnoremap <leader>ts :sts *
 nnoremap <leader>b :ls<cr>:buffer<Space>
 
 vmap     <Enter>    <Plug>(EasyAlign)
 
+" Reflow comments according to max line length. This temporarily unsets
+" formatprg so cindent (?) is used. I don't know... this mostly just works.
 nnoremap <leader>R :set operatorfunc=reflow#Comment<cr>g@
 vnoremap <leader>R :<C-u>call reflow#Comment(visualmode())<cr>
 
+" Switch to alternate buffer with backspace
 nnoremap <BS> <C-^>
 
-" sandwich
-    " https://github.com/machakann/vim-sandwich/blob/master/plugin/sandwich.vim
-    let g:sandwich_no_default_key_mappings = 1
-    silent! nmap <unique><silent> <C-s>d <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
-    silent! nmap <unique><silent> <C-s>r <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
-    silent! nmap <unique><silent> <C-s>db <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
-    silent! nmap <unique><silent> <C-s>rb <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
-    
-    " https://github.com/machakann/vim-sandwich/blob/master/plugin/textobj/sandwich.vim
-    let g:textobj_sandwich_no_default_key_mappings = 1
-    " same as original
-    silent! omap <unique> ib <Plug>(textobj-sandwich-auto-i)
-    silent! xmap <unique> ib <Plug>(textobj-sandwich-auto-i)
-    silent! omap <unique> ab <Plug>(textobj-sandwich-auto-a)
-    silent! xmap <unique> ab <Plug>(textobj-sandwich-auto-a)
+" ==============================
+" =          PLUGINS           =
+" ==============================
+let g:EditorConfig_max_line_indicator = "exceeding"
+let g:EditorConfig_preserve_formatoptions = 1
 
-    silent! omap <unique> ic <Plug>(textobj-sandwich-query-i)
-    silent! xmap <unique> ic <Plug>(textobj-sandwich-query-i)
-    silent! omap <unique> ac <Plug>(textobj-sandwich-query-a)
-    silent! xmap <unique> ac <Plug>(textobj-sandwich-query-a)
+" nvim-colorizer
+packadd nvim-colorizer
+lua require'colorizer'.setup()
 
-    " https://github.com/machakann/vim-sandwich/blob/master/plugin/operator/sandwich.vim
-    let g:operator_sandwich_no_default_key_mappings = 1
-    " add
-    silent! nmap <unique> <C-s>a <Plug>(operator-sandwich-add)
-    silent! xmap <unique> <C-s>a <Plug>(operator-sandwich-add)
-    silent! omap <unique> <C-s>a <Plug>(operator-sandwich-g@)
-
-    " delete
-    silent! xmap <unique> <C-s>d <Plug>(operator-sandwich-delete)
-
-    " replace
-    silent! xmap <unique> <C-s>r <Plug>(operator-sandwich-replace)
-
-" vim-sneak
-    let g:sneak#label      = 1
-    let g:sneak#use_ic_scs = 1
-    map f <Plug>Sneak_f
-    map F <Plug>Sneak_F
-    map t <Plug>Sneak_t
-    map T <Plug>Sneak_T
-    omap o <Plug>Sneak_s
-    omap O <Plug>Sneak_S
-
-" LSP
-  " https://neovim.io/doc/user/lsp.html
-  command! -bar -nargs=0 RestartLSP :lua vim.lsp.stop_client(vim.lsp.get_active_clients()); vim.cmd("edit")
-
-" Neovim Terminal
-  command! -nargs=0 TermHere execute 'split | lcd ' . expand('%:p:h') . ' | term fish'
-  " http://vimcasts.org/episodes/neovim-terminal-mappings/
-  tnoremap <Esc> <C-\><C-n>
-  tnoremap <M-[> <Esc>
-  tnoremap <C-v><Esc> <Esc>
+" https://neovim.io/doc/user/lsp.html
+command! -bar -nargs=0 RestartLSP :lua vim.lsp.stop_client(vim.lsp.get_active_clients()); vim.cmd("edit")
 
 " markdown folding
-    let g:markdown_fold_style = 'nested'
+let g:markdown_fold_style = 'nested'
 
-" sad
-    nmap <leader>c <Plug>(sad-change-forward)
-    nmap <leader>C <Plug>(sad-change-backward)
-    xmap <leader>c <Plug>(sad-change-forward)
-    xmap <leader>C <Plug>(sad-change-backward)
+" Sad makes replacing selections easier and just automates some tedious
+" plumbing around slash search and cgn
+nmap <leader>c <Plug>(sad-change-forward)
+nmap <leader>C <Plug>(sad-change-backward)
+xmap <leader>c <Plug>(sad-change-forward)
+xmap <leader>C <Plug>(sad-change-backward)
 
-" andymass/vim-matchup
-    let g:matchup_matchparen_offscreen = {}
+" Otherwise the status line is overwritten with matching code parts
+let g:matchup_matchparen_offscreen = {}
 
-" gutentags
-    let g:gutentags_exclude_filetypes = ['haskell']
-    let g:gutentags_file_list_command = 'rg\ --files'
+" No ctags for Haskell
+let g:gutentags_exclude_filetypes = ['haskell']
+let g:gutentags_file_list_command = 'rg\ --files'
 
-" romainl/vim-qf
-    let g:qf_auto_open_loclist = 1
-    nmap <leader>qq <Plug>QfCtoggle
-    nmap <leader>ll <Plug>QfLtoggle
+" ==============================
+" =          NEOVIM LSP        =
+" ==============================
+packadd nvim-lsp
+lua <<EOF
+local nvim_lsp = require('nvim_lsp')
+local buf_set_keymap = vim.api.nvim_buf_set_keymap
+local api = vim.api
+local util = require 'vim.lsp.util'
 
-" mundo
-    nnoremap <leader>u :MundoToggle<CR>
+-- https://github.com/neovim/neovim/blob/master/runtime/lua/vim/lsp/callbacks.lua
+local onPublishDiagnostics = function(err, method, result, client_id)
+  if not result then return end
+  local uri = result.uri
+  local bufnr = vim.uri_to_bufnr(uri)
+  if not bufnr then
+    err_message("LSP.publishDiagnostics: Couldn't find buffer for ", uri)
+    return
+  end
 
-function! LspCount() abort
-    let sl = ''
-    if luaeval('not vim.tbl_isempty(vim.lsp.buf_get_clients(0))')
-        let errors = 0
+  -- Unloaded buffers should not handle diagnostics.
+  --    When the buffer is loaded, we'll call on_attach, which sends textDocument/didOpen.
+  --    This should trigger another publish of the diagnostics.
+  --
+  -- In particular, this stops a ton of spam when first starting a server for current
+  -- unloaded buffers.
+  if not api.nvim_buf_is_loaded(bufnr) then
+    return
+  end
 
-        if luaeval("not (vim.lsp.util.buf_diagnostics_count([[Error]]) == nil)")
-            let errors = luaeval("vim.lsp.util.buf_diagnostics_count([[Error]])")
-        endif
+  util.buf_clear_diagnostics(bufnr)
 
-        let sl.='E:' . errors
+  if result.diagnostics then
+      for _, v in ipairs(result.diagnostics) do
+        v.bufnr = client_id
+        v.lnum = v.range.start.line + 1
+        v.col = v.range.start.character + 1
+        v.text = v.message
+      end
+      util.set_loclist(result.diagnostics)
+  end
 
-        let warnings = 0
+  util.buf_diagnostics_save_positions(bufnr, result.diagnostics)
+  util.buf_diagnostics_underline(bufnr, result.diagnostics)
+  -- util.buf_diagnostics_virtual_text(bufnr, result.diagnostics)
+  util.buf_diagnostics_signs(bufnr, result.diagnostics)
+  vim.api.nvim_command("doautocmd User LspDiagnosticsChanged")
+end
 
-        if luaeval("not (vim.lsp.util.buf_diagnostics_count([[Warning]]) == nil)")
-            let warnings = luaeval("vim.lsp.util.buf_diagnostics_count([[Warning]])")
-        endif
+local on_attach = function(_, bufnr)
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-        let sl.=' W:' . warnings
-    else
-        let sl = 'off'
-    endif
-    return sl
-endfunction
+    -- Mappings.
+    local opts = { noremap=true, silent=true }
+    buf_set_keymap(bufnr, 'n', '<localleader>k',  '<cmd>lua vim.lsp.buf.hover()<CR>',                 opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>h',  '<cmd>lua vim.lsp.buf.signature_help()<CR>',        opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>re', '<cmd>lua vim.lsp.buf.rename()<CR>',                opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>rr', '<cmd>lua vim.lsp.buf.references()<CR>',            opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>ri', '<cmd>lua vim.lsp.buf.implementation()<CR>',        opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>',            opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>',       opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>',           opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>p',  '<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>',opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>ws',  '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>',opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>ds',  '<cmd>lua vim.lsp.buf.document_symbol()<CR>',opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>dh',  '<cmd>lua vim.lsp.buf.document_highlight()<CR>',opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>sr',  '<cmd>lua vim.lsp.buf.server_ready()<CR>',opts)
 
-set statusline=
-set statusline+=\ %f
-set statusline+=\ %m 
-set statusline+=\%{FugitiveStatusline()} 
-set statusline+=\ %{mode()}\ 
-set statusline+=\%{LspCount()}
-set statusline+=%=
-set statusline+=\%{gutentags#statusline('[',']\ ')}
-set statusline+=%y\ " buffer type
-set statusline+=%q\ 
-set statusline+=%3l:%2c\ \|
-set statusline+=%3p%%\ 
+    -- vim.api.nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
+    -- vim.api.nvim_command [[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
+    -- vim.api.nvim_command [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
+end
 
-let g:one_allow_italics = 1
-let g:yui_comments = "emphasize"
-colorscheme yui
+local configs = require'nvim_lsp/configs'
+
+vim.lsp.callbacks["textDocument/publishDiagnostics"] = onPublishDiagnostics
+
+configs.dhall = {
+    default_config = {
+            cmd = {'dhall-lsp-server'};
+            filetypes = {'dhall'};
+            root_dir = function(fname)
+                return util.find_git_ancestor(fname) or vim.loop.os_homedir()
+            end;
+            settings = {};
+    };
+}
+
+local servers = {'gopls', 'rust_analyzer', 'dhall', 'purescriptls'}
+
+for _, lsp in ipairs(servers) do
+    if nvim_lsp[lsp].setup ~= nil and vim.fn.executable(nvim_lsp[lsp].cmd) then
+      nvim_lsp[lsp].setup { on_attach = on_attach }
+    end
+end
+EOF
+
+" ==============================
+" =     NVIM TREESITTER        =
+" ==============================
+packadd nvim-treesitter
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {},     -- one of "all", "language", or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = {},  -- list of language that will be disabled
+  },
+}
+EOF

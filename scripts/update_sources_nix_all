@@ -1,0 +1,24 @@
+#! /usr/bin/env nix-shell
+#! nix-shell -i fish -p niv
+
+set -l root (git rev-parse --show-toplevel 2> /dev/null)
+
+for f in **/sources.json
+    set -l dir (dirname (dirname $f))
+
+    echo "Updating sources.nix for $dir"
+
+    if test -f $dir/nix/sources.nix
+        echo "Removed existing $dir/nix/sources.nix"
+        rm $dir/nix/sources.nix
+    end
+
+    cd $dir
+
+    niv init
+
+    cd $root
+end
+
+
+# vim:ft=fish

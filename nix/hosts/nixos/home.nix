@@ -2,7 +2,7 @@
 
 {
   imports = [
-    (import ../../modules/alacritty.nix { fontSize = 11; inherit pkgs; })
+    (import ../../modules/alacritty.nix { fontSize = 13; inherit pkgs; })
     (import ../../modules/neovim)
     (import ../../modules/git.nix)
     (import ../../modules/redshift.nix)
