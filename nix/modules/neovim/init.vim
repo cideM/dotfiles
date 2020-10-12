@@ -153,7 +153,7 @@ omap O <Plug>Sneak_S
 set shortmess-=F
 let g:lsc_auto_map = {
             \'defaults': v:true,
-            \'LSClientWorkspacesymbol': 'gW'
+            \'WorkspaceSymbol': 'gW'
             \}
 let g:lsc_server_commands = {
             \'go': 'gopls',

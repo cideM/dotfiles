@@ -107,6 +107,7 @@ in
             plugins.vim-visual-split
             plugins.vim-matchup
             pkgs.vimPlugins.vim-sneak
+            plugins.vim-scratch
 
             # Treesitter
             plugins.treesitterGo
