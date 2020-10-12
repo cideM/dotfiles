@@ -17,3 +17,5 @@ For non-NixOS hosts, `ln -sf ~/dotfiles/nix/hosts/archminimal/home.nix ~/.config
 ## Notes
 
 In case your `$PATH` is messed up just set `set -x PATH ~/.nix-profile/bin:$PATH` in the current shell and things should just work given that Home Manager is installed
+
+If Nix complains about something not being in my dotfiles folder even though it definitely is, it's probably because it's not yet added to Git!

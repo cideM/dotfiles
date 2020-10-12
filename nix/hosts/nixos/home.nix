@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 {
   imports = [
     (import ../../modules/alacritty.nix { fontSize = 13; inherit pkgs; })
@@ -21,6 +20,10 @@
 
   home.packages = with pkgs; [
     insomnia
+    (import ../../derivations/kubectl.nix {
+      inherit (pkgs) stdenv;
+      inherit (builtins) fetchurl;
+    })
     spotify
     zoom-us
     slack
