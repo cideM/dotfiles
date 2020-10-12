@@ -132,6 +132,23 @@ let g:matchup_matchparen_offscreen = {}
 let g:gutentags_exclude_filetypes = ['haskell']
 let g:gutentags_file_list_command = 'rg\ --files'
 
+" ========== SNEAK ==================
+let g:sneak#label      = 1
+let g:sneak#use_ic_scs = 1
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
+" 2-character Sneak (default)
+nmap gs <Plug>Sneak_s
+nmap gS <Plug>Sneak_S
+" visual-mode
+xmap gs <Plug>Sneak_s
+xmap gS <Plug>Sneak_S
+" operator-pending-mode
+omap o <Plug>Sneak_s
+omap O <Plug>Sneak_S
+
 " ========== VIM-LSC ================
 set shortmess-=F
 let g:lsc_auto_map = {

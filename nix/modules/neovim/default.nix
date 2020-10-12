@@ -106,9 +106,12 @@ in
             pkgs.vimPlugins.vim-slash
             plugins.vim-visual-split
             plugins.vim-matchup
+            pkgs.vimPlugins.vim-sneak
+
             # Treesitter
             plugins.treesitterGo
             plugins.treesitterYaml
+
             # LSP
             # Comment out nvim-lsp when using this
             # TODO: Create an option for toggling different LSP implementations
