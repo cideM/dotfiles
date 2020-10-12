@@ -4,6 +4,7 @@ with pkgs;
 
 {
   home.packages = [
+    libnotify
     iotop
     xclip
     feh
