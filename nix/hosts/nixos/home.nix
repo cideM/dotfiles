@@ -105,6 +105,10 @@
     # bspwm hotkeys
     #
 
+    # Move root node (this desktop) to desktop with number
+    super + ctrl + shift + {1-9} 
+        bspc node -f @/; bspc node -d "^{1-9}"
+
     # Toggle dunst
     super + alt + p
         notify-send "DUNST_COMMAND_TOGGLE"
