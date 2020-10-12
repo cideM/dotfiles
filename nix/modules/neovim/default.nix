@@ -106,9 +106,13 @@ in
             pkgs.vimPlugins.vim-slash
             plugins.vim-visual-split
             plugins.vim-matchup
-            ## Treesitter
+            # Treesitter
             plugins.treesitterGo
             plugins.treesitterYaml
+            # LSP
+            # Comment out nvim-lsp when using this
+            # TODO: Create an option for toggling different LSP implementations
+            pkgs.vimPlugins.vim-lsc
 
             # Git
             pkgs.vimPlugins.vim-fugitive
@@ -145,7 +149,7 @@ in
 
           opt = [
             pkgs.vimPlugins.nvim-treesitter
-            plugins.nvim-lsp
+            # plugins.nvim-lsp
             plugins.nvim-colorizer
           ];
         };

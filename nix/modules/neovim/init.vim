@@ -33,19 +33,6 @@ if has('unix')
 endif
 colorscheme seoul256-light
 
-function! MyHighlights() abort
-    highlight LspDiagnosticsUnderline gui=undercurl
-    " Those are the actual messages in the popup, not the text/code in the
-    " buffer
-    " highlight link LspDiagnosticsWarning WarningMsg
-    " highlight link LspDiagnosticsError ErrorMsg
-endfunction
-
-augroup MyColors
-    autocmd!
-    autocmd ColorScheme * call MyHighlights()
-augroup END
-
 " Call my own SetPath function so that every git file is added to path. Let's
 " me get most of FZF without using FZF
 augroup SetPath
@@ -128,9 +115,6 @@ let g:EditorConfig_preserve_formatoptions = 1
 packadd nvim-colorizer
 lua require'colorizer'.setup()
 
-" https://neovim.io/doc/user/lsp.html
-command! -bar -nargs=0 RestartLSP :lua vim.lsp.stop_client(vim.lsp.get_active_clients()); vim.cmd("edit")
-
 " markdown folding
 let g:markdown_fold_style = 'nested'
 
@@ -148,102 +132,138 @@ let g:matchup_matchparen_offscreen = {}
 let g:gutentags_exclude_filetypes = ['haskell']
 let g:gutentags_file_list_command = 'rg\ --files'
 
-" ==============================
-" =          NEOVIM LSP        =
-" ==============================
-packadd nvim-lsp
-lua <<EOF
-local nvim_lsp = require('nvim_lsp')
-local buf_set_keymap = vim.api.nvim_buf_set_keymap
-local api = vim.api
-local util = require 'vim.lsp.util'
+" ========== VIM-LSC ================
+set shortmess-=F
+let g:lsc_auto_map = {
+            \'defaults': v:true,
+            \'LSClientWorkspacesymbol': 'gW'
+            \}
+let g:lsc_server_commands = {
+            \'go': 'gopls',
+            \'dhall': 'dhall-lsp-server',
+            \'purescript': {
+            \   'command': 'purescript-language-server --stdio',
+            \   'workspace_config': {
+            \       'addSpagoSources': 'true'
+            \   }
+            \},
+            \'rust': 'rust-analyzer'
+            \}
+augroup LSC
+    autocmd!
+    autocmd CompleteDone * silent! pclose
+augroup END
 
--- https://github.com/neovim/neovim/blob/master/runtime/lua/vim/lsp/callbacks.lua
-local onPublishDiagnostics = function(err, method, result, client_id)
-  if not result then return end
-  local uri = result.uri
-  local bufnr = vim.uri_to_bufnr(uri)
-  if not bufnr then
-    err_message("LSP.publishDiagnostics: Couldn't find buffer for ", uri)
-    return
-  end
+" ========= NVIM-LSP ================
+" https://neovim.io/doc/user/lsp.html
 
-  -- Unloaded buffers should not handle diagnostics.
-  --    When the buffer is loaded, we'll call on_attach, which sends textDocument/didOpen.
-  --    This should trigger another publish of the diagnostics.
-  --
-  -- In particular, this stops a ton of spam when first starting a server for current
-  -- unloaded buffers.
-  if not api.nvim_buf_is_loaded(bufnr) then
-    return
-  end
+" command! -bar -nargs=0 RestartLSP :lua vim.lsp.stop_client(vim.lsp.get_active_clients()); vim.cmd("edit")
+" function! MyHighlights() abort
+"     highlight LspDiagnosticsUnderline gui=undercurl
+"     " Those are the actual messages in the popup, not the text/code in the
+"     " buffer
+"     " highlight link LspDiagnosticsWarning WarningMsg
+"     " highlight link LspDiagnosticsError ErrorMsg
+" endfunction
 
-  util.buf_clear_diagnostics(bufnr)
+" augroup MyColors
+"     autocmd!
+"     autocmd ColorScheme * call MyHighlights()
+" augroup END
 
-  if result.diagnostics then
-      for _, v in ipairs(result.diagnostics) do
-        v.bufnr = client_id
-        v.lnum = v.range.start.line + 1
-        v.col = v.range.start.character + 1
-        v.text = v.message
-      end
-      util.set_loclist(result.diagnostics)
-  end
+" packadd nvim-lsp
+" lua <<EOF
+" local nvim_lsp = require('nvim_lsp')
+" local buf_set_keymap = vim.api.nvim_buf_set_keymap
+" local api = vim.api
+" local util = require 'vim.lsp.util'
 
-  util.buf_diagnostics_save_positions(bufnr, result.diagnostics)
-  util.buf_diagnostics_underline(bufnr, result.diagnostics)
-  -- util.buf_diagnostics_virtual_text(bufnr, result.diagnostics)
-  util.buf_diagnostics_signs(bufnr, result.diagnostics)
-  vim.api.nvim_command("doautocmd User LspDiagnosticsChanged")
-end
+" -- https://github.com/neovim/neovim/blob/master/runtime/lua/vim/lsp/callbacks.lua
+" local onPublishDiagnostics = function(err, method, result, client_id)
+"   if not result then return end
+"   local uri = result.uri
+"   local bufnr = vim.uri_to_bufnr(uri)
+"   if not bufnr then
+"     err_message("LSP.publishDiagnostics: Couldn't find buffer for ", uri)
+"     return
+"   end
 
-local on_attach = function(_, bufnr)
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+"   -- Unloaded buffers should not handle diagnostics.
+"   --    When the buffer is loaded, we'll call on_attach, which sends textDocument/didOpen.
+"   --    This should trigger another publish of the diagnostics.
+"   --
+"   -- In particular, this stops a ton of spam when first starting a server for current
+"   -- unloaded buffers.
+"   if not api.nvim_buf_is_loaded(bufnr) then
+"     return
+"   end
 
-    -- Mappings.
-    local opts = { noremap=true, silent=true }
-    buf_set_keymap(bufnr, 'n', '<localleader>k',  '<cmd>lua vim.lsp.buf.hover()<CR>',                 opts)
-    buf_set_keymap(bufnr, 'n', '<localleader>h',  '<cmd>lua vim.lsp.buf.signature_help()<CR>',        opts)
-    buf_set_keymap(bufnr, 'n', '<localleader>re', '<cmd>lua vim.lsp.buf.rename()<CR>',                opts)
-    buf_set_keymap(bufnr, 'n', '<localleader>rr', '<cmd>lua vim.lsp.buf.references()<CR>',            opts)
-    buf_set_keymap(bufnr, 'n', '<localleader>ri', '<cmd>lua vim.lsp.buf.implementation()<CR>',        opts)
-    buf_set_keymap(bufnr, 'n', '<localleader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>',            opts)
-    buf_set_keymap(bufnr, 'n', '<localleader>gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>',       opts)
-    buf_set_keymap(bufnr, 'n', '<localleader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>',           opts)
-    buf_set_keymap(bufnr, 'n', '<localleader>p',  '<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>',opts)
-    buf_set_keymap(bufnr, 'n', '<localleader>ws',  '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>',opts)
-    buf_set_keymap(bufnr, 'n', '<localleader>ds',  '<cmd>lua vim.lsp.buf.document_symbol()<CR>',opts)
-    buf_set_keymap(bufnr, 'n', '<localleader>dh',  '<cmd>lua vim.lsp.buf.document_highlight()<CR>',opts)
-    buf_set_keymap(bufnr, 'n', '<localleader>sr',  '<cmd>lua vim.lsp.buf.server_ready()<CR>',opts)
+"   util.buf_clear_diagnostics(bufnr)
 
-    -- vim.api.nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
-    -- vim.api.nvim_command [[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
-    -- vim.api.nvim_command [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
-end
+"   if result.diagnostics then
+"       for _, v in ipairs(result.diagnostics) do
+"         v.bufnr = client_id
+"         v.lnum = v.range.start.line + 1
+"         v.col = v.range.start.character + 1
+"         v.text = v.message
+"       end
+"       util.set_loclist(result.diagnostics)
+"   end
 
-local configs = require'nvim_lsp/configs'
+"   util.buf_diagnostics_save_positions(bufnr, result.diagnostics)
+"   util.buf_diagnostics_underline(bufnr, result.diagnostics)
+"   -- util.buf_diagnostics_virtual_text(bufnr, result.diagnostics)
+"   util.buf_diagnostics_signs(bufnr, result.diagnostics)
+"   vim.api.nvim_command("doautocmd User LspDiagnosticsChanged")
+" end
 
-vim.lsp.callbacks["textDocument/publishDiagnostics"] = onPublishDiagnostics
+" local on_attach = function(_, bufnr)
+"     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-configs.dhall = {
-    default_config = {
-            cmd = {'dhall-lsp-server'};
-            filetypes = {'dhall'};
-            root_dir = function(fname)
-                return util.find_git_ancestor(fname) or vim.loop.os_homedir()
-            end;
-            settings = {};
-    };
-}
+"     -- Mappings.
+"     local opts = { noremap=true, silent=true }
+"     buf_set_keymap(bufnr, 'n', '<localleader>k',  '<cmd>lua vim.lsp.buf.hover()<CR>',                 opts)
+"     buf_set_keymap(bufnr, 'n', '<localleader>h',  '<cmd>lua vim.lsp.buf.signature_help()<CR>',        opts)
+"     buf_set_keymap(bufnr, 'n', '<localleader>re', '<cmd>lua vim.lsp.buf.rename()<CR>',                opts)
+"     buf_set_keymap(bufnr, 'n', '<localleader>rr', '<cmd>lua vim.lsp.buf.references()<CR>',            opts)
+"     buf_set_keymap(bufnr, 'n', '<localleader>ri', '<cmd>lua vim.lsp.buf.implementation()<CR>',        opts)
+"     buf_set_keymap(bufnr, 'n', '<localleader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>',            opts)
+"     buf_set_keymap(bufnr, 'n', '<localleader>gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>',       opts)
+"     buf_set_keymap(bufnr, 'n', '<localleader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>',           opts)
+"     buf_set_keymap(bufnr, 'n', '<localleader>p',  '<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>',opts)
+"     buf_set_keymap(bufnr, 'n', '<localleader>ws',  '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>',opts)
+"     buf_set_keymap(bufnr, 'n', '<localleader>ds',  '<cmd>lua vim.lsp.buf.document_symbol()<CR>',opts)
+"     buf_set_keymap(bufnr, 'n', '<localleader>dh',  '<cmd>lua vim.lsp.buf.document_highlight()<CR>',opts)
+"     buf_set_keymap(bufnr, 'n', '<localleader>sr',  '<cmd>lua vim.lsp.buf.server_ready()<CR>',opts)
 
-local servers = {'gopls', 'rust_analyzer', 'dhall', 'purescriptls'}
+"     -- vim.api.nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
+"     -- vim.api.nvim_command [[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
+"     -- vim.api.nvim_command [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
+" end
 
-for _, lsp in ipairs(servers) do
-    if nvim_lsp[lsp].setup ~= nil and vim.fn.executable(nvim_lsp[lsp].cmd) then
-      nvim_lsp[lsp].setup { on_attach = on_attach }
-    end
-end
-EOF
+" local configs = require'nvim_lsp/configs'
+
+" vim.lsp.callbacks["textDocument/publishDiagnostics"] = onPublishDiagnostics
+
+" configs.dhall = {
+"     default_config = {
+"             cmd = {'dhall-lsp-server'};
+"             filetypes = {'dhall'};
+"             root_dir = function(fname)
+"                 return util.find_git_ancestor(fname) or vim.loop.os_homedir()
+"             end;
+"             settings = {};
+"     };
+" }
+
+" local servers = {'gopls', 'rust_analyzer', 'dhall', 'purescriptls'}
+
+" for _, lsp in ipairs(servers) do
+"     if nvim_lsp[lsp].setup ~= nil and vim.fn.executable(nvim_lsp[lsp].cmd) then
+"       nvim_lsp[lsp].setup { on_attach = on_attach }
+"     end
+" end
+" EOF
 
 " ==============================
 " =     NVIM TREESITTER        =
