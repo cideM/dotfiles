@@ -422,8 +422,8 @@
 
         bspc monitor -d                    . . . . . . 
 
-        bspc config border_width           2
         bspc config window_gap             0
+        bspc config border_width           3
         bspc config normal_border_color    \#000000
         bspc config focused_border_color   \#CB1B45
 
