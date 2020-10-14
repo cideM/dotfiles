@@ -22,7 +22,7 @@ local function render_floating_window(options)
     local buf = a.nvim_create_buf(false, true)
     a.nvim_buf_set_option(buf, 'bufhidden', 'delete')
     opts.width = width
-    opts.height = height / 2
+    opts.height = math.floor(height / 2)
     opts.row = width-1
     opts.col = 0
     local win = a.nvim_open_win(buf, 0, opts)

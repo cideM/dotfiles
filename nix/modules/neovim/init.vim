@@ -14,6 +14,7 @@ set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set hidden
 set signcolumn=yes:2
 set ignorecase
+set completeopt-=preview
 set smartcase
 set inccommand=split
 set path-=/usr/include
