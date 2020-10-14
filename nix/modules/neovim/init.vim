@@ -149,6 +149,10 @@ xmap gS <Plug>Sneak_S
 omap o <Plug>Sneak_s
 omap O <Plug>Sneak_S
 
+" ========== SCRATCH ================
+" gs intereferes with sneak
+let g:scratch_no_mappings = 1
+
 " ========== VIM-LSC ================
 set shortmess-=F
 let g:lsc_auto_map = {
