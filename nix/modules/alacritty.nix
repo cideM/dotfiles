@@ -1,4 +1,4 @@
-{ pkgs, padding ? 40, fontSize ? 12, ... }:
+{ pkgs, padding ? 40, fontSize ? 12, decorations ? "full", ... }:
 let
   # https://github.com/alacritty/alacritty/issues/62#issuecomment-347552058
   optionAsMetaBindings = map
@@ -348,6 +348,7 @@ let
     ] ++ optionAsMetaBindings;
 
     window = {
+      decorations = decorations;
       dynamic_padding = true;
       padding = {
         x = padding;
