@@ -119,6 +119,10 @@ nnoremap <BS> <C-^>
 let g:EditorConfig_max_line_indicator = "exceeding"
 let g:EditorConfig_preserve_formatoptions = 1
 
+" vim-qf
+let g:qf_auto_open_quickfix = 1
+let g:qf_auto_open_loclist  = 1
+
 " nvim-colorizer
 packadd nvim-colorizer
 lua require'colorizer'.setup()

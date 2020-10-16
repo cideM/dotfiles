@@ -136,6 +136,7 @@ function module.make(target)
   local stdout = vim.loop.new_pipe(false)
   local stderr = vim.loop.new_pipe(false)
 
+  vim.cmd(string.format("echom 'Running: \"%s\" with args: \"%s\"'", program, args))
   handle, pid = vim.loop.spawn(program, {
     args = vim.split(args, ' '),
     stdio = { stdin, stdout, stderr }

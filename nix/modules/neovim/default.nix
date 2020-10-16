@@ -108,6 +108,7 @@ in
             plugins.vim-matchup
             pkgs.vimPlugins.vim-sneak
             plugins.vim-scratch
+            plugins.vim-qf
 
             # Treesitter
             plugins.treesitterGo
