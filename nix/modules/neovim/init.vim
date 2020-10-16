@@ -23,6 +23,13 @@ set splitright
 set termguicolors
 set undofile
 
+" Automatically resize windows if host window changes (e.g., creating a tmux
+" split)
+augroup Resize
+    autocmd!
+    autocmd VimResized * wincmd =
+augroup END
+
 " ==============================
 " =        COLORSCHEME         =
 " ==============================
