@@ -387,8 +387,11 @@
 
     scriptPath = ".hm-xsession";
 
+    # https://github.com/NixOS/nixpkgs/issues/61539
     initExtra = ''
       ${pkgs.sxhkd}/bin/sxhkd &
+      eval $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+      export SSH_AUTH_SOCK
     '';
 
     profileExtra = ''

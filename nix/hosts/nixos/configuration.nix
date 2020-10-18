@@ -117,6 +117,8 @@ in
     lightdm.enable = true;
   };
 
+  services.gnome3.gnome-keyring.enable = true;
+
   services.xserver.desktopManager = {
     session = [{
       name = "home-manager";
