@@ -88,31 +88,36 @@ in
         packages.foobar = {
           start = [
             pkgs.vimPlugins.editorconfig-vim
+            pkgs.vimPlugins.limelight-vim
             pkgs.vimPlugins.targets-vim
             pkgs.vimPlugins.vim-commentary
-            pkgs.vimPlugins.vim-dirvish
+            pkgs.vimPlugins.vim-cool
             pkgs.vimPlugins.vim-easy-align
             pkgs.vimPlugins.vim-eunuch
-            pkgs.vimPlugins.limelight-vim
             pkgs.vimPlugins.vim-gutentags
+            pkgs.vimPlugins.limelight-vim
             pkgs.vimPlugins.vim-indent-object
+            pkgs.vimPlugins.vim-peekaboo
             pkgs.vimPlugins.vim-repeat
             pkgs.vimPlugins.vim-sandwich
             pkgs.vimPlugins.vim-unimpaired
-            pkgs.vimPlugins.vim-peekaboo
+            pkgs.vimPlugins.vim-vinegar
+            pkgs.vimPlugins.vim-sneak
             pkgs.vimPlugins.vim-mundo
             plugins.sad
             plugins.vim-colortemplate
-            pkgs.vimPlugins.vim-slash
-            plugins.vim-visual-split
             plugins.vim-matchup
-            pkgs.vimPlugins.vim-sneak
-            plugins.vim-scratch
             plugins.vim-qf
+            plugins.vim-scratch
+            plugins.vim-visual-split
+            pkgs.vimPlugins.vim-asterisk
+            pkgs.vimPlugins.ale
 
             # Treesitter
             plugins.treesitterGo
             plugins.treesitterYaml
+            plugins.treesitterTs
+            plugins.treesitterTsx
 
             # LSP
             # Comment out nvim-lsp when using this
@@ -122,13 +127,23 @@ in
             # Git
             pkgs.vimPlugins.vim-fugitive
             pkgs.vimPlugins.gv-vim
-            pkgs.vimPlugins.vim-rhubarb
             pkgs.vimPlugins.vim-gist
+            pkgs.vimPlugins.vim-rhubarb
 
             # Language Tooling
             plugins.parinfer-rust
             plugins.vim-markdown-folding
             pkgs.vimPlugins.conjure
+
+            # Languages & Syntax
+            pkgs.vimPlugins.purescript-vim
+            pkgs.vimPlugins.vim-nix
+            pkgs.vimPlugins.dhall-vim
+            plugins.vim-js
+            plugins.vim-lua
+            pkgs.vimPlugins.yats-vim
+            pkgs.vimPlugins.vim-jsx-pretty
+            pkgs.vimPlugins.Jenkinsfile-vim-syntax
 
             # Themes
             plugins.apprentice
@@ -140,20 +155,11 @@ in
             pkgs.vimPlugins.papercolor-theme
             pkgs.vimPlugins.seoul256-vim
 
-            # Languages & Syntax
-            pkgs.vimPlugins.purescript-vim
-            pkgs.vimPlugins.vim-nix
-            pkgs.vimPlugins.dhall-vim
-            plugins.vim-js
-            plugins.vim-lua
-            pkgs.vimPlugins.yats-vim
-            pkgs.vimPlugins.vim-jsx-pretty
-            pkgs.vimPlugins.Jenkinsfile-vim-syntax
           ]
           ++ localPlugins;
 
           opt = [
-            pkgs.vimPlugins.nvim-treesitter
+            plugins.nvim-treesitter
             # plugins.nvim-lsp
             plugins.nvim-colorizer
           ];

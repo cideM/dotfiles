@@ -14,7 +14,7 @@
     "conjure": {
         "branch": "master",
         "repo": "https://git@github.com/Olical/conjure",
-        "rev": "beddff1abb9e679ebf9ec005e53a0e1aec062b94",
+        "rev": "0e63269e176232cdd9f1c20d94dfd3b8ad5702a1",
         "type": "git"
     },
     "edge-theme": {
@@ -26,7 +26,7 @@
     "neovim": {
         "branch": "master",
         "repo": "https://git@github.com/neovim/neovim",
-        "rev": "f7cc3ae0b7b8ce67294c00729d278362ad60a4f0",
+        "rev": "9817d991403ea3646b9a01234d12c7661ff8c62b",
         "type": "git"
     },
     "nord-vim": {
@@ -50,13 +50,13 @@
     "nvim-treesitter": {
         "branch": "master",
         "repo": "https://git@github.com/nvim-treesitter/nvim-treesitter.git",
-        "rev": "19c9465a8c33d1362550b2c4385f594213848912",
+        "rev": "7f3276450be20ec3cd8241bdb9196659289c3d31",
         "type": "git"
     },
     "onehalf": {
         "branch": "master",
         "repo": "https://git@github.com/sonph/onehalf.git",
-        "rev": "3aa42a39ed3cddde0c53976a700b81b8a7067890",
+        "rev": "89923117bc49dd1e0c6b7fdd34bc6dc4d425fe1f",
         "type": "git"
     },
     "parinfer": {
@@ -86,7 +86,13 @@
     "treesitter-yaml": {
         "branch": "master",
         "repo": "https://git@github.com/ikatyang/tree-sitter-yaml",
-        "rev": "258751d666d31888f97ca6188a686f36fadf6c43",
+        "rev": "b26d567070cfb40cb3138a57cf12a4e2e3c854ef",
+        "type": "git"
+    },
+    "treesitter-ts": {
+        "branch": "master",
+        "repo": "https://github.com/tree-sitter/tree-sitter-typescript",
+        "rev": "07a12bdf024d66d267bd7f96870f8bbbaceaa5d9",
         "type": "git"
     },
     "vim-colortemplate": {
@@ -146,7 +152,7 @@
     "vim-qf": {
         "branch": "master",
         "repo": "https://git@github.com/romainl/vim-qf",
-        "rev": "d5d7bb2e230b2098fdb2b28cfaa1b48a83d11a69",
+        "rev": "fac7a84b50de99a739e91045c8a59649f639d9fb",
         "type": "git"
     },
     "vim-scratch": {

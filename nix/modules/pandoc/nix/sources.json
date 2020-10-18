@@ -14,7 +14,7 @@
     "pandoc-template-eisvogel": {
         "branch": "master",
         "repo": "https://git@github.com/Wandmalfarbe/pandoc-latex-template.git",
-        "rev": "e6e5890494607458f79ec9a5100d7ac7fd3e9b98",
+        "rev": "b59a4e54bce51585cb67c025b0a11075aa03f2a6",
         "type": "git"
     },
     "pandoc-template-github": {

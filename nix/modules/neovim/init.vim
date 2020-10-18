@@ -9,7 +9,7 @@ set wildignore+=*/.git/*,
             \*/dist/*,
             \*/compiled/*,
             \*/tmp/*
-set diffopt=algorithm:patience,filler,iwhiteall,indent-heuristic
+set diffopt=algorithm:patience,filler,indent-heuristic,closeoff
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set hidden
 set signcolumn=yes:2
@@ -23,6 +23,16 @@ set splitright
 set termguicolors
 set undofile
 
+" https://github.com/neovim/neovim/issues/13113
+" EVERYTHING. IS. BROKEN. ALL THE FUCKING TIME
+" You open your favorite program and one day it's broken! Why? THE FUCK DO I
+" CARE. There's not a single fucking program developed in the last 10 years
+" that's not broken ALL THE FUCKING TIME.
+augroup FUCK_EVERYTHING
+    autocmd!
+    autocmd Filetype typescript setlocal formatexpr=
+augroup END
+
 " Automatically resize windows if host window changes (e.g., creating a tmux
 " split)
 augroup Resize
@@ -33,13 +43,9 @@ augroup END
 " ==============================
 " =        COLORSCHEME         =
 " ==============================
+colorscheme yui
 let g:one_allow_italics = 1
 let g:yui_comments = "emphasize"
-
-if has('unix')
-	let g:seoul256_srgb = 1
-endif
-colorscheme seoul256-light
 
 " Call my own SetPath function so that every git file is added to path. Let's
 " me get most of FZF without using FZF
@@ -89,6 +95,8 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+" Open terminal in directory of current file
+nnoremap <leader>t :split <Bar> lcd %:p:h <Bar> term<CR>
 
 " Leave insert mode with jk
 imap jk <Esc>
@@ -116,35 +124,48 @@ nnoremap <BS> <C-^>
 " ==============================
 " =          PLUGINS           =
 " ==============================
+
+" ======= EDITORCONFIG ==============
 let g:EditorConfig_max_line_indicator = "exceeding"
 let g:EditorConfig_preserve_formatoptions = 1
 
-" vim-qf
+" ======= VIM QF ====================
 let g:qf_auto_open_quickfix = 1
 let g:qf_auto_open_loclist  = 1
 
-" nvim-colorizer
+" ======= NVIM COLORIZER ============
 packadd nvim-colorizer
 lua require'colorizer'.setup()
 
-" markdown folding
+" ======= MARKDOWN FOLDING ==========
 let g:markdown_fold_style = 'nested'
 
+" ======= SAD =======================
 " Sad makes replacing selections easier and just automates some tedious
-" plumbing around slash search and cgn
-nmap <leader>c <Plug>(sad-change-forward)
-nmap <leader>C <Plug>(sad-change-backward)
-xmap <leader>c <Plug>(sad-change-forward)
-xmap <leader>C <Plug>(sad-change-backward)
+" plumbing around slash search and cgn. It's just an upgrade over the built-in
+" c mapping. C is still the old functionality.
+map c <Plug>(sad-change-forward)
+map <leader>c <Plug>(sad-change-backward)
 
+" ======= ASTERISK ==================
+" This should override the mappings for * and # which are provided by sad.
+" Use stay motions per default, meaning pressing * won't jump to the first
+" match.
+map *  <Plug>(asterisk-z*)
+map #  <Plug>(asterisk-z#)
+map g* <Plug>(asterisk-gz*)
+map g# <Plug>(asterisk-gz#)
+
+" ======= MATCHUP ===================
 " Otherwise the status line is overwritten with matching code parts
 let g:matchup_matchparen_offscreen = {}
 
+" ======= GUTENTAGS =================
 " No ctags for Haskell
-let g:gutentags_exclude_filetypes = ['haskell']
+let g:gutentags_exclude_filetypes = ['haskell', 'purs', 'purescript']
 let g:gutentags_file_list_command = 'rg\ --files'
 
-" ========== SNEAK ==================
+" ======= SNEAK =====================
 let g:sneak#label      = 1
 let g:sneak#use_ic_scs = 1
 map f <Plug>Sneak_f
@@ -152,18 +173,15 @@ map F <Plug>Sneak_F
 map t <Plug>Sneak_t
 map T <Plug>Sneak_T
 " 2-character Sneak (default)
-nmap gs <Plug>Sneak_s
-nmap gS <Plug>Sneak_S
-" visual-mode
-xmap gs <Plug>Sneak_s
-xmap gS <Plug>Sneak_S
-" operator-pending-mode
-omap o <Plug>Sneak_s
-omap O <Plug>Sneak_S
+map <leader>j <Plug>Sneak_s
+map <leader>k <Plug>Sneak_S
 
-" ========== SCRATCH ================
-" gs intereferes with sneak
-let g:scratch_no_mappings = 1
+" ========== ALE ====================
+let g:ale_go_golangci_lint_options = 'fast'
+nmap <leader>ad <Plug>(ale_detail)
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <silent> <C-f> <Plug>(ale_fix)
 
 " ========== VIM-LSC ================
 set shortmess-=F
@@ -180,123 +198,13 @@ let g:lsc_server_commands = {
             \       'addSpagoSources': 'true'
             \   }
             \},
-            \'rust': 'rust-analyzer'
+            \'rust': 'rust-analyzer',
+            \'typescript': 'typescript-language-server --stdio'
             \}
 augroup LSC
     autocmd!
     autocmd CompleteDone * silent! pclose
 augroup END
-
-" ========= NVIM-LSP ================
-" https://neovim.io/doc/user/lsp.html
-
-" command! -bar -nargs=0 RestartLSP :lua vim.lsp.stop_client(vim.lsp.get_active_clients()); vim.cmd("edit")
-" function! MyHighlights() abort
-"     highlight LspDiagnosticsUnderline gui=undercurl
-"     " Those are the actual messages in the popup, not the text/code in the
-"     " buffer
-"     " highlight link LspDiagnosticsWarning WarningMsg
-"     " highlight link LspDiagnosticsError ErrorMsg
-" endfunction
-
-" augroup MyColors
-"     autocmd!
-"     autocmd ColorScheme * call MyHighlights()
-" augroup END
-
-" packadd nvim-lsp
-" lua <<EOF
-" local nvim_lsp = require('nvim_lsp')
-" local buf_set_keymap = vim.api.nvim_buf_set_keymap
-" local api = vim.api
-" local util = require 'vim.lsp.util'
-
-" -- https://github.com/neovim/neovim/blob/master/runtime/lua/vim/lsp/callbacks.lua
-" local onPublishDiagnostics = function(err, method, result, client_id)
-"   if not result then return end
-"   local uri = result.uri
-"   local bufnr = vim.uri_to_bufnr(uri)
-"   if not bufnr then
-"     err_message("LSP.publishDiagnostics: Couldn't find buffer for ", uri)
-"     return
-"   end
-
-"   -- Unloaded buffers should not handle diagnostics.
-"   --    When the buffer is loaded, we'll call on_attach, which sends textDocument/didOpen.
-"   --    This should trigger another publish of the diagnostics.
-"   --
-"   -- In particular, this stops a ton of spam when first starting a server for current
-"   -- unloaded buffers.
-"   if not api.nvim_buf_is_loaded(bufnr) then
-"     return
-"   end
-
-"   util.buf_clear_diagnostics(bufnr)
-
-"   if result.diagnostics then
-"       for _, v in ipairs(result.diagnostics) do
-"         v.bufnr = client_id
-"         v.lnum = v.range.start.line + 1
-"         v.col = v.range.start.character + 1
-"         v.text = v.message
-"       end
-"       util.set_loclist(result.diagnostics)
-"   end
-
-"   util.buf_diagnostics_save_positions(bufnr, result.diagnostics)
-"   util.buf_diagnostics_underline(bufnr, result.diagnostics)
-"   -- util.buf_diagnostics_virtual_text(bufnr, result.diagnostics)
-"   util.buf_diagnostics_signs(bufnr, result.diagnostics)
-"   vim.api.nvim_command("doautocmd User LspDiagnosticsChanged")
-" end
-
-" local on_attach = function(_, bufnr)
-"     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-"     -- Mappings.
-"     local opts = { noremap=true, silent=true }
-"     buf_set_keymap(bufnr, 'n', '<localleader>k',  '<cmd>lua vim.lsp.buf.hover()<CR>',                 opts)
-"     buf_set_keymap(bufnr, 'n', '<localleader>h',  '<cmd>lua vim.lsp.buf.signature_help()<CR>',        opts)
-"     buf_set_keymap(bufnr, 'n', '<localleader>re', '<cmd>lua vim.lsp.buf.rename()<CR>',                opts)
-"     buf_set_keymap(bufnr, 'n', '<localleader>rr', '<cmd>lua vim.lsp.buf.references()<CR>',            opts)
-"     buf_set_keymap(bufnr, 'n', '<localleader>ri', '<cmd>lua vim.lsp.buf.implementation()<CR>',        opts)
-"     buf_set_keymap(bufnr, 'n', '<localleader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>',            opts)
-"     buf_set_keymap(bufnr, 'n', '<localleader>gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>',       opts)
-"     buf_set_keymap(bufnr, 'n', '<localleader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>',           opts)
-"     buf_set_keymap(bufnr, 'n', '<localleader>p',  '<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>',opts)
-"     buf_set_keymap(bufnr, 'n', '<localleader>ws',  '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>',opts)
-"     buf_set_keymap(bufnr, 'n', '<localleader>ds',  '<cmd>lua vim.lsp.buf.document_symbol()<CR>',opts)
-"     buf_set_keymap(bufnr, 'n', '<localleader>dh',  '<cmd>lua vim.lsp.buf.document_highlight()<CR>',opts)
-"     buf_set_keymap(bufnr, 'n', '<localleader>sr',  '<cmd>lua vim.lsp.buf.server_ready()<CR>',opts)
-
-"     -- vim.api.nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
-"     -- vim.api.nvim_command [[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
-"     -- vim.api.nvim_command [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
-" end
-
-" local configs = require'nvim_lsp/configs'
-
-" vim.lsp.callbacks["textDocument/publishDiagnostics"] = onPublishDiagnostics
-
-" configs.dhall = {
-"     default_config = {
-"             cmd = {'dhall-lsp-server'};
-"             filetypes = {'dhall'};
-"             root_dir = function(fname)
-"                 return util.find_git_ancestor(fname) or vim.loop.os_homedir()
-"             end;
-"             settings = {};
-"     };
-" }
-
-" local servers = {'gopls', 'rust_analyzer', 'dhall', 'purescriptls'}
-
-" for _, lsp in ipairs(servers) do
-"     if nvim_lsp[lsp].setup ~= nil and vim.fn.executable(nvim_lsp[lsp].cmd) then
-"       nvim_lsp[lsp].setup { on_attach = on_attach }
-"     end
-" end
-" EOF
 
 " ==============================
 " =     NVIM TREESITTER        =

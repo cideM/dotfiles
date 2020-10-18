@@ -105,10 +105,10 @@ let
     src = vimPluginsSources.vim-one-colors;
   });
 
-  # nvim-treesitter = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-  #   name = "nvim-treesitter";
-  #   src = vimPluginsSources.nvim-treesitter;
-  # });
+  nvim-treesitter = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "nvim-treesitter";
+    src = vimPluginsSources.nvim-treesitter;
+  });
 
   vim-lua = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "vim-lua";
@@ -134,8 +134,34 @@ let
     name = "tree-sitter-yaml-${version}";
     src = vimPluginsSources.treesitter-yaml;
     buildPhase = ''
+      runHook preBuild
       mkdir -p parser/
-      ${pkgs.clang}/bin/clang++ -o parser/yaml.so -I./src -shared -Os -lstdc++ src/parser.c src/scanner.cc
+      $CC -o parser/yaml.so -I$src/src $src/src/parser.c $src/src/scanner.cc -shared  -Os -lstdc++ -fPIC
+      runHook postBuild
+    '';
+  };
+
+  treesitterTs = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    version = "latest";
+    name = "tree-sitter-ts-${version}";
+    src = vimPluginsSources.treesitter-ts;
+    buildPhase = ''
+      runHook preBuild
+      mkdir -p parser/
+      $CC -o parser/typescript.so -I$src/typescript/src $src/typescript/src/parser.c $src/typescript/src/scanner.c -shared  -Os -lstdc++ -fPIC
+      runHook postBuild
+    '';
+  };
+
+  treesitterTsx = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    version = "latest";
+    name = "tree-sitter-tsx-${version}";
+    src = vimPluginsSources.treesitter-ts;
+    buildPhase = ''
+      runHook preBuild
+      mkdir -p parser/
+      $CC -o parser/tsx.so -I$src/tsx/src $src/tsx/src/parser.c $src/tsx/src/scanner.c -shared  -Os -lstdc++ -fPIC
+      runHook postBuild
     '';
   };
 
@@ -168,6 +194,9 @@ in
     vim-visual-split
     treesitterGo
     treesitterYaml
+    treesitterTs
+    treesitterTsx
+    nvim-treesitter
     nvim-colorizer
     yui;
 }

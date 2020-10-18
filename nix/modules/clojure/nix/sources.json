@@ -2,7 +2,7 @@
     "clj-deps": {
         "branch": "live",
         "repo": "https://git@github.com/practicalli/clojure-deps-edn.git",
-        "rev": "ef9f69c28054ed95b4552ca6be7435ec301ac0fd",
+        "rev": "37f9f7ae9a2faf4f2f802184898a1d0e0f640067",
         "type": "git"
     },
     "niv": {

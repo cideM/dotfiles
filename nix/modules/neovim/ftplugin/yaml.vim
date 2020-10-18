@@ -23,3 +23,5 @@ if prettier_path !=# ""
     let &formatprg=prettier_path . ' --stdin-filepath ' . expand('%')
     let b:undo_ftplugin .= '|setlocal formatprg<'
 end
+
+let b:ale_fixers = ['prettier']

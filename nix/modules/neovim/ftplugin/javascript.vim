@@ -66,3 +66,6 @@ nnoremap <buffer> <silent> <localleader>ts :JestSplit<cr>
 
 command! -bar -buffer JestSplitWatch :split | execute 'terminal jest --watch '. expand('%')
 nnoremap <buffer> <silent> <localleader>tw :JestSplitWatch<cr>
+
+let b:ale_fixers = ['eslint', 'prettier']
+let b:ale_linters = ['eslint']
