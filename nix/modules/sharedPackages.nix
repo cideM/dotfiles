@@ -13,9 +13,6 @@ with pkgs;
   ];
 
   home.packages = [
-    aerc
-    awscli
-    bash_5
 
     # Rust CLI replacements
     bat # cat
@@ -26,6 +23,9 @@ with pkgs;
     ripgrep # grep
     ytop # top
 
+    aerc
+    awscli
+    bash_5
     bandwhich
     coreutils
     curl
@@ -41,16 +41,16 @@ with pkgs;
     gawk
     gitAndTools.hub
     gnugrep
-    graphviz
     gnupg
     golangci-lint
     google-cloud-sdk
     gopls
+    graphviz
     gzip
     hack-font
     haskellPackages.brittany
-    hexyl
     haskellPackages.nix-derivation
+    hexyl
     htop
     hyperfine
     jq
@@ -67,6 +67,8 @@ with pkgs;
     nodePackages_latest.purescript-language-server
     pandoc
     perl
+    # https://github.com/NixOS/nixpkgs/issues/96921
+    # qmk_firmware
     ranger
     rclone
     restic
@@ -89,5 +91,6 @@ with pkgs;
     weechat
     wget
     yamllint
+
   ];
 }

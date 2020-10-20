@@ -2,7 +2,7 @@ gtypist
 insomnia
 jetbrains-toolbox
 protonmail-bridge-beta-bin
-qmk
+qmk_firmware
 sendmail
 slack-desktop
 spotify

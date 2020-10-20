@@ -97,6 +97,10 @@
     super + @space
       rofi -show combi
 
+    # Switch applications on current workspace
+    super + d
+      ${pkgs.rofi}/bin/rofi -show windowcd
+
     # make sxhkd reload its configuration files:
     super + Escape
       pkill -USR1 -x sxhkd
@@ -144,17 +148,23 @@
     super + y
       bspc node newest.marked.local -n newest.!automatic.local
 
-    # swap the current node and the biggest node
+    # swap the current node and the biggest node on current workspace
     super + g
-      bspc node -s biggest
+      bspc node -s biggest.local
 
     # rotate the desktop by 90deg.
     # syntax appears to be that @/ is a PATH selection
     # `node` takes a NODE_SEL and PATH is a possible value
     # the intial node for path jumps is the focused unless path starts with /
     # so this selects the root node of the current desktop (?)
-    super + r
+    super + r ; r
         bspc node @/ -R 90
+
+    # Cycle all nodes. This keeps the current ratios and splits and just moves
+    # the applications,rather than moving applications together with their
+    # splits and ratios (that's what the above command does!)
+    super + r ; {Tab,grave}
+        bspc node @/ -C {forward,backward} 
 
     #
     # state/flags
@@ -182,7 +192,7 @@
 
     # focus the next/previous node in the current desktop
     super + {_,shift + }c
-      bspc node -f {next,prev}.local
+      bspc node -f {next,prev}.local.leaf
 
     # focus the next/previous desktop in the current monitor
     super + bracket{left,right}
@@ -249,87 +259,13 @@
             pactl set-sink-mute @DEFAULT_SINK@ toggle
   '';
 
-  services.sxhkd = {
-    # Doesn't work when started as a systemd service
-    # https://github.com/nix-community/home-manager/pull/847
-    enable = false;
-
-    keybindings = {
-      # terminal emulator
-      # Check if this can link to the derivation directly
-      "super + Return" = "alacritty";
-      # program launcher
-      "super + @space" = "${pkgs.rofi}/bin/rofi -show combi";
-      # make sxhkd reload its configuration files:
-      "super + Escape" = "pkill -USR1 -x sxhkd";
-      # Toggle dunst
-      "super + alt + p" = "notify-send \"DUNST_COMMAND_TOGGLE\"";
-      # Send node to different layer
-      "super + alt + {u,d,m}" = "bspc node -l {above,below,normal}";
-      # Reset splits
-      "super + R" = "bspc node @/ --equalize";
-      # quit/restart bspwm
-      "super + alt + {q,r}" = "bspc {quit,wm -r}";
-      # close and kill
-      "super + {_,shift + }w" = "bspc node -{c,k}";
-      # alternate between the tiled and monocle layout
-      "super + m" = "bspc desktop -l next";
-      # send the newest marked node to the newest preselected node
-      "super + y" = "bspc node newest.marked.local -n newest.!automatic.local";
-      # swap the current node and the biggest node
-      "super + g" = "bspc node -s biggest";
-      # rotate the desktop by 90deg.
-      # syntax appears to be that @/ is a PATH selection
-      # `node` takes a NODE_SEL and PATH is a possible value
-      # the intial node for path jumps is the focused unless path starts with /
-      # so this selects the root node of the current desktop (?)
-      "super + r" = "bspc node @/ -R 90";
-      # set the window state
-      "super + {t,shift + t,s,f}" = "bspc node -t {tiled,pseudo_tiled,floating,fullscreen}";
-      # set the node flags
-      "super + ctrl + {m,x,y,z}" = "bspc node -g {marked,locked,sticky,private}";
-      # focus the node in the given direction
-      "super + {_,shift + }{h,j,k,l}" = "bspc node -{f,s} {west,south,north,east}";
-      # focus the node for the given path jump
-      "super + {p,b,comma,period}" = "bspc node -f @{parent,brother,first,second}";
-      # focus the next/previous node in the current desktop
-      "super + {_,shift + }c" = "bspc node -f {next,prev}.local";
-      # focus the next/previous desktop in the current monitor
-      "super + bracket{left,right}" = "bspc desktop -f {prev,next}.local";
-      # focus the last node/desktop
-      "super + {grave,Tab}" = "bspc {node,desktop} -f last";
-      # focus the older or newer node in the focus history
-      "super + {o,i}" = "bspc wm -h off; bspc node {older,newer} -f; bspc wm -h on";
-      # focus or send to the given desktop
-      "super + {_,shift + }{1-9,0}" = "bspc {desktop -f,node -d} '^{1-9,10}'";
-      # preselect the direction
-      "super + ctrl + {h,j,k,l}" = "bspc node -p {west,south,north,east}";
-      # preselect the ratio
-      "super + ctrl + {1-9}" = "bspc node -o 0.{1-9}";
-      # cancel the preselection for the focused node
-      "super + ctrl + space" = "bspc node -p cancel";
-      # cancel the preselection for the focused desktop
-      "super + ctrl + shift + space" = "bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel";
-      # expand a window by moving one of its side outward
-      "super + alt + {h,j,k,l}" = "bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}";
-      # contract a window by moving one of its side inward
-      "super + alt + shift + {h,j,k,l}" = "bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}";
-      # move a floating window
-      "super + {Left,Down,Up,Right}" = "bspc node -v {-20 0,0 20,0 -20,20 0}";
-      # media keys
-      "XF86AudioRaiseVolume" = "pactl set-sink-volume @DEFAULT_SINK@ +5%";
-      "XF86AudioLowerVolume" = "pactl set-sink-volume @DEFAULT_SINK@ -5%";
-      "XF86AudioMute" = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
-    };
-  };
-
   programs.rofi = {
     enable = true;
     theme = "Arc";
     # This is in Xresources format. Get a list of possible values with rofi -dump-xresources
     extraConfig = ''
       rofi.modi: combi,window,drun,ssh
-      rofi.combi-modi: window,run
+      rofi.combi-modi: window,windowcd,run,drun,keys
       rofi.window-format: {c}       {t}
       rofi.font: Hack 12
     '';
@@ -425,20 +361,15 @@
 
         bspc monitor -d                    . . . . . . 
 
-        bspc config window_gap             0
-        bspc config border_width           3
+        bspc config window_gap             2
+        bspc config border_width           0
         bspc config normal_border_color    \#000000
         bspc config focused_border_color   \#CB1B45
 
         bspc config split_ratio            0.55
         bspc config borderless_monocle     true
         bspc config gapless_monocle        false
-        bspc config single_monocle         true
-
-        bspc config top_monocle_padding    100
-        bspc config right_monocle_padding  300
-        bspc config left_monocle_padding   300
-        bspc config bottom_monocle_padding 100
+        bspc config single_monocle         false
 
         bspc rule -a                       Dunst state=floating
         bspc rule -a                       Screenkey manage=off
@@ -466,9 +397,10 @@
       bottom = false
       module-margin = 2
       padding = 1
+      enable-ipc = true
       wm-restack = bspwm
 
-      background = #00000000
+      background = #000000
       foreground = #000000
 
       offset-y = 0
@@ -512,6 +444,10 @@
 
       [module/bspwm]
       type = internal/bspwm
+      format = <label-state> <label-mode>
+      label-monocle = " MONOCLE "
+      label-monocle-foreground = #D00
+      label-monocle-background = #700
       label-focused = " λ "
       label-focused-foreground = #000
       label-focused-background = #CCC
