@@ -15,6 +15,8 @@
         "builtin": true,
         "sha256": "0y95m4dbrl5qgcf7wvck7v4lipqdbmhx5sr7a4cds0d4d64q3ffv",
         "type": "tarball",
-        "url": "https://vscode-update.azurewebsites.net/latest/linux-x64/insider"
+        "url": "https://vscode-update.azurewebsites.net/latest/linux-x64/insider",
+        "url_template": "https://vscode-update.azurewebsites.net/<version>/linux-x64/insider",
+        "version": "latest"
     }
 }

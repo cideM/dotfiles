@@ -31,7 +31,7 @@ in
   };
 
   fonts = {
-    enableFontDir = false;
+    fontDir.enable = false;
     fonts = [ operatorMonoFontPkg ];
   };
 

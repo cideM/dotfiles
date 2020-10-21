@@ -175,8 +175,8 @@
       bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
     # set the node flags
-    super + ctrl + {m,x,y,z}
-      bspc node -g {marked,locked,sticky,private}
+    super + ctrl + {m,x,y,z,h}
+      bspc node -g {marked,locked,sticky,private,hidden}
 
     #
     # focus/swap
@@ -265,7 +265,7 @@
     # This is in Xresources format. Get a list of possible values with rofi -dump-xresources
     extraConfig = ''
       rofi.modi: combi,window,drun,ssh
-      rofi.combi-modi: window,windowcd,run,drun,keys
+      rofi.combi-modi: window,windowcd,drun
       rofi.window-format: {c}       {t}
       rofi.font: Hack 12
     '';

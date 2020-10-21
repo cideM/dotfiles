@@ -26,7 +26,7 @@
     "neovim": {
         "branch": "master",
         "repo": "https://git@github.com/neovim/neovim",
-        "rev": "9817d991403ea3646b9a01234d12c7661ff8c62b",
+        "rev": "77dc891bfbdcdb84f919f6ff5b535b385c121007",
         "type": "git"
     },
     "nord-vim": {
@@ -50,7 +50,7 @@
     "nvim-treesitter": {
         "branch": "master",
         "repo": "https://git@github.com/nvim-treesitter/nvim-treesitter.git",
-        "rev": "7f3276450be20ec3cd8241bdb9196659289c3d31",
+        "rev": "e9129eee494b57dde0ba9b4b7b11576c0feba888",
         "type": "git"
     },
     "onehalf": {
@@ -110,7 +110,7 @@
     "vim-fern": {
         "branch": "master",
         "repo": "https://git@github.com/lambdalisue/fern.vim.git",
-        "rev": "2ac002dc2871098f46d22b861de786729a9bb394",
+        "rev": "2bce89fcd8449b8340e7d8145cf6bcbd1a3f0d3e",
         "type": "git"
     },
     "vim-js": {
