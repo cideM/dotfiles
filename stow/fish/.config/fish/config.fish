@@ -2,7 +2,7 @@ set -x FZF_DEFAULT_COMMAND 'fd --type f 2> /dev/null'
 set -x FZF_DEFAULT_TOPS '--height 40% --layout=reverse --border'
 set -x FZF_CTRL_T_OPTS "--preview bat {}'"
 set -x FZF_ALT_C_OPTS "--preview 'tree -a -C {} | head -200'"
-set -x FZF_CTRL_T_COMMAND 'fd -L $dir --type f 2> /dev/null'
+set -x FZF_CTRL_T_COMMAND 'fd --type f 2> /dev/null'
 
 # https://github.com/fish-shell/fish-shell/issues/3412
 # https://github.com/fish-shell/fish-shell/issues/5313
@@ -34,19 +34,14 @@ set -x PATH                 \
 
 abbr -a pbc 'xclip -selection clipboard'
 abbr -a g 'git'
-abbr -a gotest 'fd -e go | entr -rc go test ./...'
-abbr -a gocheck 'fd -e go | entr -rc go build ./...'
-abbr -a n "nvim (notes search)/body*"
-abbr -a todo 'nvim $FISH_NOTES_DIR/916797/body.md'
-abbr -a ideas 'nvim $FISH_NOTES_DIR/785479/body.md'
+abbr -a kubedebug 'kubectl run -i --tty --rm debug --image=radial/busyboxplus:curl --restart=Never -- sh'
 
-alias ls exa
 alias fzf 'fzf --color=light'
 alias dash 'dash -E'
 
 # https://github.com/NixOS/nix/issues/1512#issuecomment-519940543
 if test -f /etc/profile.d/nix.sh
-  fenv source $/etc/profile.d/nix.sh
+  fenv source /etc/profile.d/nix.sh
 end
 
 # opam configuration
