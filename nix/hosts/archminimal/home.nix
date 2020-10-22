@@ -2,7 +2,7 @@
 {
 
   imports = [
-    (import ../../modules/alacritty.nix { fontSize = 12; inherit pkgs; })
+    (import ../../modules/alacritty.nix { fontSize = 13; inherit pkgs; })
     (import ../../modules/neovim)
     (import ../../modules/git.nix)
     (import ../../modules/redshift.nix)
@@ -31,6 +31,7 @@
 
   # https://github.com/rycee/home-manager/blob/master/modules/targets/generic-linux.nix#blob-path
   targets.genericLinux.enable = true;
+  targets.genericLinux.extraXdgDataDirs = [ "/usr/share" "/usr/local/share" ];
 
   services.lorri.enable = true;
 

@@ -30,6 +30,8 @@ let
         ~/.emacs.d/bin          \
         $PATH
 
+    set -x NIX_PATH ~/.nix-defexpr/channels $NIX_PATH
+
     abbr -a pbc 'xclip -selection clipboard'
     abbr -a g 'git'
     abbr -a kubedebug 'kubectl run -i --tty --rm debug --image=radial/busyboxplus:curl --restart=Never -- sh'
