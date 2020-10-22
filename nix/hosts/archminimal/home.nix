@@ -2,7 +2,7 @@
 {
 
   imports = [
-    (import ../../modules/alacritty.nix)
+    (import ../../modules/alacritty.nix { fontSize = 11; inherit pkgs; })
     (import ../../modules/neovim)
     (import ../../modules/git.nix)
     (import ../../modules/redshift.nix)
@@ -23,9 +23,9 @@
       # https://gist.github.com/peti/2c818d6cb49b0b0f2fd7c300f8386bc3
       # This pkg does not exist for darwin
       LOCALE_ARCHIVE = "${pkgs.glibcLocales}/lib/locale/locale-archive";
-    }
+    };
 
-      programs.fish.shellInit = ''
+  programs.fish.shellInit = ''
     set -x FISH_NOTES_DIR /data/fish_notes
     set -x FISH_JOURNAL_DIR /data/fish_journal
   '';
