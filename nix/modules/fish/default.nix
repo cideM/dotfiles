@@ -10,7 +10,7 @@ let
     set -x FZF_DEFAULT_TOPS '--height 40% --layout=reverse --border'
     set -x FZF_CTRL_T_OPTS "--preview '${pkgs.bat}/bin/bat {}'"
     set -x FZF_ALT_C_OPTS "--preview 'tree -a -C {} | head -200'"
-    set -x FZF_CTRL_T_COMMAND '${pkgs.fd}/bin/fd -L $dir --type f 2> /dev/null'
+    set -x FZF_CTRL_T_COMMAND '${pkgs.fd}/bin/fd --type f 2> /dev/null'
 
     # https://github.com/fish-shell/fish-shell/issues/3412
     # https://github.com/fish-shell/fish-shell/issues/5313
@@ -30,32 +30,13 @@ let
         ~/.emacs.d/bin          \
         $PATH
 
-    set -x NIX_PATH ~/.nix-defexpr/channels $NIX_PATH
-
     abbr -a pbc 'xclip -selection clipboard'
-    abbr -a gotest 'fd -e go | entr -rc go test ./...'
-    abbr -a gocheck 'fd -e go | entr -rc go build ./...'
     abbr -a g 'git'
-    abbr -a n "nvim (notes search)/body*"
-    abbr -a todo 'nvim $FISH_NOTES_DIR/916797/body.md'
-    abbr -a ideas 'nvim $FISH_NOTES_DIR/785479/body.md'
     abbr -a kubedebug 'kubectl run -i --tty --rm debug --image=radial/busyboxplus:curl --restart=Never -- sh'
     alias fzf 'fzf --color=light'
-    alias ls exa
     alias dash 'dash -E'
 
     source ${pkgs.fzf}/share/fzf/key-bindings.fish && fzf_key_bindings
-
-    # opam configuration
-    if test -d /home/tifa/.opam/opam-init/init.fish 
-        source /home/tifa/.opam/opam-init/init.fish >/dev/null 2>/dev/null; or true
-    end
-
-    # Source hostname specific stuff
-    set -l hostname_file $XDG_CONFIG_HOME/fish/(hostname).fish
-    if test -e $hostname_file
-        source $hostname_file
-    end
   '';
 
 in
@@ -66,24 +47,6 @@ in
     interactiveShellInit = fishConfig;
 
     functions = {
-      mono_gap = {
-        body = ''
-          bspc config top_monocle_padding    100
-          bspc config right_monocle_padding  300
-          bspc config left_monocle_padding   300
-          bspc config bottom_monocle_padding 100
-        '';
-      };
-
-      mono_nogap = {
-        body = ''
-          bspc config top_monocle_padding    0
-          bspc config right_monocle_padding  0
-          bspc config left_monocle_padding   0
-          bspc config bottom_monocle_padding 0
-        '';
-      };
-
       fish_greeting = {
         body = ''
         '';

@@ -92,6 +92,8 @@ in
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  services.lorri.enable = true;
+
   services.geoclue2.enable = true;
 
   # Enable sound.
@@ -100,10 +102,7 @@ in
 
   xdg.mime.enable = true;
 
-  services.gnome3.gnome-keyring.enable = true;
-
   services.xserver = {
-
     enable = true;
     layout = "us";
     videoDrivers = [ "nvidia" ];
