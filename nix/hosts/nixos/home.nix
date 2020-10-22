@@ -48,4 +48,8 @@
     set -x FISH_JOURNAL_DIR /data/fish_journal
   '';
 
+  programs.tmux.extraConfig = ''
+    bind -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "${pkgs.xsel}/bin/xsel -i --clipboard"
+  '';
+
 }

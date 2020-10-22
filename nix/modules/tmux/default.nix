@@ -1,8 +1,10 @@
-{ ... }:
+{ pkgs, ... }:
 {
   programs.tmux = {
     enable = true;
-    sensibleOnTop = false;
+    sensibleOnTop = true;
+    escapeTime = 0;
+    historyLimit = 50000;
     extraConfig = builtins.readFile ./tmux.conf;
   };
 }

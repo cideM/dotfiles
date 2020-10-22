@@ -40,4 +40,8 @@
   xdg.mime.enable = true;
 
   fonts.fontconfig.enable = true;
+
+  programs.tmux.extraConfig = ''
+    bind -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "${pkgs.xsel}/bin/xsel -i --clipboard"
+  '';
 }

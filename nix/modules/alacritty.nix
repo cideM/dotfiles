@@ -279,17 +279,7 @@ let
   shared = {
     colors = spacemacsLight;
 
-    key_bindings = [
-      {
-        chars = "`";
-        key = "P";
-        mods = "Alt";
-      }
-      {
-        chars = "` ";
-        key = "N";
-        mods = "Alt";
-      }
+    key_bindings =  optionAsMetaBindings ++ [
       {
         chars = "\\u001bO";
         key = "O";
@@ -299,6 +289,11 @@ let
         chars = "\\u001b0";
         key = "Key0";
         mods = "Alt";
+      }
+      {
+        chars = "`	";
+        key = "Tab";
+        mods = "Control";
       }
       {
         chars = "`c";
@@ -345,7 +340,7 @@ let
         key = "Subtract";
         mods = "Control";
       }
-    ] ++ optionAsMetaBindings;
+    ];
 
     window = {
       decorations = decorations;

@@ -6,7 +6,7 @@ with pkgs;
   home.packages = [
     libnotify
     iotop
-    xclip
+    xsel
     feh
     escrotum
     kanji-stroke-order-font
