@@ -302,16 +302,6 @@
 
   services.picom = {
     enable = true;
-    backend = "glx";
-    extraOptions = ''
-      blur: {
-          method = "gaussian";
-          strength = 10;
-          background = false;
-          background-frame = false;
-          background-fixed = false;
-      }
-    '';
   };
 
   xresources.extraConfig = ''
