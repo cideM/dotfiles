@@ -25,6 +25,7 @@ in
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit= 5;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernel.sysctl = {
     "vm.max_map_count" = 262144;
@@ -38,8 +39,6 @@ in
   networking = {
     useDHCP = false;
     interfaces.wlp7s0.useDHCP = true;
-    # networkmanager.wifi.backend = "iwd";
-    # wireless.iwd.enable = true;
     hostName = "nixos";
     networkmanager.enable = true;
   };
@@ -52,10 +51,6 @@ in
       fcitx.engines = with pkgs.fcitx-engines; [ mozc ];
     };
   };
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  # };
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -82,18 +77,17 @@ in
     vim
     git
     gnome3.gnome-shell-extensions
+    gnome3.dconf-editor
     chromium
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  #   pinentryFlavor = "gnome3";
-  # };
-
-  # List services that you want to enable:
+  # Some programs need SUID wrappers, can be configured further or are started
+  # in user sessions.
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+    pinentryFlavor = "gnome3";
+  };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
@@ -106,27 +100,24 @@ in
 
   xdg.mime.enable = true;
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.layout = "us";
-  services.xserver.videoDrivers = [ "nvidia" ];
-  # services.xserver.xkbOptions = "eurosign:e";
-
-  services.xserver.displayManager = {
-    defaultSession = "home-manager";
-    lightdm.enable = true;
-  };
-
   services.gnome3.gnome-keyring.enable = true;
 
-  services.xserver.desktopManager = {
-    session = [{
-      name = "home-manager";
-      start = ''
-        ${pkgs.runtimeShell} $HOME/.hm-xsession &
-        waitPID=$!
-      '';
-    }];
+  services.xserver = {
+
+    enable = true;
+    layout = "us";
+    videoDrivers = [ "nvidia" ];
+    # services.xserver.xkbOptions = "eurosign:e";
+
+    displayManager = {
+      gdm.enable = true;
+    };
+
+    desktopManager = {
+      gnome3 = {
+        enable = true;
+      };
+    };
   };
 
   services.udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
