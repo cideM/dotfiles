@@ -113,6 +113,7 @@ redshift
 restic
 ripgrep
 rlwrap
+rsync
 rygel
 s-nail
 s3cmd

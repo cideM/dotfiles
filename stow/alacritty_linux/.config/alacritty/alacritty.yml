@@ -1,0 +1,61 @@
+# Spacemacs light
+colors:
+  primary:
+    foreground: '#64526F'
+    background: '#FAF7EE'
+
+  cursor:
+    cursor:     '#64526F'
+    text:       '#FAF7EE'
+  normal:
+    black:      '#FAF7EE'
+    red:        '#DF201C'
+    green:      '#29A0AD'
+    yellow:     '#DB742E'
+    blue:       '#3980C2'
+    magenta:    '#2C9473'
+    cyan:       '#6B3062'
+    white:      '#64526F'
+
+  bright:
+    black:      '#9F93A1'
+    red:        '#DF201C'
+    green:      '#29A0AD'
+    yellow:     '#DB742E'
+    blue:       '#3980C2'
+    magenta:    '#2C9473'
+    cyan:       '#6B3062'
+    white:      '#64526F'
+draw_bold_text_with_bright_colors: false
+font:
+  bold:
+    family: Hack
+    style: Bold
+  bold_italic:
+    family: Hack
+    style: Bold Italic
+  italic:
+    family: Hack
+    style: Italic
+  normal:
+    family: Hack
+    style: Regular
+  glyph_offset:
+    x: 0
+    y: 2
+  offset:
+    x: 0
+    y: 4
+  size: 12
+live_config_reload: true
+shell:
+  args:
+    - "-l"
+  program: /bin/fish
+window:
+  decorations: full
+  dynamic_padding: true
+  padding:
+    x: 10
+    y: 10
+  startup_mode: Windowed

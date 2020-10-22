@@ -1,0 +1,38 @@
+[push]
+    default = simple
+[pull]
+    rebase = false
+[user]
+    email = yuuki@protonmail.com
+    name = Florian Beeres
+[github]
+    user = yuuki@protonmail.com
+[alias]
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    recent = branch --sort=-committerdate
+    unpushed = log --branches --not --remotes --no-walk --decorate --oneline
+    s = status -s
+    a = add
+    co = commit
+    ch = checkout
+    b = branch
+    cb = rev-parse --abbrev-ref HEAD
+    d = diff
+    pl = pull
+    ps = push
+[difftool]
+    prompt = false
+[difftool "nvim"]
+    cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[mergetool]
+    prompt = true
+[mergetool "nvim-merge"]
+    cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[core]
+    editor = nvim
+    ignorecase = false
+[filter "lfs"]
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f

@@ -12,7 +12,6 @@ luacheck
 neovim-nightly
 pandoc-bin
 protonmail-bridge-beta-bin
-qmk_firmware
 sendmail
 shellcheck-bin
 spotify

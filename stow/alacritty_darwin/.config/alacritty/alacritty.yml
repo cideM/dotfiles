@@ -1,0 +1,56 @@
+# Colors (PaperColor - Light)
+colors:
+  # Default colors
+  primary:
+    background: '0xeeeeee'
+    foreground: '0x878787'
+
+  cursor:
+    text: '0xeeeeee'
+    cursor: '0x878787'
+
+  # Normal colors
+  normal:
+    black:   '0xeeeeee'
+    red:     '0xaf0000'
+    green:   '0x008700'
+    yellow:  '0x5f8700'
+    blue:    '0x0087af'
+    magenta: '0x878787'
+    cyan:    '0x005f87'
+    white:   '0x444444'
+
+  # Bright colors
+  bright:
+    black:   '0xbcbcbc'
+    red:     '0xd70000'
+    green:   '0xd70087'
+    yellow:  '0x8700af'
+    blue:    '0xd75f00'
+    magenta: '0xd75f00'
+    cyan:    '0x005faf'
+    white:   '0x005f87'
+draw_bold_text_with_bright_colors: false
+dynamic_title: true
+env:
+  TERM: alacritty
+font:
+  glyph_offset:
+    x: 0
+    y: 2
+  offset:
+    x: 0
+    y: 4
+  size: 12
+  use_thin_strokes: true
+window:
+  decorations: full
+  dynamic_padding: true
+  padding:
+    x: 10
+    y: 10
+  position:
+    x: 0
+    y: 0
+  startup_mode: Windowed
+  title: Alacritty
