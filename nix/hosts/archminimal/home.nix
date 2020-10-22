@@ -2,7 +2,7 @@
 {
 
   imports = [
-    (import ../../modules/alacritty.nix { fontSize = 11; inherit pkgs; })
+    (import ../../modules/alacritty.nix { fontSize = 12; inherit pkgs; })
     (import ../../modules/neovim)
     (import ../../modules/git.nix)
     (import ../../modules/redshift.nix)
@@ -17,7 +17,6 @@
     (import ../../modules/sharedSettings.nix)
   ];
 
-  home.packages = with pkgs; [ slack ];
   home.sessionVariables =
     {
       # https://gist.github.com/peti/2c818d6cb49b0b0f2fd7c300f8386bc3
