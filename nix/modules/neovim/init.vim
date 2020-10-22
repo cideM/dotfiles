@@ -19,6 +19,7 @@ set smartcase
 set inccommand=split
 set path-=/usr/include
 set splitbelow
+set foldlevelstart=99
 set splitright
 set termguicolors
 set undofile
