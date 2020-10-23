@@ -136,7 +136,7 @@ let
     buildPhase = ''
       runHook preBuild
       mkdir -p parser/
-      $CC -o parser/yaml.so -I$src/src $src/src/parser.c $src/src/scanner.cc -shared  -Os -lstdc++ -fPIC
+      ${pkgs.clang}/bin/clang++ -o parser/yaml.so -I$src/src $src/src/parser.c $src/src/scanner.cc -shared  -Os -lstdc++ -fPIC
       runHook postBuild
     '';
   };
