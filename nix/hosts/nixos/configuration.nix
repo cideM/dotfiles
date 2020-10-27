@@ -25,7 +25,7 @@ in
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.configurationLimit= 5;
+  boot.loader.systemd-boot.configurationLimit = 5;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernel.sysctl = {
     "vm.max_map_count" = 262144;
@@ -81,6 +81,7 @@ in
     chromium
   ];
 
+
   # Some programs need SUID wrappers, can be configured further or are started
   # in user sessions.
   programs.gnupg.agent = {
@@ -105,11 +106,11 @@ in
   services.xserver = {
     enable = true;
     layout = "us";
-    videoDrivers = [ "nvidia" ];
     # services.xserver.xkbOptions = "eurosign:e";
 
     displayManager = {
       gdm.enable = true;
+      gdm.wayland = true;
     };
 
     desktopManager = {
