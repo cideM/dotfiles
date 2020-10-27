@@ -106,7 +106,9 @@ in
   services.xserver = {
     enable = true;
     layout = "us";
-    # services.xserver.xkbOptions = "eurosign:e";
+    # https://discourse.nixos.org/t/problem-with-xkboptions-it-doesnt-seem-to-take-effect/5269/2
+    # Everything is broke, always.
+    xkbOptions = "ctrl:nocaps";
 
     displayManager = {
       gdm.enable = true;
