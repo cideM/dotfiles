@@ -13,6 +13,7 @@ let
 
   plugins = (import ./plugins.nix { inherit pkgs; });
 
+  # TODO: Should just add all automatically
   localPlugins =
     builtins.map
       (pkg: pkgs.vimUtils.buildVimPluginFrom2Nix {
@@ -82,82 +83,74 @@ in
         src = (import ./nix/sources.nix).neovim;
       });
 
-      configure = {
+      configure = with pkgs.vimPlugins; with plugins; {
         customRC = init;
 
         packages.foobar = {
           start = [
-            pkgs.vimPlugins.editorconfig-vim
-            pkgs.vimPlugins.limelight-vim
-            pkgs.vimPlugins.targets-vim
-            pkgs.vimPlugins.vim-commentary
-            pkgs.vimPlugins.vim-cool
-            pkgs.vimPlugins.vim-easy-align
-            pkgs.vimPlugins.vim-eunuch
-            pkgs.vimPlugins.vim-gutentags
-            pkgs.vimPlugins.vim-indent-object
-            pkgs.vimPlugins.vim-peekaboo
-            pkgs.vimPlugins.vim-repeat
-            pkgs.vimPlugins.vim-sandwich
-            pkgs.vimPlugins.vim-unimpaired
-            pkgs.vimPlugins.vim-vinegar
-            pkgs.vimPlugins.vim-sneak
-            pkgs.vimPlugins.vim-mundo
-            plugins.sad
-            plugins.vim-colortemplate
-            plugins.vim-matchup
-            plugins.vim-qf
-            plugins.vim-scratch
-            plugins.vim-visual-split
-            pkgs.vimPlugins.vim-asterisk
+            editorconfig-vim
+            limelight-vim
+            targets-vim
+            vim-commentary
+            vim-easy-align
+            vim-eunuch
+            vim-gutentags
+            vim-indent-object
+            vim-peekaboo
+            vim-repeat
+            vim-sandwich
+            vim-unimpaired
+            vim-vinegar
+            vim-sneak
+            vim-mundo
+            sad
+            vim-colortemplate
+            vim-matchup
+            vim-scratch
+            vim-visual-split
+            vim-asterisk
 
             # Treesitter
-            plugins.treesitterGo
-            plugins.treesitterYaml
-            plugins.treesitterTs
-            plugins.treesitterTsx
-
-            # LSP
-            # Comment out nvim-lsp when using this
-            # TODO: Create an option for toggling different LSP implementations
-            # pkgs.vimPlugins.vim-lsc
+            treesitterGo
+            treesitterYaml
+            treesitterTs
+            treesitterTsx
 
             # Git
-            pkgs.vimPlugins.vim-fugitive
-            pkgs.vimPlugins.vim-gist
-            pkgs.vimPlugins.vim-rhubarb
+            vim-fugitive
+            vim-gist
+            vim-rhubarb
 
             # Language Tooling
-            plugins.parinfer-rust
-            plugins.vim-markdown-folding
-            pkgs.vimPlugins.conjure
+            parinfer-rust
+            vim-markdown-folding
+            conjure
 
             # Languages & Syntax
-            pkgs.vimPlugins.purescript-vim
-            pkgs.vimPlugins.vim-nix
-            pkgs.vimPlugins.dhall-vim
-            plugins.vim-js
-            plugins.vim-lua
-            pkgs.vimPlugins.yats-vim
-            pkgs.vimPlugins.vim-jsx-pretty
-            pkgs.vimPlugins.Jenkinsfile-vim-syntax
+            purescript-vim
+            vim-nix
+            dhall-vim
+            vim-js
+            vim-lua
+            yats-vim
+            vim-jsx-pretty
+            Jenkinsfile-vim-syntax
+            vim-terraform
 
             # Themes
-            plugins.apprentice
-            plugins.yui
-            plugins.spacevim
-            pkgs.vimPlugins.vim-one
-            plugins.onehalf
-            pkgs.vimPlugins.iceberg-vim
-            pkgs.vimPlugins.papercolor-theme
+            apprentice
+            yui
+            spacevim
+            onehalf
+            iceberg-vim
 
           ]
           ++ localPlugins;
 
           opt = [
-            plugins.nvim-treesitter
-            plugins.nvim-lsp
-            plugins.nvim-colorizer
+            nvim-treesitter
+            nvim-lsp
+            nvim-colorizer
           ];
         };
       };

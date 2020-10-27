@@ -41,12 +41,18 @@ augroup Resize
     autocmd VimResized * wincmd =
 augroup END
 
+augroup quickfix
+    autocmd!
+    autocmd QuickFixCmdPost [^l]* cwindow
+    autocmd QuickFixCmdPost l* lwindow
+augroup END
+
 " ==============================
 " =        COLORSCHEME         =
 " ==============================
-colorscheme yui
 let g:one_allow_italics = 1
 let g:yui_comments = "emphasize"
+colorscheme iceberg
 
 " Call my own SetPath function so that every git file is added to path. Let's
 " me get most of FZF without using FZF
@@ -83,44 +89,46 @@ let maplocalleader = ","
 " ==============================
 " =          TERMINAL          =
 " ==============================
-tnoremap <Esc> <C-\><C-n>
-tnoremap <A-h> <C-\><C-N><C-w>h
-tnoremap <A-j> <C-\><C-N><C-w>j
-tnoremap <A-k> <C-\><C-N><C-w>k
-tnoremap <A-l> <C-\><C-N><C-w>l
-inoremap <A-h> <C-\><C-N><C-w>h
-inoremap <A-j> <C-\><C-N><C-w>j
-inoremap <A-k> <C-\><C-N><C-w>k
-inoremap <A-l> <C-\><C-N><C-w>l
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
+tnoremap <Esc>      <C-\><C-n>
+tnoremap <A-h>      <C-\><C-N><C-w>h
+tnoremap <A-j>      <C-\><C-N><C-w>j
+tnoremap <A-k>      <C-\><C-N><C-w>k
+tnoremap <A-l>      <C-\><C-N><C-w>l
+inoremap <A-h>      <C-\><C-N><C-w>h
+inoremap <A-j>      <C-\><C-N><C-w>j
+inoremap <A-k>      <C-\><C-N><C-w>k
+inoremap <A-l>      <C-\><C-N><C-w>l
+nnoremap <A-h>      <C-w>h
+nnoremap <A-j>      <C-w>j
+nnoremap <A-k>      <C-w>k
+nnoremap <A-l>      <C-w>l
 " Open terminal in directory of current file
-nnoremap <leader>t :split <Bar> lcd %:p:h <Bar> term<CR>
+nnoremap <leader>t  :split <Bar> lcd %:p:h <Bar> term<CR>
 
 " Leave insert mode with jk
-imap jk <Esc>
+imap jk             <Esc>
 
 " Convenience mappings for calling :grep
 nnoremap <leader>gg :grep<space>
 nnoremap <leader>gw :grep -wF ""<left>
 
 " Just calls formatprg on entire buffer
-nmap <leader>Q :call FormatBuffer()<cr>
+nmap     <leader>Q  :call FormatBuffer()<cr>
 
-nnoremap <leader>f :find *
-nnoremap <leader>b :ls<cr>:buffer<Space>
+nnoremap <leader>f  :find *
+nnoremap <leader>b  :ls<cr>:buffer<Space>
 
 vmap     <Enter>    <Plug>(EasyAlign)
 
+nnoremap <leader>s  :nohlsearch<CR>
+
 " Reflow comments according to max line length. This temporarily unsets
 " formatprg so cindent (?) is used. I don't know... this mostly just works.
-nnoremap <leader>R :set operatorfunc=reflow#Comment<cr>g@
-vnoremap <leader>R :<C-u>call reflow#Comment(visualmode())<cr>
+nnoremap <leader>R  :set operatorfunc=reflow#Comment<cr>g@
+vnoremap <leader>R  :<C-u>call reflow#Comment(visualmode())<cr>
 
 " Switch to alternate buffer with backspace
-nnoremap <BS> <C-^>
+nnoremap <BS>       <C-^>
 
 " ==============================
 " =          PLUGINS           =
@@ -129,10 +137,6 @@ nnoremap <BS> <C-^>
 " ======= EDITORCONFIG ==============
 let g:EditorConfig_max_line_indicator = "exceeding"
 let g:EditorConfig_preserve_formatoptions = 1
-
-" ======= VIM QF ====================
-let g:qf_auto_open_quickfix = 1
-let g:qf_auto_open_loclist  = 1
 
 " ======= NVIM COLORIZER ============
 packadd nvim-colorizer
@@ -172,6 +176,8 @@ map f <Plug>Sneak_f
 map F <Plug>Sneak_F
 map t <Plug>Sneak_t
 map T <Plug>Sneak_T
+omap o <Plug>Sneak_s
+omap O <Plug>Sneak_S
 " 2-character Sneak (default)
 map <leader>j <Plug>Sneak_s
 map <leader>k <Plug>Sneak_S
