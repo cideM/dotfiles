@@ -143,10 +143,9 @@ let g:markdown_fold_style = 'nested'
 
 " ======= SAD =======================
 " Sad makes replacing selections easier and just automates some tedious
-" plumbing around slash search and cgn. It's just an upgrade over the built-in
-" c mapping. C is still the old functionality.
-map c <Plug>(sad-change-forward)
-map <leader>c <Plug>(sad-change-backward)
+" plumbing around slash search and cgn.
+map <leader>c <Plug>(sad-change-forward)
+map <leader>C <Plug>(sad-change-backward)
 
 " ======= ASTERISK ==================
 " This should override the mappings for * and # which are provided by sad.
@@ -176,13 +175,6 @@ map T <Plug>Sneak_T
 " 2-character Sneak (default)
 map <leader>j <Plug>Sneak_s
 map <leader>k <Plug>Sneak_S
-
-" ========== ALE ====================
-let g:ale_go_golangci_lint_options = 'fast'
-nmap <leader>ad <Plug>(ale_detail)
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-nmap <silent> <C-f> <Plug>(ale_fix)
 
 " ========== VIM-LSC ================
 set shortmess-=F

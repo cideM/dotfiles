@@ -2,9 +2,6 @@ let b:undo_ftplugin = ""
 
 compiler go
 
-let b:ale_linters = ['golangci-lint']
-let b:ale_fixers = ['goimports', 'gofmt']
-
 setlocal foldmethod=syntax
 let b:undo_ftplugin .= '|setlocal foldmethod<'
 

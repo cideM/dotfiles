@@ -46,6 +46,3 @@ let b:undo_ftplugin .= '|setlocal wildignore<'
 
 setlocal suffixesadd+=.ts,.tsx,.css
 let b:undo_ftplugin .= '|setlocal suffixesadd<'
-
-let b:ale_fixers = ['tslint', 'prettier']
-let b:ale_linters = ['tslint']

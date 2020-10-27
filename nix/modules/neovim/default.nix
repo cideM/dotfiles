@@ -95,7 +95,6 @@ in
             pkgs.vimPlugins.vim-easy-align
             pkgs.vimPlugins.vim-eunuch
             pkgs.vimPlugins.vim-gutentags
-            pkgs.vimPlugins.limelight-vim
             pkgs.vimPlugins.vim-indent-object
             pkgs.vimPlugins.vim-peekaboo
             pkgs.vimPlugins.vim-repeat
@@ -111,7 +110,6 @@ in
             plugins.vim-scratch
             plugins.vim-visual-split
             pkgs.vimPlugins.vim-asterisk
-            pkgs.vimPlugins.ale
 
             # Treesitter
             plugins.treesitterGo
@@ -126,7 +124,6 @@ in
 
             # Git
             pkgs.vimPlugins.vim-fugitive
-            pkgs.vimPlugins.gv-vim
             pkgs.vimPlugins.vim-gist
             pkgs.vimPlugins.vim-rhubarb
 
@@ -153,7 +150,6 @@ in
             plugins.onehalf
             pkgs.vimPlugins.iceberg-vim
             pkgs.vimPlugins.papercolor-theme
-            pkgs.vimPlugins.seoul256-vim
 
           ]
           ++ localPlugins;
