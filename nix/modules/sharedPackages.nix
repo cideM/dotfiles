@@ -81,6 +81,7 @@ with pkgs;
     shellcheck
     shfmt
     stow
+    terraform_0_13
     tig
     time
     tldr

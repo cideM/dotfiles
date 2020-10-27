@@ -161,6 +161,12 @@
         "rev": "6df617ebc0695bd9839a4fe365a08df13d24bc05",
         "type": "git"
     },
+    "vim-terraform": {
+        "branch": "master",
+        "repo": "https://github.com/hashivim/vim-terraform.git",
+        "rev": "6fd491d6a2ae40fef3aa6c414e096ce07664f030",
+        "type": "git"
+    },
     "vim-visual-split": {
         "branch": "master",
         "repo": "https://git@github.com/wellle/visual-split.vim.git",

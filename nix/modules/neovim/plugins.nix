@@ -170,6 +170,11 @@ let
     src = vimPluginsSources.nvim-colorizer;
   });
 
+  vim-terraform = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "vim-terraform";
+    src = vimPluginsSources.vim-terraform;
+  });
+
 in
 {
   inherit
@@ -191,6 +196,7 @@ in
     vim-lua
     vim-qf
     vim-scratch
+    vim-terraform
     vim-visual-split
     treesitterGo
     treesitterYaml
