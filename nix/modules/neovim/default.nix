@@ -120,7 +120,7 @@ in
             # LSP
             # Comment out nvim-lsp when using this
             # TODO: Create an option for toggling different LSP implementations
-            pkgs.vimPlugins.vim-lsc
+            # pkgs.vimPlugins.vim-lsc
 
             # Git
             pkgs.vimPlugins.vim-fugitive
@@ -156,7 +156,7 @@ in
 
           opt = [
             plugins.nvim-treesitter
-            # plugins.nvim-lsp
+            plugins.nvim-lsp
             plugins.nvim-colorizer
           ];
         };

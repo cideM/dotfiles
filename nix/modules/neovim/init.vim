@@ -176,29 +176,6 @@ map T <Plug>Sneak_T
 map <leader>j <Plug>Sneak_s
 map <leader>k <Plug>Sneak_S
 
-" ========== VIM-LSC ================
-set shortmess-=F
-let g:lsc_auto_map = {
-            \'defaults': v:true,
-            \'WorkspaceSymbol': 'gW'
-            \}
-let g:lsc_server_commands = {
-            \'go': 'gopls',
-            \'dhall': 'dhall-lsp-server',
-            \'purescript': {
-            \   'command': 'purescript-language-server --stdio',
-            \   'workspace_config': {
-            \       'addSpagoSources': 'true'
-            \   }
-            \},
-            \'rust': 'rust-analyzer',
-            \'typescript': 'typescript-language-server --stdio'
-            \}
-augroup LSC
-    autocmd!
-    autocmd CompleteDone * silent! pclose
-augroup END
-
 " ==============================
 " =     NVIM TREESITTER        =
 " ==============================
@@ -211,4 +188,78 @@ require'nvim-treesitter.configs'.setup {
     disable = {},  -- list of language that will be disabled
   },
 }
+EOF
+
+" ========= NVIM-LSP ================
+" https://neovim.io/doc/user/lsp.html
+
+command! -bar -nargs=0 RestartLSP :lua vim.lsp.stop_client(vim.lsp.get_active_clients()); vim.cmd("edit")
+function! MyHighlights() abort
+    highlight LspDiagnosticsUnderline gui=undercurl
+    " Those are the actual messages in the popup, not the text/code in the
+    " buffer
+    " highlight link LspDiagnosticsWarning WarningMsg
+    " highlight link LspDiagnosticsError ErrorMsg
+endfunction
+
+augroup MyColors
+    autocmd!
+    autocmd ColorScheme * call MyHighlights()
+augroup END
+
+packadd nvim-lsp
+lua <<EOF
+local nvim_lsp = require'nvim_lsp'
+local buf_set_keymap = vim.api.nvim_buf_set_keymap
+local api = vim.api
+
+local on_attach = function(_, bufnr)
+    api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+    -- Mappings.
+    local opts = { noremap=true, silent=true }
+    buf_set_keymap(bufnr, 'n', '<localleader>k',  '<cmd>lua vim.lsp.buf.hover()<CR>',                 opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>h',  '<cmd>lua vim.lsp.buf.signature_help()<CR>',        opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>re', '<cmd>lua vim.lsp.buf.rename()<CR>',                opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>rr', '<cmd>lua vim.lsp.buf.references()<CR>',            opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>ri', '<cmd>lua vim.lsp.buf.implementation()<CR>',        opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>',            opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>',       opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>',           opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>p',  '<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>',opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>ws',  '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>',opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>ds',  '<cmd>lua vim.lsp.buf.document_symbol()<CR>',opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>dh',  '<cmd>lua vim.lsp.buf.document_highlight()<CR>',opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>sr',  '<cmd>lua vim.lsp.buf.server_ready()<CR>',opts)
+
+    -- api.nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
+    -- api.nvim_command [[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
+    -- api.nvim_command [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
+end
+
+local configs = require'nvim_lsp/configs'
+
+nvim_lsp.util.default_config = vim.tbl_extend(
+  "force",
+  nvim_lsp.util.default_config,
+  { on_attach = on_attach }
+)
+
+if not configs.dhall then
+    configs.dhall = {
+        default_config = {
+                cmd = {'dhall-lsp-server'};
+                filetypes = {'dhall'};
+                root_dir = function(fname)
+                    return vim.lsp.util.find_git_ancestor(fname) or vim.loop.os_homedir()
+                end;
+                settings = {};
+        };
+    }
+end
+
+nvim_lsp.purescriptls.setup{}
+nvim_lsp.rust_analyzer.setup{}
+nvim_lsp.gopls.setup{}
+nvim_lsp.dhall.setup{}
 EOF
