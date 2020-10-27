@@ -2,9 +2,7 @@
 {
   programs.tmux = {
     enable = true;
-    sensibleOnTop = true;
-    escapeTime = 0;
-    historyLimit = 50000;
+    sensibleOnTop = false;
     extraConfig = builtins.readFile ./tmux.conf;
   };
 }
