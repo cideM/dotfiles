@@ -30,6 +30,7 @@ with pkgs;
     coreutils
     curl
     dash
+    bind
     dhall
     dhall-lsp-server
     dive
