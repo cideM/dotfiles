@@ -24,6 +24,7 @@
       inherit (pkgs) stdenv;
       inherit (builtins) fetchurl;
     })
+    sublime-merge
     spotify
     zoom-us
     slack
