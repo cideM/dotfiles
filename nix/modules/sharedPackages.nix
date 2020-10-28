@@ -21,7 +21,7 @@ with pkgs;
     fd # find
     sd # sed
     ripgrep # grep
-    ytop # top
+    bottom # top
 
     aerc
     awscli
