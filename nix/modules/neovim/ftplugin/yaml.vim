@@ -1,7 +1,9 @@
 let b:undo_ftplugin = ""
 
-setlocal foldmethod=indent
+setlocal foldmethod=expr
+setlocal foldexpr=nvim_treesitter#foldexpr()
 let b:undo_ftplugin .= '|setlocal foldmethod<'
+let b:undo_ftplugin .= '|setlocal foldexpr<'
 
 let node_modules = luaeval(
             \'require("findUp").findUp(unpack(_A))', 
