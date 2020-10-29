@@ -109,8 +109,8 @@ nnoremap <leader>t  :split <Bar> lcd %:p:h <Bar> term<CR>
 imap jk             <Esc>
 
 " Convenience mappings for calling :grep
-nnoremap <leader>gg :grep<space>
-nnoremap <leader>gw :grep -wF ""<left>
+nnoremap <leader>gg :grep!<space>
+nnoremap <leader>gw :grep! -wF ""<left>
 
 " Just calls formatprg on entire buffer
 nmap     <leader>Q  :call FormatBuffer()<cr>
