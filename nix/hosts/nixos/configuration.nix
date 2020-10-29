@@ -76,9 +76,15 @@ in
     stow
     vim
     git
-    gnome3.gnome-shell-extensions
-    gnome3.dconf-editor
+    # gnome3.gnome-shell-extensions
+    # gnome3.dconf-editor
     chromium
+    # needed by sway options
+    qt5.qtwayland
+
+    # sway stuff
+    wofi
+    mako
   ];
 
 
@@ -87,7 +93,7 @@ in
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
-    pinentryFlavor = "gnome3";
+    # pinentryFlavor = "gnome3";
   };
 
   # Enable the OpenSSH daemon.
@@ -103,26 +109,40 @@ in
 
   xdg.mime.enable = true;
 
-  services.xserver = {
+  programs.sway = {
     enable = true;
+    extraSessionCommands = ''
+        export QT_QPA_PLATFORM=wayland
+        export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+        export QT_WAYLAND_FORCE_DPI=physical
+        # Fix for some Java AWT applications (e.g. Android Studio), use this if
+        # they aren't displayed properly:
+        export _JAVA_AWT_WM_NONREPARENTING=1
+    '';
+  };
+
+  programs.xwayland.enable = true;
+
+  services.xserver = {
+    enable = false;
     layout = "us";
     # https://discourse.nixos.org/t/problem-with-xkboptions-it-doesnt-seem-to-take-effect/5269/2
     # Everything is broke, always.
     xkbOptions = "ctrl:nocaps";
 
-    displayManager = {
-      gdm.enable = true;
-      gdm.wayland = true;
-    };
+    # displayManager = {
+    #   gdm.enable = true;
+    #   gdm.wayland = true;
+    # };
 
     desktopManager = {
       gnome3 = {
-        enable = true;
+        enable = false;
       };
     };
   };
 
-  services.udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
+  # services.udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.tifa = {
