@@ -26,7 +26,7 @@
     "neovim": {
         "branch": "master",
         "repo": "https://git@github.com/neovim/neovim",
-        "rev": "77dc891bfbdcdb84f919f6ff5b535b385c121007",
+        "rev": "fd7aa6768a6c341edc1fe768c13899a3d92d8b1d",
         "type": "git"
     },
     "nord-vim": {
@@ -50,7 +50,7 @@
     "nvim-treesitter": {
         "branch": "master",
         "repo": "https://git@github.com/nvim-treesitter/nvim-treesitter.git",
-        "rev": "e9129eee494b57dde0ba9b4b7b11576c0feba888",
+        "rev": "333e1ab7768336d33c0e654a412ce0cb763f1da2",
         "type": "git"
     },
     "onehalf": {
@@ -62,7 +62,7 @@
     "parinfer": {
         "branch": "master",
         "repo": "https://git@github.com/eraserhd/parinfer-rust.git",
-        "rev": "d7d1c4f05fcaf72f3b56eccddc94e3f76b0003a3",
+        "rev": "998484ba3ca9c162971e3fa6f01e67cc3e9ac85e",
         "type": "git"
     },
     "sad": {
@@ -110,13 +110,13 @@
     "vim-fern": {
         "branch": "master",
         "repo": "https://git@github.com/lambdalisue/fern.vim.git",
-        "rev": "2bce89fcd8449b8340e7d8145cf6bcbd1a3f0d3e",
+        "rev": "8a857c933dea15bd51bfdfc3e2ff5c62e7e4da6b",
         "type": "git"
     },
     "vim-js": {
         "branch": "master",
         "repo": "https://git@github.com/yuezk/vim-js.git",
-        "rev": "5e14eb65d6e898658b95001581473326309a23fd",
+        "rev": "f74df1bb719fc240ca4497677e8a218a94d5c364",
         "type": "git"
     },
     "vim-lua": {

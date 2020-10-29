@@ -2,8 +2,10 @@ let b:undo_ftplugin = ""
 
 compiler go
 
-setlocal foldmethod=syntax
+setlocal foldmethod=expr
+setlocal foldexpr=nvim_treesitter#foldexpr()
 let b:undo_ftplugin .= '|setlocal foldmethod<'
+let b:undo_ftplugin .= '|setlocal foldexpr<'
 
 setlocal formatprg=gofmt
 let b:undo_ftplugin .= '|setlocal formatprg<'
