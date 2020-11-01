@@ -36,6 +36,7 @@ let
     abbr -a g 'git'
     abbr -a kubedebug 'kubectl run -i --tty --rm debug --image=radial/busyboxplus:curl --restart=Never -- sh'
     abbr -a dc 'docker-compose'
+    abbr -a tf 'terraform'
     alias fzf 'fzf --color=light'
     alias dash 'dash -E'
 
