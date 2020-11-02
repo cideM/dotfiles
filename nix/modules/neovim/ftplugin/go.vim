@@ -21,7 +21,7 @@ command! -buffer -range=% Goimport let b:winview = winsaveview() |
 
 nnoremap <silent> <localleader>mc :execute 'make ' . expand('%:p:h')<CR>
 nnoremap <silent> <localleader>mm :make ./...<CR>
-nnoremap <silent> <localleader>i :Goimport
+nnoremap <silent> <localleader>i :Goimport<CR>
 nnoremap <silent> <localleader>ma :call goutils#MakeprgAsyncProject()<CR>
 nnoremap <silent> <localleader>tw :call goutils#RunTestAtCursor()<CR>
 nnoremap <silent> <localleader>ta :call goutils#RunAllTests()<CR>

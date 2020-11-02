@@ -26,7 +26,6 @@ with pkgs;
     aerc
     awscli
     bash_5
-    bandwhich
     coreutils
     curl
     dash
