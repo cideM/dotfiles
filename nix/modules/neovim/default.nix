@@ -122,9 +122,7 @@ in
             vim-rhubarb
 
             # Language Tooling
-            parinfer-rust
             vim-markdown-folding
-            conjure
 
             # Languages & Syntax
             purescript-vim

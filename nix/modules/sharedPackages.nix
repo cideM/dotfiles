@@ -82,6 +82,8 @@ with pkgs;
     shfmt
     stow
     terraform_0_13
+    termshark
+    wireshark-cli
     tig
     time
     tldr

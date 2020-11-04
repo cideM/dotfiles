@@ -40,6 +40,7 @@ in
     useDHCP = false;
     interfaces.wlp7s0.useDHCP = true;
     hostName = "nixos";
+    nameservers = ["1.1.1.1" "8.8.8.8"];
     networkmanager.enable = true;
   };
 
@@ -112,7 +113,7 @@ in
 
     displayManager = {
       gdm.enable = true;
-      gdm.wayland = true;
+      gdm.wayland = false;
     };
 
     desktopManager = {

@@ -14,7 +14,7 @@
     (import ../../modules/sharedPackagesLinux.nix)
     (import ../../modules/sharedSettings.nix)
     (import ../../modules/goland)
-    (import ../../modules/vscode)
+    # (import ../../modules/vscode)
   ];
 
   home.packages = with pkgs; [
@@ -36,9 +36,6 @@
     jetbrains.pycharm-professional
   ];
 
-  # On first install this needs to be disabled for allowUnfree to work. I
-  # shouldn't have to do this but nothing in
-  # https://github.com/rycee/home-manager/issues/463 works
   programs.firefox.enable = true;
   programs.firefox.package = pkgs.firefox-devedition-bin;
 

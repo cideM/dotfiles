@@ -52,10 +52,6 @@
         cmd = "nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'";
       };
 
-      "url \"git@github.com:amboss-mededu\"" = {
-        insteadOf = "https://github.com/amboss-mededu";
-      };
-
       mergetool = {
         prompt = true;
       };
