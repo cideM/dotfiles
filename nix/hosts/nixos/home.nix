@@ -12,6 +12,7 @@
     (import ../../modules/sharedPackages.nix)
     (import ../../modules/sharedPackagesLinux.nix)
     (import ../../modules/sharedSettings.nix)
+    (import ../../modules/sources.nix)
     (import ../../modules/goland)
     # (import ../../modules/vscode)
   ];
