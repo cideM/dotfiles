@@ -34,6 +34,20 @@
 
   # Can't use programs.git because https://github.com/NixOS/nixpkgs/issues/62353
   xdg.configFile."git/config".text = ''
+    [alias]
+        lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+        recent = branch --sort=-committerdate
+        unpushed = log --branches --not --remotes --no-walk --decorate --oneline
+        s = status -s
+        a = add
+        co = commit
+        ch = checkout
+        b = branch
+        cb = rev-parse --abbrev-ref HEAD
+        d = diff
+        pl = pull
+        ps = push
+
     [push]
         default = simple
 

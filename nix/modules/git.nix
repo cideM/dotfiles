@@ -33,7 +33,7 @@
       };
 
       pull = {
-        rebase = false;
+        rebase = true;
       };
 
       diff = {

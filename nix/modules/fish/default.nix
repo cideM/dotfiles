@@ -30,6 +30,10 @@ let
     set -x NIX_PATH ~/.nix-defexpr/channels $NIX_PATH
 
     abbr -a kubedebug 'kubectl run -i --tty --rm debug --image=radial/busyboxplus:curl --restart=Never -- sh'
+    abbr -a g 'git'
+    abbr -a dc 'docker-compose'
+    abbr -a tf 'terraform'
+
     alias fzf 'fzf --color=light'
     alias dash 'dash -E'
 
