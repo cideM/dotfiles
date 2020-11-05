@@ -27,7 +27,10 @@
   home.packages = with pkgs; [ lorri unixtools.watch ];
 
   # Install through casks for Alacritty.app etc
-  programs.alacritty.enable = false;
+  programs.alacritty = {
+    enable = false;
+    fontSize = 15;
+  };
 
   # Can't use programs.git because https://github.com/NixOS/nixpkgs/issues/62353
   xdg.configFile."git/config".text = ''
