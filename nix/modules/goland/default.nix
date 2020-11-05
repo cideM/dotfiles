@@ -1,7 +1,5 @@
-{ pkgs, ... }:
+{ pkgs, sources, ... }:
 let
-  sources = import ./nix/sources.nix;
-
   overlay = final: prev:
     {
       jetbrains = prev.jetbrains // {

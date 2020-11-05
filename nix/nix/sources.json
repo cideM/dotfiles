@@ -1,4 +1,16 @@
 {
+    "niv": {
+        "branch": "master",
+        "description": "Easy dependency management for Nix projects",
+        "homepage": "https://github.com/nmattia/niv",
+        "owner": "nmattia",
+        "repo": "niv",
+        "rev": "20c899271f288d33114760bc298838575fc6c7f9",
+        "sha256": "07zswk6dhlydihl9g6skmy52grjvqpra8r98f2dmbgwzc1yhjhxq",
+        "type": "tarball",
+        "url": "https://github.com/nmattia/niv/archive/20c899271f288d33114760bc298838575fc6c7f9.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "Apprentice": {
         "branch": "master",
         "repo": "https://git@github.com/romainl/Apprentice",
@@ -14,7 +26,7 @@
     "conjure": {
         "branch": "master",
         "repo": "https://git@github.com/Olical/conjure",
-        "rev": "0e63269e176232cdd9f1c20d94dfd3b8ad5702a1",
+        "rev": "a4c31e1c0136e943fa7dd48ecc11849158d3554e",
         "type": "git"
     },
     "edge-theme": {
@@ -50,7 +62,7 @@
     "nvim-treesitter": {
         "branch": "master",
         "repo": "https://git@github.com/nvim-treesitter/nvim-treesitter.git",
-        "rev": "333e1ab7768336d33c0e654a412ce0cb763f1da2",
+        "rev": "6e80f426bf9dc44c14b73d3589c6e19cbe9aa682",
         "type": "git"
     },
     "onehalf": {
@@ -77,24 +89,6 @@
         "rev": "4790dbba31f678f75af4f4c7a1465008542bd979",
         "type": "git"
     },
-    "treesitter-go": {
-        "branch": "master",
-        "repo": "https://git@github.com/tree-sitter/tree-sitter-go.git",
-        "rev": "34181774b3e86b7801c939c79c7b80a82df91a2b",
-        "type": "git"
-    },
-    "treesitter-yaml": {
-        "branch": "master",
-        "repo": "https://git@github.com/ikatyang/tree-sitter-yaml",
-        "rev": "b26d567070cfb40cb3138a57cf12a4e2e3c854ef",
-        "type": "git"
-    },
-    "treesitter-ts": {
-        "branch": "master",
-        "repo": "https://github.com/tree-sitter/tree-sitter-typescript",
-        "rev": "07a12bdf024d66d267bd7f96870f8bbbaceaa5d9",
-        "type": "git"
-    },
     "vim-colortemplate": {
         "branch": "master",
         "repo": "https://git@github.com/lifepillar/vim-colortemplate",
@@ -110,7 +104,7 @@
     "vim-fern": {
         "branch": "master",
         "repo": "https://git@github.com/lambdalisue/fern.vim.git",
-        "rev": "8a857c933dea15bd51bfdfc3e2ff5c62e7e4da6b",
+        "rev": "7107db5df65d7fd4c02882e6495edd4682df1428",
         "type": "git"
     },
     "vim-js": {
@@ -152,7 +146,7 @@
     "vim-qf": {
         "branch": "master",
         "repo": "https://git@github.com/romainl/vim-qf",
-        "rev": "fac7a84b50de99a739e91045c8a59649f639d9fb",
+        "rev": "7f9bc496be3303f56c4426d1e63b9b47b64bdc5c",
         "type": "git"
     },
     "vim-scratch": {
@@ -178,5 +172,56 @@
         "repo": "https://git@github.com/cidem/yui",
         "rev": "7c6936cfc989cc14a5b2c2314337066093acb178",
         "type": "git"
+    },
+    "clj-deps": {
+        "branch": "live",
+        "repo": "https://git@github.com/practicalli/clojure-deps-edn.git",
+        "rev": "25c8a7be1dcaf26c8511393061299f1a93cb9947",
+        "type": "git"
+    },
+    "fish-journal": {
+        "branch": "master",
+        "repo": "https://git@github.com/cideM/fish-journal.git",
+        "rev": "35f1e634c586d797b4871d22ae56b404a291bfa2",
+        "type": "git"
+    },
+    "fish-nix-env": {
+        "branch": "master",
+        "repo": "https://git@github.com/lilyball/nix-env.fish.git",
+        "rev": "c239a69122c88797b34e3721659b2ba5060ca7e7",
+        "type": "git"
+    },
+    "fish-notes": {
+        "branch": "master",
+        "repo": "https://git@github.com/cideM/fish-notes.git",
+        "rev": "28af0ecca8dfa67b8b334c01fe11c20c9b0a7302",
+        "type": "git"
+    },
+    "goland": {
+        "name": "goland",
+        "sha256": "09fbk1s6p785rjw6sgnrbl861qk0nmjnb8d6gal3brpyphi46avd",
+        "type": "tarball",
+        "url": "https://download.jetbrains.com/go/goland-2020.2.tar.gz",
+        "url_template": "https://download.jetbrains.com/go/<name>-<version>.tar.gz",
+        "version": "2020.2"
+    },
+    "pandoc-template-eisvogel": {
+        "branch": "master",
+        "repo": "https://git@github.com/Wandmalfarbe/pandoc-latex-template.git",
+        "rev": "b59a4e54bce51585cb67c025b0a11075aa03f2a6",
+        "type": "git"
+    },
+    "pandoc-template-github": {
+        "branch": "master",
+        "repo": "https://git@github.com/tajmone/pandoc-goodies.git",
+        "rev": "c7963da8590c2815d733ddf194d82d950ba94648",
+        "type": "git"
+    },
+    "vscode": {
+        "sha256": "08gcihgy65dykp5bibgkr6237a8nmihc81gh2wk4jnwqfiyilv8c",
+        "type": "tarball",
+        "url": "https://vscode-update.azurewebsites.net/latest/linux-x64/insider",
+        "url_template": "https://vscode-update.azurewebsites.net/<version>/linux-x64/insider",
+        "version": "latest"
     }
 }

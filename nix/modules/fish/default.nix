@@ -1,7 +1,5 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
-  sources = import ./nix/sources.nix;
-
   # These options are set by home manager programs.fzf
   # https://github.com/rycee/home-manager/blob/master/modules/programs/fzf.nix#blob-path
   # It's pointless to use home manager programs.fzf if I'm setting these anyway
@@ -25,18 +23,13 @@ let
     set -x XDG_CACHE_HOME $HOME/.cache
 
     set -x PATH                 \
-        ~/.local/bin            \
         ~/bin                   \
-        ~/.emacs.d/bin          \
         $PATH
 
+    # https://discourse.nixos.org/t/how-is-nix-path-managed-regarding-nix-channel/6079/3?u=cidem
     set -x NIX_PATH ~/.nix-defexpr/channels $NIX_PATH
 
-    abbr -a pbc 'xclip -selection clipboard'
-    abbr -a g 'git'
     abbr -a kubedebug 'kubectl run -i --tty --rm debug --image=radial/busyboxplus:curl --restart=Never -- sh'
-    abbr -a dc 'docker-compose'
-    abbr -a tf 'terraform'
     alias fzf 'fzf --color=light'
     alias dash 'dash -E'
 
@@ -78,18 +71,8 @@ in
 
     plugins = [
       {
-        name = "journal";
-        src = sources.fish-journal;
-      }
-
-      {
         name = "nix-env";
-        src = sources.fish-nix-env;
-      }
-
-      {
-        name = "fish-notes";
-        src = sources.fish-notes;
+        src = config.sources.fish-nix-env;
       }
     ];
   };

@@ -1,21 +1,19 @@
 # TODO: Add to Nixpkgs on GitHub
-{ pkgs, ... }:
+{ pkgs, sources, ... }:
 let
-  vimPluginsSources = import ./nix/sources.nix;
-
   conjure = (pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "conjure";
-    src = vimPluginsSources.conjure;
+    src = sources.conjure;
   });
 
   nvim-lsp = (pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "nvim-lsp";
-    src = vimPluginsSources.nvim-lsp;
+    src = sources.nvim-lsp;
   });
 
   vim-markdown-folding = (pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "vim-markdown-folding";
-    src = vimPluginsSources.vim-markdown-folding;
+    src = sources.vim-markdown-folding;
   });
 
   parinfer-rust = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
@@ -26,93 +24,78 @@ let
       sed "s,let s:libdir = .*,let s:libdir = '${pkgs.parinfer-rust}/lib'," \
         plugin/parinfer.vim >$rtpPath/plugin/parinfer.vim
     '';
-    src = vimPluginsSources.parinfer;
+    src = sources.parinfer;
   });
 
   onehalf = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "onehalf";
-    src = "${vimPluginsSources.onehalf}/vim";
+    src = "${sources.onehalf}/vim";
   });
 
   apprentice = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "apprentice";
-    src = vimPluginsSources.Apprentice;
+    src = sources.Apprentice;
   });
 
   vim-colortemplate = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "vim-colortemplate";
-    src = vimPluginsSources.vim-colortemplate;
+    src = sources.vim-colortemplate;
   });
 
   vim-cool = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "vim-cool";
-    src = vimPluginsSources.vim-cool;
+    src = sources.vim-cool;
   });
 
   vim-matchup = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "vim-matchup";
-    src = vimPluginsSources.vim-matchup;
-  });
-
-  vim-qf = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "vim-qf";
-    src = vimPluginsSources.vim-qf;
-  });
-
-  edge-theme = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "edge-theme";
-    src = vimPluginsSources.edge-theme;
+    src = sources.vim-matchup;
   });
 
   # This is the spacevim theme not the spacevim plugin
   spacevim = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "spacevim";
-    src = vimPluginsSources.spacevim;
+    src = sources.spacevim;
   });
 
   yui = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "yui";
-    src = vimPluginsSources.yui;
+    src = sources.yui;
   });
 
   sad = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "sad";
-    src = vimPluginsSources.sad;
+    src = sources.sad;
   });
 
   vim-scratch = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "vim-scratch";
-    src = vimPluginsSources.vim-scratch;
+    src = sources.vim-scratch;
   });
 
   vim-js = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "vim-js";
-    src = vimPluginsSources.vim-js;
-  });
-
-  fern = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "fern";
-    src = vimPluginsSources.vim-fern;
+    src = sources.vim-js;
   });
 
   vim-visual-split = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "vim-visual-split";
-    src = vimPluginsSources.vim-visual-split;
+    src = sources.vim-visual-split;
   });
 
   vim-one-theme = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "vim-one-theme";
-    src = vimPluginsSources.vim-one-colors;
+    src = sources.vim-one-colors;
   });
 
   nvim-treesitter = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "nvim-treesitter";
-    src = vimPluginsSources.nvim-treesitter;
+    src = sources.nvim-treesitter;
   });
 
   vim-lua = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "vim-lua";
-    src = vimPluginsSources.vim-lua;
+    src = sources.vim-lua;
   });
 
   # TODO: Add all from https://github.com/nvim-treesitter/nvim-treesitter/blob/master/lua/nvim-treesitter/parsers.lua
@@ -120,7 +103,11 @@ let
   treesitterGo = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     version = "latest";
     name = "tree-sitter-go-${version}";
-    src = vimPluginsSources.treesitter-go;
+    src = builtins.fetchGit {
+      "url" = "git@github.com:tree-sitter/tree-sitter-go.git";
+      "ref" = "master";
+      "rev" = "34181774b3e86b7801c939c79c7b80a82df91a2b";
+    };
     buildPhase = ''
       runHook preBuild
       mkdir -p parser/
@@ -132,7 +119,11 @@ let
   treesitterYaml = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     version = "latest";
     name = "tree-sitter-yaml-${version}";
-    src = vimPluginsSources.treesitter-yaml;
+    src = builtins.fetchGit {
+      "ref" = "master";
+      "url" = "git@github.com:ikatyang/tree-sitter-yaml";
+      "rev" = "b26d567070cfb40cb3138a57cf12a4e2e3c854ef";
+    };
     buildPhase = ''
       runHook preBuild
       mkdir -p parser/
@@ -144,7 +135,11 @@ let
   treesitterTs = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     version = "latest";
     name = "tree-sitter-ts-${version}";
-    src = vimPluginsSources.treesitter-ts;
+    src = builtins.fetchGit {
+      "ref" = "master";
+      "url" = "git@github.com:tree-sitter/tree-sitter-typescript";
+      "rev" = "07a12bdf024d66d267bd7f96870f8bbbaceaa5d9";
+    };
     buildPhase = ''
       runHook preBuild
       mkdir -p parser/
@@ -156,7 +151,11 @@ let
   treesitterTsx = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     version = "latest";
     name = "tree-sitter-tsx-${version}";
-    src = vimPluginsSources.treesitter-ts;
+    src = builtins.fetchGit {
+      "ref" = "master";
+      "url" = "git@github.com:tree-sitter/tree-sitter-typescript";
+      "rev" = "07a12bdf024d66d267bd7f96870f8bbbaceaa5d9";
+    };
     buildPhase = ''
       runHook preBuild
       mkdir -p parser/
@@ -167,12 +166,12 @@ let
 
   nvim-colorizer = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "nvim-colorizer";
-    src = vimPluginsSources.nvim-colorizer;
+    src = sources.nvim-colorizer;
   });
 
   vim-terraform = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "vim-terraform";
-    src = vimPluginsSources.vim-terraform;
+    src = sources.vim-terraform;
   });
 
 in
@@ -180,8 +179,6 @@ in
   inherit
     apprentice
     conjure
-    edge-theme
-    fern
     nvim-lsp
     onehalf
     parinfer-rust
@@ -194,7 +191,6 @@ in
     vim-markdown-folding
     vim-matchup
     vim-lua
-    vim-qf
     vim-scratch
     vim-terraform
     vim-visual-split

@@ -11,7 +11,7 @@ let
   # absolute path
   readFtplugin = name: builtins.readFile ("${ftPluginDir}/${name}.vim");
 
-  plugins = (import ./plugins.nix { inherit pkgs; });
+  plugins = (import ./plugins.nix { inherit pkgs; sources = config.sources; });
 
   # TODO: Should just add all automatically
   localPlugins =
@@ -80,7 +80,7 @@ in
 
       package = pkgs.neovim-unwrapped.overrideAttrs (oldAttrs: rec {
         version = "master";
-        src = (import ./nix/sources.nix).neovim;
+        src = config.sources.neovim;
       });
 
       configure = with pkgs.vimPlugins; with plugins; {
@@ -88,27 +88,28 @@ in
 
         packages.foobar = {
           start = [
+
             editorconfig-vim
             limelight-vim
+            sad
             targets-vim
+            vim-asterisk
+            vim-colortemplate
             vim-commentary
             vim-easy-align
             vim-eunuch
             vim-gutentags
             vim-indent-object
+            vim-matchup
+            vim-mundo
             vim-peekaboo
             vim-repeat
             vim-sandwich
+            vim-scratch
+            vim-sneak
             vim-unimpaired
             vim-vinegar
-            vim-sneak
-            vim-mundo
-            sad
-            vim-colortemplate
-            vim-matchup
-            vim-scratch
             vim-visual-split
-            vim-asterisk
 
             # Treesitter
             treesitterGo

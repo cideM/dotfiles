@@ -65,6 +65,7 @@ with pkgs;
     niv
     nixpkgs-fmt
     nodePackages.purescript-language-server
+    nodejs
     pandoc
     perl
     # https://github.com/NixOS/nixpkgs/issues/96921

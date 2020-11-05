@@ -1,8 +1,4 @@
-{ pkgs, ... }:
-let
-  sources = import ./nix/sources.nix;
-
-in
+{ pkgs, sources, ... }:
 {
   programs.vscode = {
     enable = true;

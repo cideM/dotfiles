@@ -1,6 +1,6 @@
 { ... }:
 {
-  xdg.configFile.ctags.text = ''
+  xdg.configFile."ctags/1.ctags".text = ''
     --exclude=node_modules
     --exclude=package-lock.json
     --exclude=yarn.lock

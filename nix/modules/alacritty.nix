@@ -1,5 +1,10 @@
-{ pkgs, padding ? 40, fontSize ? 12, decorations ? "full", ... }:
+{ lib, config, pkgs, ... }:
+
+with lib;
+with types;
 let
+  cfg = config.programs.alacritty;
+
   # https://github.com/alacritty/alacritty/issues/62#issuecomment-347552058
   optionAsMetaBindings = map
     (char: {
@@ -214,7 +219,7 @@ let
       x = 0;
       y = 2;
     };
-    size = fontSize;
+    size = cfg.fontSize;
     use_thin_strokes = true;
   };
 
@@ -243,7 +248,7 @@ let
       x = 0;
       y = 2;
     };
-    size = fontSize;
+    size = cfg.fontSize;
     use_thin_strokes = true;
   };
 
@@ -272,14 +277,14 @@ let
       x = 0;
       y = 2;
     };
-    size = fontSize;
+    size = cfg.fontSize;
     use_thin_strokes = true;
   };
 
   shared = {
     colors = spacemacsLight;
 
-    key_bindings =  optionAsMetaBindings ++ [
+    key_bindings = optionAsMetaBindings ++ [
       {
         chars = "\\u001bO";
         key = "O";
@@ -291,7 +296,7 @@ let
         mods = "Alt";
       }
       {
-        chars = "`	";
+        chars = "`  ";
         key = "Tab";
         mods = "Control";
       }
@@ -343,11 +348,11 @@ let
     ];
 
     window = {
-      decorations = decorations;
+      decorations = "full";
       dynamic_padding = true;
       padding = {
-        x = padding;
-        y = padding;
+        x = cfg.padding;
+        y = cfg.padding;
       };
     };
 
@@ -362,9 +367,33 @@ let
   };
 in
 {
-  xdg.configFile."alacritty/alacritty.yml".text =
-    builtins.replaceStrings [ "\\\\" ] [ "\\" ] (builtins.toJSON (shared // {
-      colors = iceberg-light;
-      font = hack;
-    }));
+  options.programs.alacritty = {
+    fontSize = mkOption {
+      type = int;
+      default = 14;
+      example = "14";
+      description = ''
+        Well, what do you think this does?
+      '';
+    };
+
+    padding = mkOption {
+      type = int;
+      default = 10;
+      example = "10";
+      description = ''
+        Horizontal and vertical padding
+      '';
+    };
+  };
+
+  config = {
+
+    xdg.configFile."alacritty/alacritty.yml".text =
+      builtins.replaceStrings [ "\\\\" ] [ "\\" ] (builtins.toJSON (shared // {
+        colors = iceberg-light;
+        font = hack;
+      }));
+
+  };
 }
