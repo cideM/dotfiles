@@ -118,7 +118,6 @@ in
             treesitterTsx
 
             # Git
-            gv-vim
             vim-fugitive
             vim-gist
             vim-rhubarb
