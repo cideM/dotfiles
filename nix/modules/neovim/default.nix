@@ -118,12 +118,15 @@ in
             treesitterTsx
 
             # Git
+            gv-vim
             vim-fugitive
             vim-gist
             vim-rhubarb
 
             # Language Tooling
             vim-markdown-folding
+            parinfer-rust
+            conjure
 
             # Languages & Syntax
             purescript-vim

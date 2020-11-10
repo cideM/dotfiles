@@ -1,20 +1,14 @@
 {
-    "niv": {
-        "branch": "master",
-        "description": "Easy dependency management for Nix projects",
-        "homepage": "https://github.com/nmattia/niv",
-        "owner": "nmattia",
-        "repo": "niv",
-        "rev": "20c899271f288d33114760bc298838575fc6c7f9",
-        "sha256": "07zswk6dhlydihl9g6skmy52grjvqpra8r98f2dmbgwzc1yhjhxq",
-        "type": "tarball",
-        "url": "https://github.com/nmattia/niv/archive/20c899271f288d33114760bc298838575fc6c7f9.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "Apprentice": {
         "branch": "master",
         "repo": "https://git@github.com/romainl/Apprentice",
         "rev": "dec7ab6de48d9e4b15bf0c1680cc993285ba36a4",
+        "type": "git"
+    },
+    "clj-deps": {
+        "branch": "live",
+        "repo": "https://git@github.com/practicalli/clojure-deps-edn.git",
+        "rev": "25c8a7be1dcaf26c8511393061299f1a93cb9947",
         "type": "git"
     },
     "cocopon/iceberg.vim": {
@@ -35,11 +29,49 @@
         "rev": "8e2fadda1a9e7b6ce4f8bd2273e93e65c8bdf731",
         "type": "git"
     },
+    "fish-journal": {
+        "branch": "master",
+        "repo": "https://git@github.com/cideM/fish-journal.git",
+        "rev": "35f1e634c586d797b4871d22ae56b404a291bfa2",
+        "type": "git"
+    },
+    "fish-nix-env": {
+        "branch": "master",
+        "repo": "https://git@github.com/lilyball/nix-env.fish.git",
+        "rev": "c239a69122c88797b34e3721659b2ba5060ca7e7",
+        "type": "git"
+    },
+    "fish-notes": {
+        "branch": "master",
+        "repo": "https://git@github.com/cideM/fish-notes.git",
+        "rev": "28af0ecca8dfa67b8b334c01fe11c20c9b0a7302",
+        "type": "git"
+    },
+    "goland": {
+        "name": "goland",
+        "sha256": "09fbk1s6p785rjw6sgnrbl861qk0nmjnb8d6gal3brpyphi46avd",
+        "type": "tarball",
+        "url": "https://download.jetbrains.com/go/goland-2020.2.tar.gz",
+        "url_template": "https://download.jetbrains.com/go/<name>-<version>.tar.gz",
+        "version": "2020.2"
+    },
     "neovim": {
         "branch": "master",
         "repo": "https://git@github.com/neovim/neovim",
         "rev": "fd7aa6768a6c341edc1fe768c13899a3d92d8b1d",
         "type": "git"
+    },
+    "niv": {
+        "branch": "master",
+        "description": "Easy dependency management for Nix projects",
+        "homepage": "https://github.com/nmattia/niv",
+        "owner": "nmattia",
+        "repo": "niv",
+        "rev": "20c899271f288d33114760bc298838575fc6c7f9",
+        "sha256": "07zswk6dhlydihl9g6skmy52grjvqpra8r98f2dmbgwzc1yhjhxq",
+        "type": "tarball",
+        "url": "https://github.com/nmattia/niv/archive/20c899271f288d33114760bc298838575fc6c7f9.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nord-vim": {
         "branch": "develop",
@@ -69,6 +101,18 @@
         "branch": "master",
         "repo": "https://git@github.com/sonph/onehalf.git",
         "rev": "89923117bc49dd1e0c6b7fdd34bc6dc4d425fe1f",
+        "type": "git"
+    },
+    "pandoc-template-eisvogel": {
+        "branch": "master",
+        "repo": "https://git@github.com/Wandmalfarbe/pandoc-latex-template.git",
+        "rev": "b59a4e54bce51585cb67c025b0a11075aa03f2a6",
+        "type": "git"
+    },
+    "pandoc-template-github": {
+        "branch": "master",
+        "repo": "https://git@github.com/tajmone/pandoc-goodies.git",
+        "rev": "c7963da8590c2815d733ddf194d82d950ba94648",
         "type": "git"
     },
     "parinfer": {
@@ -167,61 +211,17 @@
         "rev": "423a25911b3e8da04a28d29f205e1059a06e6afa",
         "type": "git"
     },
+    "vscode": {
+        "sha256": "12a364frldikjv9rx9r5k0lfg2qz9pi0pa9zh09giikk2d0z05jb",
+        "type": "tarball",
+        "url": "https://vscode-update.azurewebsites.net/latest/linux-x64/insider",
+        "url_template": "https://vscode-update.azurewebsites.net/<version>/linux-x64/insider",
+        "version": "latest"
+    },
     "yui": {
         "branch": "master",
         "repo": "https://git@github.com/cidem/yui",
         "rev": "7c6936cfc989cc14a5b2c2314337066093acb178",
         "type": "git"
-    },
-    "clj-deps": {
-        "branch": "live",
-        "repo": "https://git@github.com/practicalli/clojure-deps-edn.git",
-        "rev": "25c8a7be1dcaf26c8511393061299f1a93cb9947",
-        "type": "git"
-    },
-    "fish-journal": {
-        "branch": "master",
-        "repo": "https://git@github.com/cideM/fish-journal.git",
-        "rev": "35f1e634c586d797b4871d22ae56b404a291bfa2",
-        "type": "git"
-    },
-    "fish-nix-env": {
-        "branch": "master",
-        "repo": "https://git@github.com/lilyball/nix-env.fish.git",
-        "rev": "c239a69122c88797b34e3721659b2ba5060ca7e7",
-        "type": "git"
-    },
-    "fish-notes": {
-        "branch": "master",
-        "repo": "https://git@github.com/cideM/fish-notes.git",
-        "rev": "28af0ecca8dfa67b8b334c01fe11c20c9b0a7302",
-        "type": "git"
-    },
-    "goland": {
-        "name": "goland",
-        "sha256": "09fbk1s6p785rjw6sgnrbl861qk0nmjnb8d6gal3brpyphi46avd",
-        "type": "tarball",
-        "url": "https://download.jetbrains.com/go/goland-2020.2.tar.gz",
-        "url_template": "https://download.jetbrains.com/go/<name>-<version>.tar.gz",
-        "version": "2020.2"
-    },
-    "pandoc-template-eisvogel": {
-        "branch": "master",
-        "repo": "https://git@github.com/Wandmalfarbe/pandoc-latex-template.git",
-        "rev": "b59a4e54bce51585cb67c025b0a11075aa03f2a6",
-        "type": "git"
-    },
-    "pandoc-template-github": {
-        "branch": "master",
-        "repo": "https://git@github.com/tajmone/pandoc-goodies.git",
-        "rev": "c7963da8590c2815d733ddf194d82d950ba94648",
-        "type": "git"
-    },
-    "vscode": {
-        "sha256": "08gcihgy65dykp5bibgkr6237a8nmihc81gh2wk4jnwqfiyilv8c",
-        "type": "tarball",
-        "url": "https://vscode-update.azurewebsites.net/latest/linux-x64/insider",
-        "url_template": "https://vscode-update.azurewebsites.net/<version>/linux-x64/insider",
-        "version": "latest"
     }
 }

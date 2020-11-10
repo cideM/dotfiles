@@ -12,6 +12,7 @@
     (import ../../modules/fish)
     (import ../../modules/sharedPackages.nix)
     (import ../../modules/sharedSettings.nix)
+    # (import ../../modules/vscode)
   ];
 
   sources = import ../../nix/sources.nix;
