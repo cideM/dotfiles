@@ -22,6 +22,7 @@ with pkgs;
     sd # sed
     ripgrep # grep
     bottom # top
+    bandwhich
 
     aerc
     awscli
@@ -95,9 +96,6 @@ with pkgs;
     weechat
     wget
     yamllint
-
-    # GUI stuff
-    insomnia
 
   ];
 }
