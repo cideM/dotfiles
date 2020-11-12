@@ -174,6 +174,11 @@ let
     src = sources.vim-terraform;
   });
 
+  vim-startuptime = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "vim-startuptime";
+    src = sources.vim-startuptime;
+  });
+
 in
 {
   inherit
@@ -193,6 +198,7 @@ in
     vim-lua
     vim-scratch
     vim-terraform
+    vim-startuptime
     vim-visual-split
     treesitterGo
     treesitterYaml
