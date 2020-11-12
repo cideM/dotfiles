@@ -37,7 +37,10 @@
 
   services.lorri.enable = true;
 
-  programs.alacritty.enable = false;
+  programs.alacritty = {
+    enable = false;
+    fontSize = 13;
+  };
 
   xdg.mime.enable = true;
 
