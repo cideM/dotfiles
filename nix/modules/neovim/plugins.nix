@@ -42,11 +42,6 @@ let
     src = sources.vim-colortemplate;
   });
 
-  vim-cool = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "vim-cool";
-    src = sources.vim-cool;
-  });
-
   vim-matchup = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "vim-matchup";
     src = sources.vim-matchup;
@@ -191,7 +186,6 @@ in
     spacevim
     vim-colortemplate
     vim-one-theme
-    vim-cool
     vim-js
     vim-markdown-folding
     vim-matchup
