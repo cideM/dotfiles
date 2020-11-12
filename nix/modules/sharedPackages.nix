@@ -96,5 +96,8 @@ with pkgs;
     wget
     yamllint
 
+    # GUI stuff
+    insomnia
+
   ];
 }
