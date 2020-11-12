@@ -175,6 +175,12 @@
         "rev": "6df617ebc0695bd9839a4fe365a08df13d24bc05",
         "type": "git"
     },
+    "vim-startuptime": {
+        "branch": "master",
+        "repo": "https://git@github.com/dstein64/vim-startuptime.git",
+        "rev": "ef36dedc72263be5a5277eb0dff220d03267e2cf",
+        "type": "git"
+    },
     "vim-terraform": {
         "branch": "master",
         "repo": "https://github.com/hashivim/vim-terraform.git",
