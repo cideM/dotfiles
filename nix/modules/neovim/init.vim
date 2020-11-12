@@ -182,19 +182,6 @@ omap O <Plug>Sneak_S
 map <leader>j <Plug>Sneak_s
 map <leader>k <Plug>Sneak_S
 
-" ==============================
-" =     NVIM TREESITTER        =
-" ==============================
-packadd nvim-treesitter
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = {},     -- one of "all", "language", or a list of languages
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = {},  -- list of language that will be disabled
-  },
-}
-EOF
 
 " ========= NVIM-LSP ================
 " https://neovim.io/doc/user/lsp.html
@@ -268,4 +255,16 @@ nvim_lsp.purescriptls.setup{}
 nvim_lsp.rust_analyzer.setup{}
 nvim_lsp.gopls.setup{}
 nvim_lsp.dhall.setup{}
+EOF
+
+" ========= NVIM-TREESITTER =========
+packadd nvim-treesitter
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {},     -- one of "all", "language", or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = {},  -- list of language that will be disabled
+  },
+}
 EOF
