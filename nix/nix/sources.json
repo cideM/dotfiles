@@ -23,12 +23,6 @@
         "rev": "a4c31e1c0136e943fa7dd48ecc11849158d3554e",
         "type": "git"
     },
-    "edge-theme": {
-        "branch": "master",
-        "repo": "https://git@github.com/sainnhe/edge.git",
-        "rev": "8e2fadda1a9e7b6ce4f8bd2273e93e65c8bdf731",
-        "type": "git"
-    },
     "fish-journal": {
         "branch": "master",
         "repo": "https://git@github.com/cideM/fish-journal.git",
@@ -139,18 +133,6 @@
         "rev": "3ae7fd3d8559958742b1c968e17d23404eb0b1b4",
         "type": "git"
     },
-    "vim-cool": {
-        "branch": "master",
-        "repo": "https://git@github.com/romainl/vim-cool",
-        "rev": "27ad4ecf7532b750fadca9f36e1c5498fc225af2",
-        "type": "git"
-    },
-    "vim-fern": {
-        "branch": "master",
-        "repo": "https://git@github.com/lambdalisue/fern.vim.git",
-        "rev": "7107db5df65d7fd4c02882e6495edd4682df1428",
-        "type": "git"
-    },
     "vim-js": {
         "branch": "master",
         "repo": "https://git@github.com/yuezk/vim-js.git",
@@ -185,12 +167,6 @@
         "branch": "master",
         "repo": "https://git@github.com/rakr/vim-one.git",
         "rev": "f8bcef1968f01842d92abbcb098ec28ad3931ea5",
-        "type": "git"
-    },
-    "vim-qf": {
-        "branch": "master",
-        "repo": "https://git@github.com/romainl/vim-qf",
-        "rev": "7f9bc496be3303f56c4426d1e63b9b47b64bdc5c",
         "type": "git"
     },
     "vim-scratch": {
