@@ -99,7 +99,7 @@ let
     version = "latest";
     name = "tree-sitter-go-${version}";
     src = builtins.fetchGit {
-      "url" = "git@github.com:tree-sitter/tree-sitter-go.git";
+      "url" = "https://git@github.com/tree-sitter/tree-sitter-go.git";
       "ref" = "master";
       "rev" = "34181774b3e86b7801c939c79c7b80a82df91a2b";
     };
@@ -116,7 +116,7 @@ let
     name = "tree-sitter-yaml-${version}";
     src = builtins.fetchGit {
       "ref" = "master";
-      "url" = "git@github.com:ikatyang/tree-sitter-yaml";
+      "url" = "https://git@github.com/ikatyang/tree-sitter-yaml";
       "rev" = "b26d567070cfb40cb3138a57cf12a4e2e3c854ef";
     };
     buildPhase = ''
@@ -132,7 +132,7 @@ let
     name = "tree-sitter-ts-${version}";
     src = builtins.fetchGit {
       "ref" = "master";
-      "url" = "git@github.com:tree-sitter/tree-sitter-typescript";
+      "url" = "https://git@github.com/tree-sitter/tree-sitter-typescript";
       "rev" = "07a12bdf024d66d267bd7f96870f8bbbaceaa5d9";
     };
     buildPhase = ''
@@ -148,7 +148,7 @@ let
     name = "tree-sitter-tsx-${version}";
     src = builtins.fetchGit {
       "ref" = "master";
-      "url" = "git@github.com:tree-sitter/tree-sitter-typescript";
+      "url" = "https://git@github.com/tree-sitter/tree-sitter-typescript";
       "rev" = "07a12bdf024d66d267bd7f96870f8bbbaceaa5d9";
     };
     buildPhase = ''
