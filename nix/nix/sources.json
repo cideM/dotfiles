@@ -8,7 +8,7 @@
     "clj-deps": {
         "branch": "live",
         "repo": "https://git@github.com/practicalli/clojure-deps-edn.git",
-        "rev": "25c8a7be1dcaf26c8511393061299f1a93cb9947",
+        "rev": "fa5d15710da82f2adf818d0965a1eef575b37aea",
         "type": "git"
     },
     "cocopon/iceberg.vim": {
@@ -52,7 +52,7 @@
     "neovim": {
         "branch": "master",
         "repo": "https://git@github.com/neovim/neovim",
-        "rev": "fd7aa6768a6c341edc1fe768c13899a3d92d8b1d",
+        "rev": "35325ddac04b1b59b7982797021cdaabdabc87fb",
         "type": "git"
     },
     "niv": {
@@ -61,10 +61,10 @@
         "homepage": "https://github.com/nmattia/niv",
         "owner": "nmattia",
         "repo": "niv",
-        "rev": "20c899271f288d33114760bc298838575fc6c7f9",
-        "sha256": "07zswk6dhlydihl9g6skmy52grjvqpra8r98f2dmbgwzc1yhjhxq",
+        "rev": "ba57d5a29b4e0f2085917010380ef3ddc3cf380f",
+        "sha256": "1kpsvc53x821cmjg1khvp1nz7906gczq8mp83664cr15h94sh8i4",
         "type": "tarball",
-        "url": "https://github.com/nmattia/niv/archive/20c899271f288d33114760bc298838575fc6c7f9.tar.gz",
+        "url": "https://github.com/nmattia/niv/archive/ba57d5a29b4e0f2085917010380ef3ddc3cf380f.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nord-vim": {
@@ -88,7 +88,7 @@
     "nvim-treesitter": {
         "branch": "master",
         "repo": "https://git@github.com/nvim-treesitter/nvim-treesitter.git",
-        "rev": "6e80f426bf9dc44c14b73d3589c6e19cbe9aa682",
+        "rev": "1f98c2e92810f02afcd7ce981beac5142e34ea87",
         "type": "git"
     },
     "onehalf": {
@@ -100,7 +100,7 @@
     "pandoc-template-eisvogel": {
         "branch": "master",
         "repo": "https://git@github.com/Wandmalfarbe/pandoc-latex-template.git",
-        "rev": "b59a4e54bce51585cb67c025b0a11075aa03f2a6",
+        "rev": "f15e2275a7b50ab21d67b09af20a19b676566e4e",
         "type": "git"
     },
     "pandoc-template-github": {
