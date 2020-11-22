@@ -71,6 +71,9 @@ in
           echo -n (basename $PWD)
           fish_git_prompt
           set_color normal
+          if test "$IN_LORRI_SHELL" != ""
+            echo -n ' [L] '
+          end
           echo -n ' $ '
       end
     '';
