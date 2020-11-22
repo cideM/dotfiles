@@ -202,7 +202,7 @@ augroup END
 
 packadd nvim-lsp
 lua <<EOF
-local nvim_lsp = require'nvim_lsp'
+local nvim_lsp = require'lspconfig'
 local buf_set_keymap = vim.api.nvim_buf_set_keymap
 local api = vim.api
 
@@ -234,7 +234,7 @@ local on_attach = function(_, bufnr)
     -- api.nvim_command [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
 end
 
-local configs = require'nvim_lsp/configs'
+local configs = require'lspconfig/configs'
 
 nvim_lsp.util.default_config = vim.tbl_extend(
   "force",
