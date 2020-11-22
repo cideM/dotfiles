@@ -22,6 +22,8 @@ let
     set -x XDG_DATA_HOME $HOME/.local/share
     set -x XDG_CACHE_HOME $HOME/.cache
 
+    set -x GOPATH ~/go
+
     set -x PATH                 \
         ~/bin                   \
         $PATH

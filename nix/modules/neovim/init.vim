@@ -12,7 +12,7 @@ set wildignore+=*/.git/*,
 set diffopt=algorithm:patience,filler,indent-heuristic,closeoff
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set hidden
-set signcolumn=yes:2
+" set signcolumn=yes:2
 set ignorecase
 set completeopt-=preview
 set smartcase

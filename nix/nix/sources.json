@@ -8,7 +8,7 @@
     "clj-deps": {
         "branch": "live",
         "repo": "https://git@github.com/practicalli/clojure-deps-edn.git",
-        "rev": "fa5d15710da82f2adf818d0965a1eef575b37aea",
+        "rev": "959906d3544a14ea5d86fb32fe1fad25f61fd227",
         "type": "git"
     },
     "cocopon/iceberg.vim": {
@@ -20,7 +20,7 @@
     "conjure": {
         "branch": "master",
         "repo": "https://git@github.com/Olical/conjure",
-        "rev": "a4c31e1c0136e943fa7dd48ecc11849158d3554e",
+        "rev": "bcdaf3761b762dafb4314389d84294232dd61ed6",
         "type": "git"
     },
     "fish-journal": {
@@ -52,7 +52,7 @@
     "neovim": {
         "branch": "master",
         "repo": "https://git@github.com/neovim/neovim",
-        "rev": "35325ddac04b1b59b7982797021cdaabdabc87fb",
+        "rev": "8c4648421a1e34c3e95e42ea596de36987f02563",
         "type": "git"
     },
     "niv": {
@@ -82,13 +82,13 @@
     "nvim-lsp": {
         "branch": "master",
         "repo": "https://git@github.com/neovim/nvim-lspconfig.git",
-        "rev": "60133c47e0fd82556d7ca092546ebfa8d047466e",
+        "rev": "4f19567fb76438d39ed196ae5b4e06b749e75e16",
         "type": "git"
     },
     "nvim-treesitter": {
         "branch": "master",
         "repo": "https://git@github.com/nvim-treesitter/nvim-treesitter.git",
-        "rev": "1f98c2e92810f02afcd7ce981beac5142e34ea87",
+        "rev": "00d5408527ffff3deffc750a8f46c1e916e730b8",
         "type": "git"
     },
     "onehalf": {
@@ -178,13 +178,13 @@
     "vim-startuptime": {
         "branch": "master",
         "repo": "https://git@github.com/dstein64/vim-startuptime.git",
-        "rev": "ef36dedc72263be5a5277eb0dff220d03267e2cf",
+        "rev": "f273b7d23ccdb3da32f20a85eac2705e8b39c9d6",
         "type": "git"
     },
     "vim-terraform": {
         "branch": "master",
         "repo": "https://github.com/hashivim/vim-terraform.git",
-        "rev": "6fd491d6a2ae40fef3aa6c414e096ce07664f030",
+        "rev": "a6be9fea8757f6672397cadfb2784230914130c6",
         "type": "git"
     },
     "vim-visual-split": {

@@ -22,7 +22,7 @@ with pkgs;
     sd # sed
     ripgrep # grep
     bottom # top
-    bandwhich
+    # bandwhich
 
     aerc
     awscli
@@ -64,6 +64,7 @@ with pkgs;
     ncdu
     neofetch
     niv
+    nvi
     nixpkgs-fmt
     nodePackages.purescript-language-server
     nodejs
