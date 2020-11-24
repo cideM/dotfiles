@@ -36,11 +36,14 @@ in
     fonts = [ operatorMonoFontPkg ];
   };
 
+  services.resolved = {
+    enable = true;
+  };
+
   networking = {
     useDHCP = false;
     interfaces.wlp7s0.useDHCP = true;
     hostName = "nixos";
-    nameservers = ["1.1.1.1" "8.8.8.8"];
     networkmanager.enable = true;
   };
 
