@@ -316,11 +316,6 @@ let
         mods = "Control";
       }
       {
-        chars = "`-";
-        key = "Minus";
-        mods = "Control";
-      }
-      {
         chars = "`|";
         key = "Backslash";
         mods = "Control";
@@ -334,11 +329,6 @@ let
         action = "SpawnNewInstance";
         key = "N";
         mods = "Control|Alt";
-      }
-      {
-        action = "None";
-        key = "Minus";
-        mods = "Control";
       }
       {
         action = "None";

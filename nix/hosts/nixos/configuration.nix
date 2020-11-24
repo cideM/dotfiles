@@ -45,6 +45,8 @@ in
     interfaces.wlp7s0.useDHCP = true;
     hostName = "nixos";
     networkmanager.enable = true;
+    networkmanager.wifi.backend = "iwd";
+    wireless.iwd.enable = true;
   };
 
   # Select internationalisation properties.

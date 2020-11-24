@@ -124,10 +124,25 @@ in
             vim-sandwich
             vim-scratch
             vim-sneak
+            colorbuddy
             vim-unimpaired
-            vim-vinegar
             vim-visual-split
-            # vim-startuptime
+            vim-startify
+            nvim-tree-lua
+            vim-startuptime
+            popup
+            plenary
+            vim-cool
+            fern
+            any-jump
+            vim-dirvish
+            vim-illuminate
+            NrrwRgn
+
+            # Completion
+            completion-nvim
+            completion-buffers
+            completion-tags
 
             # Treesitter
             treesitterGo
@@ -139,11 +154,17 @@ in
             vim-fugitive
             vim-gist
             vim-rhubarb
+            committia
+            vim-signify
+            git-messenger-vim
+            gv-vim
+            gina
 
             # Language Tooling
             vim-markdown-folding
             parinfer-rust
-            # conjure
+            conjure
+            vimtex
 
             # Languages & Syntax
             purescript-vim
@@ -163,12 +184,17 @@ in
             spacevim
             onehalf
             iceberg-vim
+            edge
+            onebuddy
+            sonokai
+            highlite # This is technically both colors and also general
 
           ]
           ++ localPlugins;
 
           opt = [
             nvim-treesitter
+            telescope
             nvim-lsp
             nvim-colorizer
           ];

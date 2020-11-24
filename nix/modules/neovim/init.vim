@@ -17,9 +17,11 @@ set wildignore+=*/.git/*,
 set diffopt=algorithm:patience,filler,indent-heuristic,closeoff
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set hidden
-" set signcolumn=yes:2
+set signcolumn=auto:3
 set ignorecase
-set completeopt-=preview
+set number
+" set completeopt-=preview
+set completeopt=menuone,noinsert,noselect
 set smartcase
 set inccommand=split
 set path-=/usr/include
@@ -28,6 +30,17 @@ set foldlevelstart=99
 set splitright
 set termguicolors
 set undofile
+
+set statusline=
+set statusline+=\ %f
+set statusline+=\ %m 
+set statusline+=\%{FugitiveStatusline()} 
+set statusline+=\ %{mode()}\ 
+set statusline+=%=
+set statusline+=%y\ " buffer type
+set statusline+=%q\ 
+set statusline+=%3l:%2c\ \|
+set statusline+=%3p%%\ 
 
 " https://github.com/neovim/neovim/issues/13113
 " EVERYTHING. IS. BROKEN. ALL THE FUCKING TIME
@@ -57,7 +70,10 @@ augroup END
 " ==============================
 let g:one_allow_italics = 1
 let g:yui_comments = "emphasize"
-colorscheme iceberg
+let g:sonokai_enable_italic = 1
+let g:sonokai_diagnostic_line_highlight = 1
+let g:edge_enable_italic = 1
+colorscheme yui
 
 " Call my own SetPath function so that every git file is added to path. Let's
 " me get most of FZF without using FZF
@@ -65,6 +81,7 @@ augroup SetPath
     autocmd!
     autocmd BufEnter,DirChanged * call pathutils#SetPath()
 augroup END
+command! -nargs=0 UpdatePath :call pathutils#SetPath()
 
 " Built-in Neovim feature that highlights yanked code.
 augroup highlight_yank
@@ -108,7 +125,7 @@ nnoremap <A-j>      <C-w>j
 nnoremap <A-k>      <C-w>k
 nnoremap <A-l>      <C-w>l
 " Open terminal in directory of current file
-nnoremap <leader>t  :split <Bar> lcd %:p:h <Bar> term<CR>
+nnoremap <leader>T  :split <Bar> lcd %:p:h <Bar> term<CR>
 
 " Leave insert mode with jk
 imap jk             <Esc>
@@ -121,7 +138,7 @@ nnoremap <leader>gw :grep! -wF ""<left>
 nmap     <leader>Q  :call FormatBuffer()<cr>
 
 nnoremap <leader>f  :find *
-nnoremap <leader>b  :ls<cr>:buffer<Space>
+" nnoremap <leader>b  :ls<cr>:buffer<Space>
 
 vmap     <Enter>    <Plug>(EasyAlign)
 
@@ -139,6 +156,29 @@ nnoremap <BS>       <C-^>
 " =          PLUGINS           =
 " ==============================
 
+" ======= ANY JUMP ==================
+let g:any_jump_disable_default_keybindings = 1
+nnoremap <leader>J :AnyJump<CR>
+xnoremap <leader>J :AnyJumpVisual<CR>
+nnoremap <leader>ab :AnyJumpBack<CR>
+nnoremap <leader>al :AnyJumpLastResults<CR>
+
+" ======= VIMTEX ====================
+let g:tex_flavor = 'latex'
+
+" ======= FERN ======================
+" Drawer style, does not have opener
+nmap <leader>ee :Fern . -drawer<CR>
+" Current file
+nmap <leader>eh :Fern %:h -drawer<CR>
+" Focus Fern
+nmap <leader>ef :FernDo :<CR>
+nmap <leader>el <Plug>(fern-action-leave)
+nmap <leader>eo <Plug>(fern-action-open:select)
+
+" ======= STARTIFY ==================
+let g:startify_change_to_dir = 0
+
 " ======= EDITORCONFIG ==============
 let g:EditorConfig_max_line_indicator = "exceeding"
 let g:EditorConfig_preserve_formatoptions = 1
@@ -146,6 +186,45 @@ let g:EditorConfig_preserve_formatoptions = 1
 " ======= NVIM COLORIZER ============
 packadd nvim-colorizer
 lua require'colorizer'.setup()
+
+" ======= TELESCOPE =================
+packadd telescope
+nnoremap <leader>p   <cmd>Telescope find_files<cr>
+nnoremap <leader>b   <cmd>Telescope buffers<cr>
+nnoremap <leader>tg  <cmd>Telescope live_grep<cr>
+nnoremap <leader>tds <cmd>Telescope lsp_document_symbols<cr>
+nnoremap <leader>tws <cmd>Telescope lsp_workspace_symbols<cr>
+nnoremap <leader>tm  <cmd>Telescope marks<cr>
+nnoremap <leader>tgf <cmd>Telescope git_files<cr>
+nnoremap <leader>tl  <cmd>Telescope current_buffer_fuzzy_find<cr>
+nnoremap <leader>tw  <cmd>Telescope grep_string<cr>
+nnoremap <leader>tp  <cmd>Telescope builtin<cr>
+nnoremap <leader>ta  <cmd>Telescope tags<cr>
+nnoremap <leader>tt  <cmd>Telescope current_buffer_tags<cr>
+
+" ======= NVIM-TREE LUA =============
+" https://github.com/kyazdani42/nvim-tree.lua
+let g:lua_tree_show_icons = {
+    \ 'git': 1,
+    \ 'folders': 1,
+    \ 'files': 1,
+    \ }
+let g:lua_tree_ignore = [ '.git', 'node_modules', '.cache' ]
+let g:lua_tree_icons = {
+    \ 'default': ' ',
+    \ 'symlink': '»',
+    \ 'git': {
+    \   'unstaged': "+",
+    \   'staged': "*",
+    \   'unmerged': "o",
+    \   'renamed': "r",
+    \   'untracked': "u"
+    \   },
+    \ 'folder': {
+    \   'default': ">",
+    \   'open': "v"
+    \   }
+    \ }
 
 " ======= MARKDOWN FOLDING ==========
 let g:markdown_fold_style = 'nested'
@@ -168,6 +247,19 @@ map g# <Plug>(asterisk-gz#)
 " ======= MATCHUP ===================
 " Otherwise the status line is overwritten with matching code parts
 let g:matchup_matchparen_offscreen = {}
+
+" ======= COMPLETION-NVIM ===========
+autocmd BufEnter * lua require'completion'.on_attach()
+imap  <c-j> <Plug>(completion_next_source)
+imap  <c-k> <Plug>(completion_prev_source)
+let g:completion_chain_complete_list = {
+    \'default': [
+    \   {'complete_items': ['lsp']},
+    \   {'complete_items': ['buffers']},
+    \   {'complete_items': ['tags']},
+    \   {'complete_items': ['path']},
+    \]
+    \}
 
 " ======= GUTENTAGS =================
 " No ctags for Haskell
@@ -192,18 +284,6 @@ map <leader>k <Plug>Sneak_S
 " https://neovim.io/doc/user/lsp.html
 
 command! -bar -nargs=0 RestartLSP :lua vim.lsp.stop_client(vim.lsp.get_active_clients()); vim.cmd("edit")
-function! MyHighlights() abort
-    " highlight LspDiagnosticsUnderline gui=undercurl
-    " Those are the actual messages in the popup, not the text/code in the
-    " buffer
-    " highlight link LspDiagnosticsWarning WarningMsg
-    " highlight link LspDiagnosticsError ErrorMsg
-endfunction
-
-augroup MyColors
-    autocmd!
-    autocmd ColorScheme * call MyHighlights()
-augroup END
 
 packadd nvim-lsp
 lua <<EOF
@@ -245,6 +325,46 @@ nvim_lsp.util.default_config = vim.tbl_extend(
   "force",
   nvim_lsp.util.default_config,
   { on_attach = on_attach }
+)
+
+vim.lsp.callbacks['textDocument/hover'] = function(_, method, result)
+  vim.lsp.util.focusable_float(method, function()
+    if not (result and result.contents) then
+      -- return { 'No information available' }
+      return
+    end
+    local markdown_lines = vim.lsp.util.convert_input_to_markdown_lines(result.contents)
+    markdown_lines = vim.lsp.util.trim_empty_lines(markdown_lines)
+    if vim.tbl_isempty(markdown_lines) then
+      -- return { 'No information available' }
+      return
+    end
+    local bufnr, winnr = vim.lsp.util.fancy_floating_markdown(markdown_lines, {
+      pad_left = 2; pad_right = 2;
+      pad_top = 2; pad_bottom = 2; -- add this line for vertical padding
+      max_width = 80; -- add this line to set the maximal width of hover float
+    })
+    vim.lsp.util.close_preview_autocmd({"CursorMoved", "BufHidden", "InsertCharPre"}, winnr)
+    return bufnr, winnr
+  end)
+end
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    -- This will disable virtual text, like doing:
+    -- let g:diagnostic_enable_virtual_text = 0
+    virtual_text = false,
+
+    -- This is similar to:
+    -- let g:diagnostic_show_sign = 0
+    -- To configure sign display,
+    --  see: ":help vim.lsp.diagnostic.set_signs()"
+    signs = true,
+
+    -- This is similar to:
+    -- "let g:diagnostic_insert_delay = 1"
+    update_in_insert = false,
+  }
 )
 
 if not configs.dhall then

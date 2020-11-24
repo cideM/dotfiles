@@ -14,7 +14,9 @@ let
     # https://github.com/fish-shell/fish-shell/issues/5313
     set -u fish_pager_color_prefix 'red' '--underline'
 
-    set -x BAT_THEME "Monokai Extended Light"
+    # telescope vim is bit buggy and will call bat with `bat --theme Monokai
+    # Extended Light` which obviously doesn't work
+    set -x BAT_THEME "'Monokai Extended Light'"
 
     # https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
     # XDG_RUNTIME_DIR should be set by pam_systemd
