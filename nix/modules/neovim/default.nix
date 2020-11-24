@@ -127,7 +127,7 @@ in
             vim-unimpaired
             vim-vinegar
             vim-visual-split
-            vim-startuptime
+            # vim-startuptime
 
             # Treesitter
             treesitterGo
@@ -143,7 +143,7 @@ in
             # Language Tooling
             vim-markdown-folding
             parinfer-rust
-            conjure
+            # conjure
 
             # Languages & Syntax
             purescript-vim

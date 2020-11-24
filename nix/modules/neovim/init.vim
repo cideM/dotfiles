@@ -1,6 +1,11 @@
 " ==============================
 " =       GENERAL SETTINGS     =
 " ==============================
+" Don't load the built-in plugin so that the custom 'matchup' plugin is the
+" only such plugin that is active.
+" This doesn't seem to work
+let g:loaded_matchit = 1
+
 set background=light
 set formatoptions-=t
 set wildignore+=*/.git/*,
