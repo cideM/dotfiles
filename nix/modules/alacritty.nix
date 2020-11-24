@@ -312,7 +312,7 @@ let
       }
       {
         chars = "`-";
-        key = "Subtract";
+        key = "Minus";
         mods = "Control";
       }
       {
@@ -342,7 +342,7 @@ let
       }
       {
         action = "None";
-        key = "Subtract";
+        key = "Minus";
         mods = "Control";
       }
     ];
