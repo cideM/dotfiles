@@ -25,8 +25,8 @@ with pkgs;
     # bandwhich
 
     aerc
-    awscli
-    awscli2
+    # awscli
+    # awscli2
     bash_5
     coreutils
     curl
