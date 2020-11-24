@@ -26,6 +26,7 @@ with pkgs;
 
     aerc
     awscli
+    awscli2
     bash_5
     coreutils
     curl
@@ -64,7 +65,7 @@ with pkgs;
     ncdu
     neofetch
     niv
-    nvi
+    # nvi
     nixpkgs-fmt
     nodePackages.purescript-language-server
     nodejs
