@@ -47,6 +47,7 @@ with pkgs;
     golangci-lint
     google-cloud-sdk
     gopls
+    vis
     graphviz
     gzip
     hack-font
