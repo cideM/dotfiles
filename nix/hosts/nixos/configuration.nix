@@ -42,10 +42,21 @@ in
 
   networking = {
     useDHCP = false;
+
     interfaces.wlp7s0.useDHCP = true;
+
     hostName = "nixos";
-    networkmanager.enable = true;
-    networkmanager.wifi.backend = "iwd";
+
+    networkmanager = {
+      enable = true;
+      dhcp = "dhcpcd";
+      dns = "systemd-resolved";
+      wifi = {
+        powersave = false;
+        backend = "iwd";
+      };
+    };
+
     wireless.iwd.enable = true;
   };
 

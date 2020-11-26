@@ -8,6 +8,7 @@
     (import ../../modules/tmux)
     (import ../../modules/ctags.nix)
     (import ../../modules/pandoc)
+    (import ../../modules/redshift.nix)
     (import ../../modules/fish)
     (import ../../modules/sharedPackages.nix)
     (import ../../modules/sharedPackagesLinux.nix)
