@@ -20,8 +20,7 @@ set hidden
 set signcolumn=auto:3
 set ignorecase
 set number
-" set completeopt-=preview
-set completeopt=menuone,noinsert,noselect
+set completeopt-=preview
 set smartcase
 set inccommand=split
 set path-=/usr/include
@@ -31,23 +30,14 @@ set splitright
 set termguicolors
 set undofile
 
-set statusline=
-set statusline+=\ %f
-set statusline+=\ %m 
-set statusline+=\%{FugitiveStatusline()} 
-set statusline+=\ %{mode()}\ 
-set statusline+=%=
-set statusline+=%y\ " buffer type
-set statusline+=%q\ 
-set statusline+=%3l:%2c\ \|
-set statusline+=%3p%%\ 
+" ==============================
+" =        COLORSCHEME         =
+" ==============================
+let g:yui_comments = "emphasize"
+colorscheme yui
 
 " https://github.com/neovim/neovim/issues/13113
-" EVERYTHING. IS. BROKEN. ALL THE FUCKING TIME
-" You open your favorite program and one day it's broken! Why? THE FUCK DO I
-" CARE. There's not a single fucking program developed in the last 10 years
-" that's not broken ALL THE FUCKING TIME.
-augroup FUCK_EVERYTHING
+augroup Foo
     autocmd!
     autocmd Filetype typescript setlocal formatexpr=
 augroup END
@@ -64,16 +54,6 @@ augroup quickfix
     autocmd QuickFixCmdPost [^l]* cwindow
     autocmd QuickFixCmdPost l* lwindow
 augroup END
-
-" ==============================
-" =        COLORSCHEME         =
-" ==============================
-let g:one_allow_italics = 1
-let g:yui_comments = "emphasize"
-let g:sonokai_enable_italic = 1
-let g:sonokai_diagnostic_line_highlight = 1
-let g:edge_enable_italic = 1
-colorscheme yui
 
 " Call my own SetPath function so that every git file is added to path. Let's
 " me get most of FZF without using FZF
@@ -138,7 +118,7 @@ nnoremap <leader>gw :grep! -wF ""<left>
 nmap     <leader>Q  :call FormatBuffer()<cr>
 
 nnoremap <leader>f  :find *
-" nnoremap <leader>b  :ls<cr>:buffer<Space>
+nnoremap <leader>b  :ls<cr>:buffer<Space>
 
 vmap     <Enter>    <Plug>(EasyAlign)
 
@@ -156,29 +136,6 @@ nnoremap <BS>       <C-^>
 " =          PLUGINS           =
 " ==============================
 
-" ======= ANY JUMP ==================
-let g:any_jump_disable_default_keybindings = 1
-nnoremap <leader>J :AnyJump<CR>
-xnoremap <leader>J :AnyJumpVisual<CR>
-nnoremap <leader>ab :AnyJumpBack<CR>
-nnoremap <leader>al :AnyJumpLastResults<CR>
-
-" ======= VIMTEX ====================
-let g:tex_flavor = 'latex'
-
-" ======= FERN ======================
-" Drawer style, does not have opener
-nmap <leader>ee :Fern . -drawer<CR>
-" Current file
-nmap <leader>eh :Fern %:h -drawer<CR>
-" Focus Fern
-nmap <leader>ef :FernDo :<CR>
-nmap <leader>el <Plug>(fern-action-leave)
-nmap <leader>eo <Plug>(fern-action-open:select)
-
-" ======= STARTIFY ==================
-let g:startify_change_to_dir = 0
-
 " ======= EDITORCONFIG ==============
 let g:EditorConfig_max_line_indicator = "exceeding"
 let g:EditorConfig_preserve_formatoptions = 1
@@ -186,45 +143,6 @@ let g:EditorConfig_preserve_formatoptions = 1
 " ======= NVIM COLORIZER ============
 packadd nvim-colorizer
 lua require'colorizer'.setup()
-
-" ======= TELESCOPE =================
-packadd telescope
-nnoremap <leader>p   <cmd>Telescope find_files<cr>
-nnoremap <leader>b   <cmd>Telescope buffers<cr>
-nnoremap <leader>tg  <cmd>Telescope live_grep<cr>
-nnoremap <leader>tds <cmd>Telescope lsp_document_symbols<cr>
-nnoremap <leader>tws <cmd>Telescope lsp_workspace_symbols<cr>
-nnoremap <leader>tm  <cmd>Telescope marks<cr>
-nnoremap <leader>tgf <cmd>Telescope git_files<cr>
-nnoremap <leader>tl  <cmd>Telescope current_buffer_fuzzy_find<cr>
-nnoremap <leader>tw  <cmd>Telescope grep_string<cr>
-nnoremap <leader>tp  <cmd>Telescope builtin<cr>
-nnoremap <leader>ta  <cmd>Telescope tags<cr>
-nnoremap <leader>tt  <cmd>Telescope current_buffer_tags<cr>
-
-" ======= NVIM-TREE LUA =============
-" https://github.com/kyazdani42/nvim-tree.lua
-let g:lua_tree_show_icons = {
-    \ 'git': 1,
-    \ 'folders': 1,
-    \ 'files': 1,
-    \ }
-let g:lua_tree_ignore = [ '.git', 'node_modules', '.cache' ]
-let g:lua_tree_icons = {
-    \ 'default': ' ',
-    \ 'symlink': '»',
-    \ 'git': {
-    \   'unstaged': "+",
-    \   'staged': "*",
-    \   'unmerged': "o",
-    \   'renamed': "r",
-    \   'untracked': "u"
-    \   },
-    \ 'folder': {
-    \   'default': ">",
-    \   'open': "v"
-    \   }
-    \ }
 
 " ======= MARKDOWN FOLDING ==========
 let g:markdown_fold_style = 'nested'
@@ -247,19 +165,6 @@ map g# <Plug>(asterisk-gz#)
 " ======= MATCHUP ===================
 " Otherwise the status line is overwritten with matching code parts
 let g:matchup_matchparen_offscreen = {}
-
-" ======= COMPLETION-NVIM ===========
-autocmd BufEnter * lua require'completion'.on_attach()
-imap  <c-j> <Plug>(completion_next_source)
-imap  <c-k> <Plug>(completion_prev_source)
-let g:completion_chain_complete_list = {
-    \'default': [
-    \   {'complete_items': ['lsp']},
-    \   {'complete_items': ['buffers']},
-    \   {'complete_items': ['tags']},
-    \   {'complete_items': ['path']},
-    \]
-    \}
 
 " ======= GUTENTAGS =================
 " No ctags for Haskell
@@ -296,27 +201,22 @@ local on_attach = function(_, bufnr)
 
     -- Mappings.
     local opts = { noremap=true, silent=true }
-    buf_set_keymap(bufnr, 'n', '<localleader>K',  '<cmd>lua vim.lsp.buf.hover()<CR>',                 opts)
-    buf_set_keymap(bufnr, 'n', '<localleader>h',  '<cmd>lua vim.lsp.buf.signature_help()<CR>',        opts)
-    buf_set_keymap(bufnr, 'n', '<localleader>re', '<cmd>lua vim.lsp.buf.rename()<CR>',                opts)
-    buf_set_keymap(bufnr, 'n', '<localleader>rr', '<cmd>lua vim.lsp.buf.references()<CR>',            opts)
-    buf_set_keymap(bufnr, 'n', '<localleader>ri', '<cmd>lua vim.lsp.buf.implementation()<CR>',        opts)
-    buf_set_keymap(bufnr, 'n', '<localleader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>',            opts)
-    buf_set_keymap(bufnr, 'n', '<localleader>gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>',       opts)
-    buf_set_keymap(bufnr, 'n', '<localleader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>',           opts)
-    buf_set_keymap(bufnr, 'n', '<localleader>p',  '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>',opts)
-    buf_set_keymap(bufnr, 'n', '<localleader>ws',  '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>',opts)
-    buf_set_keymap(bufnr, 'n', '<localleader>ds',  '<cmd>lua vim.lsp.buf.document_symbol()<CR>',opts)
-    buf_set_keymap(bufnr, 'n', '<localleader>dh',  '<cmd>lua vim.lsp.buf.document_highlight()<CR>',opts)
-    buf_set_keymap(bufnr, 'n', '<localleader>sr',  '<cmd>lua vim.lsp.buf.server_ready()<CR>',opts)
-    buf_set_keymap(bufnr, 'n', '<localleader>j',  '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>',opts)
-    buf_set_keymap(bufnr, 'n', '<localleader>k',  '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>',opts)
-    buf_set_keymap(bufnr, 'n', '<localleader>l',  '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>',opts)
-
-    -- api.nvim_command [[autocmd User LspDiagnosticsChanged   lua vim.lsp.diagnostic.set_loclist()]]
-    -- api.nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
-    -- api.nvim_command [[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
-    -- api.nvim_command [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
+    buf_set_keymap(bufnr, 'n', '<localleader>K',  '<cmd>lua vim.lsp.buf.hover()<CR>',                        opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>h',  '<cmd>lua vim.lsp.buf.signature_help()<CR>',               opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>re', '<cmd>lua vim.lsp.buf.rename()<CR>',                       opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>rr', '<cmd>lua vim.lsp.buf.references()<CR>',                   opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>ri', '<cmd>lua vim.lsp.buf.implementation()<CR>',               opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>',                   opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>',              opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>',                  opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>p',  '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>ws', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>',             opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>ds', '<cmd>lua vim.lsp.buf.document_symbol()<CR>',              opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>dh', '<cmd>lua vim.lsp.buf.document_highlight()<CR>',           opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>sr', '<cmd>lua vim.lsp.buf.server_ready()<CR>',                 opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>j',  '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>',             opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>k',  '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>',             opts)
+    buf_set_keymap(bufnr, 'n', '<localleader>l',  '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>',           opts)
 end
 
 local configs = require'lspconfig/configs'
@@ -351,18 +251,8 @@ end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-    -- This will disable virtual text, like doing:
-    -- let g:diagnostic_enable_virtual_text = 0
     virtual_text = false,
-
-    -- This is similar to:
-    -- let g:diagnostic_show_sign = 0
-    -- To configure sign display,
-    --  see: ":help vim.lsp.diagnostic.set_signs()"
-    signs = true,
-
-    -- This is similar to:
-    -- "let g:diagnostic_insert_delay = 1"
+    signs = false,
     update_in_insert = false,
   }
 )
@@ -380,20 +270,7 @@ if not configs.dhall then
     }
 end
 
-nvim_lsp.purescriptls.setup{}
 nvim_lsp.rust_analyzer.setup{}
 nvim_lsp.gopls.setup{}
 nvim_lsp.dhall.setup{}
-EOF
-
-" ========= NVIM-TREESITTER =========
-packadd nvim-treesitter
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = {},     -- one of "all", "language", or a list of languages
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = {},  -- list of language that will be disabled
-  },
-}
 EOF
