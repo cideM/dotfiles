@@ -8,7 +8,7 @@
     "clj-deps": {
         "branch": "live",
         "repo": "https://git@github.com/practicalli/clojure-deps-edn.git",
-        "rev": "8fbd504bc0e39b867cb39ff217666f3e3947bb05",
+        "rev": "8ffe624a42b505f24edc006f27c8a8f017091839",
         "type": "git"
     },
     "cocopon/iceberg.vim": {
@@ -58,7 +58,7 @@
     "neovim": {
         "branch": "master",
         "repo": "https://git@github.com/neovim/neovim",
-        "rev": "7caa622afcbbc1f789c24a3f29525759486208da",
+        "rev": "6af64d384f96a69462a2a50dd7054566af98de37",
         "type": "git"
     },
     "niv": {
@@ -130,7 +130,7 @@
     "nvim-highlite": {
         "branch": "master",
         "repo": "https://github.com/Iron-E/nvim-highlite.git",
-        "rev": "92791fcfe4cbbf5e88b0d55bbaa0eb9a9290c6b9",
+        "rev": "c4f98237c54bd2478bb3826500f9c9b654612801",
         "type": "git"
     },
     "nvim-lsp": {
@@ -154,7 +154,7 @@
     "nvim-telescope": {
         "branch": "master",
         "repo": "https://github.com/nvim-telescope/telescope.nvim.git",
-        "rev": "0f9fd84a9742e22294cfaf46f32bad9b29de0b31",
+        "rev": "4a8ea7763ec3c1c0672398418da682c1e0d4017d",
         "type": "git"
     },
     "nvim-tree-lua": {
@@ -166,7 +166,7 @@
     "nvim-treesitter": {
         "branch": "master",
         "repo": "https://git@github.com/nvim-treesitter/nvim-treesitter.git",
-        "rev": "118ace68fe2cb099acc89830ca775efa8bfd7011",
+        "rev": "4a779c483bffb1e511bd43c630c8ab633baa749e",
         "type": "git"
     },
     "onebuddy": {
@@ -184,7 +184,7 @@
     "pandoc-template-eisvogel": {
         "branch": "master",
         "repo": "https://git@github.com/Wandmalfarbe/pandoc-latex-template.git",
-        "rev": "f15e2275a7b50ab21d67b09af20a19b676566e4e",
+        "rev": "4558a4adf6a5bf193a0239f039c877f8ca50242f",
         "type": "git"
     },
     "pandoc-template-github": {
@@ -214,7 +214,7 @@
     "vim-color-edge": {
         "branch": "master",
         "repo": "https://github.com/sainnhe/edge.git",
-        "rev": "b0a8e375071baec692ab9debc896f040673e358b",
+        "rev": "e40571b69c78f60b6acf0e7b3f1b008b5c72778a",
         "type": "git"
     },
     "vim-color-spring-night": {
