@@ -46,6 +46,7 @@ with pkgs;
     gnupg
     golangci-lint
     google-cloud-sdk
+    # haskell-language-server
     gopls
     vis
     graphviz
