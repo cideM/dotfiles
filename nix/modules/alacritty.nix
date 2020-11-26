@@ -103,6 +103,31 @@ let
     };
   };
 
+  oneLight = {
+    primary = {
+      background = "#fafafa";
+      foreground = "#383a42";
+    };
+    cursor = {
+      text = "CellBackground";
+      cursor = "#526eff";
+    };
+    selection = {
+      text = "CellForeground";
+      background = "#e5e5e6";
+    };
+    normal = {
+      black = "#696c77";
+      red = "#e45649";
+      green = "#50a14f";
+      yellow = "#c18401";
+      blue = "#4078f2";
+      magenta = "#a626a4";
+      cyan = "#0184bc";
+      white = "#a0a1a7";
+    };
+  };
+
   spacemacsLight = {
     primary = {
       foreground = "#64526F";
@@ -197,11 +222,11 @@ let
   mono = {
     bold = {
       family = "Operator Mono SSm";
-      style = "Medium";
+      style = "Bold";
     };
     bold_italic = {
       family = "Operator Mono SSm";
-      style = "Medium Italic";
+      style = "Bold Italic";
     };
     glyph_offset = {
       x = 0;
@@ -209,11 +234,11 @@ let
     };
     italic = {
       family = "Operator Mono SSm";
-      style = "Book Italic";
+      style = "Medium Italic";
     };
     normal = {
       family = "Operator Mono SSm";
-      style = "Book";
+      style = "Medium";
     };
     offset = {
       x = 0;
@@ -381,7 +406,7 @@ in
 
     xdg.configFile."alacritty/alacritty.yml".text =
       builtins.replaceStrings [ "\\\\" ] [ "\\" ] (builtins.toJSON (shared // {
-        colors = iceberg-light;
+        colors = oneLight;
         font = mono;
       }));
 
