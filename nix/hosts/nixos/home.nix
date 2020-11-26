@@ -42,7 +42,11 @@
   programs.firefox.enable = true;
   programs.firefox.package = pkgs.firefox-devedition-bin;
 
-  programs.alacritty.enable = true;
+  programs.alacritty = {
+    enable = true;
+    fontSize = 13;
+  };
+
 
   # Just append this to the actual config file with an overlay
   programs.fish.interactiveShellInit = ''

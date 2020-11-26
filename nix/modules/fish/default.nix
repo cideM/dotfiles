@@ -16,7 +16,7 @@ let
 
     # telescope vim is bit buggy and will call bat with `bat --theme Monokai
     # Extended Light` which obviously doesn't work
-    set -x BAT_THEME "'Monokai Extended Light'"
+    set -x BAT_THEME "OneHalfLight"
 
     # https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
     # XDG_RUNTIME_DIR should be set by pam_systemd
@@ -64,7 +64,6 @@ in
       set __fish_git_prompt_char_dirtystate '+'
       set __fish_git_prompt_char_invalidstate 'x'
       set __fish_git_prompt_char_stagedstate '*'
-      set __fish_git_prompt_char_untrackedfiles 'u'
       set __fish_git_prompt_char_untrackedfiles 'u'
       set __fish_git_prompt_char_stateseparator '|'
 
