@@ -3,22 +3,6 @@
 with lib;
 with types;
 let
-  # Needed until https://github.com/NixOS/nixpkgs/pull/102763 lands in nixpkgs-unstable
-  tree-sitter = pkgs.tree-sitter.overrideAttrs (oldAttrs: {
-    version = "0.17.3";
-    sha256 = "sha256-uQs80r9cPX8Q46irJYv2FfvuppwonSS5HVClFujaP+U=";
-    cargoSha256 = "sha256-fonlxLNh9KyEwCj7G5vxa7cM/DlcHNFbQpp0SwVQ3j4=";
-
-    postInstall = ''
-      PREFIX=$out make install
-    '';
-
-    buildInputs = oldAttrs.buildInputs
-      ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [ pkgs.darwin.apple_sdk.frameworks.Security ];
-
-    meta = oldAttrs.meta // { broken = false; };
-  });
-
   init = builtins.readFile ./init.vim;
 
   ftPluginDir = toString ./ftplugin;
@@ -97,7 +81,7 @@ in
       package = pkgs.neovim-unwrapped.overrideAttrs (oldAttrs: rec {
         version = "master";
         src = config.sources.neovim;
-        buildInputs = oldAttrs.buildInputs ++ [ tree-sitter ];
+        buildInputs = oldAttrs.buildInputs ++ [ pkgs.tree-sitter ];
       });
 
       configure = with pkgs.vimPlugins; with plugins; {
