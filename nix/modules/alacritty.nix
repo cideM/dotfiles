@@ -222,11 +222,11 @@ let
   mono = {
     bold = {
       family = "Operator Mono SSm";
-      style = "Bold";
+      style = "Medium";
     };
     bold_italic = {
       family = "Operator Mono SSm";
-      style = "Bold Italic";
+      style = "Medium Italic";
     };
     glyph_offset = {
       x = 0;
@@ -234,11 +234,11 @@ let
     };
     italic = {
       family = "Operator Mono SSm";
-      style = "Medium Italic";
+      style = "Book Italic";
     };
     normal = {
       family = "Operator Mono SSm";
-      style = "Medium";
+      style = "Book";
     };
     offset = {
       x = 0;
@@ -406,7 +406,7 @@ in
 
     xdg.configFile."alacritty/alacritty.yml".text =
       builtins.replaceStrings [ "\\\\" ] [ "\\" ] (builtins.toJSON (shared // {
-        colors = oneLight;
+        colors = iceberg-light;
         font = mono;
       }));
 
