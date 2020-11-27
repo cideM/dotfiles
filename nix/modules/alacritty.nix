@@ -321,7 +321,7 @@ let
         mods = "Alt";
       }
       {
-        chars = "`  ";
+        chars = "`	";
         key = "Tab";
         mods = "Control";
       }

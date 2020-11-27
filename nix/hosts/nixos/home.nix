@@ -2,6 +2,7 @@
 {
   imports = [
     (import ../../modules/alacritty.nix)
+    (import ../../modules/neovim_treesitter.nix)
     (import ../../modules/neovim)
     (import ../../modules/git.nix)
     (import ../../modules/fcitx.nix)
@@ -44,9 +45,8 @@
 
   programs.alacritty = {
     enable = true;
-    fontSize = 13;
+    fontSize = 12;
   };
-
 
   # Just append this to the actual config file with an overlay
   programs.fish.interactiveShellInit = ''

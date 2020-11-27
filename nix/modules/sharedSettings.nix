@@ -10,6 +10,14 @@
     SHELL = "${pkgs.fish}/bin/fish";
   };
 
+  programs.neovim.treesitter = {
+    enable = false;
+    tsx.rev = "73afadbd117a8e8551758af9c3a522ef46452119";
+    ts.rev = "73afadbd117a8e8551758af9c3a522ef46452119";
+    yaml.rev = "258751d666d31888f97ca6188a686f36fadf6c43";
+    go.rev = "dadfd9c9aab2630632e61cfce645c13c35aa092f";
+  };
+
   nixpkgs.config = import ../nixpkgs_config.nix;
   xdg.configFile."nixpkgs/config.nix".source = ../nixpkgs_config.nix;
 
