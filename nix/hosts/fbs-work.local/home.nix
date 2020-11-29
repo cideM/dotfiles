@@ -2,7 +2,6 @@
 {
   imports = [
     (import ../../modules/alacritty.nix)
-    (import ../../modules/neovim_treesitter.nix)
     (import ../../modules/neovim)
     # https://github.com/NixOS/nixpkgs/issues/62353
     # (import ../../modules/git.nix)

@@ -5,6 +5,18 @@ with types;
 let
   cfg = config.programs.neovim;
 
+  grammarConfigModule = submodule {
+    options = {
+      rev = mkOption {
+        type = str;
+        description = ''
+          Git revision to fetch for this grammar (copy & paste the Git sha)
+        '';
+      };
+
+    };
+  };
+
   # TODO: Add all from https://github.com/nvim-treesitter/nvim-treesitter/blob/master/lua/nvim-treesitter/parsers.lua
   # TODO: Add them to nixpkgs once I've figured out how
   grammarGo = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
@@ -350,17 +362,34 @@ let
     EOF
 
     ${if cfg.treesitter.enable then ''
-    " ========= NVIM-TREESITTER =========
-    packadd nvim-treesitter
-    lua <<EOF
-    require'nvim-treesitter.configs'.setup {
-      ensure_installed = {},
-      highlight = {
-        enable = true,
-        disable = {},
-      },
-    }
-    EOF
+      " ========= NVIM-TREESITTER =========
+      packadd nvim-treesitter
+      lua <<EOF
+      require'nvim-treesitter.configs'.setup {
+        ensure_installed = {},
+        highlight = {
+          enable = true,
+          disable = {},
+        },
+      }
+      EOF
+    '' else ""}
+
+    ${if cfg.telescope.enable then ''
+      " ======= TELESCOPE =================
+      packadd telescope
+      nnoremap ${cfg.telescope.prefix}p  <cmd>Telescope find_files<cr>
+      nnoremap ${cfg.telescope.prefix}b  <cmd>Telescope buffers<cr>
+      nnoremap ${cfg.telescope.prefix}g  <cmd>Telescope live_grep<cr>
+      nnoremap ${cfg.telescope.prefix}ds <cmd>Telescope lsp_document_symbols<cr>
+      nnoremap ${cfg.telescope.prefix}ws <cmd>Telescope lsp_workspace_symbols<cr>
+      nnoremap ${cfg.telescope.prefix}m  <cmd>Telescope marks<cr>
+      nnoremap ${cfg.telescope.prefix}gf <cmd>Telescope git_files<cr>
+      nnoremap ${cfg.telescope.prefix}l  <cmd>Telescope current_buffer_fuzzy_find<cr>
+      nnoremap ${cfg.telescope.prefix}w  <cmd>Telescope grep_string<cr>
+      nnoremap ${cfg.telescope.prefix}p  <cmd>Telescope builtin<cr>
+      nnoremap ${cfg.telescope.prefix}a  <cmd>Telescope tags<cr>
+      nnoremap ${cfg.telescope.prefix}t  <cmd>Telescope current_buffer_tags<cr>
     '' else ""}
   '';
 
@@ -428,6 +457,47 @@ let
 
 in
 {
+  options.programs.neovim.treesitter = {
+
+    enable = mkOption {
+      type = bool;
+      description = "Whether to enable the telescope plugin (and dependencies)";
+      default = false;
+    };
+
+    prefix = mkOption {
+      type = str;
+      description = "Prefix to use for all telescope mappings";
+      default = "<leader>t";
+    };
+
+  };
+
+  options.programs.neovim.treesitter = {
+
+    enable = mkOption {
+      type = bool;
+      description = "Whether to enable treesitter grammars for Neovim (will install 'nvim-treesitter')";
+      default = false;
+    };
+
+    go = mkOption {
+      type = grammarConfigModule;
+      description = "Go treesitter grammar";
+      example = literalExample ''
+        {
+          rev = "dadfd9c9aab2630632e61cfce645c13c35aa092f";
+        };
+      '';
+    };
+
+    ts = mkOption { };
+
+    tsx = mkOption { };
+
+    yaml = mkOption { };
+
+  };
 
   config = {
     xdg.configFile = (
@@ -438,10 +508,14 @@ in
 
             compiler go
 
-            setlocal foldmethod=expr
-            setlocal foldexpr=nvim_treesitter#foldexpr()
+            ${if cfg.treesitter.enable then ''
+              setlocal foldmethod=expr
+              setlocal foldexpr=nvim_treesitter#foldexpr()
+              let b:undo_ftplugin .= '|setlocal foldexpr<'
+              '' else ''
+              setlocal foldmethod=syntax
+            ''}
             let b:undo_ftplugin .= '|setlocal foldmethod<'
-            let b:undo_ftplugin .= '|setlocal foldexpr<'
 
             setlocal formatprg=gofmt
             let b:undo_ftplugin .= '|setlocal formatprg<'
@@ -461,6 +535,101 @@ in
             nnoremap <silent> <localleader>ma :call goutils#MakeprgAsyncProject()<CR>
             nnoremap <silent> <localleader>tw :call goutils#RunTestAtCursor()<CR>
             nnoremap <silent> <localleader>ta :call goutils#RunAllTests()<CR>
+          '';
+        };
+        "nvim/ftplugin/typescript.vim" = {
+          text = ''
+            let b:undo_ftplugin = ""
+
+            let node_modules = luaeval(
+                        \'require("findUp").findUp(unpack(_A))', 
+                        \['node_modules',expand('%:p:h'), '/']
+                        \)
+
+            """""""""""""""""""""""""
+            "      PRETTIER         "
+            """""""""""""""""""""""""
+            let prettier_path = ""
+
+            if node_modules !=# "false" && filereadable(node_modules . "/.bin/prettier")
+                let prettier_path = node_modules . "/.bin/prettier"
+            elseif executable("prettier")
+                let prettier_path = "prettier"
+            end
+
+            if prettier_path !=# ""
+                let &formatprg=prettier_path . ' --stdin-filepath ' . expand('%')
+                let b:undo_ftplugin .= '|setlocal formatprg<'
+            end
+
+            """""""""""""""""""""""""
+            "        TSLINT         "
+            """""""""""""""""""""""""
+            let tslint_path = ""
+
+            if node_modules !=# "false" && filereadable(node_modules . "/.bin/tslint")
+                let tslint_path = node_modules . "/.bin/tslint"
+            elseif executable("tslint")
+                let tslint_path = "tslint"
+            end
+
+            if tslint_path !=# ""
+                let &makeprg=tslint_path . ' --format compact '
+                setlocal errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m,%-G%.%#
+                let b:undo_ftplugin .= '|setlocal makeprg<'
+
+                command! -bar -buffer Fix call system(tslint_path . ' --fix ' . expand('%')) | edit
+                nnoremap <buffer> <silent> <localleader>f :Fix<cr>
+            end
+
+            set wildignore+=*/node_modules/*
+            let b:undo_ftplugin .= '|setlocal wildignore<'
+
+            setlocal suffixesadd+=.ts,.tsx,.css
+            let b:undo_ftplugin .= '|setlocal suffixesadd<'
+
+            ${if cfg.treesitter.enable then ''
+              setlocal foldmethod=expr
+              setlocal foldexpr=nvim_treesitter#foldexpr()
+              let b:undo_ftplugin .= '|setlocal foldexpr<'
+              '' else ''
+              setlocal foldmethod=syntax
+            ''}
+
+          '';
+        };
+        "nvim/ftplugin/yaml.vim" = {
+          text = ''
+            let b:undo_ftplugin = ""
+
+            ${if cfg.treesitter.enable then ''
+              setlocal foldmethod=expr
+              setlocal foldexpr=nvim_treesitter#foldexpr()
+              let b:undo_ftplugin .= '|setlocal foldexpr<'
+              '' else ''
+              setlocal foldmethod=indent
+            ''}
+
+            let node_modules = luaeval(
+                        \'require("findUp").findUp(unpack(_A))', 
+                        \['node_modules',expand('%:p:h'), '/']
+                        \)
+
+            """""""""""""""""""""""""
+            "      PRETTIER         "
+            """""""""""""""""""""""""
+            let prettier_path = ""
+
+            if node_modules !=# "false" && filereadable(node_modules . "/.bin/prettier")
+                let prettier_path = node_modules . "/.bin/prettier"
+            elseif executable("prettier")
+                let prettier_path = "prettier"
+            end
+
+            if prettier_path !=# ""
+                let &formatprg=prettier_path . ' --stdin-filepath ' . expand('%')
+                let b:undo_ftplugin .= '|setlocal formatprg<'
+            end
           '';
         };
       }

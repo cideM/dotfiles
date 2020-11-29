@@ -2,7 +2,6 @@
 {
   imports = [
     (import ../../modules/alacritty.nix)
-    (import ../../modules/neovim_treesitter.nix)
     (import ../../modules/neovim)
     (import ../../modules/git.nix)
     (import ../../modules/fcitx.nix)
