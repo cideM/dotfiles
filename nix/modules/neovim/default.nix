@@ -106,7 +106,11 @@ let
     set signcolumn=auto:3
     set ignorecase
     set number
+    ${if cfg.completion.enable && cfg.completion.plugin == "completion-nvim" then ''
+    set completeopt=menuone,noinsert,noselect
+    '' else ''
     set completeopt-=preview
+    ''}
     set smartcase
     set inccommand=split
     set path-=/usr/include
@@ -394,6 +398,30 @@ let
       nnoremap ${cfg.telescope.prefix}a  <cmd>Telescope tags<cr>
       nnoremap ${cfg.telescope.prefix}t  <cmd>Telescope current_buffer_tags<cr>
     '' else ""}
+
+    ${if cfg.completion.enable && cfg.completion.plugin == "completion-nvim" then ''
+      " ======= COMPLETION ================
+      " Use <Tab> and <S-Tab> to navigate through popup menu
+      inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+      inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+      let g:completion_auto_change_source = 1
+
+      " Activate it for all buffers for buffer, tag and path completion
+      autocmd BufEnter * lua require'completion'.on_attach()
+      imap  <c-j> <Plug>(completion_next_source)
+      imap  <c-k> <Plug>(completion_prev_source)
+      let g:completion_chain_complete_list = {
+          \'default': [
+          \   {'complete_items': ['lsp']},
+          \   {'complete_items': ['buffers']},
+          \   {'mode': '<c-p>'},
+          \   {'mode': '<c-n>'}
+          \   {'complete_items': ['tags']},
+          \   {'complete_items': ['path']},
+          \]
+          \}
+    '' else ""}
   '';
 
   ftPluginDir = toString ./ftplugin;
@@ -460,6 +488,19 @@ let
 
 in
 {
+  options.programs.neovim.completion = {
+    enable = mkOption {
+      type = bool;
+      description = "Whether to use a special plugin for completion, such as 'mucomplete' or 'completion-nvim'";
+      default = false;
+    };
+
+    plugin = mkOption {
+      type = enum [ "completion-nvim" ];
+      default = "completion-nvim";
+    };
+  };
+
   options.programs.neovim.telescope = {
 
     enable = mkOption {
@@ -474,6 +515,46 @@ in
       default = "<leader>t";
     };
 
+  };
+
+  options.programs.neovim.git = {
+
+    committia = {
+      enable = mkOption {
+        type = bool;
+        default = false;
+      };
+    };
+
+    gv = {
+      enable = mkOption {
+        type = bool;
+        default = false;
+      };
+    };
+
+    signify = {
+      enable = mkOption {
+        type = bool;
+        default = false;
+      };
+    };
+
+    messenger = {
+      enable = mkOption {
+        type = bool;
+        default = false;
+      };
+    };
+
+  };
+
+  options.programs.neovim.editor = {
+    highlight-current-word = mkOption {
+      type = bool;
+      description = "Install a plugin ('vim-illuminate') which highlights the word under the cursor";
+      default = false;
+    };
   };
 
   options.programs.neovim.treesitter = {
@@ -698,7 +779,13 @@ in
 
             ]
             ++ localPlugins
-            ++ (if cfg.treesitter.enable then [ grammarGo grammarYaml grammarTs grammarTsx ] else [ ]);
+            ++ (if cfg.treesitter.enable then [ grammarGo grammarYaml grammarTs grammarTsx ] else [ ])
+            ++ (if cfg.completion.enable && cfg.completion.plugin == "completion-nvim" then [ completion-nvim completion-buffers completion-tags ] else [ ])
+            ++ (if cfg.editor.highlight-current-word then [ vim-illuminate ] else [ ])
+            ++ (if cfg.git.committia.enable then [ committia ] else [ ])
+            ++ (if cfg.git.signify.enable then [ vim-signify ] else [ ])
+            ++ (if cfg.git.gv.enable then [ gv-vim ] else [ ])
+            ++ (if cfg.git.messenger.enable then [ git-messenger-vim ] else [ ]);
 
             opt = [
               nvim-lsp
