@@ -111,6 +111,9 @@ let
     set inccommand=split
     set path-=/usr/include
     set splitbelow
+    " I use Fish but it makes everything in Neovim a bit slower if it's used as
+    " shell, especially Fugitive stuff
+    set shell=bash
     set foldlevelstart=99
     set splitright
     set termguicolors
@@ -191,7 +194,7 @@ let
     nnoremap <A-k>      <C-w>k
     nnoremap <A-l>      <C-w>l
     " Open terminal in directory of current file
-    nnoremap <leader>T  :split <Bar> lcd %:p:h <Bar> term<CR>
+    nnoremap <leader>T  :split <Bar> lcd %:p:h <Bar> term fish<CR>
 
     " Leave insert mode with jk
     imap jk             <Esc>
