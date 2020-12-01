@@ -460,7 +460,7 @@ let
 
 in
 {
-  options.programs.neovim.treesitter = {
+  options.programs.neovim.telescope = {
 
     enable = mkOption {
       type = bool;
