@@ -8,7 +8,7 @@
     "clj-deps": {
         "branch": "live",
         "repo": "https://git@github.com/practicalli/clojure-deps-edn.git",
-        "rev": "8ffe624a42b505f24edc006f27c8a8f017091839",
+        "rev": "f874cfd4bf19cc80f73afb50dea2b80567308b7e",
         "type": "git"
     },
     "cocopon/iceberg.vim": {
@@ -58,7 +58,7 @@
     "neovim": {
         "branch": "master",
         "repo": "https://git@github.com/neovim/neovim",
-        "rev": "6af64d384f96a69462a2a50dd7054566af98de37",
+        "rev": "c348e816fc530f185d799270ad3c39bd0d6799a6",
         "type": "git"
     },
     "niv": {
@@ -130,13 +130,13 @@
     "nvim-highlite": {
         "branch": "master",
         "repo": "https://github.com/Iron-E/nvim-highlite.git",
-        "rev": "c4f98237c54bd2478bb3826500f9c9b654612801",
+        "rev": "6512def8389c5f7424f4aa5d9952dd6a721bce2e",
         "type": "git"
     },
     "nvim-lsp": {
         "branch": "master",
         "repo": "https://git@github.com/neovim/nvim-lspconfig.git",
-        "rev": "dbb7396ecc6fa5325779ed8c1589c1c903de37b6",
+        "rev": "76f11625481eddb7bcbf86b3e4f592a1aef35b37",
         "type": "git"
     },
     "nvim-plenary": {
@@ -154,19 +154,19 @@
     "nvim-telescope": {
         "branch": "master",
         "repo": "https://github.com/nvim-telescope/telescope.nvim.git",
-        "rev": "4a8ea7763ec3c1c0672398418da682c1e0d4017d",
+        "rev": "655295ef64ebb0b769de45146dae65b89212a8f0",
         "type": "git"
     },
     "nvim-tree-lua": {
         "branch": "master",
         "repo": "https://github.com/kyazdani42/nvim-tree.lua.git",
-        "rev": "d3eb9cc4c6f0a1e0d6dd376f45376ad4604c7cdc",
+        "rev": "2bf00434095e6514cb56f9d0275fb762256d48d9",
         "type": "git"
     },
     "nvim-treesitter": {
         "branch": "master",
         "repo": "https://git@github.com/nvim-treesitter/nvim-treesitter.git",
-        "rev": "4a779c483bffb1e511bd43c630c8ab633baa749e",
+        "rev": "407ff057db0216afd3b36d8564980a13de9614e6",
         "type": "git"
     },
     "onebuddy": {
@@ -184,7 +184,7 @@
     "pandoc-template-eisvogel": {
         "branch": "master",
         "repo": "https://git@github.com/Wandmalfarbe/pandoc-latex-template.git",
-        "rev": "4558a4adf6a5bf193a0239f039c877f8ca50242f",
+        "rev": "27fb7e455536012aa7e92151ffad28ff70986f41",
         "type": "git"
     },
     "pandoc-template-github": {
@@ -250,7 +250,7 @@
     "vim-matchup": {
         "branch": "master",
         "repo": "https://git@github.com/andymass/vim-matchup",
-        "rev": "309c3a74e766fa9b8d5a0372830105cc65dbd022",
+        "rev": "44c634b3306783d5a43c4ef918a4bca538adcf2f",
         "type": "git"
     },
     "vim-one": {
