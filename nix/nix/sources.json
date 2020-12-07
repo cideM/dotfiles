@@ -8,7 +8,7 @@
     "clj-deps": {
         "branch": "live",
         "repo": "https://git@github.com/practicalli/clojure-deps-edn.git",
-        "rev": "f874cfd4bf19cc80f73afb50dea2b80567308b7e",
+        "rev": "7f8d5789aedc0aa1f54da4bad5360f8229376d0c",
         "type": "git"
     },
     "cocopon/iceberg.vim": {
@@ -58,7 +58,7 @@
     "neovim": {
         "branch": "master",
         "repo": "https://git@github.com/neovim/neovim",
-        "rev": "c348e816fc530f185d799270ad3c39bd0d6799a6",
+        "rev": "85bce4d13d405fe009428def4fbead54bb741008",
         "type": "git"
     },
     "niv": {
@@ -82,7 +82,7 @@
     "nvim-any-jump": {
         "branch": "master",
         "repo": "https://github.com/pechorin/any-jump.vim.git",
-        "rev": "211de97502c0e52289c17241c57ecbf1628f07b1",
+        "rev": "71cda6679432d77d6a029ce11fcb2280e7b701b9",
         "type": "git"
     },
     "nvim-color-sonokai": {
@@ -130,7 +130,7 @@
     "nvim-highlite": {
         "branch": "master",
         "repo": "https://github.com/Iron-E/nvim-highlite.git",
-        "rev": "6512def8389c5f7424f4aa5d9952dd6a721bce2e",
+        "rev": "63ba9ddbfdad709d9cc0e800f10a87dfa8df7968",
         "type": "git"
     },
     "nvim-lsp": {
@@ -160,13 +160,13 @@
     "nvim-tree-lua": {
         "branch": "master",
         "repo": "https://github.com/kyazdani42/nvim-tree.lua.git",
-        "rev": "2bf00434095e6514cb56f9d0275fb762256d48d9",
+        "rev": "2cec5892d7933be90b0207373733d793beaef1a1",
         "type": "git"
     },
     "nvim-treesitter": {
         "branch": "master",
         "repo": "https://git@github.com/nvim-treesitter/nvim-treesitter.git",
-        "rev": "407ff057db0216afd3b36d8564980a13de9614e6",
+        "rev": "d8d90909a9023dab60fed08af30e4fbe1610be18",
         "type": "git"
     },
     "onebuddy": {
@@ -220,7 +220,7 @@
     "vim-color-spring-night": {
         "branch": "master",
         "repo": "https://github.com/rhysd/vim-color-spring-night.git",
-        "rev": "4424179031bf86974ad8d86ca1babc693852cea5",
+        "rev": "0fe5e27e4e1d53b3ba0a323bd607f7136a430cbe",
         "type": "git"
     },
     "vim-colortemplate": {
@@ -280,7 +280,7 @@
     "vim-terraform": {
         "branch": "master",
         "repo": "https://github.com/hashivim/vim-terraform.git",
-        "rev": "a6be9fea8757f6672397cadfb2784230914130c6",
+        "rev": "fcc3912658d0d0dff60975a487d17f919b94595c",
         "type": "git"
     },
     "vim-visual-split": {
