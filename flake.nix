@@ -54,7 +54,7 @@
           modules = [
             home-manager.nixosModules.home-manager
             hm-nixos-as-super
-            ./nix/hosts/nixos/configuration.nix
+            ./hosts/nixos/configuration.nix
           ];
         in
         unstable.lib.nixosSystem { inherit system modules specialArgs; };
