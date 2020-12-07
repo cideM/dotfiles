@@ -93,6 +93,8 @@ let
     let g:loaded_matchit = 1
 
     set background=light
+    set tabstop=4
+    set list
     set formatoptions-=t
     set wildignore+=*/.git/*,
                 \*/node_modules/*,
