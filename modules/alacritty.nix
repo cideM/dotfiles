@@ -245,7 +245,36 @@ let
       y = 2;
     };
     size = cfg.fontSize;
-    use_thin_strokes = true;
+    use_thin_strokes = pkgs.stdenv.isDarwin;
+  };
+
+  liberationMono = {
+    bold = {
+      family = "Liberation Mono";
+      style = "Bold";
+    };
+    bold_italic = {
+      family = "Liberation Mono";
+      style = "Bold Italic";
+    };
+    glyph_offset = {
+      x = 0;
+      y = 0;
+    };
+    italic = {
+      family = "Liberation Mono";
+      style = "Italic";
+    };
+    normal = {
+      family = "Liberation Mono";
+      style = "Regular";
+    };
+    offset = {
+      x = 0;
+      y = 2;
+    };
+    size = cfg.fontSize;
+    use_thin_strokes = pkgs.stdenv.isDarwin;
   };
 
   dejavuSansMono = {
@@ -274,7 +303,7 @@ let
       y = 2;
     };
     size = cfg.fontSize;
-    use_thin_strokes = true;
+    use_thin_strokes = pkgs.stdenv.isDarwin;
   };
 
   hack = {
@@ -303,7 +332,7 @@ let
       y = 2;
     };
     size = cfg.fontSize;
-    use_thin_strokes = true;
+    use_thin_strokes = pkgs.stdenv.isDarwin;
   };
 
   shared = {
@@ -407,7 +436,7 @@ in
     xdg.configFile."alacritty/alacritty.yml".text =
       builtins.replaceStrings [ "\\\\" ] [ "\\" ] (builtins.toJSON (shared // {
         colors = iceberg-light;
-        font = mono;
+        font = liberationMono;
       }));
 
   };
