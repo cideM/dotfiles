@@ -577,11 +577,35 @@ in
       '';
     };
 
-    ts = mkOption { };
+    ts = mkOption {
+      type = grammarConfigModule;
+      description = "Typescript treesitter grammar";
+      example = literalExample ''
+        {
+          rev = "dadfd9c9aab2630632e61cfce645c13c35aa092f";
+        };
+      '';
+    };
 
-    tsx = mkOption { };
+    tsx = mkOption {
+      type = grammarConfigModule;
+      description = "Typescript TSX treesitter grammar";
+      example = literalExample ''
+        {
+          rev = "dadfd9c9aab2630632e61cfce645c13c35aa092f";
+        };
+      '';
+    };
 
-    yaml = mkOption { };
+    yaml = mkOption {
+      type = grammarConfigModule;
+      description = "Yaml treesitter grammar";
+      example = literalExample ''
+        {
+          rev = "dadfd9c9aab2630632e61cfce645c13c35aa092f";
+        };
+      '';
+    };
 
   };
 

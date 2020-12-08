@@ -28,6 +28,17 @@
       enable = false;
       plugin = "completion-nvim";
     };
+
+    git = {
+      committia.enable = false;
+      gv.enable = false;
+      signify.enable = false;
+      messenger.enable = false;
+    };
+
+    editor = {
+      highlight-current-word = false;
+    };
   };
 
   nixpkgs.config = import ../nixpkgs_config.nix;
