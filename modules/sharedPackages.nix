@@ -59,6 +59,7 @@ with pkgs;
     # lazygit
     libuv
     # luajitPackages.luacheck
+    liberation_ttf
     nano
     ncdu
     neofetch
