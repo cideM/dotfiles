@@ -14,6 +14,31 @@ let
     # https://github.com/fish-shell/fish-shell/issues/5313
     set -u fish_pager_color_prefix 'red' '--underline'
 
+    # COLORS
+    # https://github.com/fish-shell/fish-shell/issues/4695
+    # https://fishshell.com/docs/2.0/index.html
+    # $ set | rg color
+    # $ set_color -c
+    # $ nix-shell -p gettext
+    # $ msgcat --color=test
+
+    # Background of tab completion and matched part in history
+    set fish_color_search_match --background=yellow
+
+    set fish_pager_color_prefix normal --bold
+    set fish_pager_color_description normal
+    set fish_pager_color_progress normal
+
+    # https://github.com/fish-shell/fish-shell/issues/5527
+    set fish_color_match normal --underline
+
+    set fish_color_comment --italics
+    set fish_color_command magenta
+    set fish_color_quote green
+    set fish_color_error red --bold
+
+    set fish_color_cwd brblack
+
     # telescope vim is bit buggy and will call bat with `bat --theme Monokai
     # Extended Light` which obviously doesn't work
     set -x BAT_THEME "OneHalfLight"
