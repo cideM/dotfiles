@@ -24,9 +24,8 @@ with pkgs;
     bottom # top
     # bandwhich
 
-    aerc
-    # awscli
-    # awscli2
+    # aerc
+    awscli2
     bash_5
     coreutils
     curl
@@ -36,7 +35,7 @@ with pkgs;
     dhall-lsp-server
     dive
     docker-compose
-    emacs
+    # emacs
     entr
     findutils
     fzf
@@ -48,21 +47,18 @@ with pkgs;
     google-cloud-sdk
     # haskell-language-server
     gopls
-    vis
-    graphviz
     gzip
     hack-font
-    haskellPackages.brittany
     haskellPackages.nix-derivation
-    hexyl
+    # hexyl
     htop
-    hyperfine
+    # hyperfine
     jq
     jrnl
     kubernetes-helm
-    lazygit
+    # lazygit
     libuv
-    luajitPackages.luacheck
+    # luajitPackages.luacheck
     nano
     ncdu
     neofetch
@@ -72,7 +68,7 @@ with pkgs;
     nodePackages.purescript-language-server
     nodejs
     pandoc
-    perl
+    # perl
     # https://github.com/NixOS/nixpkgs/issues/96921
     # qmk_firmware
     ranger
@@ -86,10 +82,10 @@ with pkgs;
     s3cmd
     shellcheck
     shfmt
-    stow
+    # stow
     terraform_0_13
-    termshark
-    wireshark-cli
+    # termshark
+    # wireshark-cli
     tig
     time
     tldr
@@ -97,7 +93,7 @@ with pkgs;
     tree
     universal-ctags
     vim
-    weechat
+    # weechat
     wget
     yamllint
 
