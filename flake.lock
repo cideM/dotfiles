@@ -1,5 +1,17 @@
 {
   "nodes": {
+    "certfile": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-FAhgqaLz7AKKT76HAdZQGG6vSiC4I7NtgX7mFeGhkyU=",
+        "path": "/data/fakeroot.crt",
+        "type": "path"
+      },
+      "original": {
+        "path": "/data/fakeroot.crt",
+        "type": "path"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -34,6 +46,7 @@
     },
     "root": {
       "inputs": {
+        "certfile": "certfile",
         "home-manager": "home-manager",
         "operatorMono": "operatorMono",
         "unstable": "unstable"

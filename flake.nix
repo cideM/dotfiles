@@ -2,6 +2,11 @@
   description = "Nix. All. The. Things.";
 
   inputs = {
+    certfile = {
+      url = "/data/fakeroot.crt";
+      flake = false;
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       # https://github.com/nix-community/home-manager/blob/master/flake.nix#L4
@@ -19,7 +24,7 @@
     };
   };
 
-  outputs = { self, unstable, home-manager, operatorMono }:
+  outputs = { self, unstable, home-manager, operatorMono, certfile }:
     let
       pkgs = import unstable {
         system = "x86_64-linux";
@@ -33,7 +38,7 @@
           system = "x86_64-linux";
 
           specialArgs = {
-            inherit pkgs operatorMono;
+            inherit pkgs operatorMono certfile;
           };
 
           hm-nixos-as-super = { config, ... }: {

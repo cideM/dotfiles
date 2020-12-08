@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, operatorMono, ... }:
+{ config, pkgs, operatorMono, certfile, ... }:
 let
   operatorMonoFontPkg = pkgs.stdenv.mkDerivation {
     name = "operator-mono-font";
@@ -30,6 +30,9 @@ in
   boot.kernel.sysctl = {
     "vm.max_map_count" = 262144;
   };
+
+  # https://stackoverflow.com/questions/13732826/convert-pem-to-crt-and-key
+  security.pki.certificates = [ "${certfile}" ];
 
   fonts = {
     fontDir.enable = false;
