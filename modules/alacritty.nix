@@ -128,6 +128,35 @@ let
     };
   };
 
+  gnomeLight = {
+    primary = {
+      foreground = "#171421";
+      background = "#ffffff";
+    };
+
+    normal = {
+      black = "#171421";
+      red = "#c01c28";
+      green = "#26a269";
+      yellow = "#a2734c";
+      blue = "#12488b";
+      magenta = "#a347ba";
+      cyan = "#2aa1b3";
+      white = "#d0cfcc";
+    };
+
+    bright = {
+      black = "#5e5c64";
+      red = "#f66151";
+      green = "#33d17a";
+      yellow = "#e9ad0c";
+      blue = "#2a7bde";
+      magenta = "#c061cb";
+      cyan = "#33c7de";
+      white = "#ffffff";
+    };
+  };
+
   spacemacsLight = {
     primary = {
       foreground = "#64526F";
@@ -216,6 +245,35 @@ let
       magenta = "#ada0d3";
       cyan = "#95c4ce";
       white = "#d2d4de";
+    };
+  };
+
+  itermDefault = {
+    primary = {
+      background = "#101421";
+      foreground = "#fffbf6";
+    };
+
+    normal = {
+      black = "#2e2e2e";
+      red = "#eb4129";
+      green = "#abe047";
+      yellow = "#f6c744";
+      blue = "#47a0f3";
+      magenta = "#7b5cb0";
+      cyan = "#64dbed";
+      white = "#e5e9f0";
+    };
+
+    bright = {
+      black = "#565656";
+      red = "#ec5357";
+      green = "#c0e17d";
+      yellow = "#f9da6a";
+      blue = "#49a4f8";
+      magenta = "#a47de9";
+      cyan = "#99faf2";
+      white = "#ffffff";
     };
   };
 
@@ -435,8 +493,8 @@ in
 
     xdg.configFile."alacritty/alacritty.yml".text =
       builtins.replaceStrings [ "\\\\" ] [ "\\" ] (builtins.toJSON (shared // {
-        colors = iceberg-light;
-        font = liberationMono;
+        colors = gnomeLight;
+        font = itermDefault;
       }));
 
   };
