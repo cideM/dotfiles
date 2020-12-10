@@ -128,8 +128,13 @@ let
     " ==============================
     " =        COLORSCHEME         =
     " ==============================
+    augroup my_neomake_highlights
+        au!
+        autocmd ColorScheme *
+          \ highlight link SneakScope IncSearch
+    augroup END
     let g:yui_comments = "emphasize"
-    colorscheme yui
+    colorscheme github
 
     " https://github.com/neovim/neovim/issues/13113
     augroup Foo
@@ -801,6 +806,7 @@ in
 
               # Themes
               apprentice
+              vim-colors-github
               yui
 
             ]

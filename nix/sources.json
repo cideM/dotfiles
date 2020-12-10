@@ -223,6 +223,12 @@
         "rev": "0fe5e27e4e1d53b3ba0a323bd607f7136a430cbe",
         "type": "git"
     },
+    "vim-colors-github": {
+        "branch": "master",
+        "repo": "https://github.com/cormacrelf/vim-colors-github.git",
+        "rev": "9051e6b8618b463f3f4c5bb51ea155204937065d",
+        "type": "git"
+    },
     "vim-colortemplate": {
         "branch": "master",
         "repo": "https://git@github.com/lifepillar/vim-colortemplate",

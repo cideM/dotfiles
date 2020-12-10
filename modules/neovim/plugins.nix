@@ -249,6 +249,11 @@ let
     src = sources."nvim-completion-tags";
   });
 
+  vim-colors-github = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "vim-colors-github";
+    src = sources."vim-colors-github";
+  });
+
 in
 {
   inherit
@@ -290,5 +295,6 @@ in
     vim-startuptime
     vim-terraform
     vim-visual-split
+    vim-colors-github
     yui;
 }
