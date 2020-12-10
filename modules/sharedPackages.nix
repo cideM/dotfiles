@@ -26,7 +26,7 @@ with pkgs;
 
     # aerc
     awscli2
-    bash_5
+    bashInteractive_5
     coreutils
     curl
     dash
