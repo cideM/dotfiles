@@ -30,7 +30,7 @@
   # Install through casks for Alacritty.app etc
   programs.alacritty = {
     enable = false;
-    fontSize = 15;
+    fontSize = 14;
   };
 
   # Can't use programs.git because https://github.com/NixOS/nixpkgs/issues/62353
