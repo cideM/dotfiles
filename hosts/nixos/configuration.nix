@@ -111,7 +111,13 @@ in
   };
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    authorizedKeysFiles = [ "/home/tifa/.ssh/authorized_keys" ];
+    passwordAuthentication = false; # originally true
+    permitRootLogin = "no";
+    challengeResponseAuthentication = false;
+  };
 
   services.lorri.enable = true;
 

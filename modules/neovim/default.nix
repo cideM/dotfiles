@@ -495,6 +495,7 @@ let
 
 in
 {
+  # TODO: Add fugitive, sneak, asterisk, sad and lsp
   options.programs.neovim.completion = {
     enable = mkOption {
       type = bool;
