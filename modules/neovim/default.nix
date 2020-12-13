@@ -121,7 +121,7 @@ let
     set diffopt=algorithm:patience,filler,indent-heuristic,closeoff
     set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
     set hidden
-    set signcolumn=auto:3
+    set signcolumn=yes:3
     set ignorecase
     set number
     ${if cfg.completion.enable && cfg.completion.plugin == "completion-nvim" then ''
@@ -368,7 +368,7 @@ let
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
       vim.lsp.diagnostic.on_publish_diagnostics, {
         virtual_text = false,
-        signs = false,
+        signs = true,
         update_in_insert = false,
       }
     )
