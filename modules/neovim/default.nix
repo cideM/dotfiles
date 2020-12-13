@@ -848,6 +848,7 @@ in
               Jenkinsfile-vim-syntax
               haskell-vim
               vim-terraform
+              fennel-vim
 
               # Themes
               apprentice

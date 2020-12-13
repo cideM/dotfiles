@@ -254,6 +254,11 @@ let
     src = sources."vim-colors-github";
   });
 
+  fennel-vim = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "fennel-vim";
+    src = sources."fennel-vim";
+  });
+
 in
 {
   inherit
@@ -285,6 +290,7 @@ in
     treesitterTs
     treesitterTsx
     treesitterYaml
+    fennel-vim
     vim-colortemplate
     vim-js
     vim-lua

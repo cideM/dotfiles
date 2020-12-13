@@ -29,6 +29,12 @@
         "rev": "bcdaf3761b762dafb4314389d84294232dd61ed6",
         "type": "git"
     },
+    "fennel-vim": {
+        "branch": "master",
+        "repo": "https://github.com/bakpakin/fennel.vim.git",
+        "rev": "30b9beabad2c4f09b9b284caf5cd5666b6b4dc89",
+        "type": "git"
+    },
     "fish-journal": {
         "branch": "master",
         "repo": "https://git@github.com/cideM/fish-journal.git",
