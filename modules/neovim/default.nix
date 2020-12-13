@@ -449,7 +449,7 @@ let
           \   {'complete_items': ['lsp']},
           \   {'complete_items': ['buffers']},
           \   {'mode': '<c-p>'},
-          \   {'mode': '<c-n>'}
+          \   {'mode': '<c-n>'},
           \   {'complete_items': ['tags']},
           \   {'complete_items': ['path']},
           \]
