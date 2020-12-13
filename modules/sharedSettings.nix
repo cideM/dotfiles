@@ -11,8 +11,9 @@
   };
 
   programs.neovim = {
+    # https://github.com/nvim-treesitter/nvim-treesitter/blob/a5baf151bd78a88c88078b197657f277bcf06058/lockfile.json
     treesitter = {
-      enable = false;
+      enable = true;
       tsx.rev = "73afadbd117a8e8551758af9c3a522ef46452119";
       ts.rev = "73afadbd117a8e8551758af9c3a522ef46452119";
       yaml.rev = "258751d666d31888f97ca6188a686f36fadf6c43";
