@@ -16,16 +16,16 @@ let
     src = sources.vim-markdown-folding;
   });
 
-  parinfer-rust = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "parinfer";
-    postInstall = ''
-      rtpPath=$out/share/vim-plugins/${name}
-      mkdir -p $rtpPath/plugin
-      sed "s,let s:libdir = .*,let s:libdir = '${pkgs.parinfer-rust}/lib'," \
-        plugin/parinfer.vim >$rtpPath/plugin/parinfer.vim
-    '';
-    src = sources.parinfer;
-  });
+  # parinfer-rust = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+  #   name = "parinfer";
+  #   postInstall = ''
+  #     rtpPath=$out/share/vim-plugins/${name}
+  #     mkdir -p $rtpPath/plugin
+  #     sed "s,let s:libdir = .*,let s:libdir = '${pkgs.parinfer-rust}/lib'," \
+  #       plugin/parinfer.vim >$rtpPath/plugin/parinfer.vim
+  #   '';
+  #   src = sources.parinfer;
+  # });
 
   onehalf = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "onehalf";
@@ -274,7 +274,7 @@ in
     highlite
     sonokai
     gina
-    parinfer-rust
+    # parinfer-rust
     sad
     colorbuddy
     spacevim

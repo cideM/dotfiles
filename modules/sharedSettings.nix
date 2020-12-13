@@ -17,6 +17,7 @@
       ts.rev = "73afadbd117a8e8551758af9c3a522ef46452119";
       yaml.rev = "258751d666d31888f97ca6188a686f36fadf6c43";
       go.rev = "dadfd9c9aab2630632e61cfce645c13c35aa092f";
+      clojure.rev = "f8006afc91296b0cdb09bfa04e08a6b3347e5962";
     };
 
     telescope = {

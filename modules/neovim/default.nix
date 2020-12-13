@@ -25,12 +25,28 @@ let
     src = builtins.fetchGit {
       "url" = "https://git@github.com/tree-sitter/tree-sitter-go.git";
       "ref" = "master";
-      "rev" = options.go.rev;
+      "rev" = cfg.treesitter.go.rev;
     };
     buildPhase = ''
       runHook preBuild
       mkdir -p parser/
       $CC -o parser/go.so -I$src/src $src/src/parser.c -shared  -Os -lstdc++ -fPIC
+      runHook postBuild
+    '';
+  };
+
+  grammarClojure = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    version = "latest";
+    name = "tree-sitter-clojure-${version}";
+    src = builtins.fetchGit {
+      "url" = "https://github.com/sogaiu/tree-sitter-clojure";
+      "ref" = "master";
+      "rev" = cfg.treesitter.clojure.rev;
+    };
+    buildPhase = ''
+      runHook preBuild
+      mkdir -p parser/
+      $CC -o parser/clojure.so -I$src/src $src/src/parser.c -shared  -Os -lstdc++ -fPIC
       runHook postBuild
     '';
   };
@@ -41,7 +57,7 @@ let
     src = builtins.fetchGit {
       "ref" = "master";
       "url" = "https://git@github.com/ikatyang/tree-sitter-yaml";
-      "rev" = options.yaml.rev;
+      "rev" = cfg.treesitter.yaml.rev;
     };
     buildPhase = ''
       runHook preBuild
@@ -57,7 +73,7 @@ let
     src = builtins.fetchGit {
       "ref" = "master";
       "url" = "https://git@github.com/tree-sitter/tree-sitter-typescript";
-      "rev" = options.ts.rev;
+      "rev" = cfg.treesitter.ts.rev;
     };
     buildPhase = ''
       runHook preBuild
@@ -73,7 +89,7 @@ let
     src = builtins.fetchGit {
       "ref" = "master";
       "url" = "https://git@github.com/tree-sitter/tree-sitter-typescript";
-      "rev" = options.tsx.rev;
+      "rev" = cfg.treesitter.tsx.rev;
     };
     buildPhase = ''
       runHook preBuild
@@ -496,6 +512,14 @@ let
 in
 {
   # TODO: Add fugitive, sneak, asterisk, sad and lsp
+  options.programs.neovim.clojure = {
+    enable = mkOption {
+      type = bool;
+      description = "Whether to install Clojure plugins";
+      default = false;
+    };
+  };
+
   options.programs.neovim.completion = {
     enable = mkOption {
       type = bool;
@@ -571,6 +595,16 @@ in
       type = bool;
       description = "Whether to enable treesitter grammars for Neovim (will install 'nvim-treesitter')";
       default = false;
+    };
+
+    clojure = mkOption {
+      type = grammarConfigModule;
+      description = "Clojure treesitter grammar";
+      example = literalExample ''
+        {
+          rev = "dadfd9c9aab2630632e61cfce645c13c35aa092f";
+        };
+      '';
     };
 
     go = mkOption {
@@ -812,13 +846,14 @@ in
 
             ]
             ++ localPlugins
-            ++ (if cfg.treesitter.enable then [ grammarGo grammarYaml grammarTs grammarTsx ] else [ ])
+            ++ (if cfg.treesitter.enable then [ grammarClojure grammarGo grammarYaml grammarTs grammarTsx ] else [ ])
             ++ (if cfg.completion.enable && cfg.completion.plugin == "completion-nvim" then [ completion-nvim completion-buffers completion-tags ] else [ ])
             ++ (if cfg.editor.highlight-current-word then [ vim-illuminate ] else [ ])
             ++ (if cfg.git.committia.enable then [ committia ] else [ ])
             ++ (if cfg.git.signify.enable then [ vim-signify ] else [ ])
             ++ (if cfg.git.gv.enable then [ gv-vim ] else [ ])
-            ++ (if cfg.git.messenger.enable then [ git-messenger-vim ] else [ ]);
+            ++ (if cfg.git.messenger.enable then [ git-messenger-vim ] else [ ])
+            ++ (if cfg.clojure.enable then [ conjure vim-parinfer ] else [ ]);
 
             opt = [
               nvim-lsp
