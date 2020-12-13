@@ -422,6 +422,16 @@ let
       nnoremap ${cfg.telescope.prefix}t  <cmd>Telescope current_buffer_tags<cr>
     '' else ""}
 
+    ${if cfg.completion.enable && cfg.completion.plugin == "deoplete" then ''
+      " ======= COMPLETION ================
+      packadd deoplete
+      call deoplete#custom#option('num_processes', 2)
+      " I recommend for you to disable deoplete-options-refresh_always option
+      " when you enable deoplete parallel completion.
+      call deoplete#custom#option('refresh_always', v:false)
+      let g:deoplete#enable_at_startup = 1
+    '' else ""}
+
     ${if cfg.completion.enable && cfg.completion.plugin == "completion-nvim" then ''
       " ======= COMPLETION ================
       " Use <Tab> and <S-Tab> to navigate through popup menu
@@ -528,7 +538,7 @@ in
     };
 
     plugin = mkOption {
-      type = enum [ "completion-nvim" ];
+      type = enum [ "completion-nvim" "deoplete" ];
       default = "completion-nvim";
     };
   };
@@ -848,6 +858,7 @@ in
             ++ localPlugins
             ++ (if cfg.treesitter.enable then [ grammarClojure grammarGo grammarYaml grammarTs grammarTsx ] else [ ])
             ++ (if cfg.completion.enable && cfg.completion.plugin == "completion-nvim" then [ completion-nvim completion-buffers completion-tags ] else [ ])
+            ++ (if cfg.completion.enable && cfg.completion.plugin == "deoplete" then [ deoplete-lsp ] else [ ])
             ++ (if cfg.editor.highlight-current-word then [ vim-illuminate ] else [ ])
             ++ (if cfg.git.committia.enable then [ committia ] else [ ])
             ++ (if cfg.git.signify.enable then [ vim-signify ] else [ ])
@@ -859,7 +870,8 @@ in
               nvim-lsp
               nvim-colorizer
             ]
-            ++ (if cfg.treesitter.enable then [ nvim-treesitter ] else [ ]);
+            ++ (if cfg.treesitter.enable then [ nvim-treesitter ] else [ ])
+            ++ (if cfg.completion.enable && cfg.completion.plugin == "deoplete" then [ deoplete ] else [ ]);
           };
         };
       };
