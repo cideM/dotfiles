@@ -1,5 +1,8 @@
 { config, lib, pkgs, ... }:
 
+# Plugins I might want to check out
+# - https://github.com/akinsho/nvim-toggleterm.lua
+
 with lib;
 with types;
 let

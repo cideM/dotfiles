@@ -21,21 +21,25 @@
       clojure.rev = "f8006afc91296b0cdb09bfa04e08a6b3347e5962";
     };
 
+    clojure = {
+      enable = true;
+    };
+
     telescope = {
       enable = false;
       prefix = "<leader>t";
     };
 
     completion = {
-      enable = false;
+      enable = true;
       plugin = "completion-nvim";
     };
 
     git = {
       committia.enable = false;
       gv.enable = false;
-      signify.enable = false;
-      messenger.enable = false;
+      signify.enable = true;
+      messenger.enable = true;
     };
 
     editor = {
