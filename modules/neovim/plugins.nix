@@ -78,11 +78,6 @@ let
     src = sources.vim-visual-split;
   });
 
-  vim-one-theme = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "vim-one-theme";
-    src = sources.vim-one-colors;
-  });
-
   nvim-treesitter = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "nvim-treesitter";
     src = sources.nvim-treesitter;
@@ -296,7 +291,6 @@ in
     vim-lua
     vim-markdown-folding
     vim-matchup
-    vim-one-theme
     vim-scratch
     vim-startuptime
     vim-terraform

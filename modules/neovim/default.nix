@@ -153,7 +153,7 @@ let
           \ highlight link SneakScope IncSearch
     augroup END
     let g:yui_comments = "emphasize"
-    colorscheme github
+    colorscheme yui
 
     " https://github.com/neovim/neovim/issues/13113
     augroup Foo
@@ -887,6 +887,13 @@ in
               apprentice
               vim-colors-github
               yui
+              seoul256-vim
+              vim-one
+              onehalf
+              papercolor-theme
+              onedark-vim
+              jellybeans-vim
+              falcon
 
             ]
             ++ localPlugins
