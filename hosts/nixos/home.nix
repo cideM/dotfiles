@@ -43,6 +43,7 @@
   programs.firefox.package = pkgs.firefox-devedition-bin;
 
   programs.alacritty = {
+    light = true;
     enable = true;
     fontSize = 12;
   };

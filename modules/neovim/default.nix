@@ -7,6 +7,7 @@ with lib;
 with types;
 let
   cfg = config.programs.neovim;
+  alacCfg = config.programs.alacritty;
 
   grammarConfigModule = submodule {
     options = {
@@ -153,7 +154,7 @@ let
           \ highlight link SneakScope IncSearch
     augroup END
     let g:yui_comments = "emphasize"
-    colorscheme yui
+    colorscheme ${if alacCfg.light then "yui" else "jellybeans"}
 
     " https://github.com/neovim/neovim/issues/13113
     augroup Foo

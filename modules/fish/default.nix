@@ -1,5 +1,7 @@
 { pkgs, config, ... }:
 let
+  alacCfg = config.programs.alacritty;
+
   # These options are set by home manager programs.fzf
   # https://github.com/rycee/home-manager/blob/master/modules/programs/fzf.nix#blob-path
   # It's pointless to use home manager programs.fzf if I'm setting these anyway
@@ -9,10 +11,6 @@ let
     set -x FZF_CTRL_T_OPTS "--preview '${pkgs.bat}/bin/bat {}'"
     set -x FZF_ALT_C_OPTS "--preview 'tree -a -C {} | head -200'"
     set -x FZF_CTRL_T_COMMAND '${pkgs.fd}/bin/fd --type f 2> /dev/null'
-
-    # https://github.com/fish-shell/fish-shell/issues/3412
-    # https://github.com/fish-shell/fish-shell/issues/5313
-    set -u fish_pager_color_prefix 'red' '--underline'
 
     # COLORS
     # https://github.com/fish-shell/fish-shell/issues/4695
@@ -39,9 +37,11 @@ let
 
     set fish_color_cwd brblack
 
-    # telescope vim is bit buggy and will call bat with `bat --theme Monokai
-    # Extended Light` which obviously doesn't work
-    set -x BAT_THEME "OneHalfLight"
+    ${if alacCfg.light then ''
+      # telescope vim is bit buggy and will call bat with `bat --theme Monokai
+      # Extended Light` which obviously doesn't work
+      set -x BAT_THEME "OneHalfLight"
+    '' else ""}
 
     # https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
     # XDG_RUNTIME_DIR should be set by pam_systemd
@@ -63,8 +63,10 @@ let
     abbr -a dc 'docker-compose'
     abbr -a tf 'terraform'
 
-    alias fzf 'fzf --color=light'
-    alias dash 'dash -E'
+    ${if alacCfg.light then ''
+      alias fzf 'fzf --color=light'
+      alias dash 'dash -E'
+    '' else ""}
 
     source ${pkgs.fzf}/share/fzf/key-bindings.fish && fzf_key_bindings
   '';
