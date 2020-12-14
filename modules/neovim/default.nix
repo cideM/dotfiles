@@ -787,6 +787,10 @@ in
               call deoplete#custom#option('refresh_always', v:false)
             '' else ""}
 
+            if exists(":CompilerSet") != 2
+              command -nargs=* CompilerSet setlocal <args>
+            endif
+
             " https://github.com/borkdude/clj-kondo/blob/master/doc/editor-integration.md#vanilla-way
             CompilerSet errorformat=%f:%l:%c:\ Parse\ %t%*[^:]:\ %m,%f:%l:%c:\ %t%*[^:]:\ %m
             CompilerSet makeprg=clj-kondo\ --lint\ %

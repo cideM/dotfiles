@@ -316,6 +316,35 @@ let
     };
   };
 
+  monoMedium = {
+    bold = {
+      family = "Operator Mono SSm";
+      style = "Bold";
+    };
+    bold_italic = {
+      family = "Operator Mono SSm";
+      style = "Bold Italic";
+    };
+    glyph_offset = {
+      x = 0;
+      y = 1;
+    };
+    italic = {
+      family = "Operator Mono SSm";
+      style = "Medium Italic";
+    };
+    normal = {
+      family = "Operator Mono SSm";
+      style = "Medium";
+    };
+    offset = {
+      x = 0;
+      y = 2;
+    };
+    size = cfg.fontSize;
+    use_thin_strokes = pkgs.stdenv.isDarwin;
+  };
+
   mono = {
     bold = {
       family = "Operator Mono SSm";
@@ -506,6 +535,15 @@ let
       program = "${pkgs.fish}/bin/fish";
     };
   };
+
+  fontMapping = {
+    "mono" = mono;
+    "dejavuSansMono" = dejavuSansMono;
+    "monoMedium" = monoMedium;
+    "liberationMono" = liberationMono;
+    "hack" = hack;
+  };
+
 in
 {
   options.programs.alacritty = {
@@ -516,6 +554,12 @@ in
         When true various colors will be changed to work with a light terminal theme.
         Includes Neovim, pagers, the terminal colors, and more.
       '';
+    };
+
+    font = mkOption {
+      type = enum [ "mono" "liberationMono" "dejavuSansMono" "hack" "monoMedium" ];
+      default = "mono";
+      description = "Terminal emulator font";
     };
 
     fontSize = mkOption {
@@ -542,7 +586,7 @@ in
     xdg.configFile."alacritty/alacritty.yml".text =
       builtins.replaceStrings [ "\\\\" ] [ "\\" ] (builtins.toJSON (shared // {
         colors = if cfg.light then gnomeLight else jellybeans;
-        font = liberationMono;
+        font = fontMapping."${cfg.font}";
       }));
 
   };

@@ -43,7 +43,8 @@
   programs.firefox.package = pkgs.firefox-devedition-bin;
 
   programs.alacritty = {
-    light = true;
+    light = false;
+    font = "monoMedium";
     enable = true;
     fontSize = 12;
   };
