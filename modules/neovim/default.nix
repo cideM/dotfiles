@@ -437,14 +437,25 @@ let
 
     ${if cfg.completion.enable && cfg.completion.plugin == "completion-nvim" then ''
       " ======= COMPLETION ================
+      " Load on-demand
+      let g:deoplete#enable_at_startup = 0
       " Use <Tab> and <S-Tab> to navigate through popup menu
       inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
       inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
       let g:completion_auto_change_source = 1
 
+      function! MaybeActivateCompletion()
+          " Some languages work better with deoplete
+          if exists('b:no_completion_nvim')
+              return
+          endif
+          lua require'completion'.on_attach()
+      endfunction
+
       " Activate it for all buffers for buffer, tag and path completion
-      autocmd BufEnter * lua require'completion'.on_attach()
+      " except if disabled so e.g., Deoplete can take over
+      autocmd BufEnter * call MaybeActivateCompletion()
       imap  <c-j> <Plug>(completion_next_source)
       imap  <c-k> <Plug>(completion_prev_source)
       let g:completion_chain_complete_list = {
@@ -490,9 +501,7 @@ let
     trivial.pipe
       [
         "css"
-        "clojure"
         "dhall"
-        "go"
         "haskell"
         "javascript"
         "Jenkinsfile"
@@ -504,10 +513,8 @@ let
         "rust"
         "sh"
         "nix"
-        "typescript"
         "vim"
         "xml"
-        "yaml"
       ]
       [ (builtins.map (name: attrsets.nameValuePair name (readFtplugin name))) (builtins.listToAttrs) ];
 
@@ -761,6 +768,29 @@ in
 
           '';
         };
+        "nvim/ftplugin/clojure.vim" = {
+          text = ''
+            " TODO: Port to Nix
+            if exists("current_compiler")
+              finish
+            endif
+            let current_compiler="clj-kondo"
+
+            ${if cfg.completion.enable && cfg.completion.plugin == "completion-nvim" then ''
+              let b:no_completion_nvim=1
+              packadd deoplete-nvim
+              call deoplete#enable()
+              call deoplete#custom#option('num_processes', 2)
+              " I recommend for you to disable deoplete-options-refresh_always option
+              " when you enable deoplete parallel completion.
+              call deoplete#custom#option('refresh_always', v:false)
+            '' else ""}
+
+            " https://github.com/borkdude/clj-kondo/blob/master/doc/editor-integration.md#vanilla-way
+            CompilerSet errorformat=%f:%l:%c:\ Parse\ %t%*[^:]:\ %m,%f:%l:%c:\ %t%*[^:]:\ %m
+            CompilerSet makeprg=clj-kondo\ --lint\ %
+          '';
+        };
         "nvim/ftplugin/yaml.vim" = {
           text = ''
             let b:undo_ftplugin = ""
@@ -875,7 +905,9 @@ in
               nvim-colorizer
             ]
             ++ (if cfg.treesitter.enable then [ nvim-treesitter ] else [ ])
-            ++ (if cfg.completion.enable && cfg.completion.plugin == "deoplete" then [ deoplete ] else [ ]);
+            # This is necessary so I can still use Deoplete for Clojure which
+            # isn't supported by completion-nvim since I use Conjure and no LSP
+            ++ (if cfg.completion.enable && cfg.completion.plugin == "deoplete" || cfg.completion.plugin == "completion-nvim" then [ deoplete-nvim ] else [ ]);
           };
         };
       };
