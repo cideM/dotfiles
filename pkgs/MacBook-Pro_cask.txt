@@ -1,0 +1,14 @@
+alacritty
+amethyst
+android-platform-tools
+anki
+emacs
+font-hack
+font-iosevka
+font-roboto
+font-roboto-mono
+font-source-code-pro
+insomnia
+iterm2-nightly
+obs
+texstudio

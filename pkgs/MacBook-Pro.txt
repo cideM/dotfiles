@@ -1,0 +1,6 @@
+borkdude/brew/clj-kondo
+gdbm
+openssl@1.1
+pkg-config
+sqlite
+xz
