@@ -35,13 +35,15 @@ let
     set fish_color_quote green
     set fish_color_error red --bold
 
-    set fish_color_cwd brblack
 
     ${if alacCfg.light then ''
+      set fish_color_cwd brblack
       # telescope vim is bit buggy and will call bat with `bat --theme Monokai
       # Extended Light` which obviously doesn't work
       set -x BAT_THEME "OneHalfLight"
-    '' else ""}
+    '' else ''
+      set fish_color_cwd white
+    ''}
 
     # https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
     # XDG_RUNTIME_DIR should be set by pam_systemd

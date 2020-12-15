@@ -437,7 +437,8 @@ let
     augroup END
     let g:yui_comments = "emphasize"
     let g:tokyonight_enable_italic = 1
-    colorscheme ${if alacCfg.light then "yui" else "jellybeans"}
+    let g:tokyonight_style = 'storm'
+    colorscheme ${if alacCfg.light then "yui" else "tokyonight"}
 
     " https://github.com/neovim/neovim/issues/13113
     augroup Foo
