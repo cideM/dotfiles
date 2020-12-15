@@ -29,7 +29,7 @@
 
   # Install through casks for Alacritty.app etc
   programs.alacritty = {
-    light = false;
+    light = true;
     font = "mono";
     enable = false;
     fontSize = 14;
