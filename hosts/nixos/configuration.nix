@@ -131,6 +131,7 @@ in
 
   services.xserver = {
     enable = true;
+    videoDrivers = [ "nvidia" ];
     layout = "us";
     # https://discourse.nixos.org/t/problem-with-xkboptions-it-doesnt-seem-to-take-effect/5269/2
     # Everything is broke, always.
