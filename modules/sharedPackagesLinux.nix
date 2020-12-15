@@ -11,6 +11,7 @@ with pkgs;
     escrotum
     kanji-stroke-order-font
     source-han-sans-japanese
+    obs-studio
     source-han-serif-japanese
     iosevka
     # I'd add this in Neovim but it doesn't work on Darwin and I'm too lazy to
