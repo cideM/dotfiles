@@ -241,10 +241,22 @@
         "rev": "3ae7fd3d8559958742b1c968e17d23404eb0b1b4",
         "type": "git"
     },
+    "vim-falcon-colors": {
+        "branch": "master",
+        "repo": "https://github.com/fenetikm/falcon.git",
+        "rev": "da3468536410eb1ea59a0dd3054edf28d4577d8c",
+        "type": "git"
+    },
     "vim-js": {
         "branch": "master",
         "repo": "https://git@github.com/yuezk/vim-js.git",
         "rev": "f74df1bb719fc240ca4497677e8a218a94d5c364",
+        "type": "git"
+    },
+    "vim-kuroi-colors": {
+        "branch": "master",
+        "repo": "https://github.com/aonemd/kuroi.vim.git",
+        "rev": "6f0b0c65fd0f85ec44a3c6edeba11e976e9e8f7c",
         "type": "git"
     },
     "vim-lua": {
@@ -263,6 +275,12 @@
         "branch": "master",
         "repo": "https://git@github.com/andymass/vim-matchup",
         "rev": "44c634b3306783d5a43c4ef918a4bca538adcf2f",
+        "type": "git"
+    },
+    "vim-nightowl-colors": {
+        "branch": "master",
+        "repo": "https://github.com/haishanh/night-owl.vim.git",
+        "rev": "dcfa87b678d56b526d0cca659f17543cfc632bb6",
         "type": "git"
     },
     "vim-one": {
@@ -293,6 +311,12 @@
         "branch": "master",
         "repo": "https://github.com/hashivim/vim-terraform.git",
         "rev": "fcc3912658d0d0dff60975a487d17f919b94595c",
+        "type": "git"
+    },
+    "vim-tokyonight-colors": {
+        "branch": "master",
+        "repo": "https://github.com/ghifarit53/tokyonight-vim.git",
+        "rev": "7a4915a72b78e3563f798f5efc0352b9e716c59d",
         "type": "git"
     },
     "vim-visual-split": {

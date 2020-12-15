@@ -6,21 +6,286 @@
 with lib;
 with types;
 let
+  ###################################
+  #       CUSTOM SOURCE PLUGINS     #
+  ###################################
   cfg = config.programs.neovim;
-  alacCfg = config.programs.alacritty;
 
-  grammarConfigModule = submodule {
-    options = {
-      rev = mkOption {
-        type = str;
-        description = ''
-          Git revision to fetch for this grammar (copy & paste the Git sha)
-        '';
-      };
+  sources = config.sources;
 
+  conjure = (pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "conjure";
+    src = sources.conjure;
+  });
+
+  nvim-lsp = (pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "nvim-lsp";
+    src = sources.nvim-lsp;
+  });
+
+  vim-markdown-folding = (pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "vim-markdown-folding";
+    src = sources.vim-markdown-folding;
+  });
+
+  # parinfer-rust = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+  #   name = "parinfer";
+  #   postInstall = ''
+  #     rtpPath=$out/share/vim-plugins/${name}
+  #     mkdir -p $rtpPath/plugin
+  #     sed "s,let s:libdir = .*,let s:libdir = '${pkgs.parinfer-rust}/lib'," \
+  #       plugin/parinfer.vim >$rtpPath/plugin/parinfer.vim
+  #   '';
+  #   src = sources.parinfer;
+  # });
+
+  onehalf = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "onehalf";
+    src = "${sources.onehalf}/vim";
+  });
+
+  apprentice = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "apprentice";
+    src = sources.Apprentice;
+  });
+
+  vim-colortemplate = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "vim-colortemplate";
+    src = sources.vim-colortemplate;
+  });
+
+  vim-matchup = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "vim-matchup";
+    src = sources.vim-matchup;
+  });
+
+  # This is the spacevim theme not the spacevim plugin
+  spacevim = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "spacevim";
+    src = sources.spacevim;
+  });
+
+  yui = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "yui";
+    src = sources.yui;
+  });
+
+  sad = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "sad";
+    src = sources.sad;
+  });
+
+  vim-scratch = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "vim-scratch";
+    src = sources.vim-scratch;
+  });
+
+  vim-js = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "vim-js";
+    src = sources.vim-js;
+  });
+
+  vim-visual-split = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "vim-visual-split";
+    src = sources.vim-visual-split;
+  });
+
+  nvim-treesitter = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "nvim-treesitter";
+    src = sources.nvim-treesitter;
+  });
+
+  vim-lua = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "vim-lua";
+    src = sources.vim-lua;
+  });
+
+  # TODO: Add all from https://github.com/nvim-treesitter/nvim-treesitter/blob/master/lua/nvim-treesitter/parsers.lua
+  # TODO: Add them to nixpkgs once I've figured out how
+  treesitterGo = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    version = "latest";
+    name = "tree-sitter-go-${version}";
+    src = builtins.fetchGit {
+      "url" = "https://git@github.com/tree-sitter/tree-sitter-go.git";
+      "ref" = "master";
+      "rev" = "dadfd9c9aab2630632e61cfce645c13c35aa092f";
     };
+    buildPhase = ''
+      runHook preBuild
+      mkdir -p parser/
+      $CC -o parser/go.so -I$src/src $src/src/parser.c -shared  -Os -lstdc++ -fPIC
+      runHook postBuild
+    '';
   };
 
+  treesitterYaml = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    version = "latest";
+    name = "tree-sitter-yaml-${version}";
+    src = builtins.fetchGit {
+      "ref" = "master";
+      "url" = "https://git@github.com/ikatyang/tree-sitter-yaml";
+      "rev" = "258751d666d31888f97ca6188a686f36fadf6c43";
+    };
+    buildPhase = ''
+      runHook preBuild
+      mkdir -p parser/
+      ${pkgs.clang}/bin/clang++ -o parser/yaml.so -I$src/src $src/src/parser.c $src/src/scanner.cc -shared  -Os -lstdc++ -fPIC
+      runHook postBuild
+    '';
+  };
+
+  treesitterTs = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    version = "latest";
+    name = "tree-sitter-ts-${version}";
+    src = builtins.fetchGit {
+      "ref" = "master";
+      "url" = "https://git@github.com/tree-sitter/tree-sitter-typescript";
+      "rev" = "73afadbd117a8e8551758af9c3a522ef46452119";
+    };
+    buildPhase = ''
+      runHook preBuild
+      mkdir -p parser/
+      $CC -o parser/typescript.so -I$src/typescript/src $src/typescript/src/parser.c $src/typescript/src/scanner.c -shared  -Os -lstdc++ -fPIC
+      runHook postBuild
+    '';
+  };
+
+  treesitterTsx = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    version = "latest";
+    name = "tree-sitter-tsx-${version}";
+    src = builtins.fetchGit {
+      "ref" = "master";
+      "url" = "https://git@github.com/tree-sitter/tree-sitter-typescript";
+      "rev" = "73afadbd117a8e8551758af9c3a522ef46452119";
+    };
+    buildPhase = ''
+      runHook preBuild
+      mkdir -p parser/
+      $CC -o parser/tsx.so -I$src/tsx/src $src/tsx/src/parser.c $src/tsx/src/scanner.c -shared  -Os -lstdc++ -fPIC
+      runHook postBuild
+    '';
+  };
+
+  nvim-colorizer = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "nvim-colorizer";
+    src = sources.nvim-colorizer;
+  });
+
+  vim-terraform = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "vim-terraform";
+    src = sources.vim-terraform;
+  });
+
+  vim-startuptime = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "vim-startuptime";
+    src = sources.vim-startuptime;
+  });
+
+  nvim-tree-lua = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "nvim-tree-lua";
+    src = sources."nvim-tree-lua";
+  });
+
+  completion-nvim = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "completion-nvim";
+    src = sources."completion-nvim";
+  });
+
+  edge = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "edge";
+    src = sources."vim-color-edge";
+  });
+
+  onebuddy = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "onebuddy";
+    src = sources."onebuddy";
+  });
+
+  telescope = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "telescope";
+    src = sources."nvim-telescope";
+  });
+
+  plenary = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "plenary";
+    src = sources."nvim-plenary";
+  });
+
+  popup = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "popup";
+    src = sources."nvim-popup";
+  });
+
+  colorbuddy = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "colorbuddy";
+    src = sources."nvim-colorbuddy";
+  });
+
+  completion-buffers = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "completion-buffers";
+    src = sources."nvim-completion-buffers";
+  });
+
+  fern = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "fern";
+    src = sources."nvim-fern";
+  });
+
+  gina = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "gina";
+    src = sources."nvim-gina";
+  });
+
+  any-jump = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "any-jump";
+    src = sources."nvim-any-jump";
+  });
+
+  sonokai = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "sonokai";
+    src = sources."nvim-color-sonokai";
+  });
+
+  highlite = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "highlite";
+    src = sources."nvim-highlite";
+  });
+
+  completion-tags = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "completion-tags";
+    src = sources."nvim-completion-tags";
+  });
+
+  vim-colors-github = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "vim-colors-github";
+    src = sources."vim-colors-github";
+  });
+
+  fennel-vim = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "fennel-vim";
+    src = sources."fennel-vim";
+  });
+
+  vim-kuroi-colors = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "vim-kuroi-colors";
+    src = sources."vim-kuroi-colors";
+  });
+
+  vim-nightowl-colors = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "vim-nightowl-colors";
+    src = sources."vim-nightowl-colors";
+  });
+
+  vim-tokyonight-colors = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "vim-tokyonight-colors";
+    src = sources."vim-tokyonight-colors";
+  });
+
+in
+let
+  ###################################
+  #       TREESITTER GRAMMARS       #
+  ###################################
   # TODO: Add all from https://github.com/nvim-treesitter/nvim-treesitter/blob/master/lua/nvim-treesitter/parsers.lua
   # TODO: Add them to nixpkgs once I've figured out how
   grammarGo = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
@@ -102,6 +367,22 @@ let
       runHook postBuild
     '';
   };
+in
+let
+  alacCfg = config.programs.alacritty;
+
+  grammarConfigModule = submodule {
+    options = {
+      rev = mkOption {
+        type = str;
+        description = ''
+          Git revision to fetch for this grammar (copy & paste the Git sha)
+        '';
+      };
+
+    };
+  };
+
 
   init = ''
     " ==============================
@@ -113,6 +394,7 @@ let
     let g:loaded_matchit = 1
 
     set background=light
+    set nocursorline
     set tabstop=4
     set list
     set formatoptions-=t
@@ -154,6 +436,7 @@ let
           \ highlight link SneakScope IncSearch
     augroup END
     let g:yui_comments = "emphasize"
+    let g:tokyonight_enable_italic = 1
     colorscheme ${if alacCfg.light then "yui" else "jellybeans"}
 
     " https://github.com/neovim/neovim/issues/13113
@@ -478,8 +761,6 @@ let
   # absolute path
   readFtplugin = name: builtins.readFile ("${ftPluginDir}/${name}.vim");
 
-  plugins = (import ./plugins.nix { inherit pkgs; sources = config.sources; });
-
   # TODO: Should just add all automatically
   localPlugins =
     builtins.map
@@ -532,7 +813,8 @@ let
 
 in
 {
-  # TODO: Add fugitive, sneak, asterisk, sad and lsp
+  # TODO: Add fugitive, sneak, asterisk, sad and lsp (technically
+  # completion-nvim should include my LSP config anyway)
   options.programs.neovim.clojure = {
     enable = mkOption {
       type = bool;
@@ -842,7 +1124,7 @@ in
         buildInputs = oldAttrs.buildInputs ++ [ pkgs.tree-sitter ];
       });
 
-      configure = with pkgs.vimPlugins; with plugins; {
+      configure = with pkgs.vimPlugins; {
         customRC = init;
 
         packages = {
@@ -899,6 +1181,10 @@ in
               onedark-vim
               jellybeans-vim
               falcon
+              vim-kuroi-colors
+              vim-nightowl-colors
+              vim-tokyonight-colors
+              spacevim
 
             ]
             ++ localPlugins
