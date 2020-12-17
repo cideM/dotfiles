@@ -395,16 +395,18 @@ let
 
     set background=light
     set nocursorline
+    set number
+    set relativenumber
     set tabstop=4
     set list
-    set formatoptions-=t
+    set formatoptions=tcrqjn
     set wildignore+=*/.git/*,
                 \*/node_modules/*,
                 \*/build/*,
                 \*/dist/*,
                 \*/compiled/*,
                 \*/tmp/*
-    set diffopt=algorithm:patience,filler,indent-heuristic,closeoff
+    set diffopt=algorithm:patience,filler,indent-heuristic,closeoff,iwhite
     set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
     set hidden
     set signcolumn=yes:3
@@ -513,6 +515,8 @@ let
 
     " Leave insert mode with jk
     imap jk             <Esc>
+
+    nmap <leader>s :w<CR>
 
     " Convenience mappings for calling :grep
     nnoremap <leader>gg :grep!<space>
