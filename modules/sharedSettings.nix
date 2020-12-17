@@ -23,6 +23,7 @@
 
     clojure = {
       enable = true;
+      kondo.enable = true;
     };
 
     telescope = {

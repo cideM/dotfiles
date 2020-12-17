@@ -679,6 +679,14 @@ let
     nvim_lsp.dhall.setup{}
     EOF
 
+    ${if cfg.clojure.kondo.enable then ''
+      " ========= ALE =====================
+      nmap <localleader>ad <Plug>(ale_detail)
+      nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+      nmap <silent> <C-j> <Plug>(ale_next_wrap)
+      nmap <silent> <localleader>af <Plug>(ale_fix)
+    '' else ""}
+
     ${if cfg.treesitter.enable then ''
       " ========= NVIM-TREESITTER =========
       packadd nvim-treesitter
@@ -822,6 +830,13 @@ in
       description = "Whether to install Clojure plugins";
       default = false;
     };
+
+    kondo.enable = mkOption
+      {
+        type = bool;
+        description = "Add ALE to use clj-kondo";
+        default = false;
+      };
   };
 
   options.programs.neovim.completion = {
@@ -1060,6 +1075,11 @@ in
             endif
             let current_compiler="clj-kondo"
 
+            ${if cfg.clojure.kondo.enable then ''
+              let b:ale_linters = ['clj-kondo']
+              packadd ale
+            '' else ""}
+
             ${if cfg.completion.enable && cfg.completion.plugin == "completion-nvim" then ''
               let b:no_completion_nvim=1
               packadd deoplete-nvim
@@ -1115,6 +1135,10 @@ in
         };
       }
     );
+
+
+    # It's broken on Darwin so there it needs to be installed with homebrew
+    home.packages = mkIf (cfg.clojure.kondo.enable && pkgs.stdenv.isDarwin == false) [ clj-kondo ];
 
     programs.neovim = {
       enable = true;
@@ -1204,6 +1228,7 @@ in
               nvim-colorizer
             ]
             ++ (if cfg.treesitter.enable then [ nvim-treesitter ] else [ ])
+            ++ (if cfg.clojure.kondo.enable then [ ale ] else [ ])
             # This is necessary so I can still use Deoplete for Clojure which
             # isn't supported by completion-nvim since I use Conjure and no LSP
             ++ (if cfg.completion.enable && cfg.completion.plugin == "deoplete" || cfg.completion.plugin == "completion-nvim" then [ deoplete-nvim ] else [ ]);
