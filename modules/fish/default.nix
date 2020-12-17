@@ -101,6 +101,9 @@ in
           echo -n (basename $PWD)
           fish_git_prompt
           set_color normal
+          if jobs -q
+            printf ' (%i)' (count jobs)
+          end
           if test "$IN_LORRI_SHELL" != ""
             echo -n ' [L] '
           end
