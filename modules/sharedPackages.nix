@@ -56,7 +56,7 @@ with pkgs;
     jq
     jrnl
     kubernetes-helm
-    # lazygit
+    lazygit
     libuv
     # luajitPackages.luacheck
     liberation_ttf
