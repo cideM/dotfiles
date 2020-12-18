@@ -412,7 +412,7 @@ let
     set signcolumn=yes:3
     set ignorecase
     set number
-    ${if cfg.completion.enable && cfg.completion.plugin == "completion-nvim" then ''
+    ${if cfg.completion.enable then ''
     set completeopt=menuone,noinsert,noselect
     '' else ''
     set completeopt-=preview
@@ -593,6 +593,7 @@ let
     map <leader>k <Plug>Sneak_S
 
 
+    ${if cfg.lsp.enable && cfg.lsp.backend == "nvim-lsp" then ''
     " ========= NVIM-LSP ================
     " https://neovim.io/doc/user/lsp.html
 
@@ -722,19 +723,9 @@ let
       nnoremap ${cfg.telescope.prefix}t  <cmd>Telescope current_buffer_tags<cr>
     '' else ""}
 
-    ${if cfg.completion.enable && cfg.completion.plugin == "deoplete" then ''
+    ${if cfg.completion.enable then ''
       " ======= COMPLETION ================
-      packadd deoplete
-      call deoplete#custom#option('num_processes', 2)
-      " I recommend for you to disable deoplete-options-refresh_always option
-      " when you enable deoplete parallel completion.
-      call deoplete#custom#option('refresh_always', v:false)
-      let g:deoplete#enable_at_startup = 1
-    '' else ""}
-
-    ${if cfg.completion.enable && cfg.completion.plugin == "completion-nvim" then ''
-      " ======= COMPLETION ================
-      " Load on-demand
+      " Load on-demand when not using LSP
       let g:deoplete#enable_at_startup = 0
       " Use <Tab> and <S-Tab> to navigate through popup menu
       inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -747,6 +738,11 @@ let
           if exists('b:no_completion_nvim')
               return
           endif
+          " Disable Deoplete again if runnig
+          try
+            call deoplete#disable()
+          catch
+          endtry
           lua require'completion'.on_attach()
       endfunction
 
@@ -843,16 +839,31 @@ in
       };
   };
 
+  options.programs.neovim.lsp = {
+    enable = mkOption {
+      type = bool;
+      description = "Enable LSP functionality";
+      default = true;
+    };
+
+    backend = mkOption {
+      type = enum [ "nvim-lsp" ];
+      description = "Which LSP backend to use";
+      default = "nvim-lsp";
+    };
+
+    ale_integration = mkOption {
+      type = bool;
+      description = "Send errors to ALE instead of loclist";
+      default = true;
+    };
+  };
+
   options.programs.neovim.completion = {
     enable = mkOption {
       type = bool;
       description = "Whether to use a special plugin for completion, such as 'mucomplete' or 'completion-nvim'";
       default = false;
-    };
-
-    plugin = mkOption {
-      type = enum [ "completion-nvim" "deoplete" ];
-      default = "completion-nvim";
     };
   };
 
@@ -1084,9 +1095,10 @@ in
               packadd ale
             '' else ""}
 
-            ${if cfg.completion.enable && cfg.completion.plugin == "completion-nvim" then ''
+            ${if cfg.completion.enable then ''
               let b:no_completion_nvim=1
               packadd deoplete-nvim
+              packadd deoplete-lsp
               call deoplete#enable()
               call deoplete#custom#option('num_processes', 2)
               " I recommend for you to disable deoplete-options-refresh_always option
@@ -1218,8 +1230,7 @@ in
             ]
             ++ localPlugins
             ++ (if cfg.treesitter.enable then [ grammarClojure grammarGo grammarYaml grammarTs grammarTsx ] else [ ])
-            ++ (if cfg.completion.enable && cfg.completion.plugin == "completion-nvim" then [ completion-nvim completion-buffers completion-tags ] else [ ])
-            ++ (if cfg.completion.enable && cfg.completion.plugin == "deoplete" then [ deoplete-lsp ] else [ ])
+            ++ (if cfg.completion.enable then [ completion-nvim completion-buffers completion-tags ] else [ ])
             ++ (if cfg.editor.highlight-current-word then [ vim-illuminate ] else [ ])
             ++ (if cfg.git.committia.enable then [ committia ] else [ ])
             ++ (if cfg.git.signify.enable then [ vim-signify ] else [ ])
@@ -1228,14 +1239,14 @@ in
             ++ (if cfg.clojure.enable then [ conjure vim-parinfer ] else [ ]);
 
             opt = [
-              nvim-lsp
               nvim-colorizer
             ]
+            ++ (if cfg.lsp.enable && cfg.lsp.backend == "nvim-lsp" then [ nvim-lsp ] else [ ])
             ++ (if cfg.treesitter.enable then [ nvim-treesitter ] else [ ])
-            ++ (if cfg.clojure.kondo.enable then [ ale ] else [ ])
+            ++ (if cfg.clojure.kondo.enable || cfg.lsp.ale_integration then [ ale ] else [ ])
             # This is necessary so I can still use Deoplete for Clojure which
             # isn't supported by completion-nvim since I use Conjure and no LSP
-            ++ (if cfg.completion.enable && cfg.completion.plugin == "deoplete" || cfg.completion.plugin == "completion-nvim" then [ deoplete-nvim ] else [ ]);
+            ++ (if cfg.completion.enable then [ deoplete-nvim deoplete-lsp ] else [ ]);
           };
         };
       };

@@ -33,7 +33,6 @@
 
     completion = {
       enable = true;
-      plugin = "completion-nvim";
     };
 
     git = {
