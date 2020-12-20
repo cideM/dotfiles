@@ -21,6 +21,10 @@
       clojure.rev = "f8006afc91296b0cdb09bfa04e08a6b3347e5962";
     };
 
+    haskell = {
+      hlint.enable = true;
+    };
+
     clojure = {
       enable = true;
       kondo.enable = true;

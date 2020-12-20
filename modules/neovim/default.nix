@@ -839,6 +839,15 @@ in
       };
   };
 
+  options.programs.neovim.haskell = {
+    hlint.enable = mkOption
+      {
+        type = bool;
+        description = "Add ALE to use hlint";
+        default = false;
+      };
+  };
+
   options.programs.neovim.lsp = {
     enable = mkOption {
       type = bool;
@@ -1080,6 +1089,22 @@ in
               setlocal foldmethod=syntax
             ''}
 
+          '';
+        };
+        "nvim/ftplugin/haskell.vim" = {
+          text = ''
+            let b:undo_ftplugin="setlocal formatprg< foldmethod<"
+
+            set foldmethod=indent
+
+            set formatprg=ormolu
+
+            ${if cfg.haskell.hlint.enable then ''
+            let b:ale_linters = ['hlint']
+            packadd ale
+            '' else ""}
+
+            nnoremap <buffer> <localleader>t :silent !fast-tags -R .<cr>
           '';
         };
         "nvim/ftplugin/clojure.vim" = {
