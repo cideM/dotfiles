@@ -21,12 +21,15 @@ in
 
     programs.neovim = {
 
+      enable = true;
+
       # https://github.com/nvim-treesitter/nvim-treesitter/blob/a5baf151bd78a88c88078b197657f277bcf06058/lockfile.json
       treesitter = {
-        enable = true;
+        enable = false;
         tsx.rev = "73afadbd117a8e8551758af9c3a522ef46452119";
         ts.rev = "73afadbd117a8e8551758af9c3a522ef46452119";
-        yaml.rev = "258751d666d31888f97ca6188a686f36fadf6c43";
+        nix.rev = "791b5ff0e4f0da358cbb941788b78d436a2ca621";
+        yaml.rev = "da23114377ac32e844eb82e96bdcf830e874c451";
         go.rev = "dadfd9c9aab2630632e61cfce645c13c35aa092f";
         clojure.rev = "f8006afc91296b0cdb09bfa04e08a6b3347e5962";
       };
@@ -35,31 +38,44 @@ in
         hlint.enable = true;
       };
 
+      ale = {
+        enable = true;
+      };
+
+      lsp = {
+        enable = true;
+        backend = "nvim-lsp";
+      };
+
       clojure = {
         enable = true;
         kondo.enable = true;
       };
 
       telescope = {
-        enable = false;
+        enable = true;
         prefix = "<leader>t";
       };
 
       completion = {
         enable = true;
+        backend = "completion-nvim";
+        preview.enable = false;
+        # This doesn't seem to work. It only shows for very few items and
+        # there's still some other floating completion window that pops up
+        float-preview-nvim.enable = false;
       };
 
       git = {
-        committia.enable = false;
-        gv.enable = false;
+        committia.enable = true;
+        gv.enable = true;
         signify.enable = true;
         messenger.enable = true;
       };
 
       editor = {
-        highlight-current-word = false;
+        highlight-current-word = true;
       };
-      enable = true;
 
       package = pkgs.neovim-unwrapped.overrideAttrs (oldAttrs: rec {
         version = "master";
@@ -131,21 +147,32 @@ in
 
             ]
             ++ (import ./ownplugins.nix args)
-            ++ (if cfg.treesitter.enable then [ grammarClojure grammarGo grammarYaml grammarTs grammarTsx ] else [ ])
-            ++ (if cfg.completion.enable then [ completion-nvim completion-buffers completion-tags ] else [ ])
+            ++ (if cfg.treesitter.enable then [
+              grammarClojure
+              # Doesn't build
+              # grammarNix
+              grammarGo
+              grammarYaml
+              grammarTs
+              grammarTsx
+            ] else [ ])
+            ++ (if cfg.completion.enable && cfg.completion.backend == "completion-nvim" then [ completion-nvim completion-buffers completion-tags ] else [ ])
             ++ (if cfg.editor.highlight-current-word then [ vim-illuminate ] else [ ])
             ++ (if cfg.git.committia.enable then [ committia ] else [ ])
             ++ (if cfg.git.signify.enable then [ vim-signify ] else [ ])
             ++ (if cfg.git.gv.enable then [ gv-vim ] else [ ])
             ++ (if cfg.git.messenger.enable then [ git-messenger-vim ] else [ ])
-            ++ (if cfg.clojure.enable then [ conjure vim-parinfer ] else [ ]);
+            ++ (if cfg.clojure.enable then [ vim-parinfer ] else [ ])
+            ++ (if cfg.telescope.enable then [ plenary popup telescope ] else [ ])
+            ++ (if cfg.completion.float-preview-nvim.enable then [ float-preview-nvim ] else [ ]);
 
             opt = [
               nvim-colorizer
             ]
             ++ (if cfg.lsp.enable && cfg.lsp.backend == "nvim-lsp" then [ nvim-lsp ] else [ ])
             ++ (if cfg.treesitter.enable then [ nvim-treesitter ] else [ ])
-            ++ (if cfg.clojure.kondo.enable || cfg.lsp.ale_integration then [ ale ] else [ ])
+            ++ (if cfg.clojure.kondo.enable || cfg.ale.enable || cfg.haskell.hlint.enable then [ ale ] else [ ])
+            ++ (if cfg.clojure.enable then [ conjure ] else [ ])
             # This is necessary so I can still use Deoplete for Clojure which
             # isn't supported by completion-nvim since I use Conjure and no LSP
             ++ (if cfg.completion.enable then [ deoplete-nvim deoplete-lsp ] else [ ]);

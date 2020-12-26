@@ -4,6 +4,8 @@ let
   cfg = config.programs.neovim;
 
   alacCfg = config.programs.alacritty;
+
+  useAle = cfg.clojure.kondo.enable || cfg.ale.enable || cfg.haskell.hlint.enable;
 in
 ''
   " ==============================
@@ -34,9 +36,12 @@ in
   set ignorecase
   set number
   ${if cfg.completion.enable then ''
-  set completeopt=menuone,noinsert,noselect
+    set completeopt=menuone,noinsert,noselect
+  '' else ""}
+  ${if cfg.completion.preview.enable then ''
+    set completeopt+=preview
   '' else ''
-  set completeopt-=preview
+    set completeopt-=preview
   ''}
   set smartcase
   set inccommand=split
@@ -306,7 +311,7 @@ in
   EOF
   '' else ""}
 
-  ${if cfg.clojure.kondo.enable then ''
+  ${if useAle then ''
     " ========= ALE =====================
     nmap <localleader>ad <Plug>(ale_detail)
     nmap <silent> <C-k> <Plug>(ale_previous_wrap)
@@ -331,13 +336,20 @@ in
   ${if cfg.telescope.enable then ''
     " ======= TELESCOPE =================
     packadd telescope
+    lua <<EOF
+    require('telescope').setup{
+      defaults = {
+        file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
+      }
+    }
+    EOF
     nnoremap ${cfg.telescope.prefix}p  <cmd>Telescope find_files<cr>
     nnoremap ${cfg.telescope.prefix}b  <cmd>Telescope buffers<cr>
     nnoremap ${cfg.telescope.prefix}g  <cmd>Telescope live_grep<cr>
-    nnoremap ${cfg.telescope.prefix}ds <cmd>Telescope lsp_document_symbols<cr>
-    nnoremap ${cfg.telescope.prefix}ws <cmd>Telescope lsp_workspace_symbols<cr>
+    nnoremap ${cfg.telescope.prefix}D  <cmd>Telescope lsp_document_symbols<cr>
+    nnoremap ${cfg.telescope.prefix}W  <cmd>Telescope lsp_workspace_symbols<cr>
     nnoremap ${cfg.telescope.prefix}m  <cmd>Telescope marks<cr>
-    nnoremap ${cfg.telescope.prefix}gf <cmd>Telescope git_files<cr>
+    nnoremap ${cfg.telescope.prefix}f  <cmd>Telescope git_files<cr>
     nnoremap ${cfg.telescope.prefix}l  <cmd>Telescope current_buffer_fuzzy_find<cr>
     nnoremap ${cfg.telescope.prefix}w  <cmd>Telescope grep_string<cr>
     nnoremap ${cfg.telescope.prefix}p  <cmd>Telescope builtin<cr>
@@ -345,15 +357,19 @@ in
     nnoremap ${cfg.telescope.prefix}t  <cmd>Telescope current_buffer_tags<cr>
   '' else ""}
 
-  ${if cfg.completion.enable then ''
+  ${if cfg.completion.enable && cfg.completion.backend == "completion-nvim" then ''
     " ======= COMPLETION ================
     " Load on-demand when not using LSP
     let g:deoplete#enable_at_startup = 0
+    let g:float_preview#docked = 1
     " Use <Tab> and <S-Tab> to navigate through popup menu
     inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
     inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
     let g:completion_auto_change_source = 1
+    " Hover windows have problems with long paths
+    " https://github.com/nvim-lua/completion-nvim/issues/305
+    let g:completion_enable_auto_hover = 0
 
     function! MaybeActivateCompletion()
         " Some languages work better with deoplete
@@ -383,5 +399,23 @@ in
         \   {'complete_items': ['path']},
         \]
         \}
+  '' else ""}
+
+  ${if cfg.completion.enable && cfg.completion.backend == "deoplete" then ''
+    " If using Deoplete as default completion provider, load it right away and
+    " enable it
+    let g:deoplete#enable_at_startup = 1
+    " Use <Tab> and <S-Tab> to navigate through popup menu
+    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+    let g:completion_auto_change_source = 1
+    packadd deoplete-nvim
+    packadd deoplete-lsp
+  '' else ""}
+
+  ${if cfg.completion.float-preview-nvim.enable then ''
+  let g:float_preview#docked = 1
+  set completeopt-=preview
   '' else ""}
 ''

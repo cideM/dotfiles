@@ -54,10 +54,14 @@ in
       description = "Which LSP backend to use";
       default = "nvim-lsp";
     };
+  };
 
-    ale_integration = mkOption {
+  options.programs.neovim.ale = {
+    enable = mkOption {
       type = bool;
-      description = "Send errors to ALE instead of loclist";
+      description = ''
+        Use ALE for diagnostics
+      '';
       default = true;
     };
   };
@@ -66,6 +70,32 @@ in
     enable = mkOption {
       type = bool;
       description = "Whether to use a special plugin for completion, such as 'mucomplete' or 'completion-nvim'";
+      default = false;
+    };
+
+    backend = mkOption {
+      type = enum [ "completion-nvim" "deoplete" ];
+      description = "Which completion plugin(s) to use";
+      default = "deoplete";
+    };
+
+    preview.enable = mkOption {
+      type = bool;
+      description = ''
+        Neovim has a preview option for completion which can be a bit
+        annoying sometimes. If this is enabled then "preview" is added
+        to completeopt.
+      '';
+      default = true;
+    };
+
+    float-preview-nvim.enable = mkOption {
+      type = bool;
+      description = ''
+        Use this plugin https://github.com/ncm2/float-preview.nvim for
+        floating previews. I don't really know if or how this applies without
+        Deoplete, but /shrug
+      '';
       default = false;
     };
   };
@@ -137,6 +167,16 @@ in
     clojure = mkOption {
       type = grammarConfigModule;
       description = "Clojure treesitter grammar";
+      example = literalExample ''
+        {
+          rev = "dadfd9c9aab2630632e61cfce645c13c35aa092f";
+        };
+      '';
+    };
+
+    nix = mkOption {
+      type = grammarConfigModule;
+      description = "Nix treesitter grammar";
       example = literalExample ''
         {
           rev = "dadfd9c9aab2630632e61cfce645c13c35aa092f";

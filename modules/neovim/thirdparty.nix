@@ -92,72 +92,6 @@ in
     src = sources.vim-lua;
   });
 
-  # TODO: Add all from https://github.com/nvim-treesitter/nvim-treesitter/blob/master/lua/nvim-treesitter/parsers.lua
-  # TODO: Add them to nixpkgs once I've figured out how
-  treesitterGo = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    version = "latest";
-    name = "tree-sitter-go-${version}";
-    src = builtins.fetchGit {
-      "url" = "https://git@github.com/tree-sitter/tree-sitter-go.git";
-      "ref" = "master";
-      "rev" = "dadfd9c9aab2630632e61cfce645c13c35aa092f";
-    };
-    buildPhase = ''
-      runHook preBuild
-      mkdir -p parser/
-      $CC -o parser/go.so -I$src/src $src/src/parser.c -shared  -Os -lstdc++ -fPIC
-      runHook postBuild
-    '';
-  };
-
-  treesitterYaml = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    version = "latest";
-    name = "tree-sitter-yaml-${version}";
-    src = builtins.fetchGit {
-      "ref" = "master";
-      "url" = "https://git@github.com/ikatyang/tree-sitter-yaml";
-      "rev" = "258751d666d31888f97ca6188a686f36fadf6c43";
-    };
-    buildPhase = ''
-      runHook preBuild
-      mkdir -p parser/
-      ${pkgs.clang}/bin/clang++ -o parser/yaml.so -I$src/src $src/src/parser.c $src/src/scanner.cc -shared  -Os -lstdc++ -fPIC
-      runHook postBuild
-    '';
-  };
-
-  treesitterTs = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    version = "latest";
-    name = "tree-sitter-ts-${version}";
-    src = builtins.fetchGit {
-      "ref" = "master";
-      "url" = "https://git@github.com/tree-sitter/tree-sitter-typescript";
-      "rev" = "73afadbd117a8e8551758af9c3a522ef46452119";
-    };
-    buildPhase = ''
-      runHook preBuild
-      mkdir -p parser/
-      $CC -o parser/typescript.so -I$src/typescript/src $src/typescript/src/parser.c $src/typescript/src/scanner.c -shared  -Os -lstdc++ -fPIC
-      runHook postBuild
-    '';
-  };
-
-  treesitterTsx = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    version = "latest";
-    name = "tree-sitter-tsx-${version}";
-    src = builtins.fetchGit {
-      "ref" = "master";
-      "url" = "https://git@github.com/tree-sitter/tree-sitter-typescript";
-      "rev" = "73afadbd117a8e8551758af9c3a522ef46452119";
-    };
-    buildPhase = ''
-      runHook preBuild
-      mkdir -p parser/
-      $CC -o parser/tsx.so -I$src/tsx/src $src/tsx/src/parser.c $src/tsx/src/scanner.c -shared  -Os -lstdc++ -fPIC
-      runHook postBuild
-    '';
-  };
-
   nvim-colorizer = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "nvim-colorizer";
     src = sources.nvim-colorizer;
@@ -278,6 +212,22 @@ in
   ###################################
   # TODO: Add all from https://github.com/nvim-treesitter/nvim-treesitter/blob/master/lua/nvim-treesitter/parsers.lua
   # TODO: Add them to nixpkgs once I've figured out how
+  grammarNix = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    version = "latest";
+    name = "tree-sitter-nix-${version}";
+    src = builtins.fetchGit {
+      "url" = "https://github.com/cstrahan/tree-sitter-nix";
+      "ref" = "master";
+      "rev" = cfg.treesitter.nix.rev;
+    };
+    buildPhase = ''
+      runHook preBuild
+      mkdir -p parser/
+      $CC -o parser/nix.so -I$src/src $src/src/parser.c $src/src/scanner.cc -shared  -Os -fPIC
+      runHook postBuild
+    '';
+  };
+
   grammarGo = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     version = "latest";
     name = "tree-sitter-go-${version}";
