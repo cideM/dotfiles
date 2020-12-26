@@ -412,6 +412,7 @@ in
     let g:completion_auto_change_source = 1
     packadd deoplete-nvim
     packadd deoplete-lsp
+    autocmd! deoplete#lsp
   '' else ""}
 
   ${if cfg.completion.float-preview-nvim.enable then ''

@@ -389,6 +389,7 @@ in
           packadd deoplete-nvim
           packadd deoplete-lsp
           call deoplete#enable()
+          autocmd! deoplete#lsp
           call deoplete#custom#option('num_processes', 2)
           " I recommend for you to disable deoplete-options-refresh_always option
           " when you enable deoplete parallel completion.
