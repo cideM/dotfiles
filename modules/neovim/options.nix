@@ -149,6 +149,30 @@ in
   };
 
   options.programs.neovim.editor = {
+    asterisk = mkOption {
+      type = bool;
+      description = "Better * handling";
+      default = false;
+    };
+
+    sneak = mkOption {
+      type = bool;
+      description = "Better buffer navigation";
+      default = false;
+    };
+
+    sad = mkOption {
+      type = bool;
+      description = "Easily operate on surroundings like ( { [";
+      default = false;
+    };
+
+    colorizer = mkOption {
+      type = bool;
+      description = "Show colors through background colors";
+      default = false;
+    };
+
     highlight-current-word = mkOption {
       type = bool;
       description = "Install a plugin ('vim-illuminate') which highlights the word under the cursor";

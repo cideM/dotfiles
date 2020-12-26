@@ -35,11 +35,11 @@ in
       };
 
       haskell = {
-        hlint.enable = true;
+        hlint.enable = false;
       };
 
       ale = {
-        enable = true;
+        enable = false;
       };
 
       lsp = {
@@ -49,16 +49,16 @@ in
 
       clojure = {
         enable = true;
-        kondo.enable = true;
+        kondo.enable = false;
       };
 
       telescope = {
-        enable = true;
+        enable = false;
         prefix = "<leader>t";
       };
 
       completion = {
-        enable = true;
+        enable = false;
         backend = "completion-nvim";
         preview.enable = false;
         # This doesn't seem to work. It only shows for very few items and
@@ -67,14 +67,18 @@ in
       };
 
       git = {
-        committia.enable = true;
-        gv.enable = true;
-        signify.enable = true;
-        messenger.enable = true;
+        committia.enable = false;
+        gv.enable = false;
+        signify.enable = false;
+        messenger.enable = false;
       };
 
       editor = {
-        highlight-current-word = true;
+        asterisk = false;
+        sneak = true;
+        sad = true;
+        colorizer = false;
+        highlight-current-word = false;
       };
 
       package = pkgs.neovim-unwrapped.overrideAttrs (oldAttrs: rec {
@@ -91,10 +95,7 @@ in
             start = [
 
               editorconfig-vim
-              limelight-vim
-              sad
               targets-vim
-              vim-asterisk
               vim-colortemplate
               vim-commentary
               vim-easy-align
@@ -105,7 +106,6 @@ in
               vim-peekaboo
               vim-repeat
               vim-sandwich
-              vim-sneak
               vim-unimpaired
               vim-dirvish
 
@@ -163,19 +163,21 @@ in
             ++ (if cfg.git.gv.enable then [ gv-vim ] else [ ])
             ++ (if cfg.git.messenger.enable then [ git-messenger-vim ] else [ ])
             ++ (if cfg.clojure.enable then [ vim-parinfer ] else [ ])
+            ++ (if cfg.editor.asterisk then [ vim-asterisk ] else [ ])
+            ++ (if cfg.editor.sneak then [ vim-sneak ] else [ ])
+            ++ (if cfg.editor.sad then [ vim-sad ] else [ ])
             ++ (if cfg.telescope.enable then [ plenary popup telescope ] else [ ])
             ++ (if cfg.completion.float-preview-nvim.enable then [ float-preview-nvim ] else [ ]);
 
-            opt = [
-              nvim-colorizer
-            ]
-            ++ (if cfg.lsp.enable && cfg.lsp.backend == "nvim-lsp" then [ nvim-lsp ] else [ ])
-            ++ (if cfg.treesitter.enable then [ nvim-treesitter ] else [ ])
-            ++ (if cfg.clojure.kondo.enable || cfg.ale.enable || cfg.haskell.hlint.enable then [ ale ] else [ ])
-            ++ (if cfg.clojure.enable then [ conjure ] else [ ])
-            # This is necessary so I can still use Deoplete for Clojure which
-            # isn't supported by completion-nvim since I use Conjure and no LSP
-            ++ (if cfg.completion.enable then [ deoplete-nvim deoplete-lsp ] else [ ]);
+            opt = [ ]
+              ++ (if cfg.editor.colorizer then [ nvim-colorizer ] else [ ])
+              ++ (if cfg.lsp.enable && cfg.lsp.backend == "nvim-lsp" then [ nvim-lsp ] else [ ])
+              ++ (if cfg.treesitter.enable then [ nvim-treesitter ] else [ ])
+              ++ (if cfg.clojure.kondo.enable || cfg.ale.enable || cfg.haskell.hlint.enable then [ ale ] else [ ])
+              ++ (if cfg.clojure.enable then [ conjure ] else [ ])
+              # This is necessary so I can still use Deoplete for Clojure which
+              # isn't supported by completion-nvim since I use Conjure and no LSP
+              ++ (if cfg.completion.enable then [ deoplete-nvim deoplete-lsp ] else [ ]);
           };
         };
       };

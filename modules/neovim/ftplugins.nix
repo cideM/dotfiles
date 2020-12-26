@@ -113,10 +113,10 @@ in
   };
   "nvim/ftplugin/lua.vim" = {
     text = ''
-        let b:undo_ftplugin = ""
+      let b:undo_ftplugin = ""
 
-        setlocal
-        makeprg=luacheck\ --formatter\ plain
+      setlocal
+      makeprg=luacheck\ --formatter\ plain
       let b:undo_ftplugin .= '|setlocal makeprg<'
 
       setlocal foldmethod=syntax
