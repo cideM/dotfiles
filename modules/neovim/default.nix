@@ -134,6 +134,7 @@ in
               vim-colors-github
               yui
               seoul256-vim
+              iceberg-vim
               vim-one
               onehalf
               papercolor-theme
