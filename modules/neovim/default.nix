@@ -165,7 +165,7 @@ in
             ++ (if cfg.clojure.enable then [ vim-parinfer ] else [ ])
             ++ (if cfg.editor.asterisk then [ vim-asterisk ] else [ ])
             ++ (if cfg.editor.sneak then [ vim-sneak ] else [ ])
-            ++ (if cfg.editor.sad then [ vim-sad ] else [ ])
+            ++ (if cfg.editor.sad then [ sad ] else [ ])
             ++ (if cfg.telescope.enable then [ plenary popup telescope ] else [ ])
             ++ (if cfg.completion.float-preview-nvim.enable then [ float-preview-nvim ] else [ ]);
 
