@@ -13,7 +13,7 @@
     };
 
     temperature = {
-      night = 2500;
+      night = 2700;
       day = 5500;
     };
   };
