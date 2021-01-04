@@ -10,6 +10,11 @@ in
     src = sources.conjure;
   });
 
+  inspecthi = (pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "inspecthi";
+    src = sources.inspecthi;
+  });
+
   nvim-lsp = (pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "nvim-lsp";
     src = sources.nvim-lsp;

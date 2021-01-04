@@ -108,6 +108,8 @@ in
               vim-sandwich
               vim-unimpaired
               vim-dirvish
+              vim-scriptease
+              inspecthi
 
               # Git
               vim-fugitive

@@ -61,6 +61,12 @@
         "url_template": "https://download.jetbrains.com/go/<name>-<version>.tar.gz",
         "version": "2020.2"
     },
+    "inspecthi": {
+        "branch": "main",
+        "repo": "https://github.com/cocopon/inspecthi.vim.git",
+        "rev": "6890a9ae3cd7ad4e499e4b7c967c943fa3099276",
+        "type": "git"
+    },
     "neovim": {
         "branch": "master",
         "repo": "https://git@github.com/neovim/neovim",
