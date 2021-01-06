@@ -45,7 +45,7 @@ with pkgs;
     gnupg
     golangci-lint
     google-cloud-sdk
-    # haskell-language-server
+    haskell-language-server
     gopls
     gzip
     hack-font

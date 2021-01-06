@@ -299,6 +299,7 @@ let
 
     nvim_lsp.rust_analyzer.setup{}
     nvim_lsp.gopls.setup{}
+    nvim_lsp.hls.setup{}
     nvim_lsp.dhall.setup{}
     EOF
   '';
