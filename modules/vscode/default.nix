@@ -19,7 +19,7 @@ in
         # the time and can't use 'niv' for this.
         src = builtins.fetchTarball {
           url = "https://vscode-update.azurewebsites.net/latest/${platform}/insider";
-          sha256 = "1kjawssh86yw7scwck1f2fw80i5ab5rc4czd1z38nlrq23a1n0c7";
+          sha256 = "0xi0zv8i4vslwyb1k5l81aff81xim915hyw2pjkyb1xqxfjs4xqb";
         };
       });
   };
