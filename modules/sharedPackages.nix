@@ -22,7 +22,7 @@ with pkgs;
     sd # sed
     ripgrep # grep
     bottom # top
-    # bandwhich
+    bandwhich
 
     # aerc
     awscli2
@@ -35,7 +35,7 @@ with pkgs;
     dhall-lsp-server
     dive
     docker-compose
-    # emacs
+    emacs
     entr
     findutils
     fzf
@@ -47,6 +47,7 @@ with pkgs;
     google-cloud-sdk
     haskell-language-server
     gopls
+    go
     gzip
     hack-font
     haskellPackages.nix-derivation
@@ -58,7 +59,7 @@ with pkgs;
     kubernetes-helm
     lazygit
     libuv
-    # luajitPackages.luacheck
+    luajitPackages.luacheck
     liberation_ttf
     nano
     ncdu
@@ -94,7 +95,7 @@ with pkgs;
     tree
     universal-ctags
     vim
-    # weechat
+    weechat
     wget
     yamllint
 
