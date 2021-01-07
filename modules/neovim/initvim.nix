@@ -278,29 +278,16 @@ let
 
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
       vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = false,
+        virtual_text = true,
         signs = true,
         update_in_insert = false,
       }
     )
 
-    if not configs.dhall then
-        configs.dhall = {
-            default_config = {
-                    cmd = {'dhall-lsp-server'};
-                    filetypes = {'dhall'};
-                    root_dir = function(fname)
-                        return vim.lsp.util.find_git_ancestor(fname) or vim.loop.os_homedir()
-                    end;
-                    settings = {};
-            };
-        }
-    end
-
     nvim_lsp.rust_analyzer.setup{}
     nvim_lsp.gopls.setup{}
     nvim_lsp.hls.setup{}
-    nvim_lsp.dhall.setup{}
+    nvim_lsp.dhall_lsp_server.setup{}
     EOF
   '';
 
