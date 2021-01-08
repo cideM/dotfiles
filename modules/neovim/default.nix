@@ -43,7 +43,7 @@ in
       };
 
       lsp = {
-        enable = true;
+        enable = false;
         backend = "nvim-lsp";
       };
 
