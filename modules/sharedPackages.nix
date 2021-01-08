@@ -13,6 +13,7 @@ with pkgs;
   ];
 
   home.packages = [
+    nixpkgs-review
 
     # Rust CLI replacements
     bat # cat
