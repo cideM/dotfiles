@@ -70,7 +70,7 @@
     "neovim": {
         "branch": "master",
         "repo": "https://git@github.com/neovim/neovim",
-        "rev": "2ea3127697692b0b2c480d585ef6529e90a72b0e",
+        "rev": "fe1ebea33914df137fdded98872fe38fa8470384",
         "type": "git"
     },
     "niv": {
@@ -148,7 +148,7 @@
     "nvim-lsp": {
         "branch": "master",
         "repo": "https://git@github.com/neovim/nvim-lspconfig.git",
-        "rev": "49f64e47f2ee148830239c03065860e72ad7b56a",
+        "rev": "f91331619032b8431c3ebfe23bcd6b2b9d58d200",
         "type": "git"
     },
     "nvim-plenary": {
@@ -178,7 +178,7 @@
     "nvim-treesitter": {
         "branch": "master",
         "repo": "https://git@github.com/nvim-treesitter/nvim-treesitter.git",
-        "rev": "632a9f1e3c4270c77945412812ed57bf9d614f48",
+        "rev": "2e8621ff1afa2284de3df316ecd0baf8e9195927",
         "type": "git"
     },
     "onebuddy": {
@@ -332,9 +332,9 @@
         "type": "git"
     },
     "yui": {
-        "branch": "master",
+        "branch": "v2",
         "repo": "https://git@github.com/cidem/yui",
-        "rev": "7c6936cfc989cc14a5b2c2314337066093acb178",
+        "rev": "d1de31bb2043e9b092e6e3f2b541fad9148d8bd5",
         "type": "git"
     }
 }
