@@ -81,6 +81,11 @@ in
     interactiveShellInit = fishConfig;
 
     functions = {
+      fish_git_prompt = {
+        body = ''
+        '';
+      };
+
       fish_greeting = {
         body = ''
         '';
@@ -88,26 +93,14 @@ in
     };
 
     promptInit = ''
-      set __fish_git_prompt_show_informative_status 1
-
-      set __fish_git_prompt_char_dirtystate '+'
-      set __fish_git_prompt_char_invalidstate 'x'
-      set __fish_git_prompt_char_stagedstate '*'
-      set __fish_git_prompt_char_untrackedfiles 'u'
-      set __fish_git_prompt_char_stateseparator '|'
-
       function fish_prompt
-          set_color $fish_color_cwd
-          echo -n (basename $PWD)
-          fish_git_prompt
-          set_color normal
-          if jobs -q
-            printf ' (%i)' (count jobs)
+          set -l last_status $status
+          echo -n (prompt_pwd)
+          if test $last_status -ne 0
+            echo -n ' ✗ '
+          else
+            echo -n ' ✓ '
           end
-          if test "$IN_LORRI_SHELL" != ""
-            echo -n ' [L] '
-          end
-          echo -n ' $ '
       end
     '';
 
