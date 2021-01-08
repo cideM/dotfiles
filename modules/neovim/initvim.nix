@@ -22,7 +22,7 @@ let
     set background=light
     set nocursorline
     set number
-    set relativenumber
+    set norelativenumber
     set tabstop=4
     set list
     set formatoptions=tcrqjn
