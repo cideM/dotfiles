@@ -10,7 +10,7 @@
       lola = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
       recent = "branch --sort=-committerdate";
       unpushed = "log --branches --not --remotes --no-walk --decorate --oneline";
-      s = "status -s";
+      s = "status";
       a = "add";
       co = "commit";
       ch = "checkout";
