@@ -20,7 +20,7 @@
     "completion-nvim": {
         "branch": "master",
         "repo": "https://github.com/nvim-lua/completion-nvim.git",
-        "rev": "a31127e97feaef9ef70499b1241d41579d42dba2",
+        "rev": "25dac52c4eb37bf28cc1b8fd6283b151db85e764",
         "type": "git"
     },
     "conjure": {
@@ -70,7 +70,7 @@
     "neovim": {
         "branch": "master",
         "repo": "https://git@github.com/neovim/neovim",
-        "rev": "fe1ebea33914df137fdded98872fe38fa8470384",
+        "rev": "b535575acdb037c35a9b688bc2d8adc2f3dece8d",
         "type": "git"
     },
     "niv": {
@@ -79,10 +79,10 @@
         "homepage": "https://github.com/nmattia/niv",
         "owner": "nmattia",
         "repo": "niv",
-        "rev": "62fcf7d0859628f1834d84a7a0706ace0223c27e",
-        "sha256": "06ghvcsarvi32awxvgdxivaji8fsdhv46p49as8xx8whwia9d3rh",
+        "rev": "94dadba1a3a6a2f0b8ca2963e49daeec5d4e3098",
+        "sha256": "1y2h9wl7w60maa2m4xw9231xdr325xynzpph8xr4j5vsznygv986",
         "type": "tarball",
-        "url": "https://github.com/nmattia/niv/archive/62fcf7d0859628f1834d84a7a0706ace0223c27e.tar.gz",
+        "url": "https://github.com/nmattia/niv/archive/94dadba1a3a6a2f0b8ca2963e49daeec5d4e3098.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nord-vim": {
@@ -130,7 +130,7 @@
     "nvim-fern": {
         "branch": "master",
         "repo": "https://github.com/lambdalisue/fern.vim.git",
-        "rev": "591e2001fe0546ba28cc7dd614c40f5d92050f92",
+        "rev": "100764195f8cea2edf8a8c6a69a3cb707e35cf6d",
         "type": "git"
     },
     "nvim-gina": {
@@ -148,7 +148,7 @@
     "nvim-lsp": {
         "branch": "master",
         "repo": "https://git@github.com/neovim/nvim-lspconfig.git",
-        "rev": "f91331619032b8431c3ebfe23bcd6b2b9d58d200",
+        "rev": "4e7a2c32628e674348d0bf8029e1c580b05e5cc4",
         "type": "git"
     },
     "nvim-plenary": {
@@ -166,7 +166,7 @@
     "nvim-telescope": {
         "branch": "master",
         "repo": "https://github.com/nvim-telescope/telescope.nvim.git",
-        "rev": "1d6195ff643ed153eb0f233b32f1becc68c79ee6",
+        "rev": "de80a9837cd1d207981c1f6dbf504436f8bfee13",
         "type": "git"
     },
     "nvim-tree-lua": {
@@ -178,7 +178,7 @@
     "nvim-treesitter": {
         "branch": "master",
         "repo": "https://git@github.com/nvim-treesitter/nvim-treesitter.git",
-        "rev": "2e8621ff1afa2284de3df316ecd0baf8e9195927",
+        "rev": "00ea65199e316aec5934cc2666ec9738e410b711",
         "type": "git"
     },
     "onebuddy": {
@@ -334,7 +334,7 @@
     "yui": {
         "branch": "v2",
         "repo": "https://git@github.com/cidem/yui",
-        "rev": "d1de31bb2043e9b092e6e3f2b541fad9148d8bd5",
+        "rev": "d95555871115fb3e7a1311abd4a37a6ba22de440",
         "type": "git"
     }
 }
