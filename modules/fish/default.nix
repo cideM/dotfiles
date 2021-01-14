@@ -65,6 +65,8 @@ let
     abbr -a dc 'docker-compose'
     abbr -a tf 'terraform'
 
+    alias  niv 'niv --no-colors'
+
     ${if alacCfg.light then ''
       alias fzf 'fzf --color=light'
       alias dash 'dash -E'
@@ -81,33 +83,21 @@ in
     interactiveShellInit = fishConfig;
 
     functions = {
-      fish_git_prompt = {
-        body = ''
-        '';
-      };
-
       fish_greeting = {
         body = ''
         '';
       };
     };
 
-    promptInit = ''
-      function fish_prompt
-          set -l last_status $status
-          echo -n (prompt_pwd)
-          if test $last_status -ne 0
-            echo -n ' ✗ '
-          else
-            echo -n ' ✓ '
-          end
-      end
-    '';
-
     plugins = [
       {
         name = "nix-env";
         src = config.sources.fish-nix-env;
+      }
+
+      {
+        name = "lucid";
+        src = config.sources.lucid-fish-prompt;
       }
     ];
   };
