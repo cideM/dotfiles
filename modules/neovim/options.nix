@@ -188,6 +188,16 @@ in
       default = false;
     };
 
+    javascript = mkOption {
+      type = grammarConfigModule;
+      description = "Javascript treesitter grammar";
+      example = literalExample ''
+        {
+          rev = "dadfd9c9aab2630632e61cfce645c13c35aa092f";
+        };
+      '';
+    };
+
     clojure = mkOption {
       type = grammarConfigModule;
       description = "Clojure treesitter grammar";

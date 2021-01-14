@@ -29,9 +29,10 @@ in
         tsx.rev = "73afadbd117a8e8551758af9c3a522ef46452119";
         ts.rev = "73afadbd117a8e8551758af9c3a522ef46452119";
         nix.rev = "791b5ff0e4f0da358cbb941788b78d436a2ca621";
-        yaml.rev = "da23114377ac32e844eb82e96bdcf830e874c451";
+        yaml.rev = "ab0ce67ce98f8d9cc0224ebab49c64d01fedc1a1";
         go.rev = "dadfd9c9aab2630632e61cfce645c13c35aa092f";
-        clojure.rev = "f8006afc91296b0cdb09bfa04e08a6b3347e5962";
+        clojure.rev = "f09652f095be878df8a87a57dcbfa07094316253";
+        javascript.rev = "852f11b394804ac2a8986f8bcaafe77753635667";
       };
 
       haskell = {
@@ -57,6 +58,7 @@ in
         prefix = "<leader>t";
       };
 
+      # This makes startup time noticeably slow
       completion = {
         enable = false;
         backend = "completion-nvim";

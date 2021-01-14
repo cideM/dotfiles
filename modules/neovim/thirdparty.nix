@@ -249,6 +249,23 @@ in
     '';
   };
 
+  grammarJavascript = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    version = "latest";
+    name = "tree-sitter-javascript-${version}";
+    src = builtins.fetchGit {
+      "url" = "https://github.com/tree-sitter/tree-sitter-javascript";
+      "ref" = "master";
+      "rev" = cfg.treesitter.javascript.rev;
+    };
+    buildPhase = ''
+      runHook preBuild
+      mkdir -p parser/
+      ${pkgs.clang}/bin/clang++ -o parser/javascript.so -I$src/src $src/src/parser.c $src/src/scanner.cc -shared  -Os -lstdc++ -fPIC
+      runHook postBuild
+    '';
+  };
+
+
   grammarClojure = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     version = "latest";
     name = "tree-sitter-clojure-${version}";
