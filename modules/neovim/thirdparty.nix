@@ -1,13 +1,52 @@
 { config, lib, pkgs, ... }:
+
+with builtins;
 let
   cfg = config.programs.neovim;
 
   sources = config.sources;
+
+  makeGrammar =
+    { includedFiles
+    , parserName
+    , src
+    , name ? parserName
+    , version ? "latest"
+    }:
+    pkgs.vimUtils.buildVimPluginFrom2Nix {
+      version = version;
+      name = "nvim-treesitter-${name}";
+      src = src;
+      buildPhase = ''
+        runHook preBuild
+        mkdir -p parser/
+        ${pkgs.gcc}/bin/gcc -o parser/${parserName}.so -I$src/ ${builtins.concatStringsSep " " includedFiles}  -shared  -Os -lstdc++ -fPIC
+        runHook postBuild
+      '';
+    };
+
+  installFromBuiltGrammars = { src, parserFileName }:
+    pkgs.vimUtils.buildVimPluginFrom2Nix {
+      version = "latest";
+      dontUnpack = true;
+      name = "nvim-treesitter-${parserFileName}";
+      src = src;
+      buildPhase = ''
+        mkdir -p parser/
+        cp $src parser/${parserFileName}.so
+      '';
+    };
+
 in
 {
   conjure = (pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "conjure";
     src = sources.conjure;
+  });
+
+  neovim-set-path = (pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "neovim-set-path";
+    src = sources.neovim-set-path;
   });
 
   inspecthi = (pkgs.vimUtils.buildVimPluginFrom2Nix {
@@ -24,17 +63,6 @@ in
     name = "vim-markdown-folding";
     src = sources.vim-markdown-folding;
   });
-
-  # parinfer-rust = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-  #   name = "parinfer";
-  #   postInstall = ''
-  #     rtpPath=$out/share/vim-plugins/${name}
-  #     mkdir -p $rtpPath/plugin
-  #     sed "s,let s:libdir = .*,let s:libdir = '${pkgs.parinfer-rust}/lib'," \
-  #       plugin/parinfer.vim >$rtpPath/plugin/parinfer.vim
-  #   '';
-  #   src = sources.parinfer;
-  # });
 
   onehalf = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "onehalf";
@@ -72,19 +100,9 @@ in
     src = sources.sad;
   });
 
-  vim-scratch = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "vim-scratch";
-    src = sources.vim-scratch;
-  });
-
   vim-js = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "vim-js";
     src = sources.vim-js;
-  });
-
-  vim-visual-split = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "vim-visual-split";
-    src = sources.vim-visual-split;
   });
 
   nvim-treesitter = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
@@ -97,94 +115,9 @@ in
     src = sources.vim-lua;
   });
 
-  nvim-colorizer = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "nvim-colorizer";
-    src = sources.nvim-colorizer;
-  });
-
   vim-terraform = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "vim-terraform";
     src = sources.vim-terraform;
-  });
-
-  vim-startuptime = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "vim-startuptime";
-    src = sources.vim-startuptime;
-  });
-
-  nvim-tree-lua = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "nvim-tree-lua";
-    src = sources."nvim-tree-lua";
-  });
-
-  completion-nvim = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "completion-nvim";
-    src = sources."completion-nvim";
-  });
-
-  edge = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "edge";
-    src = sources."vim-color-edge";
-  });
-
-  onebuddy = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "onebuddy";
-    src = sources."onebuddy";
-  });
-
-  telescope = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "telescope";
-    src = sources."nvim-telescope";
-  });
-
-  plenary = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "plenary";
-    src = sources."nvim-plenary";
-  });
-
-  popup = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "popup";
-    src = sources."nvim-popup";
-  });
-
-  colorbuddy = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "colorbuddy";
-    src = sources."nvim-colorbuddy";
-  });
-
-  completion-buffers = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "completion-buffers";
-    src = sources."nvim-completion-buffers";
-  });
-
-  fern = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "fern";
-    src = sources."nvim-fern";
-  });
-
-  gina = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "gina";
-    src = sources."nvim-gina";
-  });
-
-  any-jump = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "any-jump";
-    src = sources."nvim-any-jump";
-  });
-
-  sonokai = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "sonokai";
-    src = sources."nvim-color-sonokai";
-  });
-
-  highlite = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "highlite";
-    src = sources."nvim-highlite";
-  });
-
-  completion-tags = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "completion-tags";
-    src = sources."nvim-completion-tags";
   });
 
   vim-colors-github = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
@@ -212,121 +145,101 @@ in
     src = sources."vim-tokyonight-colors";
   });
 
-  ###################################
-  #       TREESITTER GRAMMARS       #
-  ###################################
   # TODO: Add all from https://github.com/nvim-treesitter/nvim-treesitter/blob/master/lua/nvim-treesitter/parsers.lua
   # TODO: Add them to nixpkgs once I've figured out how
-  grammarNix = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    version = "latest";
-    name = "tree-sitter-nix-${version}";
-    src = builtins.fetchGit {
+  grammarNix = makeGrammar {
+    parserName = "nix";
+    includedFiles = [ "parser.c" "scanner.cc" ];
+    src = "${builtins.fetchGit {
       "url" = "https://github.com/cstrahan/tree-sitter-nix";
       "ref" = "master";
-      "rev" = cfg.treesitter.nix.rev;
-    };
-    buildPhase = ''
-      runHook preBuild
-      mkdir -p parser/
-      $CC -o parser/nix.so -I$src/src $src/src/parser.c $src/src/scanner.cc -shared  -Os -fPIC
-      runHook postBuild
-    '';
+      "rev" = "791b5ff0e4f0da358cbb941788b78d436a2ca621";
+    }}/src";
   };
 
-  grammarGo = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    version = "latest";
-    name = "tree-sitter-go-${version}";
-    src = builtins.fetchGit {
-      "url" = "https://git@github.com/tree-sitter/tree-sitter-go.git";
-      "ref" = "master";
-      "rev" = cfg.treesitter.go.rev;
-    };
-    buildPhase = ''
-      runHook preBuild
-      mkdir -p parser/
-      $CC -o parser/go.so -I$src/src $src/src/parser.c -shared  -Os -lstdc++ -fPIC
-      runHook postBuild
-    '';
-  };
-
-  grammarJavascript = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    version = "latest";
-    name = "tree-sitter-javascript-${version}";
-    src = builtins.fetchGit {
-      "url" = "https://github.com/tree-sitter/tree-sitter-javascript";
-      "ref" = "master";
-      "rev" = cfg.treesitter.javascript.rev;
-    };
-    buildPhase = ''
-      runHook preBuild
-      mkdir -p parser/
-      ${pkgs.clang}/bin/clang++ -o parser/javascript.so -I$src/src $src/src/parser.c $src/src/scanner.cc -shared  -Os -lstdc++ -fPIC
-      runHook postBuild
-    '';
-  };
-
-
-  grammarClojure = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    version = "latest";
-    name = "tree-sitter-clojure-${version}";
-    src = builtins.fetchGit {
+  grammarClojure = makeGrammar {
+    parserName = "clojure";
+    includedFiles = [ "parser.c" ];
+    src = "${builtins.fetchGit {
       "url" = "https://github.com/sogaiu/tree-sitter-clojure";
       "ref" = "master";
-      "rev" = cfg.treesitter.clojure.rev;
-    };
-    buildPhase = ''
-      runHook preBuild
-      mkdir -p parser/
-      $CC -o parser/clojure.so -I$src/src $src/src/parser.c -shared  -Os -lstdc++ -fPIC
-      runHook postBuild
-    '';
+      "rev" = "f09652f095be878df8a87a57dcbfa07094316253";
+    }}/src";
   };
 
-  grammarYaml = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    version = "latest";
-    name = "tree-sitter-yaml-${version}";
-    src = builtins.fetchGit {
+  grammarYaml = makeGrammar {
+    parserName = "yaml";
+    includedFiles = [ "parser.c" "scanner.cc" ];
+    src = "${builtins.fetchGit {
       "ref" = "master";
       "url" = "https://git@github.com/ikatyang/tree-sitter-yaml";
-      "rev" = cfg.treesitter.yaml.rev;
-    };
-    buildPhase = ''
-      runHook preBuild
-      mkdir -p parser/
-      ${pkgs.clang}/bin/clang++ -o parser/yaml.so -I$src/src $src/src/parser.c $src/src/scanner.cc -shared  -Os -lstdc++ -fPIC
-      runHook postBuild
-    '';
+      "rev" = "ab0ce67ce98f8d9cc0224ebab49c64d01fedc1a1";
+    }}/src";
   };
 
-  grammarTs = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    version = "latest";
-    name = "tree-sitter-ts-${version}";
-    src = builtins.fetchGit {
+  grammarGo = makeGrammar {
+    includedFiles = [ "parser.c" ];
+    parserName = "go";
+    src = "${builtins.fetchGit {
+      "url" = "https://git@github.com/tree-sitter/tree-sitter-go.git";
       "ref" = "master";
-      "url" = "https://git@github.com/tree-sitter/tree-sitter-typescript";
-      "rev" = cfg.treesitter.ts.rev;
-    };
-    buildPhase = ''
-      runHook preBuild
-      mkdir -p parser/
-      $CC -o parser/typescript.so -I$src/typescript/src $src/typescript/src/parser.c $src/typescript/src/scanner.c -shared  -Os -lstdc++ -fPIC
-      runHook postBuild
-    '';
+      "rev" = "dadfd9c9aab2630632e61cfce645c13c35aa092f";
+    }}/src";
   };
 
-  grammarTsx = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    version = "latest";
-    name = "tree-sitter-tsx-${version}";
-    src = builtins.fetchGit {
+  grammarJson = installFromBuiltGrammars {
+    parserFileName = "json";
+    src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-json}/parser";
+  };
+
+  grammarHaskell = makeGrammar {
+    includedFiles = [ "parser.c" "scanner.cc" ];
+    parserName = "haskell";
+    src = "${builtins.fetchGit {
+      "ref" = "master";
+      "url" = "https://github.com/tree-sitter/tree-sitter-haskell";
+      "rev" = "2a0aa1cb5f1b787a4056a29fa0791e87846e33fb";
+    }}/src";
+  };
+
+  grammarPython = makeGrammar {
+    parserName = "python";
+    includedFiles = [ "parser.c" "scanner.cc" ];
+    src = "${builtins.fetchGit {
+      "url" = "https://github.com/tree-sitter/tree-sitter-python";
+      "ref" = "master";
+      "rev" = "f568dfabf7c4611077467a9cd13297fa0658abb6";
+    }}/src";
+  };
+
+  grammarJavascript = makeGrammar {
+    parserName = "javascript";
+    includedFiles = [ "parser.c" "scanner.c" ];
+    src = "${builtins.fetchGit {
+      "url" = "https://github.com/tree-sitter/tree-sitter-javascript";
+      "ref" = "master";
+      "rev" = "852f11b394804ac2a8986f8bcaafe77753635667";
+    }}/src";
+  };
+
+  grammarTs = makeGrammar {
+    includedFiles = [ "parser.c" "scanner.c" ];
+    parserName = "typescript";
+    src = "${builtins.fetchGit {
       "ref" = "master";
       "url" = "https://git@github.com/tree-sitter/tree-sitter-typescript";
-      "rev" = cfg.treesitter.tsx.rev;
-    };
-    buildPhase = ''
-      runHook preBuild
-      mkdir -p parser/
-      $CC -o parser/tsx.so -I$src/tsx/src $src/tsx/src/parser.c $src/tsx/src/scanner.c -shared  -Os -lstdc++ -fPIC
-      runHook postBuild
-    '';
+      "rev" = "73afadbd117a8e8551758af9c3a522ef46452119";
+    }}/typescript/src";
   };
+
+  grammarTsx = makeGrammar {
+    includedFiles = [ "parser.c" "scanner.c" ];
+    parserName = "tsx";
+    src = "${builtins.fetchGit {
+      "ref" = "master";
+      "url" = "https://git@github.com/tree-sitter/tree-sitter-typescript";
+      "rev" = "73afadbd117a8e8551758af9c3a522ef46452119";
+    }}/tsx/src";
+  };
+
 }
