@@ -32,8 +32,8 @@ with pkgs;
     dash
     bind
     dhall
-    dhall-lsp-server
-    dive
+    # dhall-lsp-server
+    # dive
     docker-compose
     emacs
     entr
@@ -43,9 +43,9 @@ with pkgs;
     gitAndTools.hub
     gnugrep
     gnupg
-    golangci-lint
+    # golangci-lint
     google-cloud-sdk
-    haskell-language-server
+    # haskell-language-server
     gopls
     go
     gzip
@@ -55,15 +55,15 @@ with pkgs;
     htop
     # hyperfine
     jq
-    jrnl
+    # jrnl
     kubernetes-helm
-    lazygit
+    # lazygit
     libuv
     luajitPackages.luacheck
     liberation_ttf
     nano
     ncdu
-    neofetch
+    # neofetch
     niv
     # nvi
     nixpkgs-fmt
@@ -84,8 +84,8 @@ with pkgs;
     s3cmd
     shellcheck
     shfmt
-    # stow
-    terraform_0_13
+    stow
+    # terraform_0_13
     # termshark
     # wireshark-cli
     tig
