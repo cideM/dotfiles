@@ -5,6 +5,12 @@
         "rev": "e6da880abc774ab1497fd55da0d220c49223798a",
         "type": "git"
     },
+    "chadtree": {
+        "branch": "chad",
+        "repo": "https://github.com/ms-jpq/chadtree.git",
+        "rev": "ee34e43476d9a5d75bba37f0bb46fd97c255e54b",
+        "type": "git"
+    },
     "clj-deps": {
         "branch": "live",
         "repo": "https://git@github.com/practicalli/clojure-deps-edn.git",
@@ -82,7 +88,7 @@
     "neovim-set-path": {
         "branch": "master",
         "repo": "https://github.com/cidem/neovim-set-path.git",
-        "rev": "5892d6a2a53932bff8f76f809b148dd082d9e1c4",
+        "rev": "21ca9be9118efcf040874185aef8dce5efd5e3e6",
         "type": "git"
     },
     "niv": {

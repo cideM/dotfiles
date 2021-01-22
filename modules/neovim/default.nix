@@ -46,6 +46,7 @@ in
               vim-peekaboo
               vim-repeat
               vim-sandwich
+              # Pretty slow
               vim-unimpaired
               vim-dirvish
               vim-scriptease
@@ -55,6 +56,7 @@ in
               sad
               vim-sneak
               vim-parinfer
+              # chadtree
 
               # Git
               vim-fugitive
@@ -72,6 +74,7 @@ in
               yats-vim
               vim-jsx-pretty
               Jenkinsfile-vim-syntax
+              conjure
               haskell-vim
               vim-terraform
               fennel-vim

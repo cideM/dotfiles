@@ -20,10 +20,9 @@ with pkgs;
     du-dust # du
     exa # ls
     fd # find
-    sd # sed
+    # sd # sed
     ripgrep # grep
-    bottom # top
-    bandwhich
+    # bottom # top
 
     # aerc
     awscli2

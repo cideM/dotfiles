@@ -5,7 +5,7 @@
     text = ''
       let b:undo_ftplugin = ""
 
-      let &formatprg=${pkgs.nodePackages.prettier}/bin/prettier . ' --stdin-filepath ' . expand('%')
+      let &formatprg='${pkgs.nodePackages.prettier}/bin/prettier' . ' --stdin-filepath ' . expand('%')
       let b:undo_ftplugin .= '|setlocal formatprg<'
     '';
   };
@@ -42,7 +42,7 @@
     text = ''
       let b:undo_ftplugin = ""
 
-      setlocal formatprg=${pkgs.nodePackages.purty}/bin/purty\ -
+      setlocal formatprg='${pkgs.nodePackages.purty}/bin/purty' -
       let b:undo_ftplugin .= '|setlocal formatprg<'
 
       command! -buffer SpagoTags :execute '!spago docs --format ctags'
@@ -63,7 +63,7 @@
     text = ''
       let b:undo_ftplugin = ""
 
-      let &formatprg=${pkgs.nodePackages.prettier}/bin/prettier . ' --stdin-filepath ' . expand('%')
+      let &formatprg='${pkgs.nodePackages.prettier}/bin/prettier' . ' --stdin-filepath ' . expand('%')
       let b:undo_ftplugin .= '|setlocal formatprg<'
     '';
   };
@@ -105,7 +105,7 @@
 
       setlocal foldmethod=indent
 
-      let &formatprg=${pkgs.nodePackages.prettier}/bin/prettier . ' --stdin-filepath ' . expand('%')
+      let &formatprg='${pkgs.nodePackages.prettier}/bin/prettier' . ' --stdin-filepath ' . expand('%')
       let b:undo_ftplugin .= '|setlocal formatprg<'
 
       setlocal foldmethod=expr
@@ -118,15 +118,14 @@
     text = ''
       let b:undo_ftplugin = ""
 
-      let &formatprg=${pkgs.nodePackages.prettier}/bin/prettier . ' --stdin-filepath ' . expand('%')
+      let &formatprg='${pkgs.nodePackages.prettier}/bin/prettier' . ' --stdin-filepath ' . expand('%')
       let b:undo_ftplugin .= '|setlocal formatprg<'
 
-      let &makeprg=${pkgs.nodePackages.eslint}/bin/eslint . ' --format compact '
+      let &makeprg='${pkgs.nodePackages.eslint}/bin/eslint' . ' --format compact '
       setlocal errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m,%-G%.%#
       let b:undo_ftplugin .= '|setlocal makeprg<'
       command! -bar -buffer Fix call system(eslint_path . ' --fix ' . expand('%')) | edit
       nnoremap <buffer> <silent> <localleader>f :Fix<cr>
-      end
 
       let g:jsx_ext_required        = 0
       let b:undo_ftplugin .= '|unlet g:jsx_ext_required'
@@ -140,7 +139,9 @@
       setlocal wildignore+=*/node_modules/*
       let b:undo_ftplugin .= '|setlocal wildignore<'
 
-      setlocal foldmethod=syntax
+      setlocal foldmethod=expr
+      setlocal foldexpr=nvim_treesitter#foldexpr()
+      let b:undo_ftplugin .= '|setlocal foldexpr<'
       let b:undo_ftplugin .= '|setlocal foldmethod<'
 
       setlocal suffixesadd+=.js,.jsx,.css
@@ -172,7 +173,7 @@
     text = ''
       set suffixesadd+=.js,.jsx,.css
 
-      let &formatprg=${pkgs.nodePackages.prettier}/bin/prettier . ' --stdin-filepath ' . expand('%')
+      let &formatprg='${pkgs.nodePackages.prettier}/bin/prettier' . ' --stdin-filepath ' . expand('%')
       let b:undo_ftplugin .= '|setlocal formatprg<'
     '';
   };
@@ -202,9 +203,6 @@
         nnoremap <silent> <localleader>mc :execute 'make ' . expand('%:p:h')<CR>
         nnoremap <silent> <localleader>mm :make ./...<CR>
         nnoremap <silent> <localleader>i :Goimport<CR>
-        nnoremap <silent> <localleader>ma :call goutils#MakeprgAsyncProject()<CR>
-        nnoremap <silent> <localleader>tw :call goutils#RunTestAtCursor()<CR>
-        nnoremap <silent> <localleader>ta :call goutils#RunAllTests()<CR>
     '';
   };
   "nvim/ftplugin/typescript.vim" = {
@@ -216,7 +214,7 @@
                     \['node_modules',expand('%:p:h'), '/']
                     \)
 
-        let &formatprg=${pkgs.nodePackages.prettier}/bin/prettier . ' --stdin-filepath ' . expand('%')
+        let &formatprg='${pkgs.nodePackages.prettier}/bin/prettier' . ' --stdin-filepath ' . expand('%')
         let b:undo_ftplugin .= '|setlocal formatprg<'
 
         """""""""""""""""""""""""
@@ -254,6 +252,7 @@
   };
   "nvim/ftplugin/python.vim" = {
     text = ''
+      let b:undo_ftplugin = ""
       setlocal foldmethod=expr
       setlocal foldexpr=nvim_treesitter#foldexpr()
       let b:undo_ftplugin .= '|setlocal foldexpr<'
@@ -278,14 +277,15 @@
   };
   "nvim/ftplugin/clojure.vim" = {
     text = ''
+      packadd conjure
         " TODO: Port to Nix
       if exists("current_compiler")
-      finish
+        finish
       endif
       let current_compiler="clj-kondo"
 
       if exists(":CompilerSet") != 2
-      command -nargs=* CompilerSet setlocal <args>
+        command -nargs=* CompilerSet setlocal <args>
       endif
 
       " https://github.com/borkdude/clj-kondo/blob/master/doc/editor-integration.md#vanilla-way
@@ -297,7 +297,7 @@
     text = ''
       let b:undo_ftplugin = ""
 
-      let &formatprg=${pkgs.nodePackages.prettier}/bin/prettier . ' --stdin-filepath ' . expand('%')
+      let &formatprg='${pkgs.nodePackages.prettier}/bin/prettier' . ' --stdin-filepath ' . expand('%')
       let b:undo_ftplugin .= '|setlocal formatprg<'
 
       setlocal foldmethod=expr

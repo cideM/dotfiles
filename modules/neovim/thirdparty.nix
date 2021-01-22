@@ -6,6 +6,43 @@ let
 
   sources = config.sources;
 
+  mach-nix = import
+    (builtins.fetchGit {
+      url = "https://github.com/DavHau/mach-nix/";
+      ref = "refs/tags/3.1.1";
+    })
+    {
+      pkgs = pkgs;
+      python = "python39";
+    };
+
+  std2 = mach-nix.buildPythonPackage {
+    src = builtins.fetchGit {
+      url = "https://github.com/ms-jpq/std2";
+      ref = "std";
+      rev = "cfd1cd68142d2c4febfb7eba61658f2e9895b3f1";
+    };
+  };
+
+  ct = mach-nix.mkPython {
+    requirements = ''
+      pynvim==0.4.2
+      PyYAML==5.3.1
+    '';
+    packagesExtra = [
+      pynvim_pp
+      std2
+    ];
+  };
+
+  pynvim_pp = mach-nix.buildPythonPackage {
+    src = builtins.fetchGit {
+      url = "https://github.com/ms-jpq/pynvim_pp";
+      ref = "pp";
+      rev = "b4892c629b2f7e18a0b236f07a47ba8692299349";
+    };
+  };
+
   makeGrammar =
     { includedFiles
     , parserName
@@ -43,6 +80,17 @@ in
     name = "conjure";
     src = sources.conjure;
   });
+
+  # chadtree = (pkgs.vimUtils.buildVimPluginFrom2Nix {
+  #   name = "chadtree";
+  #   src = sources.chadtree;
+  #   patches = [ /Users/yuuki/private/clones/chadtree/changes.patch ];
+  #   buildPhase = with pkgs.python39Packages; ''
+  #     mkdir .vars
+  #     ln -sf ${sources.chadtree}/requirements.txt .vars/deps.lock
+  #     ln -sf ${ct}/lib/python3.9/site-packages .vars/runtime
+  #   '';
+  # });
 
   neovim-set-path = (pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "neovim-set-path";
@@ -151,40 +199,40 @@ in
     parserName = "nix";
     includedFiles = [ "parser.c" "scanner.cc" ];
     src = "${builtins.fetchGit {
-      "url" = "https://github.com/cstrahan/tree-sitter-nix";
-      "ref" = "master";
-      "rev" = "791b5ff0e4f0da358cbb941788b78d436a2ca621";
-    }}/src";
+"url" = "https://github.com/cstrahan/tree-sitter-nix";
+"ref" = "master";
+"rev" = "791b5ff0e4f0da358cbb941788b78d436a2ca621";
+}}/src";
   };
 
   grammarClojure = makeGrammar {
     parserName = "clojure";
     includedFiles = [ "parser.c" ];
     src = "${builtins.fetchGit {
-      "url" = "https://github.com/sogaiu/tree-sitter-clojure";
-      "ref" = "master";
-      "rev" = "f09652f095be878df8a87a57dcbfa07094316253";
-    }}/src";
+"url" = "https://github.com/sogaiu/tree-sitter-clojure";
+"ref" = "master";
+"rev" = "f09652f095be878df8a87a57dcbfa07094316253";
+}}/src";
   };
 
   grammarYaml = makeGrammar {
     parserName = "yaml";
     includedFiles = [ "parser.c" "scanner.cc" ];
     src = "${builtins.fetchGit {
-      "ref" = "master";
-      "url" = "https://git@github.com/ikatyang/tree-sitter-yaml";
-      "rev" = "ab0ce67ce98f8d9cc0224ebab49c64d01fedc1a1";
-    }}/src";
+"ref" = "master";
+"url" = "https://git@github.com/ikatyang/tree-sitter-yaml";
+"rev" = "ab0ce67ce98f8d9cc0224ebab49c64d01fedc1a1";
+}}/src";
   };
 
   grammarGo = makeGrammar {
     includedFiles = [ "parser.c" ];
     parserName = "go";
     src = "${builtins.fetchGit {
-      "url" = "https://git@github.com/tree-sitter/tree-sitter-go.git";
-      "ref" = "master";
-      "rev" = "dadfd9c9aab2630632e61cfce645c13c35aa092f";
-    }}/src";
+"url" = "https://git@github.com/tree-sitter/tree-sitter-go.git";
+"ref" = "master";
+"rev" = "dadfd9c9aab2630632e61cfce645c13c35aa092f";
+}}/src";
   };
 
   grammarJson = installFromBuiltGrammars {
@@ -196,50 +244,50 @@ in
     includedFiles = [ "parser.c" "scanner.cc" ];
     parserName = "haskell";
     src = "${builtins.fetchGit {
-      "ref" = "master";
-      "url" = "https://github.com/tree-sitter/tree-sitter-haskell";
-      "rev" = "2a0aa1cb5f1b787a4056a29fa0791e87846e33fb";
-    }}/src";
+"ref" = "master";
+"url" = "https://github.com/tree-sitter/tree-sitter-haskell";
+"rev" = "2a0aa1cb5f1b787a4056a29fa0791e87846e33fb";
+}}/src";
   };
 
   grammarPython = makeGrammar {
     parserName = "python";
     includedFiles = [ "parser.c" "scanner.cc" ];
     src = "${builtins.fetchGit {
-      "url" = "https://github.com/tree-sitter/tree-sitter-python";
-      "ref" = "master";
-      "rev" = "f568dfabf7c4611077467a9cd13297fa0658abb6";
-    }}/src";
+"url" = "https://github.com/tree-sitter/tree-sitter-python";
+"ref" = "master";
+"rev" = "f568dfabf7c4611077467a9cd13297fa0658abb6";
+}}/src";
   };
 
   grammarJavascript = makeGrammar {
     parserName = "javascript";
     includedFiles = [ "parser.c" "scanner.c" ];
     src = "${builtins.fetchGit {
-      "url" = "https://github.com/tree-sitter/tree-sitter-javascript";
-      "ref" = "master";
-      "rev" = "852f11b394804ac2a8986f8bcaafe77753635667";
-    }}/src";
+"url" = "https://github.com/tree-sitter/tree-sitter-javascript";
+"ref" = "master";
+"rev" = "852f11b394804ac2a8986f8bcaafe77753635667";
+}}/src";
   };
 
   grammarTs = makeGrammar {
     includedFiles = [ "parser.c" "scanner.c" ];
     parserName = "typescript";
     src = "${builtins.fetchGit {
-      "ref" = "master";
-      "url" = "https://git@github.com/tree-sitter/tree-sitter-typescript";
-      "rev" = "73afadbd117a8e8551758af9c3a522ef46452119";
-    }}/typescript/src";
+"ref" = "master";
+"url" = "https://git@github.com/tree-sitter/tree-sitter-typescript";
+"rev" = "73afadbd117a8e8551758af9c3a522ef46452119";
+}}/typescript/src";
   };
 
   grammarTsx = makeGrammar {
     includedFiles = [ "parser.c" "scanner.c" ];
     parserName = "tsx";
     src = "${builtins.fetchGit {
-      "ref" = "master";
-      "url" = "https://git@github.com/tree-sitter/tree-sitter-typescript";
-      "rev" = "73afadbd117a8e8551758af9c3a522ef46452119";
-    }}/tsx/src";
+"ref" = "master";
+"url" = "https://git@github.com/tree-sitter/tree-sitter-typescript";
+"rev" = "73afadbd117a8e8551758af9c3a522ef46452119";
+}}/tsx/src";
   };
 
 }

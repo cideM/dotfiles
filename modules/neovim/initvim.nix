@@ -14,10 +14,10 @@ in
 
   set background=light
   set nocursorline
-  set number
+  set nonumber
   set norelativenumber
   set tabstop=4
-  set list
+  set nolist
   set formatoptions=tcrqjn
   set wildignore+=*/.git/*,
               \*/node_modules/*,
@@ -28,7 +28,7 @@ in
   set diffopt=algorithm:patience,filler,indent-heuristic,closeoff,iwhite
   set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
   set hidden
-  set signcolumn=yes:3
+  set signcolumn=auto:2
   set ignorecase
   set number
   set completeopt=menuone
@@ -48,12 +48,6 @@ in
   " ==============================
   " =        COLORSCHEME         =
   " ==============================
-  augroup my_neomake_highlights
-      au!
-      autocmd ColorScheme *
-        \ highlight link SneakScope IncSearch
-  augroup END
-  let g:yui_comments = "emphasize"
   let g:tokyonight_enable_italic = 1
   let g:tokyonight_style = 'storm'
   colorscheme yui
@@ -104,6 +98,11 @@ in
     call winrestview(view)
   endfunction
 
+  command! -bar -nargs=1 Find new | setlocal nobuflisted buftype=nofile bufhidden=wipe noswapfile | 0r!fd <args>
+  command! -bar -nargs=1 FindAll new | setlocal nobuflisted buftype=nofile bufhidden=wipe noswapfile | 0r!fd -uu <args>
+  command! -bar -nargs=1 FindV vnew | setlocal nobuflisted buftype=nofile bufhidden=wipe noswapfile | 0r!fd <args>
+  command! -bar -nargs=1 FindAllV vnew | setlocal nobuflisted buftype=nofile bufhidden=wipe noswapfile | 0r!fd -uu <args>
+
   " ==============================
   " =          MAPPINGS          =
   " ==============================
@@ -128,6 +127,7 @@ in
   nnoremap <A-l>      <C-w>l
   " Open terminal in directory of current file
   nnoremap <leader>T  :split <Bar> lcd %:p:h <Bar> term fish<CR>
+  nnoremap <leader>t  :split <Bar> term fish<CR>
 
   " Leave insert mode with jk
   imap jk             <Esc>
@@ -157,7 +157,7 @@ in
   nnoremap <BS>       <C-^>
 
   " Toggle 'sidebar' (signcolumn and numbers)
-  nnoremap [w :set signcolumn=yes:3 <bar> :set number<CR>
+  nnoremap [w :set signcolumn=auto:2 <bar> :set number<CR>
   nnoremap ]w :set signcolumn=no <bar> :set nonumber<CR>
 
   " ======= SNEAK =====================
