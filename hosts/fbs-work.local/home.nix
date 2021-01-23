@@ -66,6 +66,21 @@
 
     [core]
         editor = nvim
+        pager = delta
+
+    [interactive]
+        diffFilter = delta --color-only
+
+    [delta]
+        features = decorations
+        whitespace-error-style = 22 reverse
+        syntax-theme = "GitHub"
+        line-numbers = true
+
+    [delta "decorations"]
+        commit-decoration-style = bold yellow box ul
+        file-style = bold yellow ul
+        file-decoration-style = none
 
     [filter "lfs"]
         clean = git-lfs clean -- %f

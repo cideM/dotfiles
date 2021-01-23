@@ -30,6 +30,7 @@ with pkgs;
     coreutils
     curl
     dash
+    gitAndTools.delta
     bind
     dhall
     # dhall-lsp-server

@@ -55,7 +55,6 @@ in
               nvim-lspconfig
               sad
               vim-sneak
-              vim-parinfer
               # chadtree
 
               # Git
@@ -64,6 +63,8 @@ in
 
               # Language Tooling
               vim-markdown-folding
+              conjure
+              vim-parinfer
 
               # Languages & Syntax
               purescript-vim
@@ -74,7 +75,6 @@ in
               yats-vim
               vim-jsx-pretty
               Jenkinsfile-vim-syntax
-              conjure
               haskell-vim
               vim-terraform
               fennel-vim
