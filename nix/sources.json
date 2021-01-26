@@ -59,6 +59,12 @@
         "rev": "28af0ecca8dfa67b8b334c01fe11c20c9b0a7302",
         "type": "git"
     },
+    "flog": {
+        "branch": "master",
+        "repo": "https://github.com/rbong/vim-flog.git",
+        "rev": "ad1c344fa369d05ad3885d73826783e26ff9e6f3",
+        "type": "git"
+    },
     "goland": {
         "name": "goland",
         "sha256": "09fbk1s6p785rjw6sgnrbl861qk0nmjnb8d6gal3brpyphi46avd",
@@ -227,6 +233,12 @@
         "branch": "master",
         "repo": "https://git@github.com/eraserhd/parinfer-rust.git",
         "rev": "998484ba3ca9c162971e3fa6f01e67cc3e9ac85e",
+        "type": "git"
+    },
+    "qfenter": {
+        "branch": "master",
+        "repo": "https://github.com/yssl/QFEnter.git",
+        "rev": "df0a75b287c210f98ae353a12bbfdaf73d858beb",
         "type": "git"
     },
     "sad": {

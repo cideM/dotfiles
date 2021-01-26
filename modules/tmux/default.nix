@@ -6,6 +6,7 @@ in
   programs.tmux = {
     enable = true;
     sensibleOnTop = false;
+    plugins = with pkgs; [ ];
     extraConfig = ''
       set -g default-terminal "tmux-256color"
 

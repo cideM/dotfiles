@@ -43,28 +43,47 @@ in
               vim-gutentags
               vim-indent-object
               vim-matchup
+              vim-sayonara
               vim-peekaboo
               vim-repeat
               vim-sandwich
-              # Pretty slow
+              # v-- Pretty slow
               vim-unimpaired
               vim-dirvish
               vim-scriptease
               inspecthi
               neovim-set-path
               nvim-lspconfig
+              vim-cool
               sad
               vim-sneak
+              fzf-vim
+              # v-- The default mappings clash with targets. Gonna comment it
+              # out since I don't do this very often anyway.
+              # vim-niceblock
+              vim-mundo
+              # v-- Nice alternative https://github.com/wsdjeg/FlyGrep.vim
+              ferret
+              # v-- Auto close pairs
+              lexima-vim
+              # v-- Waiting for option to customize write location
               # chadtree
+              qfenter
+
+              # Completion
+              deoplete-lsp
 
               # Git
               vim-fugitive
+              vim-signify
               vim-rhubarb
+              git-messenger-vim
+              flog
 
               # Language Tooling
               vim-markdown-folding
               conjure
-              vim-parinfer
+              parinfer-rust
 
               # Languages & Syntax
               purescript-vim
@@ -123,6 +142,8 @@ in
               ]);
 
             opt = [
+              # Just here so I can directly load it
+              deoplete-nvim
               nvim-treesitter
               nvim-lsp
             ];

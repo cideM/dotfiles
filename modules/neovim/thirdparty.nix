@@ -81,6 +81,17 @@ in
     src = sources.conjure;
   });
 
+  parinfer-rust = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "parinfer";
+    postInstall = ''
+      rtpPath=$out/share/vim-plugins/${name}
+      mkdir -p $rtpPath/plugin
+      sed "s,let s:libdir = .*,let s:libdir = '${pkgs.parinfer-rust}/lib'," \
+        plugin/parinfer.vim >$rtpPath/plugin/parinfer.vim
+    '';
+    src = sources.parinfer;
+  });
+
   # chadtree = (pkgs.vimUtils.buildVimPluginFrom2Nix {
   #   name = "chadtree";
   #   src = sources.chadtree;
@@ -95,6 +106,16 @@ in
   neovim-set-path = (pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "neovim-set-path";
     src = sources.neovim-set-path;
+  });
+
+  qfenter = (pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "qfenter";
+    src = sources.qfenter;
+  });
+
+  flog = (pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "flog";
+    src = sources.flog;
   });
 
   inspecthi = (pkgs.vimUtils.buildVimPluginFrom2Nix {

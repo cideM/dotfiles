@@ -43,7 +43,6 @@ in
   set splitright
   set termguicolors
   set undofile
-  set completeopt-=preview
 
   " ==============================
   " =        COLORSCHEME         =
@@ -56,13 +55,6 @@ in
   augroup Foo
       autocmd!
       autocmd Filetype typescript setlocal formatexpr=
-  augroup END
-
-  " Automatically resize windows if host window changes (e.g., creating a tmux
-  " split)
-  augroup Resize
-      autocmd!
-      autocmd VimResized * wincmd =
   augroup END
 
   augroup quickfix
@@ -132,21 +124,19 @@ in
   " Leave insert mode with jk
   imap jk             <Esc>
 
-  nmap <leader>s :w<CR>
-
   " Convenience mappings for calling :grep
   nnoremap <leader>gg :grep!<space>
   nnoremap <leader>gw :grep! -wF ""<left>
 
   " Just calls formatprg on entire buffer
-  nmap     <leader>Q  :call FormatBuffer()<cr>
+  nmap     <leader>q  :call FormatBuffer()<cr>
 
-  nnoremap <leader>f  :find *
-  nnoremap <leader>b  :ls<cr>:buffer<Space>
+  nnoremap <leader>F  :find *
+  nnoremap <leader>B  :ls<cr>:buffer<Space>
 
   vmap     <Enter>    <Plug>(EasyAlign)
 
-  nnoremap <leader>s  :nohlsearch<CR>
+  nnoremap <leader>n  :nohlsearch<CR>
 
   " Reflow comments according to max line length. This temporarily unsets
   " formatprg so cindent (?) is used. I don't know... this mostly just works.
@@ -159,6 +149,13 @@ in
   " Toggle 'sidebar' (signcolumn and numbers)
   nnoremap [w :set signcolumn=auto:2 <bar> :set number<CR>
   nnoremap ]w :set signcolumn=no <bar> :set nonumber<CR>
+
+  " ======= LEXIMA ====================
+  let g:lexima_map_escape =  ""
+
+  " ======= SAYONARA ==================
+  map Q :Sayonara<CR> " delete buffer and close window
+  map <leader>Q :Sayonara!<CR> " delete buffer and preserve window
 
   " ======= SNEAK =====================
   let g:sneak#label      = 1
@@ -191,9 +188,57 @@ in
   let g:gutentags_exclude_filetypes = ["haskell", "purs", "purescript"]
   let g:gutentags_file_list_command = 'rg\ --files'
 
+  " ======= FZF VIM ===================
+  autocmd! FileType fzf set laststatus=0 noshowmode noruler
+              \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
+  nnoremap <leader>ff :Files<CR>
+  nnoremap <leader>fl :Lines<CR>
+  nnoremap <leader>fh :BLines<CR>
+  nnoremap <leader>fc :Commits<CR>
+  nnoremap <leader>fb :Buffers<CR>
+  nnoremap <leader>fg :GFiles<CR>
+  nnoremap <leader>fm :Marks<CR>
+  nnoremap <leader>ft :Tags<CR>
+
+  " Path completion with custom source command
+  " Note that --relative-to=… expects a directory and DOES NOT check. That
+  " means that you end up with an extra "../" if you request a path relative to a
+  " file. – IBBoard Mar 13 '18 at 20:05
+  inoremap <expr> <c-x><c-f> fzf#vim#complete("fd <Bar> xargs realpath --relative-to " . expand("%:h"))
+  
+  let g:fzf_colors =
+      \ { 'fg':      ['fg', 'Normal'],
+      \ 'bg':      ['bg', 'Normal'],
+      \ 'hl':      ['fg', 'Comment'],
+      \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+      \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+      \ 'hl+':     ['fg', 'Statement'],
+      \ 'info':    ['fg', 'PreProc'],
+      \ 'border':  ['fg', 'Ignore'],
+      \ 'prompt':  ['fg', 'Conditional'],
+      \ 'pointer': ['fg', 'Exception'],
+      \ 'marker':  ['fg', 'Keyword'],
+      \ 'spinner': ['fg', 'Label'],
+      \ 'header':  ['fg', 'Comment'] }
+
   " ======= MATCHUP ===================
   " Otherwise the status line is overwritten with matching code parts
   let g:matchup_matchparen_offscreen = {}
+
+  " ======= DEOPLETE ==================
+  " Needed to call options function
+  packadd deoplete-nvim
+  call deoplete#custom#option('num_processes', 4)
+  call deoplete#custom#option('refresh_always', v:false)
+  " Use <Tab> and <S-Tab> to navigate through popup menu
+  inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+ 
+  let g:completion_auto_change_source = 1
+
+  autocmd CompleteDone * silent! pclose!
+  call deoplete#enable()
 
   " ========= NVIM-LSP ================
   " https://neovim.io/doc/user/lsp.html

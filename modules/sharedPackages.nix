@@ -40,9 +40,10 @@ with pkgs;
     entr
     findutils
     fzf
-    gawk
     gitAndTools.hub
+    gawk
     gnugrep
+    gnused
     gnupg
     # golangci-lint
     google-cloud-sdk

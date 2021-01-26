@@ -277,20 +277,20 @@
   };
   "nvim/ftplugin/clojure.vim" = {
     text = ''
-      packadd conjure
-        " TODO: Port to Nix
-      if exists("current_compiler")
-        finish
-      endif
+      let b:undo_ftplugin = ""
+      " I think auto closing pairs and parinfer won't get along
+      let b:lexima_disabled = 1
+
       let current_compiler="clj-kondo"
 
-      if exists(":CompilerSet") != 2
-        command -nargs=* CompilerSet setlocal <args>
-      endif
+      setlocal foldmethod=expr
+      setlocal foldexpr=nvim_treesitter#foldexpr()
+      let b:undo_ftplugin .= '|setlocal foldexpr<'
+      let b:undo_ftplugin .= '|setlocal foldmethod<'
 
       " https://github.com/borkdude/clj-kondo/blob/master/doc/editor-integration.md#vanilla-way
-        CompilerSet errorformat=%f:%l:%c:\ Parse\ %t%*[^:]:\ %m,%f:%l:%c:\ %t%*[^:]:\ %m
-        CompilerSet makeprg=clj-kondo\ --lint\ %
+      setlocal errorformat=%f:%l:%c:\ Parse\ %t%*[^:]:\ %m,%f:%l:%c:\ %t%*[^:]:\ %m
+      setlocal makeprg=clj-kondo\ --lint\ %
     '';
   };
   "nvim/ftplugin/yaml.vim" = {
