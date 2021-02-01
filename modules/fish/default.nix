@@ -83,6 +83,22 @@ in
     interactiveShellInit = fishConfig;
 
     functions = {
+      nivdrop = {
+        description = "niv drop but allow multiple";
+        body = ''
+          while read -l source_name
+            echo $source_name
+          end
+        '';
+      };
+
+      nivshow = {
+        description = "niv show but only the names";
+        body = ''
+          niv show | rg '^\w+' --color never
+        '';
+      };
+
       fish_greeting = {
         body = ''
         '';
