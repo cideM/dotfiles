@@ -6,43 +6,6 @@ let
 
   sources = config.sources;
 
-  mach-nix = import
-    (builtins.fetchGit {
-      url = "https://github.com/DavHau/mach-nix/";
-      ref = "refs/tags/3.1.1";
-    })
-    {
-      pkgs = pkgs;
-      python = "python39";
-    };
-
-  std2 = mach-nix.buildPythonPackage {
-    src = builtins.fetchGit {
-      url = "https://github.com/ms-jpq/std2";
-      ref = "std";
-      rev = "cfd1cd68142d2c4febfb7eba61658f2e9895b3f1";
-    };
-  };
-
-  ct = mach-nix.mkPython {
-    requirements = ''
-      pynvim==0.4.2
-      PyYAML==5.3.1
-    '';
-    packagesExtra = [
-      pynvim_pp
-      std2
-    ];
-  };
-
-  pynvim_pp = mach-nix.buildPythonPackage {
-    src = builtins.fetchGit {
-      url = "https://github.com/ms-jpq/pynvim_pp";
-      ref = "pp";
-      rev = "b4892c629b2f7e18a0b236f07a47ba8692299349";
-    };
-  };
-
   makeGrammar =
     { includedFiles
     , parserName
@@ -92,16 +55,10 @@ in
     src = sources.parinfer;
   });
 
-  # chadtree = (pkgs.vimUtils.buildVimPluginFrom2Nix {
-  #   name = "chadtree";
-  #   src = sources.chadtree;
-  #   patches = [ /Users/yuuki/private/clones/chadtree/changes.patch ];
-  #   buildPhase = with pkgs.python39Packages; ''
-  #     mkdir .vars
-  #     ln -sf ${sources.chadtree}/requirements.txt .vars/deps.lock
-  #     ln -sf ${ct}/lib/python3.9/site-packages .vars/runtime
-  #   '';
-  # });
+  nvim-compe = (pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "nvim-compe";
+    src = sources.nvim-compe;
+  });
 
   neovim-set-path = (pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "neovim-set-path";
@@ -116,6 +73,16 @@ in
   flog = (pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "flog";
     src = sources.flog;
+  });
+
+  suda.vim = (pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "suda.vim";
+    src = sources."suda.vim";
+  });
+
+  conjure-compe = (pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "conjure-compe";
+    src = sources.conjure-compe;
   });
 
   inspecthi = (pkgs.vimUtils.buildVimPluginFrom2Nix {

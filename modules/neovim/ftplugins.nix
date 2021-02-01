@@ -192,17 +192,16 @@
       let b:undo_ftplugin .= '|setlocal formatprg<'
 
       " https://github.com/leeren/dotfiles/blob/master/vim/.vim/ftplugin/go.vim
-        command! -buffer -range=% Gofmt let b:winview = winsaveview() |
-          \ silent! execute <line1> . "," . <line2> . "!gofmt " | 
-          \ call winrestview(b:winview)
+      command! -buffer -range=% Gofmt let b:winview = winsaveview() |
+        \ silent! execute <line1> . "," . <line2> . "!gofmt " | 
+        \ call winrestview(b:winview)
 
-        command! -buffer -range=% Goimport let b:winview = winsaveview() |
-          \ silent! execute <line1> . "," . <line2> . "!goimports " | 
-          \ call winrestview(b:winview)
+      command! -buffer -range=% Goimport let b:winview = winsaveview() |
+        \ silent! execute <line1> . "," . <line2> . "!goimports " | 
+        \ call winrestview(b:winview)
 
-        nnoremap <silent> <localleader>mc :execute 'make ' . expand('%:p:h')<CR>
-        nnoremap <silent> <localleader>mm :make ./...<CR>
-        nnoremap <silent> <localleader>i :Goimport<CR>
+      nnoremap <silent> <localleader>m :execute 'make ' . expand('%:p:h')<CR>
+      nnoremap <silent> <localleader>i :Goimport<CR>
     '';
   };
   "nvim/ftplugin/typescript.vim" = {
@@ -278,6 +277,10 @@
   "nvim/ftplugin/clojure.vim" = {
     text = ''
       let b:undo_ftplugin = ""
+      setlocal wildignore+=*/.clj-kondo/*
+
+      packadd parinfer-rust
+
       " I think auto closing pairs and parinfer won't get along
       let b:lexima_disabled = 1
 

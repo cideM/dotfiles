@@ -36,7 +36,6 @@ in
 
               editorconfig-vim
               targets-vim
-              vim-colortemplate
               vim-commentary
               vim-easy-align
               vim-eunuch
@@ -44,41 +43,30 @@ in
               vim-indent-object
               vim-matchup
               vim-sayonara
-              vim-peekaboo
               vim-repeat
               vim-sandwich
               # v-- Pretty slow
               vim-unimpaired
               vim-dirvish
               vim-scriptease
-              inspecthi
-              neovim-set-path
+              # v-- doesn't work with treesitter
+              # inspecthi
+              # neovim-set-path
               nvim-lspconfig
-              vim-cool
               sad
               vim-sneak
               fzf-vim
-              # v-- The default mappings clash with targets. Gonna comment it
-              # out since I don't do this very often anyway.
-              # vim-niceblock
-              vim-mundo
-              # v-- Nice alternative https://github.com/wsdjeg/FlyGrep.vim
-              ferret
-              # v-- Auto close pairs
-              lexima-vim
-              # v-- Waiting for option to customize write location
-              # chadtree
               qfenter
+              minimap-vim
+              suda.vim
 
               # Completion
-              deoplete-lsp
+              nvim-compe
+              conjure-compe
 
               # Git
               vim-fugitive
-              vim-signify
               vim-rhubarb
-              git-messenger-vim
-              flog
 
               # Language Tooling
               vim-markdown-folding
@@ -91,12 +79,10 @@ in
               dhall-vim
               vim-js
               vim-lua
-              yats-vim
               vim-jsx-pretty
               Jenkinsfile-vim-syntax
               haskell-vim
               vim-terraform
-              fennel-vim
 
               # Themes
               apprentice
@@ -107,8 +93,6 @@ in
               vim-one
               onehalf
               papercolor-theme
-              onedark-vim
-              jellybeans-vim
               falcon
               vim-kuroi-colors
               vim-nightowl-colors
@@ -136,15 +120,12 @@ in
                 src = ./. + "/plugins" + ("/" + pkg);
               })
               [
-                "find-utils"
                 "reflow"
-                "zen"
               ]);
 
             opt = [
-              # Just here so I can directly load it
-              deoplete-nvim
               nvim-treesitter
+              parinfer-rust
               nvim-lsp
             ];
           };

@@ -5,12 +5,6 @@
         "rev": "e6da880abc774ab1497fd55da0d220c49223798a",
         "type": "git"
     },
-    "chadtree": {
-        "branch": "chad",
-        "repo": "https://github.com/ms-jpq/chadtree.git",
-        "rev": "ee34e43476d9a5d75bba37f0bb46fd97c255e54b",
-        "type": "git"
-    },
     "clj-deps": {
         "branch": "live",
         "repo": "https://git@github.com/practicalli/clojure-deps-edn.git",

@@ -6,14 +6,6 @@
     userEmail = "yuuki@protonmail.com";
     userName = "Florian Beeres";
 
-    delta = {
-      enable = true;
-      options = {
-        line-numbers = true;
-        syntax-theme = "GitHub";
-      };
-    };
-
     aliases = {
       lola = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
       recent = "branch --sort=-committerdate";
