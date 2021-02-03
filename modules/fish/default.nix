@@ -183,7 +183,14 @@ in
           end
 
           for f in $todos
-            printf "##[%s](%s)\n\n" (cat (dirname $f)/title) $f
+            set -l title (cat (dirname $f)/title)
+
+            if test -n "$title"
+              printf "## [%s](%s)\n" $title $f
+            else
+              printf "## %s\n" $f
+            end
+
             rg 'TODO:' $f | sed 's/TODO:/- [ ]/'
             echo ""
           end
