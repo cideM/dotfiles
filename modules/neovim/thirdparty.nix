@@ -83,6 +83,10 @@ in
   conjure-compe = (pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "conjure-compe";
     src = sources.conjure-compe;
+  vim-markdown-toc = (pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "vim-markdown-toc";
+    src = sources.vim-markdown-toc;
+  });
   });
 
   inspecthi = (pkgs.vimUtils.buildVimPluginFrom2Nix {
@@ -183,6 +187,7 @@ in
 
   # TODO: Add all from https://github.com/nvim-treesitter/nvim-treesitter/blob/master/lua/nvim-treesitter/parsers.lua
   # TODO: Add them to nixpkgs once I've figured out how
+  # https://github.com/nvim-treesitter/nvim-treesitter/blob/master/lockfile.json
   grammarNix = makeGrammar {
     parserName = "nix";
     includedFiles = [ "parser.c" "scanner.cc" ];

@@ -12,6 +12,8 @@ let
     set -x FZF_ALT_C_OPTS "--preview 'tree -a -C {} | head -200'"
     set -x FZF_CTRL_T_COMMAND '${pkgs.fd}/bin/fd --type f 2> /dev/null'
 
+    set -x FISH_NOTES_EXTENSION .md
+
     # COLORS
     # https://github.com/fish-shell/fish-shell/issues/4695
     # https://fishshell.com/docs/2.0/index.html
@@ -34,7 +36,6 @@ let
     set fish_color_command magenta
     set fish_color_quote green
     set fish_color_error red --bold
-
 
     ${if alacCfg.light then ''
       set fish_color_cwd brblack
@@ -64,6 +65,8 @@ let
     abbr -a g 'git'
     abbr -a dc 'docker-compose'
     abbr -a tf 'terraform'
+    abbr -a n 'nvim (findnote)/body*'
+    abbr -a wn 'FISH_NOTES_DIR=$XDG_DATA_HOME/work_notes nvim (findnote)/body*'
 
     alias  niv 'niv --no-colors'
 
@@ -83,6 +86,110 @@ in
     interactiveShellInit = fishConfig;
 
     functions = {
+      # These can't be abbreviations or aliases because that doesn't work
+      # with :r!foo in Neovim
+      work-agenda = {
+        body = ''
+          FISH_NOTES_DIR=$XDG_DATA_HOME/work_notes agenda
+        '';
+      };
+
+      work-new-agenda = {
+        body = ''
+          FISH_NOTES_DIR=$XDG_DATA_HOME/work_notes new-agenda
+        '';
+      };
+
+      work-make-agenda = {
+        body = ''
+          FISH_NOTES_DIR=$XDG_DATA_HOME/work_notes make-agenda
+        '';
+      };
+
+      work-notes = {
+        body = ''
+          FISH_NOTES_DIR=$XDG_DATA_HOME/work_notes notes
+        '';
+      };
+
+      work-findnote = {
+        body = ''
+          FISH_NOTES_DIR=$XDG_DATA_HOME/work_notes findnote
+        '';
+      };
+
+      findnote = {
+        description = "Find a note interactively with ripgrep and FZF";
+        body = ''
+          # 1. Pipe all lines with ripgrep into fzf
+          # 2. Preview only the body (use local variable to suppress wildcard expansion errors)
+          # 3. Result will be path/to/file:with:colons:matched term -> split it and keep only the file part (colons come from ISO8601 date)
+          # 4. Echo the directory name
+          rg '.*' $FISH_NOTES_DIR\
+            | fzf --preview 'set -l matches (dirname {1..4})/body*; cat $matches' --delimiter ':' --with-nth '2..'\
+            | string split ':'\
+            | head -n 4 \
+            | string join ":" \
+            | xargs dirname
+        '';
+      };
+
+      agenda = {
+        description = "Open agenda for today";
+        body = ''
+          set -l today (date -I)
+          set -l agenda_file (rg agenda $FISH_NOTES_DIR/$today*/tags -l)
+          set -l agenda_num (count $agenda_file)
+
+          if test $agenda_num -gt 1
+            echo "Found more than one agenda file"
+            for f in $agenda_file; echo $f; end
+            return 1
+          end
+
+          if test $agenda_num -eq 0
+            echo "No agenda found"
+            return 1
+          end
+
+          nvim (dirname $agenda_file)/body*
+        '';
+      };
+
+      new-agenda = {
+        description = "Create new agenda for today";
+        body = ''
+          set -l agenda_date (date -I)
+          notes new -T "Agenda: $agenda_date" -t agenda
+        '';
+      };
+
+      make-agenda = {
+        description = ''
+          Gather all TODOs from my notes and format them in a way
+          that is easy to turn into an agenda
+        '';
+        body = ''
+          set -l agenda_date (date -I)
+
+          echo "# Agenda: $agenda_date"
+          echo ""
+
+          set -l todos (rg 'TODO:' $FISH_NOTES_DIR -l)
+
+          if test (count $todos) -eq 0
+            echo "No TODOs, hooray!"
+            return 0
+          end
+
+          for f in $todos
+            printf "##[%s](%s)\n\n" (cat (dirname $f)/title) $f
+            rg 'TODO:' $f | sed 's/TODO:/- [ ]/'
+            echo ""
+          end
+        '';
+      };
+
       nivdrop = {
         description = "niv drop but allow multiple";
         body = ''
@@ -106,6 +213,11 @@ in
     };
 
     plugins = [
+      {
+        name = "fish-notes";
+        src = config.sources.fish-notes;
+      }
+
       {
         name = "nix-env";
         src = config.sources.fish-nix-env;
