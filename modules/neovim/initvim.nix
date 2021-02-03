@@ -265,30 +265,6 @@ in
   nvim_lsp.dhall_lsp_server.setup{}
   EOF
 
-  " ========= NVIM-TREESITTER =========
-  packadd nvim-treesitter
-  lua <<EOF
-  require'nvim-treesitter.configs'.setup {
-    ensure_installed = {},
-    highlight = {
-      enable = true,
-      disable = {},
-    },
-    incremental_selection = {
-      enable = true,
-      keymaps = {
-        init_selection = "<C-n>",
-        node_incremental = "<C-w>",
-        node_decremental = "<A-w>",
-      },
-    },
-    indent = {
-      enable = true,
-      disable = { "clojure" },
-    }
-  }
-  EOF
-
   " ========= NVIM-COMPE ==============
   inoremap <silent><expr> <C-Space> compe#complete()
   inoremap <silent><expr> <CR>      compe#confirm('<CR>')

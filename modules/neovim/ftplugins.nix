@@ -107,11 +107,6 @@
 
       let &formatprg='${pkgs.nodePackages.prettier}/bin/prettier' . ' --stdin-filepath ' . expand('%')
       let b:undo_ftplugin .= '|setlocal formatprg<'
-
-      setlocal foldmethod=expr
-      setlocal foldexpr=nvim_treesitter#foldexpr()
-      let b:undo_ftplugin .= '|setlocal foldexpr<'
-      let b:undo_ftplugin .= '|setlocal foldmethod<'
     '';
   };
   "nvim/ftplugin/javascript.vim" = {
@@ -139,10 +134,6 @@
       setlocal wildignore+=*/node_modules/*
       let b:undo_ftplugin .= '|setlocal wildignore<'
 
-      setlocal foldmethod=expr
-      setlocal foldexpr=nvim_treesitter#foldexpr()
-      let b:undo_ftplugin .= '|setlocal foldexpr<'
-      let b:undo_ftplugin .= '|setlocal foldmethod<'
 
       setlocal suffixesadd+=.js,.jsx,.css
       let b:undo_ftplugin .= '|setlocal suffixesadd<'
@@ -183,10 +174,6 @@
 
       compiler go
 
-      setlocal foldmethod=expr
-      setlocal foldexpr=nvim_treesitter#foldexpr()
-      let b:undo_ftplugin .= '|setlocal foldexpr<'
-      let b:undo_ftplugin .= '|setlocal foldmethod<'
 
       setlocal formatprg=gofmt
       let b:undo_ftplugin .= '|setlocal formatprg<'
@@ -242,20 +229,12 @@
         setlocal suffixesadd+=.ts,.tsx,.css
         let b:undo_ftplugin .= '|setlocal suffixesadd<'
 
-        setlocal foldmethod=expr
-        setlocal foldexpr=nvim_treesitter#foldexpr()
-        let b:undo_ftplugin .= '|setlocal foldexpr<'
-        let b:undo_ftplugin .= '|setlocal foldmethod<'
 
     '';
   };
   "nvim/ftplugin/python.vim" = {
     text = ''
       let b:undo_ftplugin = ""
-      setlocal foldmethod=expr
-      setlocal foldexpr=nvim_treesitter#foldexpr()
-      let b:undo_ftplugin .= '|setlocal foldexpr<'
-      let b:undo_ftplugin .= '|setlocal foldmethod<'
     '';
   };
   "nvim/ftplugin/haskell.vim" = {
@@ -267,11 +246,6 @@
       set formatprg=${pkgs.ormolu}/bin/ormolu
 
       nnoremap <buffer> <localleader>t :silent !fast-tags -R .<cr>
-
-      setlocal foldmethod=expr
-      setlocal foldexpr=nvim_treesitter#foldexpr()
-      let b:undo_ftplugin .= '|setlocal foldexpr<'
-      let b:undo_ftplugin .= '|setlocal foldmethod<'
     '';
   };
   "nvim/ftplugin/clojure.vim" = {
@@ -286,11 +260,6 @@
 
       let current_compiler="clj-kondo"
 
-      setlocal foldmethod=expr
-      setlocal foldexpr=nvim_treesitter#foldexpr()
-      let b:undo_ftplugin .= '|setlocal foldexpr<'
-      let b:undo_ftplugin .= '|setlocal foldmethod<'
-
       " https://github.com/borkdude/clj-kondo/blob/master/doc/editor-integration.md#vanilla-way
       setlocal errorformat=%f:%l:%c:\ Parse\ %t%*[^:]:\ %m,%f:%l:%c:\ %t%*[^:]:\ %m
       setlocal makeprg=clj-kondo\ --lint\ %
@@ -302,11 +271,6 @@
 
       let &formatprg='${pkgs.nodePackages.prettier}/bin/prettier' . ' --stdin-filepath ' . expand('%')
       let b:undo_ftplugin .= '|setlocal formatprg<'
-
-      setlocal foldmethod=expr
-      setlocal foldexpr=nvim_treesitter#foldexpr()
-      let b:undo_ftplugin .= '|setlocal foldexpr<'
-      let b:undo_ftplugin .= '|setlocal foldmethod<'
     '';
   };
 }

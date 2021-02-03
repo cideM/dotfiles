@@ -24,7 +24,6 @@ in
       package = pkgs.neovim-unwrapped.overrideAttrs (oldAttrs: rec {
         version = "master";
         src = config.sources.neovim;
-        buildInputs = oldAttrs.buildInputs ++ [ pkgs.tree-sitter ];
       });
 
       configure = with pkgs.vimPlugins; with (import ./thirdparty.nix args); {
@@ -99,19 +98,6 @@ in
               vim-tokyonight-colors
               spacevim
 
-              # Treesitter
-              grammarClojure
-              # Doesn't build
-              grammarNix
-              grammarJavascript
-              grammarPython
-              grammarHaskell
-              grammarJson
-              grammarGo
-              grammarYaml
-              grammarTs
-              grammarTsx
-
             ]
             ++ (builtins.map
               (pkg: pkgs.vimUtils.buildVimPluginFrom2Nix {
@@ -124,7 +110,6 @@ in
               ]);
 
             opt = [
-              nvim-treesitter
               parinfer-rust
               nvim-lsp
             ];
