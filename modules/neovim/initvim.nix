@@ -264,26 +264,4 @@ in
   nvim_lsp.hls.setup{}
   nvim_lsp.dhall_lsp_server.setup{}
   EOF
-
-  " ========= NVIM-COMPE ==============
-  inoremap <silent><expr> <C-Space> compe#complete()
-  inoremap <silent><expr> <CR>      compe#confirm('<CR>')
-  inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-
-  lua <<EOF
-  require'compe'.setup {
-    enabled = true;
-    debug = false;
-    min_length = 1;
-    preselect = 'always';
-    allow_prefix_unmatch = false;
-
-    source = {
-      path = true;
-      buffer = true;
-      vsnip = false;
-      nvim_lsp = true;
-    };
-  }
-  EOF
 ''

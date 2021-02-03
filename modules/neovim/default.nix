@@ -59,10 +59,6 @@ in
               minimap-vim
               suda.vim
 
-              # Completion
-              nvim-compe
-              conjure-compe
-
               # Git
               vim-fugitive
               vim-rhubarb

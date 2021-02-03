@@ -55,11 +55,6 @@ in
     src = sources.parinfer;
   });
 
-  nvim-compe = (pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "nvim-compe";
-    src = sources.nvim-compe;
-  });
-
   neovim-set-path = (pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "neovim-set-path";
     src = sources.neovim-set-path;
@@ -80,13 +75,9 @@ in
     src = sources."suda.vim";
   });
 
-  conjure-compe = (pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "conjure-compe";
-    src = sources.conjure-compe;
   vim-markdown-toc = (pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "vim-markdown-toc";
     src = sources.vim-markdown-toc;
-  });
   });
 
   inspecthi = (pkgs.vimUtils.buildVimPluginFrom2Nix {

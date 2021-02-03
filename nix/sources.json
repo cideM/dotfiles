@@ -17,40 +17,10 @@
         "rev": "866f9f4ac9ff9a0ae33de96253c359c68ab556b4",
         "type": "git"
     },
-    "compe-conjure": {
-        "branch": "master",
-        "repo": "https://github.com/tami5/compe-conjure.git",
-        "rev": "a441174cf1e0203254a23c59995c3789e08058c7",
-        "type": "git"
-    },
-    "completion-nvim": {
-        "branch": "master",
-        "repo": "https://github.com/nvim-lua/completion-nvim.git",
-        "rev": "fc9b2fd2d47bea6a8954de1b1b19f2330545b354",
-        "type": "git"
-    },
     "conjure": {
         "branch": "master",
         "repo": "https://git@github.com/Olical/conjure",
         "rev": "0aa1e8f78e8e0746a6026260f4d9a64a0bdfbf7a",
-        "type": "git"
-    },
-    "fennel-vim": {
-        "branch": "master",
-        "repo": "https://github.com/bakpakin/fennel.vim.git",
-        "rev": "30b9beabad2c4f09b9b284caf5cd5666b6b4dc89",
-        "type": "git"
-    },
-    "fern-bookmark.vim": {
-        "branch": "master",
-        "repo": "https://github.com/lambdalisue/fern-bookmark.vim.git",
-        "rev": "d1261fe96d3f0da40fac336c9c07d469d8f38671",
-        "type": "git"
-    },
-    "fern-git-status.vim": {
-        "branch": "master",
-        "repo": "https://github.com/lambdalisue/fern-git-status.vim.git",
-        "rev": "5c9fc219d9b8cd3e39e78d285874665f79ffb1b4",
         "type": "git"
     },
     "fish-journal": {
@@ -70,26 +40,6 @@
         "repo": "https://git@github.com/cideM/fish-notes.git",
         "rev": "28af0ecca8dfa67b8b334c01fe11c20c9b0a7302",
         "type": "git"
-    },
-    "flog": {
-        "branch": "master",
-        "repo": "https://github.com/rbong/vim-flog.git",
-        "rev": "ad1c344fa369d05ad3885d73826783e26ff9e6f3",
-        "type": "git"
-    },
-    "gina.vim": {
-        "branch": "master",
-        "repo": "https://github.com/lambdalisue/gina.vim.git",
-        "rev": "97116f338f304802ce2661c2e7c0593e691736f8",
-        "type": "git"
-    },
-    "goland": {
-        "name": "goland",
-        "sha256": "09fbk1s6p785rjw6sgnrbl861qk0nmjnb8d6gal3brpyphi46avd",
-        "type": "tarball",
-        "url": "https://download.jetbrains.com/go/goland-2020.2.tar.gz",
-        "url_template": "https://download.jetbrains.com/go/<name>-<version>.tar.gz",
-        "version": "2020.2"
     },
     "inspecthi": {
         "branch": "main",
@@ -133,46 +83,16 @@
         "rev": "ea7ff9c343392ec6dfac4e9ec3fe0c45afb92a40",
         "type": "git"
     },
-    "nvim-color-sonokai": {
-        "branch": "master",
-        "repo": "https://github.com/sainnhe/sonokai.git",
-        "rev": "c560257a96d3d467fac1cdf2b5e2e24fcdb426ac",
-        "type": "git"
-    },
     "nvim-colorizer": {
         "branch": "master",
         "repo": "https://git@github.com/norcalli/nvim-colorizer.lua.git",
         "rev": "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6",
         "type": "git"
     },
-    "nvim-compe": {
-        "branch": "master",
-        "repo": "https://github.com/hrsh7th/nvim-compe.git",
-        "rev": "ae6ed04f1a93443e2dd85abd9f79ebd26c41a0dc",
-        "type": "git"
-    },
-    "nvim-completion-tags": {
-        "branch": "master",
-        "repo": "https://github.com/kristijanhusak/completion-tags.git",
-        "rev": "450d9572be48307c0f6264851d92f9f0d4b333a1",
-        "type": "git"
-    },
     "nvim-lsp": {
         "branch": "master",
         "repo": "https://git@github.com/neovim/nvim-lspconfig.git",
         "rev": "78a31c0ebc947c43a4bc349a0244fc8df3fbfa8c",
-        "type": "git"
-    },
-    "nvim-treesitter": {
-        "branch": "master",
-        "repo": "https://git@github.com/nvim-treesitter/nvim-treesitter.git",
-        "rev": "9eaf1840b36095ddf147986d522b57d2d85262ab",
-        "type": "git"
-    },
-    "onebuddy": {
-        "branch": "main",
-        "repo": "https://github.com/Th3Whit3Wolf/onebuddy.git",
-        "rev": "75d627eafbf567582be6b5ce9f55ebf360918790",
         "type": "git"
     },
     "onehalf": {
@@ -239,12 +159,6 @@
         "branch": "master",
         "repo": "https://github.com/cormacrelf/vim-colors-github.git",
         "rev": "9051e6b8618b463f3f4c5bb51ea155204937065d",
-        "type": "git"
-    },
-    "vim-colortemplate": {
-        "branch": "master",
-        "repo": "https://git@github.com/lifepillar/vim-colortemplate",
-        "rev": "3ae7fd3d8559958742b1c968e17d23404eb0b1b4",
         "type": "git"
     },
     "vim-falcon-colors": {
