@@ -191,6 +191,12 @@
         "rev": "3f35acfb753cc9ea22182400b075c5b6e896ad71",
         "type": "git"
     },
+    "vim-markdown-toc": {
+        "branch": "master",
+        "repo": "https://github.com/mzlogin/vim-markdown-toc.git",
+        "rev": "2e86c7229dfee5b7062194ec3d08a79a6b07de02",
+        "type": "git"
+    },
     "vim-matchup": {
         "branch": "master",
         "repo": "https://git@github.com/andymass/vim-matchup",

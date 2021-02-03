@@ -38,6 +38,7 @@ in
               vim-commentary
               vim-easy-align
               vim-eunuch
+              vim-peekaboo
               vim-gutentags
               vim-indent-object
               vim-matchup
@@ -58,6 +59,7 @@ in
               qfenter
               minimap-vim
               suda.vim
+              vim-markdown-toc
 
               # Git
               vim-fugitive
