@@ -38,7 +38,7 @@
     "fish-notes": {
         "branch": "master",
         "repo": "https://git@github.com/cideM/fish-notes.git",
-        "rev": "28af0ecca8dfa67b8b334c01fe11c20c9b0a7302",
+        "rev": "a097457c7c7225e38c22f26101217881adad2553",
         "type": "git"
     },
     "inspecthi": {
@@ -56,7 +56,7 @@
     "neovim": {
         "branch": "master",
         "repo": "https://git@github.com/neovim/neovim",
-        "rev": "ad98b84008586a1863e8b05b3db6d2c6c7ad4db8",
+        "rev": "cc1851c9fdd6d777338bea2272d2a02c8baa0fb1",
         "type": "git"
     },
     "neovim-set-path": {
@@ -92,19 +92,19 @@
     "nvim-lsp": {
         "branch": "master",
         "repo": "https://git@github.com/neovim/nvim-lspconfig.git",
-        "rev": "78a31c0ebc947c43a4bc349a0244fc8df3fbfa8c",
+        "rev": "dd758a439ec9a305890414bf13ae28515b714821",
         "type": "git"
     },
     "onehalf": {
         "branch": "master",
         "repo": "https://git@github.com/sonph/onehalf.git",
-        "rev": "ba6c71ee99dce0b505c430f2c2706dc5f97ad3a0",
+        "rev": "141c775ace6b71992305f144a8ab68e9a8ca4a25",
         "type": "git"
     },
     "pandoc-template-eisvogel": {
         "branch": "master",
         "repo": "https://git@github.com/Wandmalfarbe/pandoc-latex-template.git",
-        "rev": "27fb7e455536012aa7e92151ffad28ff70986f41",
+        "rev": "4e93f2ecc752017fcf94f0d4f034454eb8543366",
         "type": "git"
     },
     "pandoc-template-github": {
@@ -164,7 +164,7 @@
     "vim-falcon-colors": {
         "branch": "master",
         "repo": "https://github.com/fenetikm/falcon.git",
-        "rev": "da3468536410eb1ea59a0dd3054edf28d4577d8c",
+        "rev": "e2efdb0d0827f7ec417583b25142f19714ece2ea",
         "type": "git"
     },
     "vim-js": {
