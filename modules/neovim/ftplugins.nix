@@ -174,9 +174,11 @@
 
       compiler go
 
-
       setlocal formatprg=gofmt
       let b:undo_ftplugin .= '|setlocal formatprg<'
+
+      setlocal makeprg=go\ build\ -o\ /dev/null
+      let b:undo_ftplugin .= '|setlocal makeprg<'
 
       " https://github.com/leeren/dotfiles/blob/master/vim/.vim/ftplugin/go.vim
       command! -buffer -range=% Gofmt let b:winview = winsaveview() |
