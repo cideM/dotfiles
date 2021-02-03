@@ -24,6 +24,7 @@ in
       package = pkgs.neovim-unwrapped.overrideAttrs (oldAttrs: rec {
         version = "master";
         src = config.sources.neovim;
+        buildInputs = oldAttrs.buildInputs ++ [ pkgs.tree-sitter ];
       });
 
       configure = with pkgs.vimPlugins; with (import ./thirdparty.nix args); {
