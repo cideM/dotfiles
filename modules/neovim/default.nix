@@ -58,7 +58,6 @@ in
               vim-sneak
               fzf-vim
               qfenter
-              minimap-vim
               suda.vim
               vim-markdown-toc
 

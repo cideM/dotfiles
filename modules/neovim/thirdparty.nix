@@ -175,5 +175,4 @@ in
     name = "vim-tokyonight-colors";
     src = sources."vim-tokyonight-colors";
   });
-
-};
+}
