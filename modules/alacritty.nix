@@ -578,6 +578,10 @@ let
     window = {
       decorations = "full";
       dynamic_padding = true;
+      dimensions = {
+        columns = 90;
+        lines = 50;
+      };
       padding = {
         x = cfg.padding;
         y = cfg.padding;
@@ -643,7 +647,7 @@ in
 
     xdg.configFile."alacritty/alacritty.yml".text =
       builtins.replaceStrings [ "\\\\" ] [ "\\" ] (builtins.toJSON (shared // {
-        colors = if cfg.light then spacemacsLight else tokyo-night-storm;
+        colors = if cfg.light then gnomeLight else tokyo-night-storm;
         font = fontMapping."${cfg.font}";
       }));
 
