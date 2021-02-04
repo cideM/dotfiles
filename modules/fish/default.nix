@@ -10,7 +10,7 @@ let
     set -x FZF_DEFAULT_TOPS '--height 40% --layout=reverse --border'
     set -x FZF_CTRL_T_OPTS "--preview '${pkgs.bat}/bin/bat {}'"
     set -x FZF_ALT_C_OPTS "--preview 'tree -a -C {} | head -200'"
-    set -x FZF_CTRL_T_COMMAND '${pkgs.fd}/bin/fd --type f 2> /dev/null'
+    set -x FZF_CTRL_T_COMMAND '${pkgs.fd}/bin/fd -L $dir --type f 2> /dev/null'
 
     set -x FISH_NOTES_EXTENSION .md
 
