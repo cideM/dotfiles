@@ -21,6 +21,12 @@ in
   set formatoptions=tcrqjn
   set wildignore+=*/.git/*,
               \*/node_modules/*,
+              \*node_modules*,
+              \nix/sources.json,
+              \*.clj-kondo*,
+              \package-lock.json,
+              \*.min.*,
+              \*.map,
               \*/build/*,
               \*/dist/*,
               \*/compiled/*,
@@ -91,11 +97,10 @@ in
   command! -bar -nargs=1 FindV vnew | setlocal nobuflisted buftype=nofile bufhidden=wipe noswapfile | 0r!fd <args>
   command! -bar -nargs=1 FindAllV vnew | setlocal nobuflisted buftype=nofile bufhidden=wipe noswapfile | 0r!fd -uu <args>
 
-  " ==============================
-  " =          MAPPINGS          =
-  " ==============================
   let mapleader = " "
   let maplocalleader = ","
+
+  nnoremap <leader>/  :nohlsearch<CR>
 
   tnoremap <Esc>      <C-\><C-n>
   tnoremap <A-h>      <C-\><C-N><C-w>h
@@ -127,14 +132,11 @@ in
 
   vmap     <Enter>    <Plug>(EasyAlign)
 
-  nnoremap <leader>/  :nohlsearch<CR>
-
   " Reflow comments according to max line length. This temporarily unsets
   " formatprg so cindent (?) is used. I don't know... this mostly just works.
   nnoremap <leader>R  :set operatorfunc=reflow#Comment<cr>g@
   vnoremap <leader>R  :<C-u>call reflow#Comment(visualmode())<cr>
 
-  " Switch to alternate buffer with backspace
   nnoremap <BS>       <C-^>
 
   " ======= SAYONARA ==================
