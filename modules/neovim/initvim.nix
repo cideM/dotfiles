@@ -13,11 +13,10 @@ in
   let g:loaded_matchit = 1
 
   set background=light
-  set nocursorline
-  set nonumber
+  set foldmethod=syntax
   set norelativenumber
-  set tabstop=4
-  set nolist
+  set tabstop=4 
+  set shiftwidth=2
   set formatoptions=tcrqjn
   set wildignore+=*/.git/*,
               \*/node_modules/*,
@@ -36,14 +35,11 @@ in
   set hidden
   set signcolumn=auto:2
   set ignorecase
-  set completeopt=menu,menuone,noselect
+  set completeopt=menuone
   set smartcase
   set inccommand=split
   set path-=/usr/include
   set splitbelow
-  " I use Fish but it makes everything in Neovim a bit slower if it's used as
-  " shell, especially Fugitive stuff
-  set shell=bash
   set foldlevelstart=99
   set splitright
   set termguicolors
@@ -64,6 +60,19 @@ in
       autocmd FileType qf nnoremap <buffer> <left> :colder<cr>
       autocmd FileType qf nnoremap <buffer> <right> :cnewer<cr>
   augroup END
+
+  function! ReflowComment(type, ...)
+      let l:fp = &formatprg
+      set formatprg=
+
+      if a:type ==? 'v'
+          normal! '<v'>gq
+      else
+          normal! '[v']gq
+      endif
+
+      let &formatprg = l:fp
+  endfunction
 
   " " Call my own SetPath function so that every git file is added to path. Let's
   " " me get most of FZF without using FZF
@@ -134,8 +143,8 @@ in
 
   " Reflow comments according to max line length. This temporarily unsets
   " formatprg so cindent (?) is used. I don't know... this mostly just works.
-  nnoremap <leader>R  :set operatorfunc=reflow#Comment<cr>g@
-  vnoremap <leader>R  :<C-u>call reflow#Comment(visualmode())<cr>
+  nnoremap <leader>R  :set operatorfunc=ReflowComment<cr>g@
+  vnoremap <leader>R  :<C-u>call ReflowComment(visualmode())<cr>
 
   nnoremap <BS>       <C-^>
 

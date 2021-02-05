@@ -68,7 +68,6 @@ in
               # Language Tooling
               vim-markdown-folding
               conjure
-              parinfer-rust
 
               # Languages & Syntax
               purescript-vim
@@ -83,29 +82,12 @@ in
 
               # Themes
               apprentice
-              vim-colors-github
               yui
-              seoul256-vim
               iceberg-vim
               vim-one
-              onehalf
-              papercolor-theme
-              falcon
-              vim-kuroi-colors
-              vim-nightowl-colors
-              vim-tokyonight-colors
               spacevim
 
-            ]
-            ++ (builtins.map
-              (pkg: pkgs.vimUtils.buildVimPluginFrom2Nix {
-                pname = pkg;
-                version = "latest";
-                src = ./. + "/plugins" + ("/" + pkg);
-              })
-              [
-                "reflow"
-              ]);
+            ];
 
             opt = [
               parinfer-rust
