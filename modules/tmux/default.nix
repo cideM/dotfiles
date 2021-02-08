@@ -102,10 +102,10 @@ in
       # Decoration (256-color)
       # -------------------------------------------------------------------
       set-option -g status-justify left
-      set-option -g status-left '#[fg=colour7] #S #h'
+      set-option -g status-left '#[fg=colour7] #S'
       set-option -g status-left-length 30
       set-option -g status-bg default
-      set-option -g status-right ' #[fg=colour7] #(date "+%a %b %d %H:%M") '
+      set-option -g status-right ""
 
       set-option -g pane-active-border-style fg=colour2
       set-option -g pane-border-style fg=colour7
