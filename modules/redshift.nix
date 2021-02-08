@@ -7,9 +7,11 @@
     latitude = "52.520008";
     longitude = "13.404954";
 
-    brightness = {
-      night = "0.3";
-      day = "1.0";
+    settings = {
+      brightness = {
+        night = "0.3";
+        day = "1.0";
+      };
     };
 
     temperature = {
