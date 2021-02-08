@@ -35,6 +35,7 @@
     jetbrains.clion
     jetbrains.rider
     jetbrains.webstorm
+    jetbrains.idea-ultimate
     jetbrains.goland
     jetbrains.pycharm-professional
   ];
