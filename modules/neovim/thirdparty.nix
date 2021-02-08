@@ -166,6 +166,11 @@ in
     src = sources."vim-kuroi-colors";
   });
 
+  unicode-vim = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "unicode-vim";
+    src = sources."unicode-vim";
+  });
+
   vim-nightowl-colors = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "vim-nightowl-colors";
     src = sources."vim-nightowl-colors";

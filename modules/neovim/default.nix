@@ -60,6 +60,7 @@ in
               qfenter
               suda.vim
               vim-markdown-toc
+              unicode-vim
 
               # Git
               vim-fugitive
