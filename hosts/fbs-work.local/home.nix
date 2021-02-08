@@ -32,7 +32,7 @@
     light = true;
     font = "mono";
     enable = false;
-    fontSize = 14;
+    fontSize = 13;
   };
 
   # Can't use programs.git because https://github.com/NixOS/nixpkgs/issues/62353
