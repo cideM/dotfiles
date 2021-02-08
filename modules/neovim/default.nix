@@ -13,7 +13,7 @@ in
 {
   config = {
     # It's broken on Darwin so there it needs to be installed with homebrew
-    home.packages = mkIf (pkgs.stdenv.isDarwin == false) [ clj-kondo ];
+    home.packages = mkIf (pkgs.stdenv.isDarwin == false) [ pkgs.clj-kondo ];
 
     xdg.configFile = (import ./ftplugins.nix args);
 
@@ -27,76 +27,82 @@ in
         buildInputs = oldAttrs.buildInputs ++ [ pkgs.tree-sitter ];
       });
 
-      configure = with pkgs.vimPlugins; with (import ./thirdparty.nix args); {
-        customRC = (import ./initvim.nix args);
+      extraConfig = (import ./initvim.nix args);
 
-        packages = {
-          foobar = {
-            start = [
+      plugins = with pkgs.vimPlugins; with (import ./thirdparty.nix args); [
+        editorconfig-vim
+        targets-vim
+        vim-commentary
+        vim-easy-align
+        vim-eunuch
+        vim-peekaboo
+        vim-gutentags
+        vim-indent-object
+        vim-matchup
+        vim-sayonara
+        vim-repeat
+        vim-sandwich
+        # v-- Pretty slow
+        vim-unimpaired
+        vim-dirvish
+        vim-scriptease
+        # v-- doesn't work with treesitter
+        # inspecthi
+        # neovim-set-path
+        nvim-lspconfig
+        sad
+        vim-sneak
+        fzf-vim
+        qfenter
+        suda.vim
+        vim-markdown-toc
+        unicode-vim
 
-              editorconfig-vim
-              targets-vim
-              vim-commentary
-              vim-easy-align
-              vim-eunuch
-              vim-peekaboo
-              vim-gutentags
-              vim-indent-object
-              vim-matchup
-              vim-sayonara
-              vim-repeat
-              vim-sandwich
-              # v-- Pretty slow
-              vim-unimpaired
-              vim-dirvish
-              vim-scriptease
-              # v-- doesn't work with treesitter
-              # inspecthi
-              # neovim-set-path
-              nvim-lspconfig
-              sad
-              vim-sneak
-              fzf-vim
-              qfenter
-              suda.vim
-              vim-markdown-toc
-              unicode-vim
+        # Git
+        vim-fugitive
+        vim-rhubarb
 
-              # Git
-              vim-fugitive
-              vim-rhubarb
+        # Language Tooling
+        vim-markdown-folding
+        conjure
+        parinfer-rust
 
-              # Language Tooling
-              vim-markdown-folding
-              conjure
+        # Languages & Syntax
+        purescript-vim
+        vim-nix
+        dhall-vim
+        vim-js
+        vim-lua
+        vim-jsx-pretty
+        Jenkinsfile-vim-syntax
+        haskell-vim
+        vim-terraform
 
-              # Languages & Syntax
-              purescript-vim
-              vim-nix
-              dhall-vim
-              vim-js
-              vim-lua
-              vim-jsx-pretty
-              Jenkinsfile-vim-syntax
-              haskell-vim
-              vim-terraform
+        # Themes
+        apprentice
+        vim-colors-github
+        yui
+        seoul256-vim
+        iceberg-vim
+        vim-one
+        onehalf
+        papercolor-theme
+        falcon
+        vim-kuroi-colors
+        vim-nightowl-colors
+        vim-tokyonight-colors
+        spacevim
 
-              # Themes
-              apprentice
-              yui
-              iceberg-vim
-              vim-one
-              spacevim
+        {
+          plugin = parinfer-rust;
+          optional = true;
+        }
 
-            ];
-
-            opt = [
-              parinfer-rust
-              nvim-lsp
-            ];
-          };
-        };
-      };
+        {
+          plugin = nvim-lsp;
+          optional = true;
+        }
+      ];
     };
   };
 }
