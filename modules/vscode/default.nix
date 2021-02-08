@@ -13,7 +13,6 @@ let
 
   version = "latest";
 
-
 in
 {
   programs.vscode = {
@@ -32,7 +31,7 @@ in
         src = builtins.fetchurl {
           name = "VSCode_${version}_${plat}.${archive_fmt}";
           url = "https://vscode-update.azurewebsites.net/${version}/${plat}/insider";
-          sha256 = "0ys35k63c5npn30xich5787dks2pspa872ma1k7jkf9dzj75cxz8";
+          sha256 = "1n9vh2qhgzxnid3qx7nwx0c3kzramycb57zk1nmfv38l727vrd3g";
         };
       });
   };

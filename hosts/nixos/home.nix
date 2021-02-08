@@ -14,8 +14,7 @@
     (import ../../modules/sharedPackagesLinux.nix)
     (import ../../modules/sharedSettings.nix)
     (import ../../modules/sources.nix)
-    (import ../../modules/goland)
-    # (import ../../modules/vscode)
+    (import ../../modules/vscode)
   ];
 
   sources = import ../../nix/sources.nix;
@@ -30,12 +29,13 @@
     spotify
     zoom-us
     slack
-    jetbrains.webstorm
     pass
-    jetbrains.clion
-    jetbrains.rider
     docker-credential-helpers
     anki
+    jetbrains.clion
+    jetbrains.rider
+    jetbrains.webstorm
+    jetbrains.goland
     jetbrains.pycharm-professional
   ];
 
@@ -53,18 +53,6 @@
   programs.fish.interactiveShellInit = ''
     set -x FISH_NOTES_DIR /data/fish_notes
     set -x FISH_JOURNAL_DIR /data/fish_journal
-  '';
-
-  home.file.".docker/config.json".text = ''
-{
-	"auths": {
-		"094398396563.dkr.ecr.eu-central-1.amazonaws.com": {}
-	},
-	"HttpHeaders": {
-		"User-Agent": "Docker-Client/19.03.12 (linux)"
-	},
-	"credsStore": "pass"
-}
   '';
 
   programs.tmux.extraConfig = ''
