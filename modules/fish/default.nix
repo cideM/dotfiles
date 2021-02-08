@@ -100,9 +100,9 @@ in
         '';
       };
 
-      work-make-agenda = {
+      work-todos = {
         body = ''
-          FISH_NOTES_DIR=$XDG_DATA_HOME/work_notes make-agenda
+          FISH_NOTES_DIR=$XDG_DATA_HOME/work_notes todos
         '';
       };
 
@@ -160,11 +160,15 @@ in
         description = "Create new agenda for today";
         body = ''
           set -l agenda_date (date -I)
-          notes new -T "Agenda: $agenda_date" -t agenda
+          # This stores my TODOs formatted in a nicer way in the template
+          # variable, which equals the buffer contents when $EDITOR opens.
+          # Only downside is that if you make 0 edits the note won't be saved
+          # because you didn't change the template.
+          __notes_entry_template=(todos | string collect) notes new -T "Agenda: $agenda_date" -t agenda
         '';
       };
 
-      make-agenda = {
+      todos = {
         description = ''
           Gather all TODOs from my notes and format them in a way
           that is easy to turn into an agenda
