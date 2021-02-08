@@ -38,7 +38,7 @@
     "fish-notes": {
         "branch": "master",
         "repo": "https://git@github.com/cideM/fish-notes.git",
-        "rev": "a097457c7c7225e38c22f26101217881adad2553",
+        "rev": "d043cf11fc225663c62c8500a4796c80d95950a6",
         "type": "git"
     },
     "inspecthi": {
@@ -141,6 +141,12 @@
         "branch": "master",
         "repo": "https://github.com/lambdalisue/suda.vim.git",
         "rev": "45f88d4f0699c054af775b82c87b93b439da0a22",
+        "type": "git"
+    },
+    "unicode-vim": {
+        "branch": "master",
+        "repo": "https://github.com/chrisbra/unicode.vim.git",
+        "rev": "afb8db4f81580771c39967e89bc5772e72b9018e",
         "type": "git"
     },
     "vim-color-edge": {
