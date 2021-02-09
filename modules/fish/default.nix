@@ -67,6 +67,11 @@ let
     abbr -a tf 'terraform'
     abbr -a n 'nvim (findnote)/body*'
     abbr -a wn 'FISH_NOTES_DIR=$XDG_DATA_HOME/work_notes nvim (findnote)/body*'
+    abbr -a work-agenda 'FISH_NOTES_DIR=$XDG_DATA_HOME/work_notes agenda'
+    abbr -a work-make-agenda 'FISH_NOTES_DIR=$XDG_DATA_HOME/work_notes make-agenda'
+    abbr -a work-new-agenda 'FISH_NOTES_DIR=$XDG_DATA_HOME/work_notes new-agenda'
+    abbr -a work-notes 'FISH_NOTES_DIR=$XDG_DATA_HOME/work_notes notes'
+    abbr -a work-todos 'FISH_NOTES_DIR=$XDG_DATA_HOME/work_notes todos'
 
     alias  niv 'niv --no-colors'
 
@@ -86,38 +91,6 @@ in
     interactiveShellInit = fishConfig;
 
     functions = {
-      # These can't be abbreviations or aliases because that doesn't work
-      # with :r!foo in Neovim
-      work-agenda = {
-        body = ''
-          FISH_NOTES_DIR=$XDG_DATA_HOME/work_notes agenda
-        '';
-      };
-
-      work-new-agenda = {
-        body = ''
-          FISH_NOTES_DIR=$XDG_DATA_HOME/work_notes new-agenda
-        '';
-      };
-
-      work-todos = {
-        body = ''
-          FISH_NOTES_DIR=$XDG_DATA_HOME/work_notes todos
-        '';
-      };
-
-      work-notes = {
-        body = ''
-          FISH_NOTES_DIR=$XDG_DATA_HOME/work_notes notes
-        '';
-      };
-
-      work-findnote = {
-        body = ''
-          FISH_NOTES_DIR=$XDG_DATA_HOME/work_notes findnote
-        '';
-      };
-
       findnote = {
         description = "Find a note interactively with ripgrep and FZF";
         body = ''
