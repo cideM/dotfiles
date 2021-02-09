@@ -17,6 +17,7 @@ in
   set norelativenumber
   set tabstop=4 
   set shiftwidth=2
+  set noequalalways
   set formatoptions=tcrqjn
   set wildignore+=*/.git/*,
               \*/node_modules/*,
