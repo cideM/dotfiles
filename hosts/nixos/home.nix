@@ -47,7 +47,7 @@
     light = true;
     font = "mono";
     enable = true;
-    fontSize = 12;
+    fontSize = 11;
   };
 
   # Just append this to the actual config file with an overlay
