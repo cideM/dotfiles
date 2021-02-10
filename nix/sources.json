@@ -38,7 +38,7 @@
     "fish-notes": {
         "branch": "master",
         "repo": "https://git@github.com/cideM/fish-notes.git",
-        "rev": "d043cf11fc225663c62c8500a4796c80d95950a6",
+        "rev": "bfb4818f6ab1317079352b8bd64bd6faa096791e",
         "type": "git"
     },
     "inspecthi": {
