@@ -19,7 +19,7 @@
 
   programs.fish.interactiveShellInit = ''
     set -x FISH_NOTES_DIR ~/.local/share/fish_notes
-    set -x FISH_JOURNAL_DIR ~/.local/share/fish_journal
+    set -x FISH_WORK_NOTES ~/.local/share/work_notes
 
     contains ${pkgs.coreutils}/bin $PATH
     or set -x PATH ${pkgs.coreutils}/bin $PATH/

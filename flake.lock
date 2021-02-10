@@ -1,17 +1,5 @@
 {
   "nodes": {
-    "certfile": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-FAhgqaLz7AKKT76HAdZQGG6vSiC4I7NtgX7mFeGhkyU=",
-        "path": "/data/fakeroot.crt",
-        "type": "path"
-      },
-      "original": {
-        "path": "/data/fakeroot.crt",
-        "type": "path"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -32,10 +20,22 @@
         "type": "github"
       }
     },
+    "hwConfig": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-vLYLyGMj0LrnUNYJo0GmI32jbg1HIgnxMPLTfD/L2GY=",
+        "path": "/etc/nixos/hardware-configuration.nix",
+        "type": "path"
+      },
+      "original": {
+        "path": "/etc/nixos/hardware-configuration.nix",
+        "type": "path"
+      }
+    },
     "operatorMono": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-JpcVhbFCI7yuXkyo/3cN6QhFGGIfS6ew4Tf879et5pY=",
+        "narHash": "sha256-KckOXZ/IDtr0tgLFQAHBaVIOF0C3qyfbq2ZblMZeenE=",
         "path": "/home/tifa/OperatorMono",
         "type": "path"
       },
@@ -46,8 +46,8 @@
     },
     "root": {
       "inputs": {
-        "certfile": "certfile",
         "home-manager": "home-manager",
+        "hwConfig": "hwConfig",
         "operatorMono": "operatorMono",
         "unstable": "unstable"
       }

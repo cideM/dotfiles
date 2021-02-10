@@ -197,12 +197,6 @@ in
   nnoremap <leader>fm :Marks<CR>
   nnoremap <leader>ft :Tags<CR>
 
-  " Path completion with custom source command
-  " Note that --relative-to=… expects a directory and DOES NOT check. That
-  " means that you end up with an extra "../" if you request a path relative to a
-  " file. – IBBoard Mar 13 '18 at 20:05
-  inoremap <expr> <c-x><c-f> fzf#vim#complete("fd <Bar> xargs realpath --relative-to " . expand("%:h"))
-  
   let g:fzf_colors =
       \ { 'fg':      ['fg', 'Normal'],
       \ 'bg':      ['bg', 'Normal'],

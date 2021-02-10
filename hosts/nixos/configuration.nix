@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, operatorMono, certfile, ... }:
+{ config, pkgs, hwConfig, operatorMono, ... }:
 let
   operatorMonoFontPkg = pkgs.stdenv.mkDerivation {
     name = "operator-mono-font";
@@ -20,7 +20,7 @@ in
   imports =
     [
       # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      "${hwConfig}"
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -31,9 +31,6 @@ in
     "vm.max_map_count" = 262144;
   };
 
-  # https://stackoverflow.com/questions/13732826/convert-pem-to-crt-and-key
-  security.pki.certificates = [ "${certfile}" ];
-
   fonts = {
     fontDir.enable = false;
     fonts = [ operatorMonoFontPkg ];
@@ -43,23 +40,21 @@ in
     enable = true;
   };
 
+  systemd.network.enable = true;
+  
+  environment.etc."iwd/main.conf".text = ''
+    [General]
+    EnableNetworkConfiguration=true
+
+    [Network]
+    EnableIPv6=true
+    NameResolvingService=systemd
+  '';
+
   networking = {
     useDHCP = false;
-
-    interfaces.wlp7s0.useDHCP = true;
-
+    useNetworkd = true;
     hostName = "nixos";
-
-    networkmanager = {
-      enable = true;
-      dhcp = "dhcpcd";
-      dns = "systemd-resolved";
-      wifi = {
-        powersave = false;
-        backend = "iwd";
-      };
-    };
-
     wireless.iwd.enable = true;
   };
 
@@ -67,8 +62,12 @@ in
   i18n.defaultLocale = "en_US.UTF-8";
   i18n = {
     inputMethod = {
-      enabled = "fcitx";
+      enabled = "fcitx5";
       fcitx.engines = with pkgs.fcitx-engines; [ mozc ];
+      fcitx5.addons = with pkgs; [
+        fcitx5-mozc
+        fcitx5-gtk
+      ];
     };
   };
 
@@ -89,16 +88,13 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wget
     curl
-    nano
     gnumake
-    stow
     vim
     git
-    gnome3.gnome-shell-extensions
-    gnome3.dconf-editor
-    chromium
+
+    wofi
+    mako
   ];
 
 
@@ -107,7 +103,23 @@ in
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
-    pinentryFlavor = "gnome3";
+  };
+
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+    extraSessionCommands = ''
+      # Fix for some Java AWT applications (e.g. Android Studio), use this if
+      # they aren't displayed properly:
+      export _JAVA_AWT_WM_NONREPARENTING=1
+
+      # https://www.reddit.com/r/swaywm/comments/i6qlos/how_do_i_use_an_ime_with_sway/g1lk4xh?utm_source=share&utm_medium=web2x&context=3
+      export INPUT_METHOD=fcitx
+      export QT_IM_MODULE=fcitx
+      export GTK_IM_MODULE=fcitx
+      export XMODIFIERS=@im=fcitx
+      export XIM_SERVERS=fcitx
+    '';
   };
 
   # Enable the OpenSSH daemon.
@@ -123,33 +135,13 @@ in
 
   services.geoclue2.enable = true;
 
+  services.gnome3.gnome-keyring.enable = true;
+
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
   xdg.mime.enable = true;
-
-  services.xserver = {
-    enable = true;
-    videoDrivers = [ "nvidia" ];
-    layout = "us";
-    # https://discourse.nixos.org/t/problem-with-xkboptions-it-doesnt-seem-to-take-effect/5269/2
-    # Everything is broke, always.
-    xkbOptions = "ctrl:nocaps";
-
-    displayManager = {
-      gdm.enable = true;
-      gdm.wayland = false;
-    };
-
-    desktopManager = {
-      gnome3 = {
-        enable = true;
-      };
-    };
-  };
-
-  services.udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.tifa = {
@@ -170,4 +162,9 @@ in
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "20.03"; # Did you read the comment?
 
+  boot.initrd.luks.devices.luksroot = {
+    device = "/dev/disk/by-uuid/3fd381f4-c774-43cd-b229-77d8969ca4b5";
+    preLVM = true;
+    allowDiscards = true;
+  };
 }

@@ -32,8 +32,6 @@ with pkgs;
     dash
     bind
     dhall
-    # dhall-lsp-server
-    # dive
     docker-compose
     emacs
     entr
@@ -41,37 +39,30 @@ with pkgs;
     fzf
     gitAndTools.hub
     gawk
+    gh
     gnugrep
     gnused
     gnupg
-    # golangci-lint
     google-cloud-sdk
-    # haskell-language-server
     gopls
     go
     gzip
     hack-font
     haskellPackages.nix-derivation
-    # hexyl
     htop
-    # hyperfine
     jq
-    # jrnl
     kubernetes-helm
-    # lazygit
     libuv
     luajitPackages.luacheck
     liberation_ttf
     nano
     ncdu
-    # neofetch
+    neofetch
     niv
-    # nvi
     nixpkgs-fmt
     nodePackages.purescript-language-server
     nodejs
     pandoc
-    # perl
     # https://github.com/NixOS/nixpkgs/issues/96921
     # qmk_firmware
     ranger

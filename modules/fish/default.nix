@@ -14,6 +14,9 @@ let
 
     set -x FISH_NOTES_EXTENSION .md
 
+    # The ❯ looks super weird on my linux machine
+    set -x lucid_prompt_symbol '$'
+
     # COLORS
     # https://github.com/fish-shell/fish-shell/issues/4695
     # https://fishshell.com/docs/2.0/index.html
@@ -66,12 +69,12 @@ let
     abbr -a dc 'docker-compose'
     abbr -a tf 'terraform'
     abbr -a n 'nvim (findnote)/body*'
-    abbr -a wn 'FISH_NOTES_DIR=$XDG_DATA_HOME/work_notes nvim (findnote)/body*'
-    abbr -a work-agenda 'FISH_NOTES_DIR=$XDG_DATA_HOME/work_notes agenda'
-    abbr -a work-make-agenda 'FISH_NOTES_DIR=$XDG_DATA_HOME/work_notes make-agenda'
-    abbr -a work-new-agenda 'FISH_NOTES_DIR=$XDG_DATA_HOME/work_notes new-agenda'
-    abbr -a work-notes 'FISH_NOTES_DIR=$XDG_DATA_HOME/work_notes notes'
-    abbr -a work-todos 'FISH_NOTES_DIR=$XDG_DATA_HOME/work_notes todos'
+    abbr -a wn 'FISH_NOTES_DIR=$FISH_WORK_NOTES nvim (findnote)/body*'
+    abbr -a work-agenda 'FISH_NOTES_DIR=$FISH_WORK_NOTES agenda'
+    abbr -a work-make-agenda 'FISH_NOTES_DIR=$FISH_WORK_NOTES make-agenda'
+    abbr -a work-new-agenda 'FISH_NOTES_DIR=$FISH_WORK_NOTES new-agenda'
+    abbr -a work-notes 'FISH_NOTES_DIR=$FISH_WORK_NOTES notes'
+    abbr -a work-todos 'FISH_NOTES_DIR=$FISH_WORK_NOTES todos'
 
     alias  niv 'niv --no-colors'
 
