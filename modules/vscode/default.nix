@@ -127,8 +127,7 @@ let
       version = "1.1.1";
       sha256 = "1j8qn5grg8v3n3v66d8c77slwpdr130xzpv06z1wp2bmxhqsck1y";
     }
-    {
-      name = "vscode-eslint";
+    { name = "vscode-eslint";
       publisher = "dbaeumer";
       version = "2.1.14";
       sha256 = "113w2iis4zi4z3sqc3vd2apyrh52hbh2gvmxjr5yvjpmrsksclbd";
@@ -513,14 +512,19 @@ let
     }
   ];
 
+  finalPackage = (pkgs.vscode-with-extensions.override {
+    vscode = latest;
+    vscodeExtensions = with pkgs.vscode-extensions; [
+      ms-vsliveshare.vsliveshare
+    ] ++ marketplace;
+  }).overrideAttrs (old: {
+    inherit (latest) pname version;
+  });
 in
-with pkgs.vscode-extensions; {
-  home.packages = [
-    (pkgs.vscode-with-extensions.override {
-      vscode = latest;
-      vscodeExtensions = [
-        ms-vsliveshare.vsliveshare
-      ] ++ marketplace;
-    })
-  ];
+{
+  programs.vscode = {
+    enable = true;
+    package = finalPackage;
+    extensions = [ ];
+  };
 }
