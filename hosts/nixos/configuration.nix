@@ -31,6 +31,13 @@ in
     "vm.max_map_count" = 262144;
   };
 
+  # All of this shit here is just in the hope to enable some form of Zoom
+  services.flatpak.enable = true;
+  services.pipewire.enable = true;
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
+  xdg.portal.gtkUsePortal = true;
+
   fonts = {
     fontDir.enable = false;
     fonts = [ operatorMonoFontPkg ];
@@ -41,7 +48,7 @@ in
   };
 
   systemd.network.enable = true;
-  
+
   environment.etc."iwd/main.conf".text = ''
     [General]
     EnableNetworkConfiguration=true
@@ -119,6 +126,11 @@ in
       export GTK_IM_MODULE=fcitx
       export XMODIFIERS=@im=fcitx
       export XIM_SERVERS=fcitx
+
+      # https://github.com/calbrecht/nixpkgs-overlays
+      MOZ_ENABLE_WAYLAND = "1";
+      XDG_CURRENT_DESKTOP = "sway"; # https://github.com/emersion/xdg-desktop-portal-wlr/issues/20
+      XDG_SESSION_TYPE = "wayland"; # https://github.com/emersion/xdg-desktop-portal-wlr/pull/11
     '';
   };
 

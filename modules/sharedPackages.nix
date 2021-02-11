@@ -52,6 +52,7 @@ with pkgs;
     htop
     jq
     kubernetes-helm
+    k9s
     libuv
     luajitPackages.luacheck
     liberation_ttf

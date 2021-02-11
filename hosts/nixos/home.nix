@@ -26,11 +26,13 @@
     })
     sublime-merge
     spotify
-    zoom-us
+    # Gonna go with flatpak for now
+    # zoom-us
     # For xdg-open and friends on wayland
     xdg-utils
     slack
     anki
+    ncpamixer
     jetbrains.clion
     jetbrains.rider
     jetbrains.webstorm
@@ -283,6 +285,8 @@
 
     include @sysconfdir@/sway/config.d/*
 
+    exec systemctl --user import-environment
+    exec systemctl --user start graphical-session.target
     exec --no-startup-id fcitx5 -d
   '';
 }
