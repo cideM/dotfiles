@@ -39,6 +39,7 @@ in
         vim-gutentags
         vim-indent-object
         vim-matchup
+        vim-cool
         vim-sayonara
         vim-repeat
         vim-sandwich
@@ -57,13 +58,17 @@ in
         suda.vim
         vim-markdown-toc
         unicode-vim
+        minimap-vim
+        nvim-compe
 
         # Git
         vim-fugitive
         vim-rhubarb
+        flog
 
         # Language Tooling
         vim-markdown-folding
+        conjure-compe
         conjure
         parinfer-rust
 
@@ -92,6 +97,23 @@ in
         vim-nightowl-colors
         vim-tokyonight-colors
         spacevim
+
+        # Treesitter
+        grammarClojure
+        grammarNix
+        grammarJavascript
+        grammarPython
+        grammarHaskell
+        grammarJson
+        grammarGo
+        grammarYaml
+        grammarTs
+        grammarTsx
+
+        {
+          plugin = nvim-treesitter;
+          optional = true;
+        }
 
         {
           plugin = parinfer-rust;

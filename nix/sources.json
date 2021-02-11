@@ -245,6 +245,24 @@
         "rev": "ea68b37bff60104e71ed50fc37fa8f8ac53b727d",
         "type": "git"
     },
+    "compe-conjure": {
+        "branch": "master",
+        "repo": "https://github.com/tami5/compe-conjure.git",
+        "rev": "a441174cf1e0203254a23c59995c3789e08058c7",
+        "type": "git"
+    },
+    "nvim-compe": {
+        "branch": "master",
+        "repo": "https://github.com/hrsh7th/nvim-compe.git",
+        "rev": "ae6ed04f1a93443e2dd85abd9f79ebd26c41a0dc",
+        "type": "git"
+    },
+    "flog": {
+        "branch": "master",
+        "repo": "https://github.com/rbong/vim-flog.git",
+        "rev": "ad1c344fa369d05ad3885d73826783e26ff9e6f3",
+        "type": "git"
+    },
     "yui": {
         "branch": "v2",
         "repo": "https://git@github.com/cidem/yui",
