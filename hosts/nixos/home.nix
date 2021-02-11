@@ -7,7 +7,6 @@
     (import ../../modules/tmux)
     (import ../../modules/ctags.nix)
     (import ../../modules/pandoc)
-    (import ../../modules/redshift.nix)
     (import ../../modules/fish)
     (import ../../modules/sharedPackages.nix)
     (import ../../modules/sharedPackagesLinux.nix)
@@ -17,6 +16,15 @@
   ];
 
   sources = import ../../nix/sources.nix;
+
+  services.gammastep = {
+    enable = true;
+    provider = "geoclue2";
+    tray = true;
+    temperature = {
+      night = 2800;
+    };
+  };
 
   home.packages = with pkgs; [
     insomnia
