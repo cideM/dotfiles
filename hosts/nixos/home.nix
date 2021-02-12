@@ -22,7 +22,7 @@
     provider = "geoclue2";
     tray = true;
     temperature = {
-      night = 2800;
+      night = 2500;
     };
   };
 
@@ -69,6 +69,7 @@
     bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "${pkgs.xsel}/bin/xsel -i --clipboard"
   '';
 
+  # TODO: Try sway  through home manager
   xdg.configFile."sway/config".text = ''
     # Default config for sway
     #

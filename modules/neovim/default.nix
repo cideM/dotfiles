@@ -65,6 +65,7 @@ in
         vim-fugitive
         vim-rhubarb
         flog
+        git-messenger-vim
 
         # Language Tooling
         vim-markdown-folding

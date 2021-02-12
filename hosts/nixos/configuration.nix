@@ -32,6 +32,7 @@ in
   };
 
   # All of this shit here is just in the hope to enable some form of Zoom
+  # TODO: Understand what these things do and how and if they work
   services.flatpak.enable = true;
   services.pipewire.enable = true;
   xdg.portal.enable = true;
