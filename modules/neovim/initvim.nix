@@ -314,6 +314,7 @@ in
       buffer = true;
       vsnip = false;
       nvim_lsp = true;
+      conjure = true;
     };
   }
   EOF

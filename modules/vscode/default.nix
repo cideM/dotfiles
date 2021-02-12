@@ -26,7 +26,7 @@ let
       src = builtins.fetchurl {
         name = "VSCode_${version}_${plat}.${archive_fmt}";
         url = "https://vscode-update.azurewebsites.net/${version}/${plat}/insider";
-        sha256 = "16qlgqfpz7pn52dw6r3xav4ly7rpl5lwck94vdpvzgld1ja9rpm0";
+        sha256 = "1j9fwkxjdwyhqpwq53sc0s1fb64ijfjx7c0qwv4fnzm5pl68mh5q";
       };
     });
 
@@ -127,7 +127,8 @@ let
       version = "1.1.1";
       sha256 = "1j8qn5grg8v3n3v66d8c77slwpdr130xzpv06z1wp2bmxhqsck1y";
     }
-    { name = "vscode-eslint";
+    {
+      name = "vscode-eslint";
       publisher = "dbaeumer";
       version = "2.1.14";
       sha256 = "113w2iis4zi4z3sqc3vd2apyrh52hbh2gvmxjr5yvjpmrsksclbd";
@@ -336,18 +337,6 @@ let
       version = "1.3.3";
       sha256 = "1xjspcmx5p9x8yq1hzjdkq3acq52nilpd9bm069nsvrzzdh0n891";
     }
-    # {
-    #   name = "vsliveshare-audio";
-    #   publisher = "ms-vsliveshare";
-    #   version = "0.1.91";
-    #   sha256 = "0p00bgn2wmzy9c615h3l3is6yf5cka84il5331z0rkfv2lzh6r7n";
-    # }
-    # {
-    #   name = "vsliveshare-pack";
-    #   publisher = "ms-vsliveshare";
-    #   version = "0.4.0";
-    #   sha256 = "09h2yxpmbvxa3mz5wdnpb35h437f0z6j0n3blsb0d93jlwx5ydy5";
-    # }
     {
       name = "vscode-purty";
       publisher = "mvakula";
@@ -510,13 +499,25 @@ let
       version = "3.4.0";
       sha256 = "0ihfrsg2sc8d441a2lkc453zbw1jcpadmmkbkaf42x9b9cipd5qb";
     }
-  ];
+  ] ++ (if pkgs.stdenv.isDarwin then
+    [{
+      name = "vsliveshare-audio";
+      publisher = "ms-vsliveshare";
+      version = "0.1.91";
+      sha256 = "0p00bgn2wmzy9c615h3l3is6yf5cka84il5331z0rkfv2lzh6r7n";
+    }
+      {
+        name = "vsliveshare-pack";
+        publisher = "ms-vsliveshare";
+        version = "0.4.0";
+        sha256 = "09h2yxpmbvxa3mz5wdnpb35h437f0z6j0n3blsb0d93jlwx5ydy5";
+      }] else [ ]);
 
   finalPackage = (pkgs.vscode-with-extensions.override {
     vscode = latest;
-    vscodeExtensions = with pkgs.vscode-extensions; [
-      ms-vsliveshare.vsliveshare
-    ] ++ marketplace;
+    # https://github.com/NixOS/nixpkgs/pull/110461
+    vscodeExtensions = with pkgs.vscode-extensions; (if pkgs.stdenv.isDarwin then [ ] else [ ms-vsliveshare.vsliveshare ])
+      ++ marketplace;
   }).overrideAttrs (old: {
     inherit (latest) pname version;
   });

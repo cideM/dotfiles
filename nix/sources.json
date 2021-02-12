@@ -17,6 +17,12 @@
         "rev": "866f9f4ac9ff9a0ae33de96253c359c68ab556b4",
         "type": "git"
     },
+    "compe-conjure": {
+        "branch": "master",
+        "repo": "https://github.com/tami5/compe-conjure.git",
+        "rev": "809853ff8098dffcf8ba5ac89bcf07806eb8f981",
+        "type": "git"
+    },
     "conjure": {
         "branch": "master",
         "repo": "https://git@github.com/Olical/conjure",
@@ -39,6 +45,12 @@
         "branch": "master",
         "repo": "https://git@github.com/cideM/fish-notes.git",
         "rev": "bfb4818f6ab1317079352b8bd64bd6faa096791e",
+        "type": "git"
+    },
+    "flog": {
+        "branch": "master",
+        "repo": "https://github.com/rbong/vim-flog.git",
+        "rev": "ad1c344fa369d05ad3885d73826783e26ff9e6f3",
         "type": "git"
     },
     "inspecthi": {
@@ -87,6 +99,12 @@
         "branch": "master",
         "repo": "https://git@github.com/norcalli/nvim-colorizer.lua.git",
         "rev": "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6",
+        "type": "git"
+    },
+    "nvim-compe": {
+        "branch": "master",
+        "repo": "https://github.com/hrsh7th/nvim-compe.git",
+        "rev": "ae6ed04f1a93443e2dd85abd9f79ebd26c41a0dc",
         "type": "git"
     },
     "nvim-lsp": {
@@ -243,24 +261,6 @@
         "branch": "master",
         "repo": "https://github.com/ghifarit53/tokyonight-vim.git",
         "rev": "ea68b37bff60104e71ed50fc37fa8f8ac53b727d",
-        "type": "git"
-    },
-    "compe-conjure": {
-        "branch": "master",
-        "repo": "https://github.com/tami5/compe-conjure.git",
-        "rev": "a441174cf1e0203254a23c59995c3789e08058c7",
-        "type": "git"
-    },
-    "nvim-compe": {
-        "branch": "master",
-        "repo": "https://github.com/hrsh7th/nvim-compe.git",
-        "rev": "ae6ed04f1a93443e2dd85abd9f79ebd26c41a0dc",
-        "type": "git"
-    },
-    "flog": {
-        "branch": "master",
-        "repo": "https://github.com/rbong/vim-flog.git",
-        "rev": "ad1c344fa369d05ad3885d73826783e26ff9e6f3",
         "type": "git"
     },
     "yui": {
