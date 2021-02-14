@@ -68,8 +68,7 @@ let
     abbr -a g 'git'
     abbr -a dc 'docker-compose'
     abbr -a tf 'terraform'
-    abbr -a n 'nvim (findnote)/body*'
-    abbr -a wn 'FISH_NOTES_DIR=$FISH_WORK_NOTES nvim (findnote)/body*'
+    abbr -a wn 'FISH_NOTES_DIR=$FISH_WORK_NOTES n'
     abbr -a work-agenda 'FISH_NOTES_DIR=$FISH_WORK_NOTES agenda'
     abbr -a work-make-agenda 'FISH_NOTES_DIR=$FISH_WORK_NOTES make-agenda'
     abbr -a work-new-agenda 'FISH_NOTES_DIR=$FISH_WORK_NOTES new-agenda'
@@ -101,12 +100,22 @@ in
           # 2. Preview only the body (use local variable to suppress wildcard expansion errors)
           # 3. Result will be path/to/file:with:colons:matched term -> split it and keep only the file part (colons come from ISO8601 date)
           # 4. Echo the directory name
-          rg '.*' $FISH_NOTES_DIR\
-            | fzf --preview 'set -l matches (dirname {1..4})/body*; cat $matches' --delimiter ':' --with-nth '2..'\
-            | string split ':'\
-            | head -n 4 \
-            | string join ":" \
-            | xargs dirname
+          set -l note (rg '.*' $FISH_NOTES_DIR | fzf --preview 'set -l matches (dirname {1..4})/body*; cat $matches' --delimiter ':' --with-nth '2..')
+
+          if test -n "$note"
+            echo $note | string split ':' | head -n 4 | string join ":" | xargs dirname
+          end
+        '';
+      };
+
+      n = {
+        description = "Wrapper around findnote to open it in $EDITOR";
+        body = ''
+          set -l fp (findnote)
+
+          if test -n "$fp"
+            $EDITOR $fp/body*
+          end
         '';
       };
 
