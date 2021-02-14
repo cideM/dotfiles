@@ -100,7 +100,7 @@ in
           # 2. Preview only the body (use local variable to suppress wildcard expansion errors)
           # 3. Result will be path/to/file:with:colons:matched term -> split it and keep only the file part (colons come from ISO8601 date)
           # 4. Echo the directory name
-          set -l note (rg '.*' $FISH_NOTES_DIR | fzf --preview 'set -l matches (dirname {1..4})/body*; cat $matches' --delimiter ':' --with-nth '2..')
+          set -l note (rg '.*' $FISH_NOTES_DIR | fzf --preview 'set -l n (dirname {1..4}); cat $n/title*; echo "---------"; cat $n/body*' --delimiter ':' --with-nth '2..')
 
           if test -n "$note"
             echo $note | string split ':' | head -n 4 | string join ":" | xargs dirname
