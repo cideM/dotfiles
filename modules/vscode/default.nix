@@ -507,7 +507,7 @@ let
       sha256 = "0p00bgn2wmzy9c615h3l3is6yf5cka84il5331z0rkfv2lzh6r7n";
     }
       {
-        name = "vsliveshare-pack";
+        name = "vsliveshare";
         publisher = "ms-vsliveshare";
         version = "0.4.0";
         sha256 = "09h2yxpmbvxa3mz5wdnpb35h437f0z6j0n3blsb0d93jlwx5ydy5";
