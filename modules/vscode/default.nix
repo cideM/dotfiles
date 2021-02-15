@@ -11,6 +11,11 @@ let
     armv7l-linux = "linux-armhf";
   }.${system};
 
+  sha = {
+    x86_64-linux = "16qlgqfpz7pn52dw6r3xav4ly7rpl5lwck94vdpvzgld1ja9rpm0";
+    x86_64-darwin = "1i59ixyql28ds4q0fmp9gmxbz1gzc491hm28k7pkwcb2n4v4q6c6";
+  }.${system};
+
   version = "latest";
 
   latest = (pkgs.vscode.override {
@@ -26,7 +31,7 @@ let
       src = builtins.fetchurl {
         name = "VSCode_${version}_${plat}.${archive_fmt}";
         url = "https://vscode-update.azurewebsites.net/${version}/${plat}/insider";
-        sha256 = "1i59ixyql28ds4q0fmp9gmxbz1gzc491hm28k7pkwcb2n4v4q6c6";
+        sha256 = sha;
       };
     });
 
