@@ -20,9 +20,9 @@
   services.gammastep = {
     enable = true;
     provider = "geoclue2";
-    tray = true;
+    tray = false;
     temperature = {
-      night = 2500;
+      night = 2300;
     };
   };
 
