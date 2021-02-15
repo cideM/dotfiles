@@ -70,7 +70,6 @@ let
     abbr -a tf 'terraform'
     abbr -a wn 'FISH_NOTES_DIR=$FISH_WORK_NOTES n'
     abbr -a work-agenda 'FISH_NOTES_DIR=$FISH_WORK_NOTES agenda'
-    abbr -a work-make-agenda 'FISH_NOTES_DIR=$FISH_WORK_NOTES make-agenda'
     abbr -a work-new-agenda 'FISH_NOTES_DIR=$FISH_WORK_NOTES new-agenda'
     abbr -a work-notes 'FISH_NOTES_DIR=$FISH_WORK_NOTES notes'
     abbr -a work-todos 'FISH_NOTES_DIR=$FISH_WORK_NOTES todos'
