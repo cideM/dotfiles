@@ -26,7 +26,7 @@ let
       src = builtins.fetchurl {
         name = "VSCode_${version}_${plat}.${archive_fmt}";
         url = "https://vscode-update.azurewebsites.net/${version}/${plat}/insider";
-        sha256 = "1j9fwkxjdwyhqpwq53sc0s1fb64ijfjx7c0qwv4fnzm5pl68mh5q";
+        sha256 = "1i59ixyql28ds4q0fmp9gmxbz1gzc491hm28k7pkwcb2n4v4q6c6";
       };
     });
 
