@@ -30,7 +30,7 @@ let
       };
     });
 
-  marketplace = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+  marketplace = pkgs.vscode-utils.extensionsFromVscodeMarketplace ([
     {
       name = "vscode-sql-formatter";
       publisher = "adpyke";
@@ -500,24 +500,25 @@ let
       sha256 = "0ihfrsg2sc8d441a2lkc453zbw1jcpadmmkbkaf42x9b9cipd5qb";
     }
   ] ++ (if pkgs.stdenv.isDarwin then
-    [{
-      name = "vsliveshare-audio";
-      publisher = "ms-vsliveshare";
-      version = "0.1.91";
-      sha256 = "0p00bgn2wmzy9c615h3l3is6yf5cka84il5331z0rkfv2lzh6r7n";
-    }
+    [
+      {
+        name = "vsliveshare-audio";
+        publisher = "ms-vsliveshare";
+        version = "0.1.91";
+        sha256 = "0p00bgn2wmzy9c615h3l3is6yf5cka84il5331z0rkfv2lzh6r7n";
+      }
       {
         name = "vsliveshare";
         publisher = "ms-vsliveshare";
-        version = "0.4.0";
-        sha256 = "09h2yxpmbvxa3mz5wdnpb35h437f0z6j0n3blsb0d93jlwx5ydy5";
-      }] else [ ]);
+        version = "1.0.3629";
+        sha256 = "1lvv81awg3ny539xffj3bj64xmfm8jksjvxk71459sf80pg461vz";
+      }
+    ] else [ ]));
 
   finalPackage = (pkgs.vscode-with-extensions.override {
     vscode = latest;
     # https://github.com/NixOS/nixpkgs/pull/110461
-    vscodeExtensions = with pkgs.vscode-extensions; (if pkgs.stdenv.isDarwin then [ ] else [ ms-vsliveshare.vsliveshare ])
-      ++ marketplace;
+    vscodeExtensions = with pkgs.vscode-extensions; (if pkgs.stdenv.isDarwin then [ ] else [ ms-vsliveshare.vsliveshare ]) ++ marketplace;
   }).overrideAttrs (old: {
     inherit (latest) pname version;
   });
