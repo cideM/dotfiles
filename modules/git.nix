@@ -6,6 +6,10 @@
     userEmail = "yuuki@protonmail.com";
     userName = "Florian Beeres";
 
+    init = {
+      defaultBranch = "main";
+    };
+
     aliases = {
       lola = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
       recent = "branch --sort=-committerdate";
