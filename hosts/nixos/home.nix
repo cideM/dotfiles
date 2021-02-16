@@ -39,6 +39,7 @@
     xdg-utils
     slack
     anki
+    grim
     sway-contrib.grimshot
     ncpamixer
     jetbrains.clion
@@ -102,7 +103,7 @@
     set $up k
     set $right l
     # Your preferred terminal emulator
-    set $term WAYLAND_DISPLAY= WINIT_X11_SCALE_FACTOR=1 alacritty
+    set $term alacritty
     # Your preferred application launcher
     # Note: pass the final command to swaymsg so that the resulting window can be opened
     # on the original workspace that the command was run on.

@@ -65,9 +65,6 @@ let
     set -x NIX_PATH ~/.nix-defexpr/channels $NIX_PATH
 
     abbr -a kubedebug 'kubectl run -i --tty --rm debug --image=radial/busyboxplus:curl --restart=Never -- sh'
-    # This makes alacritty use the xwayland shim so that I can have ~nice
-    # things~ IME in alacritty
-    abbr -a alacritty 'WAYLAND_DISPLAY= WINIT_X11_SCALE_FACTOR=1 alacritty'
     abbr -a g 'git'
     abbr -a dc 'docker-compose'
     abbr -a tf 'terraform'
