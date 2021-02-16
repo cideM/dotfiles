@@ -32,6 +32,10 @@
     extraConfig = {
       github.user = "yuuki@protonmail.com";
 
+      init = {
+        defaultBranch = "main";
+      };
+
       push = {
         default = "simple";
       };
