@@ -37,7 +37,6 @@ with pkgs;
     entr
     findutils
     fzf
-    gitAndTools.hub
     gawk
     gh
     gnugrep

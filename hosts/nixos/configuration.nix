@@ -33,11 +33,17 @@ in
 
   # All of this shit here is just in the hope to enable some form of Zoom
   # TODO: Understand what these things do and how and if they work
-  services.flatpak.enable = true;
   services.pipewire.enable = true;
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
-  xdg.portal.gtkUsePortal = true;
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-wlr
+        xdg-desktop-portal-gtk
+      ];
+      gtkUsePortal = true;
+    };
+  };
 
   fonts = {
     fontDir.enable = false;
@@ -71,13 +77,15 @@ in
   i18n = {
     inputMethod = {
       enabled = "fcitx5";
-      fcitx.engines = with pkgs.fcitx-engines; [ mozc ];
       fcitx5.addons = with pkgs; [
         fcitx5-mozc
         fcitx5-gtk
       ];
     };
   };
+
+
+  programs.xwayland.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";

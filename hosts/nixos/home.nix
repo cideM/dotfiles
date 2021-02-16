@@ -34,8 +34,7 @@
     })
     sublime-merge
     spotify
-    # Gonna go with flatpak for now
-    # zoom-us
+    zoom-us
     # For xdg-open and friends on wayland
     xdg-utils
     slack
@@ -51,6 +50,16 @@
 
   programs.firefox.enable = true;
   programs.firefox.package = pkgs.firefox-devedition-bin;
+
+  # programs.firefox = {
+  #   enable = true;
+  #   package = pkgs.wrapFirefox pkgs.firefox-devedition-bin-unwrapped {
+  #     forceWayland = true;
+  #     extraPolicies = {
+  #       ExtensionSettings = { };
+  #     };
+  #   };
+  # };
 
   programs.alacritty = {
     light = true;
@@ -92,7 +101,7 @@
     set $up k
     set $right l
     # Your preferred terminal emulator
-    set $term alacritty
+    set $term WAYLAND_DISPLAY= WINIT_X11_SCALE_FACTOR=1 alacritty
     # Your preferred application launcher
     # Note: pass the final command to swaymsg so that the resulting window can be opened
     # on the original workspace that the command was run on.
