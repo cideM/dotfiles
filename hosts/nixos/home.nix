@@ -39,6 +39,7 @@
     xdg-utils
     slack
     anki
+    sway-contrib.grimshot
     ncpamixer
     jetbrains.clion
     jetbrains.rider
