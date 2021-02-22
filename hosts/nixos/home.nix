@@ -112,7 +112,7 @@
     ### Output configuration
     #
     # Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
-    output * bg ~/Wallpapers/eLhXg6V.jpg fill
+    output * bg ~/Wallpapers/703595.png fill
     #
     # Example configuration:
     #
