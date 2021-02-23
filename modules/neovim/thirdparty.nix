@@ -191,11 +191,11 @@ in
   # https://github.com/nvim-treesitter/nvim-treesitter/blob/master/lockfile.json
   grammarNix = makeGrammar {
     parserName = "nix";
-    includedFiles = [ "parser.c" "scanner.cc" ];
+    includedFiles = [ "parser.c" "scanner.c" ];
     src = "${builtins.fetchGit {
       "url" = "https://github.com/cstrahan/tree-sitter-nix";
       "ref" = "master";
-      "rev" = "791b5ff0e4f0da358cbb941788b78d436a2ca621";
+      "rev" = "a6bae0619126d70c756c11e404d8f4ad5108242f";
       }}/src";
   };
 
