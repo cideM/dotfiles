@@ -111,6 +111,7 @@ in
 
     wofi
     mako
+    wl-clipboard
   ];
 
 
