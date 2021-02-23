@@ -26,6 +26,12 @@
     };
   };
 
+  home.sessionVariables = {
+    MOZ_ENABLE_WAYLAND = "1";
+    XDG_SESSION_TYPE = "wayland";
+    XDG_CURRENT_DESKTOP = "sway";
+  };
+
   home.packages = with pkgs; [
     insomnia
     (import ../../derivations/kubectl.nix {

@@ -135,11 +135,6 @@ in
       export GTK_IM_MODULE=fcitx
       export XMODIFIERS=@im=fcitx
       export XIM_SERVERS=fcitx
-
-      # https://github.com/calbrecht/nixpkgs-overlays
-      export MOZ_ENABLE_WAYLAND="1";
-      export XDG_CURRENT_DESKTOP="sway"; # https://github.com/emersion/xdg-desktop-portal-wlr/issues/20
-      export XDG_SESSION_TYPE="wayland"; # https://github.com/emersion/xdg-desktop-portal-wlr/pull/11
     '';
   };
 
