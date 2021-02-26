@@ -19,24 +19,25 @@ in
   set shiftwidth=2
   set noequalalways
   set formatoptions=tcrqjn
-  set wildignore+=*/.git/*,
-              \*/node_modules/*,
-              \*node_modules*,
-              \nix/sources.json,
+  set wildignore+=*.git/*,
+              \*node_modules/*,
+              \*public/*,
+              \nix/sources.nix,
               \*.clj-kondo*,
               \package-lock.json,
               \*.min.*,
               \*.map,
-              \*/build/*,
-              \*/dist/*,
-              \*/compiled/*,
-              \*/tmp/*
+              \*.idea,
+              \*build/*,
+              \*dist/*,
+              \*compiled/*,
+              \*tmp/*
   set diffopt=algorithm:patience,filler,indent-heuristic,closeoff,iwhite
   set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
   set hidden
   set signcolumn=yes:2
   set ignorecase
-  set completeopt=menuone
+  set completeopt=menuone,noselect
   set smartcase
   set inccommand=split
   set path-=/usr/include
@@ -304,16 +305,9 @@ in
   lua <<EOF
   require'compe'.setup {
     enabled = true;
-    debug = false;
-    min_length = 1;
-    preselect = 'always';
-    allow_prefix_unmatch = false;
 
     source = {
-      path = true;
-      buffer = true;
       vsnip = false;
-      nvim_lsp = true;
       conjure = true;
     };
   }

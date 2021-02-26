@@ -172,6 +172,7 @@
   };
   "nvim/ftplugin/css.vim" = {
     text = ''
+      let b:undo_ftplugin = ""
       set suffixesadd+=.js,.jsx,.css
 
       let &formatprg='${pkgs.nodePackages.prettier}/bin/prettier' . ' --stdin-filepath ' . expand('%')
