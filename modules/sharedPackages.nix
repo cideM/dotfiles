@@ -42,6 +42,7 @@ with pkgs;
     gnugrep
     gnused
     gnupg
+    jetbrains-mono
     google-cloud-sdk
     gopls
     go

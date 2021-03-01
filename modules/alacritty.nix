@@ -432,6 +432,35 @@ let
     use_thin_strokes = pkgs.stdenv.isDarwin;
   };
 
+  jetbrains = {
+    bold = {
+      family = "JetBrains Mono";
+      style = "Bold";
+    };
+    bold_italic = {
+      family = "JetBrains Mono";
+      style = "Bold Italic";
+    };
+    glyph_offset = {
+      x = 0;
+      y = 0;
+    };
+    italic = {
+      family = "JetBrains Mono";
+      style = "Light Italic";
+    };
+    normal = {
+      family = "JetBrains Mono";
+      style = "Light";
+    };
+    offset = {
+      x = 0;
+      y = 0;
+    };
+    size = cfg.fontSize;
+    use_thin_strokes = pkgs.stdenv.isDarwin;
+  };
+
   liberationMono = {
     bold = {
       family = "Liberation Mono";
@@ -603,6 +632,7 @@ let
     "dejavuSansMono" = dejavuSansMono;
     "monoMedium" = monoMedium;
     "liberationMono" = liberationMono;
+    "jetbrains" = jetbrains;
     "hack" = hack;
   };
 
@@ -619,7 +649,7 @@ in
     };
 
     font = mkOption {
-      type = enum [ "mono" "liberationMono" "dejavuSansMono" "hack" "monoMedium" ];
+      type = enum [ "mono" "liberationMono" "dejavuSansMono" "hack" "monoMedium" "jetbrains" ];
       default = "mono";
       description = "Terminal emulator font";
     };

@@ -301,12 +301,23 @@ in
   inoremap <silent><expr> <C-Space> compe#complete()
   inoremap <silent><expr> <CR>      compe#confirm('<CR>')
   inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+  inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+  inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
   lua <<EOF
   require'compe'.setup {
     enabled = true;
+    debug = true;
+    autocomplete = true;
+    preselect = 'always';
+    min_length = 1;
+    documentation = true;
 
     source = {
+      buffer = true;
+      path = true;
+      nvim_lsp = true;
+      tags = false;
       vsnip = false;
       conjure = true;
     };

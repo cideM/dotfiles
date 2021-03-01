@@ -26,7 +26,7 @@
     "conjure": {
         "branch": "master",
         "repo": "https://git@github.com/Olical/conjure",
-        "rev": "88e7865b97737809d963b81b10737c41e90b4377",
+        "rev": "4dc7c745618a24799af44797c51af7cc308e42a4",
         "type": "git"
     },
     "fish-journal": {
@@ -51,6 +51,12 @@
         "branch": "master",
         "repo": "https://github.com/rbong/vim-flog.git",
         "rev": "ad1c344fa369d05ad3885d73826783e26ff9e6f3",
+        "type": "git"
+    },
+    "indent-blankline": {
+        "branch": "lua",
+        "repo": "https://github.com/lukas-reineke/indent-blankline.nvim.git",
+        "rev": "0d4d7b1325aa57d32cceb91a2fbdfd9a01d4c0ad",
         "type": "git"
     },
     "inspecthi": {
@@ -104,13 +110,13 @@
     "nvim-compe": {
         "branch": "master",
         "repo": "https://github.com/hrsh7th/nvim-compe.git",
-        "rev": "7e8292455a8140578a1246fa01df12b2e62e0078",
+        "rev": "d46568599383682073543056d3479d8f43d8e999",
         "type": "git"
     },
     "nvim-lsp": {
         "branch": "master",
         "repo": "https://git@github.com/neovim/nvim-lspconfig.git",
-        "rev": "80290ccc3a624b515541d1bc4e26257abf4951de",
+        "rev": "27d9ad58097b745418ddc47d7376e8319e2ecd7c",
         "type": "git"
     },
     "onehalf": {
@@ -170,7 +176,7 @@
     "vim-color-edge": {
         "branch": "master",
         "repo": "https://github.com/sainnhe/edge.git",
-        "rev": "e050d98ff8415af2e0f5b4c700d2111ac4e0cdde",
+        "rev": "777ff7f61242a6a71ba96374e3007253279f2a20",
         "type": "git"
     },
     "vim-color-spring-night": {
@@ -224,7 +230,7 @@
     "vim-matchup": {
         "branch": "master",
         "repo": "https://git@github.com/andymass/vim-matchup",
-        "rev": "0ec3160692d165533a23f576e7a5694298e0d76c",
+        "rev": "69208b080114be6d038fcdca4a70adb24b6539be",
         "type": "git"
     },
     "vim-nightowl-colors": {

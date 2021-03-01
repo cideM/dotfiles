@@ -30,9 +30,9 @@
   # Install through casks for Alacritty.app etc
   programs.alacritty = {
     light = true;
-    font = "mono";
+    font = "jetbrains";
     enable = false;
-    fontSize = 13;
+    fontSize = 14;
   };
 
   # Can't use programs.git because https://github.com/NixOS/nixpkgs/issues/62353

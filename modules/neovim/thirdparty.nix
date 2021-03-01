@@ -60,6 +60,11 @@ in
     src = sources.neovim-set-path;
   });
 
+  indent-blankline = (pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "indent-blankline";
+    src = sources.indent-blankline;
+  });
+
   qfenter = (pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "qfenter";
     src = sources.qfenter;
