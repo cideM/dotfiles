@@ -10,7 +10,6 @@
     (import ../../modules/pandoc)
     (import ../../modules/fish)
     (import ../../modules/sharedPackages.nix)
-    (import ../../modules/sharedPackagesLinux.nix)
     (import ../../modules/sharedSettings.nix)
     (import ../../modules/sources.nix)
     (import ../../modules/vscode)
@@ -19,6 +18,12 @@
   sources = import ../../nix/sources.nix;
 
   home.packages = with pkgs; [
+    iotop
+    xsel
+    kanji-stroke-order-font
+    source-han-sans-japanese
+    source-han-serif-japanese
+    iosevka
     insomnia
     (import ../../derivations/kubectl.nix {
       inherit (pkgs) stdenv;

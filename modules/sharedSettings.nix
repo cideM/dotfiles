@@ -14,8 +14,6 @@
   xdg.configFile."nixpkgs/config.nix".source = ../nixpkgs_config.nix;
 
   programs.direnv.enable = true;
-  # This adds the fish shell hook to programs.fish.shellInit
-  # https://github.com/rycee/home-manager/blob/master/modules/programs/direnv.nix#blob-path
   programs.direnv.enableFishIntegration = true;
   programs.direnv.enableNixDirenvIntegration = true;
 

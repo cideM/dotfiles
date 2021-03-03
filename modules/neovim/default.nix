@@ -56,9 +56,7 @@ in
         fzf-vim
         qfenter
         suda.vim
-        vim-markdown-toc
         unicode-vim
-        minimap-vim
         nvim-compe
 
         # Git

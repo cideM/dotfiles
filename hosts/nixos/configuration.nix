@@ -86,6 +86,8 @@ in
     package = pkgs.nixUnstable;
     extraOptions = ''
       experimental-features = nix-command flakes
+      keep-outputs = true
+      keep-derivations = true
     '';
   };
 
@@ -139,8 +141,6 @@ in
     permitRootLogin = "no";
     challengeResponseAuthentication = false;
   };
-
-  services.lorri.enable = true;
 
   services.geoclue2.enable = true;
 
