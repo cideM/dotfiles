@@ -32,20 +32,6 @@ in
     "vm.max_map_count" = 262144;
   };
 
-  # All of this shit here is just in the hope to enable some form of Zoom
-  # TODO: Understand what these things do and how and if they work
-  services.pipewire.enable = true;
-  xdg = {
-    portal = {
-      enable = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-wlr
-        xdg-desktop-portal-gtk
-      ];
-      gtkUsePortal = true;
-    };
-  };
-
   fonts = {
     fontDir.enable = false;
     fonts = [ operatorMonoFontPkg ];
@@ -71,6 +57,9 @@ in
     useNetworkd = true;
     hostName = "nixos";
     wireless.iwd.enable = true;
+    networkmanager = {
+      enable = false;
+    };
   };
 
   # Select internationalisation properties.
@@ -85,8 +74,6 @@ in
     };
   };
 
-
-  programs.xwayland.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -110,34 +97,38 @@ in
     vim
     git
 
-    wofi
-    mako
-    wl-clipboard
+    gnome3.gnome-shell-extensions
+    gnome3.dconf-editor
   ];
 
+  services.udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
+
+  services.xserver = {
+    enable = true;
+    videoDrivers = [ "nvidia" ];
+    layout = "us";
+    # https://discourse.nixos.org/t/problem-with-xkboptions-it-doesnt-seem-to-take-effect/5269/2
+    # Everything is broke, always.
+    xkbOptions = "ctrl:nocaps";
+
+    displayManager = {
+      gdm.enable = true;
+      gdm.wayland = false;
+    };
+
+    desktopManager = {
+      gnome3 = {
+        enable = true;
+      };
+    };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are started
   # in user sessions.
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
-  };
-
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-    extraSessionCommands = ''
-      # Fix for some Java AWT applications (e.g. Android Studio), use this if
-      # they aren't displayed properly:
-      export _JAVA_AWT_WM_NONREPARENTING=1
-
-      # https://www.reddit.com/r/swaywm/comments/i6qlos/how_do_i_use_an_ime_with_sway/g1lk4xh?utm_source=share&utm_medium=web2x&context=3
-      export INPUT_METHOD=fcitx
-      export QT_IM_MODULE=fcitx
-      export GTK_IM_MODULE=fcitx
-      export XMODIFIERS=@im=fcitx
-      export XIM_SERVERS=fcitx
-    '';
+    pinentryFlavor = "gnome3";
   };
 
   # Enable the OpenSSH daemon.
@@ -165,7 +156,7 @@ in
   users.users.tifa = {
     isNormalUser = true;
     shell = pkgs.fish;
-    extraGroups = [ "wheel" "networkmanager" "docker" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
   };
 
   home-manager.users.tifa = ./home.nix;
