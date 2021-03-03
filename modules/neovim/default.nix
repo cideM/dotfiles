@@ -36,7 +36,6 @@ in
         vim-easy-align
         vim-eunuch
         vim-peekaboo
-        vim-gutentags
         vim-indent-object
         vim-matchup
         vim-cool
@@ -62,7 +61,6 @@ in
         # Git
         vim-fugitive
         vim-rhubarb
-        flog
         git-messenger-vim
 
         # Language Tooling

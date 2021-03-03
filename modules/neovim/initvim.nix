@@ -181,10 +181,6 @@ in
   " ======= MARKDOWN FOLDING ==========
   let g:markdown_fold_style = "nested"
 
-  " ======= GUTENTAGS =================
-  let g:gutentags_exclude_filetypes = ["haskell", "purs", "purescript"]
-  let g:gutentags_file_list_command = 'rg\ --files'
-
   " ======= FZF VIM ===================
   autocmd! FileType fzf set laststatus=0 noshowmode noruler
               \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler

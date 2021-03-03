@@ -3,6 +3,10 @@
   programs.git = {
     enable = true;
 
+    ignores = [
+      ".direnv"
+    ];
+
     userEmail = "yuuki@protonmail.com";
     userName = "Florian Beeres";
 
