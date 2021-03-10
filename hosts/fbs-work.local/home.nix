@@ -25,7 +25,7 @@
     or set -x PATH ${pkgs.coreutils}/bin $PATH/
   '';
 
-  home.packages = with pkgs; [ lorri unixtools.watch ];
+  home.packages = with pkgs; [ unixtools.watch ];
 
   # Install through casks for Alacritty.app etc
   programs.alacritty = {

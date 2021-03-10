@@ -53,6 +53,7 @@ in
         sad
         vim-sneak
         fzf-vim
+        fzfWrapper
         qfenter
         suda.vim
         unicode-vim
