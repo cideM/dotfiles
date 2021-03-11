@@ -8,7 +8,7 @@
     "clj-deps": {
         "branch": "live",
         "repo": "https://git@github.com/practicalli/clojure-deps-edn.git",
-        "rev": "cce34b3936cf0628ce792d5b4354868521e7c33e",
+        "rev": "e42d56297b393e549cce7f88debe1bc16ee8b29b",
         "type": "git"
     },
     "cocopon/iceberg.vim": {
@@ -50,13 +50,13 @@
     "flog": {
         "branch": "master",
         "repo": "https://github.com/rbong/vim-flog.git",
-        "rev": "ad1c344fa369d05ad3885d73826783e26ff9e6f3",
+        "rev": "904b964eb0f878e44f47d39898e72fc0b939756b",
         "type": "git"
     },
     "indent-blankline": {
         "branch": "lua",
         "repo": "https://github.com/lukas-reineke/indent-blankline.nvim.git",
-        "rev": "0d4d7b1325aa57d32cceb91a2fbdfd9a01d4c0ad",
+        "rev": "3da290870728e304079fdf029bb1c9961ff2b545",
         "type": "git"
     },
     "inspecthi": {
@@ -74,7 +74,7 @@
     "neovim": {
         "branch": "master",
         "repo": "https://git@github.com/neovim/neovim",
-        "rev": "c1fbc2ddf15b2f44b615f90b2511349ab974cb83",
+        "rev": "097ec71bd82840996e4ba06d0006850b0ad7b5d1",
         "type": "git"
     },
     "neovim-set-path": {
@@ -110,13 +110,13 @@
     "nvim-compe": {
         "branch": "master",
         "repo": "https://github.com/hrsh7th/nvim-compe.git",
-        "rev": "d46568599383682073543056d3479d8f43d8e999",
+        "rev": "25170751944b64bb7b65af1e35772361485bc936",
         "type": "git"
     },
     "nvim-lsp": {
         "branch": "master",
         "repo": "https://git@github.com/neovim/nvim-lspconfig.git",
-        "rev": "27d9ad58097b745418ddc47d7376e8319e2ecd7c",
+        "rev": "18c18349ec4f41b77fdf4be0b0dec7c09294c7d6",
         "type": "git"
     },
     "onehalf": {
@@ -140,7 +140,7 @@
     "parinfer": {
         "branch": "master",
         "repo": "https://git@github.com/eraserhd/parinfer-rust.git",
-        "rev": "998484ba3ca9c162971e3fa6f01e67cc3e9ac85e",
+        "rev": "c25f51c5eb3d78737de9488cebcca399165a1403",
         "type": "git"
     },
     "qfenter": {
@@ -224,13 +224,13 @@
     "vim-markdown-toc": {
         "branch": "master",
         "repo": "https://github.com/mzlogin/vim-markdown-toc.git",
-        "rev": "2e86c7229dfee5b7062194ec3d08a79a6b07de02",
+        "rev": "b7bb6c37033d3a6c93906af48dc0e689bd948638",
         "type": "git"
     },
     "vim-matchup": {
         "branch": "master",
         "repo": "https://git@github.com/andymass/vim-matchup",
-        "rev": "69208b080114be6d038fcdca4a70adb24b6539be",
+        "rev": "4f5619fd1ad2b1aa36536b332b058ef6a3387a85",
         "type": "git"
     },
     "vim-nightowl-colors": {
@@ -260,7 +260,7 @@
     "vim-terraform": {
         "branch": "master",
         "repo": "https://github.com/hashivim/vim-terraform.git",
-        "rev": "aa7877acb5dd81bed70c1188667b76cfde5b67bf",
+        "rev": "e62cac4d3186209a510f51becd768ee414b2be76",
         "type": "git"
     },
     "vim-tokyonight-colors": {
