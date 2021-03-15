@@ -71,6 +71,12 @@
         "rev": "8f50acbe91a9b6228b4a14b2f24d00cb4c5ed22e",
         "type": "git"
     },
+    "lucid-fork": {
+        "branch": "master",
+        "repo": "https://github.com/cidem/lucid.fish.git",
+        "rev": "ed69c50f86cdf9bc87d263299688394b2c93e0da",
+        "type": "git"
+    },
     "neovim": {
         "branch": "master",
         "repo": "https://git@github.com/neovim/neovim",

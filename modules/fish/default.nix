@@ -220,7 +220,7 @@ in
 
       {
         name = "lucid";
-        src = config.sources.lucid-fish-prompt;
+        src = config.sources.lucid-fork;
       }
     ];
   };
