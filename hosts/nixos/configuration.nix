@@ -135,7 +135,7 @@ in
 
   # Enable the OpenSSH daemon.
   services.openssh = {
-    enable = true;
+    enable = false;
     authorizedKeysFiles = [ "/home/tifa/.ssh/authorized_keys" ];
     passwordAuthentication = false; # originally true
     permitRootLogin = "no";
