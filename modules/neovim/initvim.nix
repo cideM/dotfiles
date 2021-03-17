@@ -14,7 +14,6 @@ in
 
   set background=light
   set foldmethod=syntax
-  set number
   set tabstop=4 
   set shiftwidth=2
   set noequalalways
@@ -35,7 +34,8 @@ in
   set diffopt=algorithm:patience,filler,indent-heuristic,closeoff,iwhite
   set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
   set hidden
-  set signcolumn=yes:2
+  set autoindent
+  set nosmartindent
   set ignorecase
   set completeopt=menuone,noselect
   set smartcase
@@ -287,8 +287,7 @@ in
       },
     },
     indent = {
-      enable = true,
-      disable = { "clojure" },
+      enable = false,
     }
   }
   EOF
@@ -302,21 +301,31 @@ in
 
   lua <<EOF
   require'compe'.setup {
-    enabled = true;
-    debug = true;
-    autocomplete = true;
-    preselect = 'always';
-    min_length = 1;
-    documentation = true;
+    enabled = true,
+    debug = true,
+    autocomplete = true,
+    preselect = 'always',
+    min_length = 1,
+    documentation = true,
 
     source = {
-      buffer = true;
-      path = true;
-      nvim_lsp = true;
-      tags = false;
-      vsnip = false;
-      conjure = true;
-    };
+      nvim_lsp = {
+        priority = 100,
+      },
+      conjure = {
+        priority = 90,
+      },
+      buffer = {
+        priority = 80,
+      },
+      path = {
+        priority = 70,
+      },
+      tags = {
+        priority = 0,
+      },
+      vsnip = false,
+    },
   }
   EOF
 ''

@@ -108,10 +108,6 @@
       let &formatprg='${pkgs.nodePackages.prettier}/bin/prettier' . ' --stdin-filepath ' . expand('%')
       let b:undo_ftplugin .= '|setlocal formatprg<'
 
-      setlocal foldmethod=expr
-      setlocal foldexpr=nvim_treesitter#foldexpr()
-      let b:undo_ftplugin .= '|setlocal foldexpr<'
-      let b:undo_ftplugin .= '|setlocal foldmethod<'
     '';
   };
   "nvim/ftplugin/javascript.vim" = {
@@ -151,10 +147,6 @@
       command! -bar -buffer JestSplitWatch :split | execute 'terminal jest --watch '. expand('%')
       nnoremap <buffer> <silent> <localleader>tw :JestSplitWatch<cr>
 
-      setlocal foldmethod=expr
-      setlocal foldexpr=nvim_treesitter#foldexpr()
-      let b:undo_ftplugin .= '|setlocal foldexpr<'
-      let b:undo_ftplugin .= '|setlocal foldmethod<'
     '';
   };
   "nvim/ftplugin/dhall.vim" = {
@@ -185,6 +177,11 @@
 
       compiler go
 
+      setlocal foldmethod=expr
+      setlocal foldexpr=nvim_treesitter#foldexpr()
+      let b:undo_ftplugin .= '|setlocal foldexpr<'
+      let b:undo_ftplugin .= '|setlocal foldmethod<'
+
       setlocal formatprg=gofmt
       let b:undo_ftplugin .= '|setlocal formatprg<'
 
@@ -203,10 +200,6 @@
       nnoremap <silent> <localleader>m :execute 'make ' . expand('%:p:h')<CR>
       nnoremap <silent> <localleader>i :Goimport<CR>
 
-      setlocal foldmethod=expr
-      setlocal foldexpr=nvim_treesitter#foldexpr()
-      let b:undo_ftplugin .= '|setlocal foldexpr<'
-      let b:undo_ftplugin .= '|setlocal foldmethod<'
     '';
   };
   "nvim/ftplugin/typescript.vim" = {
@@ -247,34 +240,22 @@
         setlocal suffixesadd+=.ts,.tsx,.css
         let b:undo_ftplugin .= '|setlocal suffixesadd<'
 
-        setlocal foldmethod=expr
-        setlocal foldexpr=nvim_treesitter#foldexpr()
-        let b:undo_ftplugin .= '|setlocal foldexpr<'
-        let b:undo_ftplugin .= '|setlocal foldmethod<'
     '';
   };
   "nvim/ftplugin/python.vim" = {
     text = ''
       let b:undo_ftplugin = ""
-      setlocal foldmethod=expr
-      setlocal foldexpr=nvim_treesitter#foldexpr()
-      let b:undo_ftplugin .= '|setlocal foldexpr<'
-      let b:undo_ftplugin .= '|setlocal foldmethod<'
     '';
   };
   "nvim/ftplugin/haskell.vim" = {
     text = ''
       let b:undo_ftplugin="setlocal formatprg< foldmethod<"
 
-      set foldmethod=indent
+      setlocal foldmethod=indent
 
-      set formatprg=${pkgs.ormolu}/bin/ormolu
+      setlocal formatprg=${pkgs.ormolu}/bin/ormolu
 
       nnoremap <buffer> <localleader>t :silent !fast-tags -R .<cr>
-      setlocal foldmethod=expr
-      setlocal foldexpr=nvim_treesitter#foldexpr()
-      let b:undo_ftplugin .= '|setlocal foldexpr<'
-      let b:undo_ftplugin .= '|setlocal foldmethod<'
     '';
   };
   "nvim/ftplugin/clojure.vim" = {
@@ -293,10 +274,6 @@
       setlocal errorformat=%f:%l:%c:\ Parse\ %t%*[^:]:\ %m,%f:%l:%c:\ %t%*[^:]:\ %m
       setlocal makeprg=clj-kondo\ --lint\ %
 
-      setlocal foldmethod=expr
-      setlocal foldexpr=nvim_treesitter#foldexpr()
-      let b:undo_ftplugin .= '|setlocal foldexpr<'
-      let b:undo_ftplugin .= '|setlocal foldmethod<'
     '';
   };
   "nvim/ftplugin/yaml.vim" = {
@@ -305,10 +282,6 @@
 
       let &formatprg='${pkgs.nodePackages.prettier}/bin/prettier' . ' --stdin-filepath ' . expand('%')
       let b:undo_ftplugin .= '|setlocal formatprg<'
-      setlocal foldmethod=expr
-      setlocal foldexpr=nvim_treesitter#foldexpr()
-      let b:undo_ftplugin .= '|setlocal foldexpr<'
-      let b:undo_ftplugin .= '|setlocal foldmethod<'
     '';
   };
 }
