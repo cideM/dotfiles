@@ -259,6 +259,7 @@ in
     vim.lsp.diagnostic.on_publish_diagnostics, {
       virtual_text = false,
       signs = false,
+      underline = true,
       update_in_insert = false,
     }
   )

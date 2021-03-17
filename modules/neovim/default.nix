@@ -84,6 +84,7 @@ in
         # Themes
         apprentice
         vim-colors-github
+        nord-vim
         yui
         seoul256-vim
         iceberg-vim

@@ -39,11 +39,6 @@ let
 
 in
 {
-  conjure = (pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "conjure";
-    src = sources.conjure;
-  });
-
   parinfer-rust = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "parinfer";
     postInstall = ''
@@ -210,7 +205,7 @@ in
     src = "${builtins.fetchGit {
       "url" = "https://github.com/sogaiu/tree-sitter-clojure";
       "ref" = "master";
-      "rev" = "f09652f095be878df8a87a57dcbfa07094316253";
+      "rev" = "95c7959c461406381b42113dcf4591008c663d21";
       }}/src";
   };
 
@@ -220,7 +215,7 @@ in
     src = "${builtins.fetchGit {
       "ref" = "master";
       "url" = "https://git@github.com/ikatyang/tree-sitter-yaml";
-      "rev" = "ab0ce67ce98f8d9cc0224ebab49c64d01fedc1a1";
+      "rev" = "74d3e003f79807b238bd62dc6ac16f846bca5a44";
       }}/src";
   };
 
@@ -230,7 +225,7 @@ in
     src = "${builtins.fetchGit {
       "url" = "https://git@github.com/tree-sitter/tree-sitter-go.git";
       "ref" = "master";
-      "rev" = "dadfd9c9aab2630632e61cfce645c13c35aa092f";
+      "rev" = "2a83dfdd759a632651f852aa4dc0af2525fae5cd";
       }}/src";
   };
 
@@ -245,7 +240,7 @@ in
     src = "${builtins.fetchGit {
       "ref" = "master";
       "url" = "https://github.com/tree-sitter/tree-sitter-haskell";
-      "rev" = "2a0aa1cb5f1b787a4056a29fa0791e87846e33fb";
+      "rev" = "26d3daa53be335782062027695183e2da401011c";
       }}/src";
   };
 
@@ -255,7 +250,7 @@ in
     src = "${builtins.fetchGit {
       "url" = "https://github.com/tree-sitter/tree-sitter-python";
       "ref" = "master";
-      "rev" = "f568dfabf7c4611077467a9cd13297fa0658abb6";
+      "rev" = "20729b3e2fe70d13c1dd9f400382871a5fe95255";
       }}/src";
   };
 
@@ -265,7 +260,7 @@ in
     src = "${builtins.fetchGit {
       "url" = "https://github.com/tree-sitter/tree-sitter-javascript";
       "ref" = "master";
-      "rev" = "852f11b394804ac2a8986f8bcaafe77753635667";
+      "rev" = "afab377857b76a2ca96f617b80ebcd3ed53dcdeb";
       }}/src";
   };
 
@@ -275,7 +270,7 @@ in
     src = "${builtins.fetchGit {
       "ref" = "master";
       "url" = "https://git@github.com/tree-sitter/tree-sitter-typescript";
-      "rev" = "73afadbd117a8e8551758af9c3a522ef46452119";
+      "rev" = "3e897ea5925f037cfae2e551f8e6b12eec2a201a";
       }}/typescript/src";
   };
 
@@ -285,7 +280,7 @@ in
     src = "${builtins.fetchGit {
       "ref" = "master";
       "url" = "https://git@github.com/tree-sitter/tree-sitter-typescript";
-      "rev" = "73afadbd117a8e8551758af9c3a522ef46452119";
+      "rev" = "3e897ea5925f037cfae2e551f8e6b12eec2a201a";
     }}/tsx/src";
   };
 
