@@ -40,6 +40,7 @@
     jetbrains.idea-ultimate
     jetbrains.goland
     jetbrains.pycharm-professional
+    skype
   ];
 
   programs.firefox.enable = true;

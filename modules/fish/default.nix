@@ -222,6 +222,11 @@ in
         name = "lucid";
         src = config.sources.lucid-fork;
       }
+
+      {
+        name = "fish-yvm";
+        src = config.sources.fish-yvm;
+      }
     ];
   };
 }

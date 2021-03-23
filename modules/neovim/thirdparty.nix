@@ -50,6 +50,11 @@ in
     src = sources.parinfer;
   });
 
+  nvim-treesitter = (pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "nvim-treesitter";
+    src = sources.nvim-treesitter;
+  });
+
   neovim-set-path = (pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "neovim-set-path";
     src = sources.neovim-set-path;

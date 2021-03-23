@@ -35,6 +35,18 @@
         "rev": "bfb4818f6ab1317079352b8bd64bd6faa096791e",
         "type": "git"
     },
+    "fish-yvm": {
+        "branch": "improve-curl-errors",
+        "description": "Yarn version manager for the Fish shell :fish: :heart:",
+        "homepage": "",
+        "owner": "cidem",
+        "repo": "fish-yvm",
+        "rev": "9ec1ea40301180424085fa9ae6168d4efc5d14e7",
+        "sha256": "1qy5kr0zgck4zh8jypsldmdhs3jdksp3xk6xqa3j9pmp3jlkq3q8",
+        "type": "tarball",
+        "url": "https://github.com/cidem/fish-yvm/archive/9ec1ea40301180424085fa9ae6168d4efc5d14e7.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "flog": {
         "branch": "master",
         "repo": "https://github.com/rbong/vim-flog.git",
@@ -106,6 +118,18 @@
         "repo": "https://git@github.com/neovim/nvim-lspconfig.git",
         "rev": "26c499916ddac29675d316a099b376abf6a0aeaf",
         "type": "git"
+    },
+    "nvim-treesitter": {
+        "branch": "master",
+        "description": "Nvim Treesitter configurations and abstraction layer",
+        "homepage": "",
+        "owner": "nvim-treesitter",
+        "repo": "nvim-treesitter",
+        "rev": "5c00f8ede14a132a7f1ce2fa1b32c5708baa071f",
+        "sha256": "0bx030a15k7vjahn7mm6v8b9qf872z235wa29dcik7wggwdaihrm",
+        "type": "tarball",
+        "url": "https://github.com/nvim-treesitter/nvim-treesitter/archive/5c00f8ede14a132a7f1ce2fa1b32c5708baa071f.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "onehalf": {
         "branch": "master",

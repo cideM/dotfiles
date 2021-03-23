@@ -277,7 +277,7 @@ in
     ensure_installed = {},
     highlight = {
       enable = true,
-      disable = {},
+      disable = {'nix'},
     },
     incremental_selection = {
       enable = true,
