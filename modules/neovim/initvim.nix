@@ -46,6 +46,18 @@ in
   set splitright
   set termguicolors
   set undofile
+  set statusline=
+  set statusline+=\ %f
+  set statusline+=\ %m 
+  set statusline+=\%{get(b:,'gitsigns_status',\'\')}
+  set statusline+=\ %{get(b:,'gitsigns_head',\'\')}
+  set statusline+=\ %{mode()}\ 
+  set statusline+=%=
+  set statusline+=%y\ " buffer type
+  set statusline+=%q\ 
+  set statusline+=%3l:%2c\ \|
+  set statusline+=%3p%%\ 
+
   colorscheme yui
 
   " https://github.com/neovim/neovim/issues/13113
@@ -326,6 +338,18 @@ in
         priority = 0,
       },
       vsnip = false,
+    },
+  }
+  EOF
+
+  lua <<EOF
+  require('gitsigns').setup {
+    signs = {
+      add          = {hl = 'GitSignsAdd'   , text = '+', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
+      change       = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+      delete       = {hl = 'GitSignsDelete', text = '-', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+      topdelete    = {hl = 'GitSignsDelete', text = '-', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+      changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
     },
   }
   EOF

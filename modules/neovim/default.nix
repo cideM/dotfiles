@@ -58,11 +58,14 @@ in
         suda.vim
         unicode-vim
         nvim-compe
+        indent-blankline
+        plenary-nvim
 
         # Git
         vim-fugitive
         vim-rhubarb
         git-messenger-vim
+        gitsigns-nvim
 
         # Language Tooling
         vim-markdown-folding

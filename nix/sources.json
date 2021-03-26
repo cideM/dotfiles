@@ -278,7 +278,7 @@
     "yui": {
         "branch": "v2",
         "repo": "https://git@github.com/cidem/yui",
-        "rev": "e430916c942cb0ff6418cd6ccffbb22a8454d6c9",
+        "rev": "dc0f84a6eaaab420a9cf9900475472e6930969fd",
         "type": "git"
     }
 }
