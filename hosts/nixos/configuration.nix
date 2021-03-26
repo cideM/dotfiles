@@ -32,6 +32,10 @@ in
     "vm.max_map_count" = 262144;
   };
 
+  services.logind.extraConfig = ''
+    RuntimeDirectorySize=20G
+  '';
+
   fonts = {
     fontDir.enable = false;
     fonts = [ operatorMonoFontPkg ];
