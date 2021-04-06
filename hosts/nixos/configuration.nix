@@ -102,6 +102,7 @@ in
     gnumake
     vim
     git
+    chromium
 
     gnome3.gnome-shell-extensions
     gnome3.dconf-editor
@@ -152,7 +153,22 @@ in
 
   # Enable sound.
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio =
+    {
+      enable = true;
+      package = pkgs.pulseaudioFull;
+      extraModules = [ pkgs.pulseaudio-modules-bt ];
+    };
+
+  hardware.bluetooth = {
+    enable = true;
+    settings = {
+      General = {
+        Enable = "Source,Sink,Media,Socket";
+        ControllerMode = "bedr";
+      };
+    };
+  };
 
   xdg.mime.enable = true;
 

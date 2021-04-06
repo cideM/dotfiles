@@ -42,7 +42,7 @@
     text = ''
       let b:undo_ftplugin = ""
 
-      setlocal formatprg='${pkgs.nodePackages.purty}/bin/purty' -
+      setlocal formatprg=${pkgs.nodePackages.purty}/bin/purty\ format\ -
       let b:undo_ftplugin .= '|setlocal formatprg<'
 
       command! -buffer SpagoTags :execute '!spago docs --format ctags'

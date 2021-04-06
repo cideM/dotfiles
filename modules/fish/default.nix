@@ -92,6 +92,13 @@ in
     interactiveShellInit = fishConfig;
 
     functions = {
+      gc = {
+        description = "fzf git checkout";
+        body = ''
+          git ch (git b -a | fzf --preview 'git diff master (echo {} | sed \'s/*//\' | string trim) --stat' | sed 's/*//' | string trim)
+        '';
+      };
+
       findnote = {
         description = "Find a note interactively with ripgrep and FZF";
         body = ''

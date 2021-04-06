@@ -58,6 +58,7 @@ in
   set statusline+=%3l:%2c\ \|
   set statusline+=%3p%%\ 
 
+  let g:yui_comments = 'bg'
   colorscheme yui
 
   " https://github.com/neovim/neovim/issues/13113
@@ -277,6 +278,9 @@ in
   )
 
   nvim_lsp.rust_analyzer.setup{}
+  nvim_lsp.rust_analyzer.setup{}
+  -- https://github.com/neovim/neovim/issues/13829
+  -- nvim_lsp.purescriptls.setup{}
   nvim_lsp.gopls.setup{}
   nvim_lsp.hls.setup{}
   nvim_lsp.dhall_lsp_server.setup{}
