@@ -2,20 +2,26 @@
     "Apprentice": {
         "branch": "master",
         "repo": "https://git@github.com/romainl/Apprentice",
-        "rev": "e6da880abc774ab1497fd55da0d220c49223798a",
+        "rev": "3491edacafea54b161aae4c0b2ba43f39e5e3c9d",
         "type": "git"
     },
     "clj-deps": {
         "branch": "live",
         "repo": "https://git@github.com/practicalli/clojure-deps-edn.git",
-        "rev": "5d27c630ff01e407a9b681e4c8718b3024f8e9ee",
+        "rev": "5c1504a80c6ddc69a2e5221bfe1297001643350b",
         "type": "git"
     },
     "compe-conjure": {
         "branch": "master",
-        "repo": "https://github.com/tami5/compe-conjure.git",
+        "description": "compe-nvim source for conjure",
+        "homepage": null,
+        "owner": "tami5",
+        "repo": "compe-conjure",
         "rev": "809853ff8098dffcf8ba5ac89bcf07806eb8f981",
-        "type": "git"
+        "sha256": "0p7p4bgkh05zy0gzmq0g9nn9npykh1l17cvfzjyhcb3n1sczpjzf",
+        "type": "tarball",
+        "url": "https://github.com/tami5/compe-conjure/archive/809853ff8098dffcf8ba5ac89bcf07806eb8f981.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "fish-journal": {
         "branch": "master",
@@ -41,10 +47,10 @@
         "homepage": "",
         "owner": "cidem",
         "repo": "fish-yvm",
-        "rev": "9ec1ea40301180424085fa9ae6168d4efc5d14e7",
-        "sha256": "1qy5kr0zgck4zh8jypsldmdhs3jdksp3xk6xqa3j9pmp3jlkq3q8",
+        "rev": "5470926a8a835f0152ae95ff9e776f30285e58cb",
+        "sha256": "13kkiip492vnk78yf2ddfp39kx269w16c5vl4z1kcbi7p2v6ffpz",
         "type": "tarball",
-        "url": "https://github.com/cidem/fish-yvm/archive/9ec1ea40301180424085fa9ae6168d4efc5d14e7.tar.gz",
+        "url": "https://github.com/cidem/fish-yvm/archive/5470926a8a835f0152ae95ff9e776f30285e58cb.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "flog": {
@@ -56,7 +62,7 @@
     "indent-blankline": {
         "branch": "lua",
         "repo": "https://github.com/lukas-reineke/indent-blankline.nvim.git",
-        "rev": "341c7be714f9898156ca5e6af3b437d8ad4f421f",
+        "rev": "6c7ac766ba164af0111457fdb248e7dc96eae7c7",
         "type": "git"
     },
     "inspecthi": {
@@ -80,7 +86,7 @@
     "neovim": {
         "branch": "master",
         "repo": "https://git@github.com/neovim/neovim",
-        "rev": "0ab88c2ea80caa7cda97b3a8479d0d32e4636ab6",
+        "rev": "48e80572855042ceb1d9191bc11f8b60275426eb",
         "type": "git"
     },
     "neovim-set-path": {
@@ -110,13 +116,13 @@
     "nvim-compe": {
         "branch": "master",
         "repo": "https://github.com/hrsh7th/nvim-compe.git",
-        "rev": "f38ab64d66be371aae19495bc9880bd9232db7a8",
+        "rev": "9fc416854685a8e05836b70d477d9bbbddefcd3b",
         "type": "git"
     },
     "nvim-lsp": {
         "branch": "master",
         "repo": "https://git@github.com/neovim/nvim-lspconfig.git",
-        "rev": "26c499916ddac29675d316a099b376abf6a0aeaf",
+        "rev": "225859876bb8f9df7417f008ca790e0b2753eeab",
         "type": "git"
     },
     "nvim-treesitter": {
@@ -125,10 +131,10 @@
         "homepage": "",
         "owner": "nvim-treesitter",
         "repo": "nvim-treesitter",
-        "rev": "5c00f8ede14a132a7f1ce2fa1b32c5708baa071f",
-        "sha256": "0bx030a15k7vjahn7mm6v8b9qf872z235wa29dcik7wggwdaihrm",
+        "rev": "fe5fd3d79cd044910f81b545a577d2d7e12399c9",
+        "sha256": "1a085r36nccvxc12fzipmnjk7sk6p1awvnz5cz8bflri91r0bp2k",
         "type": "tarball",
-        "url": "https://github.com/nvim-treesitter/nvim-treesitter/archive/5c00f8ede14a132a7f1ce2fa1b32c5708baa071f.tar.gz",
+        "url": "https://github.com/nvim-treesitter/nvim-treesitter/archive/fe5fd3d79cd044910f81b545a577d2d7e12399c9.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "onehalf": {
@@ -152,7 +158,7 @@
     "parinfer": {
         "branch": "master",
         "repo": "https://git@github.com/eraserhd/parinfer-rust.git",
-        "rev": "c25f51c5eb3d78737de9488cebcca399165a1403",
+        "rev": "9e41222b7bc8930e24c411c1b4bc48715975ed17",
         "type": "git"
     },
     "qfenter": {
@@ -188,7 +194,7 @@
     "vim-color-edge": {
         "branch": "master",
         "repo": "https://github.com/sainnhe/edge.git",
-        "rev": "777ff7f61242a6a71ba96374e3007253279f2a20",
+        "rev": "ba666672e8e97d94df0f77ce670fa48c4356cc8f",
         "type": "git"
     },
     "vim-color-spring-night": {
@@ -206,13 +212,13 @@
     "vim-falcon-colors": {
         "branch": "master",
         "repo": "https://github.com/fenetikm/falcon.git",
-        "rev": "e2efdb0d0827f7ec417583b25142f19714ece2ea",
+        "rev": "f6be01e8642dc8ccc7ed1f37b23f4b0dfa2c6f8c",
         "type": "git"
     },
     "vim-js": {
         "branch": "master",
         "repo": "https://git@github.com/yuezk/vim-js.git",
-        "rev": "d3f5a53cbc059aba69b6f3bdb9f743750a4e0fa0",
+        "rev": "90f340d31907590fad059cd9aab03a55ab49e352",
         "type": "git"
     },
     "vim-kuroi-colors": {
@@ -242,7 +248,7 @@
     "vim-matchup": {
         "branch": "master",
         "repo": "https://git@github.com/andymass/vim-matchup",
-        "rev": "e477123fcc47cc419d04beee6695d8558272ca8c",
+        "rev": "e54d6250d7487f008b9f4712a521144b83d6d4bb",
         "type": "git"
     },
     "vim-nightowl-colors": {
@@ -260,7 +266,7 @@
     "vim-startuptime": {
         "branch": "master",
         "repo": "https://git@github.com/dstein64/vim-startuptime.git",
-        "rev": "af70d17a863c9a33def9cafbb3911195a571c686",
+        "rev": "cee157ee4f73ddacfe1a70bb833b96f7a47a10c2",
         "type": "git"
     },
     "vim-terraform": {
@@ -276,9 +282,9 @@
         "type": "git"
     },
     "yui": {
-        "branch": "v2",
+        "branch": "master",
         "repo": "https://git@github.com/cidem/yui",
-        "rev": "dc0f84a6eaaab420a9cf9900475472e6930969fd",
+        "rev": "a8e7e5938fd72fd7a0fce02f5c1887cb1494e6f4",
         "type": "git"
     }
 }
