@@ -30,6 +30,7 @@ with pkgs;
     coreutils
     curl
     dash
+    cmus
     bind
     dhall
     docker-compose
