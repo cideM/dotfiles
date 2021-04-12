@@ -13,6 +13,7 @@ let
     set -x FZF_CTRL_T_COMMAND '${pkgs.fd}/bin/fd -L $dir --type f 2> /dev/null'
 
     set -x FISH_NOTES_EXTENSION .md
+    set -x MANPAGER 'nvim +Man!'
 
     # The ❯ looks super weird on my linux machine
     set -x lucid_prompt_symbol '$'

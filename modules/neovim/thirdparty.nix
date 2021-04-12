@@ -220,7 +220,7 @@ in
     src = "${builtins.fetchGit {
       "ref" = "master";
       "url" = "https://git@github.com/ikatyang/tree-sitter-yaml";
-      "rev" = "74d3e003f79807b238bd62dc6ac16f846bca5a44";
+      "rev" = "2240ccd0538c8f41394b9cd2202a175b1660b8d6";
       }}/src";
   };
 
@@ -245,7 +245,7 @@ in
     src = "${builtins.fetchGit {
       "ref" = "master";
       "url" = "https://github.com/tree-sitter/tree-sitter-haskell";
-      "rev" = "26d3daa53be335782062027695183e2da401011c";
+      "rev" = "381dca04f20381ecb3f4306d727474755ad19cc4";
       }}/src";
   };
 
@@ -255,7 +255,7 @@ in
     src = "${builtins.fetchGit {
       "url" = "https://github.com/tree-sitter/tree-sitter-python";
       "ref" = "master";
-      "rev" = "20729b3e2fe70d13c1dd9f400382871a5fe95255";
+      "rev" = "d6210ceab11e8d812d4ab59c07c81458ec6e5184";
       }}/src";
   };
 
@@ -265,7 +265,7 @@ in
     src = "${builtins.fetchGit {
       "url" = "https://github.com/tree-sitter/tree-sitter-javascript";
       "ref" = "master";
-      "rev" = "afab377857b76a2ca96f617b80ebcd3ed53dcdeb";
+      "rev" = "4a95461c4761c624f2263725aca79eeaefd36cad";
       }}/src";
   };
 
@@ -275,7 +275,7 @@ in
     src = "${builtins.fetchGit {
       "ref" = "master";
       "url" = "https://git@github.com/tree-sitter/tree-sitter-typescript";
-      "rev" = "3e897ea5925f037cfae2e551f8e6b12eec2a201a";
+      "rev" = "89e720e354f02976cc63f3c8c3e55773fceed3d2";
       }}/typescript/src";
   };
 
@@ -285,7 +285,7 @@ in
     src = "${builtins.fetchGit {
       "ref" = "master";
       "url" = "https://git@github.com/tree-sitter/tree-sitter-typescript";
-      "rev" = "3e897ea5925f037cfae2e551f8e6b12eec2a201a";
+      "rev" = "89e720e354f02976cc63f3c8c3e55773fceed3d2";
     }}/tsx/src";
   };
 

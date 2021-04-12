@@ -8,7 +8,7 @@
     "clj-deps": {
         "branch": "live",
         "repo": "https://git@github.com/practicalli/clojure-deps-edn.git",
-        "rev": "5c1504a80c6ddc69a2e5221bfe1297001643350b",
+        "rev": "50c62d0566dd908035267d8a35caaa29f4f32031",
         "type": "git"
     },
     "compe-conjure": {
@@ -62,7 +62,7 @@
     "indent-blankline": {
         "branch": "lua",
         "repo": "https://github.com/lukas-reineke/indent-blankline.nvim.git",
-        "rev": "6c7ac766ba164af0111457fdb248e7dc96eae7c7",
+        "rev": "1bc7d243012aefa0b596c9559f320056e492ebba",
         "type": "git"
     },
     "inspecthi": {
@@ -86,7 +86,7 @@
     "neovim": {
         "branch": "master",
         "repo": "https://git@github.com/neovim/neovim",
-        "rev": "48e80572855042ceb1d9191bc11f8b60275426eb",
+        "rev": "38930272009662cee1704dbb8dd0cd72260e6b05",
         "type": "git"
     },
     "neovim-set-path": {
@@ -116,13 +116,13 @@
     "nvim-compe": {
         "branch": "master",
         "repo": "https://github.com/hrsh7th/nvim-compe.git",
-        "rev": "9fc416854685a8e05836b70d477d9bbbddefcd3b",
+        "rev": "4b3ade100866bb64b472644642da670e2fc61dde",
         "type": "git"
     },
     "nvim-lsp": {
         "branch": "master",
         "repo": "https://git@github.com/neovim/nvim-lspconfig.git",
-        "rev": "225859876bb8f9df7417f008ca790e0b2753eeab",
+        "rev": "8924812e0d114b67dca376533bef2ac5bb054f8b",
         "type": "git"
     },
     "nvim-treesitter": {
@@ -131,10 +131,10 @@
         "homepage": "",
         "owner": "nvim-treesitter",
         "repo": "nvim-treesitter",
-        "rev": "fe5fd3d79cd044910f81b545a577d2d7e12399c9",
-        "sha256": "1a085r36nccvxc12fzipmnjk7sk6p1awvnz5cz8bflri91r0bp2k",
+        "rev": "615afe3541eec0b338b4ff5b6738f69c7f6f8860",
+        "sha256": "14n9q9fnfys8vj7m4fbngybcz9f2vzr8f67r5m7nd3lljn2389dg",
         "type": "tarball",
-        "url": "https://github.com/nvim-treesitter/nvim-treesitter/archive/fe5fd3d79cd044910f81b545a577d2d7e12399c9.tar.gz",
+        "url": "https://github.com/nvim-treesitter/nvim-treesitter/archive/615afe3541eec0b338b4ff5b6738f69c7f6f8860.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "onehalf": {
@@ -194,7 +194,7 @@
     "vim-color-edge": {
         "branch": "master",
         "repo": "https://github.com/sainnhe/edge.git",
-        "rev": "ba666672e8e97d94df0f77ce670fa48c4356cc8f",
+        "rev": "f63ab7c4b016d107ac6591aa8560de88c9cf96f9",
         "type": "git"
     },
     "vim-color-spring-night": {
@@ -248,7 +248,7 @@
     "vim-matchup": {
         "branch": "master",
         "repo": "https://git@github.com/andymass/vim-matchup",
-        "rev": "e54d6250d7487f008b9f4712a521144b83d6d4bb",
+        "rev": "5a518945faf64893cbb2ed67d5aca6ed56c3cbec",
         "type": "git"
     },
     "vim-nightowl-colors": {

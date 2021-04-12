@@ -57,9 +57,6 @@ in
         qfenter
         suda.vim
         unicode-vim
-        nvim-compe
-        indent-blankline
-        plenary-nvim
 
         # Git
         vim-fugitive
@@ -68,7 +65,6 @@ in
 
         # Language Tooling
         vim-markdown-folding
-        conjure-compe
         conjure
         parinfer-rust
 
