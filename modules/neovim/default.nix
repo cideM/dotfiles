@@ -58,6 +58,7 @@ in
         suda.vim
         unicode-vim
         nvim-compe
+        indent-blankline
 
         # Git
         vim-fugitive
