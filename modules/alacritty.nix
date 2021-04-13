@@ -426,7 +426,7 @@ let
     };
     offset = {
       x = 0;
-      y = 2;
+      y = 0;
     };
     size = cfg.fontSize;
     use_thin_strokes = pkgs.stdenv.isDarwin;
