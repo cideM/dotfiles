@@ -36,7 +36,7 @@ in
   set hidden
   set autoindent
   set number
-  set signcolumn=auto:2
+  set signcolumn=yes:2
   set nosmartindent
   set ignorecase
   set completeopt=menuone,noselect
@@ -46,19 +46,10 @@ in
   set splitbelow
   set foldlevelstart=99
   set splitright
+  set list
+  set listchars=lead:·,tab:>\ ,trail:¬
   set termguicolors
   set undofile
-  set statusline=
-  set statusline+=\ %f
-  set statusline+=\ %m 
-  set statusline+=\%{get(b:,'gitsigns_status',\'\')}
-  set statusline+=\ %{get(b:,'gitsigns_head',\'\')}
-  set statusline+=\ %{mode()}\ 
-  set statusline+=%=
-  set statusline+=%y\ " buffer type
-  set statusline+=%q\ 
-  set statusline+=%3l:%2c\ \|
-  set statusline+=%3p%%\ 
 
   let g:yui_comments = 'bg'
   colorscheme yui
@@ -244,22 +235,22 @@ in
 
       -- Mappings.
       local opts = { noremap=true, silent=true }
-      buf_set_keymap(bufnr, 'n', '<localleader>k',  '<cmd>lua vim.lsp.buf.hover()<CR>',                        opts)
-      buf_set_keymap(bufnr, 'n', '<localleader>h',  '<cmd>lua vim.lsp.buf.signature_help()<CR>',               opts)
-      buf_set_keymap(bufnr, 'n', '<localleader>re', '<cmd>lua vim.lsp.buf.rename()<CR>',                       opts)
-      buf_set_keymap(bufnr, 'n', '<localleader>rr', '<cmd>lua vim.lsp.buf.references()<CR>',                   opts)
-      buf_set_keymap(bufnr, 'n', '<localleader>ri', '<cmd>lua vim.lsp.buf.implementation()<CR>',               opts)
-      buf_set_keymap(bufnr, 'n', '<localleader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>',                   opts)
-      buf_set_keymap(bufnr, 'n', '<localleader>gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>',              opts)
-      buf_set_keymap(bufnr, 'n', '<localleader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>',                  opts)
-      buf_set_keymap(bufnr, 'n', '<localleader>p',  '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-      buf_set_keymap(bufnr, 'n', '<localleader>ws', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>',             opts)
-      buf_set_keymap(bufnr, 'n', '<localleader>ds', '<cmd>lua vim.lsp.buf.document_symbol()<CR>',              opts)
-      buf_set_keymap(bufnr, 'n', '<localleader>dh', '<cmd>lua vim.lsp.buf.document_highlight()<CR>',           opts)
-      buf_set_keymap(bufnr, 'n', '<localleader>sr', '<cmd>lua vim.lsp.buf.server_ready()<CR>',                 opts)
-      buf_set_keymap(bufnr, 'n', '<C-j>',  '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>',             opts)
-      buf_set_keymap(bufnr, 'n', '<C-k>',  '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>',             opts)
-      buf_set_keymap(bufnr, 'n', '<localleader>l',  '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>',           opts)
+      buf_set_keymap(bufnr, 'n', '<localleader>k',  '<cmd>lua                  vim.lsp.buf.hover()<CR>',                                      opts)
+      buf_set_keymap(bufnr, 'n', '<localleader>h',  '<cmd>lua         vim.lsp.buf.signature_help()<CR>',                                      opts)
+      buf_set_keymap(bufnr, 'n', '<localleader>re', '<cmd>lua                 vim.lsp.buf.rename()<CR>',                                      opts)
+      buf_set_keymap(bufnr, 'n', '<localleader>rr', '<cmd>lua             vim.lsp.buf.references()<CR>',                                      opts)
+      buf_set_keymap(bufnr, 'n', '<localleader>ri', '<cmd>lua         vim.lsp.buf.implementation()<CR>',                                      opts)
+      buf_set_keymap(bufnr, 'n', '<localleader>gd', '<cmd>lua             vim.lsp.buf.definition()<CR>',                                      opts)
+      buf_set_keymap(bufnr, 'n', '<localleader>gt', '<cmd>lua        vim.lsp.buf.type_definition()<CR>',                                      opts)
+      buf_set_keymap(bufnr, 'n', '<localleader>gD', '<cmd>lua            vim.lsp.buf.declaration()<CR>',                                      opts)
+      buf_set_keymap(bufnr, 'n', '<localleader>p',  '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "single" })<CR>',           opts)
+      buf_set_keymap(bufnr, 'n', '<localleader>ws', '<cmd>lua       vim.lsp.buf.workspace_symbol()<CR>',                                      opts)
+      buf_set_keymap(bufnr, 'n', '<localleader>ds', '<cmd>lua        vim.lsp.buf.document_symbol()<CR>',                                      opts)
+      buf_set_keymap(bufnr, 'n', '<localleader>dh', '<cmd>lua     vim.lsp.buf.document_highlight()<CR>',                                      opts)
+      buf_set_keymap(bufnr, 'n', '<localleader>sr', '<cmd>lua           vim.lsp.buf.server_ready()<CR>',                                      opts)
+      buf_set_keymap(bufnr, 'n', '<C-j>',  '<cmd>lua                vim.lsp.diagnostic.goto_next({ popup_opts = { border = "single" }})<CR>', opts)
+      buf_set_keymap(bufnr, 'n', '<C-k>',  '<cmd>lua                vim.lsp.diagnostic.goto_prev({ popup_opts = { border = "single" }})<CR>', opts)
+      buf_set_keymap(bufnr, 'n', '<localleader>l',  '<cmd>lua     vim.lsp.diagnostic.set_loclist()<CR>',                                      opts)
   end
 
   local configs = require'lspconfig/configs'
@@ -270,14 +261,15 @@ in
     { on_attach = on_attach }
   )
 
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
+
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
       virtual_text = false,
-      signs = false,
+      signs = true,
       underline = true,
       update_in_insert = false,
-    }
-  )
+    })
 
   nvim_lsp.rust_analyzer.setup{}
   nvim_lsp.rust_analyzer.setup{}
@@ -344,18 +336,6 @@ in
         priority = 0,
       },
       vsnip = false,
-    },
-  }
-  EOF
-
-  lua <<EOF
-  require('gitsigns').setup {
-    signs = {
-      add          = {hl = 'GitSignsAdd'   , text = '+', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
-      change       = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
-      delete       = {hl = 'GitSignsDelete', text = '-', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-      topdelete    = {hl = 'GitSignsDelete', text = '-', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-      changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
     },
   }
   EOF
