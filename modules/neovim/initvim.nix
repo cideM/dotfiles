@@ -35,6 +35,8 @@ in
   set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
   set hidden
   set autoindent
+  set number
+  set signcolumn=auto:2
   set nosmartindent
   set ignorecase
   set completeopt=menuone,noselect
@@ -295,6 +297,43 @@ in
     indent = {
       enable = false,
     }
+  }
+  EOF
+
+  " ========= NVIM-COMPE ==============
+  inoremap <silent><expr> <C-Space> compe#complete()
+  inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+  inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+  inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+  inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+
+  lua <<EOF
+  require'compe'.setup {
+    enabled = true,
+    debug = true,
+    autocomplete = true,
+    preselect = 'enable',
+    min_length = 1,
+    documentation = true,
+
+    source = {
+      buffer = {
+        priority = 100,
+      },
+      conjure = {
+        priority = 90,
+      },
+      nvim_lsp = {
+        priority = 80,
+      },
+      path = {
+        priority = 70,
+      },
+      tags = {
+        priority = 0,
+      },
+      vsnip = false,
+    },
   }
   EOF
 ''

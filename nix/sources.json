@@ -116,7 +116,7 @@
     "nvim-compe": {
         "branch": "master",
         "repo": "https://github.com/hrsh7th/nvim-compe.git",
-        "rev": "4b3ade100866bb64b472644642da670e2fc61dde",
+        "rev": "18374674fa5e0305b8ae511b0a762dd750bded5a",
         "type": "git"
     },
     "nvim-lsp": {
