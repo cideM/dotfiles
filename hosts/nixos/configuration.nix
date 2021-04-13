@@ -28,6 +28,7 @@ in
   boot.loader.systemd-boot.configurationLimit = 5;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelModules = [ "kvm-amd" ];
   boot.kernel.sysctl = {
     "vm.max_map_count" = 262144;
   };
@@ -138,6 +139,8 @@ in
     pinentryFlavor = "gnome3";
   };
 
+  programs.adb.enable = true;
+
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = false;
@@ -176,12 +179,13 @@ in
   users.users.tifa = {
     isNormalUser = true;
     shell = pkgs.fish;
-    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "adbusers" "wheel" "docker" ]; # Enable ‘sudo’ for the user.
   };
 
   home-manager.users.tifa = ./home.nix;
 
   virtualisation.docker.enable = true;
+  virtualisation.libvirtd.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

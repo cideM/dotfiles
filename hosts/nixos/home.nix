@@ -37,6 +37,7 @@
     jetbrains.clion
     jetbrains.rider
     jetbrains.webstorm
+    android-studio
     jetbrains.idea-ultimate
     jetbrains.goland
     jetbrains.pycharm-professional
