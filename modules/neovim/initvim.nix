@@ -174,12 +174,6 @@ in
   map <leader>j <Plug>Sneak_s
   map <leader>k <Plug>Sneak_S
 
-  " ======= SAD =======================
-  " Sad makes replacing selections easier and just automates some tedious
-  " plumbing around slash search and cgn.
-  map <leader>c <Plug>(sad-change-forward)
-  map <leader>C <Plug>(sad-change-backward)
-
   " ======= EDITORCONFIG ==============
   let g:EditorConfig_max_line_indicator = "exceeding"
   let g:EditorConfig_preserve_formatoptions = 1

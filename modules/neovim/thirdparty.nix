@@ -60,29 +60,14 @@ in
     src = sources.neovim-set-path;
   });
 
-  indent-blankline = (pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "indent-blankline";
-    src = sources.indent-blankline;
-  });
-
   qfenter = (pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "qfenter";
     src = sources.qfenter;
   });
 
-  flog = (pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "flog";
-    src = sources.flog;
-  });
-
   suda.vim = (pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "suda.vim";
     src = sources."suda.vim";
-  });
-
-  vim-markdown-toc = (pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "vim-markdown-toc";
-    src = sources.vim-markdown-toc;
   });
 
   inspecthi = (pkgs.vimUtils.buildVimPluginFrom2Nix {
@@ -131,11 +116,6 @@ in
     src = sources.yui;
   });
 
-  sad = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "sad";
-    src = sources.sad;
-  });
-
   vim-js = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "vim-js";
     src = sources.vim-js;
@@ -156,29 +136,9 @@ in
     src = sources."vim-colors-github";
   });
 
-  fennel-vim = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "fennel-vim";
-    src = sources."fennel-vim";
-  });
-
-  vim-kuroi-colors = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "vim-kuroi-colors";
-    src = sources."vim-kuroi-colors";
-  });
-
   unicode-vim = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "unicode-vim";
     src = sources."unicode-vim";
-  });
-
-  conjure-compe = (pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "conjure-compe";
-    src = sources.compe-conjure;
-  });
-
-  nvim-compe = (pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "nvim-compe";
-    src = sources.nvim-compe;
   });
 
   vim-nightowl-colors = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {

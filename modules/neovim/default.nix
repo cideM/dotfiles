@@ -50,7 +50,6 @@ in
         # inspecthi
         # neovim-set-path
         nvim-lspconfig
-        sad
         vim-sneak
         fzf-vim
         fzfWrapper
@@ -82,15 +81,9 @@ in
         # Themes
         apprentice
         vim-colors-github
-        nord-vim
         yui
-        seoul256-vim
         iceberg-vim
-        vim-one
         onehalf
-        papercolor-theme
-        falcon
-        vim-kuroi-colors
         vim-nightowl-colors
         vim-tokyonight-colors
         spacevim
