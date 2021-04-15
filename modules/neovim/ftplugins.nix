@@ -197,9 +197,9 @@
         \ silent! execute <line1> . "," . <line2> . "!goimports " | 
         \ call winrestview(b:winview)
 
-      nnoremap <silent> <localleader>m :execute 'make ' . expand('%:p:h')<CR>
-      nnoremap <silent> <localleader>i :Goimport<CR>
-
+      nnoremap <localleader>m :execute 'make ' . expand('%:p:h')<CR>
+      nnoremap <localleader>i :Goimport<CR>
+      nnoremap <localleader>t :execute ':silent !for f in ./{cmd, internal, pkg}; if test -d $f; ctags -R $f; end; end'<CR>
     '';
   };
   "nvim/ftplugin/typescript.vim" = {
