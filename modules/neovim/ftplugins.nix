@@ -264,6 +264,7 @@
       setlocal wildignore+=*/.clj-kondo/*
 
       packadd parinfer-rust
+      packadd conjure
 
       " I think auto closing pairs and parinfer won't get along
       let b:lexima_disabled = 1

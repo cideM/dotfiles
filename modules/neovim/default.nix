@@ -64,7 +64,7 @@ in
 
         # Language Tooling
         vim-markdown-folding
-        conjure
+        { plugin = conjure; optional = true; }
         parinfer-rust
 
         # Languages & Syntax
