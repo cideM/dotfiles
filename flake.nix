@@ -1,13 +1,15 @@
 {
   description = "Nix. All. The. Things.";
 
-  inputs = {
+  inputs = rec {
     home-manager = {
       url = "github:nix-community/home-manager";
-      # https://github.com/nix-community/home-manager/blob/master/flake.nix#L4
-      # HM takes 'nixpkgs' as input
-      inputs.nixpkgs.follows = "/unstable";
+      inputs.nixpkgs.follows = "unstable";
     };
+
+    unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.follows = "unstable";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
     hwConfig = {
       url = "/etc/nixos/hardware-configuration.nix";
@@ -19,47 +21,27 @@
       flake = false;
     };
 
-    unstable = {
-      url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    };
   };
 
-  outputs = { self, unstable, home-manager, operatorMono, hwConfig }:
-    let
-      pkgs = import unstable {
-        system = "x86_64-linux";
-        config = { allowUnfree = true; };
-      };
-
-    in
+  outputs = { self, neovim-nightly-overlay, unstable, home-manager, operatorMono, hwConfig, nixpkgs }:
     {
+      # TODO: https://github.com/mjlbach/nix-dotfiles/blob/master/nixpkgs/flake.nix
       nixosConfigurations.nixos =
         let
           system = "x86_64-linux";
 
           specialArgs = {
-            inherit pkgs hwConfig operatorMono;
-          };
-
-          hm-nixos-as-super = { config, ... }: {
-            # Submodules have merge semantics, making it possible to amend
-            # the `home-manager.users` submodule for additional functionality.
-            options.home-manager.users = unstable.lib.mkOption {
-              type = unstable.lib.types.attrsOf (unstable.lib.types.submoduleWith {
-                modules = [ ];
-                # Makes specialArgs available to Home Manager modules as well.
-                specialArgs = specialArgs // {
-                  # Allow accessing the parent NixOS configuration.
-                  super = config;
-                };
-              });
-            };
+            inherit hwConfig operatorMono neovim-nightly-overlay;
           };
 
           modules = [
-            home-manager.nixosModules.home-manager
-            hm-nixos-as-super
             ./hosts/nixos/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.tifa = import ./hosts/nixos/home.nix;
+            }
           ];
         in
         unstable.lib.nixosSystem { inherit system modules specialArgs; };

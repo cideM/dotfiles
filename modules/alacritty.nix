@@ -385,7 +385,7 @@ let
     };
     glyph_offset = {
       x = 0;
-      y = 1;
+      y = 0;
     };
     italic = {
       family = "Operator Mono SSm";
@@ -414,7 +414,7 @@ let
     };
     glyph_offset = {
       x = 0;
-      y = 1;
+      y = 0;
     };
     italic = {
       family = "Operator Mono SSm";
@@ -514,6 +514,35 @@ let
     offset = {
       x = 0;
       y = 2;
+    };
+    size = cfg.fontSize;
+    use_thin_strokes = pkgs.stdenv.isDarwin;
+  };
+
+  hackNerd = {
+    bold = {
+      family = "Hack Nerd Font";
+      style = "Bold";
+    };
+    bold_italic = {
+      family = "Hack Nerd Font";
+      style = "Bold Italic";
+    };
+    glyph_offset = {
+      x = 0;
+      y = 0;
+    };
+    italic = {
+      family = "Hack Nerd Font";
+      style = "Italic";
+    };
+    normal = {
+      family = "Hack Nerd Font";
+      style = "Regular";
+    };
+    offset = {
+      x = 0;
+      y = 0;
     };
     size = cfg.fontSize;
     use_thin_strokes = pkgs.stdenv.isDarwin;
@@ -634,6 +663,7 @@ let
     "liberationMono" = liberationMono;
     "jetbrains" = jetbrains;
     "hack" = hack;
+    "hackNerd" = hackNerd;
   };
 
 in
@@ -649,7 +679,7 @@ in
     };
 
     font = mkOption {
-      type = enum [ "mono" "liberationMono" "dejavuSansMono" "hack" "monoMedium" "jetbrains" ];
+      type = enum [ "mono" "liberationMono" "dejavuSansMono" "hack" "hackNerd" "monoMedium" "jetbrains" ];
       default = "mono";
       description = "Terminal emulator font";
     };

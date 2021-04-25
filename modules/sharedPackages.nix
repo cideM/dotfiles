@@ -3,14 +3,14 @@
 with pkgs;
 
 {
-  nixpkgs.overlays = [
-    (final: prev: {
-      dash = prev.dash.overrideAttrs (_: {
-        buildInputs = [ pkgs.libedit ];
-        configureFlags = [ "--with-libedit" ];
-      });
-    })
-  ];
+  # nixpkgs.overlays = [
+  #   (final: prev: {
+  #     dash = prev.dash.overrideAttrs (_: {
+  #       buildInputs = [ pkgs.libedit ];
+  #       configureFlags = [ "--with-libedit" ];
+  #     });
+  #   })
+  # ];
 
   home.packages = [
     nixpkgs-review

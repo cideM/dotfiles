@@ -21,6 +21,7 @@
     iotop
     xsel
     kanji-stroke-order-font
+    cachix
     source-han-sans-japanese
     source-han-serif-japanese
     iosevka
@@ -32,11 +33,13 @@
     sublime-merge
     spotify
     zoom-us
+    mupdf
     slack
     anki
     jetbrains.clion
     jetbrains.rider
     jetbrains.webstorm
+    nerdfonts
     android-studio
     jetbrains.idea-ultimate
     jetbrains.goland

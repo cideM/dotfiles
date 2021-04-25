@@ -1,6 +1,3 @@
-# Plugins I might want to check out
-# - https://github.com/akinsho/nvim-toggleterm.lua
-
 args@{ config, lib, pkgs, ... }:
 
 with lib;
@@ -21,15 +18,12 @@ in
 
       enable = true;
 
-      package = pkgs.neovim-unwrapped.overrideAttrs (oldAttrs: rec {
-        version = "master";
-        src = config.sources.neovim;
-        buildInputs = oldAttrs.buildInputs ++ [ pkgs.tree-sitter ];
-      });
+      package = pkgs.neovim-unwrapped;
 
       extraConfig = (import ./initvim.nix args);
 
       plugins = with pkgs.vimPlugins; with (import ./thirdparty.nix args); [
+        nvim-treesitter
         editorconfig-vim
         targets-vim
         vim-commentary
@@ -38,10 +32,14 @@ in
         vim-peekaboo
         vim-indent-object
         vim-matchup
+        sad
+        vim-grepper
         vim-cool
         vim-sayonara
         vim-repeat
         vim-sandwich
+        vim-gutentags
+        nvim-web-devicons
         # v-- Pretty slow
         vim-unimpaired
         vim-dirvish
@@ -51,31 +49,47 @@ in
         # neovim-set-path
         nvim-lspconfig
         vim-sneak
+        feline
         fzf-vim
         fzfWrapper
         qfenter
         suda.vim
+        vimtex
+        plenary-nvim
         unicode-vim
+        /* compe-conjure */
+        vim_current_word
+        conjure
+        /* nvim-cursorline */
+        /* also seems to mess up fzf buffer highlighting */
+        /* https://github.com/yamatsum/nvim-cursorline/issues/7 */
+        /* nvim-compe */
+        nvim-toggleterm-lua
+        indent-blankline
+        fern-vim
+        lsp-status-nvim
+        nvim-autopairs
+        nvim-hlslens
+        nvim-lspfuzzy
 
         # Git
         vim-fugitive
+        vim-flog
         vim-rhubarb
         git-messenger-vim
+        conflict-marker
+        gitsigns-nvim
+        committia-vim
 
         # Language Tooling
         vim-markdown-folding
-        { plugin = conjure; optional = true; }
         parinfer-rust
 
         # Languages & Syntax
         purescript-vim
-        vim-nix
         dhall-vim
-        vim-js
         vim-lua
-        vim-jsx-pretty
         Jenkinsfile-vim-syntax
-        haskell-vim
         vim-terraform
 
         # Themes
@@ -100,8 +114,9 @@ in
         grammarTs
         grammarTsx
 
+        deoplete-lsp
         {
-          plugin = nvim-treesitter;
+          plugin = deoplete-nvim;
           optional = true;
         }
 

@@ -6,7 +6,9 @@ in
   programs.tmux = {
     enable = true;
     sensibleOnTop = false;
-    plugins = with pkgs; [ ];
+    # This never works
+    /* plugins = with pkgs; [ tmuxPlugins.tmux-fzf ]; */
+    plugins = with pkgs; [];
     extraConfig = ''
       set -g default-terminal "tmux-256color"
 
@@ -104,7 +106,7 @@ in
       set-option -g status-justify left
       set-option -g status-left '#[fg=colour7] #S'
       set-option -g status-left-length 30
-      set-option -g status-bg default
+      set-option -g status-bg colour15
       set-option -g status-right ""
 
       set-option -g pane-active-border-style fg=colour2

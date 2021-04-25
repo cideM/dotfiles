@@ -8,8 +8,44 @@
     "clj-deps": {
         "branch": "live",
         "repo": "https://git@github.com/practicalli/clojure-deps-edn.git",
-        "rev": "0dc9ca790ed35479d126bf89b53cb6285d85de05",
+        "rev": "76e4d2a1031caa354ae57a80aab5da7957937936",
         "type": "git"
+    },
+    "compe-conjure": {
+        "branch": "master",
+        "description": "compe-nvim source for conjure",
+        "homepage": null,
+        "owner": "tami5",
+        "repo": "compe-conjure",
+        "rev": "809853ff8098dffcf8ba5ac89bcf07806eb8f981",
+        "sha256": "0p7p4bgkh05zy0gzmq0g9nn9npykh1l17cvfzjyhcb3n1sczpjzf",
+        "type": "tarball",
+        "url": "https://github.com/tami5/compe-conjure/archive/809853ff8098dffcf8ba5ac89bcf07806eb8f981.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "conflict-marker.vim": {
+        "branch": "master",
+        "description": "Weapon to fight against conflicts in Vim.",
+        "homepage": "",
+        "owner": "rhysd",
+        "repo": "conflict-marker.vim",
+        "rev": "6a9b8f92a57ea8a90cbf62c960db9e5894be2d7a",
+        "sha256": "0vw5kvnmwwia65gni97vk42b9s47r3p5bglrhpcxsvs3f4s250vq",
+        "type": "tarball",
+        "url": "https://github.com/rhysd/conflict-marker.vim/archive/6a9b8f92a57ea8a90cbf62c960db9e5894be2d7a.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "feline.nvim": {
+        "branch": "master",
+        "description": "A minimal, stylish and customizable statusline for Neovim written in Lua",
+        "homepage": null,
+        "owner": "Famiu",
+        "repo": "feline.nvim",
+        "rev": "ea2dffaf0c8b2b4fa4ef2870d777a46753df9f1e",
+        "sha256": "1brncyz880624qbj10qmas02pc8zsv6h9lkc6a8h3kd29abc0k38",
+        "type": "tarball",
+        "url": "https://github.com/Famiu/feline.nvim/archive/ea2dffaf0c8b2b4fa4ef2870d777a46753df9f1e.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "fish-journal": {
         "branch": "master",
@@ -41,6 +77,18 @@
         "url": "https://github.com/cidem/fish-yvm/archive/5470926a8a835f0152ae95ff9e776f30285e58cb.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "indent-blankline.nvim": {
+        "branch": "lua",
+        "description": "Indent guides  for Neovim",
+        "homepage": "",
+        "owner": "lukas-reineke",
+        "repo": "indent-blankline.nvim",
+        "rev": "1bc7d243012aefa0b596c9559f320056e492ebba",
+        "sha256": "1adi110vpi1r1jn4yrh0fdq4a2cz382rgkbkmjdn91y10iz5nnsl",
+        "type": "tarball",
+        "url": "https://github.com/lukas-reineke/indent-blankline.nvim/archive/1bc7d243012aefa0b596c9559f320056e492ebba.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "inspecthi": {
         "branch": "main",
         "repo": "https://github.com/cocopon/inspecthi.vim.git",
@@ -57,12 +105,6 @@
         "branch": "master",
         "repo": "https://github.com/cidem/lucid.fish.git",
         "rev": "ed69c50f86cdf9bc87d263299688394b2c93e0da",
-        "type": "git"
-    },
-    "neovim": {
-        "branch": "master",
-        "repo": "https://git@github.com/neovim/neovim",
-        "rev": "d19348923e01bdc729fcb513327dd386be1be98e",
         "type": "git"
     },
     "neovim-set-path": {
@@ -89,11 +131,59 @@
         "rev": "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6",
         "type": "git"
     },
+    "nvim-compe": {
+        "branch": "master",
+        "description": "Auto completion plugin for nvim that written in Lua.",
+        "homepage": "",
+        "owner": "hrsh7th",
+        "repo": "nvim-compe",
+        "rev": "99452ae6875889c12653963b68e53c4564848954",
+        "sha256": "1d5hpn3mr2h3s5h2svajbxm0n49mmc5w0sip9cpzyfdpbnv1gic3",
+        "type": "tarball",
+        "url": "https://github.com/hrsh7th/nvim-compe/archive/99452ae6875889c12653963b68e53c4564848954.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nvim-cursorline": {
+        "branch": "main",
+        "description": "A plugin for neovim that highlights cursor words and lines",
+        "homepage": "",
+        "owner": "yamatsum",
+        "repo": "nvim-cursorline",
+        "rev": "b6ad7dde3f23035db713ba82c07d79c10da37547",
+        "sha256": "0srqw0hr4frsj5g1kc89n88bhzva455q6kq2xl7w8wsvzwq1kgqs",
+        "type": "tarball",
+        "url": "https://github.com/yamatsum/nvim-cursorline/archive/b6ad7dde3f23035db713ba82c07d79c10da37547.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nvim-hlslens": {
+        "branch": "main",
+        "description": "Hlsearch Lens for Neovim",
+        "homepage": "",
+        "owner": "kevinhwang91",
+        "repo": "nvim-hlslens",
+        "rev": "2f8bd90f3b4fa7620c61f66bcddb965139eb176f",
+        "sha256": "1zsvr9pba62ngchfmab7yns64mlkdqclqv516c7h62fh82fyx23a",
+        "type": "tarball",
+        "url": "https://github.com/kevinhwang91/nvim-hlslens/archive/2f8bd90f3b4fa7620c61f66bcddb965139eb176f.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "nvim-lsp": {
         "branch": "master",
         "repo": "https://git@github.com/neovim/nvim-lspconfig.git",
-        "rev": "5029746a27ad817a9554b28d502d00f235fed39c",
+        "rev": "62977b6b2eeb20bd37703ebe4bc4b4c2ef006db2",
         "type": "git"
+    },
+    "nvim-lspfuzzy": {
+        "branch": "main",
+        "description": "A Neovim plugin to make the LSP client use FZF",
+        "homepage": "",
+        "owner": "ojroques",
+        "repo": "nvim-lspfuzzy",
+        "rev": "0e369ae5a1230c4867663c2c8cc441f728ae0a5b",
+        "sha256": "0ajcy8gsnhxid574hbfzqfhf8y5nzvamjya1q4wva0nrnr3a4k3b",
+        "type": "tarball",
+        "url": "https://github.com/ojroques/nvim-lspfuzzy/archive/0e369ae5a1230c4867663c2c8cc441f728ae0a5b.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nvim-treesitter": {
         "branch": "master",
@@ -101,10 +191,10 @@
         "homepage": "",
         "owner": "nvim-treesitter",
         "repo": "nvim-treesitter",
-        "rev": "d02caad890f87d88fd8a2d61462f29cf64c1196a",
-        "sha256": "0s34rcxg9icymm2i32s1iha1b7wnpc0jp313gbcwgj2lpybqmn57",
+        "rev": "b68f0cc70022fedec9b9190904d6035393111cdf",
+        "sha256": "07zp1fbah65f7lglfkmdzi6cyfchlaf1ap02wzwixiv5hpy6zji4",
         "type": "tarball",
-        "url": "https://github.com/nvim-treesitter/nvim-treesitter/archive/d02caad890f87d88fd8a2d61462f29cf64c1196a.tar.gz",
+        "url": "https://github.com/nvim-treesitter/nvim-treesitter/archive/b68f0cc70022fedec9b9190904d6035393111cdf.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "onehalf": {
@@ -137,6 +227,12 @@
         "rev": "df0a75b287c210f98ae353a12bbfdaf73d858beb",
         "type": "git"
     },
+    "sad": {
+        "branch": "master",
+        "repo": "https://git@github.com/hauleth/sad.vim.git",
+        "rev": "2f5b33b239a566ffedaa81cee3051bb613482d1e",
+        "type": "git"
+    },
     "spacevim": {
         "branch": "master",
         "repo": "https://git@github.com/liuchengxu/space-vim-theme.git",
@@ -152,19 +248,13 @@
     "unicode-vim": {
         "branch": "master",
         "repo": "https://github.com/chrisbra/unicode.vim.git",
-        "rev": "8b6bb82f66c1f336257e670eb9b7c03f29df3345",
+        "rev": "090e77e30e46aceafd53a3219fb2a81b79927d8d",
         "type": "git"
     },
     "vim-colors-github": {
         "branch": "master",
         "repo": "https://github.com/cormacrelf/vim-colors-github.git",
         "rev": "ee42a68d95078f5a3d1c0fb14462cc781b244ee2",
-        "type": "git"
-    },
-    "vim-falcon-colors": {
-        "branch": "master",
-        "repo": "https://github.com/fenetikm/falcon.git",
-        "rev": "376aacc4ec6dd5495f201bc5bea0c1bcff574535",
         "type": "git"
     },
     "vim-js": {
@@ -188,7 +278,7 @@
     "vim-matchup": {
         "branch": "master",
         "repo": "https://git@github.com/andymass/vim-matchup",
-        "rev": "58c55eb721f0dfc8121c91d3d3e4e315ad1cf4c8",
+        "rev": "71b97bac53aa09760e8d8c36767c657b274c468d",
         "type": "git"
     },
     "vim-nightowl-colors": {
@@ -218,13 +308,25 @@
     "vim-tokyonight-colors": {
         "branch": "master",
         "repo": "https://github.com/ghifarit53/tokyonight-vim.git",
-        "rev": "ea68b37bff60104e71ed50fc37fa8f8ac53b727d",
+        "rev": "4e82e0f0452a6ce8f387828ec71013015515035a",
         "type": "git"
+    },
+    "vim_current_word": {
+        "branch": "master",
+        "description": "Plugin highlighting word under cursor and all of its occurences",
+        "homepage": "",
+        "owner": "dominikduda",
+        "repo": "vim_current_word",
+        "rev": "84ae9300de73cf878c805a6228a58d408b6b829d",
+        "sha256": "0k0wq3aqrbwrqyfz36qdqzyq7cw16d34yvw0gvzyg7iany0z0r6r",
+        "type": "tarball",
+        "url": "https://github.com/dominikduda/vim_current_word/archive/84ae9300de73cf878c805a6228a58d408b6b829d.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "yui": {
         "branch": "master",
         "repo": "https://git@github.com/cidem/yui",
-        "rev": "b38d1804fc8314049cc22b8451ef6eeef3e484ff",
+        "rev": "ebd0aa08617b395fecb8d7c6c4d8ede5509b30c2",
         "type": "git"
     }
 }

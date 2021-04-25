@@ -10,9 +10,6 @@
     SHELL = "${pkgs.fish}/bin/fish";
   };
 
-  nixpkgs.config = import ../nixpkgs_config.nix;
-  xdg.configFile."nixpkgs/config.nix".source = ../nixpkgs_config.nix;
-
   programs.direnv.enable = true;
   programs.direnv.enableFishIntegration = true;
   programs.direnv.enableNixDirenvIntegration = true;

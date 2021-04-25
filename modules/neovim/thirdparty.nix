@@ -50,6 +50,51 @@ in
     src = sources.parinfer;
   });
 
+  feline = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "feline.nvim";
+    src = sources."feline.nvim";
+  });
+
+  nvim-lspfuzzy = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "nvim-lspfuzzy";
+    src = sources."nvim-lspfuzzy";
+  });
+
+  conflict-marker = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "conflict-marker";
+    src = sources."conflict-marker.vim";
+  });
+
+  sad = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "sad";
+    src = sources.sad;
+  });
+
+  nvim-hlslens = (pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "nvim-hlslens";
+    src = sources.nvim-hlslens;
+  });
+
+  vim_current_word = (pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "vim_current_word";
+    src = sources.vim_current_word;
+  });
+
+  nvim-cursorline = (pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "nvim-cursorline";
+    src = sources.nvim-cursorline;
+  });
+
+  nvim-compe = (pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "nvim-compe";
+    src = sources.nvim-compe;
+  });
+
+  indent-blankline = (pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "indent-blankline";
+    src = sources."indent-blankline.nvim";
+  });
+
   nvim-treesitter = (pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "nvim-treesitter";
     src = sources.nvim-treesitter;
@@ -160,7 +205,7 @@ in
     src = "${builtins.fetchGit {
       "url" = "https://github.com/cstrahan/tree-sitter-nix";
       "ref" = "master";
-      "rev" = "a6bae0619126d70c756c11e404d8f4ad5108242f";
+      "rev" = "d5287aac195ab06da4fe64ccf93a76ce7c918445";
       }}/src";
   };
 
@@ -170,7 +215,7 @@ in
     src = "${builtins.fetchGit {
       "url" = "https://github.com/sogaiu/tree-sitter-clojure";
       "ref" = "master";
-      "rev" = "95c7959c461406381b42113dcf4591008c663d21";
+      "rev" = "f7d100c4fbaa8aad537e80c7974c470c7fb6aeda";
       }}/src";
   };
 
@@ -180,7 +225,7 @@ in
     src = "${builtins.fetchGit {
       "ref" = "master";
       "url" = "https://git@github.com/ikatyang/tree-sitter-yaml";
-      "rev" = "2240ccd0538c8f41394b9cd2202a175b1660b8d6";
+      "rev" = "6129a83eeec7d6070b1c0567ec7ce3509ead607c";
       }}/src";
   };
 
@@ -190,7 +235,7 @@ in
     src = "${builtins.fetchGit {
       "url" = "https://git@github.com/tree-sitter/tree-sitter-go.git";
       "ref" = "master";
-      "rev" = "2a83dfdd759a632651f852aa4dc0af2525fae5cd";
+      "rev" = "2a2fbf271ad6b864202f97101a2809009957535e";
       }}/src";
   };
 
@@ -205,7 +250,7 @@ in
     src = "${builtins.fetchGit {
       "ref" = "master";
       "url" = "https://github.com/tree-sitter/tree-sitter-haskell";
-      "rev" = "381dca04f20381ecb3f4306d727474755ad19cc4";
+      "rev" = "2e33ffa3313830faa325fe25ebc3769896b3a68b";
       }}/src";
   };
 
@@ -225,7 +270,7 @@ in
     src = "${builtins.fetchGit {
       "url" = "https://github.com/tree-sitter/tree-sitter-javascript";
       "ref" = "master";
-      "rev" = "4a95461c4761c624f2263725aca79eeaefd36cad";
+      "rev" = "a263a8f53266f8f0e47e21598e488f0ef365a085";
       }}/src";
   };
 
@@ -235,7 +280,7 @@ in
     src = "${builtins.fetchGit {
       "ref" = "master";
       "url" = "https://git@github.com/tree-sitter/tree-sitter-typescript";
-      "rev" = "89e720e354f02976cc63f3c8c3e55773fceed3d2";
+      "rev" = "d0c785782a4384034d4a6460b908141a88ad7229";
       }}/typescript/src";
   };
 
@@ -245,7 +290,7 @@ in
     src = "${builtins.fetchGit {
       "ref" = "master";
       "url" = "https://git@github.com/tree-sitter/tree-sitter-typescript";
-      "rev" = "89e720e354f02976cc63f3c8c3e55773fceed3d2";
+      "rev" = "d0c785782a4384034d4a6460b908141a88ad7229";
     }}/tsx/src";
   };
 

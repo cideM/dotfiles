@@ -2,6 +2,8 @@
 let
   cfg = config.programs.neovim;
 
+  feline = builtins.readFile ./feline.lua;
+
 in
 ''
   " ==============================
@@ -12,8 +14,16 @@ in
   " This doesn't seem to work
   let g:loaded_matchit = 1
 
+  function! LspStatus() abort
+      if luaeval('#vim.lsp.buf_get_clients() > 0')
+        return luaeval("require('lsp-status').status()")
+      endif
+
+      return ""
+  endfunction
+
   set background=light
-  set foldmethod=syntax
+  set foldmethod=indent
   set tabstop=4 
   set shiftwidth=2
   set noequalalways
@@ -37,9 +47,8 @@ in
   set autoindent
   set number
   set signcolumn=yes:2
-  set nosmartindent
   set ignorecase
-  set completeopt=menu,longest
+  set completeopt=menuone,noselect,noinsert
   set smartcase
   set inccommand=split
   set path-=/usr/include
@@ -47,9 +56,22 @@ in
   set foldlevelstart=99
   set splitright
   set list
-  set listchars=lead:·,tab:>\ ,trail:¬
+  set listchars=lead:\ ,tab:>\ ,trail:¬
   set termguicolors
   set undofile
+  " Need to look into this properly
+  " set statusline=
+  " set statusline+=\ %f
+  " set statusline+=\ %m
+  " set statusline+=%{get(b:,'gitsigns_status',\'\')}
+  " set statusline+=\ %{get(b:,'gitsigns_head',\'\')}
+  " set statusline+=\ %{mode()}\ 
+  " set statusline+=%=
+  " set statusline+=%{LspStatus()}
+  " set statusline+=%y\ " buffer type
+  " set statusline+=%q\ 
+  " set statusline+=%3l:%2c\ \|
+  " set statusline+=%3p%%\ 
 
   let g:yui_comments = 'bg'
   colorscheme yui
@@ -133,8 +155,8 @@ in
   nnoremap <A-k>      <C-w>k
   nnoremap <A-l>      <C-w>l
 
-  nnoremap <leader>T  :split <Bar> lcd %:p:h <Bar> term fish<CR>
-  nnoremap <leader>t  :split <Bar> term fish<CR>
+  " nnoremap <leader>T  :split <Bar> lcd %:p:h <Bar> term fish<CR>
+  " nnoremap <leader>t  :split <Bar> term fish<CR>
 
   imap jk             <Esc>
 
@@ -156,6 +178,24 @@ in
 
   nnoremap <BS>       <C-^>
 
+  " ======= nvim-hlslens ==============
+  noremap <silent> n <Cmd>execute('normal! ' . v:count1 . 'n')<CR>
+              \<Cmd>lua require('hlslens').start()<CR>
+  noremap <silent> N <Cmd>execute('normal! ' . v:count1 . 'N')<CR>
+              \<Cmd>lua require('hlslens').start()<CR>
+  vmap * <Plug>(sad-search-forward)<Cmd>lua require('hlslens').start()<CR>
+  vmap # <Plug>(sad-search-backward)<Cmd>lua require('hlslens').start()<CR>
+  nnoremap * *<Cmd>lua require('hlslens').start()<CR>
+  nnoremap # #<Cmd>lua require('hlslens').start()<CR>
+  noremap g* g*<Cmd>lua require('hlslens').start()<CR>
+  noremap g# g#<Cmd>lua require('hlslens').start()<CR>
+
+  " ======= Indent Blankline ==========
+  lua <<EOF
+  vim.g.indent_blankline_show_current_context = false
+  vim.g.indent_blankline_context_patterns = {'class', 'function', 'method', 'if', 'while', 'for'}
+  EOF
+
   " ======= SAYONARA ==================
   map Q :Sayonara<CR> " delete buffer and close window
   map <leader>Q :Sayonara!<CR> " delete buffer and preserve window
@@ -173,6 +213,9 @@ in
   " 2-character Sneak (default)
   map <leader>j <Plug>Sneak_s
   map <leader>k <Plug>Sneak_S
+
+  " ======= vim_current_word ==========
+  let g:vim_current_word#highlight_current_word = 0
 
   " ======= EDITORCONFIG ==============
   let g:EditorConfig_max_line_indicator = "exceeding"
@@ -208,6 +251,16 @@ in
       \ 'marker':  ['fg', 'Keyword'],
       \ 'spinner': ['fg', 'Label'],
       \ 'header':  ['fg', 'Comment'] }
+
+  " ======= SAD =======================
+  " Sad makes replacing selections easier and just automates some tedious
+  " plumbing around slash search and cgn.
+  map <leader>c <Plug>(sad-change-forward)
+  map <leader>C <Plug>(sad-change-backward)
+
+  " ======= GUTENTAGS =================
+  let g:gutentags_exclude_filetypes = ["haskell", "purs", "purescript"]
+  let g:gutentags_file_list_command = 'rg\ --files'
 
   " ======= MATCHUP ===================
   " Otherwise the status line is overwritten with matching code parts
@@ -245,6 +298,8 @@ in
       buf_set_keymap(bufnr, 'n', '<C-j>',  '<cmd>lua                vim.lsp.diagnostic.goto_next({ popup_opts = { border = "single" }})<CR>', opts)
       buf_set_keymap(bufnr, 'n', '<C-k>',  '<cmd>lua                vim.lsp.diagnostic.goto_prev({ popup_opts = { border = "single" }})<CR>', opts)
       buf_set_keymap(bufnr, 'n', '<localleader>l',  '<cmd>lua     vim.lsp.diagnostic.set_loclist()<CR>',                                      opts)
+
+      lsp_status.on_attach()
   end
 
   local configs = require'lspconfig/configs'
@@ -265,14 +320,51 @@ in
       update_in_insert = false,
     })
 
-  nvim_lsp.rust_analyzer.setup{}
-  nvim_lsp.rust_analyzer.setup{}
+  local lsp_status = require('lsp-status')
+  lsp_status.register_progress()
+  lsp_status.config({
+    indicator_errors = 'E',
+    indicator_warnings = 'W',
+    indicator_info = 'i',
+    indicator_hint = '?',
+    indicator_ok = 'Ok',
+  })
+
+  nvim_lsp.rust_analyzer.setup{
+      on_attach = on_attach,
+      capabilities = lsp_status.capabilities
+  }
   -- https://github.com/neovim/neovim/issues/13829
   -- nvim_lsp.purescriptls.setup{}
-  nvim_lsp.gopls.setup{}
-  nvim_lsp.hls.setup{}
+  nvim_lsp.gopls.setup{
+      on_attach = on_attach,
+      capabilities = lsp_status.capabilities
+  }
+  nvim_lsp.hls.setup{
+      on_attach = on_attach,
+      capabilities = lsp_status.capabilities
+  }
   nvim_lsp.dhall_lsp_server.setup{}
   EOF
+
+  " ======= Autopairs ================
+  lua <<EOF
+  require('nvim-autopairs').setup()
+  EOF
+
+  " ======= VIMTEX ====================
+  let g:tex_flavor = 'latex'
+  nnoremap <localleader>lt :call vimtex#fzf#run()<cr>
+
+  " ======= FERN ======================
+  " Drawer style, does not have opener
+  nmap <leader>ee :Fern . -drawer<CR>
+  " Current file
+  nmap <leader>eh :Fern %:h -drawer<CR>
+  " Focus Fern
+  nmap <leader>ef :FernDo :<CR>
+  nmap <leader>el <Plug>(fern-action-leave)
+  nmap <leader>eo <Plug>(fern-action-open:select)
 
   " ========= NVIM-TREESITTER =========
   packadd nvim-treesitter
@@ -295,5 +387,87 @@ in
       enable = false,
     }
   }
+  EOF
+
+  lua <<EOF
+  require('gitsigns').setup {
+    signs = {
+      add          = {hl = 'GitSignsAdd'   , text = '+', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
+      change       = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+      delete       = {hl = 'GitSignsDelete', text = '-', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+      topdelete    = {hl = 'GitSignsDelete', text = '-', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+      changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+    },
+  }
+  EOF
+
+  " ========= nvim-toggleterm.lua =====
+  lua <<EOF
+  require"toggleterm".setup{
+    shading_factor = 0.1,
+    size = 25,
+    hide_numbers = true,
+    direction = 'float',
+    open_mapping = [[<A-t>]],
+  }
+  EOF
+
+  " ========= nvim-lspfuzzy ===========
+  lua require('lspfuzzy').setup {}
+
+  " ======= deoplete.nvim =============
+  " Needed to call options function
+  packadd deoplete-nvim
+  call deoplete#custom#option('num_processes', 4)
+  call deoplete#custom#option('refresh_always', v:false)
+  " Use <Tab> and <S-Tab> to navigate through popup menu
+  inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+  call deoplete#enable()
+  call deoplete#custom#var('omni', 'input_patterns', {
+          \ 'tex': g:vimtex#re#deoplete
+          \})
+
+  " ========= NVIM-COMPE ==============
+  " inoremap <silent><expr> <C-Space> compe#complete()
+  " inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+  " inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+  " inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+  " inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+
+  " https://github.com/hrsh7th/nvim-compe/issues/347
+  " lua <<EOF
+  " require'compe'.setup {
+  "   enabled = true,
+  "   default_pattern = '\d\@!\k\k*',
+  "   debug = true,
+  "   autocomplete = true,
+  "   preselect = 'enable',
+  "   min_length = 3,
+  "   documentation = true,
+
+  "   source = {
+  "     buffer = {
+  "       priority = 100,
+  "     },
+  "     conjure = {
+  "       priority = 90,
+  "     },
+  "     nvim_lsp = {
+  "       priority = 80,
+  "     },
+  "     path = {
+  "       priority = 70,
+  "     },
+  "     tags = {
+  "       priority = 0,
+  "     },
+  "     vsnip = false,
+  "   },
+  " }
+  " EOF
+
+  lua <<EOF
+  ${feline}
   EOF
 ''

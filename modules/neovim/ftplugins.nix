@@ -103,7 +103,10 @@
     text = ''
       let b:undo_ftplugin="setlocal formatprg< foldmethod<"
 
-      setlocal foldmethod=indent
+      setlocal foldmethod=expr
+      setlocal foldexpr=nvim_treesitter#foldexpr()
+      let b:undo_ftplugin .= '|setlocal foldexpr<'
+      let b:undo_ftplugin .= '|setlocal foldmethod<'
 
       let &formatprg='${pkgs.nodePackages.prettier}/bin/prettier' . ' --stdin-filepath ' . expand('%')
       let b:undo_ftplugin .= '|setlocal formatprg<'
@@ -135,6 +138,10 @@
       setlocal wildignore+=*/node_modules/*
       let b:undo_ftplugin .= '|setlocal wildignore<'
 
+      setlocal foldmethod=expr
+      setlocal foldexpr=nvim_treesitter#foldexpr()
+      let b:undo_ftplugin .= '|setlocal foldexpr<'
+      let b:undo_ftplugin .= '|setlocal foldmethod<'
 
       setlocal suffixesadd+=.js,.jsx,.css
       let b:undo_ftplugin .= '|setlocal suffixesadd<'
@@ -204,54 +211,66 @@
   };
   "nvim/ftplugin/typescript.vim" = {
     text = ''
-        let b:undo_ftplugin = ""
+      let b:undo_ftplugin = ""
 
-        let node_modules = luaeval(
-                    \'require("findUp").findUp(unpack(_A))', 
-                    \['node_modules',expand('%:p:h'), '/']
-                    \)
+      let node_modules = luaeval(
+                  \'require("findUp").findUp(unpack(_A))', 
+                  \['node_modules',expand('%:p:h'), '/']
+                  \)
 
-        let &formatprg='${pkgs.nodePackages.prettier}/bin/prettier' . ' --stdin-filepath ' . expand('%')
-        let b:undo_ftplugin .= '|setlocal formatprg<'
+      let &formatprg='${pkgs.nodePackages.prettier}/bin/prettier' . ' --stdin-filepath ' . expand('%')
+      let b:undo_ftplugin .= '|setlocal formatprg<'
 
-        """""""""""""""""""""""""
+      """""""""""""""""""""""""
       "        TSLINT         "
       """""""""""""""""""""""""
-        let tslint_path = ""
+      let tslint_path = ""
 
-        if node_modules !=# "false" && filereadable(node_modules . "/.bin/tslint")
-            let tslint_path = node_modules . "/.bin/tslint"
-        elseif executable("tslint")
-            let tslint_path = "tslint"
-        end
+      if node_modules !=# "false" && filereadable(node_modules . "/.bin/tslint")
+          let tslint_path = node_modules . "/.bin/tslint"
+      elseif executable("tslint")
+          let tslint_path = "tslint"
+      end
 
-        if tslint_path !=# ""
-            let &makeprg=tslint_path . ' --format compact '
-            setlocal errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m,%-G%.%#
-            let b:undo_ftplugin .= '|setlocal makeprg<'
+      if tslint_path !=# ""
+          let &makeprg=tslint_path . ' --format compact '
+          setlocal errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m,%-G%.%#
+          let b:undo_ftplugin .= '|setlocal makeprg<'
 
-            command! -bar -buffer Fix call system(tslint_path . ' --fix ' . expand('%')) | edit
-            nnoremap <buffer> <silent> <localleader>f :Fix<cr>
-        end
+          command! -bar -buffer Fix call system(tslint_path . ' --fix ' . expand('%')) | edit
+          nnoremap <buffer> <silent> <localleader>f :Fix<cr>
+      end
 
-        set wildignore+=*/node_modules/*
-        let b:undo_ftplugin .= '|setlocal wildignore<'
+      set wildignore+=*/node_modules/*
+      let b:undo_ftplugin .= '|setlocal wildignore<'
 
-        setlocal suffixesadd+=.ts,.tsx,.css
-        let b:undo_ftplugin .= '|setlocal suffixesadd<'
+      setlocal suffixesadd+=.ts,.tsx,.css
+      let b:undo_ftplugin .= '|setlocal suffixesadd<'
 
+      setlocal foldmethod=expr
+      setlocal foldexpr=nvim_treesitter#foldexpr()
+      let b:undo_ftplugin .= '|setlocal foldexpr<'
+      let b:undo_ftplugin .= '|setlocal foldmethod<'
     '';
   };
   "nvim/ftplugin/python.vim" = {
     text = ''
       let b:undo_ftplugin = ""
+
+      setlocal foldmethod=expr
+      setlocal foldexpr=nvim_treesitter#foldexpr()
+      let b:undo_ftplugin .= '|setlocal foldexpr<'
+      let b:undo_ftplugin .= '|setlocal foldmethod<'
     '';
   };
   "nvim/ftplugin/haskell.vim" = {
     text = ''
       let b:undo_ftplugin="setlocal formatprg< foldmethod<"
 
-      setlocal foldmethod=indent
+      setlocal foldmethod=expr
+      setlocal foldexpr=nvim_treesitter#foldexpr()
+      let b:undo_ftplugin .= '|setlocal foldexpr<'
+      let b:undo_ftplugin .= '|setlocal foldmethod<'
 
       setlocal formatprg=${pkgs.ormolu}/bin/ormolu
 
@@ -275,6 +294,10 @@
       setlocal errorformat=%f:%l:%c:\ Parse\ %t%*[^:]:\ %m,%f:%l:%c:\ %t%*[^:]:\ %m
       setlocal makeprg=clj-kondo\ --lint\ %
 
+      setlocal foldmethod=expr
+      setlocal foldexpr=nvim_treesitter#foldexpr()
+      let b:undo_ftplugin .= '|setlocal foldexpr<'
+      let b:undo_ftplugin .= '|setlocal foldmethod<'
     '';
   };
   "nvim/ftplugin/yaml.vim" = {
@@ -283,6 +306,11 @@
 
       let &formatprg='${pkgs.nodePackages.prettier}/bin/prettier' . ' --stdin-filepath ' . expand('%')
       let b:undo_ftplugin .= '|setlocal formatprg<'
+
+      setlocal foldmethod=expr
+      setlocal foldexpr=nvim_treesitter#foldexpr()
+      let b:undo_ftplugin .= '|setlocal foldexpr<'
+      let b:undo_ftplugin .= '|setlocal foldmethod<'
     '';
   };
 }

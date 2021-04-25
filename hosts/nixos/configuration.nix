@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, hwConfig, operatorMono, ... }:
+{ config, pkgs, hwConfig, operatorMono, neovim-nightly-overlay, ... }:
 let
   operatorMonoFontPkg = pkgs.stdenv.mkDerivation {
     name = "operator-mono-font";
@@ -83,12 +83,15 @@ in
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
+  nixpkgs.overlays = [ neovim-nightly-overlay.overlay ];
+
   nixpkgs.config = {
     allowUnfree = true;
   };
 
   nix = {
     package = pkgs.nixUnstable;
+    trustedUsers = [ "root" "tifa" ];
     extraOptions = ''
       experimental-features = nix-command flakes
       keep-outputs = true
@@ -181,8 +184,6 @@ in
     shell = pkgs.fish;
     extraGroups = [ "adbusers" "wheel" "docker" ]; # Enable ‘sudo’ for the user.
   };
-
-  home-manager.users.tifa = ./home.nix;
 
   virtualisation.docker.enable = true;
   virtualisation.libvirtd.enable = true;
