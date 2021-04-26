@@ -191,6 +191,7 @@ in
   noremap g# g#<Cmd>lua require('hlslens').start()<CR>
 
   " ======= Indent Blankline ==========
+  let g:indent_blankline_char = '│'
   lua <<EOF
   vim.g.indent_blankline_show_current_context = false
   vim.g.indent_blankline_context_patterns = {'class', 'function', 'method', 'if', 'while', 'for'}
@@ -273,11 +274,12 @@ in
 
   packadd nvim-lsp
   lua <<EOF
+  local lsp_status = require('lsp-status')
   local nvim_lsp = require'lspconfig'
   local buf_set_keymap = vim.api.nvim_buf_set_keymap
   local api = vim.api
 
-  local on_attach = function(_, bufnr)
+  local on_attach = function(client, bufnr)
       api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
       -- Mappings.
@@ -299,7 +301,7 @@ in
       buf_set_keymap(bufnr, 'n', '<C-k>',  '<cmd>lua                vim.lsp.diagnostic.goto_prev({ popup_opts = { border = "single" }})<CR>', opts)
       buf_set_keymap(bufnr, 'n', '<localleader>l',  '<cmd>lua     vim.lsp.diagnostic.set_loclist()<CR>',                                      opts)
 
-      lsp_status.on_attach()
+      lsp_status.on_attach(client)
   end
 
   local configs = require'lspconfig/configs'
@@ -320,7 +322,6 @@ in
       update_in_insert = false,
     })
 
-  local lsp_status = require('lsp-status')
   lsp_status.register_progress()
   lsp_status.config({
     indicator_errors = 'E',
@@ -354,6 +355,7 @@ in
 
   " ======= VIMTEX ====================
   let g:tex_flavor = 'latex'
+  let g:vimtex_view_method = 'zathura'
   nnoremap <localleader>lt :call vimtex#fzf#run()<cr>
 
   " ======= FERN ======================
@@ -407,7 +409,6 @@ in
     shading_factor = 0.1,
     size = 25,
     hide_numbers = true,
-    direction = 'float',
     open_mapping = [[<A-t>]],
   }
   EOF

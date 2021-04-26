@@ -374,6 +374,35 @@ let
     };
   };
 
+  iosevkaNerd = {
+    bold = {
+      family = "Iosevka Nerd Font";
+      style = "Bold";
+    };
+    bold_italic = {
+      family = "Iosevka Nerd Font";
+      style = "Bold Italic";
+    };
+    glyph_offset = {
+      x = 0;
+      y = 0;
+    };
+    italic = {
+      family = "Iosevka Nerd Font";
+      style = "Regular Italic";
+    };
+    normal = {
+      family = "Iosevka Nerd Font";
+      style = "Regular";
+    };
+    offset = {
+      x = 0;
+      y = 0;
+    };
+    size = cfg.fontSize;
+    use_thin_strokes = pkgs.stdenv.isDarwin;
+  };
+
   monoMedium = {
     bold = {
       family = "Operator Mono SSm";
@@ -663,6 +692,7 @@ let
     "liberationMono" = liberationMono;
     "jetbrains" = jetbrains;
     "hack" = hack;
+    "iosevkaNerd" = iosevkaNerd;
     "hackNerd" = hackNerd;
   };
 
@@ -679,7 +709,7 @@ in
     };
 
     font = mkOption {
-      type = enum [ "mono" "liberationMono" "dejavuSansMono" "hack" "hackNerd" "monoMedium" "jetbrains" ];
+      type = enum [ "mono" "liberationMono" "dejavuSansMono" "hack" "hackNerd" "monoMedium" "jetbrains" "iosevkaNerd" ];
       default = "mono";
       description = "Terminal emulator font";
     };

@@ -152,6 +152,25 @@ M.components.left.active[10] = {
 }
 
 M.components.left.active[11] = {
+    provider = function() return vim.fn['gutentags#statusline']() end,
+    enabled = function() return not vim.fn['gutentags#statusline']() == "" end,
+    hl = {
+        fg = 'white',
+        bg = 'black',
+    },
+    left_sep = {
+        ' ',
+        {
+            str = 'vertical_bar_thin',
+            hl = {
+                fg = 'fg',
+                bg = 'bg'
+            }
+        }
+    },
+}
+
+M.components.left.active[12] = {
     provider = ' ',
     hl = { fg = 'white' },
 }

@@ -5,13 +5,13 @@
     --exclude=build
     --exclude=min
     --exclude=vendor
-    --exclude='*.min.*'
-    --exclude='*.map'
-    --exclude='*.swp'
-    --exclude='*.bak'
+    --exclude=*.min.*
+    --exclude=*.map
+    --exclude=*.swp
+    --exclude=*.bak
     --exclude=tags
     --exclude=dist
-    --exclude='*.json'
+    --exclude=*.json
   '';
 
   xdg.configFile."ctags/javascript.ctags".text = ''

@@ -265,12 +265,13 @@
   };
   "nvim/ftplugin/haskell.vim" = {
     text = ''
-      let b:undo_ftplugin="setlocal formatprg< foldmethod<"
+      let b:undo_ftplugin=""
 
-      setlocal foldmethod=expr
-      setlocal foldexpr=nvim_treesitter#foldexpr()
-      let b:undo_ftplugin .= '|setlocal foldexpr<'
-      let b:undo_ftplugin .= '|setlocal foldmethod<'
+      " https://github.com/tree-sitter/tree-sitter-haskell/issues/33
+      " setlocal foldmethod=expr
+      " setlocal foldexpr=nvim_treesitter#foldexpr()
+      " let b:undo_ftplugin .= '|setlocal foldexpr<'
+      " let b:undo_ftplugin .= '|setlocal foldmethod<'
 
       setlocal formatprg=${pkgs.ormolu}/bin/ormolu
 

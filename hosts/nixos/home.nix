@@ -34,6 +34,8 @@
     spotify
     zoom-us
     mupdf
+    okular
+    zathura
     slack
     anki
     jetbrains.clion
