@@ -86,10 +86,14 @@ in
         parinfer-rust
 
         # Languages & Syntax
-        purescript-vim
         dhall-vim
-        vim-lua
+        haskell-vim
         Jenkinsfile-vim-syntax
+        purescript-vim
+        vim-js
+        vim-jsx-pretty
+        vim-lua
+        vim-nix
         vim-terraform
 
         # Themes
