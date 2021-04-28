@@ -1,6 +1,11 @@
 { config, lib, pkgs, ... }:
 
 {
+  "nvim/ftplugin/toggleterm.vim" = {
+    text = ''
+      IndentBlanklineDisable
+    '';
+  };
   "nvim/ftplugin/xml.vim" = {
     text = ''
       let b:undo_ftplugin = ""

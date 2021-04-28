@@ -31,6 +31,7 @@ local M = {
 M.properties.force_inactive.filetypes = {
     'NvimTree',
     'dbui',
+    'fern',
     'packer',
     'startify',
     'fugitive',
@@ -63,7 +64,7 @@ M.components.left.active[2] = {
     icon = ''
 }
 
-M.components.left.active[3] = {
+local fileinfo = {
     provider = 'file_info',
     hl = {
         fg = 'white',
@@ -74,6 +75,9 @@ M.components.left.active[3] = {
     right_sep = ' ',
     icon = ''
 }
+
+M.components.left.active[3] = fileinfo
+M.components.left.inactive[2] = fileinfo
 
 M.components.left.active[4] = {
     provider = 'file_size',

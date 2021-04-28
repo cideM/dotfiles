@@ -25,6 +25,7 @@
     source-han-sans-japanese
     source-han-serif-japanese
     iosevka
+    kazam
     insomnia
     (import ../../derivations/kubectl.nix {
       inherit (pkgs) stdenv;
@@ -32,6 +33,8 @@
     })
     sublime-merge
     spotify
+    gnupg
+    zotero
     zoom-us
     mupdf
     okular

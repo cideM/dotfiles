@@ -60,7 +60,7 @@ in
         /* compe-conjure */
         vim_current_word
         conjure
-        /* nvim-cursorline */
+        # nvim-cursorline
         /* also seems to mess up fzf buffer highlighting */
         /* https://github.com/yamatsum/nvim-cursorline/issues/7 */
         /* nvim-compe */

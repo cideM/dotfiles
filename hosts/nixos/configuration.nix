@@ -139,7 +139,7 @@ in
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
-    pinentryFlavor = "gnome3";
+    pinentryFlavor = "curses";
   };
 
   programs.adb.enable = true;
