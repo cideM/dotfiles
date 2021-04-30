@@ -8,7 +8,7 @@
     "clj-deps": {
         "branch": "live",
         "repo": "https://git@github.com/practicalli/clojure-deps-edn.git",
-        "rev": "76e4d2a1031caa354ae57a80aab5da7957937936",
+        "rev": "005f6bd9234e53a922c633569b5b7f4d4f04b14b",
         "type": "git"
     },
     "compe-conjure": {
@@ -41,10 +41,10 @@
         "homepage": null,
         "owner": "Famiu",
         "repo": "feline.nvim",
-        "rev": "ea2dffaf0c8b2b4fa4ef2870d777a46753df9f1e",
-        "sha256": "1brncyz880624qbj10qmas02pc8zsv6h9lkc6a8h3kd29abc0k38",
+        "rev": "06dad2e503e4dcb1c1381a29afa1eb1654424fe2",
+        "sha256": "1d47sl8vi5yg99wwmr7811hjsnqdh2d49pa1q7k8zl440zvmhg6i",
         "type": "tarball",
-        "url": "https://github.com/Famiu/feline.nvim/archive/ea2dffaf0c8b2b4fa4ef2870d777a46753df9f1e.tar.gz",
+        "url": "https://github.com/Famiu/feline.nvim/archive/06dad2e503e4dcb1c1381a29afa1eb1654424fe2.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "fish-journal": {
@@ -83,10 +83,10 @@
         "homepage": "",
         "owner": "lukas-reineke",
         "repo": "indent-blankline.nvim",
-        "rev": "1bc7d243012aefa0b596c9559f320056e492ebba",
-        "sha256": "1adi110vpi1r1jn4yrh0fdq4a2cz382rgkbkmjdn91y10iz5nnsl",
+        "rev": "ec5816267caa5fdde7a5e5a8359b9b19bc8ecf49",
+        "sha256": "008q3rg6fz36k334ci30f1vci9hws4y04z8gr4wnq9q8qx57y7nh",
         "type": "tarball",
-        "url": "https://github.com/lukas-reineke/indent-blankline.nvim/archive/1bc7d243012aefa0b596c9559f320056e492ebba.tar.gz",
+        "url": "https://github.com/lukas-reineke/indent-blankline.nvim/archive/ec5816267caa5fdde7a5e5a8359b9b19bc8ecf49.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "inspecthi": {
@@ -161,10 +161,10 @@
         "homepage": "",
         "owner": "kevinhwang91",
         "repo": "nvim-hlslens",
-        "rev": "2f8bd90f3b4fa7620c61f66bcddb965139eb176f",
-        "sha256": "1zsvr9pba62ngchfmab7yns64mlkdqclqv516c7h62fh82fyx23a",
+        "rev": "a23ce7882d3caf4df00e79c515c81633055bae45",
+        "sha256": "0xlz3v4zzaklnkr5sx238i7d8agxbsk9zbs3br0dfjdbrvhgii02",
         "type": "tarball",
-        "url": "https://github.com/kevinhwang91/nvim-hlslens/archive/2f8bd90f3b4fa7620c61f66bcddb965139eb176f.tar.gz",
+        "url": "https://github.com/kevinhwang91/nvim-hlslens/archive/a23ce7882d3caf4df00e79c515c81633055bae45.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nvim-lsp": {
@@ -191,10 +191,10 @@
         "homepage": "",
         "owner": "nvim-treesitter",
         "repo": "nvim-treesitter",
-        "rev": "b68f0cc70022fedec9b9190904d6035393111cdf",
-        "sha256": "07zp1fbah65f7lglfkmdzi6cyfchlaf1ap02wzwixiv5hpy6zji4",
+        "rev": "bbf3f87884756330793510261193b0a725fb899b",
+        "sha256": "1974jpw2sjz4v8vy7y665bl6avflsv7pdqmq9ahlqf2lw59x13hy",
         "type": "tarball",
-        "url": "https://github.com/nvim-treesitter/nvim-treesitter/archive/b68f0cc70022fedec9b9190904d6035393111cdf.tar.gz",
+        "url": "https://github.com/nvim-treesitter/nvim-treesitter/archive/bbf3f87884756330793510261193b0a725fb899b.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "onehalf": {
@@ -206,7 +206,7 @@
     "pandoc-template-eisvogel": {
         "branch": "master",
         "repo": "https://git@github.com/Wandmalfarbe/pandoc-latex-template.git",
-        "rev": "ad404d04461ecf92772e3f4defac2d649092b4ce",
+        "rev": "4909f13d58bb4c66243def1f6e01becd1820c767",
         "type": "git"
     },
     "pandoc-template-github": {
@@ -278,7 +278,7 @@
     "vim-matchup": {
         "branch": "master",
         "repo": "https://git@github.com/andymass/vim-matchup",
-        "rev": "71b97bac53aa09760e8d8c36767c657b274c468d",
+        "rev": "a39772e2fbd464776b0aa025ca04c2504379cf72",
         "type": "git"
     },
     "vim-nightowl-colors": {
