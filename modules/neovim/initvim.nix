@@ -160,9 +160,6 @@ in
 
   imap jk             <Esc>
 
-  nnoremap <leader>gg :grep!<space>
-  nnoremap <leader>gw :grep! -wF 
-
   " Just calls formatprg on entire buffer
   nmap     <leader>q  :call FormatBuffer()<cr>
 
@@ -196,6 +193,14 @@ in
   vim.g.indent_blankline_show_current_context = false
   vim.g.indent_blankline_context_patterns = {'class', 'function', 'method', 'if', 'while', 'for'}
   EOF
+
+  " ======= Grepper ===================
+  nnoremap <leader>* :Grepper -tool rg -open -switch -cword -noprompt<cr>
+  nnoremap <leader>gg :GrepperRg<space>
+
+  nmap gs  <plug>(GrepperOperator)
+  xmap gs  <plug>(GrepperOperator)
+
 
   " ======= SAYONARA ==================
   map Q :Sayonara<CR> " delete buffer and close window

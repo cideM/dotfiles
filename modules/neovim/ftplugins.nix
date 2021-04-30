@@ -1,6 +1,11 @@
 { config, lib, pkgs, ... }:
 
 {
+  "nvim/ftplugin/git.vim" = {
+    text = ''
+      IndentBlanklineDisable
+    '';
+  };
   "nvim/ftplugin/toggleterm.vim" = {
     text = ''
       IndentBlanklineDisable

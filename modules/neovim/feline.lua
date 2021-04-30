@@ -33,6 +33,7 @@ M.properties.force_inactive.filetypes = {
     'dbui',
     'fern',
     'packer',
+    'toggleterm',
     'startify',
     'fugitive',
     'fugitiveblame'
