@@ -35,6 +35,18 @@
         "url": "https://github.com/rhysd/conflict-marker.vim/archive/6a9b8f92a57ea8a90cbf62c960db9e5894be2d7a.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "diffview.nvim": {
+        "branch": "main",
+        "description": "Single tabpage interface to easily cycle through diffs for all modified files for any git rev.",
+        "homepage": "",
+        "owner": "sindrets",
+        "repo": "diffview.nvim",
+        "rev": "7360f60ca97dfca0b4af4012c8e68dfc02824766",
+        "sha256": "076wrf7pzj1blqghabs14fcabkhxsxnxdrim7lms9g62nyqm3nap",
+        "type": "tarball",
+        "url": "https://github.com/sindrets/diffview.nvim/archive/7360f60ca97dfca0b4af4012c8e68dfc02824766.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "feline.nvim": {
         "branch": "master",
         "description": "A minimal, stylish and customizable statusline for Neovim written in Lua",

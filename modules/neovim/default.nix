@@ -73,6 +73,7 @@ in
         nvim-lspfuzzy
 
         # Git
+        diffview
         vim-fugitive
         vim-flog
         vim-rhubarb

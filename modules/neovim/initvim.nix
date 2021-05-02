@@ -4,6 +4,8 @@ let
 
   feline = builtins.readFile ./feline.lua;
 
+  diffview = builtins.readFile ./diffview.lua;
+
 in
 ''
   " ==============================
@@ -361,7 +363,7 @@ in
   " ======= VIMTEX ====================
   let g:tex_flavor = 'latex'
   let g:vimtex_view_method = 'zathura'
-  nnoremap <localleader>lt :call vimtex#fzf#run()<cr>
+  nnoremap <localleader>lt :call vimtex#fzf#run('cl')<cr>
 
   " ======= FERN ======================
   " Drawer style, does not have opener
@@ -475,5 +477,9 @@ in
 
   lua <<EOF
   ${feline}
+  EOF
+
+  lua <<EOF
+  ${diffview}
   EOF
 ''

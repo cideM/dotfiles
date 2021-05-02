@@ -60,6 +60,11 @@ in
     src = sources."nvim-lspfuzzy";
   });
 
+  diffview = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "diffview";
+    src = sources."diffview.nvim";
+  });
+
   conflict-marker = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "conflict-marker";
     src = sources."conflict-marker.vim";
