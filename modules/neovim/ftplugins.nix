@@ -1,14 +1,24 @@
 { config, lib, pkgs, ... }:
 
 {
+  "nvim/ftplugin/help.vim" = {
+    text = ''
+      let b:indent_blankline_enabled=0
+    '';
+  };
   "nvim/ftplugin/git.vim" = {
     text = ''
-      IndentBlanklineDisable
+      let b:indent_blankline_enabled=0
+    '';
+  };
+  "nvim/ftplugin/fugitive.vim" = {
+    text = ''
+      let b:indent_blankline_enabled=0
     '';
   };
   "nvim/ftplugin/toggleterm.vim" = {
     text = ''
-      IndentBlanklineDisable
+      let b:indent_blankline_enabled=0
     '';
   };
   "nvim/ftplugin/xml.vim" = {

@@ -4,6 +4,8 @@ let
 
   feline = builtins.readFile ./feline.lua;
 
+  whichkey = builtins.readFile ./whichkey.lua;
+
   diffview = builtins.readFile ./diffview.lua;
 
 in
@@ -27,6 +29,7 @@ in
   set background=light
   set foldmethod=indent
   set tabstop=4 
+  set timeoutlen=500
   set shiftwidth=2
   set noequalalways
   set formatoptions=tcrqjn
@@ -197,7 +200,7 @@ in
   EOF
 
   " ======= Grepper ===================
-  nnoremap <leader>* :Grepper -tool rg -open -switch -cword -noprompt<cr>
+  nnoremap <leader>gw :Grepper -tool rg -open -switch -cword -noprompt<cr>
   nnoremap <leader>gg :GrepperRg<space>
 
   nmap gs  <plug>(GrepperOperator)
@@ -481,5 +484,9 @@ in
 
   lua <<EOF
   ${diffview}
+  EOF
+
+  lua <<EOF
+  ${whichkey}
   EOF
 ''

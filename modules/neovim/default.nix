@@ -71,6 +71,9 @@ in
         nvim-autopairs
         nvim-hlslens
         nvim-lspfuzzy
+        # Need to use more up to date version atm because older is buggy
+        # which-key-nvim
+        which-key-niv
 
         # Git
         diffview

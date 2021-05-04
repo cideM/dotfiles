@@ -55,6 +55,11 @@ in
     src = sources."feline.nvim";
   });
 
+  which-key-niv = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    name = "which-key-niv";
+    src = sources."which-key.nvim";
+  });
+
   nvim-lspfuzzy = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "nvim-lspfuzzy";
     src = sources."nvim-lspfuzzy";
