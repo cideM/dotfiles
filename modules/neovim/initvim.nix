@@ -200,9 +200,6 @@ in
   EOF
 
   " ======= Grepper ===================
-  nnoremap <leader>gw :Grepper -tool rg -open -switch -cword -noprompt<cr>
-  nnoremap <leader>gg :GrepperRg<space>
-
   nmap gs  <plug>(GrepperOperator)
   xmap gs  <plug>(GrepperOperator)
 

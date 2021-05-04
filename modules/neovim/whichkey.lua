@@ -15,3 +15,12 @@ wk.setup {
         },
     },
 }
+
+wk.register {
+    ["<leader>g"] = {
+        name = "+search",
+        w = {"<cmd>Grepper -tool rg -open -switch -cword -noprompt<cr>", "Search word under cursor"},
+        g = {"<cmd>GreppgerRg<space>", "Search for something"},
+        i = {":GrepperGit", "Search for something in Git files"},
+    }
+}
