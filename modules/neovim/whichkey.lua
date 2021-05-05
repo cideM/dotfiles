@@ -15,38 +15,19 @@ wk.setup {
         },
     },
     operators = {
-        ["<leader>sa"] = "add surrounds",
-        ["<leader>sd"] = "delete surrounds",
-        ["<leader>sr"] = "replace surrounds",
+    --     ["<leader>sa"] = "add surrounds",
+    --     ["<leader>sd"] = "delete surrounds",
+    --     ["<leader>sr"] = "replace surrounds",
+        -- ["<leader>fo"] = "find string",
+    --     ["<leader>Fc"] = "reflow comment",
     },
 }
-
-wk.register({
-    ["<leader>s"] = {
-        a = {"<Plug>(operator-sandwich-add)", "add"},
-        d = {"<Plug>(operator-sandwich-delete)", "delete"},
-        r = {"<Plug>(operator-sandwich-replace)", "replace"},
-    }
-}, { mode = "x"})
-
-wk.register({
-    ["<leader>F"] = {
-        name = "+Formatting",
-        c = {":<C-u>call ReflowComment(visualmode())<cr>", "reflow comment"},
-    }},
-    {mode = "v"}
-)
-
-wk.register({
-    ["<leader>f"] = {
-        o = {"<Plug>(GrepperOperator)", "operator"},
-    }},{mode="x"}
-)
 
 wk.register {
     ["<leader>F"] = {
         name = "+Formatting",
         c = {":set operatorfunc=ReflowComment<cr>g@", "reflow comment"},
+        c = {":<C-u>call ReflowComment(visualmode())<cr>", "reflow comment", mode="v"},
     },
     ["<leader>g"] = {
         name = "+Git",
@@ -80,9 +61,14 @@ wk.register {
     },
     ["<leader>s"] = {
         name = "+Sandwich",
+        a = {"<Plug>(operator-sandwich-add)", "add"},
+        a = {"<Plug>(operator-sandwich-add)", "add", mode="x"},
+        a = {"<Plug>(operator-sandwich-g@)", "add", mode="o"},
+        d = {"<Plug>(operator-sandwich-delete)", "delete", mode="x"},
         d = {"<Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)", "delete"},
-        r = {"<Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)", "replace"},
         D = {"<Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)", "delete auto"},
+        r = {"<Plug>(operator-sandwich-replace)", "replace", mode="x"},
+        r = {"<Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)", "replace"},
         R = {"<Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)", "replace auto"},
     },
     ["<leader>f"] = {
@@ -94,7 +80,8 @@ wk.register {
         L = {"<cmd>BLines<cr>", "line in buffer"},
         c = {"<cmd>Commits<cr>", "commit"},
         b = {"<cmd>Buffers<cr>", "buffer"},
-        o = {"<Plug>(GrepperOperator)", "operator"},
+        o = {"<Plug>(GrepperOperator)", "string"},
+        o = {"<Plug>(GrepperOperator)", "string", mode="x"},
         F = {"<cmd>GFiles<cr>", "file among Git files"},
         m = {"<cmd>Marks<cr>", "mark"},
         t = {"<cmd>Tags<cr>", "tag"},

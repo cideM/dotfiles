@@ -353,10 +353,10 @@
         "homepage": "",
         "owner": "folke",
         "repo": "which-key.nvim",
-        "rev": "d155ab3bef11a8156995b47d5552586e5c9f66a3",
-        "sha256": "1jywdfr5l1plnphb69ccjhrbfmidbs9f70rvw55zndd3g6drgbka",
+        "rev": "167661151204ea7da2d365113a76ab223b3dc880",
+        "sha256": "1ksivid0k9xncsqw6qvnz7ndrmp1wd3yxdxcc4jknv9ib2h95xh9",
         "type": "tarball",
-        "url": "https://github.com/folke/which-key.nvim/archive/d155ab3bef11a8156995b47d5552586e5c9f66a3.tar.gz",
+        "url": "https://github.com/folke/which-key.nvim/archive/167661151204ea7da2d365113a76ab223b3dc880.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "yui": {

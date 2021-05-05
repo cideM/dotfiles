@@ -97,7 +97,7 @@ in
       gc = {
         description = "fzf git checkout";
         body = ''
-          git ch (git b -a | fzf --preview 'git diff master (echo {} | sed \'s/*//\' | string trim) --stat' | sed 's/*//' | string trim)
+          git ch (git b -a | fzf --preview 'git log (echo {} | sed \'s/*//\' | string trim)' | sed 's/*//' | string trim)
         '';
       };
 
