@@ -23,11 +23,18 @@ in
         set list lcs=trail:¬,tab:\ \ 
         let g:yui_comments = 'bg'
         colorscheme yui
+
         let g:EditorConfig_max_line_indicator = "exceeding"
         let g:EditorConfig_preserve_formatoptions = 1
+
         let g:sneak#label      = 1
         let g:sneak#use_ic_scs = 1
         let g:sneak#s_next = 1
+
+        let g:peekaboo_window = 'vert bo 40new'
+
+        let g:gutentags_exclude_filetypes = ["haskell", "purs", "purescript"]
+        let g:gutentags_file_list_command = 'rg\ --files'
 
         " Format the buffer with the current formatprg. Most of the custom code here
         " is just so my jump list isn't cluttered and I always end up at the first
@@ -79,13 +86,18 @@ in
         nnoremap <leader>fz :call fzf#run({'sink': 'e', 'tmux': '-p80%,60%', 'options': '--no-color'})<cr>
         nnoremap <leader>fb :ls<cr>:buffer<Space>
 
+        map f <Plug>Sneak_f
+        map F <Plug>Sneak_F
+        map t <Plug>Sneak_t
+        map T <Plug>Sneak_T
+
         nmap     <leader>rb :call FormatBuffer()<cr>
         nnoremap <leader>rc :set operatorfunc=ReflowComment<cr>g@
         vnoremap <leader>rc :<C-u>call ReflowComment(visualmode())<cr>
 
         nnoremap <leader>/ :nohlsearch<CR>
 
-        nnoremap <leader>T :lcd %:p:h<wbar>split term://fish<CR>
+        nnoremap <leader>T :lcd %:p:h<bar>split term://fish<CR>
         nnoremap <leader>t :split term://fish<CR>
 
         map      <leader>C <Plug>(sad-change-backward)
@@ -107,7 +119,7 @@ in
         silent! xmap <unique> <leader>sr <Plug>(operator-sandwich-replace)
 
         autocmd FileType xml setl fp=prettier\ --stdin-filepath\ %
-        autocmd FileType sh setl fp=shfmt mp='shellcheck -f gcc %' | nnoremap <buffer> <localleader>m :silent make<cr>
+        autocmd FileType sh setl fp=shfmt mp=shellcheck\ -f\ gcc\ % | nnoremap <buffer> <localleader>m :silent make<cr>
         autocmd FileType rust setl fp=rustfmt mp=cargo\ check
         autocmd FileType purescript setl fp=purty\ format | nnoremap <buffer> <localleader>t :!spago\ docs\ --format\ ctags
         autocmd FileType nix setl fp=nixpkgs-fmt
@@ -118,7 +130,7 @@ in
           \| nnoremap <localleader>m :make %<cr>
         autocmd FileType go setl fp=gofmt makeprg=go\ build\ -o\ /dev/null
           \| nnoremap <localleader>m :make %<cr>
-          \| nnoremap <localleader>i :silent!goimports -w %<cr>
+          \| nnoremap <localleader>i :!goimports -w %<cr>
           \| nnoremap <localleader>t :execute ':silent !for f in ./{cmd, internal, pkg}; if test -d $f; ctags -R $f; end; end'<CR>
         autocmd FileType haskell setl fp=ormolu | nnoremap <buffer> <localleader>t :silent\ !fast-tags\ -R\ .
         autocmd FileType markdown setl fp=prettier\ --stdin-filepath\ %
@@ -128,15 +140,14 @@ in
           \efm=%f:\ line\ %l\\,\ col\ %c\\,\ %m,%-G%.%# makeprg=${pkgs.nodePackages.eslint}/bin/eslint\ --format\ compact
           \| nnoremap <buffer> <silent> <localleader>f :!${pkgs.nodePackages.eslint}/bin/eslint\ --fix\ %<cr>
         autocmd FileType yaml setl fp=prettier\ --stdin-filepath\ %
-        autocmd FileType clojure setl efm=%f:%l:%c:\ Parse\ %t%*[^:]:\ %m,%f:%l:%c:\ %t%*[^:]:\ %m
-          \| mp=clj-kondo\ --lint\ % wig+=*.clj-kondo*
-          \| let current_compiler=clj-kondo
+        autocmd FileType clojure setl efm=%f:%l:%c:\ Parse\ %t%*[^:]:\ %m,%f:%l:%c:\ %t%*[^:]:\ %m mp=clj-kondo\ --lint\ % wig+=*.clj-kondo*
       '';
 
       plugins = with pkgs.vimPlugins; with (import ../neovim/thirdparty.nix args); [
         editorconfig-vim
         vim-commentary
         vim-easy-align
+        vim-dirvish
         vim-unimpaired
         vim-repeat
         fzfWrapper
