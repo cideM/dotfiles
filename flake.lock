@@ -143,7 +143,25 @@
           "unstable"
         ],
         "operatorMono": "operatorMono",
+        "scripts": "scripts",
         "unstable": "unstable"
+      }
+    },
+    "scripts": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1620205528,
+        "narHash": "sha256-d39zVBhLLpkRBjTBkjT6+A/+fNO5Wq19xWynEUDLwzM=",
+        "ref": "main",
+        "rev": "f4170e5fb3d513b0be7c012f9cc2040d24a1d1b3",
+        "revCount": 1,
+        "type": "git",
+        "url": "ssh://git@github.com/cidem/scripts"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "ssh://git@github.com/cidem/scripts"
       }
     },
     "unstable": {

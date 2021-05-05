@@ -16,6 +16,11 @@
       flake = false;
     };
 
+    scripts = {
+      url = "git+ssh://git@github.com/cidem/scripts?ref=main";
+      flake = false;
+    };
+
     operatorMono = {
       url = "/home/tifa/OperatorMono";
       flake = false;
@@ -23,7 +28,7 @@
 
   };
 
-  outputs = { self, neovim-nightly-overlay, unstable, home-manager, operatorMono, hwConfig, nixpkgs }:
+  outputs = { self, neovim-nightly-overlay, unstable, home-manager, operatorMono, hwConfig, nixpkgs, scripts }:
     {
       # TODO: https://github.com/mjlbach/nix-dotfiles/blob/master/nixpkgs/flake.nix
       nixosConfigurations.nixos =
@@ -31,7 +36,7 @@
           system = "x86_64-linux";
 
           specialArgs = {
-            inherit hwConfig operatorMono neovim-nightly-overlay;
+            inherit hwConfig operatorMono neovim-nightly-overlay scripts;
           };
 
           modules = [
@@ -41,6 +46,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.tifa = import ./hosts/nixos/home.nix;
+              home-manager.extraSpecialArgs = specialArgs;
             }
           ];
         in

@@ -3,6 +3,7 @@
   imports = [
     (import ../../modules/alacritty.nix)
     (import ../../modules/neovim)
+    # (import ../../modules/neovim_simple)
     (import ../../modules/git.nix)
     (import ../../modules/tmux)
     (import ../../modules/redshift.nix)

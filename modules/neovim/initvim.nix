@@ -16,7 +16,6 @@ in
   " Don't load the built-in plugin so that the custom 'matchup' plugin is the
   " only such plugin that is active.
   " This doesn't seem to work
-  let g:loaded_matchit = 1
 
   function! LspStatus() abort
       if luaeval('#vim.lsp.buf_get_clients() > 0')
@@ -168,9 +167,6 @@ in
   " Just calls formatprg on entire buffer
   nmap     <leader>q  :call FormatBuffer()<cr>
 
-  nnoremap <leader>F  :find *
-  nnoremap <leader>B  :ls<cr>:buffer<Space>
-
   vmap     <Enter>    <Plug>(EasyAlign)
 
   " Reflow comments according to max line length. This temporarily unsets
@@ -200,9 +196,8 @@ in
   EOF
 
   " ======= Grepper ===================
-  nmap gs  <plug>(GrepperOperator)
-  xmap gs  <plug>(GrepperOperator)
-
+  let g:grepper = {}
+  let g:grepper.tools = ['rg', 'git']
 
   " ======= SAYONARA ==================
   map Q :Sayonara<CR> " delete buffer and close window
@@ -212,15 +207,10 @@ in
   let g:sneak#label      = 1
   let g:sneak#use_ic_scs = 1
   let g:sneak#s_next = 1
-  map f <Plug>Sneak_f
-  map F <Plug>Sneak_F
-  map t <Plug>Sneak_t
-  map T <Plug>Sneak_T
-  omap o <Plug>Sneak_s
-  omap O <Plug>Sneak_S
-  " 2-character Sneak (default)
-  map <leader>j <Plug>Sneak_s
-  map <leader>k <Plug>Sneak_S
+
+  " ======= Sandwich ==================
+  let g:sandwich_no_default_key_mappings = 1
+  let g:operator_sandwich_no_default_key_mappings = 1
 
   " ======= vim_current_word ==========
   let g:vim_current_word#highlight_current_word = 0
@@ -235,15 +225,6 @@ in
   " ======= FZF VIM ===================
   autocmd! FileType fzf set laststatus=0 noshowmode noruler
               \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-
-  nnoremap <leader>ff :Files<CR>
-  nnoremap <leader>fl :Lines<CR>
-  nnoremap <leader>fh :BLines<CR>
-  nnoremap <leader>fc :Commits<CR>
-  nnoremap <leader>fb :Buffers<CR>
-  nnoremap <leader>fg :GFiles<CR>
-  nnoremap <leader>fm :Marks<CR>
-  nnoremap <leader>ft :Tags<CR>
 
   let g:fzf_colors =
       \ { 'fg':      ['fg', 'Normal'],
@@ -288,26 +269,6 @@ in
 
   local on_attach = function(client, bufnr)
       api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-      -- Mappings.
-      local opts = { noremap=true, silent=true }
-      buf_set_keymap(bufnr, 'n', '<localleader>k',  '<cmd>lua                  vim.lsp.buf.hover()<CR>',                                      opts)
-      buf_set_keymap(bufnr, 'n', '<localleader>h',  '<cmd>lua         vim.lsp.buf.signature_help()<CR>',                                      opts)
-      buf_set_keymap(bufnr, 'n', '<localleader>re', '<cmd>lua                 vim.lsp.buf.rename()<CR>',                                      opts)
-      buf_set_keymap(bufnr, 'n', '<localleader>rr', '<cmd>lua             vim.lsp.buf.references()<CR>',                                      opts)
-      buf_set_keymap(bufnr, 'n', '<localleader>ri', '<cmd>lua         vim.lsp.buf.implementation()<CR>',                                      opts)
-      buf_set_keymap(bufnr, 'n', '<localleader>gd', '<cmd>lua             vim.lsp.buf.definition()<CR>',                                      opts)
-      buf_set_keymap(bufnr, 'n', '<localleader>gt', '<cmd>lua        vim.lsp.buf.type_definition()<CR>',                                      opts)
-      buf_set_keymap(bufnr, 'n', '<localleader>gD', '<cmd>lua            vim.lsp.buf.declaration()<CR>',                                      opts)
-      buf_set_keymap(bufnr, 'n', '<localleader>p',  '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "single" })<CR>',           opts)
-      buf_set_keymap(bufnr, 'n', '<localleader>ws', '<cmd>lua       vim.lsp.buf.workspace_symbol()<CR>',                                      opts)
-      buf_set_keymap(bufnr, 'n', '<localleader>ds', '<cmd>lua        vim.lsp.buf.document_symbol()<CR>',                                      opts)
-      buf_set_keymap(bufnr, 'n', '<localleader>dh', '<cmd>lua     vim.lsp.buf.document_highlight()<CR>',                                      opts)
-      buf_set_keymap(bufnr, 'n', '<localleader>sr', '<cmd>lua           vim.lsp.buf.server_ready()<CR>',                                      opts)
-      buf_set_keymap(bufnr, 'n', '<C-j>',  '<cmd>lua                vim.lsp.diagnostic.goto_next({ popup_opts = { border = "single" }})<CR>', opts)
-      buf_set_keymap(bufnr, 'n', '<C-k>',  '<cmd>lua                vim.lsp.diagnostic.goto_prev({ popup_opts = { border = "single" }})<CR>', opts)
-      buf_set_keymap(bufnr, 'n', '<localleader>l',  '<cmd>lua     vim.lsp.diagnostic.set_loclist()<CR>',                                      opts)
-
       lsp_status.on_attach(client)
   end
 
@@ -400,6 +361,7 @@ in
 
   lua <<EOF
   require('gitsigns').setup {
+    keymaps = {},
     signs = {
       add          = {hl = 'GitSignsAdd'   , text = '+', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
       change       = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},

@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, scripts, ... }:
 let
   alacCfg = config.programs.alacritty;
 
@@ -60,6 +60,7 @@ let
 
     set -x PATH                 \
         ~/bin                   \
+        ${scripts}              \
         $PATH
 
     # https://discourse.nixos.org/t/how-is-nix-path-managed-regarding-nix-channel/6079/3?u=cidem

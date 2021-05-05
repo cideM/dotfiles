@@ -335,6 +335,18 @@
         "url": "https://github.com/dominikduda/vim_current_word/archive/84ae9300de73cf878c805a6228a58d408b6b829d.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "visual-split.vim": {
+        "branch": "master",
+        "description": "Vim plugin to control splits with visual selections or text objects",
+        "homepage": null,
+        "owner": "wellle",
+        "repo": "visual-split.vim",
+        "rev": "423a25911b3e8da04a28d29f205e1059a06e6afa",
+        "sha256": "0n495ikgp10y105q9hackdk2gylnzcdadh7gflh94f3b9h0glj5z",
+        "type": "tarball",
+        "url": "https://github.com/wellle/visual-split.vim/archive/423a25911b3e8da04a28d29f205e1059a06e6afa.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "which-key.nvim": {
         "branch": "main",
         "description": "💥   Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.",
