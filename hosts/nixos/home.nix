@@ -40,6 +40,7 @@
     mupdf
     okular
     zathura
+    delta
     slack
     anki
     jetbrains.clion

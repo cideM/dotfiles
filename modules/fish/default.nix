@@ -94,10 +94,23 @@ in
     interactiveShellInit = fishConfig;
 
     functions = {
+      gocheck = {
+          description = "Recompile on change";
+          body = ''
+              set exist
+              for dir in "cmd" "internal" "pkg"
+                if test -d $dir
+                    set -a exist ./$dir/...
+                end
+              end
+              ${pkgs.fd}/bin/fd -e go | ${pkgs.entr}/bin/entr -sc "go build $exist"
+          '';
+      };
+
       gc = {
         description = "fzf git checkout";
         body = ''
-          git ch (git b -a | fzf --preview 'git log (echo {} | sed \'s/*//\' | string trim)' | sed 's/*//' | string trim)
+          git ch (git b -a --sort=-committerdate | fzf --preview 'git log (echo {} | sed \'s/*//\' | string trim) -- ' | sed 's/*//' | string trim)
         '';
       };
 
