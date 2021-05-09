@@ -163,6 +163,9 @@ in
     {
       enable = true;
       package = pkgs.pulseaudioFull;
+      extraConfig = ''
+          load-module module-echo-cancel
+      '';
       extraModules = [ pkgs.pulseaudio-modules-bt ];
     };
 
