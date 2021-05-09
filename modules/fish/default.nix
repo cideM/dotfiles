@@ -107,6 +107,24 @@ in
           '';
       };
 
+      gf = {
+          description = "Fixup a commit then autosquash";
+          body = ''
+              set -l commit (git log --pretty=oneline | fzf --preview 'git show (echo {} | awk \'{ print $1 }\')' | awk '{ print $1 }')
+              git commit --fixup $commit
+              GIT_SEQUENCE_EDITOR=true git rebase $commit~1 --interactive --autosquash
+          '';
+      };
+
+      gu = {
+          description = "Update master and rebase current branch onto master";
+          body = ''
+              set -l default (git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
+              git fetch origin $default:$default
+              git rebase $default
+          '';
+      };
+
       gc = {
         description = "fzf git checkout";
         body = ''

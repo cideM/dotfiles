@@ -42,6 +42,7 @@
     zathura
     delta
     slack
+    discord
     anki
     jetbrains.clion
     jetbrains.rider
