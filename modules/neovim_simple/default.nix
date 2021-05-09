@@ -78,6 +78,8 @@ in
         imap     jk        <Esc>
         tnoremap <Esc>     <C-\><C-n>
         nnoremap <BS>      <C-^>
+        nnoremap <leader><leader> :update<cr>
+        nnoremap <leader>z        :wq<cr>
         nnoremap Y         y$
 
         nnoremap <leader>fw :grep -wF <cword><cr>
@@ -102,8 +104,6 @@ in
 
         map      <leader>C <Plug>(sad-change-backward)
         map      <leader>c <Plug>(sad-change-forward)
-
-        vmap     <Enter>   <Plug>(EasyAlign)
 
         let g:sandwich_no_default_key_mappings = 1
         silent! nmap <unique><silent> <leader>sd <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
@@ -146,7 +146,6 @@ in
       plugins = with pkgs.vimPlugins; with (import ../neovim/thirdparty.nix args); [
         editorconfig-vim
         vim-commentary
-        vim-easy-align
         vim-dirvish
         vim-unimpaired
         vim-repeat
