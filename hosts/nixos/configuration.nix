@@ -107,12 +107,7 @@ in
     vim
     git
     chromium
-
-    gnome3.gnome-shell-extensions
-    gnome3.dconf-editor
   ];
-
-  services.udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
 
   services.xserver = {
     enable = true;
@@ -121,16 +116,8 @@ in
     # https://discourse.nixos.org/t/problem-with-xkboptions-it-doesnt-seem-to-take-effect/5269/2
     # Everything is broke, always.
     xkbOptions = "ctrl:nocaps";
-
     displayManager = {
-      gdm.enable = true;
-      gdm.wayland = false;
-    };
-
-    desktopManager = {
-      gnome3 = {
-        enable = true;
-      };
+      startx.enable = true;
     };
   };
 
@@ -154,8 +141,6 @@ in
   };
 
   services.geoclue2.enable = true;
-
-  services.gnome3.gnome-keyring.enable = true;
 
   # Enable sound.
   sound.enable = true;
