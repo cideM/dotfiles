@@ -260,7 +260,7 @@ in
 
   command! -bar -nargs=0 RestartLSP :lua vim.lsp.stop_client(vim.lsp.get_active_clients()); vim.cmd("edit")
 
-  packadd nvim-lsp
+  packadd nvim-lspconfig
   lua <<EOF
   local lsp_status = require('lsp-status')
   local nvim_lsp = require'lspconfig'

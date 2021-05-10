@@ -134,7 +134,7 @@ in
         }
 
         {
-          plugin = nvim-lsp;
+          plugin = nvim-lspconfig;
           optional = true;
         }
       ];

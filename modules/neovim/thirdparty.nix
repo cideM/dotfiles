@@ -130,11 +130,6 @@ in
     src = sources.inspecthi;
   });
 
-  nvim-lsp = (pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "nvim-lsp";
-    src = sources.nvim-lsp;
-  });
-
   vim-markdown-folding = (pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "vim-markdown-folding";
     src = sources.vim-markdown-folding;
@@ -153,11 +148,6 @@ in
   vim-colortemplate = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "vim-colortemplate";
     src = sources.vim-colortemplate;
-  });
-
-  vim-matchup = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "vim-matchup";
-    src = sources.vim-matchup;
   });
 
   # This is the spacevim theme not the spacevim plugin
@@ -181,19 +171,9 @@ in
     src = sources.vim-lua;
   });
 
-  vim-terraform = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "vim-terraform";
-    src = sources.vim-terraform;
-  });
-
   vim-colors-github = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     name = "vim-colors-github";
     src = sources."vim-colors-github";
-  });
-
-  unicode-vim = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    name = "unicode-vim";
-    src = sources."unicode-vim";
   });
 
   vim-nightowl-colors = (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
