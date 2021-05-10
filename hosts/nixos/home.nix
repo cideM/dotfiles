@@ -39,6 +39,7 @@
     zoom-us
     mupdf
     okular
+    betterlockscreen
     zathura
     delta
     slack
@@ -60,6 +61,7 @@
 
   programs.alacritty = {
     light = true;
+    disableScaling = true;
     font = "mono";
     enable = true;
     fontSize = 11;
@@ -186,27 +188,25 @@
       super + m
         bspc desktop -l next
 
-      # send the newest marked node to the newest preselected node
+      # Move current window to pre-selected space
       super + y
-        bspc node newest.marked.local -n newest.!automatic.local
+        bspc node -n last.!automatic.local
+
+      # Lock screen
+      super + shift + x
+        betterlockscreen -l
 
       # swap the current node and the biggest node on current workspace
       super + g
         bspc node -s biggest.local
 
-      # rotate the desktop by 90deg.
-      # syntax appears to be that @/ is a PATH selection
-      # `node` takes a NODE_SEL and PATH is a possible value
-      # the intial node for path jumps is the focused unless path starts with /
-      # so this selects the root node of the current desktop (?)
+      # Rotate nodes including their splits and ratios
       super + r ; r
           bspc node @/ -R 90
 
-      # Cycle all nodes. This keeps the current ratios and splits and just moves
-      # the applications,rather than moving applications together with their
-      # splits and ratios (that's what the above command does!)
-      super + r ; {Tab,grave}
-          bspc node @/ -C {forward,backward} 
+      # Rotate nodes but keep splits and ratios
+      super + shift + {d,a}
+          bspc node @/ -C {forward,backward}
 
       #
       # state/flags
@@ -305,14 +305,10 @@
   services.polybar = {
     enable = true;
 
+    package = pkgs.polybarFull;
+
     script = ''
-      # https://github.com/jonhoo/configs/blob/master/gui/.config/polybar/launch.sh
-      killall -q ${pkgs.polybar}/bin/polybar
-
-      # Wait until processes have been shut down
-      while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
-
-      exec ${pkgs.polybar}/bin/polybar --reload main
+      polybar main &
     '';
 
     extraConfig = ''
@@ -325,7 +321,7 @@
       wm-restack = bspwm
 
       background = #000000
-      foreground = #000000
+      foreground = #aaa
 
       offset-y = 0
 
@@ -396,9 +392,8 @@
 
       ; Mountpoints to display
       mount-0 = /
-      mount-1 = /data
 
-      label-mounted = %mountpoint%: %percentage_free%% of %total%
+      label-mounted = %mountpoint%: %percentage_free%% free of %total%
 
       ; Seconds to sleep between updates
       ; Default: 30
@@ -414,10 +409,6 @@
 
       [module/pulseaudio]
       type = internal/pulseaudio
-
-      ; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
-      ; If not, uses default sink
-      sink = alsa_output.pci-0000_07_04.0.analog-stereo
 
       ; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
       ; Default: true
@@ -479,12 +470,11 @@
     '';
 
     windowManager.bspwm = {
+      startupPrograms = [ "fcitx5" "~/.fehbg" ];
       enable = true;
       # TODO: Convert to rules etc.
       # https://rycee.gitlab.io/home-manager/options.html#opt-xsession.windowManager.bspwm.monitors
       extraConfig = ''
-        ~/.fehbg &
-
         bspc monitor -d                    . . . . . . 
 
         bspc config window_gap             2

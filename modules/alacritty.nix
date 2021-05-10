@@ -677,7 +677,9 @@ let
 
     env = {
       TERM = "alacritty";
-    };
+    } // (if cfg.disableScaling then {
+      WINIT_X11_SCALE_FACTOR = "1.0";
+    } else { });
 
     shell = {
       args = [ "-l" ];
@@ -705,6 +707,15 @@ in
       description = ''
         When true various colors will be changed to work with a light terminal theme.
         Includes Neovim, pagers, the terminal colors, and more.
+      '';
+    };
+
+    disableScaling = mkOption {
+      type = bool;
+      default = false;
+      description = ''
+        Only relevant for X11, otherwise font is super huge, for example in bspwm. See:
+        https://github.com/alacritty/alacritty/issues/1501#issuecomment-614867213
       '';
     };
 
