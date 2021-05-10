@@ -1,4 +1,16 @@
 { pkgs, ... }:
+let
+  toggleDunst = pkgs.writeShellScriptBin "toggleDunst" ''
+    if [ $(${pkgs.dunst}/bin/dunstctl is-paused) = "true" ]; then
+      ${pkgs.dunst}/bin/dunstctl set-paused false
+      ${pkgs.polybar}/bin/polybar-msg hook dunst 1
+    else
+      ${pkgs.dunst}/bin/dunstctl set-paused true
+      ${pkgs.polybar}/bin/polybar-msg hook dunst 2
+    fi
+  '';
+
+in
 {
   imports = [
     (import ../../modules/alacritty.nix)
@@ -336,15 +348,22 @@
       border-size = 
       border-color = 
 
-      font-0 = "Hack:size=11;2"
+      font-0 = "Hack:size=10;3"
       font-1 = "Source Han Sans JP:size=11;2"
-      font-2 = "Noto Sans Symbols:size=10;1"
-      font-3 = "RobotoMono Nerd Font Mono:size=10;1"
+      font-2 = "RobotoMono Nerd Font:size=10;3"
 
       modules-left = xwindow
       modules-center = bspwm
-      modules-right = date wlan pulseaudio cpu memory filesystem
+      modules-right = dunst date wlan pulseaudio cpu memory filesystem
       separator = "|"
+      separator-foreground = #88ffffff
+
+      [module/dunst]
+      type = custom/ipc
+      initial = 1
+      hook-0 = echo 
+      hook-1 = echo 
+      click-left = "${toggleDunst}/bin/toggleDunst"
 
       [global/wm]
       margin-top = 0
@@ -352,7 +371,6 @@
       [module/xwindow]
       type = internal/xwindow
       label = %title:0:70:...%
-      format-foreground = #aaa
 
       [module/date]
       type = internal/date
@@ -371,16 +389,16 @@
       [module/bspwm]
       type = internal/bspwm
       format = <label-state> <label-mode>
-      label-monocle = " MONOCLE "
-      label-monocle-foreground = #D00
+      label-monocle = "[M]"
+      label-monocle-foreground = #E00
       label-monocle-background = #700
-      label-focused = " λ "
-      label-focused-foreground = #000
-      label-focused-background = #CCC
-      label-occupied = " o "
-      label-occupied-foreground = #FFF
-      label-empty = " %name% "
-      label-empty-foreground = #888888
+      label-focused = %index%
+      label-focused-underline = #ffffffff
+      label-occupied = %index%
+      label-occupied-underline = #99dddddd
+      label-empty = %name%
+      label-separator = " "
+      label-separator-padding = 0
 
       [module/cpu]
       type = internal/cpu
@@ -428,6 +446,8 @@
       label-muted = "muted"
       label-muted-foreground = #666
       label-volume = "vol: %percentage%%"
+
+      click-right = "${pkgs.pavucontrol}/bin/pavucontrol"
 
       [module/wlan]
       type = internal/network
@@ -484,7 +504,7 @@
       extraConfig = ''
         bspc monitor -d                    . . . . . . 
 
-        bspc config window_gap             2
+        bspc config window_gap             20
         bspc config border_width           0
         bspc config normal_border_color    \#000000
         bspc config focused_border_color   \#CB1B45
