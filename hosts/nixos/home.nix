@@ -308,20 +308,28 @@
     package = pkgs.polybarFull;
 
     script = ''
-      polybar main &
+      polybar top &
     '';
 
     extraConfig = ''
-      [bar/main]
+      [settings]
+      screenchange-reload = true
+
+      [bar/top]
       monitor =
       bottom = false
+      height = 24
       module-margin = 2
-      padding = 1
+      line-color = #fba922
+      border-bottom-size = 2
+      border-bottom-color = #333
+      underline-size = 1
+      overline-size = 2
+      foreground = #eee
+      background = #222
+      padding = 4
       enable-ipc = true
       wm-restack = bspwm
-
-      background = #000000
-      foreground = #aaa
 
       offset-y = 0
 
@@ -331,7 +339,7 @@
       font-0 = "Hack:size=11;2"
       font-1 = "Source Han Sans JP:size=11;2"
       font-2 = "Noto Sans Symbols:size=10;1"
-      font-3 = "Noto Sans Symbols2:size=10;1"
+      font-3 = "RobotoMono Nerd Font Mono:size=10;1"
 
       modules-left = xwindow
       modules-center = bspwm
@@ -357,7 +365,6 @@
       time-alt = %I:%M%p
 
       format-prefix =
-      format-foreground = #aaa
 
       label = "%date% %time%"
 

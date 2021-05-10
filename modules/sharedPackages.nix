@@ -57,6 +57,9 @@ with pkgs;
     libuv
     luajitPackages.luacheck
     liberation_ttf
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
     nano
     ncdu
     neofetch
