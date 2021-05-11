@@ -53,7 +53,7 @@ in
         fzf-vim
         fzfWrapper
         qfenter
-        suda.vim
+        suda-vim
         vimtex
         plenary-nvim
         unicode-vim
@@ -65,15 +65,12 @@ in
         /* https://github.com/yamatsum/nvim-cursorline/issues/7 */
         /* nvim-compe */
         nvim-toggleterm-lua
-        indent-blankline
+        indent-blankline-nvim
         fern-vim
         lsp-status-nvim
         nvim-autopairs
         nvim-hlslens
         nvim-lspfuzzy
-        # Need to use more up to date version atm because older is buggy
-        # which-key-nvim
-        which-key-niv
 
         # Git
         diffview

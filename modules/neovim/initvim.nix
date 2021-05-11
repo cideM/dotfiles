@@ -2,10 +2,6 @@
 let
   cfg = config.programs.neovim;
 
-  feline = builtins.readFile ./feline.lua;
-
-  whichkey = builtins.readFile ./whichkey.lua;
-
   diffview = builtins.readFile ./diffview.lua;
 
 in
@@ -13,10 +9,6 @@ in
   " ==============================
   " =       GENERAL SETTINGS     =
   " ==============================
-  " Don't load the built-in plugin so that the custom 'matchup' plugin is the
-  " only such plugin that is active.
-  " This doesn't seem to work
-
   function! LspStatus() abort
       if luaeval('#vim.lsp.buf_get_clients() > 0')
         return luaeval("require('lsp-status').status()")
@@ -59,23 +51,21 @@ in
   set splitbelow
   set foldlevelstart=99
   set splitright
-  set list
-  set listchars=lead:\ ,tab:>\ ,trail:¬
+  set nolist
   set termguicolors
   set undofile
-  " Need to look into this properly
-  " set statusline=
-  " set statusline+=\ %f
-  " set statusline+=\ %m
-  " set statusline+=%{get(b:,'gitsigns_status',\'\')}
-  " set statusline+=\ %{get(b:,'gitsigns_head',\'\')}
-  " set statusline+=\ %{mode()}\ 
-  " set statusline+=%=
-  " set statusline+=%{LspStatus()}
-  " set statusline+=%y\ " buffer type
-  " set statusline+=%q\ 
-  " set statusline+=%3l:%2c\ \|
-  " set statusline+=%3p%%\ 
+  set statusline=
+  set statusline+=\ %f
+  set statusline+=\ %m
+  set statusline+=%{get(b:,'gitsigns_status',\'\')}
+  set statusline+=\ %{get(b:,'gitsigns_head',\'\')}
+  set statusline+=\ %{mode()}\ 
+  set statusline+=%=
+  set statusline+=%{LspStatus()}
+  set statusline+=%y\ " buffer type
+  set statusline+=%q\ 
+  set statusline+=%3l:%2c\ \|
+  set statusline+=%3p%%\ 
 
   let g:yui_comments = 'bg'
   colorscheme yui
@@ -171,8 +161,8 @@ in
 
   " Reflow comments according to max line length. This temporarily unsets
   " formatprg so cindent (?) is used. I don't know... this mostly just works.
-  nnoremap <leader>R  :set operatorfunc=ReflowComment<cr>g@
-  vnoremap <leader>R  :<C-u>call ReflowComment(visualmode())<cr>
+  nnoremap <leader>Fc  :set operatorfunc=ReflowComment<cr>g@
+  vnoremap <leader>Fc  :<C-u>call ReflowComment(visualmode())<cr>
 
   nnoremap <BS>       <C-^>
 
@@ -198,6 +188,10 @@ in
   " ======= Grepper ===================
   let g:grepper = {}
   let g:grepper.tools = ['rg', 'git']
+  nmap gs  <plug>(GrepperOperator)
+  xmap gs  <plug>(GrepperOperator)
+  nnoremap <leader>fg :GrepperRg
+  nnoremap <leader>fi :GrepperGit
 
   " ======= SAYONARA ==================
   map Q :Sayonara<CR> " delete buffer and close window
@@ -225,6 +219,15 @@ in
   " ======= FZF VIM ===================
   autocmd! FileType fzf set laststatus=0 noshowmode noruler
               \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
+  nnoremap <leader>ff :Files<CR>
+  nnoremap <leader>fl :Lines<CR>
+  nnoremap <leader>fL :BLines<CR>
+  nnoremap <leader>fc :Commits<CR>
+  nnoremap <leader>fb :Buffers<CR>
+  nnoremap <leader>fF :GFiles<CR>
+  nnoremap <leader>fm :Marks<CR>
+  nnoremap <leader>ft :Tags<CR>
 
   let g:fzf_colors =
       \ { 'fg':      ['fg', 'Normal'],
@@ -262,9 +265,30 @@ in
 
   packadd nvim-lspconfig
   lua <<EOF
+  local mappings = {
+        h = "<cmd>lua vim.lsp.buf.hover()<cr>",
+        i = "<cmd>lua vim.lsp.buf.signature_help()<cr>",
+        e = "<cmd>lua vim.lsp.buf.rename()<cr>",
+        r = "<cmd>lua vim.lsp.buf.references()<cr>",
+        H = "<cmd>lua vim.lsp.buf.implementation()<cr>",
+        j = "<cmd>lua vim.lsp.buf.definition()<cr>",
+        k = "<cmd>lua vim.lsp.buf.type_definition()<cr>",
+        l = "<cmd>lua vim.lsp.buf.declaration()<cr>",
+        d = "<cmd>lua vim.lsp.buf.show_line_diagnostics({ border = 'single' })<cr>",
+        w = "<cmd>lua vim.lsp.buf.workspace_symbol()<cr>",
+        u = "<cmd>lua vim.lsp.buf.document_symbol()<cr>",
+        R = "<cmd>lua vim.lsp.buf.server_ready()<cr>",
+        p = "<cmd>lua vim.lsp.buf.document_highlight()<cr>",
+        n = "<cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts = { border = 'single' }})<cr>",
+        b = "<cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts = { border = 'single' }})<cr>",
+        L = "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>"
+  }
+  for k, v in pairs(mappings) do
+    vim.api.nvim_set_keymap('n', '<localleader>l' .. k, v, { noremap=true, silent=true })
+  end
+
   local lsp_status = require('lsp-status')
   local nvim_lsp = require'lspconfig'
-  local buf_set_keymap = vim.api.nvim_buf_set_keymap
   local api = vim.api
 
   local on_attach = function(client, bufnr)
@@ -321,6 +345,10 @@ in
   require('nvim-autopairs').setup()
   EOF
 
+  " ======= flog =====================
+  nnoremap <leader>gfo :Flog<cr>
+  nnoremap <leader>gfO :Flog 
+
   " ======= VIMTEX ====================
   let g:tex_flavor = 'latex'
   let g:vimtex_view_method = 'zathura'
@@ -335,6 +363,16 @@ in
   nmap <leader>ef :FernDo :<CR>
   nmap <leader>el <Plug>(fern-action-leave)
   nmap <leader>eo <Plug>(fern-action-open:select)
+
+  " ========= Git messenger ===========
+  nnoremap <leader>gm :GitMessenger<cr>
+
+  " ========= fugitive ================
+  nnoremap <leader>gs :G<cr>
+  nnoremap <leader>gl :G log -p<cr>
+  nnoremap <leader>gb :G blame<cr>
+  nnoremap <leader>ge :Gedit<cr>
+  nnoremap <leader>gE :Gvsplit master:%<cr>
 
   " ========= NVIM-TREESITTER =========
   packadd nvim-treesitter
@@ -359,7 +397,25 @@ in
   }
   EOF
 
+  " ========= git signs ===============
   lua <<EOF
+  local git_signs_mappings = {
+    n = "<cmd>lua require'gitsigns'.next_hunk()<CR>",
+    p = "<cmd>lua require'gitsigns'.prev_hunk()<CR>",
+    s = "<cmd>lua require'gitsigns'.stage_hunk()<CR>",
+    u = "<cmd>lua require'gitsigns'.undo_stage_hunk()<CR>",
+    r = "<cmd>lua require'gitsigns'.reset_hunk()<CR>",
+    o = "<cmd>lua require'gitsigns'.preview_hunk()<CR>",
+    b = "<cmd>lua require'gitsigns'.blame_line()<CR>"
+  }
+  for k, v in ipairs(git_signs_mappings) do
+    vim.api.nvim_set_keymap('n', '<leader>gh' .. k, v, { noremap=true, silent=true })
+  end
+  vim.api.nvim_set_keymap('n', ']c', "&diff ? ']c' : '<cmd>lua require\"gitsigns\".next_hunk()<CR>'", { noremap=true, silent=true, expr=true })
+  vim.api.nvim_set_keymap('n', '[c', "&diff ? ']c' : '<cmd>lua require\"gitsigns\".prev_hunk()<CR>'", { noremap=true, silent=true, expr=true })
+  vim.api.nvim_set_keymap('o', '<leader>ghih', ':<C-U>lua require"gitsigns".select_hunk()<CR>', { noremap=true, silent=true })
+  vim.api.nvim_set_keymap('x', '<leader>ghih', ':<C-U>lua require"gitsigns".select_hunk()<CR>', { noremap=true, silent=true })
+
   require('gitsigns').setup {
     keymaps = {},
     signs = {
@@ -438,14 +494,9 @@ in
   " EOF
 
   lua <<EOF
-  ${feline}
-  EOF
-
-  lua <<EOF
   ${diffview}
-  EOF
-
-  lua <<EOF
-  ${whichkey}
+  vim.api.nvim_set_keymap('n', '<leader>gdo', ":DiffviewOpen<cr>", { noremap=true, silent=true })
+  vim.api.nvim_set_keymap('n', '<leader>gdf', ":DiffviewFocusFiles<cr>", { noremap=true, silent=true })
+  vim.api.nvim_set_keymap('n', '<leader>gdc', ":DiffviewClose<cr>", { noremap=true, silent=true })
   EOF
 ''

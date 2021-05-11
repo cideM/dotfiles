@@ -37,13 +37,15 @@ in
 
       prompt = {
         text-color = mkLiteral "@foreground-color-faded";
+        padding = 5;
       };
 
       listview = {
         spacing = 5;
       };
 
-      "element" = {
+      element = {
+        padding = 5;
         text-color = mkLiteral "#635954";
       };
 
@@ -54,6 +56,7 @@ in
 
       entry = {
         text-color = mkLiteral "#635954";
+        padding = 5;
       };
     };
 

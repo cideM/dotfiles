@@ -100,11 +100,6 @@ in
     src = sources.nvim-compe;
   });
 
-  indent-blankline = (pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "indent-blankline";
-    src = sources."indent-blankline.nvim";
-  });
-
   nvim-treesitter = (pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "nvim-treesitter";
     src = sources.nvim-treesitter;
@@ -118,11 +113,6 @@ in
   qfenter = (pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "qfenter";
     src = sources.qfenter;
-  });
-
-  suda.vim = (pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "suda.vim";
-    src = sources."suda.vim";
   });
 
   inspecthi = (pkgs.vimUtils.buildVimPluginFrom2Nix {
