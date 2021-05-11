@@ -2,8 +2,7 @@
 {
   imports = [
     (import ../../modules/alacritty.nix)
-    # (import ../../modules/neovim)
-    (import ../../modules/neovim_simple)
+    (import ../../modules/neovim)
     (import ../../modules/git.nix)
     (import ../../modules/tmux)
     (import ../../modules/redshift.nix)
@@ -93,9 +92,8 @@
     enable = true;
     settings = {
       global = {
-        geometry = "500x25-30+50";
-        padding = 12;
-        horizontal_padding = 24;
+        geometry = "700x35-30+50";
+        padding = 6;
         frame_width = 0;
         frame_color = "#b4aba7";
         font = "Hack 12";

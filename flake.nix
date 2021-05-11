@@ -7,6 +7,21 @@
       inputs.nixpkgs.follows = "unstable";
     };
 
+    indent-blankline.url = "github:lukas-reineke/indent-blankline.nvim/lua";
+    indent-blankline.flake = false;
+
+    lspfuzzy.url = "github:ojroques/nvim-lspfuzzy";
+    lspfuzzy.flake = false;
+
+    sad.url = "github:hauleth/sad.vim";
+    sad.flake = false;
+
+    yui.url = "github:cidem/yui";
+    yui.flake = false;
+
+    qfenter.url = "github:yssl/QFEnter";
+    qfenter.flake = false;
+
     unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs.follows = "unstable";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
@@ -28,7 +43,21 @@
 
   };
 
-  outputs = { self, neovim-nightly-overlay, unstable, home-manager, operatorMono, hwConfig, nixpkgs, scripts }:
+  outputs =
+    { self
+    , neovim-nightly-overlay
+    , unstable
+    , home-manager
+    , operatorMono
+    , hwConfig
+    , nixpkgs
+    , scripts
+    , indent-blankline
+    , lspfuzzy
+    , sad
+    , yui
+    , qfenter
+    }:
     {
       # TODO: https://github.com/mjlbach/nix-dotfiles/blob/master/nixpkgs/flake.nix
       nixosConfigurations.nixos =
@@ -36,7 +65,7 @@
           system = "x86_64-linux";
 
           specialArgs = {
-            inherit hwConfig operatorMono neovim-nightly-overlay scripts;
+            inherit hwConfig operatorMono neovim-nightly-overlay scripts indent-blankline lspfuzzy sad yui qfenter;
           };
 
           modules = [

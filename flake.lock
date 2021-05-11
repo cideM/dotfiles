@@ -63,6 +63,39 @@
         "type": "path"
       }
     },
+    "indent-blankline": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1619580822,
+        "narHash": "sha256-0B5/SscIJ2w5yQ99AjzRHKbIdnBgREbGmGZ8Z14eGAE=",
+        "owner": "lukas-reineke",
+        "repo": "indent-blankline.nvim",
+        "rev": "ec5816267caa5fdde7a5e5a8359b9b19bc8ecf49",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lukas-reineke",
+        "ref": "lua",
+        "repo": "indent-blankline.nvim",
+        "type": "github"
+      }
+    },
+    "lspfuzzy": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1618576862,
+        "narHash": "sha256-a0yiRrbZArU5wUF5WdX+tnjkoMPfLUhOabFDqx/yTCo=",
+        "owner": "ojroques",
+        "repo": "nvim-lspfuzzy",
+        "rev": "0e369ae5a1230c4867663c2c8cc441f728ae0a5b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ojroques",
+        "repo": "nvim-lspfuzzy",
+        "type": "github"
+      }
+    },
     "neovim-flake": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -134,17 +167,54 @@
         "type": "path"
       }
     },
+    "qfenter": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1602278654,
+        "narHash": "sha256-pFyK89fJAZcOWO+ti3Hm0zIbF2rGbHGzeBZdKqs9tz0=",
+        "owner": "yssl",
+        "repo": "QFEnter",
+        "rev": "df0a75b287c210f98ae353a12bbfdaf73d858beb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yssl",
+        "repo": "QFEnter",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "hwConfig": "hwConfig",
+        "indent-blankline": "indent-blankline",
+        "lspfuzzy": "lspfuzzy",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": [
           "unstable"
         ],
         "operatorMono": "operatorMono",
+        "qfenter": "qfenter",
+        "sad": "sad",
         "scripts": "scripts",
-        "unstable": "unstable"
+        "unstable": "unstable",
+        "yui": "yui"
+      }
+    },
+    "sad": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1550494305,
+        "narHash": "sha256-xC7c35ShtElmO9CPnYDH1MDOzpK4yXJZFgybNW62fYY=",
+        "owner": "hauleth",
+        "repo": "sad.vim",
+        "rev": "2f5b33b239a566ffedaa81cee3051bb613482d1e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hauleth",
+        "repo": "sad.vim",
+        "type": "github"
       }
     },
     "scripts": {
@@ -177,6 +247,22 @@
         "owner": "NixOS",
         "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "yui": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1619277841,
+        "narHash": "sha256-zmKbpXpj2iLeJUZvNAqTcYzQNRLYpyHiuWakbNt1qyA=",
+        "owner": "cidem",
+        "repo": "yui",
+        "rev": "ebd0aa08617b395fecb8d7c6c4d8ede5509b30c2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cidem",
+        "repo": "yui",
         "type": "github"
       }
     }
