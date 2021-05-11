@@ -7,7 +7,7 @@ let
   # It's pointless to use home manager programs.fzf if I'm setting these anyway
   fishConfig = ''
     set -x FZF_DEFAULT_COMMAND '${pkgs.fd}/bin/fd --type f 2> /dev/null'
-    set -x FZF_DEFAULT_TOPS '--height 40% --layout=reverse --border'
+    set -x FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border --no-color'
     set -x FZF_CTRL_T_OPTS "--preview '${pkgs.bat}/bin/bat {}'"
     set -x FZF_ALT_C_OPTS "--preview 'tree -a -C {} | head -200'"
     set -x FZF_CTRL_T_COMMAND '${pkgs.fd}/bin/fd -L $dir --type f 2> /dev/null'
@@ -78,11 +78,7 @@ let
     abbr -a work-todos 'FISH_NOTES_DIR=$FISH_WORK_NOTES todos'
 
     alias  niv 'niv --no-colors'
-
-    ${if alacCfg.light then ''
-      alias fzf 'fzf --color=light'
-      alias dash 'dash -E'
-    '' else ""}
+    alias dash 'dash -E'
 
     source ${pkgs.fzf}/share/fzf/key-bindings.fish && fzf_key_bindings
   '';

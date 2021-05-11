@@ -85,8 +85,13 @@ in
         nnoremap <leader>fw :grep -wF <cword><cr>
         nnoremap <leader>fs :grep 
         nnoremap <leader>ff :find 
-        nnoremap <leader>fz :call fzf#run({'sink': 'e', 'window': {'width': 0.9, 'height': 0.6}, 'options': '--no-color'})<cr>
-        nnoremap <leader>fb :ls<cr>:buffer<Space>
+        nnoremap <leader>fz :Files<cr>
+        nnoremap <leader>fl :BLines<cr>
+        nnoremap <leader>ft :Tags<cr>
+        nnoremap <leader>fm :Marks<cr>
+        nnoremap <leader>fw :Windows<cr>
+        nnoremap <leader>fb :Buffers<cr>
+        " nnoremap <leader>fb :ls<cr>:buffer<Space>
 
         map f <Plug>Sneak_f
         map F <Plug>Sneak_F
@@ -150,6 +155,7 @@ in
         vim-unimpaired
         vim-repeat
         fzfWrapper
+        fzf-vim
         vim-gutentags
         vim-sandwich
         vim-sneak
