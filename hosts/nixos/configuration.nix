@@ -27,7 +27,6 @@ in
   boot.kernel.sysctl = {
     "vm.max_map_count" = 262144;
   };
-  boot.crashDump.enable = true;
 
   services.logind.extraConfig = ''
     RuntimeDirectorySize=20G
@@ -39,6 +38,7 @@ in
   };
 
   systemd.network.enable = true;
+  systemd.coredump.enable = true;
 
   networking = {
     hostName = "nixos";

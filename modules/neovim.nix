@@ -2,7 +2,6 @@ args@{ config
 , lib
 , pkgs
 , lspfuzzy
-, qfenter
 , indent-blankline
 , sad
 , yui
@@ -465,7 +464,7 @@ in
         vim-easy-align
         vim-grepper
         vim-indent-object
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "qfenter"; src = qfenter; })
+        QFEnter
         vim-dirvish
         fzfWrapper
         fzf-vim

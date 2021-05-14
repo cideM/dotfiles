@@ -22,9 +22,6 @@
     yui.url = "github:cidem/yui";
     yui.flake = false;
 
-    qfenter.url = "github:yssl/QFEnter";
-    qfenter.flake = false;
-
     unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs.follows = "unstable";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
@@ -60,7 +57,6 @@
     , sad
     , yui
     , lucid-fish
-    , qfenter
     }:
     {
       # TODO: https://github.com/mjlbach/nix-dotfiles/blob/master/nixpkgs/flake.nix
@@ -84,7 +80,7 @@
           ];
 
           specialArgs = {
-            inherit hwConfig operatorMono neovim-nightly-overlay scripts lspfuzzy sad yui qfenter lucid-fish indent-blankline;
+            inherit hwConfig operatorMono neovim-nightly-overlay scripts lspfuzzy sad yui lucid-fish indent-blankline;
           };
 
           modules = [
