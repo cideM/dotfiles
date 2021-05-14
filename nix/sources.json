@@ -8,44 +8,8 @@
     "clj-deps": {
         "branch": "live",
         "repo": "https://git@github.com/practicalli/clojure-deps-edn.git",
-        "rev": "005f6bd9234e53a922c633569b5b7f4d4f04b14b",
+        "rev": "da77704ea02927eae65436fbcaa78b9b4be33307",
         "type": "git"
-    },
-    "conflict-marker.vim": {
-        "branch": "master",
-        "description": "Weapon to fight against conflicts in Vim.",
-        "homepage": "",
-        "owner": "rhysd",
-        "repo": "conflict-marker.vim",
-        "rev": "6a9b8f92a57ea8a90cbf62c960db9e5894be2d7a",
-        "sha256": "0vw5kvnmwwia65gni97vk42b9s47r3p5bglrhpcxsvs3f4s250vq",
-        "type": "tarball",
-        "url": "https://github.com/rhysd/conflict-marker.vim/archive/6a9b8f92a57ea8a90cbf62c960db9e5894be2d7a.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
-    "diffview.nvim": {
-        "branch": "main",
-        "description": "Single tabpage interface to easily cycle through diffs for all modified files for any git rev.",
-        "homepage": "",
-        "owner": "sindrets",
-        "repo": "diffview.nvim",
-        "rev": "7360f60ca97dfca0b4af4012c8e68dfc02824766",
-        "sha256": "076wrf7pzj1blqghabs14fcabkhxsxnxdrim7lms9g62nyqm3nap",
-        "type": "tarball",
-        "url": "https://github.com/sindrets/diffview.nvim/archive/7360f60ca97dfca0b4af4012c8e68dfc02824766.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
-    "feline.nvim": {
-        "branch": "master",
-        "description": "A minimal, stylish and customizable statusline for Neovim written in Lua",
-        "homepage": null,
-        "owner": "Famiu",
-        "repo": "feline.nvim",
-        "rev": "06dad2e503e4dcb1c1381a29afa1eb1654424fe2",
-        "sha256": "1d47sl8vi5yg99wwmr7811hjsnqdh2d49pa1q7k8zl440zvmhg6i",
-        "type": "tarball",
-        "url": "https://github.com/Famiu/feline.nvim/archive/06dad2e503e4dcb1c1381a29afa1eb1654424fe2.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "fish-journal": {
         "branch": "master",
@@ -77,12 +41,6 @@
         "url": "https://github.com/cidem/fish-yvm/archive/5470926a8a835f0152ae95ff9e776f30285e58cb.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "inspecthi": {
-        "branch": "main",
-        "repo": "https://github.com/cocopon/inspecthi.vim.git",
-        "rev": "6890a9ae3cd7ad4e499e4b7c967c943fa3099276",
-        "type": "git"
-    },
     "lucid-fish-prompt": {
         "branch": "master",
         "repo": "https://github.com/mattgreen/lucid.fish.git",
@@ -107,10 +65,10 @@
         "homepage": "https://github.com/nmattia/niv",
         "owner": "nmattia",
         "repo": "niv",
-        "rev": "af958e8057f345ee1aca714c1247ef3ba1c15f5e",
-        "sha256": "1qjavxabbrsh73yck5dcq8jggvh3r2jkbr6b5nlz5d9yrqm9255n",
+        "rev": "94080ae8286024820c570a2a24ed7c36d7ad04a9",
+        "sha256": "0wlk52zwlrq727x3z1vg9d9qq4zw62ab5jzg4068iqb6hyb0cr0w",
         "type": "tarball",
-        "url": "https://github.com/nmattia/niv/archive/af958e8057f345ee1aca714c1247ef3ba1c15f5e.tar.gz",
+        "url": "https://github.com/nmattia/niv/archive/94080ae8286024820c570a2a24ed7c36d7ad04a9.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nvim-colorizer": {
@@ -119,52 +77,16 @@
         "rev": "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6",
         "type": "git"
     },
-    "nvim-cursorline": {
-        "branch": "main",
-        "description": "A plugin for neovim that highlights cursor words and lines",
-        "homepage": "",
-        "owner": "yamatsum",
-        "repo": "nvim-cursorline",
-        "rev": "b6ad7dde3f23035db713ba82c07d79c10da37547",
-        "sha256": "0srqw0hr4frsj5g1kc89n88bhzva455q6kq2xl7w8wsvzwq1kgqs",
-        "type": "tarball",
-        "url": "https://github.com/yamatsum/nvim-cursorline/archive/b6ad7dde3f23035db713ba82c07d79c10da37547.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
-    "nvim-hlslens": {
-        "branch": "main",
-        "description": "Hlsearch Lens for Neovim",
-        "homepage": "",
-        "owner": "kevinhwang91",
-        "repo": "nvim-hlslens",
-        "rev": "a23ce7882d3caf4df00e79c515c81633055bae45",
-        "sha256": "0xlz3v4zzaklnkr5sx238i7d8agxbsk9zbs3br0dfjdbrvhgii02",
-        "type": "tarball",
-        "url": "https://github.com/kevinhwang91/nvim-hlslens/archive/a23ce7882d3caf4df00e79c515c81633055bae45.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
-    "nvim-lspfuzzy": {
-        "branch": "main",
-        "description": "A Neovim plugin to make the LSP client use FZF",
-        "homepage": "",
-        "owner": "ojroques",
-        "repo": "nvim-lspfuzzy",
-        "rev": "0e369ae5a1230c4867663c2c8cc441f728ae0a5b",
-        "sha256": "0ajcy8gsnhxid574hbfzqfhf8y5nzvamjya1q4wva0nrnr3a4k3b",
-        "type": "tarball",
-        "url": "https://github.com/ojroques/nvim-lspfuzzy/archive/0e369ae5a1230c4867663c2c8cc441f728ae0a5b.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "nvim-treesitter": {
         "branch": "master",
         "description": "Nvim Treesitter configurations and abstraction layer",
         "homepage": "",
         "owner": "nvim-treesitter",
         "repo": "nvim-treesitter",
-        "rev": "bbf3f87884756330793510261193b0a725fb899b",
-        "sha256": "1974jpw2sjz4v8vy7y665bl6avflsv7pdqmq9ahlqf2lw59x13hy",
+        "rev": "efbb1c66d27eb5b4bfbcc1f59d3384e0641c8214",
+        "sha256": "1sfc7890v4lgc7r4a5k922qbnc1lpjp3i8sj1jqqxd4a73x1nsvm",
         "type": "tarball",
-        "url": "https://github.com/nvim-treesitter/nvim-treesitter/archive/bbf3f87884756330793510261193b0a725fb899b.tar.gz",
+        "url": "https://github.com/nvim-treesitter/nvim-treesitter/archive/efbb1c66d27eb5b4bfbcc1f59d3384e0641c8214.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "onehalf": {
@@ -188,13 +110,7 @@
     "parinfer": {
         "branch": "master",
         "repo": "https://git@github.com/eraserhd/parinfer-rust.git",
-        "rev": "9e41222b7bc8930e24c411c1b4bc48715975ed17",
-        "type": "git"
-    },
-    "qfenter": {
-        "branch": "master",
-        "repo": "https://github.com/yssl/QFEnter.git",
-        "rev": "df0a75b287c210f98ae353a12bbfdaf73d858beb",
+        "rev": "408437babfec7d7a285b47f4dd9db2b6ab884aae",
         "type": "git"
     },
     "sad": {
@@ -239,29 +155,11 @@
         "rev": "783a41a27f7fe55ed91d1ec0f0351d06ae17fbc7",
         "type": "git"
     },
-    "vim-one-colors": {
-        "branch": "master",
-        "repo": "https://git@github.com/rakr/vim-one.git",
-        "rev": "187f5c85b682c1933f8780d4d419c55d26a82e24",
-        "type": "git"
-    },
     "vim-tokyonight-colors": {
         "branch": "master",
         "repo": "https://github.com/ghifarit53/tokyonight-vim.git",
         "rev": "4e82e0f0452a6ce8f387828ec71013015515035a",
         "type": "git"
-    },
-    "vim_current_word": {
-        "branch": "master",
-        "description": "Plugin highlighting word under cursor and all of its occurences",
-        "homepage": "",
-        "owner": "dominikduda",
-        "repo": "vim_current_word",
-        "rev": "84ae9300de73cf878c805a6228a58d408b6b829d",
-        "sha256": "0k0wq3aqrbwrqyfz36qdqzyq7cw16d34yvw0gvzyg7iany0z0r6r",
-        "type": "tarball",
-        "url": "https://github.com/dominikduda/vim_current_word/archive/84ae9300de73cf878c805a6228a58d408b6b829d.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "visual-split.vim": {
         "branch": "master",
@@ -273,18 +171,6 @@
         "sha256": "0n495ikgp10y105q9hackdk2gylnzcdadh7gflh94f3b9h0glj5z",
         "type": "tarball",
         "url": "https://github.com/wellle/visual-split.vim/archive/423a25911b3e8da04a28d29f205e1059a06e6afa.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
-    "which-key.nvim": {
-        "branch": "main",
-        "description": "💥   Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.",
-        "homepage": "",
-        "owner": "folke",
-        "repo": "which-key.nvim",
-        "rev": "167661151204ea7da2d365113a76ab223b3dc880",
-        "sha256": "1ksivid0k9xncsqw6qvnz7ndrmp1wd3yxdxcc4jknv9ib2h95xh9",
-        "type": "tarball",
-        "url": "https://github.com/folke/which-key.nvim/archive/167661151204ea7da2d365113a76ab223b3dc880.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "yui": {

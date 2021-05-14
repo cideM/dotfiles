@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, hwConfig, operatorMono, neovim-nightly-overlay, ... }:
 let
   operatorMonoFontPkg = pkgs.stdenv.mkDerivation {
@@ -23,7 +19,6 @@ in
       "${hwConfig}"
     ];
 
-  # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 5;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -32,6 +27,7 @@ in
   boot.kernel.sysctl = {
     "vm.max_map_count" = 262144;
   };
+  boot.crashDump.enable = true;
 
   services.logind.extraConfig = ''
     RuntimeDirectorySize=20G
@@ -42,32 +38,13 @@ in
     fonts = [ operatorMonoFontPkg ];
   };
 
-  services.resolved = {
-    enable = true;
-  };
-
   systemd.network.enable = true;
 
-  environment.etc."iwd/main.conf".text = ''
-    [General]
-    EnableNetworkConfiguration=true
-
-    [Network]
-    EnableIPv6=true
-    NameResolvingService=systemd
-  '';
-
   networking = {
-    useDHCP = false;
-    useNetworkd = true;
     hostName = "nixos";
-    wireless.iwd.enable = true;
-    networkmanager = {
-      enable = false;
-    };
+    networkmanager.enable = true;
   };
 
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   i18n = {
     inputMethod = {
@@ -79,15 +56,7 @@ in
     };
   };
 
-
-  # Set your time zone.
   time.timeZone = "Europe/Berlin";
-
-  nixpkgs.overlays = [ neovim-nightly-overlay.overlay ];
-
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
 
   nix = {
     package = pkgs.nixUnstable;
@@ -99,14 +68,13 @@ in
     '';
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     curl
     gnumake
     vim
     git
-    chromium
+    # compiles forever atm
+    # chromium
   ];
 
   services.xserver = {
@@ -114,24 +82,30 @@ in
     videoDrivers = [ "nvidia" ];
     layout = "us";
     # https://discourse.nixos.org/t/problem-with-xkboptions-it-doesnt-seem-to-take-effect/5269/2
-    # Everything is broke, always.
     xkbOptions = "ctrl:nocaps";
+
     displayManager = {
-      startx.enable = true;
+      gdm.enable = true;
+      gdm.wayland = false;
+    };
+
+    desktopManager = {
+      gnome = {
+        enable = true;
+      };
     };
   };
 
-  # Some programs need SUID wrappers, can be configured further or are started
-  # in user sessions.
+  services.gnome.gnome-keyring.enable = true;
+
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
-    pinentryFlavor = "curses";
+    pinentryFlavor = "gnome3";
   };
 
   programs.adb.enable = true;
 
-  # Enable the OpenSSH daemon.
   services.openssh = {
     enable = false;
     authorizedKeysFiles = [ "/home/tifa/.ssh/authorized_keys" ];
@@ -142,14 +116,13 @@ in
 
   services.geoclue2.enable = true;
 
-  # Enable sound.
   sound.enable = true;
   hardware.pulseaudio =
     {
       enable = true;
       package = pkgs.pulseaudioFull;
       extraConfig = ''
-          load-module module-echo-cancel
+        load-module module-echo-cancel
       '';
       extraModules = [ pkgs.pulseaudio-modules-bt ];
     };
@@ -166,11 +139,10 @@ in
 
   xdg.mime.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.tifa = {
     isNormalUser = true;
     shell = pkgs.fish;
-    extraGroups = [ "adbusers" "wheel" "docker" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "adbusers" "wheel" "docker" "networkmanager" ];
   };
 
   virtualisation.docker.enable = true;

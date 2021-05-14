@@ -1,14 +1,9 @@
-{ pkgs, config, ... }:
-let
-  alacCfg = config.programs.alacritty;
-in
+{ ... }:
 {
   programs.tmux = {
     enable = true;
     sensibleOnTop = false;
-    # This never works
-    /* plugins = with pkgs; [ tmuxPlugins.tmux-fzf ]; */
-    plugins = with pkgs; [];
+    plugins = [ ];
     extraConfig = ''
       set -g default-terminal "tmux-256color"
 

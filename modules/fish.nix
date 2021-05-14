@@ -1,4 +1,4 @@
-{ pkgs, config, scripts, ... }:
+{ pkgs, config, scripts, lucid-fish, ... }:
 let
   alacCfg = config.programs.alacritty;
 
@@ -125,7 +125,10 @@ in
       gc = {
         description = "fzf git checkout";
         body = ''
-          git ch (git b -a --sort=-committerdate | fzf --preview 'git log (echo {} | sed \'s/*//\' | string trim) -- ' | sed 's/*//' | string trim)
+          git ch (git b -a --sort=-committerdate | 
+            fzf --preview 'git log (echo {} | sed -E -e \'s/^(\+|\*)//\' | string trim) -- ' | 
+            sed -E -e 's/^(\+|\*)//' | 
+            string trim)
         '';
       };
 
@@ -222,22 +225,6 @@ in
         '';
       };
 
-      nivdrop = {
-        description = "niv drop but allow multiple";
-        body = ''
-          while read -l source_name
-            echo $source_name
-          end
-        '';
-      };
-
-      nivshow = {
-        description = "niv show but only the names";
-        body = ''
-          niv show | rg '^\w+' --color never
-        '';
-      };
-
       fish_greeting = {
         body = ''
         '';
@@ -257,7 +244,7 @@ in
 
       {
         name = "lucid";
-        src = config.sources.lucid-fork;
+        src = lucid-fish;
       }
 
       {

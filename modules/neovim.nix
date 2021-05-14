@@ -1,7 +1,6 @@
 args@{ config
 , lib
 , pkgs
-, indent-blankline
 , lspfuzzy
 , qfenter
 , sad
@@ -188,17 +187,16 @@ in
 
         set bg=light fdm=indent et ts=2 sw=2 tm=500 noea fo=tcrqjn
         set hid nu scs icm=split sb spr fdls=99 udf tgc ic scs
+        set wig+=*node_modules*,*.direnv*
         set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
         set path-=/usr/include
-        " set list lcs=trail:¬,tab:\ \ 
+        set list lcs=trail:¬,tab:\ \ 
         set statusline+=\ %f\ %m%=%{LspStatus()}%y\ %q\ %3l:%2c\ \|%3p%%\ 
         let g:yui_comments = 'bg'
         colorscheme yui
 
         let g:EditorConfig_max_line_indicator = "exceeding"
         let g:EditorConfig_preserve_formatoptions = 1
-
-        let g:indent_blankline_char = '│'
 
         let g:sneak#label      = 1
         let g:sneak#use_ic_scs = 1
@@ -215,7 +213,7 @@ in
         au! FileType fzf set laststatus=0 noshowmode noruler
               \| au BufLeave <buffer> set laststatus=2 showmode ruler
 
-        aug terminsert | au! | exe "au TermOpen * startinsert" | aug END
+        aug terminsert | exe "au! TermOpen * startinsert | setl nonu nornu" | aug END
 
         aug quickfix
             au!
@@ -226,7 +224,7 @@ in
             au FileType qf nnoremap <buffer> <right> :cnewer<cr>
         aug END
 
-        aug highlight_yank | au! | exe "TextYankPost * silent! lua require'vim.highlight'.on_yank()" | aug END
+        aug highlight_yank | exe "au! TextYankPost * silent! lua require'vim.highlight'.on_yank()" | aug END
 
         let mapleader = " "
         let maplocalleader = ","
@@ -238,8 +236,14 @@ in
         nnoremap <leader>z        :wq<cr>
         nnoremap Y         y$
 
-        nnoremap <leader>fw :grep -wF <cword><cr>
-        nnoremap <leader>fs :grep 
+        " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+        vmap <Enter> <Plug>(EasyAlign)
+
+        " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+        nmap ga <Plug>(EasyAlign)
+
+        " nnoremap <leader>fw :grep -wF <cword><cr>
+        " nnoremap <leader>fs :grep 
         " nnoremap <leader>ff :find 
         nnoremap <leader>fz :Files<cr>
         nnoremap <leader>fl :BLines<cr>
@@ -251,8 +255,8 @@ in
 
         nmap gs  <plug>(GrepperOperator)
         xmap gs  <plug>(GrepperOperator)
-        nnoremap <leader>fg :GrepperRg
-        nnoremap <leader>fi :GrepperGit
+        nnoremap <leader>fs :GrepperRg 
+        nnoremap <leader>fi :GrepperGit 
 
         map f <Plug>Sneak_f
         map F <Plug>Sneak_F
@@ -298,7 +302,7 @@ in
           \| nnoremap <localleader>m :make %<cr>
           \| nnoremap <localleader>i :%!goimports<cr>
           \| nnoremap <localleader>t :execute ':silent !for f in ./{cmd, internal, pkg}; if test -d $f; ctags -R $f; end; end'<CR>
-        au FileType haskell setl fp=ormolu | nnoremap <buffer> <localleader>t :silent\ !fast-tags\ -R\ .
+        au FileType haskell setl fp=ormolu | nnoremap <buffer> <localleader>t :silent !fast-tags -R .<cr>
         au FileType markdown setl fp=prettier\ --stdin-filepath\ %
         au FileType json setl fp=prettier\ --stdin-filepath\ %
         au FileType javascript setl fp=prettier\ --stdin-filepath\ % wig+=*node_modules*
@@ -320,7 +324,7 @@ in
           j = "lua vim.lsp.buf.definition()",
           k = "lua vim.lsp.buf.type_definition()",
           l = "lua vim.lsp.buf.declaration()",
-          d = "lua vim.lsp.buf.show_line_diagnostics({ border = 'single' })",
+          d = "lua vim.lsp.diagnostic.show_line_diagnostics({ border = 'single' })",
           w = "lua vim.lsp.buf.workspace_symbol()",
           u = "lua vim.lsp.buf.document_symbol()",
           R = "lua vim.lsp.buf.server_ready()",
@@ -423,10 +427,6 @@ in
           src = sad;
         })
         unicode-vim
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-          name = "indent-blankline";
-          src = indent-blankline;
-        })
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
           name = "visual-split.vim";
           src = sources."visual-split.vim";

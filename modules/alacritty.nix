@@ -1,5 +1,4 @@
 { lib, config, pkgs, ... }:
-# TODO: Menlo on MacOS so font needs to be config as well
 with lib;
 with types;
 let

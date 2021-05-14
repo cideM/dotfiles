@@ -7,8 +7,8 @@
       inputs.nixpkgs.follows = "unstable";
     };
 
-    indent-blankline.url = "github:lukas-reineke/indent-blankline.nvim/lua";
-    indent-blankline.flake = false;
+    lucid-fish.url = "github:mattgreen/lucid.fish";
+    lucid-fish.flake = false;
 
     lspfuzzy.url = "github:ojroques/nvim-lspfuzzy";
     lspfuzzy.flake = false;
@@ -52,10 +52,10 @@
     , hwConfig
     , nixpkgs
     , scripts
-    , indent-blankline
     , lspfuzzy
     , sad
     , yui
+    , lucid-fish
     , qfenter
     }:
     {
@@ -65,13 +65,17 @@
           system = "x86_64-linux";
 
           specialArgs = {
-            inherit hwConfig operatorMono neovim-nightly-overlay scripts indent-blankline lspfuzzy sad yui qfenter;
+            inherit hwConfig operatorMono neovim-nightly-overlay scripts lspfuzzy sad yui qfenter lucid-fish;
           };
 
           modules = [
             ./hosts/nixos/configuration.nix
             home-manager.nixosModules.home-manager
             {
+              nixpkgs.overlays = [ neovim-nightly-overlay.overlay ];
+              nixpkgs.config = {
+                allowUnfree = true;
+              };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.tifa = import ./hosts/nixos/home.nix;

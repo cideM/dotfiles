@@ -1,13 +1,13 @@
-{ pkgs, ... }:
+{ ... }:
 {
   programs.git = {
     delta = {
-        enable = true;
-        options = {
-            hunk-header-style = "omit";
-            syntax-theme = "GitHub";
-            line-numbers = "true";
-        };
+      enable = true;
+      options = {
+        hunk-header-style = "omit";
+        syntax-theme = "GitHub";
+        line-numbers = "true";
+      };
     };
 
     enable = true;
