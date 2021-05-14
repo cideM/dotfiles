@@ -63,6 +63,23 @@
         "type": "path"
       }
     },
+    "indent-blankline": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1619580822,
+        "narHash": "sha256-0B5/SscIJ2w5yQ99AjzRHKbIdnBgREbGmGZ8Z14eGAE=",
+        "owner": "lukas-reineke",
+        "repo": "indent-blankline.nvim",
+        "rev": "ec5816267caa5fdde7a5e5a8359b9b19bc8ecf49",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lukas-reineke",
+        "ref": "lua",
+        "repo": "indent-blankline.nvim",
+        "type": "github"
+      }
+    },
     "lspfuzzy": {
       "flake": false,
       "locked": {
@@ -186,6 +203,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "hwConfig": "hwConfig",
+        "indent-blankline": "indent-blankline",
         "lspfuzzy": "lspfuzzy",
         "lucid-fish": "lucid-fish",
         "neovim-nightly-overlay": "neovim-nightly-overlay",

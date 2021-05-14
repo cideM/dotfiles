@@ -5,7 +5,6 @@
     (import ../../modules/neovim.nix)
     (import ../../modules/git.nix)
     (import ../../modules/tmux.nix)
-    (import ../../modules/redshift.nix)
     (import ../../modules/ctags.nix)
     (import ../../modules/pandoc.nix)
     (import ../../modules/fish.nix)
@@ -26,10 +25,7 @@
     iosevka
     kazam
     insomnia
-    (import ../../derivations/kubectl.nix {
-      inherit (pkgs) stdenv;
-      inherit (builtins) fetchurl;
-    })
+    kubectl
     sublime-merge
     spotify
     gnupg

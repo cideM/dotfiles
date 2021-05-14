@@ -3,6 +3,7 @@ args@{ config
 , pkgs
 , lspfuzzy
 , qfenter
+, indent-blankline
 , sad
 , yui
 , ...
@@ -142,9 +143,96 @@ let
   cfg = config.programs.neovim;
 
   sources = config.sources;
+
+  makeFtPlugins = ftplugins: with attrsets;
+    mapAttrs'
+      (key: value: nameValuePair "nvim/after/ftplugin/${key}.vim" ({ text = value; }))
+      ftplugins;
 in
 {
   config = {
+    xdg.configFile = makeFtPlugins {
+      xml = ''
+        setl formatprg=prettier\ --stdin-filepath\ %";
+      '';
+      sh = ''
+        setl formatprg=shfmt makeprg=shellcheck\ -f\ gcc\ %
+        nnoremap <buffer> <localleader>m :silent make<cr>
+      '';
+      rust = ''
+        setl formatprg=rustfmt
+        setl makeprg=cargo\ check
+      '';
+      purescript = ''
+        setl formatprg=purty\ format
+        nnoremap <buffer> <localleader>t :!spago\ docs\ --format\ ctags
+      '';
+      json = ''
+        setl formatprg=prettier\ --stdin-filepath\ %
+      '';
+      yaml = ''
+        setl formatprg=prettier\ --stdin-filepath\ %
+      '';
+      fzf = ''
+        setl laststatus=0 noshowmode noruler
+        aug fzf | au! BufLeave <buffer> set laststatus=2 showmode ruler | aug END
+      '';
+      qf = ''
+        nnoremap <buffer> <left> :colder<cr>
+        nnoremap <buffer> <right> :cnewer<cr>
+      '';
+      clojure = ''
+        packadd conjure
+        packadd parinfer
+        setl errorformat=%f:%l:%c:\ Parse\ %t%*[^:]:\ %m,%f:%l:%c:\ %t%*[^:]:\ %m
+        setl makeprg=clj-kondo\ --lint\ %
+        setl wildignore+=*.clj-kondo*
+      '';
+      javascript = ''
+        setl formatprg=prettier\ --stdin-filepath\ %
+        setl wildignore+=*node_modules*,package-lock.json,yarn-lock.json
+        setl errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m,%-G%.%#
+        setl makeprg=${pkgs.nodePackages.eslint}/bin/eslint\ --format\ compact
+        nnoremap <buffer> <silent> <localleader>f :!${pkgs.nodePackages.eslint}/bin/eslint\ --fix\ %<cr>
+      '';
+      typescript = ''
+        setl formatprg=prettier\ --stdin-filepath\ %
+        setl wildignore+=*node_modules*,package-lock.json,yarn-lock.json
+        setl errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m,%-G%.%#
+        setl makeprg=${pkgs.nodePackages.eslint}/bin/eslint\ --format\ compact
+        nnoremap <buffer> <silent> <localleader>f :!${pkgs.nodePackages.eslint}/bin/eslint\ --fix\ %<cr>
+      '';
+      css = ''
+        setl formatprg=prettier\ --stdin-filepath\ %
+      '';
+      nix = ''
+        setl formatprg=nixpkgs-fmt
+      '';
+      dhall = ''
+        setl formatprg=dhall\ format
+      '';
+      make = ''
+        setl noexpandtab
+      '';
+      lua = ''
+        setl makeprg=luacheck\ --formatter\ plain
+        nnoremap <buffer> <localleader>m :make %<cr>
+      '';
+      go = ''
+        setl formatprg=gofmt makeprg=go\ build\ -o\ /dev/null
+        nnoremap <buffer> <localleader>m :make %<cr>
+        nnoremap <buffer> <localleader>i :%!goimports<cr>
+        nnoremap <buffer> <localleader>t :execute ':silent !for f in ./{cmd, internal, pkg}; if test -d $f; ctags -R $f; end; end'<CR>
+      '';
+      haskell = ''
+        setl formatprg=ormolu
+        nnoremap <buffer> <localleader>t :silent !fast-tags -R .<cr>
+      '';
+      markdown = ''
+        setl formatprg=prettier\ --stdin-filepath\ %
+      '';
+    };
+
     programs.neovim = {
       enable = true;
 
@@ -185,12 +273,14 @@ in
             return ""
         endfunction
 
-        set bg=light fdm=indent et ts=2 sw=2 tm=500 noea fo=tcrqjn
-        set hid nu scs icm=split sb spr fdls=99 udf tgc ic scs
-        set wig+=*node_modules*,*.direnv*
-        set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
-        set path-=/usr/include
-        set list lcs=trail:¬,tab:\ \ 
+        set background=light foldmethod=indent expandtab tabstop=2 shiftwidth=2 colorcolumn=100
+        set timeoutlen=500 formatoptions=tcrqjn hidden number ignorecase smartcase
+        set wildignore+=*.git/*,nix/sources.nix,*.min.*
+          \,*.map,*.idea,*build/*,.direnv/*,*dist/*,*compiled/*,*tmp/*
+        set inccommand=split splitbelow splitright foldlevelstart=99 undofile
+        set termguicolors grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+        set completeopt=menuone,noselect,noinsert
+        set path-=/usr/include list lcs=trail:¬,tab:\ \ 
         set statusline+=\ %f\ %m%=%{LspStatus()}%y\ %q\ %3l:%2c\ \|%3p%%\ 
         let g:yui_comments = 'bg'
         colorscheme yui
@@ -210,18 +300,12 @@ in
         let g:grepper = {}
         let g:grepper.tools = ['rg', 'git']
 
-        au! FileType fzf set laststatus=0 noshowmode noruler
-              \| au BufLeave <buffer> set laststatus=2 showmode ruler
-
         aug terminsert | exe "au! TermOpen * startinsert | setl nonu nornu" | aug END
 
         aug quickfix
             au!
             au QuickFixCmdPost [^l]* cwindow
             au QuickFixCmdPost l* lwindow
-
-            au FileType qf nnoremap <buffer> <left> :colder<cr>
-            au FileType qf nnoremap <buffer> <right> :cnewer<cr>
         aug END
 
         aug highlight_yank | exe "au! TextYankPost * silent! lua require'vim.highlight'.on_yank()" | aug END
@@ -236,15 +320,17 @@ in
         nnoremap <leader>z        :wq<cr>
         nnoremap Y         y$
 
+        " ======= easy align ================
         " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
         vmap <Enter> <Plug>(EasyAlign)
-
         " Start interactive EasyAlign for a motion/text object (e.g. gaip)
         nmap ga <Plug>(EasyAlign)
 
         " nnoremap <leader>fw :grep -wF <cword><cr>
         " nnoremap <leader>fs :grep 
         " nnoremap <leader>ff :find 
+
+        " ======= fzf =======================
         nnoremap <leader>fz :Files<cr>
         nnoremap <leader>fl :BLines<cr>
         nnoremap <leader>ft :Tags<cr>
@@ -253,11 +339,13 @@ in
         nnoremap <leader>fb :Buffers<cr>
         " nnoremap <leader>fb :ls<cr>:buffer<Space>
 
+        " ======= grepper ===================
         nmap gs  <plug>(GrepperOperator)
         xmap gs  <plug>(GrepperOperator)
         nnoremap <leader>fs :GrepperRg 
         nnoremap <leader>fi :GrepperGit 
 
+        " ======= sneak =====================
         map f <Plug>Sneak_f
         map F <Plug>Sneak_F
         map t <Plug>Sneak_t
@@ -272,9 +360,11 @@ in
         nnoremap <leader>T :lcd %:p:h<bar>split term://fish<CR>
         nnoremap <leader>t :split term://fish<CR>
 
+        " ======= sad =======================
         map      <leader>C <Plug>(sad-change-backward)
         map      <leader>c <Plug>(sad-change-forward)
 
+        " ======= sandwich ==================
         let g:sandwich_no_default_key_mappings = 1
         silent! nmap <unique><silent> <leader>sd <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
         silent! nmap <unique><silent> <leader>sr <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
@@ -288,31 +378,12 @@ in
         silent! xmap <unique> <leader>sd <Plug>(operator-sandwich-delete)
         silent! xmap <unique> <leader>sr <Plug>(operator-sandwich-replace)
 
-        au FileType xml setl fp=prettier\ --stdin-filepath\ %
-        au FileType sh setl fp=shfmt mp=shellcheck\ -f\ gcc\ % | nnoremap <buffer> <localleader>m :silent make<cr>
-        au FileType rust setl fp=rustfmt mp=cargo\ check
-        au FileType purescript setl fp=purty\ format | nnoremap <buffer> <localleader>t :!spago\ docs\ --format\ ctags
-        au FileType nix setl fp=nixpkgs-fmt
-        au FileType css setl fp=prettier\ --stdin-filepath\ %
-        au FileType dhall setl fp=dhall\ format
-        au FileType make setl noet
-        au FileType lua setl mp=luacheck\ --formatter\ plain
-          \| nnoremap <localleader>m :make %<cr>
-        au FileType go setl fp=gofmt makeprg=go\ build\ -o\ /dev/null
-          \| nnoremap <localleader>m :make %<cr>
-          \| nnoremap <localleader>i :%!goimports<cr>
-          \| nnoremap <localleader>t :execute ':silent !for f in ./{cmd, internal, pkg}; if test -d $f; ctags -R $f; end; end'<CR>
-        au FileType haskell setl fp=ormolu | nnoremap <buffer> <localleader>t :silent !fast-tags -R .<cr>
-        au FileType markdown setl fp=prettier\ --stdin-filepath\ %
-        au FileType json setl fp=prettier\ --stdin-filepath\ %
-        au FileType javascript setl fp=prettier\ --stdin-filepath\ % wig+=*node_modules*
-        au FileType typescript setl fp=prettier\ --stdin-filepath\ % wig+=*node_modules*
-          \efm=%f:\ line\ %l\\,\ col\ %c\\,\ %m,%-G%.%# makeprg=${pkgs.nodePackages.eslint}/bin/eslint\ --format\ compact
-          \| nnoremap <buffer> <silent> <localleader>f :!${pkgs.nodePackages.eslint}/bin/eslint\ --fix\ %<cr>
-        au FileType yaml setl fp=prettier\ --stdin-filepath\ %
-        au FileType clojure setl efm=%f:%l:%c:\ Parse\ %t%*[^:]:\ %m,%f:%l:%c:\ %t%*[^:]:\ %m mp=clj-kondo\ --lint\ % wig+=*.clj-kondo*
-          \| packadd conjure | packadd parinfer
+        " ======= VIMTEX ====================
+        let g:tex_flavor = 'latex'
+        let g:vimtex_view_method = 'zathura'
+        nnoremap <localleader>lt :call vimtex#fzf#run('cl')<cr>
 
+        " ======= lsp =======================
         packadd nvim-lspconfig
         lua <<EOF
         local mappings = {
@@ -323,7 +394,6 @@ in
           H = "lua vim.lsp.buf.implementation()",
           j = "lua vim.lsp.buf.definition()",
           k = "lua vim.lsp.buf.type_definition()",
-          l = "lua vim.lsp.buf.declaration()",
           d = "lua vim.lsp.diagnostic.show_line_diagnostics({ border = 'single' })",
           w = "lua vim.lsp.buf.workspace_symbol()",
           u = "lua vim.lsp.buf.document_symbol()",
@@ -331,7 +401,7 @@ in
           p = "lua vim.lsp.buf.document_highlight()",
           n = "lua vim.lsp.diagnostic.goto_next({ popup_opts = { border = 'single' }})",
           b = "lua vim.lsp.diagnostic.goto_prev({ popup_opts = { border = 'single' }})",
-          L = "lua vim.lsp.diagnostic.set_loclist()"
+          l = "lua vim.lsp.diagnostic.set_loclist()"
         }
         for k, v in pairs(mappings) do
           vim.api.nvim_set_keymap('n', '<localleader>l' .. k, '<cmd>' .. v .. '<cr>', { noremap=true, silent=true })
@@ -380,79 +450,42 @@ in
       '';
 
       plugins = with pkgs.vimPlugins; [
-        # LSP
         lsp-status-nvim
-        {
-          plugin = nvim-lspconfig;
-          optional = true;
-        }
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-          name = "lspfuzzy";
-          src = lspfuzzy;
-        })
-
-        # Clojure
-        {
-          plugin = (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "parinfer-rust"; src = sources."parinfer"; });
-          optional = true;
-        }
-        {
-          plugin = conjure;
-          optional = true;
-        }
-
-        # tpope
+        { plugin = nvim-lspconfig; optional = true; }
+        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "lspfuzzy"; src = lspfuzzy; })
+        { plugin = (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "parinfer-rust"; src = sources."parinfer"; }); optional = true; }
+        { plugin = conjure; optional = true; }
+        vim-fugitive
         vim-eunuch
         vim-unimpaired
+        vimtex
         vim-repeat
-        vim-fugitive
         vim-commentary
-
         editorconfig-vim
         vim-easy-align
         vim-grepper
         vim-indent-object
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-          name = "qfenter";
-          src = qfenter;
-        })
+        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "qfenter"; src = qfenter; })
         vim-dirvish
         fzfWrapper
         fzf-vim
         vim-gutentags
         vim-sandwich
         vim-sneak
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-          name = "sad";
-          src = sad;
-        })
+        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "sad"; src = sad; })
         unicode-vim
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-          name = "visual-split.vim";
-          src = sources."visual-split.vim";
-        })
+        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "visual-split.vim"; src = sources."visual-split.vim"; })
         vim-peekaboo
 
-        # Themes
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-          name = "yui";
-          src = yui;
-        })
+        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "yui"; src = yui; })
         iceberg-vim
 
-        # Languages
         dhall-vim
         haskell-vim
         Jenkinsfile-vim-syntax
         purescript-vim
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-          name = "vim-js";
-          src = sources."vim-js";
-        })
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-          name = "vim-lua";
-          src = sources."vim-lua";
-        })
+        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "vim-js"; src = sources."vim-js"; })
+        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "vim-lua"; src = sources."vim-lua"; })
         vim-jsx-pretty
         vim-nix
         vim-terraform
