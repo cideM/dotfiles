@@ -19,3 +19,6 @@ tags
 !**/.config/fish/functions/fish_prompt.fish
 
 .swp
+result
+tags.lock
+tags.temp

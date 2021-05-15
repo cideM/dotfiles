@@ -13,7 +13,7 @@ let
 
   sha = {
     x86_64-linux = "16qlgqfpz7pn52dw6r3xav4ly7rpl5lwck94vdpvzgld1ja9rpm0";
-    x86_64-darwin = "1i59ixyql28ds4q0fmp9gmxbz1gzc491hm28k7pkwcb2n4v4q6c6";
+    x86_64-darwin = "sha256:11rnr41200sbi4rzsxlc0l5fdr0fvpqmz0sfkh8ap1r18g7i89ym";
   }.${system};
 
   version = "latest";
@@ -30,7 +30,7 @@ let
       # the time and can't use 'niv' for this.
       src = builtins.fetchurl {
         name = "VSCode_${version}_${plat}.${archive_fmt}";
-        url = "https://vscode-update.azurewebsites.net/${version}/${plat}/insider";
+        url = "https://update.code.visualstudio.com/${version}/${plat}/insider";
         sha256 = sha;
       };
     });

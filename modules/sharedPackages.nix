@@ -4,7 +4,7 @@ with pkgs;
 
 {
   home.packages = [
-    awscli2
+    #awscli2
     bashInteractive_5
     bat
     cachix
@@ -39,19 +39,9 @@ with pkgs;
     libuv
     luajitPackages.luacheck
     ncdu
-    discord
     kubectl
-    kazam
-    okular
     zathura
-    insomnia
-    spotify
-    zotero
-    jetbrains.webstorm
     nerdfonts
-    android-studio
-    jetbrains.goland
-    skype
     niv
     nixpkgs-fmt
     nixpkgs-review
@@ -72,7 +62,6 @@ with pkgs;
     shellcheck
     shfmt
     stow
-    sublime-merge
     tig
     time
     tldr

@@ -14,12 +14,6 @@
   programs.direnv.enableFishIntegration = true;
   programs.direnv.enableNixDirenvIntegration = true;
 
-  programs.home-manager = {
-    enable = true;
-  };
-
   # https://github.com/rycee/home-manager/issues/432
   home.extraOutputsToInstall = [ "info" "man" "share" "icons" "doc" ];
-
-  home.stateVersion = "20.03";
 }

@@ -19,6 +19,19 @@
   home.packages = with pkgs; [
     iotop
     kanji-stroke-order-font
+    # Broken on Darwin
+    discord
+    kazam
+    okular
+    insomnia
+    spotify
+    zotero
+    jetbrains.webstorm
+    android-studio
+    jetbrains.goland
+    skype
+    sublime-merge
+
     source-han-sans-japanese
     source-han-serif-japanese
     zoom-us

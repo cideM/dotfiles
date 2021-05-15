@@ -1,20 +1,27 @@
-{ pkgs, ... }:
+{ pkgs, operatorMono, ... }:
 {
   imports = [
     (import ../../modules/alacritty.nix)
-    (import ../../modules/neovim)
+    (import ../../modules/neovim.nix)
     # https://github.com/NixOS/nixpkgs/issues/62353
     # (import ../../modules/git.nix)
-    (import ../../modules/tmux)
+    (import ../../modules/tmux.nix)
     (import ../../modules/ctags.nix)
-    (import ../../modules/pandoc)
-    (import ../../modules/fish)
+    (import ../../modules/pandoc.nix)
+    (import ../../modules/fish.nix)
+    (import ../../modules/sources.nix)
     (import ../../modules/sharedPackages.nix)
     (import ../../modules/sharedSettings.nix)
-    (import ../../modules/vscode)
+    (import ../../modules/vscode.nix)
   ];
 
   sources = import ../../nix/sources.nix;
+
+  home.sessionVariables = {
+    TERMINFO_DIRS = "${pkgs.alacritty.terminfo.outPath}/share/terminfo";
+  };
+
+  home.stateVersion = "20.09";
 
   programs.fish.interactiveShellInit = ''
     set -x FISH_NOTES_DIR ~/.local/share/fish_notes
@@ -24,18 +31,31 @@
     or set -x PATH ${pkgs.coreutils}/bin $PATH/
   '';
 
-  home.packages = with pkgs; [ unixtools.watch ];
-
-  programs.firefox.enable = true;
-  programs.firefox.package = pkgs.firefox-devedition-bin;
+  home.packages = with pkgs; [
+    nixUnstable
+    unixtools.watch
+    (pkgs.stdenv.mkDerivation {
+      name = "operator-mono-font";
+      src = operatorMono;
+      buildPhases = [ "installPhase" ];
+      installPhase = ''
+        mkdir -p $out/share/fonts/operator-mono
+        cp -R "$src" "$out/share/fonts/operator-mono"
+      '';
+    })
+  ];
 
   # Install through casks for Alacritty.app etc
   programs.alacritty = {
     light = true;
     font = "mono";
     enable = true;
-    fontSize = 11;
+    fontSize = 12;
   };
+
+  xdg.configFile."nix/nix.conf".text = ''
+    experimental-features = nix-command flakes
+  '';
 
   # Can't use programs.git because https://github.com/NixOS/nixpkgs/issues/62353
   xdg.configFile."git/config".text = ''

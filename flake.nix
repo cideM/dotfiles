@@ -52,30 +52,50 @@
     , yui
     , lucid-fish
     }:
-    {
-      # TODO: https://github.com/mjlbach/nix-dotfiles/blob/master/nixpkgs/flake.nix
-      nixosConfigurations.nixos =
+    let
+      overlays = [
+        neovim-nightly-overlay.overlay
+        (self: super: {
+          kubectl = super.kubectl.overrideAttrs (old: rec {
+            name = "kubectl-${version}";
+
+            version = "1.15";
+            src = builtins.fetchurl {
+              url = "https://amazon-eks.s3.us-west-2.amazonaws.com/1.15.11/2020-08-04/bin/linux/amd64/kubectl";
+              sha256 = "1knchnf6bh68lx12zpz2jjjd81zgm02jrcbxpzs71dniwasdghqc";
+            };
+          });
+        })
+      ];
+
+      specialArgs = {
+        inherit operatorMono neovim-nightly-overlay scripts lspfuzzy sad yui lucid-fish indent-blankline;
+      };
+
+      homeConfigurations = {
+        work-mbp = home-manager.lib.homeManagerConfiguration {
+          system = "x86_64-darwin";
+          extraSpecialArgs = specialArgs;
+          homeDirectory = "/Users/fbs";
+          username = "fbs";
+          configuration = { pkgs, config, ... }:
+            {
+              imports = [
+                {
+                  nixpkgs.overlays = overlays;
+                  nixpkgs.config = {
+                    allowUnfree = true;
+                  };
+                }
+                ./hosts/fbs-work.local/home.nix
+              ];
+            };
+        };
+      };
+
+      desktop =
         let
           system = "x86_64-linux";
-
-          overlays = [
-            neovim-nightly-overlay.overlay
-            (self: super: {
-              kubectl = super.kubectl.overrideAttrs (old: rec {
-                name = "kubectl-${version}";
-
-                version = "1.15";
-                src = builtins.fetchurl {
-                  url = "https://amazon-eks.s3.us-west-2.amazonaws.com/1.15.11/2020-08-04/bin/linux/amd64/kubectl";
-                  sha256 = "1knchnf6bh68lx12zpz2jjjd81zgm02jrcbxpzs71dniwasdghqc";
-                };
-              });
-            })
-          ];
-
-          specialArgs = {
-            inherit operatorMono neovim-nightly-overlay scripts lspfuzzy sad yui lucid-fish indent-blankline;
-          };
 
           modules = [
             ./hosts/nixos/configuration.nix
@@ -93,6 +113,10 @@
           ];
         in
         unstable.lib.nixosSystem { inherit system modules specialArgs; };
-
+    in
+    {
+      # TODO: https://github.com/mjlbach/nix-dotfiles/blob/master/nixpkgs/flake.nix
+      nixosConfigurations.nixos = desktop;
+      mbp = homeConfigurations.work-mbp.activationPackage;
     };
 }
