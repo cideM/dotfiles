@@ -7,10 +7,12 @@ with pkgs;
     awscli2
     bashInteractive_5
     bat
+    cachix
     cmus
     coreutils
     curl
     dash
+    delta
     docker-compose
     du-dust
     emacs
@@ -28,6 +30,7 @@ with pkgs;
     gzip
     hack-font
     htop
+    iosevka
     jetbrains-mono
     jq
     k9s
@@ -36,6 +39,19 @@ with pkgs;
     libuv
     luajitPackages.luacheck
     ncdu
+    discord
+    kubectl
+    kazam
+    okular
+    zathura
+    insomnia
+    spotify
+    zotero
+    jetbrains.webstorm
+    nerdfonts
+    android-studio
+    jetbrains.goland
+    skype
     niv
     nixpkgs-fmt
     nixpkgs-review
@@ -56,6 +72,7 @@ with pkgs;
     shellcheck
     shfmt
     stow
+    sublime-merge
     tig
     time
     tldr

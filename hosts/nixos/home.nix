@@ -19,28 +19,10 @@
   home.packages = with pkgs; [
     iotop
     kanji-stroke-order-font
-    cachix
     source-han-sans-japanese
     source-han-serif-japanese
-    iosevka
-    kazam
-    insomnia
-    kubectl
-    sublime-merge
-    spotify
-    gnupg
-    zotero
     zoom-us
-    okular
-    zathura
-    delta
     slack
-    discord
-    jetbrains.webstorm
-    nerdfonts
-    android-studio
-    jetbrains.goland
-    skype
   ];
 
   programs.firefox.enable = true;

@@ -7,7 +7,6 @@
     # (import ../../modules/git.nix)
     (import ../../modules/tmux)
     (import ../../modules/ctags.nix)
-    (import ../../modules/sources.nix)
     (import ../../modules/pandoc)
     (import ../../modules/fish)
     (import ../../modules/sharedPackages.nix)
@@ -27,12 +26,15 @@
 
   home.packages = with pkgs; [ unixtools.watch ];
 
+  programs.firefox.enable = true;
+  programs.firefox.package = pkgs.firefox-devedition-bin;
+
   # Install through casks for Alacritty.app etc
   programs.alacritty = {
     light = true;
-    font = "jetbrains";
-    enable = false;
-    fontSize = 14;
+    font = "mono";
+    enable = true;
+    fontSize = 11;
   };
 
   # Can't use programs.git because https://github.com/NixOS/nixpkgs/issues/62353
@@ -66,6 +68,17 @@
 
     [core]
         editor = nvim
+        pager = delta
+
+    [interactive]
+        diffFilter = delta --color-only
+
+    [delta]
+        navigate = true
+        side-by-side = true
+        syntax-theme = "GitHub"
+        line-numbers = true
+        hunk-header-style = omit
 
     [filter "lfs"]
         clean = git-lfs clean -- %f
