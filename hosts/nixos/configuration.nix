@@ -1,4 +1,4 @@
-{ config, pkgs, hwConfig, operatorMono, neovim-nightly-overlay, ... }:
+{ config, pkgs, operatorMono, neovim-nightly-overlay, ... }:
 let
   operatorMonoFontPkg = pkgs.stdenv.mkDerivation {
     name = "operator-mono-font";
@@ -15,14 +15,16 @@ in
 
   imports =
     [
-      # Include the results of the hardware scan.
-      "${hwConfig}"
+      ./hardware-configuration.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 5;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelParams = [
+    "processor.max_cstate=1"
+  ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.kernel.sysctl = {
     "vm.max_map_count" = 262144;

@@ -51,18 +51,6 @@
         "type": "github"
       }
     },
-    "hwConfig": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-rIeKN/oFpja5qsiKPzowepX++Oqs0EXnM8xK4SMJ9NA=",
-        "path": "/etc/nixos/hardware-configuration.nix",
-        "type": "path"
-      },
-      "original": {
-        "path": "/etc/nixos/hardware-configuration.nix",
-        "type": "path"
-      }
-    },
     "indent-blankline": {
       "flake": false,
       "locked": {
@@ -121,11 +109,11 @@
       },
       "locked": {
         "dir": "contrib",
-        "lastModified": 1620779525,
-        "narHash": "sha256-k4ePrffhuZoSDqZMOMHx1Rb/ehd6cjvJvc/Wh9Wr8Rg=",
+        "lastModified": 1621032644,
+        "narHash": "sha256-URpD3qNl6jnvcwqouzDCap+D1RjDexRm1AlEpv+rPu4=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "61aefaf2993c0b55f6123ba4b0bd41b1caf1fcd3",
+        "rev": "c57a85d53490fe53158a0cbd768941b732926d83",
         "type": "github"
       },
       "original": {
@@ -142,11 +130,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1620980135,
-        "narHash": "sha256-ClhVP9rsGwquxwr/j/tQv1eTFNSn/gNNuUIbC+ZsetQ=",
+        "lastModified": 1621066449,
+        "narHash": "sha256-LYHAqDHjCaxe6+mS3QdCQlZROYFBIjnfPmLy4+ulvIw=",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "65988466d317e89b749381a4612d93a6bf7a2f94",
+        "rev": "216ece16db6a6781ed53e7414277bf49b34a53d7",
         "type": "github"
       },
       "original": {
@@ -174,19 +162,23 @@
     "operatorMono": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-KckOXZ/IDtr0tgLFQAHBaVIOF0C3qyfbq2ZblMZeenE=",
-        "path": "/home/tifa/OperatorMono",
-        "type": "path"
+        "lastModified": 1621114225,
+        "narHash": "sha256-iylzFsg9UnuEOF0MUbVtHTT4buLiTjTN7GMcRrX08F4=",
+        "ref": "main",
+        "rev": "378ed41d278a352364faa291ccc940f55987ac56",
+        "revCount": 2,
+        "type": "git",
+        "url": "ssh://git@github.com/cidem/operatormono"
       },
       "original": {
-        "path": "/home/tifa/OperatorMono",
-        "type": "path"
+        "ref": "main",
+        "type": "git",
+        "url": "ssh://git@github.com/cidem/operatormono"
       }
     },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "hwConfig": "hwConfig",
         "indent-blankline": "indent-blankline",
         "lspfuzzy": "lspfuzzy",
         "lucid-fish": "lucid-fish",
@@ -236,11 +228,11 @@
     },
     "unstable": {
       "locked": {
-        "lastModified": 1620995888,
-        "narHash": "sha256-B4Q3c6IvTLg3Q92qYa8y+i4uTaphtFdjp+Ir3QQjdN0=",
+        "lastModified": 1621084586,
+        "narHash": "sha256-raHuJ7ohDLDPqohJzZxhaER7sSh4/1xR6YcUYMj3c3E=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "94b2848559b12a8ed1fe433084686b2a81123c99",
+        "rev": "e83b3f3394834c41c0d25017f6808d65c3d6f880",
         "type": "github"
       },
       "original": {

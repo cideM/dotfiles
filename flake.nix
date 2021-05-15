@@ -26,18 +26,13 @@
     nixpkgs.follows = "unstable";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
-    hwConfig = {
-      url = "/etc/nixos/hardware-configuration.nix";
-      flake = false;
-    };
-
     scripts = {
       url = "git+ssh://git@github.com/cidem/scripts?ref=main";
       flake = false;
     };
 
     operatorMono = {
-      url = "/home/tifa/OperatorMono";
+      url = "git+ssh://git@github.com/cidem/operatormono?ref=main";
       flake = false;
     };
 
@@ -49,7 +44,6 @@
     , unstable
     , home-manager
     , operatorMono
-    , hwConfig
     , nixpkgs
     , scripts
     , indent-blankline
@@ -80,7 +74,7 @@
           ];
 
           specialArgs = {
-            inherit hwConfig operatorMono neovim-nightly-overlay scripts lspfuzzy sad yui lucid-fish indent-blankline;
+            inherit operatorMono neovim-nightly-overlay scripts lspfuzzy sad yui lucid-fish indent-blankline;
           };
 
           modules = [
