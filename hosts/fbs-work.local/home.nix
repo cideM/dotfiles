@@ -27,8 +27,17 @@
     set -x FISH_NOTES_DIR ~/.local/share/fish_notes
     set -x FISH_WORK_NOTES ~/.local/share/work_notes
 
-    contains ${pkgs.coreutils}/bin $PATH
-    or set -x PATH ${pkgs.coreutils}/bin $PATH/
+    if test "$PATH[1]" != "/bin"
+       set -p PATH /bin $PATH
+    end
+
+    contains /opt/local/bin $PATH
+    or set -x PATH /opt/local/bin $PATH
+
+    contains /opt/local/sbin $PATH
+    or set -x PATH /opt/local/sbin $PATH
+
+    set -x MANPATH /opt/local/share/man $MANPATH
   '';
 
   home.packages = with pkgs; [
@@ -55,6 +64,10 @@
 
   xdg.configFile."nix/nix.conf".text = ''
     experimental-features = nix-command flakes
+  '';
+
+  home.file.".gitignore".text = ''
+    .direnv/
   '';
 
   # Can't use programs.git because https://github.com/NixOS/nixpkgs/issues/62353
@@ -88,6 +101,7 @@
 
     [core]
         editor = nvim
+        excludesfile = ~/.gitignore
         pager = delta
 
     [interactive]

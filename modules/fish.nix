@@ -128,6 +128,7 @@ in
           git ch (git b -a --sort=-committerdate | 
             fzf --preview 'git log (echo {} | sed -E -e \'s/^(\+|\*)//\' | string trim) -- ' | 
             sed -E -e 's/^(\+|\*)//' | 
+            sed 's/remotes\/origin\///' | 
             string trim)
         '';
       };
