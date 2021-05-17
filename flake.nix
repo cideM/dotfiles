@@ -73,9 +73,12 @@
       };
 
       homeConfigurations = {
-        work-mbp = home-manager.lib.homeManagerConfiguration {
+        work-mbp = home-manager.lib.homeManagerConfiguration rec {
           system = "x86_64-darwin";
           extraSpecialArgs = specialArgs;
+          pkgs = import unstable {
+            inherit system;
+          };
           homeDirectory = "/Users/fbs";
           username = "fbs";
           configuration = { pkgs, config, ... }:
