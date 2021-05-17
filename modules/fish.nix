@@ -104,6 +104,14 @@ in
           '';
       };
 
+      gi = {
+          description = "Pick commit for interactive rebase";
+          body = ''
+              set -l commit (git log --pretty=oneline | fzf --preview 'git show (echo {} | awk \'{ print $1 }\')' | awk '{ print $1 }')
+              git rebase $commit~1 --interactive --autosquash
+          '';
+      };
+
       gf = {
           description = "Fixup a commit then autosquash";
           body = ''
