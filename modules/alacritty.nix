@@ -442,7 +442,7 @@ let
     };
     glyph_offset = {
       x = 0;
-      y = 0;
+      y = 1;
     };
     italic = {
       family = "Operator Mono SSm";
@@ -454,7 +454,7 @@ let
     };
     offset = {
       x = 0;
-      y = 0;
+      y = 2;
     };
     size = cfg.fontSize;
     use_thin_strokes = pkgs.stdenv.isDarwin;

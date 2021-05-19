@@ -59,7 +59,7 @@
     light = true;
     font = "mono";
     enable = true;
-    fontSize = 12;
+    fontSize = 13;
   };
 
   xdg.configFile."nix/nix.conf".text = ''
@@ -109,10 +109,9 @@
 
     [delta]
         navigate = true
-        side-by-side = true
+        side-by-side = false
         syntax-theme = "GitHub"
         line-numbers = true
-        hunk-header-style = omit
 
     [filter "lfs"]
         clean = git-lfs clean -- %f

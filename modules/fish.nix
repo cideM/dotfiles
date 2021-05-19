@@ -68,7 +68,7 @@ let
 
     abbr -a kubedebug 'kubectl run -i --tty --rm debug --image=radial/busyboxplus:curl --restart=Never -- sh'
     abbr -a g 'git'
-    abbr -a dc 'docker-compose'
+    abbr -a dc 'docker compose'
     abbr -a gap 'git add --patch'
     abbr -a tf 'terraform'
     abbr -a wn 'FISH_NOTES_DIR=$FISH_WORK_NOTES n'
