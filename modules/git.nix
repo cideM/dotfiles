@@ -29,9 +29,10 @@
       a = "add";
       co = "commit";
       ch = "checkout";
+      ds = "diff --staged";
       b = "branch";
       cb = "rev-parse --abbrev-ref HEAD";
-      d = "diff";
+      dd = "diff";
       pl = "pull";
       ps = "push";
     };

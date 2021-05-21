@@ -82,7 +82,8 @@
         ch = checkout
         b = branch
         cb = rev-parse --abbrev-ref HEAD
-        d = diff
+        dd = diff
+        ds = diff --staged
         pl = pull
         ps = push
 

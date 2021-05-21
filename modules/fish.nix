@@ -108,7 +108,9 @@ in
           description = "Pick commit for interactive rebase";
           body = ''
               set -l commit (git log --pretty=oneline | fzf --preview 'git show (echo {} | awk \'{ print $1 }\')' | awk '{ print $1 }')
-              git rebase $commit~1 --interactive --autosquash
+              if test -n "$commit"
+                git rebase $commit~1 --interactive --autosquash
+              end
           '';
       };
 
@@ -116,17 +118,21 @@ in
           description = "Fixup a commit then autosquash";
           body = ''
               set -l commit (git log --pretty=oneline | fzf --preview 'git show (echo {} | awk \'{ print $1 }\')' | awk '{ print $1 }')
-              git commit --fixup $commit
-              GIT_SEQUENCE_EDITOR=true git rebase $commit~1 --interactive --autosquash
+              if test -n "$commit"
+                git commit --fixup $commit
+                GIT_SEQUENCE_EDITOR=true git rebase $commit~1 --interactive --autosquash
+              end
           '';
       };
 
       gu = {
           description = "Update master and rebase current branch onto master";
           body = ''
-              set -l default (git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
-              git fetch origin $default:$default
-              git rebase $default
+              set -l default (git symbolic-ref refs/remotes/origin/HEAD | xargs basename)
+              if test -n "$default"
+                git fetch origin $default:$default
+                git rebase $default
+              end
           '';
       };
 
@@ -136,7 +142,7 @@ in
           git ch (git b -a --sort=-committerdate | 
             fzf --preview 'git log (echo {} | sed -E -e \'s/^(\+|\*)//\' | string trim) -- ' | 
             sed -E -e 's/^(\+|\*)//' | 
-            sed 's/remotes\/origin\///' | 
+            xargs basename | 
             string trim)
         '';
       };
