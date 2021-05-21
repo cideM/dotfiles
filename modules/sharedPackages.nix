@@ -40,7 +40,6 @@ with pkgs;
     luajitPackages.luacheck
     ncdu
     kubectl
-    zathura
     nerdfonts
     niv
     nixpkgs-fmt

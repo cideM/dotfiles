@@ -27,6 +27,7 @@
     spotify
     zotero
     jetbrains.webstorm
+    zathura
     android-studio
     jetbrains.goland
     skype

@@ -383,7 +383,7 @@ in
 
         " ======= VIMTEX ====================
         let g:tex_flavor = 'latex'
-        let g:vimtex_view_method = 'zathura'
+        ${if pkgs.stdenv.isDarwin then "" else "let g:vimtex_view_method = 'zathura'"}
 
         " ======= lsp =======================
         packadd nvim-lspconfig
@@ -426,7 +426,9 @@ in
         -- https://github.com/neovim/neovim/issues/13829
         -- nvim_lsp.purescriptls.setup{}
         nvim_lsp.gopls.setup{on_attach=on_attach}
-        nvim_lsp.hls.setup{on_attach=on_attach}
+        -- It crashes way too often or can't handle invalid syntax and then
+        -- never restarts unless I manually restart it
+        -- nvim_lsp.hls.setup{on_attach=on_attach}
         nvim_lsp.dhall_lsp_server.setup{}
 
         require('lspfuzzy').setup {}
