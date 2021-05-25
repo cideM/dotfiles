@@ -12,7 +12,7 @@ let
   }.${system};
 
   sha = {
-    x86_64-linux = "sha256:1yhvf4sis5cd03dd0dvcfyyfhindscfmjr4dyznhkj70mchybaq0";
+    x86_64-linux = "sha256:1bqyg0996aqbih6f93qqphgfs8lg334hlr2byydz1x7fgyvjsnch";
     x86_64-darwin = "sha256:11rnr41200sbi4rzsxlc0l5fdr0fvpqmz0sfkh8ap1r18g7i89ym";
   }.${system};
 

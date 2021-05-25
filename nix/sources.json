@@ -8,7 +8,7 @@
     "clj-deps": {
         "branch": "live",
         "repo": "https://git@github.com/practicalli/clojure-deps-edn.git",
-        "rev": "da77704ea02927eae65436fbcaa78b9b4be33307",
+        "rev": "9641afcdc8135e304299257a816d09b7cdf83197",
         "type": "git"
     },
     "fish-journal": {
@@ -44,7 +44,7 @@
     "lucid-fish-prompt": {
         "branch": "master",
         "repo": "https://github.com/mattgreen/lucid.fish.git",
-        "rev": "8f50acbe91a9b6228b4a14b2f24d00cb4c5ed22e",
+        "rev": "c9aa46c1b59d40be49c37d92632baa1ea7093e9d",
         "type": "git"
     },
     "lucid-fork": {
@@ -83,10 +83,10 @@
         "homepage": "",
         "owner": "nvim-treesitter",
         "repo": "nvim-treesitter",
-        "rev": "efbb1c66d27eb5b4bfbcc1f59d3384e0641c8214",
-        "sha256": "1sfc7890v4lgc7r4a5k922qbnc1lpjp3i8sj1jqqxd4a73x1nsvm",
+        "rev": "db7f10370d3815988f933de2b4e2e7e17b2754b2",
+        "sha256": "08iikpalazb071hjqlp3wg22s7jn68v2cdanjw9cmh4wp2ba1s4s",
         "type": "tarball",
-        "url": "https://github.com/nvim-treesitter/nvim-treesitter/archive/efbb1c66d27eb5b4bfbcc1f59d3384e0641c8214.tar.gz",
+        "url": "https://github.com/nvim-treesitter/nvim-treesitter/archive/db7f10370d3815988f933de2b4e2e7e17b2754b2.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "onehalf": {
@@ -176,7 +176,7 @@
     "yui": {
         "branch": "master",
         "repo": "https://git@github.com/cidem/yui",
-        "rev": "ebd0aa08617b395fecb8d7c6c4d8ede5509b30c2",
+        "rev": "85e5f07e8f7720a33273edcb48968a23bb59f765",
         "type": "git"
     }
 }

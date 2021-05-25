@@ -11,7 +11,7 @@
     (import ../../modules/sharedPackages.nix)
     (import ../../modules/sharedSettings.nix)
     (import ../../modules/sources.nix)
-    (import ../../modules/vscode.nix)
+    # (import ../../modules/vscode.nix)
   ];
 
   sources = import ../../nix/sources.nix;
