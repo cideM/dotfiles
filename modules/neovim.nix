@@ -220,7 +220,12 @@ in
       go = ''
         setl formatprg=gofmt makeprg=go\ build\ -o\ /dev/null
         nnoremap <buffer> <localleader>m :make %<cr>
-        nnoremap <buffer> <localleader>i :%!goimports<cr>
+        function! GoImports()
+            let saved = winsaveview()
+            %!goimports
+            call winrestview(saved)
+        endfunction
+        nnoremap <buffer> <localleader>i :call GoImports()<cr>
         nnoremap <buffer> <localleader>t :execute ':silent !for f in ./{cmd, internal, pkg}; if test -d $f; ctags -R $f; end; end'<CR>
       '';
       haskell = ''
