@@ -350,12 +350,6 @@ let
       sha256 = "1xjspcmx5p9x8yq1hzjdkq3acq52nilpd9bm069nsvrzzdh0n891";
     }
     {
-      name = "vsliveshare";
-      publisher = "ms-vsliveshare";
-      version = "1.0.4272";
-      sha256 = "0dhs9lkprz2q79kpkj2d22d09lvhl77n38vj0rsz80g9vj41jzwh";
-    }
-    {
       name = "vsliveshare-audio";
       publisher = "ms-vsliveshare";
       version = "0.1.91";

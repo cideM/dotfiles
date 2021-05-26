@@ -189,7 +189,6 @@
         "operatorMono": "operatorMono",
         "sad": "sad",
         "scripts": "scripts",
-        "spacevimtheme": "spacevimtheme",
         "unstable": "unstable",
         "yui": "yui"
       }
@@ -227,29 +226,13 @@
         "url": "ssh://git@github.com/cidem/scripts"
       }
     },
-    "spacevimtheme": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1568794731,
-        "narHash": "sha256-g/xcq6oxqUwflJSntYmFv54yZktCSt4SVRVhXHpKYNs=",
-        "owner": "liuchengxu",
-        "repo": "space-vim-theme",
-        "rev": "4790dbba31f678f75af4f4c7a1465008542bd979",
-        "type": "github"
-      },
-      "original": {
-        "owner": "liuchengxu",
-        "repo": "space-vim-theme",
-        "type": "github"
-      }
-    },
     "unstable": {
       "locked": {
-        "lastModified": 1621694732,
-        "narHash": "sha256-ymuWhmNIFAr1CTS0PTiB4JCOk8ir/upQMftUIVEq1ow=",
+        "lastModified": 1621714816,
+        "narHash": "sha256-u6Rhw+1uwaTXThZWuySv9JPXzNuKI9Fmj36g4kb2Ojc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "dcd5d9a8e5c57156c4ad324c89a026211cbb741b",
+        "rev": "278bcdce1f0da616661a6205161b13bd89a2f3bf",
         "type": "github"
       },
       "original": {

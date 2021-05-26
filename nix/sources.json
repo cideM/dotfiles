@@ -83,10 +83,10 @@
         "homepage": "",
         "owner": "nvim-treesitter",
         "repo": "nvim-treesitter",
-        "rev": "db7f10370d3815988f933de2b4e2e7e17b2754b2",
-        "sha256": "08iikpalazb071hjqlp3wg22s7jn68v2cdanjw9cmh4wp2ba1s4s",
+        "rev": "6c2ff319b311fed0160875b878811431399889cf",
+        "sha256": "0vl782k8p5l2gm3y247a70ksrdn863gsv1z47frfnpq30ayxz0mx",
         "type": "tarball",
-        "url": "https://github.com/nvim-treesitter/nvim-treesitter/archive/db7f10370d3815988f933de2b4e2e7e17b2754b2.tar.gz",
+        "url": "https://github.com/nvim-treesitter/nvim-treesitter/archive/6c2ff319b311fed0160875b878811431399889cf.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "onehalf": {
@@ -117,12 +117,6 @@
         "branch": "master",
         "repo": "https://git@github.com/hauleth/sad.vim.git",
         "rev": "2f5b33b239a566ffedaa81cee3051bb613482d1e",
-        "type": "git"
-    },
-    "spacevim": {
-        "branch": "master",
-        "repo": "https://git@github.com/liuchengxu/space-vim-theme.git",
-        "rev": "4790dbba31f678f75af4f4c7a1465008542bd979",
         "type": "git"
     },
     "vim-colors-github": {
