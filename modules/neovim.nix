@@ -51,7 +51,7 @@ let
     src = "${builtins.fetchGit {
       "url" = "https://github.com/cstrahan/tree-sitter-nix";
       "ref" = "master";
-      "rev" = "d5287aac195ab06da4fe64ccf93a76ce7c918445";
+      "rev" = "50f38ceab667f9d482640edfee803d74f4edeba5";
       }}/src";
   };
 
@@ -71,7 +71,7 @@ let
     src = "${builtins.fetchGit {
       "ref" = "master";
       "url" = "https://git@github.com/ikatyang/tree-sitter-yaml";
-      "rev" = "6129a83eeec7d6070b1c0567ec7ce3509ead607c";
+      "rev" = "0e36bed171768908f331ff7dff9d956bae016efb";
       }}/src";
   };
 
@@ -81,7 +81,7 @@ let
     src = "${builtins.fetchGit {
       "url" = "https://git@github.com/tree-sitter/tree-sitter-go.git";
       "ref" = "master";
-      "rev" = "2a2fbf271ad6b864202f97101a2809009957535e";
+      "rev" = "eb306e6e60f393df346cfc8cbfaf52667a37128a";
       }}/src";
   };
 
@@ -96,7 +96,7 @@ let
     src = "${builtins.fetchGit {
       "ref" = "master";
       "url" = "https://github.com/tree-sitter/tree-sitter-haskell";
-      "rev" = "2e33ffa3313830faa325fe25ebc3769896b3a68b";
+      "rev" = "004f2709c460d95fbfd1061f8efc98f36e33c03c";
       }}/src";
   };
 
@@ -116,7 +116,7 @@ let
     src = "${builtins.fetchGit {
       "url" = "https://github.com/tree-sitter/tree-sitter-javascript";
       "ref" = "master";
-      "rev" = "a263a8f53266f8f0e47e21598e488f0ef365a085";
+      "rev" = "6c8cfae935f67dd9e3a33982e5e06be0ece6399a";
       }}/src";
   };
 
@@ -126,7 +126,7 @@ let
     src = "${builtins.fetchGit {
       "ref" = "master";
       "url" = "https://git@github.com/tree-sitter/tree-sitter-typescript";
-      "rev" = "d0c785782a4384034d4a6460b908141a88ad7229";
+      "rev" = "28e757a2f498486931b3cb13a100a1bcc9261456";
       }}/typescript/src";
   };
 
@@ -136,7 +136,7 @@ let
     src = "${builtins.fetchGit {
       "ref" = "master";
       "url" = "https://git@github.com/tree-sitter/tree-sitter-typescript";
-      "rev" = "d0c785782a4384034d4a6460b908141a88ad7229";
+      "rev" = "28e757a2f498486931b3cb13a100a1bcc9261456";
     }}/tsx/src";
   };
   cfg = config.programs.neovim;
@@ -392,6 +392,7 @@ in
 
         " ======= lsp =======================
         packadd nvim-lspconfig
+        packadd nvim-treesitter
         lua <<EOF
         vim.api.nvim_set_keymap('n', '<leader>ls', "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", { noremap=true, silent=true })
         vim.api.nvim_set_keymap('n', '<leader>d', "<cmd>lua vim.lsp.buf.document_symbol()<cr>", { noremap=true, silent=true })
@@ -437,6 +438,24 @@ in
         nvim_lsp.dhall_lsp_server.setup{}
 
         require('lspfuzzy').setup {}
+
+        require'nvim-treesitter.configs'.setup {
+          ensure_installed = {},
+          highlight = {
+            enable = true,
+          },
+          incremental_selection = {
+            enable = true,
+            keymaps = {
+              init_selection = "<C-n>",
+              node_incremental = "<C-w>",
+              node_decremental = "<A-w>",
+            },
+          },
+          indent = {
+            enable = false,
+          }
+        }
         EOF
       '';
 
@@ -478,6 +497,23 @@ in
         vim-jsx-pretty
         vim-nix
         vim-terraform
+
+        # Treesitter
+        grammarClojure
+        grammarNix
+        grammarJavascript
+        grammarPython
+        grammarHaskell
+        grammarJson
+        grammarGo
+        grammarYaml
+        grammarTs
+        grammarTsx
+        {
+          plugin = nvim-treesitter;
+          optional = true;
+        }
+
       ];
     };
   };
