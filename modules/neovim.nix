@@ -2,6 +2,7 @@ args@{ config
 , lib
 , pkgs
 , lspfuzzy
+, material
 , indent-blankline
 , sad
 , yui
@@ -439,6 +440,7 @@ in
 
         require('lspfuzzy').setup {}
 
+        -- Treesitter
         require'nvim-treesitter.configs'.setup {
           ensure_installed = {},
           highlight = {
@@ -456,15 +458,27 @@ in
             enable = false,
           }
         }
+
+        -- Material theme (this overrides the previously set color scheme)
+        vim.g.material_style = 'lighter'
+        vim.g.material_italic_comments = true
+        vim.g.material_italic_keywords = true
+        vim.g.material_italic_functions = true
+        vim.g.material_italic_variables = false
+        vim.g.material_contrast = true
+        vim.g.material_borders = true
+        -- require('material').set()
         EOF
       '';
 
       plugins = with pkgs.vimPlugins; [
+        # LSP
         { plugin = nvim-lspconfig; optional = true; }
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "lspfuzzy"; src = lspfuzzy; })
-        { plugin = (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "parinfer-rust"; src = sources."parinfer"; }); optional = true; }
-        { plugin = conjure; optional = true; }
+
+        # Git
         vim-fugitive
+
         vim-unimpaired
         vimtex
         vim-repeat
@@ -485,11 +499,20 @@ in
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "visual-split.vim"; src = sources."visual-split.vim"; })
         vim-peekaboo
 
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "yui"; src = yui; })
+        # Themes
         iceberg-vim
+        edge
+        one-nvim
+        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "material"; src = material; })
+        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "yui"; src = yui; })
 
-        dhall-vim
+        # Language stuff
+        { plugin = (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "parinfer-rust"; src = sources."parinfer"; }); optional = true; }
+        { plugin = conjure; optional = true; }
+
+        # Syntax
         haskell-vim
+        dhall-vim
         Jenkinsfile-vim-syntax
         purescript-vim
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "vim-js"; src = sources."vim-js"; })

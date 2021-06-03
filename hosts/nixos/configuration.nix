@@ -63,6 +63,7 @@ in
 
   nix = {
     package = pkgs.nixUnstable;
+    sandboxPaths = [ "/bin/sh=${pkgs.bash}/bin/sh" ];
     trustedUsers = [ "root" "tifa" ];
     extraOptions = ''
       experimental-features = nix-command flakes

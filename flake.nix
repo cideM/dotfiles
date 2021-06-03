@@ -13,6 +13,9 @@
     lspfuzzy.url = "github:ojroques/nvim-lspfuzzy";
     lspfuzzy.flake = false;
 
+    material.url = "github:marko-cerovac/material.nvim";
+    material.flake = false;
+
     indent-blankline.url = "github:lukas-reineke/indent-blankline.nvim/lua";
     indent-blankline.flake = false;
 
@@ -48,6 +51,7 @@
     , scripts
     , indent-blankline
     , lspfuzzy
+    , material
     , sad
     , yui
     , lucid-fish
@@ -69,7 +73,7 @@
       ];
 
       specialArgs = {
-        inherit operatorMono neovim-nightly-overlay scripts lspfuzzy sad yui lucid-fish indent-blankline;
+        inherit operatorMono neovim-nightly-overlay scripts lspfuzzy material sad yui lucid-fish indent-blankline;
       };
 
       homeConfigurations = {

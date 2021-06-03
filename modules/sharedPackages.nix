@@ -4,7 +4,7 @@ with pkgs;
 
 {
   home.packages = [
-    #awscli2
+    awscli2
     bashInteractive_5
     bat
     cachix
