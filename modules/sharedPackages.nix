@@ -40,13 +40,9 @@ with pkgs;
     luajitPackages.luacheck
     ncdu
     kubectl
-    nerdfonts
     niv
     nixpkgs-fmt
     nixpkgs-review
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
     pandoc
     qmk
     ranger
