@@ -13,6 +13,8 @@
     lspfuzzy.url = "github:ojroques/nvim-lspfuzzy";
     lspfuzzy.flake = false;
 
+    direnv.url = "github:nix-community/nix-direnv";
+
     material.url = "github:marko-cerovac/material.nvim";
     material.flake = false;
 
@@ -46,6 +48,7 @@
     , neovim-nightly-overlay
     , unstable
     , home-manager
+    , direnv
     , operatorMono
     , nixpkgs
     , scripts
@@ -89,7 +92,14 @@
             {
               imports = [
                 {
-                  nixpkgs.overlays = overlays;
+                  nixpkgs.overlays = overlays ++ [
+                    # TL;DR: Can't have flake.nix not in Git but if you don't
+                    # want to impose Nix on colleagues you can put flake.nix in
+                    # other folder where it is tracked by Git and then you need
+                    # a very recent nix-direnv PR which will let you do use
+                    # flake ~/foo#bar and so that's why I'm overriding it here.
+                    (self: super: { nix-direnv = direnv.defaultPackage.${system}; })
+                  ];
                   nixpkgs.config = {
                     allowUnfree = true;
                   };
@@ -108,7 +118,9 @@
             ./hosts/nixos/configuration.nix
             home-manager.nixosModules.home-manager
             {
-              nixpkgs.overlays = overlays;
+              nixpkgs.overlays = overlays ++ [
+                (self: super: { nix-direnv = direnv.defaultPackage.${system}; })
+              ];
               nixpkgs.config = {
                 allowUnfree = true;
               };

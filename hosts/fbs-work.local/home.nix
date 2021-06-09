@@ -12,7 +12,7 @@
     (import ../../modules/sources.nix)
     (import ../../modules/sharedPackages.nix)
     (import ../../modules/sharedSettings.nix)
-    (import ../../modules/vscode.nix)
+    # (import ../../modules/vscode.nix)
   ];
 
   sources = import ../../nix/sources.nix;
@@ -64,6 +64,8 @@
 
   xdg.configFile."nix/nix.conf".text = ''
     experimental-features = nix-command flakes
+    keep-derivations = true
+    keep-outputs = true
   '';
 
   home.file.".gitignore".text = ''

@@ -34,6 +34,10 @@
     skype
     sublime-merge
 
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+
     source-han-sans-japanese
     source-han-serif-japanese
     firefox-devedition-bin
