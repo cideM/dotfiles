@@ -12,7 +12,7 @@
     (import ../../modules/sources.nix)
     (import ../../modules/sharedPackages.nix)
     (import ../../modules/sharedSettings.nix)
-    (import ../../modules/vscode.nix)
+    (import ../../modules/vscode/default.nix)
   ];
 
   sources = import ../../nix/sources.nix;
