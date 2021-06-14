@@ -24,6 +24,7 @@
     discord
     kazam
     okular
+    google-chrome-dev
     insomnia
     spotify
     zotero

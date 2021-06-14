@@ -164,7 +164,7 @@ in
         setl makeprg=cargo\ check
       '';
       purescript = ''
-        setl formatprg=purty\ format
+        setl formatprg=purty\ format\ -
         nnoremap <buffer> <localleader>t :!spago\ docs\ --format\ ctags
       '';
       json = ''
