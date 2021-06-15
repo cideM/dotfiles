@@ -68,7 +68,7 @@ let
 
     abbr -a kubedebug 'kubectl run -i --tty --rm debug --image=radial/busyboxplus:curl --restart=Never -- sh'
     abbr -a g 'git'
-    abbr -a dc 'docker compose'
+    abbr -a dc ${if pkgs.stdenv.isDarwin then "'docker compose'" else "'docker-compose'"}
     abbr -a gap 'git add --patch'
     abbr -a tf 'terraform'
     abbr -a wn 'FISH_NOTES_DIR=$FISH_WORK_NOTES n'
@@ -92,48 +92,48 @@ in
 
     functions = {
       gocheck = {
-          description = "Recompile on change";
-          body = ''
-              set exist
-              for dir in "cmd" "internal" "pkg"
-                if test -d $dir
-                    set -a exist ./$dir/...
-                end
-              end
-              ${pkgs.fd}/bin/fd -e go | ${pkgs.entr}/bin/entr -sc "go build $exist"
-          '';
+        description = "Recompile on change";
+        body = ''
+          set exist
+          for dir in "cmd" "internal" "pkg"
+            if test -d $dir
+                set -a exist ./$dir/...
+            end
+          end
+          ${pkgs.fd}/bin/fd -e go | ${pkgs.entr}/bin/entr -sc "go build $exist"
+        '';
       };
 
       gi = {
-          description = "Pick commit for interactive rebase";
-          body = ''
-              set -l commit (git log --pretty=oneline | fzf --preview 'git show (echo {} | awk \'{ print $1 }\')' | awk '{ print $1 }')
-              if test -n "$commit"
-                git rebase $commit~1 --interactive --autosquash
-              end
-          '';
+        description = "Pick commit for interactive rebase";
+        body = ''
+          set -l commit (git log --pretty=oneline | fzf --preview 'git show (echo {} | awk \'{ print $1 }\')' | awk '{ print $1 }')
+          if test -n "$commit"
+            git rebase $commit~1 --interactive --autosquash
+          end
+        '';
       };
 
       gf = {
-          description = "Fixup a commit then autosquash";
-          body = ''
-              set -l commit (git log --pretty=oneline | fzf --preview 'git show (echo {} | awk \'{ print $1 }\')' | awk '{ print $1 }')
-              if test -n "$commit"
-                git commit --fixup $commit
-                GIT_SEQUENCE_EDITOR=true git rebase $commit~1 --interactive --autosquash
-              end
-          '';
+        description = "Fixup a commit then autosquash";
+        body = ''
+          set -l commit (git log --pretty=oneline | fzf --preview 'git show (echo {} | awk \'{ print $1 }\')' | awk '{ print $1 }')
+          if test -n "$commit"
+            git commit --fixup $commit
+            GIT_SEQUENCE_EDITOR=true git rebase $commit~1 --interactive --autosquash
+          end
+        '';
       };
 
       gu = {
-          description = "Update master and rebase current branch onto master";
-          body = ''
-              set -l default (git symbolic-ref refs/remotes/origin/HEAD | xargs basename)
-              if test -n "$default"
-                git fetch origin $default:$default
-                git rebase $default
-              end
-          '';
+        description = "Update master and rebase current branch onto master";
+        body = ''
+          set -l default (git symbolic-ref refs/remotes/origin/HEAD | xargs basename)
+          if test -n "$default"
+            git fetch origin $default:$default
+            git rebase $default
+          end
+        '';
       };
 
       gc = {
