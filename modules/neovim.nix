@@ -482,6 +482,7 @@ in
         vim-unimpaired
         vimtex
         vim-repeat
+        vim-eunuch
         vim-commentary
         editorconfig-vim
         vim-easy-align
