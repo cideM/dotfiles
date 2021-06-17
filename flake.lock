@@ -68,6 +68,22 @@
         "type": "github"
       }
     },
+    "lightspeed": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1623845546,
+        "narHash": "sha256-KIaKdThTkj0vyUSw3lmYETbHHuSCDH7i1ZnvvSsXsEg=",
+        "owner": "ggandor",
+        "repo": "lightspeed.nvim",
+        "rev": "4ae57230ae53ec93fd7603d63cc47e6f75cb2934",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ggandor",
+        "repo": "lightspeed.nvim",
+        "type": "github"
+      }
+    },
     "lspfuzzy": {
       "flake": false,
       "locked": {
@@ -196,6 +212,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "indent-blankline": "indent-blankline",
+        "lightspeed": "lightspeed",
         "lspfuzzy": "lspfuzzy",
         "lucid-fish": "lucid-fish",
         "material": "material",

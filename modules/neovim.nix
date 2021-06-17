@@ -2,6 +2,7 @@ args@{ config
 , lib
 , pkgs
 , lspfuzzy
+, lightspeed
 , material
 , indent-blankline
 , sad
@@ -352,13 +353,13 @@ in
         nnoremap <leader>g :GrepperRg 
 
         " ======= sneak =====================
-        let g:sneak#label      = 1
-        let g:sneak#use_ic_scs = 1
-        let g:sneak#s_next = 1
-        map f <Plug>Sneak_f
-        map F <Plug>Sneak_F
-        map t <Plug>Sneak_t
-        map T <Plug>Sneak_T
+        " let g:sneak#label      = 1
+        " let g:sneak#use_ic_scs = 1
+        " let g:sneak#s_next = 1
+        " map f <Plug>Sneak_f
+        " map F <Plug>Sneak_F
+        " map t <Plug>Sneak_t
+        " map T <Plug>Sneak_T
 
         nmap     <leader>F :call FormatBuffer()<cr>
         nnoremap <leader>R :set operatorfunc=ReflowComment<cr>g@
@@ -468,6 +469,16 @@ in
         vim.g.material_contrast = true
         vim.g.material_borders = true
         -- require('material').set()
+
+        require'lightspeed'.setup {
+           jump_to_first_match = true,
+           jump_on_partial_input_safety_timeout = 400,
+           highlight_unique_chars = false,
+           grey_out_search_area = true,
+           match_only_the_start_of_same_char_seqs = true,
+           limit_ft_matches = 5,
+           full_inclusive_prefix_key = '<c-x>',
+        }
         EOF
       '';
 
@@ -494,7 +505,7 @@ in
         fzf-vim
         vim-gutentags
         vim-sandwich
-        vim-sneak
+        # vim-sneak
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "sad"; src = sad; })
         unicode-vim
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "visual-split.vim"; src = sources."visual-split.vim"; })
@@ -505,6 +516,7 @@ in
         edge
         one-nvim
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "material"; src = material; })
+        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "lightspeed"; src = lightspeed; })
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "yui"; src = yui; })
 
         # Language stuff

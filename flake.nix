@@ -10,6 +10,9 @@
     lucid-fish.url = "github:mattgreen/lucid.fish";
     lucid-fish.flake = false;
 
+    lightspeed.url = "github:ggandor/lightspeed.nvim";
+    lightspeed.flake = false;
+
     lspfuzzy.url = "github:ojroques/nvim-lspfuzzy";
     lspfuzzy.flake = false;
 
@@ -55,6 +58,7 @@
     , sad
     , yui
     , lucid-fish
+    , lightspeed
     }:
     let
       overlays = [
@@ -73,7 +77,7 @@
       ];
 
       specialArgs = {
-        inherit operatorMono neovim-nightly-overlay scripts lspfuzzy material sad yui lucid-fish indent-blankline;
+        inherit operatorMono neovim-nightly-overlay scripts lspfuzzy material sad yui lucid-fish lightspeed indent-blankline;
       };
 
       homeConfigurations = {
