@@ -13,6 +13,7 @@ with pkgs;
     curl
     dash
     delta
+    git-lfs
     docker-compose
     du-dust
     emacs
