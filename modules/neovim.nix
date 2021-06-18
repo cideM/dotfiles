@@ -520,6 +520,7 @@ in
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "yui"; src = yui; })
 
         # Language stuff
+        vim-markdown-toc
         { plugin = (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "parinfer-rust"; src = sources."parinfer"; }); optional = true; }
         { plugin = conjure; optional = true; }
 

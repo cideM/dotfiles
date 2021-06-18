@@ -64,6 +64,17 @@
       overlays = [
         neovim-nightly-overlay.overlay
         (self: super: {
+          nix-direnv = super.nix-direnv.overrideAttrs (old: rec {
+            version = "ccc2e4c5db2869184a7181109cee0d42cd62120f";
+            src = super.fetchFromGitHub {
+              owner = "nix-community";
+              repo = "nix-direnv";
+              rev = version;
+              sha256 = "1kc0x9m53gvkcg2x0sg8ydw1r3k7ppisrr0bsvlvbrff81jr4kwn";
+            };
+          });
+        })
+        (self: super: {
           kubectl = super.kubectl.overrideAttrs (old: rec {
             name = "kubectl-${version}";
 

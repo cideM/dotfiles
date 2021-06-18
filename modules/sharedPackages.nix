@@ -31,7 +31,6 @@ with pkgs;
     gzip
     hack-font
     htop
-    iosevka
     jetbrains-mono
     jq
     k9s
@@ -65,7 +64,15 @@ with pkgs;
     tree
     universal-ctags
     vim
-    weechat
+    # Darwin
+    # builder for '/nix/store/0va6zhfzh6x2didrlijivh5xkw7zws0i-weechat-3.2.drv' failed with exit code 2; last 10 log lines:
+    # /tmp/nix-build-weechat-3.2.drv-0/weechat-3.2/src/core/wee-dir.c:648:24: error: implicit declaration of function 'mkdtemp' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+    #   ptr_weechat_home = mkdtemp (temp_home_template);
+    #                      ^
+    # /tmp/nix-build-weechat-3.2.drv-0/weechat-3.2/src/core/wee-dir.c:648:22: warning: incompatible integer to pointer conversion assigning to 'char *' from 'int' [-Wint-conversion]
+    #   ptr_weechat_home = mkdtemp (temp_home_template);
+    #                    ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # weechat
     wget
     yamllint
   ];
