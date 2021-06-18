@@ -282,12 +282,28 @@ in
           return sl
         endfunction
 
-        set background=light foldmethod=indent expandtab tabstop=2 shiftwidth=2 colorcolumn=100
-        set timeoutlen=500 formatoptions=tcrqjn hidden number ignorecase smartcase
+        set background=light
+        set foldmethod=indent
+        set expandtab
+        set tabstop=2
+        set shiftwidth=2
+        set colorcolumn=100
+        set timeoutlen=500
+        set formatoptions=tcrqjn
+        set hidden
+        set number
+        set ignorecase
+        set smartcase
         set wildignore+=*.git/*,nix/sources.nix,*.min.*
           \,*.map,*.idea,*build/*,.direnv/*,*dist/*,*compiled/*,*tmp/*
-        set inccommand=split splitbelow splitright foldlevelstart=99 undofile
-        set termguicolors grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+        set inccommand=split
+        set splitbelow
+        set splitright
+        set foldlevelstart=99
+        set undofile
+        set termguicolors
+        set grepprg=rg\ --vimgrep\ --smart-case\ --hidden
+        set grepformat=%f:%l:%c:%m
         set completeopt=menuone,noselect,noinsert
         set path-=/usr/include list lcs=trail:¬,tab:\ \ 
         set statusline+=\ %f\ %m%=%{%LspStatus()%}%y\ %q\ %3l:%2c\ \|%3p%%\ 
@@ -344,13 +360,6 @@ in
         nnoremap <C-m> :Marks<cr>
         nnoremap <C-b> :Buffers<cr>
         nnoremap <leader>fw :Windows<cr>
-
-        " ======= grepper ===================
-        let g:grepper = {}
-        let g:grepper.tools = ['rg', 'git']
-        nmap gs  <plug>(GrepperOperator)
-        xmap gs  <plug>(GrepperOperator)
-        nnoremap <leader>g :GrepperRg 
 
         " ======= sneak =====================
         " let g:sneak#label      = 1
@@ -497,7 +506,6 @@ in
         vim-commentary
         editorconfig-vim
         vim-easy-align
-        vim-grepper
         vim-indent-object
         QFEnter
         vim-dirvish
