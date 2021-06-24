@@ -59,7 +59,7 @@
     light = true;
     font = "mono";
     enable = true;
-    fontSize = 13;
+    fontSize = 14;
   };
 
   xdg.configFile."nix/nix.conf".text = ''
