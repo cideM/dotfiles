@@ -304,7 +304,6 @@ in
         set termguicolors
         set grepprg=rg\ --vimgrep\ --smart-case\ --hidden
         set grepformat=%f:%l:%c:%m
-        set completeopt=menuone,noselect,noinsert
         set path-=/usr/include list lcs=trail:¬,tab:\ \ 
         set statusline+=\ %f\ %m%=%{%LspStatus()%}%y\ %q\ %3l:%2c\ \|%3p%%\ 
         let g:yui_comments = 'bg'
