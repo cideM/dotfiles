@@ -10,6 +10,37 @@
     everforest.url = "github:sainnhe/everforest";
     everforest.flake = false;
 
+    # Treesitter
+    ts-nix.url = "github:cstrahan/tree-sitter-nix/50f38ceab667f9d482640edfee803d74f4edeba5";
+    ts-nix.flake = false;
+
+    ts-clj.url = "github:sogaiu/tree-sitter-clojure/f7d100c4fbaa8aad537e80c7974c470c7fb6aeda";
+    ts-clj.flake = false;
+
+    ts-yaml.url = "github:ikatyang/tree-sitter-yaml/0e36bed171768908f331ff7dff9d956bae016efb";
+    ts-yaml.flake = false;
+
+    ts-js.url = "github:tree-sitter/tree-sitter-javascript/45b9ce2a2588c0e6d616b0ee2a710b1fcb99c5b5";
+    ts-js.flake = false;
+
+    ts-rust.url = "github:tree-sitter/tree-sitter-rust/a360da0a29a19c281d08295a35ecd0544d2da211";
+    ts-rust.flake = false;
+
+    ts-lua.url = "github:nvim-treesitter/tree-sitter-lua/b6d4e9e10ccb7b3afb45018fbc391b4439306b23";
+    ts-lua.flake = false;
+
+    ts-ts.url = "github:tree-sitter/tree-sitter-typescript/28e757a2f498486931b3cb13a100a1bcc9261456";
+    ts-ts.flake = false;
+
+    ts-python.url = "github:tree-sitter/tree-sitter-python/d6210ceab11e8d812d4ab59c07c81458ec6e5184";
+    ts-python.flake = false;
+
+    ts-haskell.url = "github:tree-sitter/tree-sitter-haskell/a0c1adb59e390f7d839a146c57fdb33d36ed97e6";
+    ts-haskell.flake = false;
+
+    ts-go.url = "github:tree-sitter/tree-sitter-go/eb306e6e60f393df346cfc8cbfaf52667a37128a";
+    ts-go.flake = false;
+
     lucid-fish.url = "github:mattgreen/lucid.fish";
     lucid-fish.flake = false;
 
@@ -24,9 +55,6 @@
 
     indent-blankline.url = "github:lukas-reineke/indent-blankline.nvim/lua";
     indent-blankline.flake = false;
-
-    sad.url = "github:hauleth/sad.vim";
-    sad.flake = false;
 
     yui.url = "github:cidem/yui";
     yui.flake = false;
@@ -58,9 +86,18 @@
     , indent-blankline
     , lspfuzzy
     , material
-    , sad
     , yui
     , lucid-fish
+    , ts-nix
+    , ts-clj
+    , ts-go
+    , ts-lua
+    , ts-ts
+    , ts-js
+    , ts-rust
+    , ts-yaml
+    , ts-haskell
+    , ts-python
     , everforest
     , lightspeed
     }:
@@ -92,7 +129,26 @@
       ];
 
       specialArgs = {
-        inherit operatorMono neovim-nightly-overlay scripts lspfuzzy material sad yui lucid-fish everforest lightspeed indent-blankline;
+        inherit operatorMono
+          neovim-nightly-overlay
+          scripts
+          lspfuzzy
+          material
+          yui
+          lucid-fish
+          ts-nix
+          ts-clj
+          ts-go
+          ts-lua
+          ts-ts
+          ts-js
+          ts-rust
+          ts-yaml
+          ts-haskell
+          ts-python
+          everforest
+          lightspeed
+          indent-blankline;
       };
 
       homeConfigurations = {

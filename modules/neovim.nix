@@ -5,8 +5,17 @@ args@{ config
 , everforest
 , lightspeed
 , material
+, ts-nix
+, ts-clj
+, ts-go
+, ts-lua
+, ts-ts
+, ts-js
+, ts-rust
+, ts-yaml
+, ts-haskell
+, ts-python
 , indent-blankline
-, sad
 , yui
 , ...
 }:
@@ -15,134 +24,34 @@ with lib;
 with types;
 let
   makeGrammar =
-    { includedFiles
+    { files
     , parserName
     , src
-    , name ? parserName
     , version ? "latest"
     }:
     pkgs.vimUtils.buildVimPluginFrom2Nix {
       version = version;
-      name = "nvim-treesitter-${name}";
+      name = "nvim-treesitter-${parserName}";
       src = src;
       buildPhase = ''
         runHook preBuild
         mkdir -p parser/
-        ${pkgs.gcc}/bin/gcc -o parser/${parserName}.so -I$src/ ${builtins.concatStringsSep " " includedFiles}  -shared  -Os -lstdc++ -fPIC
+        ${pkgs.gcc}/bin/gcc -o parser/${parserName}.so -I$src/ ${builtins.concatStringsSep " " files}  -shared  -Os -lstdc++ -fPIC
         runHook postBuild
       '';
     };
 
-  installFromBuiltGrammars = { src, parserFileName }:
+  installFromBuiltGrammars = { src, parserName }:
     pkgs.vimUtils.buildVimPluginFrom2Nix {
       version = "latest";
       dontUnpack = true;
-      name = "nvim-treesitter-${parserFileName}";
+      name = "nvim-treesitter-${parserName}";
       src = src;
       buildPhase = ''
         mkdir -p parser/
-        cp $src parser/${parserFileName}.so
+        cp $src parser/${parserName}.so
       '';
     };
-
-  # TODO: Add all from https://github.com/nvim-treesitter/nvim-treesitter/blob/master/lua/nvim-treesitter/parsers.lua
-  # TODO: Add them to nixpkgs once I've figured out how
-  # https://github.com/nvim-treesitter/nvim-treesitter/blob/master/lockfile.json
-  grammarNix = makeGrammar {
-    parserName = "nix";
-    includedFiles = [ "parser.c" "scanner.c" ];
-    src = "${builtins.fetchGit {
-      "url" = "https://github.com/cstrahan/tree-sitter-nix";
-      "ref" = "master";
-      "rev" = "50f38ceab667f9d482640edfee803d74f4edeba5";
-      }}/src";
-  };
-
-  grammarClojure = makeGrammar {
-    parserName = "clojure";
-    includedFiles = [ "parser.c" ];
-    src = "${builtins.fetchGit {
-      "url" = "https://github.com/sogaiu/tree-sitter-clojure";
-      "ref" = "master";
-      "rev" = "f7d100c4fbaa8aad537e80c7974c470c7fb6aeda";
-      }}/src";
-  };
-
-  grammarYaml = makeGrammar {
-    parserName = "yaml";
-    includedFiles = [ "parser.c" "scanner.cc" ];
-    src = "${builtins.fetchGit {
-      "ref" = "master";
-      "url" = "https://git@github.com/ikatyang/tree-sitter-yaml";
-      "rev" = "0e36bed171768908f331ff7dff9d956bae016efb";
-      }}/src";
-  };
-
-  grammarGo = makeGrammar {
-    includedFiles = [ "parser.c" ];
-    parserName = "go";
-    src = "${builtins.fetchGit {
-      "url" = "https://git@github.com/tree-sitter/tree-sitter-go.git";
-      "ref" = "master";
-      "rev" = "eb306e6e60f393df346cfc8cbfaf52667a37128a";
-      }}/src";
-  };
-
-  grammarJson = installFromBuiltGrammars {
-    parserFileName = "json";
-    src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-json}/parser";
-  };
-
-  grammarHaskell = makeGrammar {
-    includedFiles = [ "parser.c" "scanner.cc" ];
-    parserName = "haskell";
-    src = "${builtins.fetchGit {
-      "ref" = "master";
-      "url" = "https://github.com/tree-sitter/tree-sitter-haskell";
-      "rev" = "004f2709c460d95fbfd1061f8efc98f36e33c03c";
-      }}/src";
-  };
-
-  grammarPython = makeGrammar {
-    parserName = "python";
-    includedFiles = [ "parser.c" "scanner.cc" ];
-    src = "${builtins.fetchGit {
-      "url" = "https://github.com/tree-sitter/tree-sitter-python";
-      "ref" = "master";
-      "rev" = "d6210ceab11e8d812d4ab59c07c81458ec6e5184";
-      }}/src";
-  };
-
-  grammarJavascript = makeGrammar {
-    parserName = "javascript";
-    includedFiles = [ "parser.c" "scanner.c" ];
-    src = "${builtins.fetchGit {
-      "url" = "https://github.com/tree-sitter/tree-sitter-javascript";
-      "ref" = "master";
-      "rev" = "6c8cfae935f67dd9e3a33982e5e06be0ece6399a";
-      }}/src";
-  };
-
-  grammarTs = makeGrammar {
-    includedFiles = [ "parser.c" "scanner.c" ];
-    parserName = "typescript";
-    src = "${builtins.fetchGit {
-      "ref" = "master";
-      "url" = "https://git@github.com/tree-sitter/tree-sitter-typescript";
-      "rev" = "28e757a2f498486931b3cb13a100a1bcc9261456";
-      }}/typescript/src";
-  };
-
-  grammarTsx = makeGrammar {
-    includedFiles = [ "parser.c" "scanner.c" ];
-    parserName = "tsx";
-    src = "${builtins.fetchGit {
-      "ref" = "master";
-      "url" = "https://git@github.com/tree-sitter/tree-sitter-typescript";
-      "rev" = "28e757a2f498486931b3cb13a100a1bcc9261456";
-    }}/tsx/src";
-  };
-  cfg = config.programs.neovim;
 
   sources = config.sources;
 
@@ -164,6 +73,8 @@ in
       rust = ''
         setl formatprg=rustfmt
         setl makeprg=cargo\ check
+        set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
       '';
       purescript = ''
         setl formatprg=purty\ format\ -
@@ -171,9 +82,13 @@ in
       '';
       json = ''
         setl formatprg=prettier\ --stdin-filepath\ %
+        set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
       '';
       yaml = ''
         setl formatprg=prettier\ --stdin-filepath\ %
+        set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
       '';
       fzf = ''
         setl laststatus=0 noshowmode noruler
@@ -189,6 +104,8 @@ in
         setl errorformat=%f:%l:%c:\ Parse\ %t%*[^:]:\ %m,%f:%l:%c:\ %t%*[^:]:\ %m
         setl makeprg=clj-kondo\ --lint\ %
         setl wildignore+=*.clj-kondo*
+        set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
       '';
       javascript = ''
         setl formatprg=prettier\ --stdin-filepath\ %
@@ -196,6 +113,8 @@ in
         setl errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m,%-G%.%#
         setl makeprg=${pkgs.nodePackages.eslint}/bin/eslint\ --format\ compact
         nnoremap <buffer> <silent> <localleader>f :!${pkgs.nodePackages.eslint}/bin/eslint\ --fix\ %<cr>
+        set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
       '';
       typescript = ''
         setl formatprg=prettier\ --stdin-filepath\ %
@@ -203,12 +122,16 @@ in
         setl errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m,%-G%.%#
         setl makeprg=${pkgs.nodePackages.eslint}/bin/eslint\ --format\ compact
         nnoremap <buffer> <silent> <localleader>f :!${pkgs.nodePackages.eslint}/bin/eslint\ --fix\ %<cr>
+        set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
       '';
       css = ''
         setl formatprg=prettier\ --stdin-filepath\ %
       '';
       nix = ''
         setl formatprg=nixpkgs-fmt
+        set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
       '';
       dhall = ''
         setl formatprg=dhall\ format
@@ -219,6 +142,12 @@ in
       lua = ''
         setl makeprg=luacheck\ --formatter\ plain
         nnoremap <buffer> <localleader>m :make %<cr>
+        set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
+      '';
+      python = ''
+        set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
       '';
       go = ''
         setl formatprg=gofmt makeprg=go\ build\ -o\ /dev/null
@@ -230,6 +159,8 @@ in
         endfunction
         nnoremap <buffer> <localleader>i :call GoImports()<cr>
         nnoremap <buffer> <localleader>t :execute ':silent !for f in ./{cmd, internal, pkg}; if test -d $f; ctags -R $f; end; end'<CR>
+        set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
       '';
       haskell = ''
         setl formatprg=ormolu
@@ -465,7 +396,8 @@ in
             },
           },
           indent = {
-            enable = false,
+            enable = true,
+            disable = {"haskell"},
           }
         }
 
@@ -514,7 +446,7 @@ in
         vim-gutentags
         vim-sandwich
         # vim-sneak
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "sad"; src = sad; })
+        sad-vim
         unicode-vim
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "visual-split.vim"; src = sources."visual-split.vim"; })
         vim-peekaboo
@@ -545,21 +477,24 @@ in
         vim-terraform
 
         # Treesitter
-        grammarClojure
-        grammarNix
-        grammarJavascript
-        grammarPython
-        grammarHaskell
-        grammarJson
-        grammarGo
-        grammarYaml
-        grammarTs
-        grammarTsx
+        (installFromBuiltGrammars { parserName = "json"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-json}/parser"; })
         {
           plugin = nvim-treesitter;
           optional = true;
         }
 
+      ] ++ map makeGrammar [
+        { parserName = "clojure"; files = [ "parser.c" ]; src = "${ts-clj}/src"; }
+        { parserName = "nix"; files = [ "parser.c" "scanner.c" ]; src = "${ts-nix}/src"; }
+        { parserName = "yaml"; files = [ "parser.c" "scanner.cc" ]; src = "${ts-yaml}/src"; }
+        { parserName = "go"; files = [ "parser.c" ]; src = "${ts-go}/src"; }
+        { parserName = "haskell"; files = [ "parser.c" "scanner.cc" ]; src = "${ts-haskell}/src"; }
+        { parserName = "python"; files = [ "parser.c" "scanner.cc" ]; src = "${ts-python}/src"; }
+        { parserName = "javascript"; files = [ "parser.c" "scanner.c" ]; src = "${ts-js}/src"; }
+        { parserName = "typescript"; files = [ "parser.c" "scanner.c" ]; src = "${ts-ts}/typescript/src"; }
+        { parserName = "tsx"; files = [ "parser.c" "scanner.c" ]; src = "${ts-ts}/tsx/src"; }
+        { parserName = "lua"; files = [ "parser.c" "scanner.cc" ]; src = "${ts-lua}/src"; }
+        { parserName = "rust"; files = [ "parser.c" "scanner.c" ]; src = "${ts-rust}/src"; }
       ];
     };
   };
