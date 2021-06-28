@@ -7,6 +7,9 @@
       inputs.nixpkgs.follows = "unstable";
     };
 
+    everforest.url = "github:sainnhe/everforest";
+    everforest.flake = false;
+
     lucid-fish.url = "github:mattgreen/lucid.fish";
     lucid-fish.flake = false;
 
@@ -58,6 +61,7 @@
     , sad
     , yui
     , lucid-fish
+    , everforest
     , lightspeed
     }:
     let
@@ -88,7 +92,7 @@
       ];
 
       specialArgs = {
-        inherit operatorMono neovim-nightly-overlay scripts lspfuzzy material sad yui lucid-fish lightspeed indent-blankline;
+        inherit operatorMono neovim-nightly-overlay scripts lspfuzzy material sad yui lucid-fish everforest lightspeed indent-blankline;
       };
 
       homeConfigurations = {

@@ -2,6 +2,7 @@ args@{ config
 , lib
 , pkgs
 , lspfuzzy
+, everforest
 , lightspeed
 , material
 , indent-blankline
@@ -537,6 +538,7 @@ in
         Jenkinsfile-vim-syntax
         purescript-vim
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "vim-js"; src = sources."vim-js"; })
+        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "everforest"; src = everforest; })
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "vim-lua"; src = sources."vim-lua"; })
         vim-jsx-pretty
         vim-nix

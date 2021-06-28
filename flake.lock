@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "everforest": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1623194629,
+        "narHash": "sha256-8tOM0LlZwDkc7pnVPsQujjodfGQQtbTTOkkW9rKZVCQ=",
+        "owner": "sainnhe",
+        "repo": "everforest",
+        "rev": "5c713e1c9844600cb8392b22d8f15fcf645cc43c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sainnhe",
+        "repo": "everforest",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -210,6 +226,7 @@
     },
     "root": {
       "inputs": {
+        "everforest": "everforest",
         "home-manager": "home-manager",
         "indent-blankline": "indent-blankline",
         "lightspeed": "lightspeed",
