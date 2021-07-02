@@ -10,6 +10,9 @@
     everforest.url = "github:sainnhe/everforest";
     everforest.flake = false;
 
+    spacevimtheme.url = "github:liuchengxu/space-vim-theme";
+    spacevimtheme.flake = false;
+
     # Treesitter
     ts-nix.url = "github:cstrahan/tree-sitter-nix/50f38ceab667f9d482640edfee803d74f4edeba5";
     ts-nix.flake = false;
@@ -95,6 +98,7 @@
     , ts-ts
     , ts-js
     , ts-rust
+    , spacevimtheme
     , ts-yaml
     , ts-haskell
     , ts-python
@@ -136,6 +140,7 @@
           material
           home-manager
           yui
+          spacevimtheme
           lucid-fish
           ts-nix
           ts-clj

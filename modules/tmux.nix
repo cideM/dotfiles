@@ -99,18 +99,18 @@
       # Decoration (256-color)
       # -------------------------------------------------------------------
       set-option -g status-justify left
-      set-option -g status-left '#[fg=colour7] #S'
+      set-option -g status-left '#[fg=colour8] #S'
       set-option -g status-left-length 30
-      set-option -g status-bg colour15
+      set-option -g status-style bg=default
       set-option -g status-right ""
 
       set-option -g pane-active-border-style fg=colour2
-      set-option -g pane-border-style fg=colour7
+      set-option -g pane-border-style fg=colour8
       set-option -g pane-border-status bottom
       set-option -g pane-border-format "#{b:pane_title}"
 
-      set-window-option -g window-status-format '#[fg=colour7] [#I] #W #F'
-      set-window-option -g window-status-current-format '#[fg=colour2] [#I] #W #F'
+      set-window-option -g window-status-format '#[fg=colour8] [#I] #W #F'
+      set-window-option -g window-status-current-format '#[fg=colour8] [#I] #W #F'
     '';
   };
 }

@@ -1,6 +1,7 @@
 args@{ config
 , lib
 , pkgs
+, spacevimtheme
 , lspfuzzy
 , everforest
 , lightspeed
@@ -472,6 +473,7 @@ in
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "vim-js"; src = sources."vim-js"; })
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "everforest"; src = everforest; })
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "vim-lua"; src = sources."vim-lua"; })
+        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "spacevimtheme"; src = spacevimtheme; })
         vim-jsx-pretty
         vim-nix
         vim-terraform

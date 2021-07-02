@@ -777,7 +777,7 @@ in
 
     xdg.configFile."alacritty/alacritty.yml".text =
       builtins.replaceStrings [ "\\\\" ] [ "\\" ] (builtins.toJSON (shared // {
-        colors = if cfg.light then seoul256light else tokyo-night-storm;
+        colors = if cfg.light then spacemacsLight else tokyo-night-storm;
         font = fontMapping."${cfg.font}";
       }));
 
