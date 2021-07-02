@@ -10,6 +10,9 @@
     everforest.url = "github:sainnhe/everforest";
     everforest.flake = false;
 
+    doomonetheme.url = "github:NTBBloodbath/doom-one.nvim";
+    doomonetheme.flake = false;
+
     spacevimtheme.url = "github:liuchengxu/space-vim-theme";
     spacevimtheme.flake = false;
 
@@ -99,6 +102,7 @@
     , ts-js
     , ts-rust
     , spacevimtheme
+    , doomonetheme
     , ts-yaml
     , ts-haskell
     , ts-python
@@ -149,6 +153,7 @@
           ts-ts
           ts-js
           ts-rust
+          doomonetheme
           ts-yaml
           ts-haskell
           ts-python

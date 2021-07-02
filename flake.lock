@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "doomonetheme": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1625155668,
+        "narHash": "sha256-a5mYUMCG+d9DbJSdGw/blLyt4qVu1eenxY6bnXSv7Nc=",
+        "owner": "NTBBloodbath",
+        "repo": "doom-one.nvim",
+        "rev": "2882b7be449234274d6e87caf38fa88f0a509ec2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NTBBloodbath",
+        "repo": "doom-one.nvim",
+        "type": "github"
+      }
+    },
     "everforest": {
       "flake": false,
       "locked": {
@@ -226,6 +242,7 @@
     },
     "root": {
       "inputs": {
+        "doomonetheme": "doomonetheme",
         "everforest": "everforest",
         "home-manager": "home-manager",
         "indent-blankline": "indent-blankline",

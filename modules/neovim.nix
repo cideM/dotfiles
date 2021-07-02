@@ -2,6 +2,7 @@ args@{ config
 , lib
 , pkgs
 , spacevimtheme
+, doomonetheme
 , lspfuzzy
 , everforest
 , lightspeed
@@ -230,6 +231,7 @@ in
         set wildignore+=*.git/*,nix/sources.nix,*.min.*
           \,*.map,*.idea,*build/*,.direnv/*,*dist/*,*compiled/*,*tmp/*
         set inccommand=split
+        set completeopt-=preview
         set splitbelow
         set splitright
         set foldlevelstart=99
@@ -248,6 +250,10 @@ in
         let g:EditorConfig_preserve_formatoptions = 1
 
         let g:peekaboo_window = 'vert bo 60new'
+
+        let g:doom_one_terminal_colors = v:true
+        let g:doom_one_italic_comments = v:true
+        let g:doom_one_cursor_coloring = v:true
 
         let g:gutentags_exclude_filetypes = ["haskell", "purs", "purescript"]
         let g:gutentags_file_list_command = 'rg\ --files'
@@ -321,6 +327,15 @@ in
         silent! nmap <unique><silent> <leader>p <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
         silent! nmap <unique><silent> <leader>D <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
         silent! nmap <unique><silent> <leader>P <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
+
+        " ======= sneak =====================
+        map f <Plug>Sneak_f
+        map F <Plug>Sneak_F
+        map t <Plug>Sneak_t
+        map T <Plug>Sneak_T
+        let g:sneak#label      = 1
+        let g:sneak#use_ic_scs = 1
+        let g:sneak#s_next     = 1
 
         let g:operator_sandwich_no_default_key_mappings = 1
         silent! nmap <unique> <leader>a <Plug>(operator-sandwich-add)
@@ -415,9 +430,7 @@ in
         require'lightspeed'.setup {
            jump_to_first_match = true,
            jump_on_partial_input_safety_timeout = 400,
-           highlight_unique_chars = false,
            grey_out_search_area = true,
-           match_only_the_start_of_same_char_seqs = true,
            limit_ft_matches = 5,
            full_inclusive_prefix_key = '<c-x>',
         }
@@ -434,6 +447,7 @@ in
 
         vim-unimpaired
         vimtex
+        # vim-sneak
         vim-repeat
         vim-eunuch
         vim-commentary
@@ -474,6 +488,7 @@ in
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "everforest"; src = everforest; })
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "vim-lua"; src = sources."vim-lua"; })
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "spacevimtheme"; src = spacevimtheme; })
+        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "doomonetheme"; src = doomonetheme; })
         vim-jsx-pretty
         vim-nix
         vim-terraform

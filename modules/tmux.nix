@@ -110,7 +110,7 @@
       set-option -g pane-border-format "#{b:pane_title}"
 
       set-window-option -g window-status-format '#[fg=colour8] [#I] #W #F'
-      set-window-option -g window-status-current-format '#[fg=colour8] [#I] #W #F'
+      set-window-option -g window-status-current-format '#[fg=colour2] [#I] #W #F'
     '';
   };
 }
