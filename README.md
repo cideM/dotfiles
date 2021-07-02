@@ -9,15 +9,17 @@ There's no place like `~`
 This builds the MacOS Home Manager configuration and then runs the activation script. My `/etc/nix/nix.conf` only has `build-users-group = nixbld`, I'm installing an unstable version of Nix with flake support through my Home Manager configuration as well.
 
 ```
-$ nix-shell -p nixUnstable --command "nix build --experimental-features 'nix-command flakes' '.#mbp'"
+$ nix-shell -p nixUnstable --command "nix build --experimental-features 'nix-command flakes' '.#homeConfigurations.work-mbp.activationPackage'"
 $ ./result/activate
 ```
 
 This should work as well after the first, successfull Home Manager activation:
 
 ```
-$ nix build .#mbp
+$ home-manager build --flake .#work-mbp
 ```
+
+The `--flake` option isn't documented in the manual but you can find it in `home-manager --help`.
 
 ### NixOS
 

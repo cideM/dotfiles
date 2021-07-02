@@ -140,15 +140,15 @@ let
     bright = {
       black = "0xbcbcbc";
       blue = "0xd75f00";
-      cyan = "0x005faf";
-      green = "0xd70087";
-      magenta = "0xd75f00";
-      red = "0xd70000";
-      white = "0x005f87";
-      yellow = "0x8700af";
+      cyan = "0x005f87";
+      green = "0x008700";
+      magenta = "0x8700af";
+      red = "0xaf0000";
+      white = "0xeeeeee";
+      yellow = "0x5f8700";
     };
     cursor = {
-      cursor = "0x878787";
+      cursor = "0x444444";
       text = "0xeeeeee";
     };
     indexed_colors = [ ];
@@ -159,12 +159,12 @@ let
       green = "0x008700";
       magenta = "0x878787";
       red = "0xaf0000";
-      white = "0x444444";
+      white = "0x878787";
       yellow = "0x5f8700";
     };
     primary = {
       background = "0xeeeeee";
-      foreground = "0x878787";
+      foreground = "0x444444";
     };
     vi_mode_cursor = {
       cursor = "0x878787";
@@ -199,6 +199,35 @@ let
     };
   };
 
+  seoul256light = {
+    primary = {
+      background = "#dadada";
+      foreground = "#4e4e4e";
+    };
+
+    normal = {
+      black = "#4e4e4e";
+      red = "#af5f5f";
+      green = "#5f885f";
+      yellow = "#af8760";
+      blue = "#5f87ae";
+      magenta = "#875f87";
+      cyan = "#5f8787";
+      white = "#e4e4e4";
+    };
+
+    bright = {
+      black = "#3a3a3a";
+      red = "#870100";
+      green = "#005f00";
+      yellow = "#d8865f";
+      blue = "#0087af";
+      magenta = "#87025f";
+      cyan = "#008787";
+      white = "#eeeeee";
+    };
+  };
+
   oneLight = {
     primary = {
       background = "#fafafa";
@@ -228,6 +257,7 @@ let
     primary = {
       foreground = "#171421";
       background = "#ffffff";
+      bright_foreground = "#5e5c64";
     };
 
     normal = {
@@ -747,7 +777,7 @@ in
 
     xdg.configFile."alacritty/alacritty.yml".text =
       builtins.replaceStrings [ "\\\\" ] [ "\\" ] (builtins.toJSON (shared // {
-        colors = if cfg.light then gnomeLight else tokyo-night-storm;
+        colors = if cfg.light then seoul256light else tokyo-night-storm;
         font = fontMapping."${cfg.font}";
       }));
 

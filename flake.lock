@@ -238,7 +238,6 @@
           "unstable"
         ],
         "operatorMono": "operatorMono",
-        "sad": "sad",
         "scripts": "scripts",
         "ts-clj": "ts-clj",
         "ts-go": "ts-go",
@@ -252,22 +251,6 @@
         "ts-yaml": "ts-yaml",
         "unstable": "unstable",
         "yui": "yui"
-      }
-    },
-    "sad": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1550494305,
-        "narHash": "sha256-xC7c35ShtElmO9CPnYDH1MDOzpK4yXJZFgybNW62fYY=",
-        "owner": "hauleth",
-        "repo": "sad.vim",
-        "rev": "2f5b33b239a566ffedaa81cee3051bb613482d1e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hauleth",
-        "repo": "sad.vim",
-        "type": "github"
       }
     },
     "scripts": {

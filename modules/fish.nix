@@ -75,6 +75,7 @@ let
     abbr -a work-agenda 'FISH_NOTES_DIR=$FISH_WORK_NOTES agenda'
     abbr -a work-new-agenda 'FISH_NOTES_DIR=$FISH_WORK_NOTES new-agenda'
     abbr -a work-notes 'FISH_NOTES_DIR=$FISH_WORK_NOTES notes'
+    abbr -a klabels 'sed \'1d\' | awk \'{ print $6 }\' | string split ","'
     abbr -a work-todos 'FISH_NOTES_DIR=$FISH_WORK_NOTES todos'
 
     alias  niv 'niv --no-colors'

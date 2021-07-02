@@ -134,6 +134,7 @@
           scripts
           lspfuzzy
           material
+          home-manager
           yui
           lucid-fish
           ts-nix
@@ -199,6 +200,6 @@
     {
       # TODO: https://github.com/mjlbach/nix-dotfiles/blob/master/nixpkgs/flake.nix
       nixosConfigurations.nixos = desktop;
-      mbp = homeConfigurations.work-mbp.activationPackage;
+      inherit homeConfigurations;
     };
 }

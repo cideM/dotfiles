@@ -1,4 +1,4 @@
-{ pkgs, operatorMono, ... }:
+{ pkgs, operatorMono, home-manager, ... }:
 {
   imports = [
     (import ../../modules/alacritty.nix)
@@ -43,6 +43,7 @@
   home.packages = with pkgs; [
     nixUnstable
     unixtools.watch
+    home-manager.defaultPackage.x86_64-darwin
     (pkgs.stdenv.mkDerivation {
       name = "operator-mono-font";
       src = operatorMono;
