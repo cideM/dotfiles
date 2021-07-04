@@ -328,15 +328,6 @@ in
         silent! nmap <unique><silent> <leader>D <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
         silent! nmap <unique><silent> <leader>P <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
 
-        " ======= sneak =====================
-        map f <Plug>Sneak_f
-        map F <Plug>Sneak_F
-        map t <Plug>Sneak_t
-        map T <Plug>Sneak_T
-        let g:sneak#label      = 1
-        let g:sneak#use_ic_scs = 1
-        let g:sneak#s_next     = 1
-
         let g:operator_sandwich_no_default_key_mappings = 1
         silent! nmap <unique> <leader>a <Plug>(operator-sandwich-add)
         silent! xmap <unique> <leader>a <Plug>(operator-sandwich-add)
@@ -402,6 +393,7 @@ in
           ensure_installed = {},
           highlight = {
             enable = true,
+            disable = {"haskell"},
           },
           incremental_selection = {
             enable = true,
