@@ -112,20 +112,30 @@
     let
       overlays = [
         # https://github.com/NixOS/nixpkgs/issues/128665
-        (self: super:
-          {
-            awscli2 = super.awscli2.overrideAttrs (old: {
-              postPatch = ''
-                substituteInPlace setup.py --replace "awscrt==0.11.13" "awscrt>=0.11.13"
-                substituteInPlace setup.py --replace "colorama>=0.2.5,<0.4.4" "colorama>=0.2.5"
-                substituteInPlace setup.py --replace "cryptography>=3.3.2,<3.4.0" "cryptography>=3.3.2"
-                substituteInPlace setup.py --replace "docutils>=0.10,<0.16" "docutils>=0.10"
-                substituteInPlace setup.py --replace "ruamel.yaml>=0.15.0,<0.16.0" "ruamel.yaml>=0.15.0"
-                substituteInPlace setup.py --replace "wcwidth<0.2.0" "wcwidth"
-              '';
-            });
-          }
-        )
+        (self: super: {
+          awscli2 = super.awscli2.overrideAttrs (old: {
+            postPatch = ''
+              substituteInPlace setup.py --replace "awscrt==0.11.13" "awscrt>=0.11.13"
+              substituteInPlace setup.py --replace "colorama>=0.2.5,<0.4.4" "colorama>=0.2.5"
+              substituteInPlace setup.py --replace "cryptography>=3.3.2,<3.4.0" "cryptography>=3.3.2"
+              substituteInPlace setup.py --replace "docutils>=0.10,<0.16" "docutils>=0.10"
+              substituteInPlace setup.py --replace "ruamel.yaml>=0.15.0,<0.16.0" "ruamel.yaml>=0.15.0"
+              substituteInPlace setup.py --replace "wcwidth<0.2.0" "wcwidth"
+            '';
+          });
+        })
+
+        (self: super: {
+          ledger-live-desktop = super.ledger-live-desktop.overrideAttrs (old: rec {
+            pname = "ledger-live-desktop";
+            version = "2.29.0";
+            src = builtins.fetchurl {
+              url = "https://github.com/LedgerHQ/${pname}/releases/download/v${version}/${pname}-${version}-linux-x86_64.AppImage";
+              sha256 = "1y4xvnwh2mqbc39pmnpgjg8mlx208s2pipm7dazq4bgmay7k9zh0";
+            };
+          });
+        })
+
         neovim-nightly-overlay.overlay
         (self: super: {
           nix-direnv = super.nix-direnv.overrideAttrs (old: rec {
