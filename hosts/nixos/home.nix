@@ -57,7 +57,7 @@
     disableScaling = false;
     font = "mono";
     enable = true;
-    fontSize = 11;
+    fontSize = 12;
   };
 
   programs.fish.interactiveShellInit = ''
