@@ -63,6 +63,22 @@
         "type": "github"
       }
     },
+    "githubtheme": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1625831893,
+        "narHash": "sha256-8JuvYEWlIQ0Cez8ZUjS6sTAzbhJKWjqWguGMksetq9o=",
+        "owner": "projekt0n",
+        "repo": "github-nvim-theme",
+        "rev": "ca6a37e229b899789418deb3b8435e30661e0ecf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "projekt0n",
+        "repo": "github-nvim-theme",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -244,6 +260,7 @@
       "inputs": {
         "doomonetheme": "doomonetheme",
         "everforest": "everforest",
+        "githubtheme": "githubtheme",
         "home-manager": "home-manager",
         "indent-blankline": "indent-blankline",
         "lightspeed": "lightspeed",

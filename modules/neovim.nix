@@ -3,6 +3,7 @@ args@{ config
 , pkgs
 , spacevimtheme
 , doomonetheme
+, githubtheme
 , lspfuzzy
 , everforest
 , lightspeed
@@ -388,6 +389,12 @@ in
 
         require('lspfuzzy').setup {}
 
+        -- Github Color Theme
+        require("github-theme").setup({
+          themeStyle = "light",
+          sidebars = {"qf", "vista_kind", "terminal", "packer"},
+        })
+
         -- Treesitter
         require'nvim-treesitter.configs'.setup {
           ensure_installed = {},
@@ -481,6 +488,7 @@ in
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "vim-lua"; src = sources."vim-lua"; })
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "spacevimtheme"; src = spacevimtheme; })
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "doomonetheme"; src = doomonetheme; })
+        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "githubtheme"; src = githubtheme; })
         vim-jsx-pretty
         vim-nix
         vim-terraform
