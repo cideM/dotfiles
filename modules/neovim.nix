@@ -390,10 +390,10 @@ in
         require('lspfuzzy').setup {}
 
         -- Github Color Theme
-        require("github-theme").setup({
-          themeStyle = "light",
-          sidebars = {"qf", "vista_kind", "terminal", "packer"},
-        })
+        -- require("github-theme").setup({
+        --   themeStyle = "light",
+        --   sidebars = {"qf", "vista_kind", "terminal", "packer"},
+        -- })
 
         -- Treesitter
         require'nvim-treesitter.configs'.setup {
