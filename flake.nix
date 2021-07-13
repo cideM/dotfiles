@@ -10,6 +10,9 @@
     everforest.url = "github:sainnhe/everforest";
     everforest.flake = false;
 
+    k9s.url = "github:derailed/k9s";
+    k9s.flake = false;
+
     githubtheme.url = "github:projekt0n/github-nvim-theme";
     githubtheme.flake = false;
 
@@ -94,6 +97,7 @@
     , scripts
     , indent-blankline
     , lspfuzzy
+    , k9s
     , material
     , yui
     , lucid-fish
@@ -186,6 +190,7 @@
           ts-python
           everforest
           lightspeed
+          k9s
           indent-blankline;
       };
 

@@ -116,6 +116,22 @@
         "type": "github"
       }
     },
+    "k9s": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1625749895,
+        "narHash": "sha256-Kw3TT8IeJT0y2vSd38/y7BRq7PxMH2tiXV4/lOn5INA=",
+        "owner": "derailed",
+        "repo": "k9s",
+        "rev": "026adfbfbf230033c4c68511972e67991c51fa47",
+        "type": "github"
+      },
+      "original": {
+        "owner": "derailed",
+        "repo": "k9s",
+        "type": "github"
+      }
+    },
     "lightspeed": {
       "flake": false,
       "locked": {
@@ -263,6 +279,7 @@
         "githubtheme": "githubtheme",
         "home-manager": "home-manager",
         "indent-blankline": "indent-blankline",
+        "k9s": "k9s",
         "lightspeed": "lightspeed",
         "lspfuzzy": "lspfuzzy",
         "lucid-fish": "lucid-fish",
