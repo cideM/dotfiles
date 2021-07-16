@@ -27,6 +27,12 @@ The `--flake` option isn't documented in the manual but you can find it in `home
 $ sudo nixos-rebuild switch
 ```
 
+## Visual Studio Code
+
+The URL doesn't change but the sha does, it's annoying. Need to manually set a fake sha, update and then paste the actual sha.
+
+Updating extensions: `cd modules/vscode/; cat shared_exts.txt | ./update_exts.sh > shared_exts.nix`
+
 ## TODO
 
 - [ ] Remove `niv` in favor of Flakes for all inputs

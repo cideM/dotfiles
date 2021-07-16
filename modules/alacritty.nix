@@ -638,6 +638,8 @@ let
   shared = {
     colors = spacemacsLight;
 
+    alt_send_escape = pkgs.stdenv.isDarwin == false;
+
     key_bindings = optionAsMetaBindings ++ [
       {
         chars = "\\u001bO";
