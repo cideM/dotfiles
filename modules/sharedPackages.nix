@@ -5,6 +5,7 @@ with pkgs;
 {
   home.packages = [
     awscli2
+    aws-mfa
     bashInteractive_5
     bat
     cachix
