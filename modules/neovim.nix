@@ -3,6 +3,7 @@ args@{ config
 , pkgs
 , spacevimtheme
 , doomonetheme
+, pkgsCompat
 , githubtheme
 , lspfuzzy
 , everforest
@@ -39,7 +40,7 @@ let
       buildPhase = ''
         runHook preBuild
         mkdir -p parser/
-        ${pkgs.gcc}/bin/gcc -o parser/${parserName}.so -I$src/ ${builtins.concatStringsSep " " files}  -shared  -Os -lstdc++ -fPIC
+        ${pkgsCompat.gcc}/bin/gcc -o parser/${parserName}.so -I$src/ ${builtins.concatStringsSep " " files}  -shared  -Os -lstdc++ -fPIC
         runHook postBuild
       '';
     };
@@ -498,26 +499,19 @@ in
           optional = true;
         }
 
-      ] ++ (map makeGrammar
-        ([
-          { parserName = "clojure"; files = [ "parser.c" ]; src = "${ts-clj}/src"; }
-          { parserName = "nix"; files = [ "parser.c" "scanner.c" ]; src = "${ts-nix}/src"; }
-          { parserName = "go"; files = [ "parser.c" ]; src = "${ts-go}/src"; }
-          { parserName = "javascript"; files = [ "parser.c" "scanner.c" ]; src = "${ts-js}/src"; }
-          { parserName = "typescript"; files = [ "parser.c" "scanner.c" ]; src = "${ts-ts}/typescript/src"; }
-          { parserName = "tsx"; files = [ "parser.c" "scanner.c" ]; src = "${ts-ts}/tsx/src"; }
-          { parserName = "lua"; files = [ "parser.c" "scanner.cc" ]; src = "${ts-lua}/src"; }
-          { parserName = "rust"; files = [ "parser.c" "scanner.c" ]; src = "${ts-rust}/src"; }
-        ] ++
-        (if pkgs.stdenv.hostPlatform.system == "aarch64-darwin"
-        then [ ]
-        else [
-          # Currently broken but probs only on M1
-          { parserName = "haskell"; files = [ "parser.c" "scanner.cc" ]; src = "${ts-haskell}/src"; }
-          { parserName = "yaml"; files = [ "parser.c" "scanner.cc" ]; src = "${ts-yaml}/src"; }
-          { parserName = "python"; files = [ "parser.c" "scanner.cc" ]; src = "${ts-python}/src"; }
-        ]))
-      );
+      ] ++ map makeGrammar [
+        { parserName = "clojure"; files = [ "parser.c" ]; src = "${ts-clj}/src"; }
+        { parserName = "nix"; files = [ "parser.c" "scanner.c" ]; src = "${ts-nix}/src"; }
+        { parserName = "go"; files = [ "parser.c" ]; src = "${ts-go}/src"; }
+        { parserName = "javascript"; files = [ "parser.c" "scanner.c" ]; src = "${ts-js}/src"; }
+        { parserName = "typescript"; files = [ "parser.c" "scanner.c" ]; src = "${ts-ts}/typescript/src"; }
+        { parserName = "tsx"; files = [ "parser.c" "scanner.c" ]; src = "${ts-ts}/tsx/src"; }
+        { parserName = "lua"; files = [ "parser.c" "scanner.cc" ]; src = "${ts-lua}/src"; }
+        { parserName = "rust"; files = [ "parser.c" "scanner.c" ]; src = "${ts-rust}/src"; }
+        { parserName = "haskell"; files = [ "parser.c" "scanner.cc" ]; src = "${ts-haskell}/src"; }
+        { parserName = "yaml"; files = [ "parser.c" "scanner.cc" ]; src = "${ts-yaml}/src"; }
+        { parserName = "python"; files = [ "parser.c" "scanner.cc" ]; src = "${ts-python}/src"; }
+      ];
     };
   };
 }

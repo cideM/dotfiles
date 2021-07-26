@@ -168,6 +168,10 @@
         })
       ];
 
+      pkgsCompat = import unstable {
+        system = "x86_64-darwin";
+      };
+
       specialArgs = {
         inherit operatorMono
           scripts
@@ -179,6 +183,7 @@
           lucid-fish
           ts-nix
           ts-clj
+          pkgsCompat
           ts-go
           ts-lua
           ts-ts
@@ -193,10 +198,6 @@
           lightspeed
           k9s
           indent-blankline;
-      };
-
-      pkgsCompat = import unstable {
-        system = "x86_64-darwin";
       };
 
       homeConfigurations = {
@@ -223,7 +224,7 @@
                     })
 
                     (self: super: rec {
-                      shellcheck = pkgsCompat.shellcheck;
+                      shellcheck = pkgsCompat.luajitPackages.luacheck;
                     })
 
                     (self: super: rec {
