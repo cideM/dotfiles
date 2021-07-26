@@ -527,17 +527,13 @@
     "yui": {
       "flake": false,
       "locked": {
-        "lastModified": 1626080890,
-        "narHash": "sha256-reYpN8VMvTRGiDyRRoBn4FzcVQzIAnanlPoGwFOeI34=",
-        "owner": "cidem",
-        "repo": "yui",
-        "rev": "44c6803fa884c93e5320eff5dea16e607ae17215",
-        "type": "github"
+        "narHash": "sha256-Iu7ESXNiu9n3WmI4cSJ4xXoMKuf7EBQ97tt+/hxfiA0=",
+        "path": "/Users/fbs/yui/",
+        "type": "path"
       },
       "original": {
-        "owner": "cidem",
-        "repo": "yui",
-        "type": "github"
+        "path": "/Users/fbs/yui/",
+        "type": "path"
       }
     }
   },

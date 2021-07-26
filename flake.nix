@@ -121,7 +121,8 @@
       overlays = [
         (self: super: {
           vscode = super.vscode.overrideAttrs (old: {
-            preInstall = if super.pkgs.stdenv.hostPlatform.system == "x86_64-darwin" then ""
+            preInstall =
+              if (super.pkgs.stdenv.hostPlatform.system == "x86_64-darwin" || super.pkgs.stdenv.hostPlatform.system == "aarch64-darwin") then ""
               else ''
                 cp ./bin/code-insiders ./bin/code
               '';
@@ -195,6 +196,28 @@
       };
 
       homeConfigurations = {
+        work-m1 = home-manager.lib.homeManagerConfiguration rec {
+          system = "aarch64-darwin";
+          extraSpecialArgs = specialArgs;
+          pkgs = import unstable {
+            inherit system;
+          };
+          homeDirectory = "/Users/fbs";
+          username = "fbs";
+          configuration = { pkgs, config, ... }:
+            {
+              imports = [
+                {
+                  nixpkgs.overlays = overlays ++ [ ];
+                  nixpkgs.config = {
+                    allowUnfree = true;
+                  };
+                }
+                ./hosts/fbs-work.local/home.nix
+              ];
+            };
+        };
+
         work-mbp = home-manager.lib.homeManagerConfiguration rec {
           system = "x86_64-darwin";
           extraSpecialArgs = specialArgs;
