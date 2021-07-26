@@ -43,7 +43,11 @@
   home.packages = with pkgs; [
     nixUnstable
     unixtools.watch
-    home-manager.defaultPackage.x86_64-darwin
+
+    (if pkgs.stdenv.hostPlatform.system == "aarch64-darwin"
+    then home-manager.defaultPackage.aarch64-darwin
+    else home-manager.defaultPackage.x86_64-darwin)
+
     (pkgs.stdenv.mkDerivation {
       name = "operator-mono-font";
       src = operatorMono;

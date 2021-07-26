@@ -1,4 +1,4 @@
-{ config, pkgs, operatorMono, neovim-nightly-overlay, ... }:
+{ config, pkgs, operatorMono, ... }:
 let
   operatorMonoFontPkg = pkgs.stdenv.mkDerivation {
     name = "operator-mono-font";

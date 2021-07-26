@@ -2,24 +2,33 @@
 
 with pkgs;
 
+# Mostly because of GHC, but not all
+let brokenOnM1 = [
+  cachix
+  cmus
+  dash
+  niv
+  liberation_ttf
+  luajitPackages.luacheck
+  pandoc
+];
+
+in
 {
   home.packages = [
     awscli2
     aws-mfa
     bashInteractive_5
     bat
-    cachix
-    cmus
-    coreutils
     curl
-    dash
+    coreutils
     delta
     git-lfs
     docker-compose
     du-dust
     emacs
     entr
-    exa
+    # exa
     fd
     findutils
     fzf
@@ -36,15 +45,11 @@ with pkgs;
     jq
     k9s
     kubernetes-helm
-    liberation_ttf
     libuv
-    luajitPackages.luacheck
     ncdu
     kubectl
-    niv
     nixpkgs-fmt
     nixpkgs-review
-    pandoc
     qmk
     ranger
     rclone
@@ -55,7 +60,7 @@ with pkgs;
     roboto-mono
     rsync
     rust-analyzer
-    shellcheck
+    # shellcheck
     shfmt
     stow
     tig
@@ -76,5 +81,8 @@ with pkgs;
     # weechat
     wget
     yamllint
-  ];
+  ] ++
+  (if pkgs.stdenv.hostPlatform.system == "aarch64-darwin"
+  then [ ]
+  else brokenOnM1);
 }

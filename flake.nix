@@ -32,7 +32,7 @@
     ts-yaml.url = "github:ikatyang/tree-sitter-yaml/0e36bed171768908f331ff7dff9d956bae016efb";
     ts-yaml.flake = false;
 
-    ts-js.url = "github:tree-sitter/tree-sitter-javascript/45b9ce2a2588c0e6d616b0ee2a710b1fcb99c5b5";
+    ts-js.url = "github:tree-sitter/tree-sitter-javascript/2c5b138ea488259dbf11a34595042eb261965259";
     ts-js.flake = false;
 
     ts-rust.url = "github:tree-sitter/tree-sitter-rust/a360da0a29a19c281d08295a35ecd0544d2da211";
@@ -47,7 +47,7 @@
     ts-python.url = "github:tree-sitter/tree-sitter-python/d6210ceab11e8d812d4ab59c07c81458ec6e5184";
     ts-python.flake = false;
 
-    ts-haskell.url = "github:tree-sitter/tree-sitter-haskell/a0c1adb59e390f7d839a146c57fdb33d36ed97e6";
+    ts-haskell.url = "github:tree-sitter/tree-sitter-haskell/9c1fd425ff72ebbe419e6ee7e8c9862ec9f274f4";
     ts-haskell.flake = false;
 
     ts-go.url = "github:tree-sitter/tree-sitter-go/eb306e6e60f393df346cfc8cbfaf52667a37128a";
@@ -73,7 +73,9 @@
 
     unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs.follows = "unstable";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
+    neovim-flake.url = "github:neovim/neovim?dir=contrib";
+    neovim-flake.inputs.nixpkgs.follows = "unstable";
 
     scripts = {
       url = "git+ssh://git@github.com/cidem/scripts?ref=main";
@@ -89,7 +91,7 @@
 
   outputs =
     { self
-    , neovim-nightly-overlay
+    , neovim-flake
     , unstable
     , home-manager
     , operatorMono
@@ -140,8 +142,7 @@
           });
         })
 
-        neovim-nightly-overlay.overlay
-
+ 
         (self: super: {
           nix-direnv = super.nix-direnv.overrideAttrs (old: rec {
             version = "ccc2e4c5db2869184a7181109cee0d42cd62120f";
@@ -169,7 +170,6 @@
 
       specialArgs = {
         inherit operatorMono
-          neovim-nightly-overlay
           scripts
           lspfuzzy
           material
@@ -208,7 +208,13 @@
             {
               imports = [
                 {
-                  nixpkgs.overlays = overlays ++ [ ];
+                  nixpkgs.overlays = overlays ++ [ 
+
+                    (self: super: rec {
+                      neovim = neovim-flake.packages."x86_64-darwin".neovim;
+                    })
+
+                  ];
                   nixpkgs.config = {
                     allowUnfree = true;
                   };
@@ -230,7 +236,11 @@
             {
               imports = [
                 {
-                  nixpkgs.overlays = overlays ++ [ ];
+                  nixpkgs.overlays = overlays ++ [
+                    (self: super: rec {
+                      neovim = neovim-flake.packages."x86_64-darwin".neovim;
+                    })
+                  ];
                   nixpkgs.config = {
                     allowUnfree = true;
                   };
@@ -249,7 +259,11 @@
             ./hosts/nixos/configuration.nix
             home-manager.nixosModules.home-manager
             {
-              nixpkgs.overlays = overlays ++ [ ];
+              nixpkgs.overlays = overlays ++ [
+                (self: super: rec {
+                  neovim = neovim-flake.packages."x86_64-linux".neovim;
+                })
+              ];
               nixpkgs.config = {
                 allowUnfree = true;
               };

@@ -177,8 +177,6 @@ in
     programs.neovim = {
       enable = true;
 
-      package = pkgs.neovim-unwrapped;
-
       extraConfig = ''
         " Format the buffer with the current formatprg. Most of the custom code here
         " is just so my jump list isn't cluttered and I always end up at the first
@@ -503,16 +501,21 @@ in
       ] ++ map makeGrammar [
         { parserName = "clojure"; files = [ "parser.c" ]; src = "${ts-clj}/src"; }
         { parserName = "nix"; files = [ "parser.c" "scanner.c" ]; src = "${ts-nix}/src"; }
-        { parserName = "yaml"; files = [ "parser.c" "scanner.cc" ]; src = "${ts-yaml}/src"; }
         { parserName = "go"; files = [ "parser.c" ]; src = "${ts-go}/src"; }
-        { parserName = "haskell"; files = [ "parser.c" "scanner.cc" ]; src = "${ts-haskell}/src"; }
-        { parserName = "python"; files = [ "parser.c" "scanner.cc" ]; src = "${ts-python}/src"; }
         { parserName = "javascript"; files = [ "parser.c" "scanner.c" ]; src = "${ts-js}/src"; }
         { parserName = "typescript"; files = [ "parser.c" "scanner.c" ]; src = "${ts-ts}/typescript/src"; }
         { parserName = "tsx"; files = [ "parser.c" "scanner.c" ]; src = "${ts-ts}/tsx/src"; }
         { parserName = "lua"; files = [ "parser.c" "scanner.cc" ]; src = "${ts-lua}/src"; }
         { parserName = "rust"; files = [ "parser.c" "scanner.c" ]; src = "${ts-rust}/src"; }
-      ];
+      ] ++
+      (if pkgs.stdenv.hostPlatform.system == "aarch64-darwin"
+      then [ ]
+      else [
+        # Currently broken but probs only on M1
+        { parserName = "haskell"; files = [ "parser.c" "scanner.cc" ]; src = "${ts-haskell}/src"; }
+        { parserName = "yaml"; files = [ "parser.c" "scanner.cc" ]; src = "${ts-yaml}/src"; }
+        { parserName = "python"; files = [ "parser.c" "scanner.cc" ]; src = "${ts-python}/src"; }
+      ]);
     };
   };
 }
