@@ -142,7 +142,7 @@
           });
         })
 
- 
+
         (self: super: {
           nix-direnv = super.nix-direnv.overrideAttrs (old: rec {
             version = "ccc2e4c5db2869184a7181109cee0d42cd62120f";
@@ -195,6 +195,10 @@
           indent-blankline;
       };
 
+      pkgsCompat = import unstable {
+        system = "x86_64-darwin";
+      };
+
       homeConfigurations = {
         work-m1 = home-manager.lib.homeManagerConfiguration rec {
           system = "aarch64-darwin";
@@ -208,7 +212,39 @@
             {
               imports = [
                 {
-                  nixpkgs.overlays = overlays ++ [ 
+                  nixpkgs.overlays = overlays ++ [
+
+                    (self: super: rec {
+                      cachix = pkgsCompat.cachix;
+                    })
+
+                    (self: super: rec {
+                      exa = pkgsCompat.exa;
+                    })
+
+                    (self: super: rec {
+                      shellcheck = pkgsCompat.shellcheck;
+                    })
+
+                    (self: super: rec {
+                      luajitPackages.luacheck = pkgsCompat.luajitPackages.luacheck;
+                    })
+
+                    (self: super: rec {
+                      pandoc = pkgsCompat.pandoc;
+                    })
+
+                    (self: super: rec {
+                      liberation_ttf = pkgsCompat.liberation_ttf;
+                    })
+
+                    (self: super: rec {
+                      niv = pkgsCompat.niv;
+                    })
+
+                    (self: super: rec {
+                      dash = pkgsCompat.dash;
+                    })
 
                     (self: super: rec {
                       neovim = neovim-flake.packages."x86_64-darwin".neovim;

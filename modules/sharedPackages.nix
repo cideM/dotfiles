@@ -2,22 +2,17 @@
 
 with pkgs;
 
-# Mostly because of GHC, but not all
-let brokenOnM1 = [
-  cachix
-  cmus
-  dash
-  niv
-  liberation_ttf
-  luajitPackages.luacheck
-  pandoc
-];
-
-in
 {
   home.packages = [
     awscli2
     aws-mfa
+    cachix
+    # cmus
+    dash
+    niv
+    liberation_ttf
+    luajitPackages.luacheck
+    pandoc
     bashInteractive_5
     bat
     curl
@@ -28,7 +23,7 @@ in
     du-dust
     emacs
     entr
-    # exa
+    exa
     fd
     findutils
     fzf
@@ -60,7 +55,7 @@ in
     roboto-mono
     rsync
     rust-analyzer
-    # shellcheck
+    shellcheck
     shfmt
     stow
     tig
@@ -81,8 +76,5 @@ in
     # weechat
     wget
     yamllint
-  ] ++
-  (if pkgs.stdenv.hostPlatform.system == "aarch64-darwin"
-  then [ ]
-  else brokenOnM1);
+  ];
 }
