@@ -27,24 +27,6 @@ args@{ config
 with lib;
 with types;
 let
-  makeGrammar =
-    { files
-    , parserName
-    , src
-    , version ? "latest"
-    }:
-    pkgs.vimUtils.buildVimPluginFrom2Nix {
-      version = version;
-      name = "nvim-treesitter-${parserName}";
-      src = src;
-      buildPhase = ''
-        runHook preBuild
-        mkdir -p parser/
-        ${pkgsCompat.gcc}/bin/gcc -o parser/${parserName}.so -I$src/ ${builtins.concatStringsSep " " files}  -shared  -Os -lstdc++ -fPIC
-        runHook postBuild
-      '';
-    };
-
   installFromBuiltGrammars = { src, parserName }:
     pkgs.vimUtils.buildVimPluginFrom2Nix {
       version = "latest";
@@ -494,23 +476,24 @@ in
 
         # Treesitter
         (installFromBuiltGrammars { parserName = "json"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-json}/parser"; })
+        (installFromBuiltGrammars { parserName = "rust"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-rust}/parser"; })
+        (installFromBuiltGrammars { parserName = "css"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-css}/parser"; })
+        (installFromBuiltGrammars { parserName = "markdown"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-markdown}/parser"; })
+        (installFromBuiltGrammars { parserName = "nix"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-nix}/parser"; })
+        (installFromBuiltGrammars { parserName = "typescript"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-typescript}/parser"; })
+        (installFromBuiltGrammars { parserName = "javascript"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-javascript}/parser"; })
+        (installFromBuiltGrammars { parserName = "haskell"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-haskell}/parser"; })
+        (installFromBuiltGrammars { parserName = "lua"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-lua}/parser"; })
+        (installFromBuiltGrammars { parserName = "yaml"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-yaml}/parser"; })
+        (installFromBuiltGrammars { parserName = "bash"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-bash}/parser"; })
+        (installFromBuiltGrammars { parserName = "go"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-go}/parser"; })
+        (installFromBuiltGrammars { parserName = "html"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-html}/parser"; })
+        (installFromBuiltGrammars { parserName = "python"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-python}/parser"; })
         {
           plugin = nvim-treesitter;
           optional = true;
         }
 
-      ] ++ map makeGrammar [
-        { parserName = "clojure"; files = [ "parser.c" ]; src = "${ts-clj}/src"; }
-        { parserName = "nix"; files = [ "parser.c" "scanner.c" ]; src = "${ts-nix}/src"; }
-        { parserName = "go"; files = [ "parser.c" ]; src = "${ts-go}/src"; }
-        { parserName = "javascript"; files = [ "parser.c" "scanner.c" ]; src = "${ts-js}/src"; }
-        { parserName = "typescript"; files = [ "parser.c" "scanner.c" ]; src = "${ts-ts}/typescript/src"; }
-        { parserName = "tsx"; files = [ "parser.c" "scanner.c" ]; src = "${ts-ts}/tsx/src"; }
-        { parserName = "lua"; files = [ "parser.c" "scanner.cc" ]; src = "${ts-lua}/src"; }
-        { parserName = "rust"; files = [ "parser.c" "scanner.c" ]; src = "${ts-rust}/src"; }
-        { parserName = "haskell"; files = [ "parser.c" "scanner.cc" ]; src = "${ts-haskell}/src"; }
-        { parserName = "yaml"; files = [ "parser.c" "scanner.cc" ]; src = "${ts-yaml}/src"; }
-        { parserName = "python"; files = [ "parser.c" "scanner.cc" ]; src = "${ts-python}/src"; }
       ];
     };
   };
