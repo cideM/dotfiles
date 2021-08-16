@@ -124,9 +124,11 @@
         (self: super: {
           vscode = super.vscode.overrideAttrs (old: {
             preInstall =
-              if (super.pkgs.stdenv.hostPlatform.system == "x86_64-darwin" || super.pkgs.stdenv.hostPlatform.system == "aarch64-darwin") then ""
+              if (super.pkgs.stdenv.hostPlatform.system == "x86_64-darwin" || super.pkgs.stdenv.hostPlatform.system == "aarch64-darwin") then ''
+                cp ./Contents/Resources/app/bin/code ./Contents/Resources/app/bin/code-insiders
+              ''
               else ''
-                cp ./bin/code-insiders ./bin/code
+                cp ./bin/code ./bin/code-insiders
               '';
           });
         })

@@ -3,6 +3,7 @@ let
   inherit (pkgs.stdenv.hostPlatform) system;
 
   archive_fmt = if (system == "x86_64-darwin" || system == "aarch64-darwin") then "zip" else "tar.gz";
+  # archive_fmt = "zip";
 
   plat = {
     x86_64-linux = "linux-x64";
