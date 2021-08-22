@@ -65,9 +65,6 @@
     material.url = "github:marko-cerovac/material.nvim";
     material.flake = false;
 
-    indent-blankline.url = "github:lukas-reineke/indent-blankline.nvim/lua";
-    indent-blankline.flake = false;
-
     yui.url = "github:cidem/yui";
     yui.flake = false;
 
@@ -97,7 +94,6 @@
     , operatorMono
     , nixpkgs
     , scripts
-    , indent-blankline
     , lspfuzzy
     , k9s
     , material
@@ -195,8 +191,7 @@
           ts-python
           everforest
           lightspeed
-          k9s
-          indent-blankline;
+          k9s;
       };
 
       homeConfigurations = {

@@ -19,7 +19,6 @@ args@{ config
 , ts-yaml
 , ts-haskell
 , ts-python
-, indent-blankline
 , yui
 , ...
 }:

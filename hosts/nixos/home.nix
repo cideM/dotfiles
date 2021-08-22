@@ -34,6 +34,7 @@
     jetbrains.goland
     skype
     sublime-merge
+    sublime4
     ledger-live-desktop
 
     noto-fonts
