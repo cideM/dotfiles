@@ -178,7 +178,7 @@ in
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
       };
       "[haskell]" = {
-        "editor.defaultFormatter" = "sergey-kintsel.hfmt-vscode";
+        "editor.defaultFormatter" = "sjurmillidahl.ormolu-vscode";
       };
       "[javascriptreact]" = {
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
@@ -241,6 +241,8 @@ in
       "editor.largeFileOptimizations" = false;
       "calva.paredit.defaultKeyMap" = "strict";
       "workbench.colorTheme" = "Atom One Light";
+      "editor.fontFamily" = "Operator Mono SSm Book";
+      "editor.fontSize" = 15;
       "editor.minimap.enabled" = false;
     };
     keybindings = pkgs.lib.importJSON ./keybindings.json;

@@ -79,3 +79,4 @@ will-stone.plastic
 wingrunr21.vscode-ruby
 yokoe.vscode-postfix-go
 yzhang.markdown-all-in-one
+sjurmillidahl.ormolu-vscode
