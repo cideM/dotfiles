@@ -9,16 +9,6 @@ args@{ config
 , everforest
 , lightspeed
 , material
-, ts-nix
-, ts-clj
-, ts-go
-, ts-lua
-, ts-ts
-, ts-js
-, ts-rust
-, ts-yaml
-, ts-haskell
-, ts-python
 , yui
 , ...
 }:
@@ -26,17 +16,6 @@ args@{ config
 with lib;
 with types;
 let
-  installFromBuiltGrammars = { src, parserName }:
-    pkgs.vimUtils.buildVimPluginFrom2Nix {
-      version = "latest";
-      dontUnpack = true;
-      name = "nvim-treesitter-${parserName}";
-      src = src;
-      buildPhase = ''
-        mkdir -p parser/
-        cp $src parser/${parserName}.so
-      '';
-    };
 
   sources = config.sources;
 
@@ -472,24 +451,8 @@ in
         vim-jsx-pretty
         vim-nix
         vim-terraform
-
-        # Treesitter
-        (installFromBuiltGrammars { parserName = "json"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-json}/parser"; })
-        (installFromBuiltGrammars { parserName = "rust"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-rust}/parser"; })
-        (installFromBuiltGrammars { parserName = "css"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-css}/parser"; })
-        (installFromBuiltGrammars { parserName = "markdown"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-markdown}/parser"; })
-        (installFromBuiltGrammars { parserName = "nix"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-nix}/parser"; })
-        (installFromBuiltGrammars { parserName = "typescript"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-typescript}/parser"; })
-        (installFromBuiltGrammars { parserName = "javascript"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-javascript}/parser"; })
-        (installFromBuiltGrammars { parserName = "haskell"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-haskell}/parser"; })
-        (installFromBuiltGrammars { parserName = "lua"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-lua}/parser"; })
-        (installFromBuiltGrammars { parserName = "yaml"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-yaml}/parser"; })
-        (installFromBuiltGrammars { parserName = "bash"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-bash}/parser"; })
-        (installFromBuiltGrammars { parserName = "go"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-go}/parser"; })
-        (installFromBuiltGrammars { parserName = "html"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-html}/parser"; })
-        (installFromBuiltGrammars { parserName = "python"; src = "${pkgs.tree-sitter.builtGrammars.tree-sitter-python}/parser"; })
         {
-          plugin = nvim-treesitter;
+          plugin = nvim-treesitter.withPlugins (p: pkgs.tree-sitter.allGrammars);
           optional = true;
         }
 
