@@ -26,6 +26,7 @@
     okular
     google-chrome
     insomnia
+    cmus
     spotify
     zotero
     jetbrains.webstorm
