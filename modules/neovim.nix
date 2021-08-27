@@ -404,8 +404,6 @@ in
         vim-fugitive
 
         vim-unimpaired
-        vimtex
-        # vim-sneak
         vim-repeat
         vim-eunuch
         vim-commentary
@@ -418,10 +416,10 @@ in
         fzf-vim
         vim-gutentags
         vim-sandwich
-        # vim-sneak
         sad-vim
         unicode-vim
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "visual-split.vim"; src = sources."visual-split.vim"; })
+        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "lightspeed"; src = lightspeed; })
         vim-peekaboo
 
         # Themes
@@ -429,10 +427,14 @@ in
         edge
         one-nvim
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "material"; src = material; })
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "lightspeed"; src = lightspeed; })
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "yui"; src = yui; })
+        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "everforest"; src = everforest; })
+        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "spacevimtheme"; src = spacevimtheme; })
+        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "doomonetheme"; src = doomonetheme; })
+        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "githubtheme"; src = githubtheme; })
 
         # Language stuff
+        vimtex
         vim-markdown-toc
         { plugin = (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "parinfer-rust"; src = sources."parinfer"; }); optional = true; }
         { plugin = conjure; optional = true; }
@@ -443,11 +445,7 @@ in
         Jenkinsfile-vim-syntax
         purescript-vim
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "vim-js"; src = sources."vim-js"; })
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "everforest"; src = everforest; })
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "vim-lua"; src = sources."vim-lua"; })
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "spacevimtheme"; src = spacevimtheme; })
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "doomonetheme"; src = doomonetheme; })
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "githubtheme"; src = githubtheme; })
         vim-jsx-pretty
         vim-nix
         vim-terraform
