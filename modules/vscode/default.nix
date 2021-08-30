@@ -20,7 +20,9 @@ let
 
   version = "latest";
 
-  latest = pkgs.vscode.overrideAttrs
+  vscode = if pkgs.stdenv.isDarwin then pkgs.vscode else (pkgs.vscode.override { isInsiders = true; });
+
+  latest = vscode.overrideAttrs
     (_: rec {
       pname = "vscode-insiders";
       # https://matrix.to/#/!YllBCgVdcoakoavZvX:rycee.net/$_MrTYFXF00sFE0yt86qljP2svFzeRxJfgcXVo8R9oGg?via=matrix.org&via=nerdsin.space&via=nixos.dev
