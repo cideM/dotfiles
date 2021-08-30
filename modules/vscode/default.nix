@@ -235,7 +235,7 @@ in
       "editor.largeFileOptimizations" = false;
       "calva.paredit.defaultKeyMap" = "strict";
       "workbench.colorTheme" = "Atom One Light";
-      "editor.fontFamily" = "Operator Mono";
+      "editor.fontFamily" = "Operator Mono SSm";
       "editor.fontSize" = 15;
       "editor.minimap.enabled" = false;
     };
