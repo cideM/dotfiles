@@ -3,7 +3,6 @@ let
   inherit (pkgs.stdenv.hostPlatform) system;
 
   archive_fmt = if (system == "x86_64-darwin" || system == "aarch64-darwin") then "zip" else "tar.gz";
-  # archive_fmt = "zip";
 
   plat = {
     x86_64-linux = "linux-x64";
@@ -21,14 +20,10 @@ let
 
   version = "latest";
 
-  latest = (pkgs.vscode.override {
-    isInsiders = true;
-  }).overrideAttrs
+  latest = pkgs.vscode.overrideAttrs
     (_: rec {
-      sourceExecutableName =
-        if (pkgs.stdenv.hostPlatform.system == "x86_64-darwin" || pkgs.stdenv.hostPlatform.system == "aarch64-darwin")
-        then "code" else "code-insiders";
-
+      pname = "vscode-insiders";
+      # https://matrix.to/#/!YllBCgVdcoakoavZvX:rycee.net/$_MrTYFXF00sFE0yt86qljP2svFzeRxJfgcXVo8R9oGg?via=matrix.org&via=nerdsin.space&via=nixos.dev
       # I couldn't find links to download specific versions of the insiders
       # release. There appears to be only the 'latest' version of it. This
       # confuses 'niv', since it won't update the hash if the link never
@@ -50,14 +45,13 @@ let
   platformExts = with pkgs.vscode-extensions; if pkgs.stdenv.isDarwin then [ ] else [ ms-vsliveshare.vsliveshare ];
 
   extensions = platformExts ++ marketplace;
-
-  # finalPackage = (pkgs.vscode-with-extensions.override { vscode = latest; }).overrideAttrs (old: {
-  #   inherit (latest) pname version;
-  # });
 in
 {
   programs.vscode = {
     enable = true;
+    keybindings = pkgs.lib.importJSON ./keybindings.json;
+    package = latest;
+    extensions = extensions;
     userSettings = {
       "editor.minimap.showSlider" = "always";
       "editor.wrappingIndent" = "indent";
@@ -241,12 +235,9 @@ in
       "editor.largeFileOptimizations" = false;
       "calva.paredit.defaultKeyMap" = "strict";
       "workbench.colorTheme" = "Atom One Light";
-      "editor.fontFamily" = "Operator Mono SSm Book";
+      "editor.fontFamily" = "Operator Mono";
       "editor.fontSize" = 15;
       "editor.minimap.enabled" = false;
     };
-    keybindings = pkgs.lib.importJSON ./keybindings.json;
-    package = latest;
-    extensions = extensions;
   };
 }

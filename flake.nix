@@ -118,15 +118,6 @@
     let
       overlays = [
 
-        # (self: super: {
-        #   vscode = super.vscode.overrideAttrs (old: {
-        #     preInstall =
-        #       if (super.pkgs.stdenv.hostPlatform.system == "x86_64-darwin" || super.pkgs.stdenv.hostPlatform.system == "aarch64-darwin") then ''
-        #         cp ./Contents/Resources/app/bin/code ./Contents/Resources/app/bin/code-insiders
-        #       '' else "";
-        #   });
-        # })
-
         (self: super: {
           ledger-live-desktop = super.ledger-live-desktop.overrideAttrs (old: rec {
             pname = "ledger-live-desktop";
