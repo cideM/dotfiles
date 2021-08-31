@@ -210,7 +210,7 @@
                     })
 
                     (self: super: rec {
-                      shellcheck = pkgsCompat.luajitPackages.luacheck;
+                      shellcheck = pkgsCompat.shellcheck;
                     })
 
                     (self: super: rec {
