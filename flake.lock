@@ -1,5 +1,37 @@
 {
   "nodes": {
+    "cidem-fish-notes": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1612944226,
+        "narHash": "sha256-X2xviZIKQfvpkxfD3MVB1SPnR5tAhZjcTZP+sCi3+vo=",
+        "owner": "cideM",
+        "repo": "fish-notes",
+        "rev": "bfb4818f6ab1317079352b8bd64bd6faa096791e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cideM",
+        "repo": "fish-notes",
+        "type": "github"
+      }
+    },
+    "cidem-fish-yvm": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1616180090,
+        "narHash": "sha256-RleusFNozPquzeOG9I6NaqbmsomMrCw0OpJ80Xevc3c=",
+        "owner": "cideM",
+        "repo": "fish-yvm",
+        "rev": "32d992111114863af8c9bc4b544233927b4b78ae",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cideM",
+        "repo": "fish-yvm",
+        "type": "github"
+      }
+    },
     "doomonetheme": {
       "flake": false,
       "locked": {
@@ -186,6 +218,22 @@
         "type": "github"
       }
     },
+    "nix-env-fish": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1612943836,
+        "narHash": "sha256-qt63SHfHWQnDBvaL+NOVgGA1Pt6tbWhV+1op0JoQNMM=",
+        "owner": "lilyball",
+        "repo": "nix-env.fish",
+        "rev": "00c6cc762427efe08ac0bd0d1b1d12048d3ca727",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lilyball",
+        "repo": "nix-env.fish",
+        "type": "github"
+      }
+    },
     "operatorMono": {
       "flake": false,
       "locked": {
@@ -205,6 +253,8 @@
     },
     "root": {
       "inputs": {
+        "cidem-fish-notes": "cidem-fish-notes",
+        "cidem-fish-yvm": "cidem-fish-yvm",
         "doomonetheme": "doomonetheme",
         "everforest": "everforest",
         "githubtheme": "githubtheme",
@@ -215,6 +265,7 @@
         "lucid-fish": "lucid-fish",
         "material": "material",
         "neovim-flake": "neovim-flake",
+        "nix-env-fish": "nix-env-fish",
         "nixpkgs": [
           "unstable"
         ],
@@ -232,6 +283,9 @@
         "ts-ts": "ts-ts",
         "ts-yaml": "ts-yaml",
         "unstable": "unstable",
+        "vim-js": "vim-js",
+        "vim-lua": "vim-lua",
+        "visual-split-nvim": "visual-split-nvim",
         "yui": "yui"
       }
     },
@@ -451,6 +505,54 @@
         "owner": "NixOS",
         "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "vim-js": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1616931512,
+        "narHash": "sha256-SjBnT5Dh1FlcN89cf9NFTYMCCMNatje9EisYiAvPZ4A=",
+        "owner": "yuezk",
+        "repo": "vim-js",
+        "rev": "90f340d31907590fad059cd9aab03a55ab49e352",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yuezk",
+        "repo": "vim-js",
+        "type": "github"
+      }
+    },
+    "vim-lua": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1596625104,
+        "narHash": "sha256-dZDXPFQiiGFXaXZK7ttWyP7Fcv+3JCtPYxSgXa90d7o=",
+        "owner": "tbastos",
+        "repo": "vim-lua",
+        "rev": "fa810f85437525bcea0fc4ff22c634935721d86d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tbastos",
+        "repo": "vim-lua",
+        "type": "github"
+      }
+    },
+    "visual-split-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1485710504,
+        "narHash": "sha256-v0j6AExrOJIgde/Aphr7lvonZptMwYQLCB6E+2YsiVg=",
+        "owner": "wellle",
+        "repo": "visual-split.vim",
+        "rev": "423a25911b3e8da04a28d29f205e1059a06e6afa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "wellle",
+        "repo": "visual-split.vim",
         "type": "github"
       }
     },

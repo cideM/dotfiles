@@ -7,8 +7,23 @@
       inputs.nixpkgs.follows = "unstable";
     };
 
+    cidem-fish-notes.url = "github:cideM/fish-notes";
+    cidem-fish-notes.flake = false;
+
+    cidem-fish-yvm.url = "github:cideM/fish-yvm";
+    cidem-fish-yvm.flake = false;
+
     everforest.url = "github:sainnhe/everforest";
     everforest.flake = false;
+
+    nix-env-fish.url = "github:lilyball/nix-env.fish";
+    nix-env-fish.flake = false;
+
+    visual-split-nvim.url = "github:wellle/visual-split.vim";
+    visual-split-nvim.flake = false;
+
+    vim-lua.url = "github:tbastos/vim-lua";
+    vim-lua.flake = false;
 
     k9s.url = "github:derailed/k9s";
     k9s.flake = false;
@@ -21,6 +36,9 @@
 
     spacevimtheme.url = "github:liuchengxu/space-vim-theme";
     spacevimtheme.flake = false;
+
+    vim-js.url = "github:yuezk/vim-js";
+    vim-js.flake = false;
 
     # Treesitter
     ts-nix.url = "github:cstrahan/tree-sitter-nix/50f38ceab667f9d482640edfee803d74f4edeba5";
@@ -96,6 +114,11 @@
     , scripts
     , lspfuzzy
     , k9s
+    , visual-split-nvim
+    , nix-env-fish
+    , vim-lua
+    , cidem-fish-notes
+    , cidem-fish-yvm
     , material
     , yui
     , lucid-fish
@@ -107,6 +130,7 @@
     , ts-js
     , ts-rust
     , spacevimtheme
+    , vim-js
     , doomonetheme
     , githubtheme
     , ts-yaml
@@ -117,6 +141,18 @@
     }:
     let
       overlays = [
+
+        (self: super: {
+          vim-lua = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "vim-lua"; src = vim-lua; };
+        })
+
+        (self: super: {
+          vim-js = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "vim-js"; src = vim-js; };
+        })
+
+        (self: super: {
+          visual-split-nvim = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "visual-split"; src = visual-split-nvim; };
+        })
 
         (self: super: {
           ledger-live-desktop = super.ledger-live-desktop.overrideAttrs (old: rec {
@@ -170,6 +206,9 @@
           lucid-fish
           ts-nix
           ts-clj
+          nix-env-fish
+          cidem-fish-notes
+          cidem-fish-yvm
           pkgsCompat
           ts-go
           ts-lua

@@ -190,7 +190,7 @@ in
         set number
         set ignorecase
         set smartcase
-        set wildignore+=*.git/*,nix/sources.nix,*.min.*
+        set wildignore+=*.git/*,nix/sources.nix,*.min.*,./result/*
           \,*.map,*.idea,*build/*,.direnv/*,*dist/*,*compiled/*,*tmp/*
         set inccommand=split
         set completeopt-=preview
@@ -401,6 +401,7 @@ in
         # LSP
         { plugin = nvim-lspconfig; optional = true; }
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "lspfuzzy"; src = lspfuzzy; })
+        pkgs.visual-split-nvim
 
         # Git
         vim-fugitive
@@ -420,7 +421,6 @@ in
         vim-sandwich
         sad-vim
         unicode-vim
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "visual-split.vim"; src = sources."visual-split.vim"; })
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "lightspeed"; src = lightspeed; })
         vim-peekaboo
 
@@ -446,8 +446,8 @@ in
         dhall-vim
         Jenkinsfile-vim-syntax
         purescript-vim
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "vim-js"; src = sources."vim-js"; })
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "vim-lua"; src = sources."vim-lua"; })
+        pkgs.vim-js
+        pkgs.vim-lua
         vim-jsx-pretty
         vim-nix
         vim-terraform

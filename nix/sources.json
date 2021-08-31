@@ -1,28 +1,4 @@
 {
-    "fish-nix-env": {
-        "branch": "master",
-        "repo": "https://git@github.com/lilyball/nix-env.fish.git",
-        "rev": "00c6cc762427efe08ac0bd0d1b1d12048d3ca727",
-        "type": "git"
-    },
-    "fish-notes": {
-        "branch": "master",
-        "repo": "https://git@github.com/cideM/fish-notes.git",
-        "rev": "bfb4818f6ab1317079352b8bd64bd6faa096791e",
-        "type": "git"
-    },
-    "fish-yvm": {
-        "branch": "improve-curl-errors",
-        "description": "Yarn version manager for the Fish shell :fish: :heart:",
-        "homepage": "",
-        "owner": "cidem",
-        "repo": "fish-yvm",
-        "rev": "5470926a8a835f0152ae95ff9e776f30285e58cb",
-        "sha256": "13kkiip492vnk78yf2ddfp39kx269w16c5vl4z1kcbi7p2v6ffpz",
-        "type": "tarball",
-        "url": "https://github.com/cidem/fish-yvm/archive/5470926a8a835f0152ae95ff9e776f30285e58cb.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "lucid-fish-prompt": {
         "branch": "master",
         "repo": "https://github.com/mattgreen/lucid.fish.git",
@@ -64,29 +40,5 @@
         "repo": "https://github.com/cormacrelf/vim-colors-github.git",
         "rev": "ee42a68d95078f5a3d1c0fb14462cc781b244ee2",
         "type": "git"
-    },
-    "vim-js": {
-        "branch": "master",
-        "repo": "https://git@github.com/yuezk/vim-js.git",
-        "rev": "90f340d31907590fad059cd9aab03a55ab49e352",
-        "type": "git"
-    },
-    "vim-lua": {
-        "branch": "master",
-        "repo": "https://git@github.com/tbastos/vim-lua.git",
-        "rev": "fa810f85437525bcea0fc4ff22c634935721d86d",
-        "type": "git"
-    },
-    "visual-split.vim": {
-        "branch": "master",
-        "description": "Vim plugin to control splits with visual selections or text objects",
-        "homepage": null,
-        "owner": "wellle",
-        "repo": "visual-split.vim",
-        "rev": "423a25911b3e8da04a28d29f205e1059a06e6afa",
-        "sha256": "0n495ikgp10y105q9hackdk2gylnzcdadh7gflh94f3b9h0glj5z",
-        "type": "tarball",
-        "url": "https://github.com/wellle/visual-split.vim/archive/423a25911b3e8da04a28d29f205e1059a06e6afa.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

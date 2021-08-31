@@ -1,4 +1,12 @@
-{ pkgs, config, scripts, lucid-fish, ... }:
+{ pkgs
+, config
+, scripts
+, cidem-fish-notes
+, cidem-fish-yvm
+, nix-env-fish
+, lucid-fish
+, ...
+}:
 let
   alacCfg = config.programs.alacritty;
 
@@ -250,12 +258,12 @@ in
     plugins = [
       {
         name = "fish-notes";
-        src = config.sources.fish-notes;
+        src = cidem-fish-notes;
       }
 
       {
         name = "nix-env";
-        src = config.sources.fish-nix-env;
+        src = nix-env-fish;
       }
 
       {
@@ -265,7 +273,7 @@ in
 
       {
         name = "fish-yvm";
-        src = config.sources.fish-yvm;
+        src = cidem-fish-yvm;
       }
     ];
   };
