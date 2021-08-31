@@ -7,7 +7,6 @@ bierner.markdown-checkbox
 bierner.markdown-emoji
 bierner.markdown-footnotes
 bierner.markdown-yaml-preamble
-blanu.vscode-styled-jsx
 bmewburn.vscode-intelephense-client
 bungcip.better-toml
 christian-kohler.npm-intellisense

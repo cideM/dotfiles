@@ -26,8 +26,8 @@
 {
   name = "calva";
   publisher = "betterthantomorrow";
-  version = "2.0.209";
-  sha256 = "088aqf5wpzn3396k1f03wd79hcqzjzfbs3pi1vkbikjck2b0zl4v";
+  version = "2.0.210";
+  sha256 = "1xi1g9fq60fkqn9xfj7fn3fnm9gfb5wp6gwrgf2bgrm5b1a85ric";
 }
 {
   name = "markdown-checkbox";
@@ -52,12 +52,6 @@
   publisher = "bierner";
   version = "0.0.4";
   sha256 = "03dp1wp5rqxrmsvpkwha38jgaxd1xm51cj4pl26j565ncrmczcx5";
-}
-{
-  name = "vscode-styled-jsx";
-  publisher = "blanu";
-  version = "2.0.0";
-  sha256 = "0pnvy0qwwyh2z4jivxkrxc9yy3mhr1zjvxv60b5lbz8a4ghkjk74";
 }
 {
   name = "vscode-intelephense-client";
@@ -266,20 +260,20 @@
 {
   name = "python";
   publisher = "ms-python";
-  version = "2021.8.1147840270";
-  sha256 = "15imrsn378n1fxxfjg4d4ihs4k31hcm0zqhia3l4i107m9ivnc0f";
+  version = "2021.8.1159798656";
+  sha256 = "030si91s53ii9mqwzf4djsdh7ranaky3x9m26s279n6g9i7vd3r7";
 }
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2021.8.2028630014";
-  sha256 = "1gm13m26rdj02n3lcd4g437z6xjwwh4ghnhbq275ilaqczdcb6dm";
+  version = "2021.8.2031173646";
+  sha256 = "1qgf75h08a5g2lslvxhm15sxf8mdfxni4l0gxpy3sgnw9syrg95n";
 }
 {
   name = "remote-containers";
   publisher = "ms-vscode-remote";
-  version = "0.191.1";
-  sha256 = "0hd127zs2n22x4nm32zji7imvs5zx5qnvkwxslqfi2illi5y8wli";
+  version = "0.194.0";
+  sha256 = "11bh12z20lyrdg3z5ic0fiwd6frlpzq6qjbz656bildp4f2474jw";
 }
 {
   name = "remote-ssh";
@@ -314,8 +308,8 @@
 {
   name = "vsliveshare";
   publisher = "ms-vsliveshare";
-  version = "1.0.4673";
-  sha256 = "1ys3lilc2r3n250s6pfvadrabnvqpzy74awjmvw79jrbvvk1iw1z";
+  version = "1.0.4761";
+  sha256 = "1sxjhpdjxc7anbd5fsqn957a1ln164mmn726h8v8l88lhx4lpjd9";
 }
 {
   name = "vsliveshare-audio";
