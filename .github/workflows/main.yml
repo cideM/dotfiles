@@ -28,7 +28,7 @@ jobs:
             experimental-features = nix-command flakes
 
       - name: Update Extensions
-        run: NIX_PATH=nixpkgs=https://github.com/NixOS/nixpkgs/archive/08ef0f28e3a41424b92ba1d203de64257a9fca6a.tar.gz cat shared_exts.txt | ./update_exts.sh > shared_exts.nix
+        run: cat shared_exts.txt | NIX_PATH=nixpkgs=https://github.com/NixOS/nixpkgs/archive/08ef0f28e3a41424b92ba1d203de64257a9fca6a.tar.gz ./update_exts.sh > shared_exts.nix
         working-directory: modules/vscode
 
       - uses: EndBug/add-and-commit@v7 # You can change this to use a specific version.
