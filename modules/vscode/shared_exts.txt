@@ -10,7 +10,7 @@ bierner.markdown-yaml-preamble
 bmewburn.vscode-intelephense-client
 bungcip.better-toml
 christian-kohler.npm-intellisense
-christian-kohler.path-intellisense
+ionutvmi.path-autocomplete
 DavidAnson.vscode-markdownlint
 dawhite.mustache
 dbaeumer.vscode-eslint
