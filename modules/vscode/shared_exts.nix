@@ -26,8 +26,8 @@
 {
   name = "calva";
   publisher = "betterthantomorrow";
-  version = "2.0.210";
-  sha256 = "1xi1g9fq60fkqn9xfj7fn3fnm9gfb5wp6gwrgf2bgrm5b1a85ric";
+  version = "2.0.211";
+  sha256 = "16apmkk7w2fmar1dfrx768hi6vj4nfx6qibj6cay4dipb4c35d98";
 }
 {
   name = "markdown-checkbox";
@@ -72,10 +72,10 @@
   sha256 = "0nyckfr2d6amddff6svnllvr5085x20b1gsfv85n4f71rz2zmp13";
 }
 {
-  name = "path-intellisense";
-  publisher = "christian-kohler";
-  version = "2.4.0";
-  sha256 = "0fqfxhn5ap2lvwnx5spybj1k55nifqnpaqr3ki2wcrbb0hkmg1l4";
+  name = "path-autocomplete";
+  publisher = "ionutvmi";
+  version = "1.17.1";
+  sha256 = "0nlyvlwp0s8cf3ky33i11dfc8rhc90lmwq0z5km4yxvbs9zya6a3";
 }
 {
   name = "vscode-markdownlint";
@@ -134,8 +134,8 @@
 {
   name = "go";
   publisher = "golang";
-  version = "0.27.1";
-  sha256 = "1985bbmnqqlss8h2ma0qgzj2g9xp4za58y2dyiwkh64bzpd6814x";
+  version = "0.27.2";
+  sha256 = "1ayyqm7bpz9axxp9avnr0y7kcqzpl1l538m7szdqgrra3956irna";
 }
 {
   name = "vscode-graphql";
@@ -266,8 +266,8 @@
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2021.8.2031173646";
-  sha256 = "1qgf75h08a5g2lslvxhm15sxf8mdfxni4l0gxpy3sgnw9syrg95n";
+  version = "2021.8.2031190714";
+  sha256 = "0kbc70jk1nlh5xkr1inll8caxhl2k3y24vlhffmdliymfgz9096s";
 }
 {
   name = "remote-containers";
@@ -332,8 +332,8 @@
 {
   name = "ide-purescript";
   publisher = "nwolverson";
-  version = "0.25.1";
-  sha256 = "1bvc23bwq61lc0443r9vshz0cs59v97s2p73h3w0mwrzi4mbii7c";
+  version = "0.25.2";
+  sha256 = "102i3ygc1sr5apbv0minvh810jv5k3khfqrygd8qzhr1yy9fiq4k";
 }
 {
   name = "language-purescript";
