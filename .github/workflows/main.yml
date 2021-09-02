@@ -28,7 +28,7 @@ jobs:
             experimental-features = nix-command flakes
 
       - name: Update Extensions
-        run: printenv NIX_PATH
+        run: cat shared_exts.txt | ./update_exts.sh > shared_exts.nix
         working-directory: modules/vscode
 
       - uses: EndBug/add-and-commit@v7 # You can change this to use a specific version.
