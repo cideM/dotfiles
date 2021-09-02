@@ -1,5 +1,5 @@
 #! /usr/bin/env nix-shell
-#! nix-shell -i bash -p curl jq unzip
+#! nix-shell -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/08ef0f28e3a41424b92ba1d203de64257a9fca6a.tar.gz -i bash -p curl jq unzip
 set -eu -o pipefail
 
 # This script reads Visual Studio Code extension (VSC) names from STDIN and prints
