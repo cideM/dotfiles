@@ -1,10 +1,4 @@
 {
-    "lucid-fish-prompt": {
-        "branch": "master",
-        "repo": "https://github.com/mattgreen/lucid.fish.git",
-        "rev": "c9aa46c1b59d40be49c37d92632baa1ea7093e9d",
-        "type": "git"
-    },
     "niv": {
         "branch": "master",
         "description": "Easy dependency management for Nix projects",

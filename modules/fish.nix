@@ -4,7 +4,7 @@
 , cidem-fish-notes
 , cidem-fish-yvm
 , nix-env-fish
-, lucid-fish
+, lucid-fish-prompt
 , ...
 }:
 let
@@ -268,7 +268,7 @@ in
 
       {
         name = "lucid";
-        src = lucid-fish;
+        src = lucid-fish-prompt;
       }
 
       {

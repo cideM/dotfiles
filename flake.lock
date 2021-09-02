@@ -163,7 +163,7 @@
         "type": "github"
       }
     },
-    "lucid-fish": {
+    "lucid-fish-prompt": {
       "flake": false,
       "locked": {
         "lastModified": 1621904502,
@@ -262,7 +262,7 @@
         "k9s": "k9s",
         "lightspeed": "lightspeed",
         "lspfuzzy": "lspfuzzy",
-        "lucid-fish": "lucid-fish",
+        "lucid-fish-prompt": "lucid-fish-prompt",
         "material": "material",
         "neovim-flake": "neovim-flake",
         "nix-env-fish": "nix-env-fish",

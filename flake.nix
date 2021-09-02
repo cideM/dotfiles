@@ -16,6 +16,9 @@
     everforest.url = "github:sainnhe/everforest";
     everforest.flake = false;
 
+    lucid-fish-prompt.url = "github:mattgreen/lucid.fish";
+    lucid-fish-prompt.flake = false;
+
     nix-env-fish.url = "github:lilyball/nix-env.fish";
     nix-env-fish.flake = false;
 
@@ -71,9 +74,6 @@
     ts-go.url = "github:tree-sitter/tree-sitter-go/eb306e6e60f393df346cfc8cbfaf52667a37128a";
     ts-go.flake = false;
 
-    lucid-fish.url = "github:mattgreen/lucid.fish";
-    lucid-fish.flake = false;
-
     lightspeed.url = "github:ggandor/lightspeed.nvim";
     lightspeed.flake = false;
 
@@ -116,12 +116,12 @@
     , k9s
     , visual-split-nvim
     , nix-env-fish
+    , lucid-fish-prompt
     , vim-lua
     , cidem-fish-notes
     , cidem-fish-yvm
     , material
     , yui
-    , lucid-fish
     , ts-nix
     , ts-clj
     , ts-go
@@ -203,10 +203,10 @@
           home-manager
           yui
           spacevimtheme
-          lucid-fish
           ts-nix
           ts-clj
           nix-env-fish
+          lucid-fish-prompt
           cidem-fish-notes
           cidem-fish-yvm
           pkgsCompat
