@@ -458,8 +458,8 @@
 {
   name = "plastic";
   publisher = "will-stone";
-  version = "7.3.0";
-  sha256 = "1gb9hpd257czmw8s60bjxadbwdfib7b56mpg82n4iq5bp2claxbj";
+  version = "7.5.0";
+  sha256 = "1y1kl475hr5whv363fvphmxhgrhjlcin2z70kzki2jlcc9ar8h4h";
 }
 {
   name = "vscode-ruby";
