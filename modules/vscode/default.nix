@@ -18,27 +18,6 @@ let
     aarch64-darwin = "sha256:0nh4mfxsw4nhfnznjv5grjfzinvxa0sr86xzl6rnsxyhnpq1pn89";
   }.${system};
 
-  version = "latest";
-
-  vscode = if pkgs.stdenv.isDarwin then pkgs.vscode else (pkgs.vscode.override { isInsiders = true; });
-
-  latest = vscode.overrideAttrs
-    (_: rec {
-      pname = "vscode-insiders";
-      # https://matrix.to/#/!YllBCgVdcoakoavZvX:rycee.net/$_MrTYFXF00sFE0yt86qljP2svFzeRxJfgcXVo8R9oGg?via=matrix.org&via=nerdsin.space&via=nixos.dev
-      # I couldn't find links to download specific versions of the insiders
-      # release. There appears to be only the 'latest' version of it. This
-      # confuses 'niv', since it won't update the hash if the link never
-      # changes. When Nix then downloads the source, it sees a different
-      # hash. Long story short: I'll just have to update the hash here all
-      # the time and can't use 'niv' for this.
-      src = builtins.fetchurl {
-        name = "VSCode_${version}_${plat}.${archive_fmt}";
-        url = "https://update.code.visualstudio.com/${version}/${plat}/insider";
-        sha256 = sha;
-      };
-    });
-
   marketplace =
     let exts = (builtins.filter ({ name, ... }: if pkgs.stdenv.isDarwin then true else name != "vsliveshare") (import ./shared_exts.nix));
     in pkgs.vscode-utils.extensionsFromVscodeMarketplace exts;
@@ -52,7 +31,7 @@ in
   programs.vscode = {
     enable = true;
     keybindings = pkgs.lib.importJSON ./keybindings.json;
-    package = latest;
+    package = pkgs.vscodeInsiders;
     extensions = extensions;
     userSettings = {
       "editor.minimap.showSlider" = "always";

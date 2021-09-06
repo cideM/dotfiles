@@ -10,6 +10,8 @@
     cidem-fish-notes.url = "github:cideM/fish-notes";
     cidem-fish-notes.flake = false;
 
+    cidem-vsc.url = "github:cideM/visual-studio-code-insiders-nix";
+
     cidem-fish-yvm.url = "github:cideM/fish-yvm";
     cidem-fish-yvm.flake = false;
 
@@ -89,6 +91,7 @@
     , vim-lua
     , cidem-fish-notes
     , cidem-fish-yvm
+    , cidem-vsc
     , material
     , yui
     , spacevimtheme
@@ -100,6 +103,13 @@
     }:
     let
       overlays = [
+        (self: super: {
+          vscodeInsiders = cidem-vsc.packages.${super.system}.vscodeInsiders;
+        })
+
+        (self: super: {
+          vim-lua = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "vim-lua"; src = vim-lua; };
+        })
 
         (self: super: {
           vim-lua = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "vim-lua"; src = vim-lua; };
