@@ -43,37 +43,6 @@
     vim-js.url = "github:yuezk/vim-js";
     vim-js.flake = false;
 
-    # Treesitter
-    ts-nix.url = "github:cstrahan/tree-sitter-nix/50f38ceab667f9d482640edfee803d74f4edeba5";
-    ts-nix.flake = false;
-
-    ts-clj.url = "github:sogaiu/tree-sitter-clojure/f7d100c4fbaa8aad537e80c7974c470c7fb6aeda";
-    ts-clj.flake = false;
-
-    ts-yaml.url = "github:ikatyang/tree-sitter-yaml/0e36bed171768908f331ff7dff9d956bae016efb";
-    ts-yaml.flake = false;
-
-    ts-js.url = "github:tree-sitter/tree-sitter-javascript/2c5b138ea488259dbf11a34595042eb261965259";
-    ts-js.flake = false;
-
-    ts-rust.url = "github:tree-sitter/tree-sitter-rust/a360da0a29a19c281d08295a35ecd0544d2da211";
-    ts-rust.flake = false;
-
-    ts-lua.url = "github:nvim-treesitter/tree-sitter-lua/b6d4e9e10ccb7b3afb45018fbc391b4439306b23";
-    ts-lua.flake = false;
-
-    ts-ts.url = "github:tree-sitter/tree-sitter-typescript/28e757a2f498486931b3cb13a100a1bcc9261456";
-    ts-ts.flake = false;
-
-    ts-python.url = "github:tree-sitter/tree-sitter-python/d6210ceab11e8d812d4ab59c07c81458ec6e5184";
-    ts-python.flake = false;
-
-    ts-haskell.url = "github:tree-sitter/tree-sitter-haskell/9c1fd425ff72ebbe419e6ee7e8c9862ec9f274f4";
-    ts-haskell.flake = false;
-
-    ts-go.url = "github:tree-sitter/tree-sitter-go/eb306e6e60f393df346cfc8cbfaf52667a37128a";
-    ts-go.flake = false;
-
     lightspeed.url = "github:ggandor/lightspeed.nvim";
     lightspeed.flake = false;
 
@@ -122,20 +91,10 @@
     , cidem-fish-yvm
     , material
     , yui
-    , ts-nix
-    , ts-clj
-    , ts-go
-    , ts-lua
-    , ts-ts
-    , ts-js
-    , ts-rust
     , spacevimtheme
     , vim-js
     , doomonetheme
     , githubtheme
-    , ts-yaml
-    , ts-haskell
-    , ts-python
     , everforest
     , lightspeed
     }:
@@ -203,23 +162,13 @@
           home-manager
           yui
           spacevimtheme
-          ts-nix
-          ts-clj
           nix-env-fish
           lucid-fish-prompt
           cidem-fish-notes
           cidem-fish-yvm
           pkgsCompat
-          ts-go
-          ts-lua
-          ts-ts
-          ts-js
-          ts-rust
           doomonetheme
           githubtheme
-          ts-yaml
-          ts-haskell
-          ts-python
           everforest
           lightspeed
           k9s;
