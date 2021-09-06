@@ -2,22 +2,6 @@
 let
   inherit (pkgs.stdenv.hostPlatform) system;
 
-  archive_fmt = if (system == "x86_64-darwin" || system == "aarch64-darwin") then "zip" else "tar.gz";
-
-  plat = {
-    x86_64-linux = "linux-x64";
-    x86_64-darwin = "darwin";
-    aarch64-linux = "linux-arm64";
-    aarch64-darwin = "darwin-arm64";
-    armv7l-linux = "linux-armhf";
-  }.${system};
-
-  sha = {
-    x86_64-linux = "sha256:1bqyg0996aqbih6f93qqphgfs8lg334hlr2byydz1x7fgyvjsnch";
-    x86_64-darwin = "sha256:11rnr41200sbi4rzsxlc0l5fdr0fvpqmz0sfkh8ap1r18g7i89ym";
-    aarch64-darwin = "sha256:0nh4mfxsw4nhfnznjv5grjfzinvxa0sr86xzl6rnsxyhnpq1pn89";
-  }.${system};
-
   marketplace =
     let exts = (builtins.filter ({ name, ... }: if pkgs.stdenv.isDarwin then true else name != "vsliveshare") (import ./shared_exts.nix));
     in pkgs.vscode-utils.extensionsFromVscodeMarketplace exts;
