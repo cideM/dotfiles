@@ -211,8 +211,6 @@ in
         let g:EditorConfig_max_line_indicator = "exceeding"
         let g:EditorConfig_preserve_formatoptions = 1
 
-        let g:peekaboo_window = 'vert bo 60new'
-
         let g:doom_one_terminal_colors = v:true
         let g:doom_one_italic_comments = v:true
         let g:doom_one_cursor_coloring = v:true
@@ -422,7 +420,6 @@ in
         sad-vim
         unicode-vim
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "lightspeed"; src = lightspeed; })
-        vim-peekaboo
 
         # Themes
         iceberg-vim
