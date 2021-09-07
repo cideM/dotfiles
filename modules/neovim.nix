@@ -359,7 +359,7 @@ in
           ensure_installed = {},
           highlight = {
             enable = true,
-            -- disable = {"haskell"},
+            disable = {"haskell"},
           },
           incremental_selection = {
             enable = true,
