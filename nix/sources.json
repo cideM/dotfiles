@@ -28,11 +28,5 @@
         "repo": "https://git@github.com/eraserhd/parinfer-rust.git",
         "rev": "408437babfec7d7a285b47f4dd9db2b6ab884aae",
         "type": "git"
-    },
-    "vim-colors-github": {
-        "branch": "master",
-        "repo": "https://github.com/cormacrelf/vim-colors-github.git",
-        "rev": "ee42a68d95078f5a3d1c0fb14462cc781b244ee2",
-        "type": "git"
     }
 }
