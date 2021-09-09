@@ -289,7 +289,9 @@
                 allowUnfree = true;
               };
               home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
+              home-manager.useUserPackages = false;
+              home-manager.verbose = true;
+              home-manager.backupFileExtension = "hm-backup";
               home-manager.users.tifa = import ./hosts/nixos/home.nix;
               home-manager.extraSpecialArgs = specialArgs;
             }
