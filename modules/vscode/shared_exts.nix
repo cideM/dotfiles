@@ -32,14 +32,14 @@
 {
   name = "markdown-checkbox";
   publisher = "bierner";
-  version = "0.1.3";
-  sha256 = "1zl32jq59phr0w0q3b9w0dhlvr2fgbsycx8zn99swf594rjpkyw5";
+  version = "0.3.2";
+  sha256 = "12mjacyy3ipinhmaz35972vn1dahrzwlbx16n1wjyvxsl8l4id0y";
 }
 {
   name = "markdown-emoji";
   publisher = "bierner";
-  version = "0.1.0";
-  sha256 = "1y599hmi7ngamvvkwwi9ax4hyzc0hgzp51j52vlrwri6805fwr9y";
+  version = "0.2.1";
+  sha256 = "1lcg2b39jydl40wcfrbgshl2i1r58k92c7dipz0hl1fa1v23vj4v";
 }
 {
   name = "markdown-footnotes";
@@ -50,8 +50,8 @@
 {
   name = "markdown-yaml-preamble";
   publisher = "bierner";
-  version = "0.0.4";
-  sha256 = "03dp1wp5rqxrmsvpkwha38jgaxd1xm51cj4pl26j565ncrmczcx5";
+  version = "0.1.0";
+  sha256 = "1xlb6dvrsy2sp92lax1nq01xcrax1nm256ns9b4vvkq7p4njpqp5";
 }
 {
   name = "vscode-intelephense-client";
