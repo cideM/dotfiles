@@ -37,3 +37,12 @@ Updating extensions: `cd modules/vscode/; cat shared_exts.txt | ./update_exts.sh
 
 - [ ] Remove `niv` in favor of Flakes for all inputs
 - [x] Depending on what new laptop I get, use Flakes for HM as well (or just reuse the NixOS config)
+
+### Notes
+
+Beware `nix-env`! Last time I used it to debug a package and that package stuck
+around and prevented newer version of that same package to be installed through
+my normal Nix configuration. Somehow I never saw the errors until I actived
+`verbose` mode for HM. Then it told me that there's a conflict between this old
+`vscode-with-extensions` package and what my config was trying to install. Long
+story short: if you use `nix-env` make sure to clean things up afterwards.
