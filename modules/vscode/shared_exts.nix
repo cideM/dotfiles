@@ -266,8 +266,8 @@
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2021.9.1001216636";
-  sha256 = "07m5vfr3bymagydr05ljj8c5dnsdffkmhaanlc2hic7dmr6hhr21";
+  version = "2021.9.1001220611";
+  sha256 = "0yzmqyzh3c0vwxl4w5i5cvi1vc5y37szjllk1rfg5hivh6d0py54";
 }
 {
   name = "remote-containers";
@@ -308,8 +308,8 @@
 {
   name = "vsliveshare";
   publisher = "ms-vsliveshare";
-  version = "1.0.4761";
-  sha256 = "1sxjhpdjxc7anbd5fsqn957a1ln164mmn726h8v8l88lhx4lpjd9";
+  version = "1.0.4836";
+  sha256 = "1sigix4cdism09k53vd6vxa57mjkr9585n94vqnn9njlsfkbc4pf";
 }
 {
   name = "vsliveshare-audio";
