@@ -1,5 +1,5 @@
 {
-  description = "Nix. All. The. Things.";
+  description = "今日は";
 
   inputs = rec {
     home-manager = {
@@ -7,13 +7,7 @@
       inputs.nixpkgs.follows = "unstable";
     };
 
-    cidem-fish-notes.url = "github:cideM/fish-notes";
-    cidem-fish-notes.flake = false;
-
     cidem-vsc.url = "github:cideM/visual-studio-code-insiders-nix";
-
-    cidem-fish-yvm.url = "github:cideM/fish-yvm";
-    cidem-fish-yvm.flake = false;
 
     everforest.url = "github:sainnhe/everforest";
     everforest.flake = false;
@@ -33,9 +27,6 @@
     k9s.url = "github:derailed/k9s";
     k9s.flake = false;
 
-    githubtheme.url = "github:projekt0n/github-nvim-theme";
-    githubtheme.flake = false;
-
     doomonetheme.url = "github:NTBBloodbath/doom-one.nvim";
     doomonetheme.flake = false;
 
@@ -51,9 +42,6 @@
     lspfuzzy.url = "github:ojroques/nvim-lspfuzzy";
     lspfuzzy.flake = false;
 
-    material.url = "github:marko-cerovac/material.nvim";
-    material.flake = false;
-
     yui.url = "github:cidem/yui";
     yui.flake = false;
 
@@ -62,11 +50,6 @@
 
     neovim-flake.url = "github:neovim/neovim?dir=contrib";
     neovim-flake.inputs.nixpkgs.follows = "unstable";
-
-    scripts = {
-      url = "git+ssh://git@github.com/cidem/scripts?ref=main";
-      flake = false;
-    };
 
     operatorMono = {
       url = "git+ssh://git@github.com/cidem/operatormono?ref=main";
@@ -82,22 +65,17 @@
     , home-manager
     , operatorMono
     , nixpkgs
-    , scripts
     , lspfuzzy
     , k9s
     , visual-split-nvim
     , nix-env-fish
     , lucid-fish-prompt
     , vim-lua
-    , cidem-fish-notes
-    , cidem-fish-yvm
     , cidem-vsc
-    , material
     , yui
     , spacevimtheme
     , vim-js
     , doomonetheme
-    , githubtheme
     , everforest
     , lightspeed
     }:
@@ -166,19 +144,13 @@
 
       specialArgs = {
         inherit operatorMono
-          scripts
           lspfuzzy
-          material
           home-manager
           yui
           spacevimtheme
           nix-env-fish
           lucid-fish-prompt
-          cidem-fish-notes
-          cidem-fish-yvm
-          pkgsCompat
           doomonetheme
-          githubtheme
           everforest
           lightspeed
           k9s;

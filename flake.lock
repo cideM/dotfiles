@@ -1,37 +1,5 @@
 {
   "nodes": {
-    "cidem-fish-notes": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1612944226,
-        "narHash": "sha256-X2xviZIKQfvpkxfD3MVB1SPnR5tAhZjcTZP+sCi3+vo=",
-        "owner": "cideM",
-        "repo": "fish-notes",
-        "rev": "bfb4818f6ab1317079352b8bd64bd6faa096791e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "cideM",
-        "repo": "fish-notes",
-        "type": "github"
-      }
-    },
-    "cidem-fish-yvm": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1616180090,
-        "narHash": "sha256-RleusFNozPquzeOG9I6NaqbmsomMrCw0OpJ80Xevc3c=",
-        "owner": "cideM",
-        "repo": "fish-yvm",
-        "rev": "32d992111114863af8c9bc4b544233927b4b78ae",
-        "type": "github"
-      },
-      "original": {
-        "owner": "cideM",
-        "repo": "fish-yvm",
-        "type": "github"
-      }
-    },
     "cidem-vsc": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -110,22 +78,6 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "githubtheme": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1630318166,
-        "narHash": "sha256-eCvqw9EZ8OOvOZDbA9/wSXLCYES4VTlMN4VPMdyH8B0=",
-        "owner": "projekt0n",
-        "repo": "github-nvim-theme",
-        "rev": "82fe97448976a94dbf851aa0441f94706d7cb7f6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "projekt0n",
-        "repo": "github-nvim-theme",
         "type": "github"
       }
     },
@@ -213,22 +165,6 @@
         "type": "github"
       }
     },
-    "material": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1630590051,
-        "narHash": "sha256-b/miyhFI53EUbgrxYTA4OchxolK9allgjDMEyDbrj4Q=",
-        "owner": "marko-cerovac",
-        "repo": "material.nvim",
-        "rev": "35bc9c45d29a819cd1564c47a7771ace2605c67d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "marko-cerovac",
-        "repo": "material.nvim",
-        "type": "github"
-      }
-    },
     "neovim-flake": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -287,48 +223,26 @@
     },
     "root": {
       "inputs": {
-        "cidem-fish-notes": "cidem-fish-notes",
-        "cidem-fish-yvm": "cidem-fish-yvm",
         "cidem-vsc": "cidem-vsc",
         "doomonetheme": "doomonetheme",
         "everforest": "everforest",
-        "githubtheme": "githubtheme",
         "home-manager": "home-manager",
         "k9s": "k9s",
         "lightspeed": "lightspeed",
         "lspfuzzy": "lspfuzzy",
         "lucid-fish-prompt": "lucid-fish-prompt",
-        "material": "material",
         "neovim-flake": "neovim-flake",
         "nix-env-fish": "nix-env-fish",
         "nixpkgs": [
           "unstable"
         ],
         "operatorMono": "operatorMono",
-        "scripts": "scripts",
         "spacevimtheme": "spacevimtheme",
         "unstable": "unstable_2",
         "vim-js": "vim-js",
         "vim-lua": "vim-lua",
         "visual-split-nvim": "visual-split-nvim",
         "yui": "yui"
-      }
-    },
-    "scripts": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1626709062,
-        "narHash": "sha256-F5x9bTLDtWHLFZdn0dssknr6rpjkOMe6qk+FdZniQHE=",
-        "ref": "main",
-        "rev": "a8cb2212a969effadcd67c541efdf936d4839d36",
-        "revCount": 5,
-        "type": "git",
-        "url": "ssh://git@github.com/cidem/scripts"
-      },
-      "original": {
-        "ref": "main",
-        "type": "git",
-        "url": "ssh://git@github.com/cidem/scripts"
       }
     },
     "spacevimtheme": {

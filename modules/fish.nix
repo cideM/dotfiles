@@ -1,8 +1,5 @@
 { pkgs
 , config
-, scripts
-, cidem-fish-notes
-, cidem-fish-yvm
 , nix-env-fish
 , lucid-fish-prompt
 , ...
@@ -66,27 +63,15 @@ let
 
     set -x GOPATH ~/go
 
-    set -x PATH                 \
-        ~/bin                   \
-        ${scripts}              \
-        $PATH
+    set -x PATH ~/bin $PATH
 
     # https://discourse.nixos.org/t/how-is-nix-path-managed-regarding-nix-channel/6079/3?u=cidem
     set -x NIX_PATH ~/.nix-defexpr/channels $NIX_PATH
 
-    abbr -a kubedebug 'kubectl run -i --tty --rm debug --image=radial/busyboxplus:curl --restart=Never -- sh'
     abbr -a g 'git'
     abbr -a dc ${if pkgs.stdenv.isDarwin then "'docker compose'" else "'docker-compose'"}
-    abbr -a gap 'git add --patch'
     abbr -a tf 'terraform'
-    abbr -a wn 'FISH_NOTES_DIR=$FISH_WORK_NOTES n'
-    abbr -a work-agenda 'FISH_NOTES_DIR=$FISH_WORK_NOTES agenda'
-    abbr -a work-new-agenda 'FISH_NOTES_DIR=$FISH_WORK_NOTES new-agenda'
-    abbr -a work-notes 'FISH_NOTES_DIR=$FISH_WORK_NOTES notes'
-    abbr -a klabels 'sed \'1d\' | awk \'{ print $6 }\' | string split ","'
-    abbr -a work-todos 'FISH_NOTES_DIR=$FISH_WORK_NOTES todos'
 
-    alias  niv 'niv --no-colors'
     alias dash 'dash -E'
 
     source ${pkgs.fzf}/share/fzf/key-bindings.fish && fzf_key_bindings
@@ -156,99 +141,6 @@ in
         '';
       };
 
-      findnote = {
-        description = "Find a note interactively with ripgrep and FZF";
-        body = ''
-          # 1. Pipe all lines with ripgrep into fzf
-          # 2. Preview only the body (use local variable to suppress wildcard expansion errors)
-          # 3. Result will be path/to/file:with:colons:matched term -> split it and keep only the file part (colons come from ISO8601 date)
-          # 4. Echo the directory name
-          set -l note (rg '.*' $FISH_NOTES_DIR | fzf --preview 'set -l n (dirname {1..4}); cat $n/title*; echo "---------"; cat $n/body*' --delimiter ':' --with-nth '2..')
-
-          if test -n "$note"
-            echo $note | string split ':' | head -n 4 | string join ":" | xargs dirname
-          end
-        '';
-      };
-
-      n = {
-        description = "Wrapper around findnote to open it in $EDITOR";
-        body = ''
-          set -l fp (findnote)
-
-          if test -n "$fp"
-            $EDITOR $fp/body*
-          end
-        '';
-      };
-
-      agenda = {
-        description = "Open agenda for today";
-        body = ''
-          set -l today (date -I)
-          set -l agenda_file (rg agenda $FISH_NOTES_DIR/$today*/tags -l)
-          set -l agenda_num (count $agenda_file)
-
-          if test $agenda_num -gt 1
-            echo "Found more than one agenda file"
-            for f in $agenda_file; echo $f; end
-            return 1
-          end
-
-          if test $agenda_num -eq 0
-            echo "No agenda found"
-            return 1
-          end
-
-          nvim (dirname $agenda_file)/body*
-        '';
-      };
-
-      new-agenda = {
-        description = "Create new agenda for today";
-        body = ''
-          set -l agenda_date (date -I)
-          # This stores my TODOs formatted in a nicer way in the template
-          # variable, which equals the buffer contents when $EDITOR opens.
-          # Only downside is that if you make 0 edits the note won't be saved
-          # because you didn't change the template.
-          __notes_entry_template=(todos | string collect) notes new -T "Agenda: $agenda_date" -t agenda
-        '';
-      };
-
-      todos = {
-        description = ''
-          Gather all TODOs from my notes and format them in a way
-          that is easy to turn into an agenda
-        '';
-        body = ''
-          set -l agenda_date (date -I)
-
-          echo "# Agenda: $agenda_date"
-          echo ""
-
-          set -l todos (rg 'TODO:' $FISH_NOTES_DIR -l)
-
-          if test (count $todos) -eq 0
-            echo "No TODOs, hooray!"
-            return 0
-          end
-
-          for f in $todos
-            set -l title (cat (dirname $f)/title)
-
-            if test -n "$title"
-              printf "## [%s](%s)\n" $title $f
-            else
-              printf "## %s\n" $f
-            end
-
-            rg 'TODO:' $f | sed 's/TODO:/- [ ]/'
-            echo ""
-          end
-        '';
-      };
-
       fish_greeting = {
         body = ''
         '';
@@ -257,11 +149,6 @@ in
 
     plugins = [
       {
-        name = "fish-notes";
-        src = cidem-fish-notes;
-      }
-
-      {
         name = "nix-env";
         src = nix-env-fish;
       }
@@ -269,11 +156,6 @@ in
       {
         name = "lucid";
         src = lucid-fish-prompt;
-      }
-
-      {
-        name = "fish-yvm";
-        src = cidem-fish-yvm;
       }
     ];
   };

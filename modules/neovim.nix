@@ -3,12 +3,9 @@ args@{ config
 , pkgs
 , spacevimtheme
 , doomonetheme
-, pkgsCompat
-, githubtheme
 , lspfuzzy
 , everforest
 , lightspeed
-, material
 , yui
 , ...
 }:
@@ -296,10 +293,6 @@ in
         silent! xmap <unique> <leader>d <Plug>(operator-sandwich-delete)
         silent! xmap <unique> <leader>p <Plug>(operator-sandwich-replace)
 
-        " ======= VIMTEX ====================
-        let g:tex_flavor = 'latex'
-        ${if pkgs.stdenv.isDarwin then "" else "let g:vimtex_view_method = 'zathura'"}
-
         " ======= lsp =======================
         packadd nvim-lspconfig
         packadd nvim-treesitter
@@ -349,12 +342,6 @@ in
 
         require('lspfuzzy').setup {}
 
-        -- Github Color Theme
-        -- require("github-theme").setup({
-        --   themeStyle = "light",
-        --   sidebars = {"qf", "vista_kind", "terminal", "packer"},
-        -- })
-
         -- Treesitter
         require'nvim-treesitter.configs'.setup {
           ensure_installed = {},
@@ -376,16 +363,6 @@ in
           }
         }
 
-        -- Material theme (this overrides the previously set color scheme)
-        vim.g.material_style = 'lighter'
-        vim.g.material_italic_comments = true
-        vim.g.material_italic_keywords = true
-        vim.g.material_italic_functions = true
-        vim.g.material_italic_variables = false
-        vim.g.material_contrast = true
-        vim.g.material_borders = true
-        -- require('material').set()
-
         require'lightspeed'.setup {
            jump_to_first_match = true,
            jump_on_partial_input_safety_timeout = 400,
@@ -400,12 +377,12 @@ in
         # LSP
         { plugin = nvim-lspconfig; optional = true; }
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "lspfuzzy"; src = lspfuzzy; })
-        pkgs.visual-split-nvim
 
         # Git
         vim-fugitive
 
         vim-unimpaired
+        pkgs.visual-split-nvim
         vim-repeat
         vim-eunuch
         vim-commentary
@@ -426,15 +403,12 @@ in
         iceberg-vim
         edge
         one-nvim
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "material"; src = material; })
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "yui"; src = yui; })
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "everforest"; src = everforest; })
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "spacevimtheme"; src = spacevimtheme; })
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "doomonetheme"; src = doomonetheme; })
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "githubtheme"; src = githubtheme; })
 
         # Language stuff
-        vimtex
         vim-markdown-toc
         { plugin = (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "parinfer-rust"; src = sources."parinfer"; }); optional = true; }
         { plugin = conjure; optional = true; }
