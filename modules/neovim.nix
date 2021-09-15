@@ -143,6 +143,10 @@ in
         " is just so my jump list isn't cluttered and I always end up at the first
         " line when undoing a FormatBuffer call. See the linked post.
         function! FormatBuffer()
+          " HAHAHAHAHHAAH TAKE THIS YOU FUCKING PIECE OF SHIT FIXEDGQ FUNCTION I CAN DESTROY
+          " YOU WHENVER I WANT AND THERE IS FUCK ALL YOU CAN DO ABOUT IT HAHAHAHAHAHAHA
+          " WHO IS LAUGHING NOW YOU FUCKING FUCKED UP PIECE OF FUCK
+          setl formatexpr=
           let view = winsaveview()
           " https://vim.fandom.com/wiki/Restore_the_cursor_position_after_undoing_text_change_made_by_a_script
           normal ix
