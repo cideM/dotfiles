@@ -266,8 +266,8 @@
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2021.9.1001236957";
-  sha256 = "1ali8c44ajgc73crigpn79cfzwlwxsh6h7dpbby53ym4b92hjffw";
+  version = "2021.9.1001240917";
+  sha256 = "1dpzny4j6074yg5wigldrfh2cyq3k63hsw5qyvwcwq6swr4z6362";
 }
 {
   name = "remote-containers";
