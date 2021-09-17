@@ -86,19 +86,19 @@
         })
 
         (self: super: {
-          vim-lua = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "vim-lua"; src = vim-lua; };
+          vim-lua = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "vim-lua"; src = vim-lua; };
         })
 
         (self: super: {
-          vim-lua = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "vim-lua"; src = vim-lua; };
+          vim-lua = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "vim-lua"; src = vim-lua; };
         })
 
         (self: super: {
-          vim-js = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "vim-js"; src = vim-js; };
+          vim-js = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "vim-js"; src = vim-js; };
         })
 
         (self: super: {
-          visual-split-nvim = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "visual-split"; src = visual-split-nvim; };
+          visual-split-nvim = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "visual-split"; src = visual-split-nvim; };
         })
 
         (self: super: {

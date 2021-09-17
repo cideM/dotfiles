@@ -380,7 +380,7 @@ in
       plugins = with pkgs.vimPlugins; [
         # LSP
         { plugin = nvim-lspconfig; optional = true; }
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "lspfuzzy"; src = lspfuzzy; })
+        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "lspfuzzy"; src = lspfuzzy; })
 
         # Git
         vim-fugitive
@@ -401,20 +401,20 @@ in
         vim-sandwich
         sad-vim
         unicode-vim
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "lightspeed"; src = lightspeed; })
+        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "lightspeed"; src = lightspeed; })
 
         # Themes
         iceberg-vim
         edge
         one-nvim
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "yui"; src = yui; })
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "everforest"; src = everforest; })
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "spacevimtheme"; src = spacevimtheme; })
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "doomonetheme"; src = doomonetheme; })
+        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "yui"; src = yui; })
+        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "everforest"; src = everforest; })
+        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "spacevimtheme"; src = spacevimtheme; })
+        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "doomonetheme"; src = doomonetheme; })
 
         # Language stuff
         vim-markdown-toc
-        { plugin = (pkgs.vimUtils.buildVimPluginFrom2Nix rec { name = "parinfer-rust"; src = sources."parinfer"; }); optional = true; }
+        { plugin = (pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "parinfer-rust"; src = sources."parinfer"; }); optional = true; }
         { plugin = conjure; optional = true; }
 
         # Syntax
