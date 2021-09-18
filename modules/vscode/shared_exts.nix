@@ -170,8 +170,8 @@
 {
   name = "svg";
   publisher = "jock";
-  version = "1.4.9";
-  sha256 = "1jzcyx183l8mlghzildp2xmckjx8b5srvgsmd9ddzsxbylfs2iqa";
+  version = "1.4.10";
+  sha256 = "03zb9kdy5xbkhbvpj4qs0y2xv2mnrfjsazwgf8qh738ss33pbh0k";
 }
 {
   name = "vscode-styled-components";
@@ -266,8 +266,8 @@
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2021.9.1001240917";
-  sha256 = "1dpzny4j6074yg5wigldrfh2cyq3k63hsw5qyvwcwq6swr4z6362";
+  version = "2021.9.1001244851";
+  sha256 = "1lngrzrnwd9q5773k5afwxrcm35srl0jmh0cs46nhbp4igs4ipgx";
 }
 {
   name = "remote-containers";
