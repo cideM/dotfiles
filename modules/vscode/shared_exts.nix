@@ -80,8 +80,8 @@
 {
   name = "vscode-markdownlint";
   publisher = "DavidAnson";
-  version = "0.44.0";
-  sha256 = "1nhc47llc4qdvkpdymsvmfgk21dd5vgkqbm77nd1hpchc2q4sv83";
+  version = "0.44.1";
+  sha256 = "1bf6y44v07w26lywmapdh36zh36pk6qqs85f3adg4vfj98g3lr60";
 }
 {
   name = "mustache";
@@ -128,14 +128,14 @@
 {
   name = "prettier-vscode";
   publisher = "esbenp";
-  version = "8.1.0";
-  sha256 = "0fw5v71ika1xcj5r3faj2wj1bra6zl1gkxyi1z7lrpv1dn9wr9d5";
+  version = "9.0.0";
+  sha256 = "1nak1hg46wxkl0kb0zhc343kq2f4nd5q1fqscb29jybd4qdb8lgn";
 }
 {
   name = "go";
   publisher = "golang";
-  version = "0.27.2";
-  sha256 = "1ayyqm7bpz9axxp9avnr0y7kcqzpl1l538m7szdqgrra3956irna";
+  version = "0.28.0";
+  sha256 = "18szy170vpaqcgjja21y9s56biacry26kv2dkid2af442a3azr06";
 }
 {
   name = "vscode-graphql";
@@ -260,14 +260,14 @@
 {
   name = "python";
   publisher = "ms-python";
-  version = "2021.9.1230869389";
-  sha256 = "0v4v5fcf2z1cys2if4k64qdwvr96hqvqw31fhdrrwwbgmx8cxjj3";
+  version = "2021.9.1246542782";
+  sha256 = "105vj20749bck6ijdlf7hsg5nb82bi5pklf80l1s7fn4ajr2yk02";
 }
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2021.9.1001244851";
-  sha256 = "1lngrzrnwd9q5773k5afwxrcm35srl0jmh0cs46nhbp4igs4ipgx";
+  version = "2021.9.1001252904";
+  sha256 = "14asixlgnw3scj83jwx45pijlpslip2h390v39xnwaxnbv2jfyc7";
 }
 {
   name = "remote-containers";
