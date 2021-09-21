@@ -242,6 +242,7 @@
         "vim-js": "vim-js",
         "vim-lua": "vim-lua",
         "visual-split-nvim": "visual-split-nvim",
+        "winshift": "winshift",
         "yui": "yui"
       }
     },
@@ -338,6 +339,22 @@
       "original": {
         "owner": "wellle",
         "repo": "visual-split.vim",
+        "type": "github"
+      }
+    },
+    "winshift": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1631719660,
+        "narHash": "sha256-NaJLOZH9CRt02Ul88KhpUhzANyyUwJ4S9m4xDZf+iKg=",
+        "owner": "sindrets",
+        "repo": "winshift.nvim",
+        "rev": "e392fd5b3ca0ef8279a8230129695fc7a921f4c3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sindrets",
+        "repo": "winshift.nvim",
         "type": "github"
       }
     },

@@ -244,7 +244,13 @@ in
         nnoremap <BS>      <C-^>
         nnoremap <leader><leader> :update<cr>
         nnoremap <leader>z        :wq<cr>
-        nnoremap Y         y$
+        " Vim has two commands for closing a buffer: :bdelete and :bwipeout. The
+        " former removes the file from the buffer list, clears its options,
+        " variables and mappings. However, it remains in the jumplist, so Ctrl-o
+        " takes you back and reopens the file. If that's not what you want, use
+        " :bwipeout or Bbye's equivalent :Bwipeout where you would've used
+        " :bdelete.
+        nnoremap <Leader>q :Bwipeout<CR>
 
         " ======= easy align ================
         let g:easy_align_ignore_groups = []
@@ -370,10 +376,22 @@ in
         require'lightspeed'.setup {
            jump_to_first_match = true,
            jump_on_partial_input_safety_timeout = 400,
-           grey_out_search_area = true,
            limit_ft_matches = 5,
            full_inclusive_prefix_key = '<c-x>',
         }
+
+        require("winshift").setup({
+          highlight_moving_win = true,  -- Highlight the window being moved
+          focused_hl_group = "Visual",  -- The highlight group used for the moving window
+          moving_win_options = {
+            -- These are local options applied to the moving window while it's
+            -- being moved. They are unset when you leave Win-Move mode.
+            wrap = false,
+            cursorline = false,
+            cursorcolumn = false,
+            colorcolumn = "",
+          }
+        })
         EOF
       '';
 
@@ -386,6 +404,7 @@ in
         vim-fugitive
 
         vim-unimpaired
+        pkgs.winshift
         pkgs.visual-split-nvim
         vim-repeat
         vim-eunuch
@@ -393,6 +412,7 @@ in
         editorconfig-vim
         vim-easy-align
         vim-indent-object
+        vim-bbye
         QFEnter
         vim-dirvish
         fzfWrapper

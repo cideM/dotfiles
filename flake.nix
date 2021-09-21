@@ -12,6 +12,9 @@
     everforest.url = "github:sainnhe/everforest";
     everforest.flake = false;
 
+    winshift.url = "github:sindrets/winshift.nvim";
+    winshift.flake = false;
+
     lucid-fish-prompt.url = "github:mattgreen/lucid.fish";
     lucid-fish-prompt.flake = false;
 
@@ -66,6 +69,7 @@
     , operatorMono
     , nixpkgs
     , lspfuzzy
+    , winshift
     , k9s
     , visual-split-nvim
     , nix-env-fish
@@ -83,6 +87,10 @@
       overlays = [
         (self: super: {
           vscodeInsiders = cidem-vsc.packages.${super.system}.vscodeInsiders;
+        })
+
+        (self: super: {
+          winshift = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "winshift"; src = winshift; };
         })
 
         (self: super: {
