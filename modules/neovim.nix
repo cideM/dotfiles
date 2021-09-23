@@ -345,6 +345,7 @@ in
           })
 
         nvim_lsp.rust_analyzer.setup{on_attach=on_attach}
+        nvim_lsp.clojure_lsp.setup{on_attach=on_attach}
         -- https://github.com/neovim/neovim/issues/13829
         -- nvim_lsp.purescriptls.setup{}
         nvim_lsp.gopls.setup{on_attach=on_attach}
