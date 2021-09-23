@@ -42,7 +42,7 @@ with pkgs;
     kubernetes-helm
     libuv
     ncdu
-    kubectl
+    # kubectl
     nixpkgs-fmt
     nixpkgs-review
     qmk
