@@ -23,8 +23,6 @@
 
       set-option -g default-shell $SHELL
 
-      set-option -g status-position "bottom"
-
       # Set ` as prefix. Type ` twice to actually type `
       unbind c-b
       set-option -g prefix `
@@ -37,8 +35,6 @@
       set -wg main-pane-height 30
 
       set -sg escape-time 0
-
-      set-option -g status-interval 5
 
       set -g automatic-rename on
       set -g automatic-rename-format '#{b:pane_current_path}'
@@ -95,22 +91,8 @@
       bind / next-layout
 
       bind R source-file ~/.tmux.conf \; display-message "Reloaded!"
-      # -------------------------------------------------------------------
-      # Decoration (256-color)
-      # -------------------------------------------------------------------
-      set-option -g status-justify left
-      set-option -g status-left '#[fg=colour8] #S'
-      set-option -g status-left-length 30
-      set-option -g status-style bg=default
-      set-option -g status-right ""
 
-      set-option -g pane-active-border-style fg=colour2
-      set-option -g pane-border-style fg=colour8
-      set-option -g pane-border-status bottom
-      set-option -g pane-border-format "#{b:pane_title}"
-
-      set-window-option -g window-status-format '#[fg=colour8] [#I] #W #F'
-      set-window-option -g window-status-current-format '#[fg=colour2] [#I] #W #F'
+      set -g status off
     '';
   };
 }
