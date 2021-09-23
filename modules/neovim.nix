@@ -92,6 +92,9 @@ in
       css = ''
         setl formatprg=prettier\ --stdin-filepath\ %
       '';
+      scss = ''
+        setl formatprg=prettier\ --stdin-filepath\ %
+      '';
       nix = ''
         setl formatprg=nixpkgs-fmt
         set foldmethod=expr
