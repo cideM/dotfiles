@@ -134,8 +134,8 @@
 {
   name = "go";
   publisher = "golang";
-  version = "0.28.0";
-  sha256 = "18szy170vpaqcgjja21y9s56biacry26kv2dkid2af442a3azr06";
+  version = "0.28.1";
+  sha256 = "1fiycdss64izdxk7gnp1gx6bdl040cr5lk17cnb2p30qpgpjv0gz";
 }
 {
   name = "vscode-graphql";
@@ -266,8 +266,8 @@
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2021.9.1001261101";
-  sha256 = "037wg1g6vxynn013fl4xmggs6lfskm973dc54yjy6ynbmrxq9dqw";
+  version = "2021.9.1001269173";
+  sha256 = "17j5g3fifplmlnsdm26imcy1ibs6ppycginv5p2c5sl9pyq6qafc";
 }
 {
   name = "remote-containers";
