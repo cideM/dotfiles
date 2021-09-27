@@ -80,8 +80,8 @@
 {
   name = "vscode-markdownlint";
   publisher = "DavidAnson";
-  version = "0.44.2";
-  sha256 = "1z5yjp7xiwbdw8wqlih51zfq88cwfalln1cq1p22pv2x5aaq7yml";
+  version = "0.44.3";
+  sha256 = "0cnyqpc6346y3gwswz4b3pmp7bmy94zdz35akrh13yg6y30y9nwa";
 }
 {
   name = "mustache";
