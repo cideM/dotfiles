@@ -253,7 +253,7 @@ in
         " takes you back and reopens the file. If that's not what you want, use
         " :bwipeout or Bbye's equivalent :Bwipeout where you would've used
         " :bdelete.
-        nnoremap <Leader>q :Bwipeout<CR>
+        nnoremap <Leader>q :Bwipeout!<CR>
 
         " ======= easy align ================
         let g:easy_align_ignore_groups = []
