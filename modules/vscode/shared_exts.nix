@@ -266,8 +266,8 @@
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2021.9.1001286107";
-  sha256 = "1xrc54c5kxxfx6683bxcaj0ak39s37w8307lm92pb7ch638w6c7h";
+  version = "2021.9.1001290345";
+  sha256 = "109i3s338vymbk3f238f0mq671p1sf6xk9bl95dcm0d7xrmvfhkd";
 }
 {
   name = "remote-containers";
@@ -362,8 +362,8 @@
 {
   name = "vscode-yaml";
   publisher = "redhat";
-  version = "0.22.0";
-  sha256 = "1ffsah3pwxfa8ya2c0a3q1wh5ngh621zgidfwl8iggnrl7nbwl3k";
+  version = "0.23.0";
+  sha256 = "0hdly0cxj13fs5q06nlcic3yhv6jq641q01y07sxl9xaprb0n2dm";
 }
 {
   name = "json-organizer";
