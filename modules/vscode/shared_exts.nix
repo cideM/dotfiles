@@ -26,8 +26,8 @@
 {
   name = "calva";
   publisher = "betterthantomorrow";
-  version = "2.0.212";
-  sha256 = "0i9pm692gx9518y13d52z23lyqd8vyhysxf9ph7rpb66bnmcpffg";
+  version = "2.0.213";
+  sha256 = "1klvfzi76w9csbz8ja03pg2sp5mhbrh3z10agagvpfy14wrfn6ka";
 }
 {
   name = "markdown-checkbox";
@@ -170,8 +170,8 @@
 {
   name = "svg";
   publisher = "jock";
-  version = "1.4.10";
-  sha256 = "03zb9kdy5xbkhbvpj4qs0y2xv2mnrfjsazwgf8qh738ss33pbh0k";
+  version = "1.4.12";
+  sha256 = "16rl5abix4075cf16mx3j4vsgbx2i6zi9x68fnv249aniwyw6c5s";
 }
 {
   name = "vscode-styled-components";
