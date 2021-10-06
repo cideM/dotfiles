@@ -272,8 +272,8 @@
 {
   name = "remote-containers";
   publisher = "ms-vscode-remote";
-  version = "0.200.0";
-  sha256 = "1xsd1hm5y2aw5h9c21l6cdf3vs8ckz8bgzcx8rs77jn7yf9y9wqp";
+  version = "0.201.0";
+  sha256 = "02wpa3a7d3lvs5fpz8f42s7xsx2vxb3qkshia8b9pnjr8n09fmmx";
 }
 {
   name = "remote-ssh";
@@ -308,8 +308,8 @@
 {
   name = "vsliveshare";
   publisher = "ms-vsliveshare";
-  version = "1.0.4836";
-  sha256 = "1sigix4cdism09k53vd6vxa57mjkr9585n94vqnn9njlsfkbc4pf";
+  version = "1.0.4962";
+  sha256 = "0j0kv6pbfkm0p29p37ykdpqnm88hm9sg6pvfll6iqzn8sg6nsais";
 }
 {
   name = "vsliveshare-audio";
