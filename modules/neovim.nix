@@ -192,7 +192,7 @@ in
         set timeoutlen=500
         set formatoptions=tcrqjn
         set hidden
-        set number
+        set nonumber
         set ignorecase
         set smartcase
         set wildignore+=*.git/*,nix/sources.nix,*.min.*,./result/*
@@ -379,9 +379,7 @@ in
 
         require'lightspeed'.setup {
            jump_to_first_match = true,
-           jump_on_partial_input_safety_timeout = 400,
-           limit_ft_matches = 5,
-           full_inclusive_prefix_key = '<c-x>',
+           highlight_unique_chars = true,
         }
 
         require("winshift").setup({
@@ -430,9 +428,7 @@ in
         # Themes
         iceberg-vim
         edge
-        one-nvim
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "yui"; src = yui; })
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "everforest"; src = everforest; })
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "spacevimtheme"; src = spacevimtheme; })
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "doomonetheme"; src = doomonetheme; })
 
