@@ -260,8 +260,8 @@
 {
   name = "python";
   publisher = "ms-python";
-  version = "2021.9.1246542782";
-  sha256 = "105vj20749bck6ijdlf7hsg5nb82bi5pklf80l1s7fn4ajr2yk02";
+  version = "2021.10.1317843341";
+  sha256 = "1plw4b02imps2b1x0gda82p3xqmavahjpnw3ra838vzfi3ni00b3";
 }
 {
   name = "jupyter";
@@ -272,8 +272,8 @@
 {
   name = "remote-containers";
   publisher = "ms-vscode-remote";
-  version = "0.202.0";
-  sha256 = "0in1gq0vc1zvci9w20pi5d43viyklhdjshj7i9q8d0av7f2dqgnq";
+  version = "0.202.1";
+  sha256 = "0wgy1v31x49a0h59l1qi86hmlc854gpgr7j26y3h8jkdyvlwbf5s";
 }
 {
   name = "remote-ssh";
