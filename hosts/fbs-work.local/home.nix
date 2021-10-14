@@ -16,6 +16,7 @@
   ];
 
   sources = import ../../nix/sources.nix;
+  programs.man.enable = true;
 
   home.sessionVariables = {
     TERMINFO_DIRS = "${pkgs.alacritty.terminfo.outPath}/share/terminfo";
@@ -24,12 +25,8 @@
   home.stateVersion = "20.09";
 
   programs.fish.interactiveShellInit = ''
-    set -x FISH_NOTES_DIR ~/.local/share/fish_notes
-    set -x FISH_WORK_NOTES ~/.local/share/work_notes
-
-    if test "$PATH[1]" != "/bin"
-       set -p PATH /bin $PATH
-    end
+    contains ~/bin $PATH
+    or set -p PATH ~/bin
 
     contains /opt/local/bin $PATH
     or set -x PATH /opt/local/bin $PATH
@@ -37,7 +34,8 @@
     contains /opt/local/sbin $PATH
     or set -x PATH /opt/local/sbin $PATH
 
-    set -x MANPATH /opt/local/share/man $MANPATH
+    contains "/Users/fbs/.nix-profile/share/man" $MANPATH
+    or set -p MANPATH "/Users/fbs/.nix-profile/share/man"
   '';
 
   home.packages = with pkgs; [
