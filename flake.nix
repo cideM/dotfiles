@@ -85,11 +85,11 @@
     }:
     let
       overlays = [
-        (self: super: {
-          nixUnstable = super.nixUnstable.override {
-            patches = [ ./unset-is-macho.patch ];
-          };
-        })
+        # (self: super: {
+        #   nixUnstable = super.nixUnstable.override {
+        #     patches = [ ./unset-is-macho.patch ];
+        #   };
+        # })
 
         (self: super: {
           vscodeInsiders = cidem-vsc.packages.${super.system}.vscodeInsiders;
@@ -113,42 +113,6 @@
 
         (self: super: {
           visual-split-nvim = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "visual-split"; src = visual-split-nvim; };
-        })
-
-        (self: super: {
-          ledger-live-desktop = super.ledger-live-desktop.overrideAttrs (old: rec {
-            pname = "ledger-live-desktop";
-            version = "2.29.0";
-            src = builtins.fetchurl {
-              url = "https://github.com/LedgerHQ/${pname}/releases/download/v${version}/${pname}-${version}-linux-x86_64.AppImage";
-              sha256 = "1y4xvnwh2mqbc39pmnpgjg8mlx208s2pipm7dazq4bgmay7k9zh0";
-            };
-          });
-        })
-
-
-        (self: super: {
-          nix-direnv = super.nix-direnv.overrideAttrs (old: rec {
-            version = "ccc2e4c5db2869184a7181109cee0d42cd62120f";
-            src = super.fetchFromGitHub {
-              owner = "nix-community";
-              repo = "nix-direnv";
-              rev = version;
-              sha256 = "1kc0x9m53gvkcg2x0sg8ydw1r3k7ppisrr0bsvlvbrff81jr4kwn";
-            };
-          });
-        })
-
-        (self: super: {
-          kubectl = super.kubectl.overrideAttrs (old: rec {
-            name = "kubectl-${version}";
-
-            version = "1.15";
-            src = builtins.fetchurl {
-              url = "https://amazon-eks.s3.us-west-2.amazonaws.com/1.15.11/2020-08-04/bin/linux/amd64/kubectl";
-              sha256 = "1knchnf6bh68lx12zpz2jjjd81zgm02jrcbxpzs71dniwasdghqc";
-            };
-          });
         })
       ];
 
