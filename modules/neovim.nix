@@ -247,13 +247,8 @@ in
         nnoremap <BS>      <C-^>
         nnoremap <leader><leader> :update<cr>
         nnoremap <leader>z        :wq<cr>
-        " Vim has two commands for closing a buffer: :bdelete and :bwipeout. The
-        " former removes the file from the buffer list, clears its options,
-        " variables and mappings. However, it remains in the jumplist, so Ctrl-o
-        " takes you back and reopens the file. If that's not what you want, use
-        " :bwipeout or Bbye's equivalent :Bwipeout where you would've used
-        " :bdelete.
-        nnoremap <Leader>q :Bwipeout!<CR>
+        nnoremap <Leader>q :Sayonara<CR>
+        nnoremap <Leader>Q :Sayonara!<CR>
 
         " ======= easy align ================
         let g:easy_align_ignore_groups = []
@@ -414,7 +409,7 @@ in
         editorconfig-vim
         vim-easy-align
         vim-indent-object
-        vim-bbye
+        vim-sayonara
         QFEnter
         vim-dirvish
         fzfWrapper
