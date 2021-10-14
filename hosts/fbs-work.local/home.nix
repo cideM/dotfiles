@@ -70,6 +70,23 @@
     keep-derivations = true
     keep-outputs = true
   '';
+  xdg.configFile."nix/registry.json".text =
+    builtins.toJSON {
+      version = 2;
+      flakes = [
+        {
+          from = {
+            id = "fbrs";
+            type = "indirect";
+          };
+          to = {
+            type = "github";
+            owner = "cidem";
+            repo = "nix-templates";
+          };
+        }
+      ];
+    };
 
   home.file.".gitignore".text = ''
     .direnv/

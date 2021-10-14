@@ -168,6 +168,7 @@
                   ];
                   nixpkgs.config = {
                     allowUnfree = true;
+
                   };
                 }
                 ./hosts/fbs-work.local/home.nix
