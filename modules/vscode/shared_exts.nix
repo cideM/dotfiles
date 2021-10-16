@@ -170,8 +170,8 @@
 {
   name = "svg";
   publisher = "jock";
-  version = "1.4.12";
-  sha256 = "16rl5abix4075cf16mx3j4vsgbx2i6zi9x68fnv249aniwyw6c5s";
+  version = "1.4.13";
+  sha256 = "1l443hmnwwp2fcz5dqxaf1km8r7zfligkmqicm1rlr3jwi8bcy7d";
 }
 {
   name = "vscode-styled-components";
@@ -266,8 +266,8 @@
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2021.10.1001341090";
-  sha256 = "0bg5641bly83by3vy0ly1181dmlcby3p3mzbq1mn5xmx5x3h5rw5";
+  version = "2021.10.1001345285";
+  sha256 = "089n866ha095akgj4xfhm76w44wzhn677fvkcf5hf0vks6nvaw6p";
 }
 {
   name = "remote-containers";
@@ -344,8 +344,8 @@
 {
   name = "vetur";
   publisher = "octref";
-  version = "0.34.1";
-  sha256 = "09w3bik1mxs7qac67wgrc58vl98ham3syrn2anycpwd7135wlpby";
+  version = "0.35.0";
+  sha256 = "1l1w83yix8ya7si2g3w64mczh0m992c0cp2q0262qp3y0gspnm2j";
 }
 {
   name = "gatito-theme";
@@ -416,8 +416,8 @@
 {
   name = "lua";
   publisher = "sumneko";
-  version = "2.4.3";
-  sha256 = "0rh8jdxghsv0wzabpba2dxbz5ad1llya71nh9fr2c016vzwn8hd7";
+  version = "2.4.4";
+  sha256 = "0w4x499w8djd11w28x0w2wi9kfb3k75bw63wxdg1x7gak36x9zyb";
 }
 {
   name = "sass-indented";
