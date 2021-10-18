@@ -26,8 +26,8 @@
 {
   name = "calva";
   publisher = "betterthantomorrow";
-  version = "2.0.216";
-  sha256 = "1syszwvj8yjp80nzgllmp2zcf9sxn0iikp753yaalsibbglivc4a";
+  version = "2.0.217";
+  sha256 = "1cssj35nbbgjhw5g5jnqk79fyyv55bbn1gvgjzi2b3mz8159g5jd";
 }
 {
   name = "markdown-checkbox";
@@ -362,8 +362,8 @@
 {
   name = "vscode-yaml";
   publisher = "redhat";
-  version = "0.23.0";
-  sha256 = "0hdly0cxj13fs5q06nlcic3yhv6jq641q01y07sxl9xaprb0n2dm";
+  version = "1.0.0";
+  sha256 = "10pbc8vyvv6rmghnlx3pc5jbh4jf9qg25f20glfczsphi2bv036k";
 }
 {
   name = "json-organizer";
