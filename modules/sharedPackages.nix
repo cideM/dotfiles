@@ -13,6 +13,7 @@ with pkgs;
     liberation_ttf
     luajitPackages.luacheck
     pandoc
+    fastmod
     bashInteractive_5
     bat
     curl
