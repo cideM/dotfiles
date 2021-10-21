@@ -26,8 +26,8 @@
 {
   name = "calva";
   publisher = "betterthantomorrow";
-  version = "2.0.219";
-  sha256 = "1681cvixnnavg36jddbbid5ijdsqchbz38py24dc64bgki47w4nx";
+  version = "2.0.220";
+  sha256 = "13b4clb45h101q168xx5gvqynckxaigl3nkcdsf44wmymqbnpi4v";
 }
 {
   name = "markdown-checkbox";
@@ -260,14 +260,14 @@
 {
   name = "python";
   publisher = "ms-python";
-  version = "2021.10.1336267007";
-  sha256 = "0snxi3ncr7rf12rgqg26rjygjk8xdn0i9x9lmk5w9w9wfz224w3k";
+  version = "2021.10.1365161279";
+  sha256 = "0acl4mbjw1s5djqhjyk06kbf81xpvvbrm86m8nqdaf15crr7wywq";
 }
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2021.10.1001358390";
-  sha256 = "1glb1ar9xlmi4f0f7k8lzdsp6hh3a2crjrg7w7wa0q2z2hp74r93";
+  version = "2021.10.1001362801";
+  sha256 = "0rqkds35jnwhdmh5hbmnpbfmshx6723xswicvam4sr665s5cjlrx";
 }
 {
   name = "remote-containers";
@@ -308,8 +308,8 @@
 {
   name = "vsliveshare";
   publisher = "ms-vsliveshare";
-  version = "1.0.4991";
-  sha256 = "0d43l0ayk7ih0gykdksplr2n9z1mzr5ja393xzky0qf0bih4k13m";
+  version = "1.0.5027";
+  sha256 = "1jj7w2ik98q252ws4hav3gvg0mxyw5wjf1vvvl5cv20vy5nqrnyr";
 }
 {
   name = "vsliveshare-audio";
