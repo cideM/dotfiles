@@ -266,13 +266,13 @@ in
         nnoremap <leader>fw :Windows<cr>
 
         " ======= sneak =====================
-        " let g:sneak#label      = 1
-        " let g:sneak#use_ic_scs = 1
-        " let g:sneak#s_next = 1
-        " map f <Plug>Sneak_f
-        " map F <Plug>Sneak_F
-        " map t <Plug>Sneak_t
-        " map T <Plug>Sneak_T
+        let g:sneak#label      = 1
+        let g:sneak#use_ic_scs = 1
+        let g:sneak#s_next = 1
+        map f <Plug>Sneak_f
+        map F <Plug>Sneak_F
+        map t <Plug>Sneak_t
+        map T <Plug>Sneak_T
 
         nmap     <leader>F :call FormatBuffer()<cr>
         nnoremap <leader>R :set operatorfunc=ReflowComment<cr>g@
@@ -372,11 +372,6 @@ in
           }
         }
 
-        require'lightspeed'.setup {
-           jump_to_first_match = true,
-           highlight_unique_chars = true,
-        }
-
         require("winshift").setup({
           highlight_moving_win = true,  -- Highlight the window being moved
           focused_hl_group = "Visual",  -- The highlight group used for the moving window
@@ -417,8 +412,8 @@ in
         vim-gutentags
         vim-sandwich
         sad-vim
+        vim-sneak
         unicode-vim
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "lightspeed"; src = lightspeed; })
 
         # Themes
         iceberg-vim
