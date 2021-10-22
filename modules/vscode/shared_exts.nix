@@ -92,8 +92,8 @@
 {
   name = "vscode-eslint";
   publisher = "dbaeumer";
-  version = "2.2.1";
-  sha256 = "02qsxrnidw3yf4a3arv5vg18jnjcpqi99ahpkszmz8z0d0gspkd5";
+  version = "2.2.2";
+  sha256 = "17j4czb1lxgy62l0rsdf06ld3482cqplxglsh7p4zyp50p4samln";
 }
 {
   name = "dhall-lang";
@@ -266,8 +266,8 @@
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2021.10.1001362801";
-  sha256 = "0rqkds35jnwhdmh5hbmnpbfmshx6723xswicvam4sr665s5cjlrx";
+  version = "2021.10.1001367190";
+  sha256 = "1mnkkw1a551nvx2w79kj6ijksp7qj2ijmd981wd4ajc1lgshmc10";
 }
 {
   name = "remote-containers";
