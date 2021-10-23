@@ -158,8 +158,8 @@
 {
   name = "latex-workshop";
   publisher = "James-Yu";
-  version = "8.21.0";
-  sha256 = "083w7h6s0y6bszjsp8xsf1pf2xqb5iaj3rrhbkk824fyfl7v8dp6";
+  version = "8.21.1";
+  sha256 = "0wg4ykdyklysl4ija0cj37ya2jqf9qsldc6l9gy7a8ffpd30xqcx";
 }
 {
   name = "hoogle-vscode";
@@ -266,8 +266,8 @@
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2021.10.1001367190";
-  sha256 = "1mnkkw1a551nvx2w79kj6ijksp7qj2ijmd981wd4ajc1lgshmc10";
+  version = "2021.10.1001371494";
+  sha256 = "1iicvsg0x5alxc3x9zh7jbc7ihb19085prkkdd5vqh543yn4z1xa";
 }
 {
   name = "remote-containers";
@@ -308,8 +308,8 @@
 {
   name = "vsliveshare";
   publisher = "ms-vsliveshare";
-  version = "1.0.5027";
-  sha256 = "1jj7w2ik98q252ws4hav3gvg0mxyw5wjf1vvvl5cv20vy5nqrnyr";
+  version = "1.0.5043";
+  sha256 = "092azgby0ahfcnpwzax4zmacvcqh49gvr1r4mznmylcxz0b4xl9r";
 }
 {
   name = "vsliveshare-audio";
