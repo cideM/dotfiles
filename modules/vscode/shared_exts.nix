@@ -26,8 +26,8 @@
 {
   name = "calva";
   publisher = "betterthantomorrow";
-  version = "2.0.220";
-  sha256 = "13b4clb45h101q168xx5gvqynckxaigl3nkcdsf44wmymqbnpi4v";
+  version = "2.0.221";
+  sha256 = "0d3bivk7d130jmk2c4rp7d7pbn6xihkfgrfv71182rw8dc1vyzsr";
 }
 {
   name = "markdown-checkbox";
