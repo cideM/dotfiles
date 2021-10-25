@@ -17,6 +17,8 @@ let
     set -x FZF_ALT_C_OPTS "--preview 'tree -a -C {} | head -200'"
     set -x FZF_CTRL_T_COMMAND '${pkgs.fd}/bin/fd -L $dir --type f 2> /dev/null'
 
+    set -x BAT_THEME "GitHub"
+
     set -x MANPAGER 'nvim +Man!'
 
     # https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
