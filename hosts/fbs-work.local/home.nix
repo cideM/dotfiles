@@ -25,14 +25,7 @@
   home.stateVersion = "20.09";
 
   programs.fish.interactiveShellInit = ''
-    contains ~/bin $PATH
-    or set -p PATH ~/bin
-
-    contains /opt/local/bin $PATH
-    or set -x PATH /opt/local/bin $PATH
-
-    contains /opt/local/sbin $PATH
-    or set -x PATH /opt/local/sbin $PATH
+    fish_add_path /opt/local/bin /opt/local/sbin
 
     contains "/Users/fbs/.nix-profile/share/man" $MANPATH
     or set -p MANPATH "/Users/fbs/.nix-profile/share/man"
