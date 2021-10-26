@@ -266,8 +266,8 @@
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2021.10.1001371494";
-  sha256 = "1iicvsg0x5alxc3x9zh7jbc7ihb19085prkkdd5vqh543yn4z1xa";
+  version = "2021.10.1001380329";
+  sha256 = "078kn27cxyam56mzakifvcr6xg52b6r16ml3i6vcmwhg2294c6xf";
 }
 {
   name = "remote-containers";
@@ -290,8 +290,8 @@
 {
   name = "remote-wsl";
   publisher = "ms-vscode-remote";
-  version = "0.58.2";
-  sha256 = "0fa1j592z7p7zv4acwpy4fn5fdjb6lz2sajcl78rzdva35qynw3i";
+  version = "0.58.3";
+  sha256 = "185hc2kp2kh7xs7q7ns6knin67g505n522h4ylsqagz4vfd81m4f";
 }
 {
   name = "vscode-remote-extensionpack";
