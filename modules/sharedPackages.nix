@@ -57,7 +57,6 @@ with pkgs;
     rsync
     rust-analyzer
     shellcheck
-    shfmt
     stow
     tig
     time

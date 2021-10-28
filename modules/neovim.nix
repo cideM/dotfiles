@@ -28,7 +28,7 @@ in
         setl formatprg=prettier\ --stdin-filepath\ %";
       '';
       sh = ''
-        setl formatprg=shfmt makeprg=shellcheck\ -f\ gcc\ %
+        setl makeprg=shellcheck\ -f\ gcc\ %
         nnoremap <buffer> <localleader>m :silent make<cr>
       '';
       rust = ''
