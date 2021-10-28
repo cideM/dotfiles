@@ -26,8 +26,8 @@
 {
   name = "calva";
   publisher = "betterthantomorrow";
-  version = "2.0.221";
-  sha256 = "0d3bivk7d130jmk2c4rp7d7pbn6xihkfgrfv71182rw8dc1vyzsr";
+  version = "2.0.222";
+  sha256 = "04k5j5rwdiff0yviwm0l9dmk9d1fksw0m7rll7rxwa47icnicpfg";
 }
 {
   name = "markdown-checkbox";
@@ -134,8 +134,8 @@
 {
   name = "go";
   publisher = "golang";
-  version = "0.28.1";
-  sha256 = "1fiycdss64izdxk7gnp1gx6bdl040cr5lk17cnb2p30qpgpjv0gz";
+  version = "0.29.0";
+  sha256 = "1ky5xnl300m42ja8sh3b4ynn8k1nnrcbxxhn3c3g5bsyzsrr1nmz";
 }
 {
   name = "vscode-graphql";
@@ -266,8 +266,8 @@
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2021.10.1001386521";
-  sha256 = "0j92y6cn01rnx10w6gkj2dqgzjmyxx09byy40k976naqskn0zcdd";
+  version = "2021.10.1001389388";
+  sha256 = "0xmn4nbk7s6n6qykx69zn7vi87c4r9n80r4fkjj5fc68qdkpq8ff";
 }
 {
   name = "remote-containers";
@@ -362,8 +362,8 @@
 {
   name = "vscode-yaml";
   publisher = "redhat";
-  version = "1.0.0";
-  sha256 = "10pbc8vyvv6rmghnlx3pc5jbh4jf9qg25f20glfczsphi2bv036k";
+  version = "1.1.0";
+  sha256 = "1cc871wdbasfkf37vkkanqf9jfzzvmvzi7gxyl63w613hb9g75w2";
 }
 {
   name = "json-organizer";
