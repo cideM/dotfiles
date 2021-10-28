@@ -52,6 +52,10 @@
         default = "simple";
       };
 
+      diff = {
+        algorithm = "histogram";
+      };
+
       pull = {
         rebase = true;
       };
