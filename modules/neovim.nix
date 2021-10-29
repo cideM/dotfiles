@@ -424,7 +424,7 @@ in
 
         # Language stuff
         vim-markdown-toc
-        { plugin = (pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "parinfer-rust"; src = sources."parinfer"; }); optional = true; }
+        { plugin = pkgs.parinfer-rust; optional = true; }
         { plugin = conjure; optional = true; }
 
         # Syntax

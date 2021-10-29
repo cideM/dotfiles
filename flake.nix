@@ -9,6 +9,9 @@
 
     cidem-vsc.url = "github:cideM/visual-studio-code-insiders-nix";
 
+    parinfer-rust.url = "github:eraserhd/parinfer-rust";
+    parinfer-rust.flake = false;
+
     everforest.url = "github:sainnhe/everforest";
     everforest.flake = false;
 
@@ -82,11 +85,16 @@
     , doomonetheme
     , everforest
     , lightspeed
+    , parinfer-rust
     }:
     let
       overlays = [
         (self: super: {
           vscodeInsiders = cidem-vsc.packages.${super.system}.vscodeInsiders;
+        })
+
+        (self: super: {
+          parinfer-rust = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "parinfer-rust"; src = parinfer-rust; };
         })
 
         (self: super: {
