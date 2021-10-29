@@ -40,10 +40,6 @@ The `--flake` option isn't documented in the manual but you can find it in
 $ sudo nixos-rebuild switch
 ```
 
-## TODO
-
-- [ ] Remove `niv` in favor of Flakes for all inputs
-
 ### Notes
 
 Beware `nix-env`! Last time I used it to debug a package and that package stuck
