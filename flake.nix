@@ -85,12 +85,6 @@
     }:
     let
       overlays = [
-        # (self: super: {
-        #   nixUnstable = super.nixUnstable.override {
-        #     patches = [ ./unset-is-macho.patch ];
-        #   };
-        # })
-
         (self: super: {
           vscodeInsiders = cidem-vsc.packages.${super.system}.vscodeInsiders;
         })
