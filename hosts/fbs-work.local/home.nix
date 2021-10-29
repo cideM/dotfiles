@@ -8,13 +8,11 @@
     (import ../../modules/tmux.nix)
     (import ../../modules/ctags.nix)
     (import ../../modules/fish.nix)
-    (import ../../modules/sources.nix)
     (import ../../modules/sharedPackages.nix)
     (import ../../modules/sharedSettings.nix)
     (import ../../modules/vscode/default.nix)
   ];
 
-  sources = import ../../nix/sources.nix;
   programs.man.enable = true;
 
   home.sessionVariables = {

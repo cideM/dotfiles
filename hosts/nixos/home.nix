@@ -9,11 +9,8 @@
     (import ../../modules/fish.nix)
     (import ../../modules/sharedPackages.nix)
     (import ../../modules/sharedSettings.nix)
-    (import ../../modules/sources.nix)
     (import ../../modules/vscode/default.nix)
   ];
-
-  sources = import ../../nix/sources.nix;
 
   home.packages = with pkgs; [
     iotop

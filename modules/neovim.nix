@@ -14,8 +14,6 @@ with lib;
 with types;
 let
 
-  sources = config.sources;
-
   makeFtPlugins = ftplugins: with attrsets;
     mapAttrs'
       (key: value: nameValuePair "nvim/after/ftplugin/${key}.vim" ({ text = value; }))
@@ -195,7 +193,7 @@ in
         set nonumber
         set ignorecase
         set smartcase
-        set wildignore+=*.git/*,nix/sources.nix,*.min.*,./result/*
+        set wildignore+=*.git/*,*.min.*,./result/*
           \,*.map,*.idea,*build/*,.direnv/*,*dist/*,*compiled/*,*tmp/*
         set inccommand=split
         set completeopt-=preview

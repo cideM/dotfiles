@@ -221,6 +221,22 @@
         "url": "ssh://git@github.com/cidem/operatormono"
       }
     },
+    "parinfer-rust": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1631528268,
+        "narHash": "sha256-eiL4o0zHSDA1LiD/ETpsEGXn9pg8W6+A94pNkNOnyRI=",
+        "owner": "eraserhd",
+        "repo": "parinfer-rust",
+        "rev": "b6d5d1c7562f848c3de3b0b0858cd51e138ee2b8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "eraserhd",
+        "repo": "parinfer-rust",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "cidem-vsc": "cidem-vsc",
@@ -237,6 +253,7 @@
           "unstable"
         ],
         "operatorMono": "operatorMono",
+        "parinfer-rust": "parinfer-rust",
         "spacevimtheme": "spacevimtheme",
         "unstable": "unstable_2",
         "vim-js": "vim-js",
