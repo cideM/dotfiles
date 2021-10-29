@@ -7,7 +7,6 @@
     # (import ../../modules/git.nix)
     (import ../../modules/tmux.nix)
     (import ../../modules/ctags.nix)
-    (import ../../modules/pandoc.nix)
     (import ../../modules/fish.nix)
     (import ../../modules/sources.nix)
     (import ../../modules/sharedPackages.nix)
