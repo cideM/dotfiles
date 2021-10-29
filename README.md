@@ -1,12 +1,24 @@
 # Dotfiles
 
-There's no place like `~`
+This repository contains my Nix dotfiles, which power a NixOS desktop computer
+and my Darwin M1 laptop.
+
+Additionally, the repository includes a GitHub workflow for updating my Visual
+Studio Code extensions on a regular basis. Which is kind of funny because I
+actually use Neovim.
+
+The `hosts` folder is the entrypoint into this repository, whereas the
+`modules` folder contains the reusable parts which are then used in either of
+the two hosts.
 
 ## Activate Config
 
 ### MacOS
 
-This builds the MacOS Home Manager configuration and then runs the activation script. My `/etc/nix/nix.conf` only has `build-users-group = nixbld`, I'm installing an unstable version of Nix with flake support through my Home Manager configuration as well.
+This builds the MacOS Home Manager configuration and then runs the activation
+script. My `/etc/nix/nix.conf` only has `build-users-group = nixbld`, I'm
+installing an unstable version of Nix with flake support through my Home
+Manager configuration as well.
 
 ```
 $ nix-shell -p nixUnstable --command "nix build --experimental-features 'nix-command flakes' '.#homeConfigurations.work-mbp.activationPackage'"
@@ -19,7 +31,8 @@ This should work as well after the first, successfull Home Manager activation:
 $ home-manager build --flake .#work-mbp
 ```
 
-The `--flake` option isn't documented in the manual but you can find it in `home-manager --help`.
+The `--flake` option isn't documented in the manual but you can find it in
+`home-manager --help`.
 
 ### NixOS
 
@@ -27,16 +40,9 @@ The `--flake` option isn't documented in the manual but you can find it in `home
 $ sudo nixos-rebuild switch
 ```
 
-## Visual Studio Code
-
-The URL doesn't change but the sha does, it's annoying. Need to manually set a fake sha, update and then paste the actual sha.
-
-Updating extensions: `cd modules/vscode/; cat shared_exts.txt | ./update_exts.sh > shared_exts.nix`
-
 ## TODO
 
 - [ ] Remove `niv` in favor of Flakes for all inputs
-- [x] Depending on what new laptop I get, use Flakes for HM as well (or just reuse the NixOS config)
 
 ### Notes
 
