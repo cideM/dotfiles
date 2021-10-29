@@ -80,8 +80,8 @@
 {
   name = "vscode-markdownlint";
   publisher = "DavidAnson";
-  version = "0.44.4";
-  sha256 = "1n8z1fg0imrpfnf6d49i4ib2w7jn146l2z7l1d3g1g8ip2zf3brn";
+  version = "0.45.0";
+  sha256 = "1vci6pv1f9qr5g6yd9g208cj6gwisrg4lwcvv2sw833mrhpbxg1g";
 }
 {
   name = "mustache";
@@ -266,14 +266,14 @@
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2021.10.1001389388";
-  sha256 = "0xmn4nbk7s6n6qykx69zn7vi87c4r9n80r4fkjj5fc68qdkpq8ff";
+  version = "2021.10.1001393861";
+  sha256 = "0kay8w0kxm8nqwsk32a08f6wv8rxpxafb9gqg2a0pq191qjx7pd4";
 }
 {
   name = "remote-containers";
   publisher = "ms-vscode-remote";
-  version = "0.203.0";
-  sha256 = "0msac1majfr9dk3r36sppgmk1n5zym9xxl2s4041ajba7nks7z9f";
+  version = "0.204.0";
+  sha256 = "0ik6ram41bwpkrnai1wppdfbh5psjlf12j2prw8fx5bhk9zz7vdv";
 }
 {
   name = "remote-ssh";
@@ -338,8 +338,8 @@
 {
   name = "language-purescript";
   publisher = "nwolverson";
-  version = "0.2.5";
-  sha256 = "1ggrpqaa8826rpwflj5cxj0g9r7qnihkcj1z2gg2rsisrhc2k3zf";
+  version = "0.2.6";
+  sha256 = "1v406f7b7hg8fdjfm6nq09sdaz5zfyc6y0lanfq42awqkkxqcyd1";
 }
 {
   name = "vetur";
