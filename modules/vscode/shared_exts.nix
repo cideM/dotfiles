@@ -266,14 +266,14 @@
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2021.10.1001393861";
-  sha256 = "0kay8w0kxm8nqwsk32a08f6wv8rxpxafb9gqg2a0pq191qjx7pd4";
+  version = "2021.10.1001398262";
+  sha256 = "1s00f1rvnz9fqhr3grydj7n8ivc3nnsdq1afs4w2vkp1l0ciwmfn";
 }
 {
   name = "remote-containers";
   publisher = "ms-vscode-remote";
-  version = "0.204.0";
-  sha256 = "0ik6ram41bwpkrnai1wppdfbh5psjlf12j2prw8fx5bhk9zz7vdv";
+  version = "0.205.0";
+  sha256 = "18mr7sy2dkf795i19ycvcpm4agrwfq42zrbi5kvj0lrmkfiw0ni6";
 }
 {
   name = "remote-ssh";
@@ -308,8 +308,8 @@
 {
   name = "vsliveshare";
   publisher = "ms-vsliveshare";
-  version = "1.0.5043";
-  sha256 = "092azgby0ahfcnpwzax4zmacvcqh49gvr1r4mznmylcxz0b4xl9r";
+  version = "1.0.5065";
+  sha256 = "02pdang2kyz6w1av1g49vh9m2glibm09h4jcf8fl31vcprap2rjy";
 }
 {
   name = "vsliveshare-audio";
