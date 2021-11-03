@@ -20,6 +20,7 @@ let
     set -x BAT_THEME "GitHub"
 
     set -x MANPAGER 'nvim +Man!'
+    set -x lucid_prompt_symbol '$'
 
     # https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
     # XDG_RUNTIME_DIR should be set by pam_systemd
