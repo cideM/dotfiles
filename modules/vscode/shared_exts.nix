@@ -272,8 +272,8 @@
 {
   name = "remote-containers";
   publisher = "ms-vscode-remote";
-  version = "0.205.0";
-  sha256 = "18mr7sy2dkf795i19ycvcpm4agrwfq42zrbi5kvj0lrmkfiw0ni6";
+  version = "0.205.1";
+  sha256 = "1sciyp24p75k1h1hxr43pjnj9hh5ldxv9a2fbc45y7l0vrxk48lg";
 }
 {
   name = "remote-ssh";
@@ -290,8 +290,8 @@
 {
   name = "remote-wsl";
   publisher = "ms-vscode-remote";
-  version = "0.58.4";
-  sha256 = "0kcdg54qfyxws3syh2ylphym087fhj1lfngkbi17hq76380kbj66";
+  version = "0.58.5";
+  sha256 = "1ciqa7k3j6s08747rcmjpr6y6llxczkgvifwmmz1khxrgbdp6df9";
 }
 {
   name = "vscode-remote-extensionpack";
