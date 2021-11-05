@@ -260,8 +260,8 @@
 {
   name = "python";
   publisher = "ms-python";
-  version = "2021.10.1365161279";
-  sha256 = "0acl4mbjw1s5djqhjyk06kbf81xpvvbrm86m8nqdaf15crr7wywq";
+  version = "2021.11.1422169775";
+  sha256 = "1ax0lr0r9ip8pb3fzg462c00q98rlnpq5al5fkgaywcyx2k9pib3";
 }
 {
   name = "jupyter";
