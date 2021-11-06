@@ -308,8 +308,8 @@
 {
   name = "vsliveshare";
   publisher = "ms-vsliveshare";
-  version = "1.0.5065";
-  sha256 = "02pdang2kyz6w1av1g49vh9m2glibm09h4jcf8fl31vcprap2rjy";
+  version = "1.0.5090";
+  sha256 = "0pc4ls5w72vbf7lywd59rh7wf8icdz9w7czqzcnq5ic63452s3l1";
 }
 {
   name = "vsliveshare-audio";
@@ -362,8 +362,8 @@
 {
   name = "vscode-yaml";
   publisher = "redhat";
-  version = "1.1.0";
-  sha256 = "1cc871wdbasfkf37vkkanqf9jfzzvmvzi7gxyl63w613hb9g75w2";
+  version = "1.1.1";
+  sha256 = "11jc27y48i43qlpdzhhhawkpig53v6s97bsddn42bi3imcppr0dy";
 }
 {
   name = "json-organizer";
