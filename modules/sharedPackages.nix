@@ -11,6 +11,7 @@ with pkgs;
     dash
     niv
     liberation_ttf
+    micro
     luajitPackages.luacheck
     pandoc
     fastmod
