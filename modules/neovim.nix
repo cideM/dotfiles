@@ -408,6 +408,7 @@ in
         vim-gutentags
         vim-sandwich
         sad-vim
+        vim-dirvish
         vim-sneak
 
         # Themes
