@@ -392,36 +392,29 @@ in
 
         # Git
         vim-fugitive
-
         vim-unimpaired
         pkgs.winshift
-        pkgs.visual-split-nvim
         vim-repeat
-        vim-eunuch
         vim-commentary
         editorconfig-vim
         vim-easy-align
         vim-indent-object
         vim-sayonara
         QFEnter
-        vim-dirvish
         fzfWrapper
         fzf-vim
         vim-gutentags
         vim-sandwich
         sad-vim
         vim-sneak
-        unicode-vim
 
         # Themes
-        iceberg-vim
         edge
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "yui"; src = yui; })
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "spacevimtheme"; src = spacevimtheme; })
         (pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "doomonetheme"; src = doomonetheme; })
 
         # Language stuff
-        vim-markdown-toc
         { plugin = pkgs.parinfer-rust; optional = true; }
         { plugin = conjure; optional = true; }
 
@@ -435,10 +428,7 @@ in
         vim-jsx-pretty
         vim-nix
         vim-terraform
-        {
-          plugin = nvim-treesitter.withPlugins (p: pkgs.tree-sitter.allGrammars);
-          optional = true;
-        }
+        (nvim-treesitter.withPlugins (p: pkgs.tree-sitter.allGrammars))
 
       ];
     };
