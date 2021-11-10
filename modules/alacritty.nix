@@ -4,41 +4,6 @@ with types;
 let
   cfg = config.programs.alacritty;
 
-  # https://github.com/alacritty/alacritty/issues/62#issuecomment-347552058
-  optionAsMetaBindings = map
-    (char: {
-      chars = "\\u001b${char}";
-      key = pkgs.lib.strings.toUpper char;
-      mods = "Alt";
-    }) [
-    "a"
-    "b"
-    "c"
-    "d"
-    "e"
-    "f"
-    "g"
-    "h"
-    "i"
-    "j"
-    "k"
-    "l"
-    "m"
-    "n"
-    "o"
-    "p"
-    "q"
-    "r"
-    "s"
-    "t"
-    "u"
-    "v"
-    "w"
-    "x"
-    "y"
-    "z"
-  ];
-
   tokyo-night = {
     primary = {
       background = "0x1a1b26";
@@ -638,9 +603,9 @@ let
   shared = {
     colors = spacemacsLight;
 
-    alt_send_escape = pkgs.stdenv.isDarwin == false;
+    alt_send_escape = pkgs.stdenv.isDarwin;
 
-    key_bindings = optionAsMetaBindings ++ [
+    key_bindings = [
       {
         chars = "\\u001bO";
         key = "O";
