@@ -272,20 +272,20 @@
 {
   name = "remote-containers";
   publisher = "ms-vscode-remote";
-  version = "0.205.1";
-  sha256 = "1sciyp24p75k1h1hxr43pjnj9hh5ldxv9a2fbc45y7l0vrxk48lg";
+  version = "0.205.2";
+  sha256 = "049l6xm328ij6jzinrznrnnd9fij4rliq9lv5833jh4a5yzv8i69";
 }
 {
   name = "remote-ssh";
   publisher = "ms-vscode-remote";
-  version = "0.66.0";
-  sha256 = "04jgn88b1j10qas4n6icg1zfvqqbxxmnjpvvkxdjgp845530k708";
+  version = "0.66.1";
+  sha256 = "0qj2ihl74bk1fbixv0g1qzdvaxh4skqww22dyaf17rs6cjf19zps";
 }
 {
   name = "remote-ssh-edit";
   publisher = "ms-vscode-remote";
-  version = "0.66.0";
-  sha256 = "09i2dvh595lilji6xgzliz6965yw92kfq6n8lkcmrkk4p8bhk5jl";
+  version = "0.66.1";
+  sha256 = "04sznznvgnp4x7w9mld3j02f9kkx6bxr95knjzbyi1az37bbbmyk";
 }
 {
   name = "remote-wsl";
