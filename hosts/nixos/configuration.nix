@@ -119,26 +119,38 @@ in
 
   services.geoclue2.enable = true;
 
-  sound.enable = true;
-  hardware.pulseaudio =
-    {
-      enable = true;
-      package = pkgs.pulseaudioFull;
-      extraConfig = ''
-        load-module module-echo-cancel
-      '';
-      extraModules = [ pkgs.pulseaudio-modules-bt ];
-    };
-
-  hardware.bluetooth = {
+  security.rtkit.enable = true;
+  services.pipewire = {
     enable = true;
-    settings = {
-      General = {
-        Enable = "Source,Sink,Media,Socket";
-        ControllerMode = "bedr";
-      };
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    media-session = {
+      enable = true;
     };
+    pulse.enable = true;
   };
+  hardware.pulseaudio.enable = false;
+
+  # sound.enable = true;
+  # hardware.pulseaudio =
+  #   {
+  #     enable = true;
+  #     package = pkgs.pulseaudioFull;
+  #     extraConfig = ''
+  #       load-module module-echo-cancel
+  #     '';
+  #     extraModules = [ pkgs.pulseaudio-modules-bt ];
+  #   };
+
+  # hardware.bluetooth = {
+  #   enable = true;
+  #   settings = {
+  #     General = {
+  #       Enable = "Source,Sink,Media,Socket";
+  #       ControllerMode = "bedr";
+  #     };
+  #   };
+  # };
 
   xdg.mime.enable = true;
 
