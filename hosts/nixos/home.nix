@@ -33,6 +33,7 @@
     sublime-merge
     sublime4
     ledger-live-desktop
+    pulseaudio
 
     noto-fonts
     noto-fonts-cjk
