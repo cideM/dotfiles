@@ -34,6 +34,8 @@
     sublime4
     ledger-live-desktop
     pulseaudio
+    pavucontrol
+    alsa-utils
 
     noto-fonts
     noto-fonts-cjk
