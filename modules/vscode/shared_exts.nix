@@ -266,8 +266,8 @@
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2021.11.1001443368";
-  sha256 = "0cx76pjxr7b8xd858qiybkqyjrlb3ld0cplihf3apvg5hcl1hrs7";
+  version = "2021.11.1001448049";
+  sha256 = "02i3msmlcphh4gqz24p4ca58mr4b4arcx12b4hzvw8b5jrds6a8p";
 }
 {
   name = "remote-containers";
@@ -338,8 +338,8 @@
 {
   name = "language-purescript";
   publisher = "nwolverson";
-  version = "0.2.6";
-  sha256 = "1v406f7b7hg8fdjfm6nq09sdaz5zfyc6y0lanfq42awqkkxqcyd1";
+  version = "0.2.7";
+  sha256 = "1n4z3258lilxg47fdhgrfx8wakw3dlqii69qiidy1qc079dwa2bi";
 }
 {
   name = "vetur";
@@ -410,8 +410,8 @@
 {
   name = "rewrap";
   publisher = "stkb";
-  version = "1.15.1";
-  sha256 = "07qsih2d6wcsgry0byhm1npmva76chk869pj5s1hvyfi6j7mngf0";
+  version = "1.15.2";
+  sha256 = "1f5bfi1vb0bsadd2lmqbn3n4qxy7b3ridp0lilii519pj386hmcz";
 }
 {
   name = "lua";
