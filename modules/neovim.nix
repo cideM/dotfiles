@@ -88,10 +88,10 @@ in
         set foldexpr=nvim_treesitter#foldexpr()
       '';
       css = ''
-        setl formatprg=prettier\ --stdin-filepath\ %
+        setl formatprg=prettier\ --parser\ css\ --stdin-filepath\ %
       '';
       scss = ''
-        setl formatprg=prettier\ --stdin-filepath\ %
+        setl formatprg=prettier\ --parser\ scss\ --stdin-filepath\ %
       '';
       nix = ''
         setl formatprg=nixpkgs-fmt
