@@ -399,6 +399,7 @@ in
         editorconfig-vim
         vim-easy-align
         vim-indent-object
+        vim-dirvish
         vim-sayonara
         QFEnter
         fzfWrapper
