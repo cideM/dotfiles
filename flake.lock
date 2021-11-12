@@ -84,7 +84,7 @@
     "home-manager": {
       "inputs": {
         "nixpkgs": [
-          "unstable"
+          "master"
         ]
       },
       "locked": {
@@ -162,6 +162,21 @@
       "original": {
         "owner": "mattgreen",
         "repo": "lucid.fish",
+        "type": "github"
+      }
+    },
+    "master": {
+      "locked": {
+        "lastModified": 1636670190,
+        "narHash": "sha256-n4GbBPJud280czhOqkJ+ygx2bbhSP70ksg0LVd0o8S8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "9cad36c40accad65c59368c6b9d27b3d99268e41",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
         "type": "github"
       }
     },
@@ -247,10 +262,11 @@
         "lightspeed": "lightspeed",
         "lspfuzzy": "lspfuzzy",
         "lucid-fish-prompt": "lucid-fish-prompt",
+        "master": "master",
         "neovim-flake": "neovim-flake",
         "nix-env-fish": "nix-env-fish",
         "nixpkgs": [
-          "unstable"
+          "master"
         ],
         "operatorMono": "operatorMono",
         "parinfer-rust": "parinfer-rust",
