@@ -398,6 +398,7 @@ in
         vim-commentary
         editorconfig-vim
         vim-easy-align
+        vim-eunuch
         vim-indent-object
         vim-dirvish
         vim-sayonara

@@ -36,6 +36,7 @@
     pulseaudio
     pavucontrol
     alsa-utils
+    openvpn
 
     noto-fonts
     noto-fonts-cjk

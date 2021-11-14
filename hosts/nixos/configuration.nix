@@ -34,6 +34,15 @@ in
     RuntimeDirectorySize=20G
   '';
 
+  services.openvpn = {
+    servers = {
+      fra1 = {
+        config = "config /home/tifa/fra1.ovpn";
+        autoStart = true;
+      };
+    };
+  };
+
   fonts = {
     fontDir.enable = false;
     fonts = [ operatorMonoFontPkg ];
