@@ -158,8 +158,8 @@
 {
   name = "latex-workshop";
   publisher = "James-Yu";
-  version = "8.21.1";
-  sha256 = "0wg4ykdyklysl4ija0cj37ya2jqf9qsldc6l9gy7a8ffpd30xqcx";
+  version = "8.22.0";
+  sha256 = "1j1qqwihzjlfs5w0nddd7msgi8r21jmgsyk2rg0abh9qi524f17f";
 }
 {
   name = "hoogle-vscode";
@@ -266,8 +266,8 @@
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2021.11.1001452373";
-  sha256 = "1w9ms2nq7vkjvi6mjc155ri84wrxgsvr6fpxygprdly5mjgjivkg";
+  version = "2021.11.1001461390";
+  sha256 = "1gm6jr87haznky6wvxhqhmvwyy7s2m51ilf6l78frjss9132yy89";
 }
 {
   name = "remote-containers";
@@ -410,14 +410,14 @@
 {
   name = "rewrap";
   publisher = "stkb";
-  version = "1.15.2";
-  sha256 = "1f5bfi1vb0bsadd2lmqbn3n4qxy7b3ridp0lilii519pj386hmcz";
+  version = "1.15.3";
+  sha256 = "1qwnxpx7km8c5a5naqfnkdj8ciszh5dm18a61wdy0db6x032pqwv";
 }
 {
   name = "lua";
   publisher = "sumneko";
-  version = "2.4.7";
-  sha256 = "1wdsrhg0qnxksqlz1pmvhpwpzir4c9n7rmrm96z3brgqfnpc2zsw";
+  version = "2.4.8";
+  sha256 = "0y8qprb5vjjpvssp1icmpsjjw42xgwphd4mxix0swql8cmmdchg5";
 }
 {
   name = "sass-indented";
