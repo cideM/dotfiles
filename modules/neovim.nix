@@ -188,7 +188,7 @@ in
         set shiftwidth=2
         set colorcolumn=100
         set timeoutlen=500
-        set formatoptions=tcrqjn
+        set formatoptions=crqjn
         set hidden
         set nonumber
         set ignorecase
