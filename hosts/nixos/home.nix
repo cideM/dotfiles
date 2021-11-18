@@ -56,7 +56,6 @@
 
   programs.alacritty = {
     light = true;
-    disableScaling = false;
     font = "mono";
     enable = true;
     fontSize = 12;
