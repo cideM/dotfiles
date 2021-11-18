@@ -54,11 +54,7 @@
   programs.firefox.enable = false;
   programs.firefox.package = pkgs.firefox-devedition-bin;
 
-  programs.alacritty = {
-    font = "mono";
-    enable = true;
-    fontSize = 12;
-  };
+  programs.alacritty.settings.font.size = 12;
 
   programs.fish.interactiveShellInit = ''
     set -x FISH_NOTES_DIR ~/notes_new

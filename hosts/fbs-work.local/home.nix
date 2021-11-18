@@ -48,12 +48,7 @@
   ];
 
   # Install through casks for Alacritty.app etc
-  programs.alacritty = {
-    font = "mono";
-    enable = true;
-    fontSize = 14;
-  };
-
+  programs.alacritty.settings.font.size = 14;
   xdg.configFile."nix/nix.conf".text = ''
     experimental-features = nix-command flakes
     keep-derivations = true

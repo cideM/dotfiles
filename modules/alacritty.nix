@@ -2,8 +2,6 @@
 with lib;
 with types;
 let
-  cfg = config.programs.alacritty;
-
   tokyo-night = {
     primary = {
       background = "0x1a1b26";
@@ -368,64 +366,6 @@ let
     };
   };
 
-  iosevkaNerd = {
-    bold = {
-      family = "Iosevka Nerd Font";
-      style = "Bold";
-    };
-    bold_italic = {
-      family = "Iosevka Nerd Font";
-      style = "Bold Italic";
-    };
-    glyph_offset = {
-      x = 0;
-      y = 0;
-    };
-    italic = {
-      family = "Iosevka Nerd Font";
-      style = "Regular Italic";
-    };
-    normal = {
-      family = "Iosevka Nerd Font";
-      style = "Regular";
-    };
-    offset = {
-      x = 0;
-      y = 0;
-    };
-    size = cfg.fontSize;
-    use_thin_strokes = pkgs.stdenv.isDarwin;
-  };
-
-  monoMedium = {
-    bold = {
-      family = "Operator Mono SSm";
-      style = "Bold";
-    };
-    bold_italic = {
-      family = "Operator Mono SSm";
-      style = "Bold Italic";
-    };
-    glyph_offset = {
-      x = 0;
-      y = 0;
-    };
-    italic = {
-      family = "Operator Mono SSm";
-      style = "Medium Italic";
-    };
-    normal = {
-      family = "Operator Mono SSm";
-      style = "Medium";
-    };
-    offset = {
-      x = 0;
-      y = 2;
-    };
-    size = cfg.fontSize;
-    use_thin_strokes = pkgs.stdenv.isDarwin;
-  };
-
   mono = {
     bold = {
       family = "Operator Mono SSm";
@@ -451,36 +391,6 @@ let
       x = 0;
       y = 2;
     };
-    size = cfg.fontSize;
-    use_thin_strokes = pkgs.stdenv.isDarwin;
-  };
-
-  jetbrains = {
-    bold = {
-      family = "JetBrains Mono";
-      style = "Bold";
-    };
-    bold_italic = {
-      family = "JetBrains Mono";
-      style = "Bold Italic";
-    };
-    glyph_offset = {
-      x = 0;
-      y = 0;
-    };
-    italic = {
-      family = "JetBrains Mono";
-      style = "Light Italic";
-    };
-    normal = {
-      family = "JetBrains Mono";
-      style = "Light";
-    };
-    offset = {
-      x = 0;
-      y = 0;
-    };
-    size = cfg.fontSize;
     use_thin_strokes = pkgs.stdenv.isDarwin;
   };
 
@@ -509,65 +419,6 @@ let
       x = 0;
       y = 2;
     };
-    size = cfg.fontSize;
-    use_thin_strokes = pkgs.stdenv.isDarwin;
-  };
-
-  dejavuSansMono = {
-    bold = {
-      family = "DejaVu Sans Mono";
-      style = "Bold";
-    };
-    bold_italic = {
-      family = "DejaVu Sans Mono";
-      style = "Bold Oblique";
-    };
-    glyph_offset = {
-      x = 0;
-      y = 1;
-    };
-    italic = {
-      family = "DejaVu Sans Mono";
-      style = "Oblique";
-    };
-    normal = {
-      family = "DejaVu Sans Mono";
-      style = "Book";
-    };
-    offset = {
-      x = 0;
-      y = 2;
-    };
-    size = cfg.fontSize;
-    use_thin_strokes = pkgs.stdenv.isDarwin;
-  };
-
-  hackNerd = {
-    bold = {
-      family = "Hack Nerd Font";
-      style = "Bold";
-    };
-    bold_italic = {
-      family = "Hack Nerd Font";
-      style = "Bold Italic";
-    };
-    glyph_offset = {
-      x = 0;
-      y = 0;
-    };
-    italic = {
-      family = "Hack Nerd Font";
-      style = "Italic";
-    };
-    normal = {
-      family = "Hack Nerd Font";
-      style = "Regular";
-    };
-    offset = {
-      x = 0;
-      y = 0;
-    };
-    size = cfg.fontSize;
     use_thin_strokes = pkgs.stdenv.isDarwin;
   };
 
@@ -596,137 +447,43 @@ let
       x = 0;
       y = 2;
     };
-    size = cfg.fontSize;
     use_thin_strokes = pkgs.stdenv.isDarwin;
-  };
-
-  shared = {
-    colors = spacemacsLight;
-
-    alt_send_escape = pkgs.stdenv.isDarwin;
-
-    key_bindings = [
-      {
-        chars = "\\u001bO";
-        key = "O";
-        mods = "Shift|Alt";
-      }
-      {
-        chars = "\\u001b0";
-        key = "Key0";
-        mods = "Alt";
-      }
-      {
-        chars = "`  ";
-        key = "Tab";
-        mods = "Control";
-      }
-      {
-        chars = "`c";
-        key = "S";
-        mods = "Control|Shift";
-      }
-      {
-        chars = "`x";
-        key = "X";
-        mods = "Control|Shift";
-      }
-      {
-        chars = "`-";
-        key = "Minus";
-        mods = "Control";
-      }
-      {
-        chars = "`|";
-        key = "Backslash";
-        mods = "Control";
-      }
-      {
-        chars = "`z";
-        key = "Grave";
-        mods = "Control";
-      }
-      {
-        action = "SpawnNewInstance";
-        key = "N";
-        mods = "Control|Alt";
-      }
-      {
-        action = "None";
-        key = "Minus";
-        mods = "Control";
-      }
-    ];
-
-    window = {
-      decorations = "full";
-      dynamic_padding = true;
-      dimensions = {
-        columns = 90;
-        lines = 50;
-      };
-      padding = {
-        x = cfg.padding;
-        y = cfg.padding;
-      };
-    };
-
-    env = {
-      TERM = "alacritty";
-    };
-
-    shell = {
-      args = [ "-l" ];
-      program = "${pkgs.fish}/bin/fish";
-    };
-  };
-
-  fontMapping = {
-    "mono" = mono;
-    "dejavuSansMono" = dejavuSansMono;
-    "monoMedium" = monoMedium;
-    "liberationMono" = liberationMono;
-    "jetbrains" = jetbrains;
-    "hack" = hack;
-    "iosevkaNerd" = iosevkaNerd;
-    "hackNerd" = hackNerd;
   };
 
 in
 {
-  options.programs.alacritty = {
-    font = mkOption {
-      type = enum [ "mono" "liberationMono" "dejavuSansMono" "hack" "hackNerd" "monoMedium" "jetbrains" "iosevkaNerd" ];
-      default = "mono";
-      description = "Terminal emulator font";
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      colors = spacemacsLight;
+      font = mono;
+      alt_send_escape = pkgs.stdenv.isDarwin;
+      key_bindings = [
+        {
+          action = "SpawnNewInstance";
+          key = "N";
+          mods = "Control|Alt";
+        }
+      ];
+      window = {
+        decorations = "full";
+        dynamic_padding = true;
+        dimensions = {
+          columns = 90;
+          lines = 50;
+        };
+        padding = {
+          x = 10;
+          y = 10;
+        };
+      };
+      env = {
+        TERM = "alacritty";
+      };
+      shell = {
+        args = [ "-l" ];
+        program = "${pkgs.fish}/bin/fish";
+      };
     };
-
-    fontSize = mkOption {
-      type = int;
-      default = 14;
-      example = "14";
-      description = ''
-        Well, what do you think this does?
-      '';
-    };
-
-    padding = mkOption {
-      type = int;
-      default = 10;
-      example = "10";
-      description = ''
-        Horizontal and vertical padding
-      '';
-    };
-  };
-
-  config = {
-
-    xdg.configFile."alacritty/alacritty.yml".text =
-      builtins.replaceStrings [ "\\\\" ] [ "\\" ] (builtins.toJSON (shared // {
-        colors = oneLight;
-        font = fontMapping."${cfg.font}";
-      }));
-
   };
 }
