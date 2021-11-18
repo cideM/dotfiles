@@ -695,15 +695,6 @@ let
 in
 {
   options.programs.alacritty = {
-    light = mkOption {
-      type = bool;
-      default = true;
-      description = ''
-        When true various colors will be changed to work with a light terminal theme.
-        Includes Neovim, pagers, the terminal colors, and more.
-      '';
-    };
-
     font = mkOption {
       type = enum [ "mono" "liberationMono" "dejavuSansMono" "hack" "hackNerd" "monoMedium" "jetbrains" "iosevkaNerd" ];
       default = "mono";
@@ -733,7 +724,7 @@ in
 
     xdg.configFile."alacritty/alacritty.yml".text =
       builtins.replaceStrings [ "\\\\" ] [ "\\" ] (builtins.toJSON (shared // {
-        colors = if cfg.light then oneLight else tokyo-night-storm;
+        colors = oneLight;
         font = fontMapping."${cfg.font}";
       }));
 

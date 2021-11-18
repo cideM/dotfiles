@@ -55,7 +55,6 @@
   programs.firefox.package = pkgs.firefox-devedition-bin;
 
   programs.alacritty = {
-    light = true;
     font = "mono";
     enable = true;
     fontSize = 12;
