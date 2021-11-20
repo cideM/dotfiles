@@ -182,8 +182,8 @@
 {
   name = "vscode-random";
   publisher = "jrebocho";
-  version = "1.10.3";
-  sha256 = "07y12ixqwlzqxxi0icm29mk2w2n3iq88g4kjic6v59n64sk5m241";
+  version = "1.11.0";
+  sha256 = "03mmfqw98zpvl31hyqa9gy0miw7627hyzfj3jlfahmv34xwqby21";
 }
 {
   name = "vscode-insertdatestring";
@@ -266,8 +266,8 @@
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2021.11.1001475629";
-  sha256 = "0ffb4zf7np2cdinq8gz6kdginx1ka2ni8qgm3nbz45hz0g6wq3rs";
+  version = "2021.11.1001480274";
+  sha256 = "1lw7jzbsrcdlki27pnjy1c79pkkzxxm9pgcx5xc169zfcr759ivi";
 }
 {
   name = "remote-containers";
