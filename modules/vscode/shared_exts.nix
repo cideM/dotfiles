@@ -428,8 +428,8 @@
 {
   name = "language-stylus";
   publisher = "sysoev";
-  version = "1.13.0";
-  sha256 = "022d7gn1w3rswx033lpxyvjzdhlbkjazljssmqw2i24cj6bmdmq1";
+  version = "1.14.0";
+  sha256 = "08vymx068v8ls0x1240139h9vk5bv6a91als4b8rwpjgs83nr1am";
 }
 {
   name = "latex-utilities";
