@@ -140,8 +140,8 @@
 {
   name = "vscode-graphql";
   publisher = "GraphQL";
-  version = "0.3.18";
-  sha256 = "0rnn2rw868pmgpfvldwap2dc6j9dx2sx0jpwbdi8bg6hi3xdlclc";
+  version = "0.3.21";
+  sha256 = "17gbs2krjwbiyf6kj9l884p0w6w8h5yd82fd50rh83a62mdm9pkm";
 }
 {
   name = "iceberg";
@@ -266,8 +266,8 @@
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2021.11.1001493992";
-  sha256 = "15hl122n548ysn38fm1m2xkfxl8wxnwmafjlyc6rnn3iv9lsichq";
+  version = "2021.11.1001498571";
+  sha256 = "01kc3c4lx1gvflabbadfjlzdchk4sxhsfg9zyswxda65n2jsnamm";
 }
 {
   name = "remote-containers";
@@ -428,8 +428,8 @@
 {
   name = "language-stylus";
   publisher = "sysoev";
-  version = "1.14.0";
-  sha256 = "08vymx068v8ls0x1240139h9vk5bv6a91als4b8rwpjgs83nr1am";
+  version = "1.14.1";
+  sha256 = "0q11afvjw9yl1v6csakrydgs9l5c12ypmw7mxqqm2hqmq9n0w6kh";
 }
 {
   name = "latex-utilities";
