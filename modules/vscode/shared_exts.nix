@@ -26,8 +26,8 @@
 {
   name = "calva";
   publisher = "betterthantomorrow";
-  version = "2.0.225";
-  sha256 = "1fh3izk5l4jlf4rb7nqbzyyjypi4s4h80qjqy6rxzkwllnwdwhhk";
+  version = "2.0.226";
+  sha256 = "0kcgi9pk9ga7ajil240v49dzsj9kx8wvfx5v2riahypyy60anwgd";
 }
 {
   name = "markdown-checkbox";
@@ -416,8 +416,8 @@
 {
   name = "lua";
   publisher = "sumneko";
-  version = "2.4.11";
-  sha256 = "014mrpb02fk4xbanw8mwv3xiczgbjjh9cnv2r9yszjwqxqcmv0yz";
+  version = "2.5.1";
+  sha256 = "1gjfgsa63f33vlianr1b826na8wc00qkhk7ackp13clbgv1657y2";
 }
 {
   name = "sass-indented";
