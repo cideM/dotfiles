@@ -38,7 +38,7 @@ in
     servers = {
       fra1 = {
         config = "config /home/tifa/fra1.ovpn";
-        autoStart = true;
+        autoStart = false;
       };
     };
   };
