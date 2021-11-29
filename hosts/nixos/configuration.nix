@@ -79,6 +79,20 @@ in
       keep-outputs = true
       keep-derivations = true
     '';
+    # This is duplicated in fbs-work.local/home.nix
+    registry = {
+      fbrs = {
+        from = {
+          id = "fbrs";
+          type = "indirect";
+        };
+        to = {
+          type = "github";
+          owner = "cidem";
+          repo = "nix-templates";
+        };
+      };
+    };
   };
 
   environment.systemPackages = with pkgs; [
