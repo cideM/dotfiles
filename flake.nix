@@ -4,7 +4,7 @@
   inputs = rec {
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "master";
+      inputs.nixpkgs.follows = "unstable";
     };
 
     cidem-vsc.url = "github:cideM/visual-studio-code-insiders-nix";
@@ -52,8 +52,7 @@
     yui.flake = false;
 
     unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    master.url = "github:NixOS/nixpkgs";
-    nixpkgs.follows = "master";
+    nixpkgs.follows = "unstable";
 
     neovim-flake.url = "github:neovim/neovim?dir=contrib";
     neovim-flake.inputs.nixpkgs.follows = "unstable";
@@ -87,7 +86,6 @@
     , everforest
     , lightspeed
     , parinfer-rust
-    , master
     }:
     let
       overlays = [
@@ -228,7 +226,7 @@
             }
           ];
         in
-        master.lib.nixosSystem { inherit system modules specialArgs; };
+        unstable.lib.nixosSystem { inherit system modules specialArgs; };
     in
     {
       # TODO: https://github.com/mjlbach/nix-dotfiles/blob/master/nixpkgs/flake.nix
