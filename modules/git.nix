@@ -72,6 +72,10 @@
         cmd = "nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'";
       };
 
+      merge = {
+        conflictStyle = "diff3";
+      };
+
       "mergetool \"nvim-merge\"" = {
         cmd = "nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'";
       };

@@ -102,6 +102,9 @@
     [pull]
         rebase = true
 
+    [merge]
+        conflictStyle = diff3
+
     [user]
         email = yuuki@protonmail.com
         name = Florian Beeres
