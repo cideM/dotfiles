@@ -38,6 +38,7 @@
     alsa-utils
     openvpn
 
+    source-han-sans
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
