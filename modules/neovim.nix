@@ -303,19 +303,19 @@ in
         packadd nvim-lspconfig
         packadd nvim-treesitter
         lua <<EOF
-        vim.api.nvim_set_keymap('n', '<leader>ls', "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", { noremap=true, silent=true })
+        vim.api.nvim_set_keymap('n', '<leader>ls', "<cmd>lua vim.diagnostic.setloclist()<cr>", { noremap=true, silent=true })
         vim.api.nvim_set_keymap('n', '<leader>d', "<cmd>lua vim.lsp.buf.document_symbol()<cr>", { noremap=true, silent=true })
         vim.api.nvim_set_keymap('n', '<leader>w', "<cmd>lua vim.lsp.buf.workspace_symbol()<cr>", { noremap=true, silent=true })
         vim.api.nvim_set_keymap('n', '<leader>e', "<cmd>lua vim.lsp.buf.rename()<cr>", { noremap=true, silent=true })
-        vim.api.nvim_set_keymap('n', '<leader>n', "<cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts = { border = 'single' }})<cr>", { noremap=true, silent=true })
-        vim.api.nvim_set_keymap('n', '<leader>p', "<cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts = { border = 'single' }})<cr>", { noremap=true, silent=true })
+        vim.api.nvim_set_keymap('n', '<leader>n', "<cmd>lua vim.diagnostic.goto_next({ float = true })<cr>", { noremap=true, silent=true })
+        vim.api.nvim_set_keymap('n', '<leader>p', "<cmd>lua vim.diagnostic.goto_prev({ float = true })<cr>", { noremap=true, silent=true })
         vim.api.nvim_set_keymap('n', ']i', '<cmd>lua vim.lsp.buf.implementation()<cr>', { noremap=true, silent=true })
         vim.api.nvim_set_keymap('n', ']t', '<cmd>lua vim.lsp.buf.type_definition()<cr>', { noremap=true, silent=true })
         vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', { noremap=true, silent=true })
         vim.api.nvim_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', { noremap=true, silent=true })
         vim.api.nvim_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', { noremap=true, silent=true })
         vim.api.nvim_set_keymap('n', '<leader>h', '<cmd>lua vim.lsp.buf.signature_help()<cr>', { noremap=true, silent=true })
-        vim.api.nvim_set_keymap('n', '<C-p>', "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = 'single' })<cr>", { noremap=true, silent=true })
+        vim.api.nvim_set_keymap('n', '<C-p>', "<cmd>lua vim.lsp.diagnostic.open_float()<cr>", { noremap=true, silent=true })
 
         local nvim_lsp = require'lspconfig'
 
@@ -329,13 +329,12 @@ in
 
         vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
 
-        vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-          vim.lsp.diagnostic.on_publish_diagnostics, {
+        vim.diagnostic.config({
             virtual_text = true,
             signs = true,
             underline = true,
             update_in_insert = false,
-          })
+        })
 
         nvim_lsp.rust_analyzer.setup{on_attach=on_attach}
         nvim_lsp.clojure_lsp.setup{on_attach=on_attach}
