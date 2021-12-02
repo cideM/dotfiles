@@ -26,8 +26,8 @@
 {
   name = "calva";
   publisher = "betterthantomorrow";
-  version = "2.0.226";
-  sha256 = "0kcgi9pk9ga7ajil240v49dzsj9kx8wvfx5v2riahypyy60anwgd";
+  version = "2.0.228";
+  sha256 = "0rr4grz7c98v78n32mnclqg10fpc10g6lsb9ns3bcv34d8agica4";
 }
 {
   name = "markdown-checkbox";
@@ -140,8 +140,8 @@
 {
   name = "vscode-graphql";
   publisher = "GraphQL";
-  version = "0.3.27";
-  sha256 = "17mg66gpppgybxrarisi2yd42xr07l7jy60v3b3jm88a201rf7b3";
+  version = "0.3.32";
+  sha256 = "0bq544y41imjcqxlbff9jwh24i3dp2var6clk8agdrh470mvnlrs";
 }
 {
   name = "iceberg";
@@ -266,8 +266,8 @@
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2021.11.1001522160";
-  sha256 = "054dlj6bia0lwc13l71lvlzi6ch41s0iw1b4fmfjf1qjk4rl1sn6";
+  version = "2021.11.1001524965";
+  sha256 = "1x6895csxhpi9nzzr7wl24g7j6blvxa92b1fmzcq4895q8j5l3w6";
 }
 {
   name = "remote-containers";
@@ -290,8 +290,8 @@
 {
   name = "remote-wsl";
   publisher = "ms-vscode-remote";
-  version = "0.63.3";
-  sha256 = "11z7cw27lxdkgdzv2501fg3zpn84xg53lv0r21a9airsnyf6wwzg";
+  version = "0.63.4";
+  sha256 = "1f3jwfy6kalcawl08v2dh5pkm7xllyf9fjdszlggmsa64hg8kjkl";
 }
 {
   name = "vscode-remote-extensionpack";
