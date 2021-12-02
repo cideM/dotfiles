@@ -29,6 +29,7 @@
   '';
 
   home.packages = with pkgs; [
+    nixUnstable
     unixtools.watch
 
     (if pkgs.stdenv.hostPlatform.system == "aarch64-darwin"
