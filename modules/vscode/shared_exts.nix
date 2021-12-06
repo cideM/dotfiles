@@ -56,8 +56,8 @@
 {
   name = "vscode-intelephense-client";
   publisher = "bmewburn";
-  version = "1.7.1";
-  sha256 = "00la7572zqj8y3y2bgh0ibn3i96xv1yb5k1l8xlb5igac41im5p4";
+  version = "1.8.0";
+  sha256 = "0jzj50c0kpa7qmdgdl2n4c6hd8jhs2j01jbxv0120h51h7rwp64g";
 }
 {
   name = "better-toml";
