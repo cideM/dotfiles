@@ -140,8 +140,8 @@
 {
   name = "vscode-graphql";
   publisher = "GraphQL";
-  version = "0.3.33";
-  sha256 = "1i2z32slq517zqljs8m2y0hhp8ypnrxs4272y0wixmi0m4yy36js";
+  version = "0.3.34";
+  sha256 = "1y3bvxhdd4bif8shqfdjcj5mg23hiscpk0x2fzx52v8yg50k7kw5";
 }
 {
   name = "iceberg";
@@ -272,8 +272,8 @@
 {
   name = "remote-containers";
   publisher = "ms-vscode-remote";
-  version = "0.209.0";
-  sha256 = "1mayr0kc20zfw21y13k35zbd65ir5cq3yw1n9kci73bbyhlg84fh";
+  version = "0.209.1";
+  sha256 = "03ad8jrvl291lmhpw87np49791fnrnnqlwkjy4gv1pd16dcia4xz";
 }
 {
   name = "remote-ssh";
@@ -416,8 +416,8 @@
 {
   name = "lua";
   publisher = "sumneko";
-  version = "2.5.2";
-  sha256 = "04ayc7b41x8h32wg8dm9m4w11x7kvdwgkq0dnmfi46zqr43zbf2z";
+  version = "2.5.3";
+  sha256 = "1bq2qrj2b7ii9fgf2ybjgxsls6gsqfzsw0wppvlqysn5n7aa5dzp";
 }
 {
   name = "sass-indented";
