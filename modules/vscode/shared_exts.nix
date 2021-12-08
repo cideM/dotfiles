@@ -140,8 +140,8 @@
 {
   name = "vscode-graphql";
   publisher = "GraphQL";
-  version = "0.3.34";
-  sha256 = "1y3bvxhdd4bif8shqfdjcj5mg23hiscpk0x2fzx52v8yg50k7kw5";
+  version = "0.3.40";
+  sha256 = "110xwa8734c2xawhdifsdxsshahkrm1r3dh5119s44fs4bwb0ic1";
 }
 {
   name = "iceberg";
@@ -266,14 +266,14 @@
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2021.11.1001532801";
-  sha256 = "1c5ja0lqqvxsil83qxw9ly4sjk2c64j5m3mh6afihylnll446m8r";
+  version = "2021.11.1001550889";
+  sha256 = "121bpb30n91z18bm2h2lrmgzzz22c7syaf467vcwdzqwq2qkwyv8";
 }
 {
   name = "remote-containers";
   publisher = "ms-vscode-remote";
-  version = "0.209.1";
-  sha256 = "03ad8jrvl291lmhpw87np49791fnrnnqlwkjy4gv1pd16dcia4xz";
+  version = "0.209.2";
+  sha256 = "0rn10v8w8msfzm211fbzmpz7n6nsjx9a5f9nv8w410fp85ja53pm";
 }
 {
   name = "remote-ssh";
@@ -308,8 +308,8 @@
 {
   name = "vsliveshare";
   publisher = "ms-vsliveshare";
-  version = "1.0.5090";
-  sha256 = "0pc4ls5w72vbf7lywd59rh7wf8icdz9w7czqzcnq5ic63452s3l1";
+  version = "1.0.5196";
+  sha256 = "0p1bkhypwws4ckpnzzgmih9rrmyaxw8rd3ldx5j5dy9fswvi7iq0";
 }
 {
   name = "vsliveshare-audio";
