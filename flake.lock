@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "alac": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1638560001,
+        "narHash": "sha256-8wLG/3DIgTMdpD2Ub7LEQv2nYiHC1k1LfNV9/CYy5ec=",
+        "owner": "alacritty",
+        "repo": "alacritty",
+        "rev": "a1083d18edf14f3b7219f50618281479df812312",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alacritty",
+        "repo": "alacritty",
+        "type": "github"
+      }
+    },
     "cidem-vsc": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -48,6 +64,27 @@
       "original": {
         "owner": "sainnhe",
         "repo": "everforest",
+        "type": "github"
+      }
+    },
+    "fenix": {
+      "inputs": {
+        "nixpkgs": [
+          "unstable"
+        ],
+        "rust-analyzer-src": "rust-analyzer-src"
+      },
+      "locked": {
+        "lastModified": 1639031104,
+        "narHash": "sha256-noY4xo0PdMz1Qj7GCQ7DlChEjBLxqiny0sUcEE7JK7w=",
+        "owner": "nix-community",
+        "repo": "fenix",
+        "rev": "034f3d60c19138b87e768bd85c2743262242cc94",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "fenix",
         "type": "github"
       }
     },
@@ -239,9 +276,11 @@
     },
     "root": {
       "inputs": {
+        "alac": "alac",
         "cidem-vsc": "cidem-vsc",
         "doomonetheme": "doomonetheme",
         "everforest": "everforest",
+        "fenix": "fenix",
         "home-manager": "home-manager",
         "k9s": "k9s",
         "lightspeed": "lightspeed",
@@ -261,6 +300,23 @@
         "visual-split-nvim": "visual-split-nvim",
         "winshift": "winshift",
         "yui": "yui"
+      }
+    },
+    "rust-analyzer-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1638979957,
+        "narHash": "sha256-wXANwB0Iwt+G18BIzSs3i/6A1hyLzwsKBrqzMTCA81M=",
+        "owner": "rust-analyzer",
+        "repo": "rust-analyzer",
+        "rev": "020242ff0e503f650bbfe8b10866e9e22f937236",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rust-analyzer",
+        "ref": "nightly",
+        "repo": "rust-analyzer",
+        "type": "github"
       }
     },
     "spacevimtheme": {

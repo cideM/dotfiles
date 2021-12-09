@@ -9,8 +9,16 @@
 
     cidem-vsc.url = "github:cideM/visual-studio-code-insiders-nix";
 
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "unstable";
+    };
+
     parinfer-rust.url = "github:eraserhd/parinfer-rust";
     parinfer-rust.flake = false;
+
+    alac.flake = false;
+    alac.url = "github:alacritty/alacritty";
 
     everforest.url = "github:sainnhe/everforest";
     everforest.flake = false;
@@ -86,12 +94,41 @@
     , everforest
     , lightspeed
     , parinfer-rust
+    , fenix
+    , alac
     }:
     let
       overlays = [
+        fenix.overlay
+
         (self: super: {
           vscodeInsiders = cidem-vsc.packages.${super.system}.vscodeInsiders;
         })
+
+        # https://discourse.nixos.org/t/is-it-possible-to-override-cargosha256-in-buildrustpackage/4393/3
+        (self: super:
+          let
+            platform = super.makeRustPlatform {
+              inherit (fenix.packages.${super.system}.minimal) cargo rustc;
+            };
+            alacritty1 = super.alacritty.override {
+              rustPlatform = platform;
+            };
+          in
+          {
+            alacritty = alacritty1.overrideAttrs
+              (old:
+                rec {
+                  version = "latest";
+                  src = alac;
+                  doCheck = false;
+                  cargoDeps = old.cargoDeps.overrideAttrs (_: {
+                    inherit src;
+                    outputHash = "0xhknhqw4qsa22l9igpj55asnsggignwxr9z3rrwmzvhjxma9wak";
+                  });
+                  patches = [ ];
+                });
+          })
 
         (self: super: {
           parinfer-rust = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "parinfer-rust"; src = parinfer-rust; };
