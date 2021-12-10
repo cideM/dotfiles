@@ -176,8 +176,8 @@
 {
   name = "vscode-styled-components";
   publisher = "jpoissonnier";
-  version = "1.6.6";
-  sha256 = "1gg62qm05sbr9sxyv7ix3804xaxk273kp3qqqffs745i568z7j4w";
+  version = "1.7.0";
+  sha256 = "0rvnkc9sgn78crnqc1gj9v7a5wh875zwsmxdmiy63k4vvdnhhfnc";
 }
 {
   name = "vscode-random";
@@ -260,8 +260,8 @@
 {
   name = "python";
   publisher = "ms-python";
-  version = "2021.11.1422169775";
-  sha256 = "1ax0lr0r9ip8pb3fzg462c00q98rlnpq5al5fkgaywcyx2k9pib3";
+  version = "2021.12.1559732655";
+  sha256 = "0ghwj1n57zgfqnlwdxy18ahkljixv6dd2810rzw6vfqvp1kxax45";
 }
 {
   name = "jupyter";
