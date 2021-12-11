@@ -140,8 +140,8 @@
 {
   name = "vscode-graphql";
   publisher = "GraphQL";
-  version = "0.3.41";
-  sha256 = "0n73kxxz1y0spdhsd2fx80qxr4jhgm74msrlznygdn77lw7yc3sp";
+  version = "0.3.50";
+  sha256 = "1yf6v2vsgmq86ysb6vxzbg2gh6vz03fsz0d0rhpvpghayrjlk5az";
 }
 {
   name = "iceberg";
@@ -266,14 +266,14 @@
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2021.11.1001550889";
-  sha256 = "121bpb30n91z18bm2h2lrmgzzz22c7syaf467vcwdzqwq2qkwyv8";
+  version = "2022.1.1001562662";
+  sha256 = "18ik6qwxkb4w57437v6cj24b8psfs5i96kw67wp78hawrwjk3ii7";
 }
 {
   name = "remote-containers";
   publisher = "ms-vscode-remote";
-  version = "0.209.3";
-  sha256 = "1rn86zw9wcx7v0igsirfxl9acgd553h796dq66nf0ws5vx86sn96";
+  version = "0.209.5";
+  sha256 = "1k8byky8hx7hc11kd8wmbdbwa5mw7m9d63ic3gymmgh2cx992cy0";
 }
 {
   name = "remote-ssh";
@@ -290,8 +290,8 @@
 {
   name = "remote-wsl";
   publisher = "ms-vscode-remote";
-  version = "0.63.4";
-  sha256 = "1f3jwfy6kalcawl08v2dh5pkm7xllyf9fjdszlggmsa64hg8kjkl";
+  version = "0.63.5";
+  sha256 = "1xjgwqfamf05mkpa920af2rw7m2lh7qnnqc5qmylqvpz42nhjk8c";
 }
 {
   name = "vscode-remote-extensionpack";
