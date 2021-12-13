@@ -39,9 +39,10 @@ with pkgs;
     jetbrains-mono
     jq
     kubernetes-helm
+    kubectx
     libuv
     ncdu
-    # kubectl
+    kubectl
     nixpkgs-fmt
     nixpkgs-review
     qmk

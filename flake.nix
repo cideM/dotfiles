@@ -17,6 +17,8 @@
     parinfer-rust.url = "github:eraserhd/parinfer-rust";
     parinfer-rust.flake = false;
 
+    kubectl-nix.url = "github:cidem/kubectl-nix";
+
     alac.flake = false;
     alac.url = "github:alacritty/alacritty";
 
@@ -94,12 +96,17 @@
     , everforest
     , lightspeed
     , parinfer-rust
+    , kubectl-nix
     , fenix
     , alac
     }:
     let
       overlays = [
         fenix.overlay
+
+        (self: super: {
+          kubectl = kubectl-nix.packages.${if super.system == "aarch64-darwin" then "x86_64-darwin" else super.system}."1_19_3";
+        })
 
         (self: super: {
           vscodeInsiders = cidem-vsc.packages.${super.system}.vscodeInsiders;
