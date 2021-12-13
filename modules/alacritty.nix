@@ -2,103 +2,6 @@
 with lib;
 with types;
 let
-  tokyo-night = {
-    primary = {
-      background = "0x1a1b26";
-      foreground = "0xa9b1d6";
-    };
-
-    normal = {
-      black = "0x32344a";
-      red = "0xf7768e";
-      green = "0x9ece6a";
-      yellow = "0xe0af68";
-      blue = "0x7aa2f7";
-      magenta = "0xad8ee6";
-      cyan = "0x449dab";
-      white = "0x787c99";
-    };
-
-    bright = {
-      black = "0x444b6a";
-      red = "0xff7a93";
-      green = "0xb9f27c";
-      yellow = "0xff9e64";
-      blue = "0x7da6ff";
-      magenta = "0xbb9af7";
-      cyan = "0x0db9d7";
-      white = "0xacb0d0";
-    };
-  };
-
-  tokyo-night-storm = {
-    primary = {
-      background = "0x24283b";
-      foreground = "0xa9b1d6";
-    };
-
-    normal = {
-      black = "0x32344a";
-      red = "0xf7768e";
-      green = "0x9ece6a";
-      yellow = "0xe0af68";
-      blue = "0x7aa2f7";
-      magenta = "0xad8ee6";
-      cyan = "0x449dab";
-      white = "0x9699a8";
-    };
-
-    bright = {
-      black = "0x444b6a";
-      red = "0xff7a93";
-      green = "0xb9f27c";
-      yellow = "0xff9e64";
-      blue = "0x7da6ff";
-      magenta = "0xbb9af7";
-      cyan = "0x0db9d7";
-      white = "0xacb0d0";
-    };
-  };
-
-  jellybeans = {
-    primary = {
-      background = "#161616";
-      foreground = "#e4e4e4";
-    };
-
-    cursor = {
-      text = "#feffff";
-      cursor = "#ffb472";
-    };
-
-    normal = {
-      black = "#a3a3a3";
-      red = "#e98885";
-      green = "#a3c38b";
-      yellow = "#ffc68d";
-      blue = "#a6cae2";
-      magenta = "#e7cdfb";
-      cyan = "#00a69f";
-      white = "#e4e4e4";
-    };
-
-    bright = {
-      black = "#c8c8c8";
-      red = "#ffb2b0";
-      green = "#c8e2b9";
-      yellow = "#ffe1af";
-      blue = "#bddff7";
-      magenta = "#fce2ff";
-      cyan = "#0bbdb6";
-      white = "#feffff";
-    };
-
-    selection = {
-      text = "#5963a2";
-      background = "#f6f6f6";
-    };
-  };
-
   papercolor = {
     bright = {
       black = "0xbcbcbc";
@@ -159,35 +62,6 @@ let
     primary = {
       background = "0xf1f1f1";
       foreground = "0x424242";
-    };
-  };
-
-  seoul256light = {
-    primary = {
-      background = "#dadada";
-      foreground = "#4e4e4e";
-    };
-
-    normal = {
-      black = "#4e4e4e";
-      red = "#af5f5f";
-      green = "#5f885f";
-      yellow = "#af8760";
-      blue = "#5f87ae";
-      magenta = "#875f87";
-      cyan = "#5f8787";
-      white = "#e4e4e4";
-    };
-
-    bright = {
-      black = "#3a3a3a";
-      red = "#870100";
-      green = "#005f00";
-      yellow = "#d8865f";
-      blue = "#0087af";
-      magenta = "#87025f";
-      cyan = "#008787";
-      white = "#eeeeee";
     };
   };
 
@@ -276,64 +150,6 @@ let
       magenta = "#2C9473";
       cyan = "#6B3062";
       white = "#64526F";
-    };
-  };
-
-  iceberg-light = {
-    primary = {
-      background = "0xe8e9ec";
-      foreground = "0x33374c";
-    };
-
-    normal = {
-      black = "0xdcdfe7";
-      red = "0xcc517a";
-      green = "0x668e3d";
-      yellow = "0xc57339";
-      blue = "0x2d539e";
-      magenta = "0x7759b4";
-      cyan = "0x3f83a6";
-      white = "0x33374c";
-    };
-
-    bright = {
-      black = "0x8389a3";
-      red = "0xcc3768";
-      green = "0x598030";
-      yellow = "0xb6662d";
-      blue = "0x22478e";
-      magenta = "0x6845ad";
-      cyan = "0x327698";
-      white = "0x262a3f";
-    };
-  };
-
-  iceberg = {
-    primary = {
-      background = "#161821";
-      foreground = "#d2d4de";
-    };
-
-    normal = {
-      black = "#161821";
-      red = "#e27878";
-      green = "#b4be82";
-      yellow = "#e2a478";
-      blue = "#84a0c6";
-      magenta = "#a093c7";
-      cyan = "#89b8c2";
-      white = "#c6c8d1";
-    };
-
-    bright = {
-      black = "#6b7089";
-      red = "#e98989";
-      green = "#c0ca8e";
-      yellow = "#e9b189";
-      blue = "#91acd1";
-      magenta = "#ada0d3";
-      cyan = "#95c4ce";
-      white = "#d2d4de";
     };
   };
 
@@ -455,7 +271,7 @@ in
   programs.alacritty = {
     enable = true;
     settings = {
-      colors = spacemacsLight;
+      colors = papercolor;
       font = mono;
       alt_send_escape = pkgs.stdenv.isDarwin;
       key_bindings = [
