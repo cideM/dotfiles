@@ -27,7 +27,6 @@ hoovercj.haskell-linter
 James-Yu.latex-workshop
 jcanero.hoogle-vscode
 jock.svg
-jpoissonnier.vscode-styled-components
 jrebocho.vscode-random
 jsynowiec.vscode-insertdatestring
 justusadam.language-haskell

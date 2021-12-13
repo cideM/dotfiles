@@ -174,12 +174,6 @@
   sha256 = "1fdxwb3mh4rc7chhzjigv4dazjav4bjrl8ha5p006lzvvq67dhsm";
 }
 {
-  name = "vscode-styled-components";
-  publisher = "jpoissonnier";
-  version = "1.7.0";
-  sha256 = "0rvnkc9sgn78crnqc1gj9v7a5wh875zwsmxdmiy63k4vvdnhhfnc";
-}
-{
   name = "vscode-random";
   publisher = "jrebocho";
   version = "1.11.0";
