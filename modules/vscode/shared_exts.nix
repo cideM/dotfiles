@@ -26,8 +26,8 @@
 {
   name = "calva";
   publisher = "betterthantomorrow";
-  version = "2.0.229";
-  sha256 = "0vmgp6wnlyzyjsqx91s2inj6shyh1xr2iks48kyxawbdj9s0z5i7";
+  version = "2.0.231";
+  sha256 = "1mld8a5gr731kr5zlqyss823ql6risvfynsxj70158n4qy2i8jax";
 }
 {
   name = "markdown-checkbox";
@@ -260,8 +260,8 @@
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2022.1.1001562662";
-  sha256 = "18ik6qwxkb4w57437v6cj24b8psfs5i96kw67wp78hawrwjk3ii7";
+  version = "2022.1.1001572077";
+  sha256 = "0lw7glaqaizndfav9vihkfxq5b53qgrarqmwbyhhpa25wwlp4xd7";
 }
 {
   name = "remote-containers";
