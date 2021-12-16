@@ -104,6 +104,8 @@ in
     # chromium
   ];
 
+  hardware.nvidia.modesetting.enable = true;
+
   services.xserver = {
     enable = true;
     videoDrivers = [ "nvidia" ];
