@@ -134,8 +134,8 @@
 {
   name = "go";
   publisher = "golang";
-  version = "0.29.0";
-  sha256 = "1ky5xnl300m42ja8sh3b4ynn8k1nnrcbxxhn3c3g5bsyzsrr1nmz";
+  version = "0.30.0";
+  sha256 = "15rmc79ad743hb6pmnzv91rkvl2fb1qwh5gk5q6n9f9vygiyjrix";
 }
 {
   name = "vscode-graphql";
@@ -260,8 +260,8 @@
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2022.1.1001581935";
-  sha256 = "01brck8sp9pjvljd2xmbfscwslbxx8lyv0k1ck559igakh4rkyhl";
+  version = "2022.1.1001586661";
+  sha256 = "06z4lzqmsi1143dw144wd9i9abf14wdsgckxws5cmgm3kpffjiic";
 }
 {
   name = "remote-containers";
@@ -272,14 +272,14 @@
 {
   name = "remote-ssh";
   publisher = "ms-vscode-remote";
-  version = "0.71.2021121520";
-  sha256 = "1bgvy1kwd2pgqxv2yaqd5igxavril5j378vfw2jnni642f220y35";
+  version = "0.71.2021121615";
+  sha256 = "1lh08157z7lialb0dxls9fhahmf5l9wz6x2anwrnycvs512lpr1p";
 }
 {
   name = "remote-ssh-edit";
   publisher = "ms-vscode-remote";
-  version = "0.71.2021121520";
-  sha256 = "0s19y5h9zjdwdlxdcd00pfv43m5986zz5d8x7krrgybkljnhyybw";
+  version = "0.71.2021121615";
+  sha256 = "0ymrfsvls2y9dzhxx71kb3jqm7vznj1z39nb89pykyk76jsn70gv";
 }
 {
   name = "remote-wsl";
@@ -302,8 +302,8 @@
 {
   name = "vsliveshare";
   publisher = "ms-vsliveshare";
-  version = "1.0.5196";
-  sha256 = "0p1bkhypwws4ckpnzzgmih9rrmyaxw8rd3ldx5j5dy9fswvi7iq0";
+  version = "1.0.5200";
+  sha256 = "1fpifp7w66sfmp4qfbm0q0866w8wfzlrw1v8aajsjcjq9inmraiv";
 }
 {
   name = "vsliveshare-audio";
@@ -410,8 +410,8 @@
 {
   name = "lua";
   publisher = "sumneko";
-  version = "2.5.3";
-  sha256 = "1bq2qrj2b7ii9fgf2ybjgxsls6gsqfzsw0wppvlqysn5n7aa5dzp";
+  version = "2.5.5";
+  sha256 = "1w88is9svssikdnq0fpagwb7w86pm4299i3780gzivq79yh5n4qg";
 }
 {
   name = "sass-indented";
