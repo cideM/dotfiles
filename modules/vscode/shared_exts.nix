@@ -260,8 +260,8 @@
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2022.1.1001586661";
-  sha256 = "06z4lzqmsi1143dw144wd9i9abf14wdsgckxws5cmgm3kpffjiic";
+  version = "2022.1.1001591438";
+  sha256 = "0p4xsbm8kzavyhv3x7hgw7sapqfqn4vj5bjinvhlz2cck2zwf9qf";
 }
 {
   name = "remote-containers";
@@ -422,8 +422,8 @@
 {
   name = "language-stylus";
   publisher = "sysoev";
-  version = "1.14.1";
-  sha256 = "0q11afvjw9yl1v6csakrydgs9l5c12ypmw7mxqqm2hqmq9n0w6kh";
+  version = "1.15.0";
+  sha256 = "0xryxmypwxlrq43nnmmi8x2n1476qw6ii20gcmn7kcpnrznj97f4";
 }
 {
   name = "latex-utilities";
