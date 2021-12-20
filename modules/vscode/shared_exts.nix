@@ -74,8 +74,8 @@
 {
   name = "path-autocomplete";
   publisher = "ionutvmi";
-  version = "1.17.1";
-  sha256 = "0nlyvlwp0s8cf3ky33i11dfc8rhc90lmwq0z5km4yxvbs9zya6a3";
+  version = "1.18.0";
+  sha256 = "1h3l9slmf7fcdvvqkphdkl1qjp71qwagf9q9jyxvsbxq46b46c7w";
 }
 {
   name = "vscode-markdownlint";
