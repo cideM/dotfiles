@@ -170,8 +170,8 @@
 {
   name = "svg";
   publisher = "jock";
-  version = "1.4.14";
-  sha256 = "1fdxwb3mh4rc7chhzjigv4dazjav4bjrl8ha5p006lzvvq67dhsm";
+  version = "1.4.15";
+  sha256 = "0a5w6qxvsdzcmgc0yfiagpmz25y90pmzgrxz9899na5qy3pjcbmz";
 }
 {
   name = "vscode-random";
