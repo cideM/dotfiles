@@ -243,7 +243,7 @@ in
         imap     jk        <Esc>
         tnoremap <Esc>     <C-\><C-n>
         nnoremap <BS>      <C-^>
-        nnoremap <CR>      :Lines<CR>
+        nnoremap <CR>      :BLines<CR>
         nnoremap <leader><leader> :update<cr>
         nnoremap <leader>z        :wq<cr>
         nnoremap <Leader>q :Sayonara<CR>
@@ -257,12 +257,12 @@ in
         nmap ga <Plug>(EasyAlign)
 
         " ======= fzf =======================
-        nnoremap <C-f> :Files<cr>
-        nnoremap <C-l> :BLines<cr>
-        nnoremap <C-t> :Tags<cr>
-        nnoremap <C-m> :Marks<cr>
-        nnoremap <C-b> :Buffers<cr>
-        nnoremap <leader>fw :Windows<cr>
+        nnoremap <leader>f :Files<cr>
+        nnoremap <leader>l :BLines<cr>
+        nnoremap <leader>t :Tags<cr>
+        nnoremap <leader>m :Marks<cr>
+        nnoremap <leader>b :Buffers<cr>
+        nnoremap <leader>W :Windows<cr>
 
         " ======= sneak =====================
         let g:sneak#label      = 1
@@ -280,7 +280,7 @@ in
         nnoremap <leader>/ :nohlsearch<CR>
 
         nnoremap <leader>T :lcd %:p:h<bar>split term://fish<CR>
-        nnoremap <leader>t :split term://fish<CR>
+        nnoremap <leader>o :split term://fish<CR>
 
         " ======= sad =======================
         map      <leader>C <Plug>(sad-change-backward)
@@ -304,7 +304,7 @@ in
         packadd nvim-lspconfig
         packadd nvim-treesitter
         lua <<EOF
-        vim.api.nvim_set_keymap('n', '<leader>ls', "<cmd>lua vim.diagnostic.setloclist()<cr>", { noremap=true, silent=true })
+        vim.api.nvim_set_keymap('n', '<leader>L', "<cmd>lua vim.diagnostic.setloclist()<cr>", { noremap=true, silent=true })
         vim.api.nvim_set_keymap('n', '<leader>d', "<cmd>lua vim.lsp.buf.document_symbol()<cr>", { noremap=true, silent=true })
         vim.api.nvim_set_keymap('n', '<leader>w', "<cmd>lua vim.lsp.buf.workspace_symbol()<cr>", { noremap=true, silent=true })
         vim.api.nvim_set_keymap('n', '<leader>e', "<cmd>lua vim.lsp.buf.rename()<cr>", { noremap=true, silent=true })
