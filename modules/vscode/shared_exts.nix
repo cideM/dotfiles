@@ -158,8 +158,8 @@
 {
   name = "latex-workshop";
   publisher = "James-Yu";
-  version = "8.22.0";
-  sha256 = "1j1qqwihzjlfs5w0nddd7msgi8r21jmgsyk2rg0abh9qi524f17f";
+  version = "8.23.0";
+  sha256 = "1rlw3ys6kwq46jc26iirpriwvrkmxs62mxi2arcn1y72wh1fqwi0";
 }
 {
   name = "hoogle-vscode";
@@ -410,8 +410,8 @@
 {
   name = "lua";
   publisher = "sumneko";
-  version = "2.5.5";
-  sha256 = "1w88is9svssikdnq0fpagwb7w86pm4299i3780gzivq79yh5n4qg";
+  version = "2.5.6";
+  sha256 = "0idcrbmf967d5rv6hn6a4hi221mlaifhsv7l71s7wnbj80y038jh";
 }
 {
   name = "sass-indented";
