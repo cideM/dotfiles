@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "alac": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1640640668,
-        "narHash": "sha256-/3P+RV5G4Hz+dGS1BBCa+t+QCz+6mkb0e66IX4p1jfM=",
-        "owner": "alacritty",
-        "repo": "alacritty",
-        "rev": "e2b5219eb40eaf36d8255cd87c5202bbb8ba0825",
-        "type": "github"
-      },
-      "original": {
-        "owner": "alacritty",
-        "repo": "alacritty",
-        "type": "github"
-      }
-    },
     "cidem-vsc": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -543,7 +527,6 @@
     },
     "root": {
       "inputs": {
-        "alac": "alac",
         "cidem-vsc": "cidem-vsc",
         "doomonetheme": "doomonetheme",
         "everforest": "everforest",
