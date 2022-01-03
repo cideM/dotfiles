@@ -50,6 +50,7 @@ with pkgs;
     rclone
     restic
     ripgrep
+    kitty
     rlwrap
     roboto
     roboto-mono

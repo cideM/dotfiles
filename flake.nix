@@ -199,6 +199,10 @@
                       liberation_ttf = pkgsCompat.liberation_ttf;
                     })
 
+                    (self: super: rec {
+                      kitty = pkgsCompat.kitty;
+                    })
+
                     # This is currently giving me a really strange cycle
                     # detected error which seems unrelated to M1 architecture.
                     # building '/nix/store/k1jbc0389f58cwwy9xvi9r2xi5fmqdc2-niv-0.2.19.drv'...
