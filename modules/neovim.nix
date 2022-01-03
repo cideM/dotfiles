@@ -170,17 +170,6 @@ in
             let &formatprg = l:fp
         endfunction
 
-        function! LspStatus() abort
-          let sl = ""
-          if luaeval('not vim.tbl_isempty(vim.lsp.buf_get_clients(0))')
-            let sl.='E: %{luaeval("vim.lsp.diagnostic.get_count(0, [[Error]])")} '
-            let sl.='W: %{luaeval("vim.lsp.diagnostic.get_count(0, [[Warning]])")} '
-          else
-              let sl.=' off '
-          endif
-          return sl
-        endfunction
-
         set background=light
         set foldmethod=indent
         set expandtab
@@ -205,7 +194,7 @@ in
         set grepprg=rg\ --vimgrep\ --smart-case\ --hidden
         set grepformat=%f:%l:%c:%m
         set path-=/usr/include list lcs=trail:¬,tab:\ \ 
-        set statusline+=\ %f\ %m%=%{%LspStatus()%}%y\ %q\ %3l:%2c\ \|%3p%%\ 
+        set statusline+=\ %f\ %m%=\ %y\ %q\ %3l:%2c\ \|%3p%%\ 
         let g:yui_comments = 'bg'
         " Fish is really slow on MacOS somehow
         set shell=dash
