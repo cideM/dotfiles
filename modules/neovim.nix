@@ -319,12 +319,7 @@ in
 
         vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
 
-        vim.diagnostic.config({
-            virtual_text = true,
-            signs = true,
-            underline = true,
-            update_in_insert = false,
-        })
+        vim.diagnostic.config()
 
         nvim_lsp.rust_analyzer.setup{on_attach=on_attach}
         nvim_lsp.clojure_lsp.setup{on_attach=on_attach}
