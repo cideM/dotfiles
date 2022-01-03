@@ -7,10 +7,12 @@
     # (import ../../modules/git.nix)
     (import ../../modules/tmux.nix)
     (import ../../modules/ctags.nix)
+    (import ../../modules/kitty)
     (import ../../modules/fish.nix)
     (import ../../modules/sharedPackages.nix)
     (import ../../modules/sharedSettings.nix)
-    (import ../../modules/vscode/default.nix)
+    # I never uses it
+    # (import ../../modules/vscode/default.nix)
   ];
 
   programs.man.enable = true;
