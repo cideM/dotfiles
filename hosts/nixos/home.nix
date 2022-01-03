@@ -7,7 +7,7 @@
     (import ../../modules/tmux.nix)
     (import ../../modules/ctags.nix)
     (import ../../modules/fish.nix)
-    (import ../../modules/kitty/default.nix)
+    (import ../../modules/kitty)
     (import ../../modules/sharedPackages.nix)
     (import ../../modules/sharedSettings.nix)
     (import ../../modules/vscode/default.nix)
