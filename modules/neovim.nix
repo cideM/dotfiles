@@ -319,8 +319,6 @@ in
 
         vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
 
-        vim.diagnostic.config()
-
         nvim_lsp.rust_analyzer.setup{on_attach=on_attach}
         nvim_lsp.clojure_lsp.setup{on_attach=on_attach}
         -- https://github.com/neovim/neovim/issues/13829
