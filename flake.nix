@@ -131,7 +131,7 @@
                   doCheck = false;
                   cargoDeps = old.cargoDeps.overrideAttrs (_: {
                     inherit src;
-                    outputHash = "0xhknhqw4qsa22l9igpj55asnsggignwxr9z3rrwmzvhjxma9wak";
+                    outputHash = "sha256-u0qx3DC+48xFs1YVmHuAAC7tDxYsyB4OneZk/ujB2D0=";
                   });
                   patches = [ ];
                 });
