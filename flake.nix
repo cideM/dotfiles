@@ -163,6 +163,10 @@
                   nixpkgs.overlays = overlays ++ [
 
                     (self: super: rec {
+                      alacritty = pkgsCompat.alacritty;
+                    })
+
+                    (self: super: rec {
                       luajitPackages.luacheck = pkgsCompat.luajitPackages.luacheck;
                     })
 
