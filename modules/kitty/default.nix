@@ -8,7 +8,7 @@
 
     adjust_line_height   0
     adjust_column_width  0
-    adjust_baseline      1
+    adjust_baseline      2
 
     enable_audio_bell    no
 
@@ -38,8 +38,13 @@
 
     shell ${pkgs.fish}/bin/fish
 
+    shell_integration enabled
+
     kitty_mod ${if pkgs.stdenv.isDarwin then "cmd" else "ctrl+shift"}
 
-    map cmd+ctrl+m toggle_layout stack
+    macos_option_as_alt right
+
+    map kitty_mod+' toggle_layout stack
+    map alt+enter  launch        --cwd=current
   '';
 }
