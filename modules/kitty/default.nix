@@ -4,11 +4,13 @@
     bold_font            Operator Mono SSm Medium
     italic_font          Operator Mono SSm Book Italic
     bold_italic_font     Operator Mono SSm Medium Italic
-    font_size            15.0
+    font_size            ${if pkgs.stdenv.isDarwin then "15.0" else "12.0"}
 
     adjust_line_height   0
     adjust_column_width  0
-    adjust_baseline      2
+    adjust_baseline      1
+    window_padding_with  0 5
+    single_window_margin_width 0 5
 
     enable_audio_bell    no
 
