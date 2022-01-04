@@ -162,9 +162,6 @@
                 {
                   nixpkgs.overlays = overlays ++ [
 
-                    (self: super: rec {
-                      liberation_ttf = pkgsCompat.liberation_ttf;
-                    })
 
                     (self: super: rec {
                       kitty = pkgsCompat.kitty;
