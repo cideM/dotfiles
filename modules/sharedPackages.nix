@@ -9,7 +9,6 @@ with pkgs;
     # cachix
     # cmus
     dash
-    niv
     liberation_ttf
     luajitPackages.luacheck
     fastmod

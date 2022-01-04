@@ -163,23 +163,11 @@
                   nixpkgs.overlays = overlays ++ [
 
                     (self: super: rec {
-                      luajitPackages.luacheck = pkgsCompat.luajitPackages.luacheck;
-                    })
-
-                    (self: super: rec {
                       liberation_ttf = pkgsCompat.liberation_ttf;
                     })
 
                     (self: super: rec {
                       kitty = pkgsCompat.kitty;
-                    })
-
-                    # This is currently giving me a really strange cycle
-                    # detected error which seems unrelated to M1 architecture.
-                    # building '/nix/store/k1jbc0389f58cwwy9xvi9r2xi5fmqdc2-niv-0.2.19.drv'...
-                    # cycle detected in the references of '/nix/store/abawbski981061gbsnq0v5374gvsrbq7-niv-0.2.19-bin' from '/nix/store/v5p7lliij8f10c920sa8lwnqv8di6007-niv-0.2.19'
-                    (self: super: rec {
-                      niv = pkgsCompat.niv;
                     })
 
                   ];
