@@ -23,7 +23,7 @@ with pkgs;
     du-dust
     emacs
     entr
-    # exa
+    exa
     fd
     findutils
     fzf

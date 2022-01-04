@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   imports = [
-    (import ../../modules/alacritty.nix)
     (import ../../modules/neovim.nix)
     (import ../../modules/git.nix)
     (import ../../modules/tmux.nix)
@@ -55,8 +54,6 @@
   # sigh
   programs.firefox.enable = false;
   programs.firefox.package = pkgs.firefox-devedition-bin;
-
-  programs.alacritty.settings.font.size = 12;
 
   programs.fish.interactiveShellInit = ''
     set -x FISH_NOTES_DIR ~/notes_new

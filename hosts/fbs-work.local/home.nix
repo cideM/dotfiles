@@ -1,7 +1,6 @@
 { pkgs, operatorMono, home-manager, ... }:
 {
   imports = [
-    (import ../../modules/alacritty.nix)
     (import ../../modules/neovim.nix)
     # https://github.com/NixOS/nixpkgs/issues/62353
     # (import ../../modules/git.nix)
@@ -16,10 +15,6 @@
   ];
 
   programs.man.enable = true;
-
-  home.sessionVariables = {
-    TERMINFO_DIRS = "${pkgs.alacritty.terminfo.outPath}/share/terminfo";
-  };
 
   home.stateVersion = "20.09";
 
@@ -49,8 +44,6 @@
     })
   ];
 
-  # Install through casks for Alacritty.app etc
-  programs.alacritty.settings.font.size = 14;
   xdg.configFile."nix/nix.conf".text = ''
     experimental-features = nix-command flakes
     keep-derivations = true
