@@ -46,7 +46,6 @@ with pkgs;
     nixpkgs-fmt
     nixpkgs-review
     qmk
-    ranger
     rclone
     restic
     ripgrep
