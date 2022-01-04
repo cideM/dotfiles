@@ -8,7 +8,7 @@
 
     adjust_line_height   0
     adjust_column_width  0
-    adjust_baseline      1
+    adjust_baseline      ${if pkgs.stdenv.isDarwin then "2" else "1"}
     window_padding_with  0 5
     single_window_margin_width 0 5
 
