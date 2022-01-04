@@ -53,9 +53,4 @@
   # sigh
   programs.firefox.enable = false;
   programs.firefox.package = pkgs.firefox-devedition-bin;
-
-  programs.fish.interactiveShellInit = ''
-    set -x FISH_NOTES_DIR ~/notes_new
-    set -x FISH_WORK_NOTES ~/work_notes
-  '';
 }
