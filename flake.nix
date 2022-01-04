@@ -161,16 +161,11 @@
               imports = [
                 {
                   nixpkgs.overlays = overlays ++ [
-
-
-                    (self: super: rec {
-                      kitty = pkgsCompat.kitty;
-                    })
-
+                    (self: super: rec { kitty = pkgsCompat.kitty; })
                   ];
+
                   nixpkgs.config = {
                     allowUnfree = true;
-
                   };
                 }
                 ./hosts/fbs-work.local/home.nix
