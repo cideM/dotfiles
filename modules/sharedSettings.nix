@@ -1,4 +1,4 @@
-{ pkgs, k9s, ... }:
+{ pkgs, ... }:
 
 {
   home.sessionVariables = {
@@ -8,7 +8,6 @@
     VISUAL = "nvim";
     EDITOR = "nvim";
     SHELL = "${pkgs.fish}/bin/fish";
-    K9SCONFIG = "$XDG_CONFIG_HOME/k9s";
   };
 
   programs.direnv.enable = true;
@@ -17,6 +16,4 @@
 
   # https://github.com/rycee/home-manager/issues/432
   home.extraOutputsToInstall = [ "info" "man" "share" "icons" "doc" ];
-
-  xdg.configFile."k9s/skin.yml".text = builtins.readFile "${k9s}/skins/gruvbox-light.yml";
 }

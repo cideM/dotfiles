@@ -35,43 +35,6 @@
         "type": "github"
       }
     },
-    "everforest": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1639706090,
-        "narHash": "sha256-NJOx/47GOGNQXCOyDCfYH1TaPfbCzeq07aQ41hBh/Kk=",
-        "owner": "sainnhe",
-        "repo": "everforest",
-        "rev": "fc958028d0cb6f32deda102fe18bb13affdd84ce",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sainnhe",
-        "repo": "everforest",
-        "type": "github"
-      }
-    },
-    "fenix": {
-      "inputs": {
-        "nixpkgs": [
-          "unstable"
-        ],
-        "rust-analyzer-src": "rust-analyzer-src"
-      },
-      "locked": {
-        "lastModified": 1641191170,
-        "narHash": "sha256-a3KKhl3Q7nyprV1FhZFKoP9rsT16GKsa1NXHu5TI4Eo=",
-        "owner": "nix-community",
-        "repo": "fenix",
-        "rev": "175e62f8df6b127ef5eb80e58331d4ad788cdc79",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "fenix",
-        "type": "github"
-      }
-    },
     "flake-utils": {
       "locked": {
         "lastModified": 1629481132,
@@ -529,8 +492,6 @@
       "inputs": {
         "cidem-vsc": "cidem-vsc",
         "doomonetheme": "doomonetheme",
-        "everforest": "everforest",
-        "fenix": "fenix",
         "home-manager": "home-manager",
         "k9s": "k9s",
         "kubectl-nix": "kubectl-nix",
@@ -548,26 +509,8 @@
         "unstable": "unstable_2",
         "vim-js": "vim-js",
         "vim-lua": "vim-lua",
-        "visual-split-nvim": "visual-split-nvim",
         "winshift": "winshift",
         "yui": "yui"
-      }
-    },
-    "rust-analyzer-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1641161730,
-        "narHash": "sha256-eLaldXDJoAdP4uqFcRkuYIcc5PsrlEbAWhjd0zuUQU0=",
-        "owner": "rust-analyzer",
-        "repo": "rust-analyzer",
-        "rev": "989c06b25d7e9d5c10ce77831952cab7359d6ab2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "rust-analyzer",
-        "ref": "nightly",
-        "repo": "rust-analyzer",
-        "type": "github"
       }
     },
     "spacevimtheme": {
@@ -664,22 +607,6 @@
       "original": {
         "owner": "tbastos",
         "repo": "vim-lua",
-        "type": "github"
-      }
-    },
-    "visual-split-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1485710504,
-        "narHash": "sha256-v0j6AExrOJIgde/Aphr7lvonZptMwYQLCB6E+2YsiVg=",
-        "owner": "wellle",
-        "repo": "visual-split.vim",
-        "rev": "423a25911b3e8da04a28d29f205e1059a06e6afa",
-        "type": "github"
-      },
-      "original": {
-        "owner": "wellle",
-        "repo": "visual-split.vim",
         "type": "github"
       }
     },

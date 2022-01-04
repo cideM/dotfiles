@@ -1,12 +1,6 @@
 args@{ config
 , lib
 , pkgs
-, spacevimtheme
-, doomonetheme
-, lspfuzzy
-, everforest
-, lightspeed
-, yui
 , ...
 }:
 
@@ -370,7 +364,7 @@ in
       plugins = with pkgs.vimPlugins; [
         # LSP
         { plugin = nvim-lspconfig; optional = true; }
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "lspfuzzy"; src = lspfuzzy; })
+        pkgs.lspfuzzy
 
         # Git
         vim-fugitive
@@ -395,9 +389,9 @@ in
 
         # Themes
         edge
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "yui"; src = yui; })
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "spacevimtheme"; src = spacevimtheme; })
-        (pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "doomonetheme"; src = doomonetheme; })
+        pkgs.spacevim
+        pkgs.yui
+        pkgs.doomonetheme
 
         # Language stuff
         { plugin = pkgs.parinfer-rust; optional = true; }

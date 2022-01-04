@@ -9,18 +9,10 @@
 
     cidem-vsc.url = "github:cideM/visual-studio-code-insiders-nix";
 
-    fenix = {
-      url = "github:nix-community/fenix";
-      inputs.nixpkgs.follows = "unstable";
-    };
-
     parinfer-rust.url = "github:eraserhd/parinfer-rust";
     parinfer-rust.flake = false;
 
     kubectl-nix.url = "github:cidem/kubectl-nix";
-
-    everforest.url = "github:sainnhe/everforest";
-    everforest.flake = false;
 
     winshift.url = "github:sindrets/winshift.nvim";
     winshift.flake = false;
@@ -30,9 +22,6 @@
 
     nix-env-fish.url = "github:lilyball/nix-env.fish";
     nix-env-fish.flake = false;
-
-    visual-split-nvim.url = "github:wellle/visual-split.vim";
-    visual-split-nvim.flake = false;
 
     vim-lua.url = "github:tbastos/vim-lua";
     vim-lua.flake = false;
@@ -81,7 +70,6 @@
     , lspfuzzy
     , winshift
     , k9s
-    , visual-split-nvim
     , nix-env-fish
     , lucid-fish-prompt
     , vim-lua
@@ -90,16 +78,12 @@
     , spacevimtheme
     , vim-js
     , doomonetheme
-    , everforest
     , lightspeed
     , parinfer-rust
     , kubectl-nix
-    , fenix
     }:
     let
       overlays = [
-        fenix.overlay
-
         (self: super: {
           kubectl = kubectl-nix.packages.${if super.system == "aarch64-darwin" then "x86_64-darwin" else super.system}."1_19_3";
         })
@@ -117,15 +101,27 @@
         })
 
         (self: super: {
+          yui = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "yui"; src = yui; };
+        })
+
+        (self: super: {
+          doomonetheme = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "doomonetheme"; src = doomonetheme; };
+        })
+
+        (self: super: {
+          lspfuzzy = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "lspfuzzy"; src = lspfuzzy; };
+        })
+
+        (self: super: {
+          spacevim = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "spacevim"; src = spacevimtheme; };
+        })
+
+        (self: super: {
           vim-lua = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "vim-lua"; src = vim-lua; };
         })
 
         (self: super: {
           vim-js = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "vim-js"; src = vim-js; };
-        })
-
-        (self: super: {
-          visual-split-nvim = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "visual-split"; src = visual-split-nvim; };
         })
       ];
 
@@ -135,16 +131,9 @@
 
       specialArgs = {
         inherit operatorMono
-          lspfuzzy
           home-manager
-          yui
-          spacevimtheme
           nix-env-fish
-          lucid-fish-prompt
-          doomonetheme
-          everforest
-          lightspeed
-          k9s;
+          lucid-fish-prompt;
       };
 
       homeConfigurations = {
