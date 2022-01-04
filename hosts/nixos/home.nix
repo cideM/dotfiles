@@ -3,7 +3,6 @@
   imports = [
     (import ../../modules/neovim.nix)
     (import ../../modules/git.nix)
-    (import ../../modules/tmux.nix)
     (import ../../modules/ctags.nix)
     (import ../../modules/fish.nix)
     (import ../../modules/kitty)
@@ -58,9 +57,5 @@
   programs.fish.interactiveShellInit = ''
     set -x FISH_NOTES_DIR ~/notes_new
     set -x FISH_WORK_NOTES ~/work_notes
-  '';
-
-  programs.tmux.extraConfig = ''
-    bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "${pkgs.xsel}/bin/xsel -i --clipboard"
   '';
 }
