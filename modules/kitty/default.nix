@@ -47,6 +47,7 @@
     macos_option_as_alt right
 
     map kitty_mod+' toggle_layout stack
-    map alt+enter  launch        --cwd=current
+    map alt+enter   launch        --cwd=current
+    map kitty_mod+! detach_window ask
   '';
 }
