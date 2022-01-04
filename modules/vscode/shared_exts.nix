@@ -128,8 +128,8 @@
 {
   name = "prettier-vscode";
   publisher = "esbenp";
-  version = "9.0.0";
-  sha256 = "1nak1hg46wxkl0kb0zhc343kq2f4nd5q1fqscb29jybd4qdb8lgn";
+  version = "9.1.0";
+  sha256 = "1vfyzxaqj0bdl9cd0x6glnydbi85pf4j9fbasj2i0lfqn06l27lm";
 }
 {
   name = "go";
@@ -411,7 +411,7 @@
   name = "lua";
   publisher = "sumneko";
   version = "2.5.6";
-  sha256 = "sha256-cnH2DqbCECupWoEm0ThXpihQ1zcR/LpP9HmmI44wC8w=";
+  sha256 = "0idcrbmf967d5rv6hn6a4hi221mlaifhsv7l71s7wnbj80y038jh";
 }
 {
   name = "sass-indented";
