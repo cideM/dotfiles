@@ -30,7 +30,7 @@ let
 
     set -x GOPATH ~/go
 
-    fish_add_path -p ~/bin
+    fish_add_path -p ~/bin /usr/local/bin/
 
     # https://discourse.nixos.org/t/how-is-nix-path-managed-regarding-nix-channel/6079/3?u=cidem
     set -x NIX_PATH ~/.nix-defexpr/channels $NIX_PATH
