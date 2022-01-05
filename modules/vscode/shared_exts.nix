@@ -266,8 +266,8 @@
 {
   name = "remote-containers";
   publisher = "ms-vscode-remote";
-  version = "0.209.6";
-  sha256 = "1dvma7mm0g6mr6yjfy0zbn0k143ag8p40r0kcb9n441w2r817rj8";
+  version = "0.210.0";
+  sha256 = "0s74dvgw3prrs86qb9j4i8y697mrd180qf3wnsypq8r14nqlsxs1";
 }
 {
   name = "remote-ssh";
@@ -302,8 +302,8 @@
 {
   name = "vsliveshare";
   publisher = "ms-vsliveshare";
-  version = "1.0.5200";
-  sha256 = "1fpifp7w66sfmp4qfbm0q0866w8wfzlrw1v8aajsjcjq9inmraiv";
+  version = "1.0.5201";
+  sha256 = "0vpldzkbaq98av4s8dpv1hk3z612zxq6a6ins2wada5jw25392py";
 }
 {
   name = "vsliveshare-audio";
@@ -411,7 +411,7 @@
   name = "lua";
   publisher = "sumneko";
   version = "2.5.6";
-  sha256 = "sha256-cnH2DqbCECupWoEm0ThXpihQ1zcR/LpP9HmmI44wC8w=";
+  sha256 = "0idcrbmf967d5rv6hn6a4hi221mlaifhsv7l71s7wnbj80y038jh";
 }
 {
   name = "sass-indented";
