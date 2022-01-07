@@ -185,7 +185,7 @@ in
         set foldlevelstart=99
         set undofile
         set termguicolors
-        set grepprg=rg\ --vimgrep\ --smart-case\ --hidden
+        set grepprg=rg\ --vimgrep\ --smart-case
         set grepformat=%f:%l:%c:%m
         set path-=/usr/include list lcs=trail:¬,tab:\ \ 
         set statusline+=\ %f\ %m%=\ %y\ %q\ %3l:%2c\ \|%3p%%\ 
