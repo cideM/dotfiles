@@ -302,8 +302,8 @@
 {
   name = "vsliveshare";
   publisher = "ms-vsliveshare";
-  version = "1.0.5201";
-  sha256 = "0vpldzkbaq98av4s8dpv1hk3z612zxq6a6ins2wada5jw25392py";
+  version = "1.0.5242";
+  sha256 = "0mndks2zfpxydd9fpwbi98qdhzkjzwfhh7hg3z222l18scfzad3z";
 }
 {
   name = "vsliveshare-audio";
