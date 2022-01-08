@@ -26,8 +26,8 @@
 {
   name = "calva";
   publisher = "betterthantomorrow";
-  version = "2.0.232";
-  sha256 = "05dmikm1lqgxgqq26vrqlw20zhwq43qaa1a60fis89vlyax74z4b";
+  version = "2.0.233";
+  sha256 = "1zhx822fbvd4b7pz2f7dgdffl2rnd6abqkb53scpbxk3cavnfy2s";
 }
 {
   name = "markdown-checkbox";
@@ -260,14 +260,14 @@
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2022.1.1001614873";
-  sha256 = "0hvhvn3slhax7sxky3fy59c34pj6yy3x77v8aqxlz59gf5m9l9w8";
+  version = "2022.1.1001666841";
+  sha256 = "1rxkcxv6afg3qp20mcvcknk6ww1l4gn0m51615zvgv0iiys9rwkm";
 }
 {
   name = "remote-containers";
   publisher = "ms-vscode-remote";
-  version = "0.210.0";
-  sha256 = "0s74dvgw3prrs86qb9j4i8y697mrd180qf3wnsypq8r14nqlsxs1";
+  version = "0.210.1";
+  sha256 = "1nfdg7i9hq6vqqm723hzrh7v00fw4cgcq7ml10rgidsg4yv7xby4";
 }
 {
   name = "remote-ssh";
