@@ -40,7 +40,7 @@
     roboto
     roboto-mono
 
-    firefox-devedition-bin
+    firefox-wayland
     google-chrome
 
     zoom-us
