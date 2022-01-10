@@ -82,9 +82,8 @@
     let
       overlays = [
         (self: super: {
-          kubectl = kubectl-nix.packages.${if super.system == "aarch64-darwin" then "x86_64-darwin" else super.system}."1_19_3";
+          kubectl = kubectl-nix.packages.${super.system}."1_19_3";
         })
-
 
         (self: super: {
           parinfer-rust = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "parinfer-rust"; src = parinfer-rust; };
