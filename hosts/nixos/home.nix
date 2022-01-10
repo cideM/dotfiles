@@ -7,7 +7,10 @@
     (import ../../modules/fish.nix)
     (import ../../modules/kitty)
     (import ../../modules/common.nix)
+    (import ../../modules/alacritty)
   ];
+
+  programs.alacritty.settings.font.size = 12;
 
   home.packages = with pkgs; [
     iotop
@@ -36,8 +39,6 @@
 
     roboto
     roboto-mono
-
-    liberation_ttf
 
     firefox-devedition-bin
     google-chrome

@@ -8,9 +8,13 @@
     (import ../../modules/kitty)
     (import ../../modules/fish.nix)
     (import ../../modules/common.nix)
+    (import ../../modules/alacritty)
   ];
 
   programs.man.enable = true;
+
+  programs.alacritty.settings.font.size = 11;
+  programs.alacritty.settings.font.use_thin_strokes = true;
 
   home.stateVersion = "20.09";
 
@@ -20,6 +24,10 @@
     contains "/Users/fbs/.nix-profile/share/man" $MANPATH
     or set -p MANPATH "/Users/fbs/.nix-profile/share/man"
   '';
+
+  home.sessionVariables = {
+    TERMINFO_DIRS = "${pkgs.alacritty.terminfo.outPath}/share/terminfo";
+  };
 
   home.packages = with pkgs; [
     nixUnstable
@@ -33,6 +41,7 @@
     keep-derivations = true
     keep-outputs = true
   '';
+
   xdg.configFile."nix/registry.json".text =
     builtins.toJSON {
       version = 2;
