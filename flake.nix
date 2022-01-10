@@ -106,6 +106,19 @@
         })
 
         (self: super: {
+          operatorMonoFont = super.pkgs.stdenv.mkDerivation {
+            name = "operator-mono-font";
+            src = operatorMono;
+            buildPhases = [ "installPhase" ];
+            installPhase = ''
+              mkdir -p $out/share/fonts/operator-mono
+              cp -R "$src" "$out/share/fonts/operator-mono"
+            '';
+          };
+
+        })
+
+        (self: super: {
           vim-js = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "vim-js"; src = vim-js; };
         })
       ];
@@ -115,10 +128,7 @@
       };
 
       specialArgs = {
-        inherit operatorMono
-          home-manager
-          nix-env-fish
-          lucid-fish-prompt;
+        inherit home-manager nix-env-fish lucid-fish-prompt;
       };
 
       homeConfigurations = {

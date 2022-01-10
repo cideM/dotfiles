@@ -1,4 +1,4 @@
-{ pkgs, operatorMono, home-manager, ... }:
+{ pkgs, home-manager, ... }:
 {
   imports = [
     (import ../../modules/neovim.nix)
@@ -30,15 +30,7 @@
     then home-manager.defaultPackage.aarch64-darwin
     else home-manager.defaultPackage.x86_64-darwin)
 
-    (pkgs.stdenv.mkDerivation {
-      name = "operator-mono-font";
-      src = operatorMono;
-      buildPhases = [ "installPhase" ];
-      installPhase = ''
-        mkdir -p $out/share/fonts/operator-mono
-        cp -R "$src" "$out/share/fonts/operator-mono"
-      '';
-    })
+    operatorMonoFont
   ];
 
   xdg.configFile."nix/nix.conf".text = ''

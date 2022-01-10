@@ -1,16 +1,4 @@
-{ config, pkgs, operatorMono, ... }:
-let
-  operatorMonoFontPkg = pkgs.stdenv.mkDerivation {
-    name = "operator-mono-font";
-    src = operatorMono;
-    buildPhases = [ "installPhase" ];
-    installPhase = ''
-      mkdir -p $out/share/fonts/operator-mono
-      cp -R "$src" "$out/share/fonts/operator-mono"
-    '';
-  };
-
-in
+{ config, pkgs, ... }:
 {
 
   imports =
@@ -45,7 +33,7 @@ in
 
   fonts = {
     fontDir.enable = false;
-    fonts = [ operatorMonoFontPkg ];
+    fonts = [ pkgs.operatorMonoFont ];
   };
 
   systemd.network.enable = true;

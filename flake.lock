@@ -473,7 +473,6 @@
         "spacevimtheme": "spacevimtheme",
         "unstable": "unstable",
         "vim-js": "vim-js",
-        "vim-lua": "vim-lua",
         "winshift": "winshift",
         "yui": "yui"
       }
@@ -540,22 +539,6 @@
       "original": {
         "owner": "yuezk",
         "repo": "vim-js",
-        "type": "github"
-      }
-    },
-    "vim-lua": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1596625104,
-        "narHash": "sha256-dZDXPFQiiGFXaXZK7ttWyP7Fcv+3JCtPYxSgXa90d7o=",
-        "owner": "tbastos",
-        "repo": "vim-lua",
-        "rev": "fa810f85437525bcea0fc4ff22c634935721d86d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tbastos",
-        "repo": "vim-lua",
         "type": "github"
       }
     },
