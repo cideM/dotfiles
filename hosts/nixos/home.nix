@@ -16,6 +16,7 @@
     insomnia
     spotify
     zathura
+    obsidian
 
     sublime-merge
     sublime4
