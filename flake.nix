@@ -21,9 +21,6 @@
     nix-env-fish.url = "github:lilyball/nix-env.fish";
     nix-env-fish.flake = false;
 
-    vim-lua.url = "github:tbastos/vim-lua";
-    vim-lua.flake = false;
-
     k9s.url = "github:derailed/k9s";
     k9s.flake = false;
 
@@ -70,7 +67,6 @@
     , k9s
     , nix-env-fish
     , lucid-fish-prompt
-    , vim-lua
     , yui
     , spacevimtheme
     , vim-js
@@ -107,10 +103,6 @@
 
         (self: super: {
           spacevim = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "spacevim"; src = spacevimtheme; };
-        })
-
-        (self: super: {
-          vim-lua = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "vim-lua"; src = vim-lua; };
         })
 
         (self: super: {

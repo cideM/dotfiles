@@ -403,7 +403,7 @@ in
         Jenkinsfile-vim-syntax
         purescript-vim
         pkgs.vim-js
-        pkgs.vim-lua
+        vim-lua
         vim-jsx-pretty
         vim-nix
         vim-terraform
