@@ -7,8 +7,6 @@
       inputs.nixpkgs.follows = "unstable";
     };
 
-    cidem-vsc.url = "github:cideM/visual-studio-code-insiders-nix";
-
     parinfer-rust.url = "github:eraserhd/parinfer-rust";
     parinfer-rust.flake = false;
 
@@ -73,7 +71,6 @@
     , nix-env-fish
     , lucid-fish-prompt
     , vim-lua
-    , cidem-vsc
     , yui
     , spacevimtheme
     , vim-js
@@ -88,9 +85,6 @@
           kubectl = kubectl-nix.packages.${if super.system == "aarch64-darwin" then "x86_64-darwin" else super.system}."1_19_3";
         })
 
-        (self: super: {
-          vscodeInsiders = cidem-vsc.packages.${super.system}.vscodeInsiders;
-        })
 
         (self: super: {
           parinfer-rust = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "parinfer-rust"; src = parinfer-rust; };

@@ -9,8 +9,6 @@
     (import ../../modules/fish.nix)
     (import ../../modules/sharedPackages.nix)
     (import ../../modules/sharedSettings.nix)
-    # I never uses it
-    # (import ../../modules/vscode/default.nix)
   ];
 
   programs.man.enable = true;

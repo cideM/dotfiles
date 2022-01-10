@@ -8,7 +8,6 @@
     (import ../../modules/kitty)
     (import ../../modules/sharedPackages.nix)
     (import ../../modules/sharedSettings.nix)
-    (import ../../modules/vscode/default.nix)
   ];
 
   home.packages = with pkgs; [
