@@ -25,11 +25,7 @@
   home.packages = with pkgs; [
     nixUnstable
     unixtools.watch
-
-    (if pkgs.stdenv.hostPlatform.system == "aarch64-darwin"
-    then home-manager.defaultPackage.aarch64-darwin
-    else home-manager.defaultPackage.x86_64-darwin)
-
+    home-manager.defaultPackage.aarch64-darwin
     operatorMonoFont
   ];
 
