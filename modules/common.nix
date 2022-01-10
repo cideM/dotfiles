@@ -4,48 +4,42 @@ with pkgs;
 
 {
   home.packages = [
-    awscli2
-    aws-mfa
-    dash
-    luajitPackages.luacheck
-    fastmod
-    bashInteractive
+    # Unix Rust Replacements
     bat
-    curl
-    coreutils
-    delta
+    exa
+    ripgrep
+    fd
+
+    # Version control
+    gh
     git-lfs
-    docker-compose
+
+    # Misc
+    bashInteractive
+    coreutils
+    curl
+    dash
+    delta
     du-dust
     entr
-    exa
-    fd
+    fastmod
     findutils
     fzf
     gawk
-    gh
     gnugrep
     gnupg
     gnused
-    google-cloud-sdk
     gzip
     htop
     jq
-    kubernetes-helm
+    kitty
     libuv
     ncdu
-    kubectl
-    nixpkgs-fmt
-    nixpkgs-review
     qmk
     rclone
     restic
-    ripgrep
-    kitty
     rlwrap
     rsync
-    rust-analyzer
-    shellcheck
     time
     tldr
     tokei
@@ -53,7 +47,26 @@ with pkgs;
     universal-ctags
     vim
     wget
+
+    # Infrastructure
+    awscli2
+    aws-mfa
+    docker-compose
+    google-cloud-sdk
+    kubectl
+    kubernetes-helm
+
+    # Language stuff
+    luajitPackages.luacheck
+    nixpkgs-fmt
+    nixpkgs-review
+    rust-analyzer
+    shellcheck
     yamllint
+
+    # Fonts
+    liberation_ttf
+    hack-font
   ];
 
   home.sessionVariables = {
