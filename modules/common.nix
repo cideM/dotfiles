@@ -13,13 +13,13 @@ with pkgs;
     # Version control
     gh
     git-lfs
+    delta
 
     # Misc
     bashInteractive
-    coreutils
+    coreutils-full
     curl
     dash
-    delta
     du-dust
     entr
     fastmod
