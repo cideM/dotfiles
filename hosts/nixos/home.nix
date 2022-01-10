@@ -6,8 +6,7 @@
     (import ../../modules/ctags.nix)
     (import ../../modules/fish.nix)
     (import ../../modules/kitty)
-    (import ../../modules/sharedPackages.nix)
-    (import ../../modules/sharedSettings.nix)
+    (import ../../modules/common.nix)
   ];
 
   home.packages = with pkgs; [

@@ -7,8 +7,7 @@
     (import ../../modules/ctags.nix)
     (import ../../modules/kitty)
     (import ../../modules/fish.nix)
-    (import ../../modules/sharedPackages.nix)
-    (import ../../modules/sharedSettings.nix)
+    (import ../../modules/common.nix)
   ];
 
   programs.man.enable = true;
