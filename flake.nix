@@ -33,9 +33,6 @@
     vim-js.url = "github:yuezk/vim-js";
     vim-js.flake = false;
 
-    lightspeed.url = "github:ggandor/lightspeed.nvim";
-    lightspeed.flake = false;
-
     lspfuzzy.url = "github:ojroques/nvim-lspfuzzy";
     lspfuzzy.flake = false;
 
@@ -71,7 +68,6 @@
     , spacevimtheme
     , vim-js
     , doomonetheme
-    , lightspeed
     , parinfer-rust
     , kubectl-nix
     }:
