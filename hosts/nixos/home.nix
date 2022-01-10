@@ -12,38 +12,36 @@
 
   home.packages = with pkgs; [
     iotop
-    kanji-stroke-order-font
-    # Broken on Darwin
     xsel
     discord
-    kazam
-    okular
-    google-chrome
     insomnia
-    cmus
     spotify
-    zotero
-    jetbrains.webstorm
     zathura
-    android-studio
-    jetbrains.goland
-    skype
+
     sublime-merge
     sublime4
+
     ledger-live-desktop
-    pulseaudio
-    pavucontrol
-    alsa-utils
     openvpn
 
-    source-han-sans
+    kanji-stroke-order-font
+
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
 
+    source-han-sans
     source-han-sans-japanese
     source-han-serif-japanese
+
+    roboto
+    roboto-mono
+
+    liberation_ttf
+
     firefox-devedition-bin
+    google-chrome
+
     zoom-us
     slack
   ];

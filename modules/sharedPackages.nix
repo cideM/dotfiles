@@ -6,13 +6,10 @@ with pkgs;
   home.packages = [
     awscli2
     aws-mfa
-    # cachix
-    # cmus
     dash
-    liberation_ttf
     luajitPackages.luacheck
     fastmod
-    bashInteractive_5
+    bashInteractive
     bat
     curl
     coreutils
@@ -20,7 +17,6 @@ with pkgs;
     git-lfs
     docker-compose
     du-dust
-    emacs
     entr
     exa
     fd
@@ -33,12 +29,9 @@ with pkgs;
     gnused
     google-cloud-sdk
     gzip
-    hack-font
     htop
-    jetbrains-mono
     jq
     kubernetes-helm
-    kubectx
     libuv
     ncdu
     kubectl
@@ -50,11 +43,9 @@ with pkgs;
     ripgrep
     kitty
     rlwrap
-    roboto
-    roboto-mono
     rsync
     rust-analyzer
-    # shellcheck
+    shellcheck
     time
     tldr
     tokei
