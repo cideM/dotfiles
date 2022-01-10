@@ -22,9 +22,7 @@
     userName = "Florian Beeres";
 
     aliases = {
-      lola = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
-      recent = "branch --sort=-committerdate";
-      unpushed = "log --branches --not --remotes --no-walk --decorate --oneline";
+      r = "branch --sort=-committerdate";
       s = "status";
       a = "add";
       co = "commit";
@@ -35,6 +33,7 @@
       dd = "diff";
       pl = "pull";
       ps = "push";
+      l = "log";
     };
 
     lfs = {
