@@ -142,7 +142,11 @@
     };
     pulse.enable = true;
   };
-  hardware.pulseaudio.enable = false;
+  hardware = {
+    pulseaudio.enable = false;
+    cpu.amd.updateMicrocode = true;
+    enableRedistributableFirmware = true;
+  };
 
   # sound.enable = true;
   # hardware.pulseaudio =
