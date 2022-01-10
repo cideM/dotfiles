@@ -157,31 +157,6 @@
             };
         };
 
-        work-mbp = home-manager.lib.homeManagerConfiguration rec {
-          system = "x86_64-darwin";
-          extraSpecialArgs = specialArgs;
-          pkgs = import unstable {
-            inherit system;
-          };
-          homeDirectory = "/Users/fbs";
-          username = "fbs";
-          configuration = { pkgs, config, ... }:
-            {
-              imports = [
-                {
-                  nixpkgs.overlays = overlays ++ [
-                    (self: super: rec {
-                      neovim = neovim-flake.packages."x86_64-darwin".neovim;
-                    })
-                  ];
-                  nixpkgs.config = {
-                    allowUnfree = true;
-                  };
-                }
-                ./hosts/fbs-work.local/home.nix
-              ];
-            };
-        };
       };
 
       desktop =
