@@ -2,8 +2,6 @@
 {
   imports = [
     (import ../../modules/neovim.nix)
-    # https://github.com/NixOS/nixpkgs/issues/62353
-    # (import ../../modules/git.nix)
     (import ../../modules/ctags.nix)
     (import ../../modules/kitty)
     (import ../../modules/fish.nix)
