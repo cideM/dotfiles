@@ -3,6 +3,7 @@
   imports = [
     (import ../../modules/neovim.nix)
     (import ../../modules/git.nix)
+    (import ../../modules/tmux.nix)
     (import ../../modules/ctags.nix)
     (import ../../modules/fish.nix)
     (import ../../modules/kitty)
@@ -47,4 +48,8 @@
     zoom-us
     slack
   ];
+
+  programs.tmux.extraConfig = ''
+    bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "${pkgs.xsel}/bin/xsel -i --clipboard"
+  '';
 }

@@ -2,6 +2,7 @@
 {
   imports = [
     (import ../../modules/neovim.nix)
+    (import ../../modules/tmux.nix)
     (import ../../modules/ctags.nix)
     (import ../../modules/kitty)
     (import ../../modules/fish.nix)
@@ -109,4 +110,8 @@
   '';
 
   fonts.fontconfig.enable = true;
+
+  programs.tmux.extraConfig = ''
+    bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel "pbcopy"
+  '';
 }
