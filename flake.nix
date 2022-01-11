@@ -7,6 +7,8 @@
       inputs.nixpkgs.follows = "unstable";
     };
 
+    cidem-vsc.url = "github:cideM/visual-studio-code-insiders-nix";
+
     parinfer-rust.url = "github:eraserhd/parinfer-rust";
     parinfer-rust.flake = false;
 
@@ -64,6 +66,7 @@
     , k9s
     , nix-env-fish
     , lucid-fish-prompt
+    , cidem-vsc
     , yui
     , spacevimtheme
     , vim-js
@@ -75,6 +78,10 @@
       overlays = [
         (self: super: {
           kubectl = kubectl-nix.packages.${super.system}."1_19_3";
+        })
+
+        (self: super: {
+          vscodeInsiders = cidem-vsc.packages.${super.system}.vscodeInsiders;
         })
 
         (self: super: {

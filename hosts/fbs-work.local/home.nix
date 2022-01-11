@@ -9,6 +9,7 @@
     (import ../../modules/fish.nix)
     (import ../../modules/common.nix)
     (import ../../modules/alacritty)
+    (import ../../modules/vscode)
   ];
 
   programs.man.enable = true;

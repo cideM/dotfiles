@@ -8,6 +8,7 @@
     (import ../../modules/kitty)
     (import ../../modules/common.nix)
     (import ../../modules/alacritty)
+    (import ../../modules/vscode)
   ];
 
   programs.alacritty.settings.font.size = 12;
