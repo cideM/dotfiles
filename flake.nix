@@ -146,6 +146,7 @@
           configuration = { pkgs, config, ... }:
             {
               imports = [
+                ./modules/regs.nix
                 {
                   nixpkgs.overlays = overlays ++ [
                     (self: super: rec { kitty = pkgsCompat.kitty; })
@@ -167,6 +168,7 @@
           system = "x86_64-linux";
 
           modules = [
+            ./modules/regs.nix
             ./hosts/nixos/configuration.nix
             home-manager.nixosModules.home-manager
             {

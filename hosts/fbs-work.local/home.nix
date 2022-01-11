@@ -1,4 +1,4 @@
-{ pkgs, home-manager, ... }:
+{ pkgs, home-manager, config, ... }:
 {
   imports = [
     (import ../../modules/neovim.nix)
@@ -44,19 +44,7 @@
   xdg.configFile."nix/registry.json".text =
     builtins.toJSON {
       version = 2;
-      flakes = [
-        {
-          from = {
-            id = "fbrs";
-            type = "indirect";
-          };
-          to = {
-            type = "github";
-            owner = "cidem";
-            repo = "nix-templates";
-          };
-        }
-      ];
+      flakes = pkgs.lib.attrValues config.common.flake_registries;
     };
 
   home.file.".gitignore".text = ''
