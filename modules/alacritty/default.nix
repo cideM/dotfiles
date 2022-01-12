@@ -1,7 +1,6 @@
 { lib, config, pkgs, ... }:
 {
   programs.alacritty = {
-    enable = true;
     settings = {
       colors = (import ./colors.nix).papercolor;
       font = (import ./fonts.nix).mono;

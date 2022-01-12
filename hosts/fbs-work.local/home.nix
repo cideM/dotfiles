@@ -13,6 +13,7 @@
 
   programs.man.enable = true;
 
+  programs.alacritty.enable = false;
   programs.alacritty.settings.font.size = 11;
   programs.alacritty.settings.font.use_thin_strokes = true;
 
@@ -25,7 +26,7 @@
     or set -p MANPATH "/Users/fbs/.nix-profile/share/man"
   '';
 
-  home.sessionVariables = {
+  home.sessionVariables = pkgs.lib.attrsets.optionalAttrs config.programs.alacritty.enable {
     TERMINFO_DIRS = "${pkgs.alacritty.terminfo.outPath}/share/terminfo";
   };
 
