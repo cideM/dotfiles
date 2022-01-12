@@ -5,16 +5,8 @@ let
   marketplace =
     let
       exts = (builtins.filter ({ name, ... }: if pkgs.stdenv.isDarwin then true else name != "vsliveshare") (import ./shared_exts.nix));
-      # I think sumneko has a different hash on NixOS vs MacOS. Don't know, don't care.
-      exts2 = (builtins.map
-        (o:
-          if pkgs.stdenv.isDarwin && o.name == "lua" then
-            o // { sha256 = "sha256:1w88is9svssikdnq0fpagwb7w86pm4299i3780gzivq79yh5n4qg"; }
-          else o
-        )
-        exts);
     in
-    pkgs.vscode-utils.extensionsFromVscodeMarketplace exts2;
+    pkgs.vscode-utils.extensionsFromVscodeMarketplace exts;
 
   # https://github.com/NixOS/nixpkgs/pull/110461
   platformExts = with pkgs.vscode-extensions; if pkgs.stdenv.isDarwin then [ ] else [ ms-vsliveshare.vsliveshare ];
