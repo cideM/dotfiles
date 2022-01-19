@@ -260,8 +260,8 @@
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2022.1.1001707094";
-  sha256 = "0gb9znvakcqbimvnnl4qkr6lyyvw0zvaya658zqfxfcf3fyfs59x";
+  version = "2022.1.1001711856";
+  sha256 = "17lyfa8n2n7zrg3jmdwi04srj26kq0svn1ry719njgw9r1ap970f";
 }
 {
   name = "remote-containers";
@@ -404,8 +404,8 @@
 {
   name = "rewrap";
   publisher = "stkb";
-  version = "17.1.0";
-  sha256 = "0f35ihskbz7ch47cdb291pm9id8zxbrwgmmg5yqal9gr5qyfjkm5";
+  version = "17.2.0";
+  sha256 = "0yrhc0jcwc00j3mvafnj69bj5aly38lmxd7pcfh3p45m9w9c00gr";
 }
 {
   name = "lua";
