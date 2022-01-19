@@ -10,6 +10,31 @@
           key = "N";
           mods = "Control|Alt";
         }
+        {
+          chars = "\\x1b\\x76";
+          key = "I";
+          mods = "Command";
+        }
+        {
+          chars = "`-";
+          key = "Minus";
+          mods = "Control";
+        }
+        {
+          chars = "`|";
+          key = "Backslash";
+          mods = "Control";
+        }
+        {
+          chars = "`x";
+          key = "X";
+          mods = "Control";
+        }
+        {
+          chars = "`c";
+          key = "S";
+          mods = "Control";
+        }
       ];
       window = {
         decorations = "full";
