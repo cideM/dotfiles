@@ -43,7 +43,7 @@
     roboto
     roboto-mono
 
-    firefox-wayland
+    firefox
     google-chrome
 
     zoom-us
