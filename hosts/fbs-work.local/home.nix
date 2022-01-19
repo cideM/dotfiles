@@ -13,7 +13,7 @@
 
   programs.man.enable = true;
 
-  programs.alacritty.enable = false;
+  programs.alacritty.enable = true;
   programs.alacritty.settings.font.size = 11;
   programs.alacritty.settings.font.use_thin_strokes = true;
 

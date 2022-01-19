@@ -150,6 +150,7 @@
                 {
                   nixpkgs.overlays = overlays ++ [
                     (self: super: rec { kitty = pkgsCompat.kitty; })
+                    (self: super: rec { alacritty = pkgsCompat.alacritty; })
                   ];
 
                   nixpkgs.config = {

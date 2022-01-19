@@ -411,7 +411,7 @@
   name = "lua";
   publisher = "sumneko";
   version = "2.6.0";
-  sha256 = "056y4imwmwrdd1glipm6flpdl61m3i9cm7fk212nyy94qil553cq";
+  sha256 = "sha256:0idcrbmf967d5rv6hn6a4hi221mlaifhsv7l71s7wnbj80y038jh";
 }
 {
   name = "sass-indented";
