@@ -28,7 +28,7 @@
         {
           chars = "`x";
           key = "X";
-          mods = "Control";
+          mods = "Control|Shift";
         }
         {
           chars = "`c";
