@@ -67,6 +67,8 @@ with pkgs;
     # Fonts
     liberation_ttf
     hack-font
+    lato
+    jetbrains-mono
   ];
 
   home.sessionVariables = {

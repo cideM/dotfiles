@@ -26,6 +26,33 @@
     };
   };
 
+  jetbrainsMono = {
+    bold = {
+      family = "JetBrains Mono";
+      style = "Bold";
+    };
+    bold_italic = {
+      family = "JetBrains Mono";
+      style = "Bold Italic";
+    };
+    glyph_offset = {
+      x = 0;
+      y = 0;
+    };
+    italic = {
+      family = "JetBrains Mono";
+      style = "Light";
+    };
+    normal = {
+      family = "JetBrains Mono";
+      style = "Light";
+    };
+    offset = {
+      x = 0;
+      y = 0;
+    };
+  };
+
   liberationMono = {
     bold = {
       family = "Liberation Mono";
