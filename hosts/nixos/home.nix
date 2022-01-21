@@ -24,6 +24,8 @@
     zathura
     obsidian
 
+    gnome.gnome-tweaks
+
     sublime-merge
     sublime4
 

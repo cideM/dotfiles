@@ -79,7 +79,6 @@ with pkgs;
   };
 
   programs.direnv.enable = true;
-  programs.direnv.enableFishIntegration = true;
   programs.direnv.nix-direnv.enable = true;
 
   # https://github.com/rycee/home-manager/issues/432
