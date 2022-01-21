@@ -27,7 +27,6 @@ in
         setl formatprg=rustfmt
         setl makeprg=cargo\ check
         set foldmethod=expr
-        set foldexpr=nvim_treesitter#foldexpr()
       '';
       purescript = ''
         setl formatprg=purty\ format\ -
@@ -36,12 +35,10 @@ in
       json = ''
         setl formatprg=prettier\ --stdin-filepath\ %
         set foldmethod=expr
-        set foldexpr=nvim_treesitter#foldexpr()
       '';
       yaml = ''
         setl formatprg=prettier\ --stdin-filepath\ %
         set foldmethod=expr
-        set foldexpr=nvim_treesitter#foldexpr()
       '';
       fzf = ''
         setl laststatus=0 noshowmode noruler
@@ -58,7 +55,6 @@ in
         setl makeprg=clj-kondo\ --lint\ %
         setl wildignore+=*.clj-kondo*
         set foldmethod=expr
-        set foldexpr=nvim_treesitter#foldexpr()
       '';
       javascript = ''
         setl formatprg=prettier\ --stdin-filepath\ %
@@ -67,7 +63,6 @@ in
         setl makeprg=${pkgs.nodePackages.eslint}/bin/eslint\ --format\ compact
         nnoremap <buffer> <silent> <localleader>f :!${pkgs.nodePackages.eslint}/bin/eslint --fix %<cr>
         set foldmethod=expr
-        set foldexpr=nvim_treesitter#foldexpr()
       '';
       typescript = ''
         setl formatexpr=
@@ -79,7 +74,6 @@ in
         nnoremap <buffer> <silent> <localleader>F :%!prettier --parser typescript --stdin-filepath %<cr>
         nnoremap <buffer> <silent> <localleader>d :!prettier --version<cr>
         set foldmethod=expr
-        set foldexpr=nvim_treesitter#foldexpr()
       '';
       css = ''
         setl formatprg=prettier\ --parser\ css\ --stdin-filepath\ %
@@ -90,7 +84,6 @@ in
       nix = ''
         setl formatprg=nixpkgs-fmt
         set foldmethod=expr
-        set foldexpr=nvim_treesitter#foldexpr()
       '';
       dhall = ''
         setl formatprg=dhall\ format
@@ -102,11 +95,9 @@ in
         setl makeprg=luacheck\ --formatter\ plain
         nnoremap <buffer> <localleader>m :make %<cr>
         set foldmethod=expr
-        set foldexpr=nvim_treesitter#foldexpr()
       '';
       python = ''
         set foldmethod=expr
-        set foldexpr=nvim_treesitter#foldexpr()
       '';
       go = ''
         setl formatprg=gofmt makeprg=go\ build\ -o\ /dev/null
@@ -119,7 +110,6 @@ in
         nnoremap <buffer> <localleader>i :call GoImports()<cr>
         nnoremap <buffer> <localleader>t :execute ':silent !for f in ./{cmd, internal, pkg}; if test -d $f; ctags -R $f; end; end'<CR>
         set foldmethod=expr
-        set foldexpr=nvim_treesitter#foldexpr()
       '';
       haskell = ''
         setl formatprg=ormolu
@@ -285,7 +275,6 @@ in
 
         " ======= lsp =======================
         packadd nvim-lspconfig
-        packadd nvim-treesitter
         lua <<EOF
         vim.api.nvim_set_keymap('n', '<leader>L', "<cmd>lua vim.diagnostic.setloclist()<cr>", { noremap=true, silent=true })
         vim.api.nvim_set_keymap('n', '<leader>d', "<cmd>lua vim.lsp.buf.document_symbol()<cr>", { noremap=true, silent=true })
@@ -324,27 +313,6 @@ in
         nvim_lsp.dhall_lsp_server.setup{}
 
         require('lspfuzzy').setup {}
-
-        -- Treesitter
-        require'nvim-treesitter.configs'.setup {
-          ensure_installed = {},
-          highlight = {
-            enable = true,
-            disable = {"haskell"},
-          },
-          incremental_selection = {
-            enable = true,
-            keymaps = {
-              init_selection = "<C-n>",
-              node_incremental = "<C-w>",
-              node_decremental = "<A-w>",
-            },
-          },
-          indent = {
-            enable = true,
-            disable = {"haskell"},
-          }
-        }
 
         require("winshift").setup({
           highlight_moving_win = true,  -- Highlight the window being moved
@@ -407,7 +375,6 @@ in
         vim-jsx-pretty
         vim-nix
         vim-terraform
-        (nvim-treesitter.withPlugins (p: pkgs.tree-sitter.allGrammars))
 
       ];
     };
