@@ -12,7 +12,7 @@
     (import ../../modules/vscode)
   ];
 
-  programs.alacritty.settings.font.size = 12;
+  programs.alacritty.settings.font.size = 10;
   programs.alacritty.enable = true;
 
   home.packages = with pkgs; [
