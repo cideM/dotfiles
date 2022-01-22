@@ -7,6 +7,8 @@
       inputs.nixpkgs.follows = "unstable";
     };
 
+    stable.url = "github:NixOS/nixpkgs/nixos-21.11";
+
     cidem-vsc.url = "github:cideM/visual-studio-code-insiders-nix";
 
     parinfer-rust.url = "github:eraserhd/parinfer-rust";
@@ -73,6 +75,7 @@
     , doomonetheme
     , parinfer-rust
     , kubectl-nix
+    , stable
     }:
     let
       overlays = [
@@ -130,6 +133,10 @@
         system = "x86_64-darwin";
       };
 
+      pkgsStable = import stable {
+        system = "aarch64-darwin";
+      };
+
       specialArgs = {
         inherit home-manager nix-env-fish lucid-fish-prompt;
       };
@@ -150,6 +157,8 @@
                 {
                   nixpkgs.overlays = overlays ++ [
                     (self: super: rec { kitty = pkgsCompat.kitty; })
+                    (self: super: rec { aws-mfa = pkgsStable.aws-mfa; })
+                    (self: super: rec { qmk = pkgsStable.qmk; })
                     (self: super: rec { alacritty = pkgsCompat.alacritty; })
                   ];
 

@@ -489,6 +489,7 @@
         "operatorMono": "operatorMono",
         "parinfer-rust": "parinfer-rust",
         "spacevimtheme": "spacevimtheme",
+        "stable": "stable",
         "unstable": "unstable_2",
         "vim-js": "vim-js",
         "winshift": "winshift",
@@ -508,6 +509,22 @@
       "original": {
         "owner": "liuchengxu",
         "repo": "space-vim-theme",
+        "type": "github"
+      }
+    },
+    "stable": {
+      "locked": {
+        "lastModified": 1642707142,
+        "narHash": "sha256-BzH6xhnkn52yF4+A8C8slWFQRMInS5VYlzrH/rN1bnA=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "6f07605b6916abee5435ea1145a7541299a87c1b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-21.11",
+        "repo": "nixpkgs",
         "type": "github"
       }
     },
