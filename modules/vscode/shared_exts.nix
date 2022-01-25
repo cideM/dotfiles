@@ -26,8 +26,8 @@
 {
   name = "calva";
   publisher = "betterthantomorrow";
-  version = "2.0.235";
-  sha256 = "11djvvl3vl412w737an56ycbr2kg7gp3fd1rn29k23549fh8a9jp";
+  version = "2.0.236";
+  sha256 = "0why4kd23aj41rdjhcqx5ljp3wlknrzskjrixdami6kfhapdv6lr";
 }
 {
   name = "markdown-checkbox";
@@ -260,8 +260,8 @@
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2022.1.1001727824";
-  sha256 = "0hj04cgw5027nsghcjzp7gp4x55chimrbr1c1p7jnrial4yhrvgq";
+  version = "2022.1.1001738924";
+  sha256 = "0rdvciz3zxwx3wpgd4hk81a7fj0zf2p86ra6jnyxmzmvs36cfnmk";
 }
 {
   name = "remote-containers";
@@ -284,8 +284,8 @@
 {
   name = "remote-wsl";
   publisher = "ms-vscode-remote";
-  version = "0.64.1";
-  sha256 = "1lqaxm8a4bhy3v3na9g3l7ry9jq2fgx122q8jyrqlka1swdbcvm8";
+  version = "0.64.2";
+  sha256 = "07glfvspv2p2x9gz9l37w30algq89r16dn3h755wykfj881900p7";
 }
 {
   name = "vscode-remote-extensionpack";
@@ -410,8 +410,8 @@
 {
   name = "lua";
   publisher = "sumneko";
-  version = "2.6.0";
-  sha256 = "056y4imwmwrdd1glipm6flpdl61m3i9cm7fk212nyy94qil553cq";
+  version = "2.6.1";
+  sha256 = "1n3x42x9brvwp3s9bkhf81hw8040g6pwzxkqbxym8f9bk415w7kh";
 }
 {
   name = "sass-indented";
