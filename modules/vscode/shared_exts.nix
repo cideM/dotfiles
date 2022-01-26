@@ -260,26 +260,26 @@
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2022.1.1001738924";
-  sha256 = "0rdvciz3zxwx3wpgd4hk81a7fj0zf2p86ra6jnyxmzmvs36cfnmk";
+  version = "2022.1.1001744497";
+  sha256 = "0jl2b0rgi3lr2rai8wqsg0phl5yg84dzpnxg9bhgk2jwh04jjfwp";
 }
 {
   name = "remote-containers";
   publisher = "ms-vscode-remote";
-  version = "0.214.0";
-  sha256 = "105q784p4q4l032zyzyxsswg4jmf366l4shhf45m0hvxxiik42m4";
+  version = "0.215.0";
+  sha256 = "1ibl2vckf3ni76052l7kv1hlg3r8glyvjbaq2w6bvgn1nzr71g2f";
 }
 {
   name = "remote-ssh";
   publisher = "ms-vscode-remote";
-  version = "0.71.2021121615";
-  sha256 = "1lh08157z7lialb0dxls9fhahmf5l9wz6x2anwrnycvs512lpr1p";
+  version = "0.71.2022012519";
+  sha256 = "1w099r24hiqvhdfkmsp3jzw27kalka13741jsdp6y84j683r5yq1";
 }
 {
   name = "remote-ssh-edit";
   publisher = "ms-vscode-remote";
-  version = "0.71.2021121615";
-  sha256 = "0ymrfsvls2y9dzhxx71kb3jqm7vznj1z39nb89pykyk76jsn70gv";
+  version = "0.71.2022012519";
+  sha256 = "112ppvr44mgnl792wwbfxyxlzm7xfm9i2ly94sn0ihr3q59fg6wl";
 }
 {
   name = "remote-wsl";
@@ -410,8 +410,8 @@
 {
   name = "lua";
   publisher = "sumneko";
-  version = "2.6.1";
-  sha256 = "1n3x42x9brvwp3s9bkhf81hw8040g6pwzxkqbxym8f9bk415w7kh";
+  version = "2.6.2";
+  sha256 = "1w8q8gvx74xviswb8s1mgbh93j16aw7389hmypvv5isyvp2kf3kq";
 }
 {
   name = "sass-indented";
