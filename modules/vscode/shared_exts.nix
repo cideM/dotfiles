@@ -134,8 +134,8 @@
 {
   name = "go";
   publisher = "golang";
-  version = "0.30.0";
-  sha256 = "15rmc79ad743hb6pmnzv91rkvl2fb1qwh5gk5q6n9f9vygiyjrix";
+  version = "0.31.0";
+  sha256 = "09yjcdwn711pcdaflagwycsjyd5v64aijsl897hjchnnlcn2zzwa";
 }
 {
   name = "vscode-graphql";
@@ -260,8 +260,8 @@
 {
   name = "jupyter";
   publisher = "ms-toolsai";
-  version = "2022.1.1001744497";
-  sha256 = "0jl2b0rgi3lr2rai8wqsg0phl5yg84dzpnxg9bhgk2jwh04jjfwp";
+  version = "2022.1.1001749921";
+  sha256 = "18swgpmcfp08rh63dp5snjsz0f02lxy1xv0rm2hcy2mng5g5avmq";
 }
 {
   name = "remote-containers";
@@ -272,14 +272,14 @@
 {
   name = "remote-ssh";
   publisher = "ms-vscode-remote";
-  version = "0.71.2022012519";
-  sha256 = "1w099r24hiqvhdfkmsp3jzw27kalka13741jsdp6y84j683r5yq1";
+  version = "0.71.2022012615";
+  sha256 = "1mdjkp5b4wzx9j6arr39r5n63ckkms91c0q08xxawi09h68ii1mn";
 }
 {
   name = "remote-ssh-edit";
   publisher = "ms-vscode-remote";
-  version = "0.71.2022012519";
-  sha256 = "112ppvr44mgnl792wwbfxyxlzm7xfm9i2ly94sn0ihr3q59fg6wl";
+  version = "0.71.2022012615";
+  sha256 = "01n0bdrf70gn86r8idv9pk7bdl7k16ksyv2rfbwgybwm9zxklx5r";
 }
 {
   name = "remote-wsl";
