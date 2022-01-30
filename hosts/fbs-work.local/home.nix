@@ -75,6 +75,7 @@
 
     [diff]
         algorithm = histogram
+        colorMoved = default
 
     [pull]
         rebase = true
@@ -99,9 +100,8 @@
 
     [delta]
         navigate = true
-        side-by-side = false
+        side-by-side = true
         syntax-theme = "GitHub"
-        line-numbers = true
 
     [filter "lfs"]
         clean = git-lfs clean -- %f
