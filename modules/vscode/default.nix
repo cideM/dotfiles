@@ -4,9 +4,13 @@ let
 
   marketplace =
     let
+      sumnekoDarwinHash = "sha256:18fxmzsbjs113g7cyd348b36d3m6gyc7dpwpyqqs2ji5kiw7cy27";
       exts = (builtins.filter ({ name, ... }: if pkgs.stdenv.isDarwin then true else name != "vsliveshare") (import ./shared_exts.nix));
     in
-    pkgs.vscode-utils.extensionsFromVscodeMarketplace exts;
+    pkgs.vscode-utils.extensionsFromVscodeMarketplace
+      (builtins.map
+        (o: o // (if pkgs.stdenv.isDarwin && o.name == "lua" then { sha256 = sumnekoDarwinHash; } else { }))
+        exts);
 
   # https://github.com/NixOS/nixpkgs/pull/110461
   platformExts = with pkgs.vscode-extensions; if pkgs.stdenv.isDarwin then [ ] else [ ms-vsliveshare.vsliveshare ];
