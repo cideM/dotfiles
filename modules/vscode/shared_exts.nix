@@ -128,8 +128,8 @@
 {
   name = "prettier-vscode";
   publisher = "esbenp";
-  version = "9.1.0";
-  sha256 = "1vfyzxaqj0bdl9cd0x6glnydbi85pf4j9fbasj2i0lfqn06l27lm";
+  version = "9.2.0";
+  sha256 = "1ci17xm6mpxsbdazh0qgqk8c7h2v8ajy45d2mcslcc8gcgbkgqj4";
 }
 {
   name = "go";
@@ -404,8 +404,8 @@
 {
   name = "rewrap";
   publisher = "stkb";
-  version = "17.3.0";
-  sha256 = "1nzg029wk0hh4n51m44snh3wcz6yhwgx3lqxx0vjmhkv3iidpg7x";
+  version = "17.4.0";
+  sha256 = "154wa5sfhypm02hm3n5z7qvr9zb6qcsx0nz1p5wqisrfm7jxni68";
 }
 {
   name = "lua";
