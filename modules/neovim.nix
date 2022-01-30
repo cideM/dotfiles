@@ -237,15 +237,6 @@ in
         nnoremap <leader>b :Buffers<cr>
         nnoremap <leader>W :Windows<cr>
 
-        " ======= sneak =====================
-        let g:sneak#label      = 1
-        let g:sneak#use_ic_scs = 1
-        let g:sneak#s_next = 1
-        map f <Plug>Sneak_f
-        map F <Plug>Sneak_F
-        map t <Plug>Sneak_t
-        map T <Plug>Sneak_T
-
         nmap     <leader>F :call FormatBuffer()<cr>
         nnoremap <leader>R :set operatorfunc=ReflowComment<cr>g@
         vnoremap <leader>R :<C-u>call ReflowComment(visualmode())<cr>
@@ -314,6 +305,10 @@ in
 
         require('lspfuzzy').setup {}
 
+        require'lightspeed'.setup {
+          ignore_case = true,
+        }
+
         require("winshift").setup({
           highlight_moving_win = true,  -- Highlight the window being moved
           focused_hl_group = "Visual",  -- The highlight group used for the moving window
@@ -353,7 +348,7 @@ in
         vim-sandwich
         sad-vim
         vim-dirvish
-        vim-sneak
+        lightspeed-nvim
 
         # Themes
         edge
