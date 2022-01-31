@@ -26,8 +26,8 @@
 {
   name = "calva";
   publisher = "betterthantomorrow";
-  version = "2.0.236";
-  sha256 = "0why4kd23aj41rdjhcqx5ljp3wlknrzskjrixdami6kfhapdv6lr";
+  version = "2.0.237";
+  sha256 = "16qq7kfp64d532a92z93jg243by7ln9pqq8vfk3k8j0yxc22vc2f";
 }
 {
   name = "markdown-checkbox";
@@ -80,8 +80,8 @@
 {
   name = "vscode-markdownlint";
   publisher = "DavidAnson";
-  version = "0.45.0";
-  sha256 = "1vci6pv1f9qr5g6yd9g208cj6gwisrg4lwcvv2sw833mrhpbxg1g";
+  version = "0.46.0";
+  sha256 = "1jgdw548in4vnqqqzvhkxwz9ph28r8r3cy0bs18znr77lzxw8nyq";
 }
 {
   name = "mustache";
