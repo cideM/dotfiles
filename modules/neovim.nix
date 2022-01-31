@@ -27,6 +27,7 @@ in
         setl formatprg=rustfmt
         setl makeprg=cargo\ check
         set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
       '';
       purescript = ''
         setl formatprg=purty\ format\ -
@@ -35,10 +36,12 @@ in
       json = ''
         setl formatprg=prettier\ --stdin-filepath\ %
         set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
       '';
       yaml = ''
         setl formatprg=prettier\ --stdin-filepath\ %
         set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
       '';
       fzf = ''
         setl laststatus=0 noshowmode noruler
@@ -55,6 +58,7 @@ in
         setl makeprg=clj-kondo\ --lint\ %
         setl wildignore+=*.clj-kondo*
         set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
       '';
       javascript = ''
         setl formatprg=prettier\ --stdin-filepath\ %
@@ -63,6 +67,7 @@ in
         setl makeprg=${pkgs.nodePackages.eslint}/bin/eslint\ --format\ compact
         nnoremap <buffer> <silent> <localleader>f :!${pkgs.nodePackages.eslint}/bin/eslint --fix %<cr>
         set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
       '';
       typescript = ''
         setl formatexpr=
@@ -74,6 +79,7 @@ in
         nnoremap <buffer> <silent> <localleader>F :%!prettier --parser typescript --stdin-filepath %<cr>
         nnoremap <buffer> <silent> <localleader>d :!prettier --version<cr>
         set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
       '';
       css = ''
         setl formatprg=prettier\ --parser\ css\ --stdin-filepath\ %
@@ -84,6 +90,7 @@ in
       nix = ''
         setl formatprg=nixpkgs-fmt
         set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
       '';
       dhall = ''
         setl formatprg=dhall\ format
@@ -95,9 +102,11 @@ in
         setl makeprg=luacheck\ --formatter\ plain
         nnoremap <buffer> <localleader>m :make %<cr>
         set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
       '';
       python = ''
         set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
       '';
       go = ''
         setl formatprg=gofmt makeprg=go\ build\ -o\ /dev/null
@@ -110,6 +119,7 @@ in
         nnoremap <buffer> <localleader>i :call GoImports()<cr>
         nnoremap <buffer> <localleader>t :execute ':silent !for f in ./{cmd, internal, pkg}; if test -d $f; ctags -R $f; end; end'<CR>
         set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
       '';
       haskell = ''
         setl formatprg=ormolu
@@ -128,9 +138,6 @@ in
         " is just so my jump list isn't cluttered and I always end up at the first
         " line when undoing a FormatBuffer call. See the linked post.
         function! FormatBuffer()
-          " HAHAHAHAHHAAH TAKE THIS YOU FUCKING PIECE OF SHIT FIXEDGQ FUNCTION I CAN DESTROY
-          " YOU WHENVER I WANT AND THERE IS FUCK ALL YOU CAN DO ABOUT IT HAHAHAHAHAHAHA
-          " WHO IS LAUGHING NOW YOU FUCKING FUCKED UP PIECE OF FUCK
           setl formatexpr=
           let view = winsaveview()
           " https://vim.fandom.com/wiki/Restore_the_cursor_position_after_undoing_text_change_made_by_a_script
@@ -321,6 +328,27 @@ in
             colorcolumn = "",
           }
         })
+
+        -- Treesitter
+        require'nvim-treesitter.configs'.setup {
+          ensure_installed = {},
+          highlight = {
+            enable = true,
+            disable = {"haskell"},
+          },
+          incremental_selection = {
+            enable = true,
+            keymaps = {
+              init_selection = "<C-n>",
+              node_incremental = "<C-w>",
+              node_decremental = "<A-w>",
+            },
+          },
+          indent = {
+            enable = true,
+            disable = {"haskell"},
+          }
+        }
         EOF
       '';
 
@@ -370,6 +398,7 @@ in
         vim-jsx-pretty
         vim-nix
         vim-terraform
+        (nvim-treesitter.withPlugins (p: pkgs.tree-sitter.allGrammars))
 
       ];
     };
