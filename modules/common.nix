@@ -47,6 +47,7 @@ with pkgs;
     universal-ctags
     vim
     wget
+    unzip
 
     # Infrastructure
     awscli2

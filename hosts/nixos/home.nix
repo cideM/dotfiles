@@ -23,6 +23,7 @@
     spotify
     zathura
     obsidian
+    gimp
 
     gnome.gnome-tweaks
 
