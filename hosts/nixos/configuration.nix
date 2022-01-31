@@ -58,9 +58,11 @@
   time.timeZone = "Europe/Berlin";
 
   nix = {
+    settings = {
+      trusted-users = [ "root" "tifa" ];
+      extra-sandbox-paths = [ "/bin/sh=${pkgs.bash}/bin/sh" ];
+    };
     package = pkgs.nixUnstable;
-    sandboxPaths = [ "/bin/sh=${pkgs.bash}/bin/sh" ];
-    trustedUsers = [ "root" "tifa" ];
     extraOptions = ''
       experimental-features = nix-command flakes
       keep-outputs = true
