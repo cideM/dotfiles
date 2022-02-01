@@ -7,6 +7,8 @@
       inputs.nixpkgs.follows = "unstable";
     };
 
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
     stable.url = "github:NixOS/nixpkgs/nixos-21.11";
 
     cidem-vsc.url = "github:cideM/visual-studio-code-insiders-nix";
@@ -46,9 +48,6 @@
     unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs.follows = "unstable";
 
-    neovim-flake.url = "github:neovim/neovim?dir=contrib";
-    neovim-flake.inputs.nixpkgs.follows = "unstable";
-
     operatorMono = {
       url = "git+ssh://git@github.com/cidem/operatormono?ref=main";
       flake = false;
@@ -58,7 +57,6 @@
 
   outputs =
     { self
-    , neovim-flake
     , unstable
     , home-manager
     , operatorMono
@@ -69,6 +67,7 @@
     , nix-env-fish
     , lucid-fish-prompt
     , cidem-vsc
+    , neovim-nightly-overlay
     , yui
     , spacevimtheme
     , vim-js
@@ -182,11 +181,7 @@
             ./hosts/nixos/configuration.nix
             home-manager.nixosModules.home-manager
             {
-              nixpkgs.overlays = overlays ++ [
-                (self: super: rec {
-                  neovim = neovim-flake.packages."x86_64-linux".neovim;
-                })
-              ];
+              nixpkgs.overlays = overlays ++ [ neovim-nightly-overlay.overlay ];
               nixpkgs.config = {
                 allowUnfree = true;
               };
