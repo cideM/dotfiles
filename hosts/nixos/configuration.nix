@@ -121,7 +121,7 @@
     authorizedKeysFiles = [ "/home/tifa/.ssh/authorized_keys" ];
     passwordAuthentication = false; # originally true
     permitRootLogin = "no";
-    challengeResponseAuthentication = false;
+    kbdInteractiveAuthentication = false;
   };
 
   services.geoclue2.enable = true;
