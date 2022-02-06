@@ -32,7 +32,10 @@
   };
 
   fonts = {
-    fontDir.enable = false;
+    fontDir.enable = true;
+    fontconfig = {
+      enable = true;
+    };
     fonts = [ pkgs.operatorMonoFont ];
   };
 
