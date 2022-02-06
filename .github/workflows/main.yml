@@ -22,7 +22,7 @@ jobs:
             experimental-features = nix-command flakes
 
       - name: Update Extensions
-        run: update_all_extensions
+        run: ./modules/vscode/update_all_extensions
 
       - uses: EndBug/add-and-commit@v7
         with:
