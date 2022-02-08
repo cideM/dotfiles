@@ -19,6 +19,7 @@
     iotop
     xsel
     discord
+    audacity
     insomnia
     spotify
     zathura
