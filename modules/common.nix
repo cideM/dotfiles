@@ -64,6 +64,8 @@ with pkgs;
     rust-analyzer
     shellcheck
     yamllint
+    sumneko-lua-language-server
+    stylua
 
     # Fonts
     liberation_ttf

@@ -103,6 +103,7 @@ in
         nnoremap <buffer> <localleader>m :make %<cr>
         set foldmethod=expr
         set foldexpr=nvim_treesitter#foldexpr()
+        set formatprg=stylua\ -
       '';
       python = ''
         set foldmethod=expr
@@ -309,6 +310,7 @@ in
         -- never restarts unless I manually restart it
         -- nvim_lsp.hls.setup{on_attach=on_attach}
         nvim_lsp.dhall_lsp_server.setup{}
+        nvim_lsp.sumneko_lua.setup{}
 
         require('lspfuzzy').setup {}
 
