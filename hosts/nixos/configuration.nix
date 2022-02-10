@@ -39,6 +39,10 @@
     fonts = [ pkgs.operatorMonoFont ];
   };
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-13.6.9"
+  ];
+
   systemd.network.enable = true;
   systemd.coredump.enable = true;
 
