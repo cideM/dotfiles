@@ -31,7 +31,7 @@
   };
 
   home.packages = with pkgs; [
-    nixUnstable
+    nixFlakes
     unixtools.watch
     home-manager.defaultPackage.aarch64-darwin
     operatorMonoFont
