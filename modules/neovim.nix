@@ -277,7 +277,7 @@ in
         lua <<EOF
         vim.api.nvim_set_keymap('n', '<leader>L', "<cmd>lua vim.diagnostic.setloclist()<cr>", { noremap=true, silent=true })
         vim.api.nvim_set_keymap('n', '<leader>d', "<cmd>lua vim.lsp.buf.document_symbol()<cr>", { noremap=true, silent=true })
-        vim.api.nvim_set_keymap('i', '<c-s>', "<cmd>lua vim.lsp.buf.signature_help()<cr>", { noremap=true, silent=true })
+        vim.api.nvim_set_keymap('i', '<c-h>', "<cmd>lua vim.lsp.buf.signature_help()<cr>", { noremap=true, silent=true })
         vim.api.nvim_set_keymap('n', '<leader>w', "<cmd>lua vim.lsp.buf.workspace_symbol()<cr>", { noremap=true, silent=true })
         vim.api.nvim_set_keymap('n', '<leader>e', "<cmd>lua vim.lsp.buf.rename()<cr>", { noremap=true, silent=true })
         vim.api.nvim_set_keymap('n', '<leader>n', "<cmd>lua vim.diagnostic.goto_next({ float = true })<cr>", { noremap=true, silent=true })
