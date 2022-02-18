@@ -48,6 +48,7 @@ with pkgs;
     vim
     wget
     unzip
+    hyperfine
 
     # Infrastructure
     awscli2
