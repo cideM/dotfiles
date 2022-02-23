@@ -2,14 +2,20 @@
 let
   inherit (pkgs.stdenv.hostPlatform) system;
 
+  hashOverrides = {
+    sumneko = {
+      "aarch64-darwin" = "sha256:18fxmzsbjs113g7cyd348b36d3m6gyc7dpwpyqqs2ji5kiw7cy27";
+      "x86_64-linux" = "sha256-BP2yAvTDpFBldkT/nKs22ZOKX/Wcw+v0ZDxBGlFVQqU=";
+    };
+  };
+
   marketplace =
     let
-      sumnekoDarwinHash = "sha256:18fxmzsbjs113g7cyd348b36d3m6gyc7dpwpyqqs2ji5kiw7cy27";
       exts = (builtins.filter ({ name, ... }: if pkgs.stdenv.isDarwin then true else name != "vsliveshare") (import ./shared_exts.nix));
     in
     pkgs.vscode-utils.extensionsFromVscodeMarketplace
       (builtins.map
-        (o: o // (if pkgs.stdenv.isDarwin && o.name == "lua" then { sha256 = sumnekoDarwinHash; } else { }))
+        (o: o // (if (builtins.hasAttr o.name hashOverrides) then { sha256 = hashOverrides.${o.name}.${system}; } else { }))
         exts);
 
   # https://github.com/NixOS/nixpkgs/pull/110461
