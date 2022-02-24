@@ -287,7 +287,6 @@ in
         vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', { noremap=true, silent=true })
         vim.api.nvim_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', { noremap=true, silent=true })
         vim.api.nvim_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', { noremap=true, silent=true })
-        vim.api.nvim_set_keymap('n', '<leader>h', '<cmd>lua vim.lsp.buf.signature_help()<cr>', { noremap=true, silent=true })
         vim.api.nvim_set_keymap('n', '<C-p>', "<cmd>lua vim.diagnostic.open_float()<cr>", { noremap=true, silent=true })
 
         local nvim_lsp = require'lspconfig'
