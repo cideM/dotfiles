@@ -3,7 +3,7 @@
 { name = "vscode-theme-onelight"; publisher = "akamud"; version = "2.2.3"; sha256 = "1mzd77sv6lb6kfv5fvdvzggs488q553cf752byrml981ys9r7khz"; }
 { name = "nixpkgs-fmt"; publisher = "B4dM4n"; version = "0.0.1"; sha256 = "1gvjqy54myss4w1x55lnyj2l887xcnxc141df85ikmw1gr9s8gdz"; }
 { name = "Nix"; publisher = "bbenoist"; version = "1.0.1"; sha256 = "0zd0n9f5z1f0ckzfjr38xw2zzmcxg1gjrava7yahg5cvdcw6l35b"; }
-{ name = "calva"; publisher = "betterthantomorrow"; version = "2.0.249"; sha256 = "0xgzvh4rhdspqavsqjydr52zqpwakgfq68i890zjawa21pr1582h"; }
+{ name = "calva"; publisher = "betterthantomorrow"; version = "2.0.252"; sha256 = "13i4q2n879wpzhabdi7ic2nlz04ac9d9yx6mywhm5zlgmq35i9vh"; }
 { name = "markdown-checkbox"; publisher = "bierner"; version = "0.3.2"; sha256 = "12mjacyy3ipinhmaz35972vn1dahrzwlbx16n1wjyvxsl8l4id0y"; }
 { name = "markdown-emoji"; publisher = "bierner"; version = "0.2.1"; sha256 = "1lcg2b39jydl40wcfrbgshl2i1r58k92c7dipz0hl1fa1v23vj4v"; }
 { name = "markdown-footnotes"; publisher = "bierner"; version = "0.0.7"; sha256 = "1k6qsg8al95pij9nd43l7n1zfw0sadpagqz1s8paja1qhgxw5fc5"; }
@@ -11,7 +11,7 @@
 { name = "vscode-intelephense-client"; publisher = "bmewburn"; version = "1.8.2"; sha256 = "1sla3pl3jfdawjmscwf2ml42xhwjaa9ywdgdpl6v99p10w6rvx9s"; }
 { name = "better-toml"; publisher = "bungcip"; version = "0.3.2"; sha256 = "08lhzhrn6p0xwi0hcyp6lj9bvpfj87vr99klzsiy8ji7621dzql3"; }
 { name = "npm-intellisense"; publisher = "christian-kohler"; version = "1.4.1"; sha256 = "0hph57g8fbwrvj1sdzc7vqsiaf7n2qzvkakc9ir0kkkwwdxc6c5a"; }
-{ name = "path-autocomplete"; publisher = "ionutvmi"; version = "1.18.0"; sha256 = "1h3l9slmf7fcdvvqkphdkl1qjp71qwagf9q9jyxvsbxq46b46c7w"; }
+{ name = "path-autocomplete"; publisher = "ionutvmi"; version = "1.19.0"; sha256 = "09q4r8wr2pqfbl3pcdfmk982riwjkzag7jv072ykqb0hbnjlz44l"; }
 { name = "vscode-markdownlint"; publisher = "DavidAnson"; version = "0.46.0"; sha256 = "1jgdw548in4vnqqqzvhkxwz9ph28r8r3cy0bs18znr77lzxw8nyq"; }
 { name = "mustache"; publisher = "dawhite"; version = "1.1.1"; sha256 = "1j8qn5grg8v3n3v66d8c77slwpdr130xzpv06z1wp2bmxhqsck1y"; }
 { name = "vscode-eslint"; publisher = "dbaeumer"; version = "2.2.3"; sha256 = "0sl9d85wbac3h79a5y5mcv0rhcz8azcamyiiyix0b7klcr80v56d"; }
