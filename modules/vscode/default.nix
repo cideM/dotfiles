@@ -3,8 +3,8 @@ let
   inherit (pkgs.stdenv.hostPlatform) system;
 
   hashOverrides = {
-    sumneko = {
-      "aarch64-darwin" = "sha256:18fxmzsbjs113g7cyd348b36d3m6gyc7dpwpyqqs2ji5kiw7cy27";
+    lua = {
+      "aarch64-darwin" = "sha256:0vqzn0jdclh99h3b2vc2brd2sv5mhkplz51qd6lxvpq1i5dy1jhf";
       "x86_64-linux" = "sha256-BP2yAvTDpFBldkT/nKs22ZOKX/Wcw+v0ZDxBGlFVQqU=";
     };
   };
@@ -15,7 +15,7 @@ let
     in
     pkgs.vscode-utils.extensionsFromVscodeMarketplace
       (builtins.map
-        (o: o // (if (builtins.hasAttr o.name hashOverrides) then { sha256 = hashOverrides.${o.name}.${system}; } else { }))
+        (o: o // (if (builtins.hasAttr (builtins.trace "${o.name}" o.name) hashOverrides) then { sha256 = hashOverrides.${o.name}.${system}; } else { }))
         exts);
 
   # https://github.com/NixOS/nixpkgs/pull/110461
