@@ -11,7 +11,7 @@
 { name = "vscode-intelephense-client"; publisher = "bmewburn"; version = "1.8.2"; sha256 = "1sla3pl3jfdawjmscwf2ml42xhwjaa9ywdgdpl6v99p10w6rvx9s"; }
 { name = "better-toml"; publisher = "bungcip"; version = "0.3.2"; sha256 = "08lhzhrn6p0xwi0hcyp6lj9bvpfj87vr99klzsiy8ji7621dzql3"; }
 { name = "npm-intellisense"; publisher = "christian-kohler"; version = "1.4.1"; sha256 = "0hph57g8fbwrvj1sdzc7vqsiaf7n2qzvkakc9ir0kkkwwdxc6c5a"; }
-{ name = "path-autocomplete"; publisher = "ionutvmi"; version = "1.19.0"; sha256 = "09q4r8wr2pqfbl3pcdfmk982riwjkzag7jv072ykqb0hbnjlz44l"; }
+{ name = "path-autocomplete"; publisher = "ionutvmi"; version = "1.19.1"; sha256 = "1ndm5x0f6asmlvv92981j9ciw7w87ahvsl1iyd0gjwd0f45fc6fj"; }
 { name = "vscode-markdownlint"; publisher = "DavidAnson"; version = "0.46.0"; sha256 = "1jgdw548in4vnqqqzvhkxwz9ph28r8r3cy0bs18znr77lzxw8nyq"; }
 { name = "mustache"; publisher = "dawhite"; version = "1.1.1"; sha256 = "1j8qn5grg8v3n3v66d8c77slwpdr130xzpv06z1wp2bmxhqsck1y"; }
 { name = "vscode-eslint"; publisher = "dbaeumer"; version = "2.2.3"; sha256 = "0sl9d85wbac3h79a5y5mcv0rhcz8azcamyiiyix0b7klcr80v56d"; }
@@ -67,7 +67,7 @@
 { name = "mdx"; publisher = "silvenon"; version = "0.1.0"; sha256 = "1mzsqgv0zdlj886kh1yx1zr966yc8hqwmiqrb1532xbmgyy6adz3"; }
 { name = "fish-vscode"; publisher = "skyapps"; version = "0.2.1"; sha256 = "0y1ivymn81ranmir25zk83kdjpjwcqpnc9r3jwfykjd9x0jib2hl"; }
 { name = "rewrap"; publisher = "stkb"; version = "17.8.0"; sha256 = "1y168ar01zxdd2x73ddsckbzqq0iinax2zv3d95nhwp9asjnbpgn"; }
-{ name = "lua"; publisher = "sumneko"; version = "2.6.7"; sha256 = "0hb4qy67hwxzhfnk69iqmnyzp3695l166zwf0f622j3zarfzk605"; }
+{ name = "lua"; publisher = "sumneko"; version = "2.6.7"; sha256 = "0ic4fzq1kqskbvlziwpdk3dhj1hv2v2zn1jcfynd1y4dk0392a01"; }
 { name = "sass-indented"; publisher = "syler"; version = "1.8.19"; sha256 = "05hjmm5lij79s289526bffbk4vwdfsj8af2c784sl6ianwqzhyq8"; }
 { name = "language-stylus"; publisher = "sysoev"; version = "1.15.0"; sha256 = "0xryxmypwxlrq43nnmmi8x2n1476qw6ii20gcmn7kcpnrznj97f4"; }
 { name = "latex-utilities"; publisher = "tecosaur"; version = "0.3.7"; sha256 = "05clfs2bkyd9m905m5xcs04lwwdacbzy2r0k18hw47jrl60pkkgw"; }
