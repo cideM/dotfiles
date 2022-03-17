@@ -25,6 +25,7 @@
     zathura
     obsidian
     gimp
+    simplescreenrecorder
 
     gnome.gnome-tweaks
 
