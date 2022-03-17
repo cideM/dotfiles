@@ -46,6 +46,11 @@
   systemd.network.enable = true;
   systemd.coredump.enable = true;
 
+  hardware.steam-hardware.enable = true;
+  programs.steam = {
+    enable = true;
+  };
+
   networking = {
     hostName = "nixos";
     networkmanager.enable = true;
