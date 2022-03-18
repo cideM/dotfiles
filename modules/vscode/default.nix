@@ -15,7 +15,7 @@ let
     in
     pkgs.vscode-utils.extensionsFromVscodeMarketplace
       (builtins.map
-        (o: o // (if (builtins.hasAttr (builtins.trace "${o.name}" o.name) hashOverrides) then { sha256 = hashOverrides.${o.name}.${system}; } else { }))
+        (o: o // (if (builtins.hasAttr o.name hashOverrides) then { sha256 = hashOverrides.${o.name}.${system}; } else { }))
         exts);
 
   # https://github.com/NixOS/nixpkgs/pull/110461
