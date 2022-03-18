@@ -35,6 +35,11 @@
           key = "S";
           mods = "Control";
         }
+        {
+          chars = "`/";
+          key = "Slash";
+          mods = "Control";
+        }
       ];
       window = {
         decorations = "full";

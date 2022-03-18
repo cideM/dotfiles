@@ -55,10 +55,7 @@
       bind-key -T copy-mode-vi v send-keys -X begin-selection
       bind-key -T copy-mode-vi r send-keys -X rectangle-toggle
 
-      # choose-*
-      bind T choose-tree
-      bind W choose-window
-      bind B choose-buffer
+      bind / choose-tree
 
       bind C new-session
 
@@ -88,7 +85,7 @@
       bind -r > swap-window -d -t :+
       bind -r < swap-window -d -t :-
 
-      bind / next-layout
+      bind -n M-/ next-layout
 
       bind R source-file ~/.tmux.conf \; display-message "Reloaded!"
 
