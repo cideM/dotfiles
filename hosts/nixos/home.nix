@@ -37,8 +37,6 @@
 
     kanji-stroke-order-font
 
-    noto-fonts
-    noto-fonts-cjk
     noto-fonts-emoji
 
     source-han-sans
