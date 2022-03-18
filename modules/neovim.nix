@@ -45,7 +45,7 @@ in
       '';
       fzf = ''
         setl laststatus=0 noshowmode noruler
-        aug fzf | au! BufLeave <buffer> set laststatus=2 showmode ruler | aug END
+        aug fzf | au! BufLeave <buffer> set laststatus=3 showmode ruler | aug END
       '';
       qf = ''
         nnoremap <buffer> <left> :colder<cr>
@@ -166,6 +166,7 @@ in
         set foldmethod=indent
         set expandtab
         set tabstop=2
+        set laststatus=3
         set shiftwidth=2
         set colorcolumn=100
         set timeoutlen=500
