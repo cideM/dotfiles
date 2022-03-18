@@ -170,6 +170,7 @@ in
         set colorcolumn=100
         set timeoutlen=500
         set formatoptions=crqjn
+        set mouse=a
         set hidden
         set nonumber
         set ignorecase
