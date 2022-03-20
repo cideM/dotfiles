@@ -229,7 +229,6 @@ in
         imap     jk        <Esc>
         tnoremap <Esc>     <C-\><C-n>
         nnoremap <BS>      <C-^>
-        nnoremap <CR>      :BLines<CR>
         nnoremap <leader><leader> :update<cr>
         nnoremap <leader>z        :wq<cr>
         nnoremap <Leader>q :Sayonara<CR>
