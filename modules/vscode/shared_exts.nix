@@ -41,11 +41,11 @@
 { name = "file-downloader"; publisher = "mindaro-dev"; version = "1.0.11"; sha256 = "1bk7cj6as1p2g2g3n7wyrgfm995gcjs3si9pj2dxcngjs2gxvv3f"; }
 { name = "find-jump"; publisher = "mksafi"; version = "1.2.4"; sha256 = "1qk2sl3dazna3zg6nq2m7313jdl67kxm5d3rq0lfmi6k1q2h9sd7"; }
 { name = "theme-monokai-pro-vscode"; publisher = "monokai"; version = "1.1.20"; sha256 = "0ddwqsvsqdjblmb0xlad17czy2837g27ymwvzissz4b9r111xyhx"; }
-{ name = "python"; publisher = "ms-python"; version = "2022.3.10821939"; sha256 = "1hgbysc6dqzry6kxsi5n2c99laa5shxnhzc8a8maqxcg07f82qn4"; }
-{ name = "jupyter"; publisher = "ms-toolsai"; version = "2022.3.1000841004"; sha256 = "08sadvvx68zpyg9ab7qiq8w6h1cchixyybbgm9zhlbw7h0wxfi5g"; }
+{ name = "python"; publisher = "ms-python"; version = "2022.3.10831003"; sha256 = "09g4xrmywz1wfp8afchn8gp0cln6n8dg0j62d3z55iv645jmachf"; }
+{ name = "jupyter"; publisher = "ms-toolsai"; version = "2022.3.1000851004"; sha256 = "13a1iabxnc94jx0jn3112kfkhn71sh2nx5z5hb1jndnph9zxn3gx"; }
 { name = "remote-containers"; publisher = "ms-vscode-remote"; version = "0.229.0"; sha256 = "1hnc0rql7a8j74rci3im26sx4m7ccqdcdr5y9c9hrfbsh7fzhbn6"; }
-{ name = "remote-ssh"; publisher = "ms-vscode-remote"; version = "0.77.2022031115"; sha256 = "1k325xky5m8j77wl0x70sbwlkg5rli0p2anan9sfrhjnpf64xlgk"; }
-{ name = "remote-ssh-edit"; publisher = "ms-vscode-remote"; version = "0.77.2022031115"; sha256 = "0ly75j66s247bsa05rnrvsgf4f9xcn1ajib1ypw6an68p22f4jj1"; }
+{ name = "remote-ssh"; publisher = "ms-vscode-remote"; version = "0.77.2022032415"; sha256 = "1j86n40ld2plavq72adgcdk4dqachr8fli026k5v2zzrnnqs9k2f"; }
+{ name = "remote-ssh-edit"; publisher = "ms-vscode-remote"; version = "0.77.2022032415"; sha256 = "1hwj0c2ghqg8n0v9rpmrn085ymbhjsmz0ck0iqjfk7y0i6sr3zg6"; }
 { name = "remote-wsl"; publisher = "ms-vscode-remote"; version = "0.66.0"; sha256 = "1j80md7l27azi8qapkj7xygqj3jj8z7nczhjwkrwmvx90qjmlasy"; }
 { name = "vscode-remote-extensionpack"; publisher = "ms-vscode-remote"; version = "0.21.0"; sha256 = "14l8h84kvnkbqwmw875qa6y25hhxvx1dsg0g07gdl6n8cv5kvy2g"; }
 { name = "vscode-typescript-tslint-plugin"; publisher = "ms-vscode"; version = "1.3.3"; sha256 = "1xjspcmx5p9x8yq1hzjdkq3acq52nilpd9bm069nsvrzzdh0n891"; }
