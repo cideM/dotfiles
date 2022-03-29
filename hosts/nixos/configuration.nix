@@ -28,6 +28,10 @@
         config = "config /home/tifa/fra1.ovpn";
         autoStart = false;
       };
+      nyc = {
+        config = "config /home/tifa/expressvpn_usa_new_york_udp.ovpn";
+        autoStart = false;
+      };
     };
   };
 
