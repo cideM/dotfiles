@@ -32,7 +32,8 @@ with pkgs;
     gzip
     htop
     jq
-    kitty
+    # often broken on m1
+    # kitty
     libuv
     ncdu
     qmk
