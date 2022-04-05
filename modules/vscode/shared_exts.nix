@@ -42,10 +42,10 @@
 { name = "find-jump"; publisher = "mksafi"; version = "1.2.4"; sha256 = "1qk2sl3dazna3zg6nq2m7313jdl67kxm5d3rq0lfmi6k1q2h9sd7"; }
 { name = "theme-monokai-pro-vscode"; publisher = "monokai"; version = "1.1.20"; sha256 = "0ddwqsvsqdjblmb0xlad17czy2837g27ymwvzissz4b9r111xyhx"; }
 { name = "python"; publisher = "ms-python"; version = "2022.5.10911002"; sha256 = "14k0n71d3ilf9x7hsmx3vm4slbyqal44qq6mdcylkzrygfvybvqg"; }
-{ name = "jupyter"; publisher = "ms-toolsai"; version = "2022.4.1000912146"; sha256 = "11404ravwy04jadr72i7xiy81j5ql2qzza9ff6j1pw46nnybhk5x"; }
-{ name = "remote-containers"; publisher = "ms-vscode-remote"; version = "0.232.2"; sha256 = "02y6clv0fpmnjwdk47bcppj2mjcv8i82j79sakng6nxdaa22szcw"; }
-{ name = "remote-ssh"; publisher = "ms-vscode-remote"; version = "0.78.0"; sha256 = "1743rwmbqw2mi2dfy3r9qc6qkn42pjchj5cl8ayqvwwrrrvvvpxx"; }
-{ name = "remote-ssh-edit"; publisher = "ms-vscode-remote"; version = "0.78.0"; sha256 = "0vfzz6k4hk7m5r6l7hszbf4fwhxq6hxf8f8gimphkc57v4z376ls"; }
+{ name = "jupyter"; publisher = "ms-toolsai"; version = "2022.4.1000962058"; sha256 = "1rwbq2x7mwnjp5kfw3wzkw6zzv9zk5h1pgga620y44yicq7wbaq1"; }
+{ name = "remote-containers"; publisher = "ms-vscode-remote"; version = "0.232.3"; sha256 = "0jfn3h4ba3j3jf9fvb11sr2kfwhppj7a3rqiswz7ky8qcpv64223"; }
+{ name = "remote-ssh"; publisher = "ms-vscode-remote"; version = "0.79.2022040418"; sha256 = "1w0cp51zp4b3as99cnnsbmwhig3pf7w4hc30yn1dza0qqzjnmank"; }
+{ name = "remote-ssh-edit"; publisher = "ms-vscode-remote"; version = "0.80.0"; sha256 = "0zgrd2909xpr3416cji0ha3yl6gl2ry2f38bvx4lsjfmgik0ic6s"; }
 { name = "remote-wsl"; publisher = "ms-vscode-remote"; version = "0.66.0"; sha256 = "1j80md7l27azi8qapkj7xygqj3jj8z7nczhjwkrwmvx90qjmlasy"; }
 { name = "vscode-remote-extensionpack"; publisher = "ms-vscode-remote"; version = "0.21.0"; sha256 = "14l8h84kvnkbqwmw875qa6y25hhxvx1dsg0g07gdl6n8cv5kvy2g"; }
 { name = "vscode-typescript-tslint-plugin"; publisher = "ms-vscode"; version = "1.3.4"; sha256 = "0zbg99x71scpgdyicp7fryxmg51fj2fy0dmfm04zq26s0g0n6gn1"; }
