@@ -340,7 +340,7 @@ in
           ensure_installed = {},
           highlight = {
             enable = true,
-            disable = {"haskell"},
+            disable = {"haskell","nix"},
           },
           incremental_selection = {
             enable = true,
@@ -352,7 +352,7 @@ in
           },
           indent = {
             enable = true,
-            disable = {"haskell"},
+            disable = {"haskell","nix"},
           }
         }
         EOF
