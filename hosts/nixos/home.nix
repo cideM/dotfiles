@@ -21,6 +21,7 @@
     discord
     audacity
     insomnia
+    pavucontrol
     spotify
     zathura
     obsidian
