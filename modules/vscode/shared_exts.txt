@@ -1,4 +1,3 @@
-adpyke.vscode-sql-formatter
 akamud.vscode-theme-onelight
 B4dM4n.nixpkgs-fmt
 bbenoist.Nix
@@ -34,7 +33,6 @@ kaiwood.center-editor-window
 karunamurti.tera
 keyring.Lua
 luggage66.AWK
-lunaryorn.fish-ide
 miguelsolorio.min-theme
 mikestead.dotenv
 mindaro-dev.file-downloader
@@ -64,7 +62,6 @@ sbrink.elm
 sdras.night-owl
 sergey-kintsel.hfmt-vscode
 silvenon.mdx
-skyapps.fish-vscode
 stkb.rewrap
 sumneko.lua
 syler.sass-indented
