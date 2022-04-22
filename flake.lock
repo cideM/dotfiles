@@ -665,16 +665,15 @@
     "yui": {
       "flake": false,
       "locked": {
-        "lastModified": 1650612233,
+        "lastModified": 1650633491,
         "narHash": "sha256-FMJBhrV467/KTTIg5PPP7ho4jUCtCagPRszRQcrljqA=",
         "owner": "cidem",
         "repo": "yui",
-        "rev": "41d607c2f7fae99f7f377b318e36161175658f7b",
+        "rev": "151621c14bb313adf49a410dfb50a38735abeb94",
         "type": "github"
       },
       "original": {
         "owner": "cidem",
-        "ref": "lightline",
         "repo": "yui",
         "type": "github"
       }
