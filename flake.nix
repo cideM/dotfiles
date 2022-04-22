@@ -42,7 +42,7 @@
     lspfuzzy.url = "github:ojroques/nvim-lspfuzzy";
     lspfuzzy.flake = false;
 
-    yui.url = "github:cidem/yui";
+    yui.url = "github:cidem/yui/lightline";
     yui.flake = false;
 
     unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";

@@ -192,10 +192,23 @@ in
         set grepformat=%f:%l:%c:%m
         set path-=/usr/include list lcs=trail:¬,tab:\ \ 
         set statusline+=\ %f\ %m%=\ %y\ %q\ %3l:%2c\ \|%3p%%\ 
-        let g:yui_comments = 'bg'
         " Fish is really slow on MacOS somehow
         set shell=dash
+        let g:yui_comments = 'bg'
+        let g:yui_lightline = v:true
+        let g:lightline = {
+          \ 'colorscheme': 'yui',
+          \ 'active': {
+          \   'left': [ [ 'mode', 'paste' ],
+          \             [ 'readonly', 'filename', 'modified'],
+          \             [ 'lsp_errors', 'lsp_warnings' ],
+          \             [ 'lsp_status'] ]
+          \ },
+          \ }
+
         colorscheme yui
+        packadd nvim-lightline-lsp
+        call lightline#lsp#register()
 
         let g:EditorConfig_max_line_indicator = "exceeding"
         let g:EditorConfig_preserve_formatoptions = 1
@@ -369,7 +382,7 @@ in
         # Git
         vim-fugitive
         conflict-marker-vim
-
+        lightline-vim
         vim-unimpaired
         pkgs.winshift
         vim-repeat
@@ -384,8 +397,10 @@ in
         fzfWrapper
         indent-blankline-nvim
         fzf-vim
+        { plugin = nvim-lightline-lsp; optional = true; }
         vim-gutentags
         vim-sandwich
+
         sad-vim
         vim-dirvish
         lightspeed-nvim
