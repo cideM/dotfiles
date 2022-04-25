@@ -64,7 +64,7 @@
 { name = "hfmt-vscode"; publisher = "sergey-kintsel"; version = "0.1.1"; sha256 = "1ryfb7kp47qw4xs36fj7ij84hjv1ambvlflgjwyxwwmwx9w8vcgd"; }
 { name = "mdx"; publisher = "silvenon"; version = "0.1.0"; sha256 = "1mzsqgv0zdlj886kh1yx1zr966yc8hqwmiqrb1532xbmgyy6adz3"; }
 { name = "rewrap"; publisher = "stkb"; version = "17.8.0"; sha256 = "1y168ar01zxdd2x73ddsckbzqq0iinax2zv3d95nhwp9asjnbpgn"; }
-{ name = "lua"; publisher = "sumneko"; version = "3.1.0"; sha256 = "1iz9jp2ki1bds0zxjvg109pkavhvv8s37lsiax38y7qp3sb51fqg"; }
+{ name = "lua"; publisher = "sumneko"; version = "3.2.1"; sha256 = "10ji95k32hznz1nmpm8hikrn0wbssk0isar1nxdynwbq8h93c380"; }
 { name = "sass-indented"; publisher = "syler"; version = "1.8.19"; sha256 = "05hjmm5lij79s289526bffbk4vwdfsj8af2c784sl6ianwqzhyq8"; }
 { name = "language-stylus"; publisher = "sysoev"; version = "1.15.0"; sha256 = "0xryxmypwxlrq43nnmmi8x2n1476qw6ii20gcmn7kcpnrznj97f4"; }
 { name = "latex-utilities"; publisher = "tecosaur"; version = "0.3.7"; sha256 = "05clfs2bkyd9m905m5xcs04lwwdacbzy2r0k18hw47jrl60pkkgw"; }
@@ -74,6 +74,6 @@
 { name = "plastic"; publisher = "will-stone"; version = "7.5.0"; sha256 = "1y1kl475hr5whv363fvphmxhgrhjlcin2z70kzki2jlcc9ar8h4h"; }
 { name = "vscode-ruby"; publisher = "wingrunr21"; version = "0.28.0"; sha256 = "1gab5cka87zw7i324rz9gmv423rf5sylsq1q1dhfkizmrpwzaxqz"; }
 { name = "vscode-postfix-go"; publisher = "yokoe"; version = "0.0.12"; sha256 = "0risnd3i70wrwcybbb42qrp16pvyac54f7n4zz5mxmdg24wmgrjf"; }
-{ name = "markdown-all-in-one"; publisher = "yzhang"; version = "3.4.2"; sha256 = "1qv4rmfn594hxinbp2h3903dbp5c5p3rz8ig0w2iiabj2zj2k6hn"; }
+{ name = "markdown-all-in-one"; publisher = "yzhang"; version = "3.4.3"; sha256 = "0z0sdb5vmx1waln5k9fk6s6lj1pzpcm3hwm4xc47jz62iq8930m3"; }
 { name = "ormolu-vscode"; publisher = "sjurmillidahl"; version = "0.0.7"; sha256 = "0fgk4mniwypr94cml5iddr05hn1ybs3jij5dn7yiakw8fvba6kzj"; }
 ]
