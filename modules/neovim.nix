@@ -196,19 +196,8 @@ in
         set shell=dash
         let g:yui_comments = 'bg'
         let g:yui_lightline = v:true
-        let g:lightline = {
-          \ 'colorscheme': 'yui',
-          \ 'active': {
-          \   'left': [ [ 'mode', 'paste' ],
-          \             [ 'readonly', 'filename', 'modified'],
-          \             [ 'lsp_errors', 'lsp_warnings' ],
-          \             [ 'lsp_status'] ]
-          \ },
-          \ }
-
+        let g:lightline = { 'colorscheme': 'yui' }
         colorscheme yui
-        packadd nvim-lightline-lsp
-        call lightline#lsp#register()
 
         let g:EditorConfig_max_line_indicator = "exceeding"
         let g:EditorConfig_preserve_formatoptions = 1
@@ -397,7 +386,6 @@ in
         fzfWrapper
         indent-blankline-nvim
         fzf-vim
-        { plugin = nvim-lightline-lsp; optional = true; }
         vim-gutentags
         vim-sandwich
 
