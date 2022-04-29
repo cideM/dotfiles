@@ -169,7 +169,7 @@ in
         set foldmethod=indent
         set expandtab
         set tabstop=2
-        set laststatus=3
+        set laststatus=2
         set shiftwidth=2
         set colorcolumn=100
         set timeoutlen=500
@@ -195,8 +195,6 @@ in
         " Fish is really slow on MacOS somehow
         set shell=dash
         let g:yui_comments = 'bg'
-        let g:yui_lightline = v:true
-        let g:lightline = { 'colorscheme': 'yui' }
         colorscheme yui
 
         let g:EditorConfig_max_line_indicator = "exceeding"
@@ -371,7 +369,6 @@ in
         # Git
         vim-fugitive
         conflict-marker-vim
-        lightline-vim
         vim-unimpaired
         pkgs.winshift
         vim-repeat
