@@ -29,6 +29,7 @@ let
     set -x XDG_CACHE_HOME $HOME/.cache
 
     set -x GOPATH ~/go
+    set -x GOCACHE $XDG_CACHE_HOME/go-build
 
     fish_add_path -p ~/bin /usr/local/bin/
 
