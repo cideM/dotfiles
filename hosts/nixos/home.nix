@@ -18,14 +18,11 @@
   home.packages = with pkgs; [
     iotop
     xsel
-    discord
-    audacity
     insomnia
     pavucontrol
     spotify
     zathura
     obsidian
-    gimp
     simplescreenrecorder
 
     gnome.gnome-tweaks
@@ -50,7 +47,6 @@
     firefox
     google-chrome
 
-    zoom-us
     slack
   ];
 
