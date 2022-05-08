@@ -79,7 +79,7 @@
     let
       overlays = [
         (self: super: {
-          kubectl = kubectl-nix.packages.${super.system}."1_20_4";
+          kubectl = kubectl-nix.packages.${super.system}."1_21_2";
         })
 
         (self: super: {
