@@ -12,6 +12,7 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [
     "processor.max_cstate=1"
+    "memtest=6"
   ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.kernel.sysctl = {
