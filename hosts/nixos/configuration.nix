@@ -100,6 +100,8 @@
   ];
 
   hardware.nvidia.modesetting.enable = true;
+  programs.xwayland.enable = true;
+  hardware.opengl.enable = true;
 
   services.xserver = {
     enable = true;
@@ -111,7 +113,7 @@
     displayManager = {
       gdm = {
         enable = true;
-        wayland = false;
+        wayland = true;
       };
     };
 
