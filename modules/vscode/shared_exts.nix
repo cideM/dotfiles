@@ -26,7 +26,7 @@
 { name = "haskell-linter"; publisher = "hoovercj"; version = "0.0.6"; sha256 = "0fb71cbjx1pyrjhi5ak29wj23b874b5hqjbh68njs61vkr3jlf1j"; }
 { name = "latex-workshop"; publisher = "James-Yu"; version = "8.26.0"; sha256 = "1isgrxr71ylqzhg133mknkr57pf2jgx25lx17qsn5304ccs1n8b4"; }
 { name = "hoogle-vscode"; publisher = "jcanero"; version = "0.0.7"; sha256 = "0ndapfrv3j82792hws7b3zki76m2s1bfh9dss1xjgcal1aqajka1"; }
-{ name = "svg"; publisher = "jock"; version = "1.4.17"; sha256 = "1qlmcd8qrkpdabbrwq1l50f363awig63jakfqhf6l33jhkyn2g08"; }
+{ name = "svg"; publisher = "jock"; version = "1.4.18"; sha256 = "09mximd6c843nclk8yi6brg3kkpyxz96ln0mnmgplw34lfqwm0rh"; }
 { name = "vscode-random"; publisher = "jrebocho"; version = "1.11.0"; sha256 = "03mmfqw98zpvl31hyqa9gy0miw7627hyzfj3jlfahmv34xwqby21"; }
 { name = "vscode-insertdatestring"; publisher = "jsynowiec"; version = "2.3.1"; sha256 = "1cm29jggxax3d7i8s3jqs4z9ikh7n85blm8hrha0qz7r55wvc4ia"; }
 { name = "language-haskell"; publisher = "justusadam"; version = "3.6.0"; sha256 = "115y86w6n2bi33g1xh6ipz92jz5797d3d00mr4k8dv5fz76d35dd"; }
