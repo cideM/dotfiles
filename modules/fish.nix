@@ -53,19 +53,6 @@ in
     interactiveShellInit = fishConfig;
 
     functions = {
-      gocheck = {
-        description = "Recompile on change";
-        body = ''
-          set exist
-          for dir in "cmd" "internal" "pkg"
-            if test -d $dir
-                set -a exist ./$dir/...
-            end
-          end
-          ${pkgs.fd}/bin/fd -e go | ${pkgs.entr}/bin/entr -sc "go build $exist"
-        '';
-      };
-
       gi = {
         description = "Pick commit for interactive rebase";
         body = ''
@@ -83,17 +70,6 @@ in
           if test -n "$commit"
             git commit --fixup $commit
             GIT_SEQUENCE_EDITOR=true git rebase $commit~1 --interactive --autosquash
-          end
-        '';
-      };
-
-      gu = {
-        description = "Update master and rebase current branch onto master";
-        body = ''
-          set -l default (git symbolic-ref refs/remotes/origin/HEAD | xargs basename)
-          if test -n "$default"
-            git fetch origin $default:$default
-            git rebase $default
           end
         '';
       };
