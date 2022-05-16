@@ -45,7 +45,7 @@ in
       '';
       fzf = ''
         setl laststatus=0 noshowmode noruler
-        aug fzf | au! BufLeave <buffer> set laststatus=3 showmode ruler | aug END
+        aug fzf | au! BufLeave <buffer> set laststatus& showmode ruler | aug END
       '';
       qf = ''
         nnoremap <buffer> <left> :colder<cr>
