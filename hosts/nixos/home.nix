@@ -12,6 +12,12 @@
     (import ../../modules/vscode)
   ];
 
+  home.sessionVariables = {
+    GTK_IM_MODULE = "fcitx";
+    QT_IM_MODULE = "fcitx";
+    XMODIFIERS = "@im=fcitx";
+  };
+
   programs.alacritty.settings.font.size = 10;
   programs.alacritty.enable = true;
 
