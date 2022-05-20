@@ -39,10 +39,10 @@
 { name = "file-downloader"; publisher = "mindaro-dev"; version = "1.0.12"; sha256 = "1zv488sfy529vym28mkmyl2vkpfhyl9zcwyfk2k7ipq7argjmr60"; }
 { name = "find-jump"; publisher = "mksafi"; version = "1.2.4"; sha256 = "1qk2sl3dazna3zg6nq2m7313jdl67kxm5d3rq0lfmi6k1q2h9sd7"; }
 { name = "theme-monokai-pro-vscode"; publisher = "monokai"; version = "1.1.20"; sha256 = "0ddwqsvsqdjblmb0xlad17czy2837g27ymwvzissz4b9r111xyhx"; }
-{ name = "python"; publisher = "ms-python"; version = "2022.7.11381925"; sha256 = "1yhg8mb76s1ikw49c9vyyyrg7bws6zwwp3925v8zk2gn8lmnpiwz"; }
-{ name = "jupyter"; publisher = "ms-toolsai"; version = "2022.5.1001401022"; sha256 = "0gg5zrw7qa1ar7syf7j39lv88ga7vcpbpym70n11rhmfndj5qszs"; }
-{ name = "remote-containers"; publisher = "ms-vscode-remote"; version = "0.235.0"; sha256 = "13g91fdq93wmp855jlf1hmlmaknyvnxmbrh39v8sg7wch3ypx7z4"; }
-{ name = "remote-ssh"; publisher = "ms-vscode-remote"; version = "0.81.2022051115"; sha256 = "1g1hhm837942ywp2zxdfdf7gp42yycp4cclv609bf8c4vz2lg3dm"; }
+{ name = "python"; publisher = "ms-python"; version = "2022.7.11400308"; sha256 = "09pzz9zzrbcy9acxm33jm6w1h83lr6b94w7rxxii4mj6wa9nqyrq"; }
+{ name = "jupyter"; publisher = "ms-toolsai"; version = "2022.5.1001411044"; sha256 = "0z6i7a5sba42yc2inp3yvw6lm6m0kings2iv18h4d6zyhm2lb61p"; }
+{ name = "remote-containers"; publisher = "ms-vscode-remote"; version = "0.236.0"; sha256 = "1yqmfz4dvfa0izggjb4i9ivnwwizfs9gdg4vxj36hb911mq07v4s"; }
+{ name = "remote-ssh"; publisher = "ms-vscode-remote"; version = "0.81.2022051915"; sha256 = "04yx481f9xqjsip1xffj5db88ykscq7gm8ag35i7dynjqfwdqrwd"; }
 { name = "remote-ssh-edit"; publisher = "ms-vscode-remote"; version = "0.80.0"; sha256 = "0zgrd2909xpr3416cji0ha3yl6gl2ry2f38bvx4lsjfmgik0ic6s"; }
 { name = "remote-wsl"; publisher = "ms-vscode-remote"; version = "0.66.3"; sha256 = "0lslahxz5c6qxlv7xrq6da1x8ry297c4hgx0cb3iln6brj93j20a"; }
 { name = "vscode-remote-extensionpack"; publisher = "ms-vscode-remote"; version = "0.21.0"; sha256 = "14l8h84kvnkbqwmw875qa6y25hhxvx1dsg0g07gdl6n8cv5kvy2g"; }
