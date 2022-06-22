@@ -20,7 +20,7 @@
 { name = "EditorConfig"; publisher = "EditorConfig"; version = "0.16.4"; sha256 = "0fa4h9hk1xq6j3zfxvf483sbb4bd17fjl5cdm3rll7z9kaigdqwg"; }
 { name = "json-tools"; publisher = "eriklynd"; version = "1.0.2"; sha256 = "0g5ppkc0rpqaprb3l0dsdkzcgmb24apjrq88bw77qll2ra2n7l7f"; }
 { name = "prettier-vscode"; publisher = "esbenp"; version = "9.5.0"; sha256 = "0h5g746ij36h22v1y2883bqaphds7h1ck8mg8bywn9r723mxdy1g"; }
-{ name = "go"; publisher = "golang"; version = "0.33.1"; sha256 = "0dsjxs04dchw1dbzf45ryhxsb5xhalqwy40xw6cngxkp69lhf91g"; }
+{ name = "go"; publisher = "golang"; version = "0.34.0"; sha256 = "1yjrzgz03623ij3sqb00wgs6fi5akw27qxwfcmbh6qr8cxnwzyy5"; }
 { name = "vscode-graphql"; publisher = "GraphQL"; version = "0.4.13"; sha256 = "19cym6cbhh25xxvj7fa1qrrq78wwac6ah4vlbh6pp0rbsjy2hc8l"; }
 { name = "iceberg"; publisher = "harg"; version = "1.2.0"; sha256 = "0ry1zqiqmh6f3sw32mpr2sax18wwac9khgl41lc8gknikrxp7a8p"; }
 { name = "haskell-linter"; publisher = "hoovercj"; version = "0.0.6"; sha256 = "0fb71cbjx1pyrjhi5ak29wj23b874b5hqjbh68njs61vkr3jlf1j"; }
@@ -40,7 +40,7 @@
 { name = "find-jump"; publisher = "mksafi"; version = "1.2.4"; sha256 = "1qk2sl3dazna3zg6nq2m7313jdl67kxm5d3rq0lfmi6k1q2h9sd7"; }
 { name = "theme-monokai-pro-vscode"; publisher = "monokai"; version = "1.1.20"; sha256 = "0ddwqsvsqdjblmb0xlad17czy2837g27ymwvzissz4b9r111xyhx"; }
 { name = "python"; publisher = "ms-python"; version = "2022.9.11681004"; sha256 = "1nw9ns0dml7wlyzmsqvykbbs2f0i9v9kpg3qlin7g834nn9nnjql"; }
-{ name = "jupyter"; publisher = "ms-toolsai"; version = "2022.6.1001740425"; sha256 = "14cqd2v5lnwlp2682vjy34w3dkdv5yhp92g70p7bw4nvm2hsxz92"; }
+{ name = "jupyter"; publisher = "ms-toolsai"; version = "2022.6.1001741036"; sha256 = "13jr14awkz1yc8pn0gsj668dn8qphxyysabr1hkmx5hg8h7akvvh"; }
 { name = "remote-containers"; publisher = "ms-vscode-remote"; version = "0.240.0"; sha256 = "1cxaq9qsvkky76cyl4rilwy7xiavvz6fcz5pyiz76sdq60nicrzw"; }
 { name = "remote-ssh"; publisher = "ms-vscode-remote"; version = "0.83.2022061415"; sha256 = "04851vbwxky120rpw1sxr59fc3dm9a4245b18038sgn0d6p2kxsp"; }
 { name = "remote-ssh-edit"; publisher = "ms-vscode-remote"; version = "0.80.0"; sha256 = "0zgrd2909xpr3416cji0ha3yl6gl2ry2f38bvx4lsjfmgik0ic6s"; }
