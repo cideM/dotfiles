@@ -65,7 +65,7 @@
 { name = "mdx"; publisher = "silvenon"; version = "0.1.0"; sha256 = "1mzsqgv0zdlj886kh1yx1zr966yc8hqwmiqrb1532xbmgyy6adz3"; }
 { name = "rewrap"; publisher = "stkb"; version = "17.8.0"; sha256 = "1y168ar01zxdd2x73ddsckbzqq0iinax2zv3d95nhwp9asjnbpgn"; }
 { name = "lua"; publisher = "sumneko"; version = "3.4.0"; sha256 = "0ldlksr0n5cq3skmbpw0fs3lsy35kmligc5m85krmk5377imzhik"; }
-{ name = "sass-indented"; publisher = "syler"; version = "1.8.21"; sha256 = "18vbk0vhjmz25gn2vw5wh41pvb3rgfxxxl5w3pkz0hz8k3h35vzh"; }
+{ name = "sass-indented"; publisher = "syler"; version = "1.8.22"; sha256 = "0mm04wqis8yzl5n2nx909y9afjqqmy27c8c0aggsmf027iczsp4b"; }
 { name = "language-stylus"; publisher = "sysoev"; version = "1.16.0"; sha256 = "1abp57j804m5c1lr7x3x5kxa1g19cj3dxbjlpjg2lhhplb7jav7m"; }
 { name = "latex-utilities"; publisher = "tecosaur"; version = "0.3.7"; sha256 = "05clfs2bkyd9m905m5xcs04lwwdacbzy2r0k18hw47jrl60pkkgw"; }
 { name = "import-to-require"; publisher = "tlevesque"; version = "0.7.0"; sha256 = "0y3l4j57v7a1i3vdg6wxwfkx68pr0ahr02y4cqrvp4w4xy3axwm4"; }
