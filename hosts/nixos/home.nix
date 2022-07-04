@@ -21,6 +21,8 @@
   programs.alacritty.settings.font.size = 10;
   programs.alacritty.enable = true;
 
+  home.stateVersion = "20.09";
+
   home.packages = with pkgs; [
     iotop
     xsel
