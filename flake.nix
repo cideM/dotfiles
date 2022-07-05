@@ -142,33 +142,33 @@
 
       homeConfigurations = {
         work-m1 = home-manager.lib.homeManagerConfiguration rec {
-          system = "aarch64-darwin";
           extraSpecialArgs = specialArgs;
           pkgs = import unstable {
-            inherit system;
+            system = "aarch64-darwin";
           };
-          homeDirectory = "/Users/fbs";
-          username = "fbs";
-          configuration = { pkgs, config, ... }:
+          modules = [
+            ./modules/regs.nix
             {
-              imports = [
-                ./modules/regs.nix
-                {
-                  nixpkgs.overlays = overlays ++ [
-                    neovim-nightly-overlay.overlay
-                    (self: super: rec { kitty = pkgsCompat.kitty; })
-                    (self: super: rec { aws-mfa = pkgsStable.aws-mfa; })
-                    (self: super: rec { qmk = pkgsStable.qmk; })
-                    (self: super: rec { alacritty = pkgsCompat.alacritty; })
-                  ];
-
-                  nixpkgs.config = {
-                    allowUnfree = true;
-                  };
-                }
-                ./hosts/fbs-work.local/home.nix
+              home = {
+                homeDirectory = "/Users/fbs";
+                username = "fbs";
+              };
+            }
+            {
+              nixpkgs.overlays = overlays ++ [
+                neovim-nightly-overlay.overlay
+                (self: super: rec { kitty = pkgsCompat.kitty; })
+                (self: super: rec { aws-mfa = pkgsStable.aws-mfa; })
+                (self: super: rec { qmk = pkgsStable.qmk; })
+                (self: super: rec { alacritty = pkgsCompat.alacritty; })
               ];
-            };
+
+              nixpkgs.config = {
+                allowUnfree = true;
+              };
+            }
+            ./hosts/fbs-work.local/home.nix
+          ];
         };
 
       };
