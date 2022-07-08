@@ -157,7 +157,6 @@
             {
               nixpkgs.overlays = overlays ++ [
                 neovim-nightly-overlay.overlay
-                (self: super: rec { kitty = pkgsCompat.kitty; })
                 (self: super: rec { aws-mfa = pkgsStable.aws-mfa; })
                 (self: super: rec { qmk = pkgsStable.qmk; })
               ];
