@@ -52,7 +52,7 @@ with pkgs;
     hyperfine
 
     # Infrastructure
-    awscli2
+    # awscli2
     aws-mfa
     docker-compose
     google-cloud-sdk
@@ -70,7 +70,7 @@ with pkgs;
     stylua
 
     # Fonts
-    liberation_ttf
+    # liberation_ttf
     hack-font
     lato
     jetbrains-mono
