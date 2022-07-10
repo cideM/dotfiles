@@ -64,7 +64,7 @@
 { name = "hfmt-vscode"; publisher = "sergey-kintsel"; version = "0.1.1"; sha256 = "1ryfb7kp47qw4xs36fj7ij84hjv1ambvlflgjwyxwwmwx9w8vcgd"; }
 { name = "mdx"; publisher = "silvenon"; version = "0.1.0"; sha256 = "1mzsqgv0zdlj886kh1yx1zr966yc8hqwmiqrb1532xbmgyy6adz3"; }
 { name = "rewrap"; publisher = "stkb"; version = "17.8.0"; sha256 = "1y168ar01zxdd2x73ddsckbzqq0iinax2zv3d95nhwp9asjnbpgn"; }
-{ name = "lua"; publisher = "sumneko"; version = "3.4.2"; sha256 = "05i9dfv9ccrlcak6lxhw28i7qy4k5n6dlvvny7jqbqx90m7dyq3s"; }
+{ name = "lua"; publisher = "sumneko"; version = "3.4.2"; sha256 = "1xaslp6fz8053vbjz4g40vbngg0dz4j6awx2kzd5wnqhcc7lm9lf"; }
 { name = "sass-indented"; publisher = "syler"; version = "1.8.22"; sha256 = "0mm04wqis8yzl5n2nx909y9afjqqmy27c8c0aggsmf027iczsp4b"; }
 { name = "language-stylus"; publisher = "sysoev"; version = "1.16.0"; sha256 = "1abp57j804m5c1lr7x3x5kxa1g19cj3dxbjlpjg2lhhplb7jav7m"; }
 { name = "latex-utilities"; publisher = "tecosaur"; version = "0.3.7"; sha256 = "05clfs2bkyd9m905m5xcs04lwwdacbzy2r0k18hw47jrl60pkkgw"; }
