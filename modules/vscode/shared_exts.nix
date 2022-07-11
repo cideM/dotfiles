@@ -21,7 +21,7 @@
 { name = "json-tools"; publisher = "eriklynd"; version = "1.0.2"; sha256 = "0g5ppkc0rpqaprb3l0dsdkzcgmb24apjrq88bw77qll2ra2n7l7f"; }
 { name = "prettier-vscode"; publisher = "esbenp"; version = "9.5.0"; sha256 = "0h5g746ij36h22v1y2883bqaphds7h1ck8mg8bywn9r723mxdy1g"; }
 { name = "go"; publisher = "golang"; version = "0.34.1"; sha256 = "0q0xgmv7g77rnx8mzvaws5lh6za98h9hks06yhyzbc98ylba3gff"; }
-{ name = "vscode-graphql"; publisher = "GraphQL"; version = "0.4.15"; sha256 = "10czmqpx0l32s9bsf72kqx1206a9bdaj1k8pjygy8bvs525fhbar"; }
+{ name = "vscode-graphql"; publisher = "GraphQL"; version = "0.5.0"; sha256 = "10p7nam7rxrl5n94azh67f67sd1rmhd3rdz51lkz942ihxz3ibxd"; }
 { name = "iceberg"; publisher = "harg"; version = "1.2.0"; sha256 = "0ry1zqiqmh6f3sw32mpr2sax18wwac9khgl41lc8gknikrxp7a8p"; }
 { name = "haskell-linter"; publisher = "hoovercj"; version = "0.0.6"; sha256 = "0fb71cbjx1pyrjhi5ak29wj23b874b5hqjbh68njs61vkr3jlf1j"; }
 { name = "latex-workshop"; publisher = "James-Yu"; version = "8.27.2"; sha256 = "1aq98sqmfsglr0mi1ls4xp7fikhq61ammq9awg3bfcp5r3lx7jxi"; }
@@ -64,7 +64,7 @@
 { name = "hfmt-vscode"; publisher = "sergey-kintsel"; version = "0.1.1"; sha256 = "1ryfb7kp47qw4xs36fj7ij84hjv1ambvlflgjwyxwwmwx9w8vcgd"; }
 { name = "mdx"; publisher = "silvenon"; version = "0.1.0"; sha256 = "1mzsqgv0zdlj886kh1yx1zr966yc8hqwmiqrb1532xbmgyy6adz3"; }
 { name = "rewrap"; publisher = "stkb"; version = "17.8.0"; sha256 = "1y168ar01zxdd2x73ddsckbzqq0iinax2zv3d95nhwp9asjnbpgn"; }
-{ name = "lua"; publisher = "sumneko"; version = "3.4.2"; sha256 = "1xaslp6fz8053vbjz4g40vbngg0dz4j6awx2kzd5wnqhcc7lm9lf"; }
+{ name = "lua"; publisher = "sumneko"; version = "3.4.2"; sha256 = "05i9dfv9ccrlcak6lxhw28i7qy4k5n6dlvvny7jqbqx90m7dyq3s"; }
 { name = "sass-indented"; publisher = "syler"; version = "1.8.22"; sha256 = "0mm04wqis8yzl5n2nx909y9afjqqmy27c8c0aggsmf027iczsp4b"; }
 { name = "language-stylus"; publisher = "sysoev"; version = "1.16.0"; sha256 = "1abp57j804m5c1lr7x3x5kxa1g19cj3dxbjlpjg2lhhplb7jav7m"; }
 { name = "latex-utilities"; publisher = "tecosaur"; version = "0.3.7"; sha256 = "05clfs2bkyd9m905m5xcs04lwwdacbzy2r0k18hw47jrl60pkkgw"; }
