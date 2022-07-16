@@ -26,7 +26,7 @@
 { name = "haskell-linter"; publisher = "hoovercj"; version = "0.0.6"; sha256 = "0fb71cbjx1pyrjhi5ak29wj23b874b5hqjbh68njs61vkr3jlf1j"; }
 { name = "latex-workshop"; publisher = "James-Yu"; version = "8.27.2"; sha256 = "1aq98sqmfsglr0mi1ls4xp7fikhq61ammq9awg3bfcp5r3lx7jxi"; }
 { name = "hoogle-vscode"; publisher = "jcanero"; version = "0.0.7"; sha256 = "0ndapfrv3j82792hws7b3zki76m2s1bfh9dss1xjgcal1aqajka1"; }
-{ name = "svg"; publisher = "jock"; version = "1.4.18"; sha256 = "09mximd6c843nclk8yi6brg3kkpyxz96ln0mnmgplw34lfqwm0rh"; }
+{ name = "svg"; publisher = "jock"; version = "1.4.19"; sha256 = "1yl5pxsayplkdqv5jipii7pyj85j2lc4zmibyr69470b6li264rq"; }
 { name = "vscode-random"; publisher = "jrebocho"; version = "1.11.0"; sha256 = "03mmfqw98zpvl31hyqa9gy0miw7627hyzfj3jlfahmv34xwqby21"; }
 { name = "vscode-insertdatestring"; publisher = "jsynowiec"; version = "2.3.1"; sha256 = "1cm29jggxax3d7i8s3jqs4z9ikh7n85blm8hrha0qz7r55wvc4ia"; }
 { name = "language-haskell"; publisher = "justusadam"; version = "3.6.0"; sha256 = "115y86w6n2bi33g1xh6ipz92jz5797d3d00mr4k8dv5fz76d35dd"; }
@@ -39,8 +39,8 @@
 { name = "file-downloader"; publisher = "mindaro-dev"; version = "1.0.12"; sha256 = "1zv488sfy529vym28mkmyl2vkpfhyl9zcwyfk2k7ipq7argjmr60"; }
 { name = "find-jump"; publisher = "mksafi"; version = "1.2.4"; sha256 = "1qk2sl3dazna3zg6nq2m7313jdl67kxm5d3rq0lfmi6k1q2h9sd7"; }
 { name = "theme-monokai-pro-vscode"; publisher = "monokai"; version = "1.1.20"; sha256 = "0ddwqsvsqdjblmb0xlad17czy2837g27ymwvzissz4b9r111xyhx"; }
-{ name = "python"; publisher = "ms-python"; version = "2022.11.11952128"; sha256 = "18pa40ahl27ibh7aji8byk6mi2vhjbb96w7djh8hnsc6032d5j5h"; }
-{ name = "jupyter"; publisher = "ms-toolsai"; version = "2022.7.1001971039"; sha256 = "0kgl4c2063i5qk8a310i466pgnh8kd0dqkcbrwrdcy00wf6p2mcx"; }
+{ name = "python"; publisher = "ms-python"; version = "2022.11.11961004"; sha256 = "10969bqyv9f73hg5rvly1aj6vh5wvxbfdmwsxxdps55z3dib692c"; }
+{ name = "jupyter"; publisher = "ms-toolsai"; version = "2022.7.1001981020"; sha256 = "1ga2a4fdv8p0jk6pvf20r9h7pgi8i7nws98r3p63dw524xfzc89r"; }
 { name = "remote-containers"; publisher = "ms-vscode-remote"; version = "0.242.0"; sha256 = "0zricxw1fyh4j8xb8wxgk6q1f8llji5460c486vdpk129p8dmcbh"; }
 { name = "remote-ssh"; publisher = "ms-vscode-remote"; version = "0.85.2022071315"; sha256 = "195c22wvvw727li8wf0nhfpccgynx9sd48gzz39j8wxmi7qqvjli"; }
 { name = "remote-ssh-edit"; publisher = "ms-vscode-remote"; version = "0.80.0"; sha256 = "0zgrd2909xpr3416cji0ha3yl6gl2ry2f38bvx4lsjfmgik0ic6s"; }
@@ -67,7 +67,7 @@
 { name = "lua"; publisher = "sumneko"; version = "3.4.2"; sha256 = "1xaslp6fz8053vbjz4g40vbngg0dz4j6awx2kzd5wnqhcc7lm9lf"; }
 { name = "sass-indented"; publisher = "syler"; version = "1.8.22"; sha256 = "0mm04wqis8yzl5n2nx909y9afjqqmy27c8c0aggsmf027iczsp4b"; }
 { name = "language-stylus"; publisher = "sysoev"; version = "1.16.0"; sha256 = "1abp57j804m5c1lr7x3x5kxa1g19cj3dxbjlpjg2lhhplb7jav7m"; }
-{ name = "latex-utilities"; publisher = "tecosaur"; version = "0.3.7"; sha256 = "05clfs2bkyd9m905m5xcs04lwwdacbzy2r0k18hw47jrl60pkkgw"; }
+{ name = "latex-utilities"; publisher = "tecosaur"; version = "0.4.0"; sha256 = "09bfzrq7jhak11gkm38dyf3yycsbdfaqvh0x86qcxflvcni2ngcy"; }
 { name = "import-to-require"; publisher = "tlevesque"; version = "0.7.0"; sha256 = "0y3l4j57v7a1i3vdg6wxwfkx68pr0ahr02y4cqrvp4w4xy3axwm4"; }
 { name = "vsfire"; publisher = "toba"; version = "1.4.1"; sha256 = "0sdghqqzkfjr29d22v0g6xbv7n5gvmsybcmgnf2zkbl7azvhr4bd"; }
 { name = "theme-alabaster"; publisher = "tonsky"; version = "0.2.9"; sha256 = "0vi6i9xwd440hn61ql7rgxgnm17ip3vfs0hbqjh4la9jj0hdgfyw"; }
