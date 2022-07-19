@@ -20,7 +20,7 @@
 { name = "EditorConfig"; publisher = "EditorConfig"; version = "0.16.4"; sha256 = "0fa4h9hk1xq6j3zfxvf483sbb4bd17fjl5cdm3rll7z9kaigdqwg"; }
 { name = "json-tools"; publisher = "eriklynd"; version = "1.0.2"; sha256 = "0g5ppkc0rpqaprb3l0dsdkzcgmb24apjrq88bw77qll2ra2n7l7f"; }
 { name = "prettier-vscode"; publisher = "esbenp"; version = "9.5.0"; sha256 = "0h5g746ij36h22v1y2883bqaphds7h1ck8mg8bywn9r723mxdy1g"; }
-{ name = "go"; publisher = "golang"; version = "0.34.1"; sha256 = "0q0xgmv7g77rnx8mzvaws5lh6za98h9hks06yhyzbc98ylba3gff"; }
+{ name = "go"; publisher = "golang"; version = "0.35.0"; sha256 = "1jyxi2lydkpz9837jhpsciq6njbnc2ahp4wvcav6lvp0agcvgbda"; }
 { name = "vscode-graphql"; publisher = "GraphQL"; version = "0.6.0"; sha256 = "1xd593hxhjbbm8w55gx4ngk4jwl5l2kvzvr2daxsjlc1bhnskcrm"; }
 { name = "iceberg"; publisher = "harg"; version = "1.2.0"; sha256 = "0ry1zqiqmh6f3sw32mpr2sax18wwac9khgl41lc8gknikrxp7a8p"; }
 { name = "haskell-linter"; publisher = "hoovercj"; version = "0.0.6"; sha256 = "0fb71cbjx1pyrjhi5ak29wj23b874b5hqjbh68njs61vkr3jlf1j"; }
@@ -39,8 +39,8 @@
 { name = "file-downloader"; publisher = "mindaro-dev"; version = "1.0.12"; sha256 = "1zv488sfy529vym28mkmyl2vkpfhyl9zcwyfk2k7ipq7argjmr60"; }
 { name = "find-jump"; publisher = "mksafi"; version = "1.2.4"; sha256 = "1qk2sl3dazna3zg6nq2m7313jdl67kxm5d3rq0lfmi6k1q2h9sd7"; }
 { name = "theme-monokai-pro-vscode"; publisher = "monokai"; version = "1.1.20"; sha256 = "0ddwqsvsqdjblmb0xlad17czy2837g27ymwvzissz4b9r111xyhx"; }
-{ name = "python"; publisher = "ms-python"; version = "2022.11.11961004"; sha256 = "10969bqyv9f73hg5rvly1aj6vh5wvxbfdmwsxxdps55z3dib692c"; }
-{ name = "jupyter"; publisher = "ms-toolsai"; version = "2022.7.1001981020"; sha256 = "1ga2a4fdv8p0jk6pvf20r9h7pgi8i7nws98r3p63dw524xfzc89r"; }
+{ name = "python"; publisher = "ms-python"; version = "2022.11.11991004"; sha256 = "1cxmzcpmpkrwh95pl7b6vp1411yjl3wmn7w2wd0611rv5r87f23s"; }
+{ name = "jupyter"; publisher = "ms-toolsai"; version = "2022.7.1002011043"; sha256 = "0ignl0mfi87qqsgvxasyj9r7fp85wi1cd1jg1ii4l6f4s2d727b2"; }
 { name = "remote-containers"; publisher = "ms-vscode-remote"; version = "0.242.0"; sha256 = "0zricxw1fyh4j8xb8wxgk6q1f8llji5460c486vdpk129p8dmcbh"; }
 { name = "remote-ssh"; publisher = "ms-vscode-remote"; version = "0.85.2022071315"; sha256 = "195c22wvvw727li8wf0nhfpccgynx9sd48gzz39j8wxmi7qqvjli"; }
 { name = "remote-ssh-edit"; publisher = "ms-vscode-remote"; version = "0.80.0"; sha256 = "0zgrd2909xpr3416cji0ha3yl6gl2ry2f38bvx4lsjfmgik0ic6s"; }
