@@ -261,6 +261,8 @@ in
         nnoremap <leader>T :lcd %:p:h<bar>split term://fish<CR>
         nnoremap <leader>o :split term://fish<CR>
 
+        vnoremap <leader>gl :<C-U>execute ':Git log -L' . line("'<") . ',' . line("'>") . ':%'<CR>
+
         " ======= sad =======================
         map      <leader>C <Plug>(sad-change-backward)
         map      <leader>c <Plug>(sad-change-forward)
