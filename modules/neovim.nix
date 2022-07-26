@@ -371,6 +371,8 @@ in
         # Git
         vim-fugitive
         conflict-marker-vim
+        vim-rhubarb
+
         vim-unimpaired
         pkgs.winshift
         vim-repeat
