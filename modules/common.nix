@@ -33,7 +33,6 @@ with pkgs;
     htop
     jq
     # often broken on m1
-    # kitty
     libuv
     ncdu
     qmk

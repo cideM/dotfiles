@@ -6,7 +6,6 @@
     (import ../../modules/tmux.nix)
     (import ../../modules/ctags.nix)
     (import ../../modules/fish.nix)
-    (import ../../modules/kitty)
     (import ../../modules/common.nix)
     (import ../../modules/alacritty)
     (import ../../modules/vscode)

@@ -4,7 +4,6 @@
     (import ../../modules/neovim.nix)
     (import ../../modules/tmux.nix)
     (import ../../modules/ctags.nix)
-    (import ../../modules/kitty)
     (import ../../modules/fish.nix)
     (import ../../modules/common.nix)
     (import ../../modules/alacritty)
