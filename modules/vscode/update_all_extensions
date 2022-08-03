@@ -1,2 +1,0 @@
-#!/bin/sh
-nix shell nixpkgs#curl nixpkgs#jq nixpkgs#unzip nixpkgs#fish -c fish '-c cat ./modules/vscode/shared_exts.txt | fish ./modules/vscode/update_exts.fish > ./modules/vscode/shared_exts.nix'

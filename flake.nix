@@ -83,10 +83,6 @@
         })
 
         (self: super: {
-          vscodeInsiders = cidem-vsc.packages.${super.system}.vscodeInsiders;
-        })
-
-        (self: super: {
           parinfer-rust = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "parinfer-rust"; src = parinfer-rust; };
         })
 
