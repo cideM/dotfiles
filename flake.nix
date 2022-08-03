@@ -11,8 +11,6 @@
 
     stable.url = "github:NixOS/nixpkgs/nixos-21.11";
 
-    cidem-vsc.url = "github:cideM/visual-studio-code-insiders-nix";
-
     parinfer-rust.url = "github:eraserhd/parinfer-rust";
     parinfer-rust.flake = false;
 
@@ -66,7 +64,6 @@
     , k9s
     , nix-env-fish
     , lucid-fish-prompt
-    , cidem-vsc
     , neovim-nightly-overlay
     , yui
     , spacevimtheme
