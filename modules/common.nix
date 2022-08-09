@@ -4,22 +4,16 @@ with pkgs;
 
 {
   home.packages = [
-    # Unix Rust Replacements
     bat
     exa
     ripgrep
     fd
-
-    # Version control
     gh
     git-lfs
     delta
-
-    # Misc
     bashInteractive
     coreutils-full
     curl
-    dash
     du-dust
     entr
     fastmod
@@ -32,16 +26,12 @@ with pkgs;
     gzip
     htop
     jq
-    # often broken on m1
-    libuv
     ncdu
-    qmk
     rclone
     restic
     rlwrap
     rsync
     time
-    tldr
     tokei
     tree
     universal-ctags
@@ -49,30 +39,7 @@ with pkgs;
     wget
     unzip
     hyperfine
-
-    # Infrastructure
-    # awscli2
-    aws-mfa
-    docker-compose
-    google-cloud-sdk
-    kubectl
-    kubernetes-helm
-
-    # Language stuff
-    luajitPackages.luacheck
-    nixpkgs-fmt
-    nixpkgs-review
-    rust-analyzer
     shellcheck
-    yamllint
-    sumneko-lua-language-server
-    stylua
-
-    # Fonts
-    # liberation_ttf
-    hack-font
-    lato
-    jetbrains-mono
   ];
 
   home.sessionVariables = {

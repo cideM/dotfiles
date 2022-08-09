@@ -193,7 +193,7 @@ in
         set path-=/usr/include list lcs=trail:¬,tab:\ \ 
         set statusline+=\ %f\ %m%=\ %y\ %q\ %3l:%2c\ \|%3p%%\ 
         " Fish is really slow on MacOS somehow
-        set shell=dash
+        set shell=${pkgs.dash}/bin/dash
         let g:yui_comments = 'bg'
         colorscheme yui
 
