@@ -33,7 +33,6 @@
     unixtools.watch
     home-manager.defaultPackage.aarch64-darwin
     operatorMonoFont
-    minikube
   ];
 
   xdg.configFile."nix/nix.conf".text = ''
