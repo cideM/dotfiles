@@ -12,8 +12,6 @@
     parinfer-rust.url = "github:eraserhd/parinfer-rust";
     parinfer-rust.flake = false;
 
-    kubectl-nix.url = "github:cidem/kubectl-nix";
-
     winshift.url = "github:sindrets/winshift.nvim";
     winshift.flake = false;
 
@@ -64,14 +62,9 @@
     , vim-js
     , doomonetheme
     , parinfer-rust
-    , kubectl-nix
     }:
     let
       overlays = [
-        (self: super: {
-          kubectl = kubectl-nix.packages.${super.system}."1_21_2";
-        })
-
         (self: super: {
           parinfer-rust = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "parinfer-rust"; src = parinfer-rust; };
         })
