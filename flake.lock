@@ -83,22 +83,6 @@
         "type": "github"
       }
     },
-    "k9s": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1658073376,
-        "narHash": "sha256-6A6RxvobT0T/Pbd7Zcn8++I/7OVAhXSZI1NhYeDB3iY=",
-        "owner": "derailed",
-        "repo": "k9s",
-        "rev": "ee07b98755437c6a85cd82dfdb377d2c30337f65",
-        "type": "github"
-      },
-      "original": {
-        "owner": "derailed",
-        "repo": "k9s",
-        "type": "github"
-      }
-    },
     "kubectl-nix": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -496,7 +480,6 @@
       "inputs": {
         "doomonetheme": "doomonetheme",
         "home-manager": "home-manager",
-        "k9s": "k9s",
         "kubectl-nix": "kubectl-nix",
         "lspfuzzy": "lspfuzzy",
         "lucid-fish-prompt": "lucid-fish-prompt",

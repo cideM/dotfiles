@@ -9,8 +9,6 @@
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
-    stable.url = "github:NixOS/nixpkgs/nixos-21.11";
-
     parinfer-rust.url = "github:eraserhd/parinfer-rust";
     parinfer-rust.flake = false;
 
@@ -24,9 +22,6 @@
 
     nix-env-fish.url = "github:lilyball/nix-env.fish";
     nix-env-fish.flake = false;
-
-    k9s.url = "github:derailed/k9s";
-    k9s.flake = false;
 
     doomonetheme.url = "github:NTBBloodbath/doom-one.nvim";
     doomonetheme.flake = false;
@@ -61,7 +56,6 @@
     , nixpkgs
     , lspfuzzy
     , winshift
-    , k9s
     , nix-env-fish
     , lucid-fish-prompt
     , neovim-nightly-overlay
@@ -71,7 +65,6 @@
     , doomonetheme
     , parinfer-rust
     , kubectl-nix
-    , stable
     }:
     let
       overlays = [
@@ -121,14 +114,6 @@
         })
       ];
 
-      pkgsCompat = import unstable {
-        system = "x86_64-darwin";
-      };
-
-      pkgsStable = import stable {
-        system = "aarch64-darwin";
-      };
-
       specialArgs = {
         inherit home-manager nix-env-fish lucid-fish-prompt;
       };
@@ -150,8 +135,6 @@
             {
               nixpkgs.overlays = overlays ++ [
                 neovim-nightly-overlay.overlay
-                (self: super: rec { aws-mfa = pkgsStable.aws-mfa; })
-                (self: super: rec { qmk = pkgsStable.qmk; })
               ];
 
               nixpkgs.config = {
