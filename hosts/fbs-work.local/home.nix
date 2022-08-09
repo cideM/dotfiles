@@ -37,8 +37,6 @@
 
   xdg.configFile."nix/nix.conf".text = ''
     experimental-features = nix-command flakes
-    keep-derivations = true
-    keep-outputs = true
   '';
 
   xdg.configFile."nix/registry.json".text =
