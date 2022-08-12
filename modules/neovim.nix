@@ -392,6 +392,7 @@ in
         pkgs.spacevim
         pkgs.yui
         pkgs.doomonetheme
+        pkgs.githubtheme
 
         # Language stuff
         { plugin = pkgs.parinfer-rust; optional = true; }

@@ -47,6 +47,22 @@
         "type": "github"
       }
     },
+    "githubtheme": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1659528005,
+        "narHash": "sha256-wLX81wgl4E50mRig9erbLyrxyGbZllFbHFAQ9+v60W4=",
+        "owner": "projekt0n",
+        "repo": "github-nvim-theme",
+        "rev": "b3f15193d1733cc4e9c9fe65fbfec329af4bdc2a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "projekt0n",
+        "repo": "github-nvim-theme",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -212,6 +228,7 @@
     "root": {
       "inputs": {
         "doomonetheme": "doomonetheme",
+        "githubtheme": "githubtheme",
         "home-manager": "home-manager",
         "lspfuzzy": "lspfuzzy",
         "lucid-fish-prompt": "lucid-fish-prompt",

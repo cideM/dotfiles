@@ -27,6 +27,9 @@
     spacevimtheme.url = "github:liuchengxu/space-vim-theme";
     spacevimtheme.flake = false;
 
+    githubtheme.url = "github:projekt0n/github-nvim-theme";
+    githubtheme.flake = false;
+
     vim-js.url = "github:yuezk/vim-js";
     vim-js.flake = false;
 
@@ -62,6 +65,7 @@
     , vim-js
     , doomonetheme
     , parinfer-rust
+    , githubtheme
     }:
     let
       overlays = [
@@ -79,6 +83,10 @@
 
         (self: super: {
           doomonetheme = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "doomonetheme"; src = doomonetheme; };
+        })
+
+        (self: super: {
+          githubtheme = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "githubtheme"; src = githubtheme; };
         })
 
         (self: super: {
