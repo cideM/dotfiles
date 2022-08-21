@@ -27,9 +27,7 @@
     insomnia
     pavucontrol
     spotify
-    zathura
     obsidian
-    simplescreenrecorder
 
     gnome.gnome-tweaks
 
