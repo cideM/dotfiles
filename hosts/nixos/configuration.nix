@@ -10,10 +10,6 @@
   boot.loader.systemd-boot.configurationLimit = 5;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelParams = [
-    "processor.max_cstate=1"
-    "memtest=6"
-  ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.kernel.sysctl = {
     "vm.max_map_count" = 262144;
@@ -44,12 +40,7 @@
     fonts = [ pkgs.operatorMonoFont ];
   };
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-13.6.9"
-  ];
-
   systemd.network.enable = true;
-  systemd.coredump.enable = true;
 
   hardware.steam-hardware.enable = true;
   programs.steam = {
@@ -95,8 +86,6 @@
     gnumake
     vim
     git
-    # compiles forever atm
-    # chromium
   ];
 
   hardware.nvidia.modesetting.enable = true;
