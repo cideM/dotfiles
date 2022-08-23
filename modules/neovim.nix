@@ -393,6 +393,7 @@ in
         pkgs.yui
         pkgs.doomonetheme
         pkgs.githubtheme
+        tokyonight-nvim
 
         # Language stuff
         { plugin = pkgs.parinfer-rust; optional = true; }
