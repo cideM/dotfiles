@@ -23,6 +23,7 @@ with pkgs;
     gnugrep
     gnupg
     gnused
+    nixpkgs-fmt
     gzip
     htop
     jq
