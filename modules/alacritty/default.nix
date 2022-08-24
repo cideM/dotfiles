@@ -2,7 +2,7 @@
 {
   programs.alacritty = {
     settings = {
-      colors = (import ./colors.nix).papercolor;
+      colors = (import ./colors.nix).tokyonight_day;
       font = (import ./fonts.nix).mono;
       key_bindings = [
         {
