@@ -240,6 +240,7 @@
         "operatorMono": "operatorMono",
         "parinfer-rust": "parinfer-rust",
         "spacevimtheme": "spacevimtheme",
+        "truezen": "truezen",
         "unstable": "unstable",
         "vim-js": "vim-js",
         "winshift": "winshift",
@@ -259,6 +260,22 @@
       "original": {
         "owner": "liuchengxu",
         "repo": "space-vim-theme",
+        "type": "github"
+      }
+    },
+    "truezen": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1659883982,
+        "narHash": "sha256-QfoKFw3//Mc+2G91MpPPDCfr0t5Pvvrvx5H6gMDi/Lw=",
+        "owner": "Pocco81",
+        "repo": "true-zen.nvim",
+        "rev": "98740c76254c65576ec294551028b65081053588",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Pocco81",
+        "repo": "true-zen.nvim",
         "type": "github"
       }
     },

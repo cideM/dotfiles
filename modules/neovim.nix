@@ -382,7 +382,7 @@ in
         fzf-vim
         vim-gutentags
         vim-sandwich
-
+        pkgs.truezen
         sad-vim
         vim-dirvish
         lightspeed-nvim

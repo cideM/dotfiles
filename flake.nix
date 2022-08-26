@@ -21,6 +21,9 @@
     nix-env-fish.url = "github:lilyball/nix-env.fish";
     nix-env-fish.flake = false;
 
+    truezen.url = "github:Pocco81/true-zen.nvim";
+    truezen.flake = false;
+
     doomonetheme.url = "github:NTBBloodbath/doom-one.nvim";
     doomonetheme.flake = false;
 
@@ -66,6 +69,7 @@
     , doomonetheme
     , parinfer-rust
     , githubtheme
+    , truezen
     }:
     let
       overlays = [
@@ -79,6 +83,10 @@
 
         (self: super: {
           yui = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "yui"; src = yui; };
+        })
+
+        (self: super: {
+          truezen = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "truezen"; src = truezen; };
         })
 
         (self: super: {
