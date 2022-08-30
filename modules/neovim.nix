@@ -313,6 +313,7 @@ in
         nvim_lsp.rust_analyzer.setup{on_attach=on_attach}
         nvim_lsp.gopls.setup{on_attach=on_attach}
         nvim_lsp.sumneko_lua.setup{}
+        nvim_lsp.eslint.setup{}
 
         require('lspfuzzy').setup {}
 

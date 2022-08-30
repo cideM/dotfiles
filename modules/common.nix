@@ -41,6 +41,7 @@ with pkgs;
     unzip
     hyperfine
     shellcheck
+    nodePackages.vscode-langservers-extracted
   ];
 
   home.sessionVariables = {
