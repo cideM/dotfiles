@@ -339,7 +339,7 @@ in
           ensure_installed = {},
           highlight = {
             enable = true,
-            disable = {"haskell","nix"},
+            disable = {"javascript"},
           },
           incremental_selection = {
             enable = true,
