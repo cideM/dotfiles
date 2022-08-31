@@ -195,7 +195,7 @@ in
         " Fish is really slow on MacOS somehow
         set shell=${pkgs.dash}/bin/dash
         let g:yui_comments = 'bg'
-        colorscheme tokyonight
+        colorscheme edge
 
         let g:EditorConfig_max_line_indicator = "exceeding"
         let g:EditorConfig_preserve_formatoptions = 1
