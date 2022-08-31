@@ -10,7 +10,6 @@ with pkgs;
     fd
     gh
     git-lfs
-    delta
     bashInteractive
     coreutils-full
     curl
