@@ -390,9 +390,11 @@ in
 
         # Themes
         edge
+        one-nvim
         pkgs.spacevim
         pkgs.yui
         pkgs.doomonetheme
+        material-nvim
         pkgs.githubtheme
         tokyonight-nvim
 

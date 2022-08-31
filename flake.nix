@@ -24,6 +24,9 @@
     truezen.url = "github:Pocco81/true-zen.nvim";
     truezen.flake = false;
 
+    rosepine.url = "github:rose-pine/neovim";
+    rosepine.flake = false;
+
     doomonetheme.url = "github:NTBBloodbath/doom-one.nvim";
     doomonetheme.flake = false;
 
@@ -67,6 +70,7 @@
     , spacevimtheme
     , vim-js
     , doomonetheme
+    , rosepine
     , parinfer-rust
     , githubtheme
     , truezen
@@ -91,6 +95,10 @@
 
         (self: super: {
           doomonetheme = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "doomonetheme"; src = doomonetheme; };
+        })
+
+        (self: super: {
+          rosepine = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "rosepine"; src = rosepine; };
         })
 
         (self: super: {
