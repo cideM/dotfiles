@@ -6,6 +6,7 @@ with pkgs;
   home.packages = [
     bat
     exa
+    kubectl
     ripgrep
     fd
     gh

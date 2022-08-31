@@ -78,6 +78,31 @@
     let
       overlays = [
         (self: super: {
+          kubectl =
+            let
+              urls = {
+                "aarch64-darwin" = "darwin/amd64";
+                "x86_64-linux" = "linux/amd64";
+              };
+            in
+            super.stdenv.mkDerivation rec {
+              name = "kubectl";
+              version = "1.20.0";
+              src = super.fetchurl {
+                url = "https://dl.k8s.io/release/v${version}/bin/${urls."${super.system}"}/kubectl";
+                sha256 = "1jlzrlzn063kq0w6yvrdavfiwpdm7g644yh9xknhaq05pd56l142";
+              };
+              dontConfigure = true;
+              dontUnpack = true;
+              dontBuild = true;
+              installPhase = ''
+                mkdir -p $out/bin
+                cp $src $out/bin/kubectl
+              '';
+            };
+        })
+
+        (self: super: {
           parinfer-rust = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "parinfer-rust"; src = parinfer-rust; };
         })
 
