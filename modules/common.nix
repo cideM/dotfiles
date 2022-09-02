@@ -6,6 +6,7 @@ with pkgs;
   home.packages = [
     bashInteractive
     bat
+    helix
     coreutils-full
     curl
     du-dust
