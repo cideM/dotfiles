@@ -4,44 +4,47 @@ with pkgs;
 
 {
   home.packages = [
-    bat
-    exa
-    kubectl
-    ripgrep
-    fd
-    gh
-    git-lfs
     bashInteractive
+    bat
     coreutils-full
     curl
     du-dust
     entr
+    exa
     fastmod
+    fd
     findutils
     fzf
     gawk
+    gh
+    git-lfs
     gnugrep
     gnupg
     gnused
-    nixpkgs-fmt
     gzip
     htop
+    hyperfine
     jq
+    kubectl
+    luajitPackages.luacheck
     ncdu
+    nixpkgs-fmt
+    nixpkgs-review
+    nodePackages.vscode-langservers-extracted
     rclone
     restic
+    ripgrep
     rlwrap
     rsync
+    shellcheck
+    stylua
     time
     tokei
     tree
     universal-ctags
+    unzip
     vim
     wget
-    unzip
-    hyperfine
-    shellcheck
-    nodePackages.vscode-langservers-extracted
   ];
 
   home.sessionVariables = {
