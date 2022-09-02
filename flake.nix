@@ -180,7 +180,7 @@
             }
             {
               nixpkgs.overlays = overlays ++ [
-                neovim-nightly-overlay.overlay
+                # neovim-nightly-overlay.overlay
               ];
 
               nixpkgs.config = {
@@ -202,7 +202,9 @@
             ./hosts/nixos/configuration.nix
             home-manager.nixosModules.home-manager
             {
-              nixpkgs.overlays = overlays ++ [ ];
+              nixpkgs.overlays = overlays ++ [
+                neovim-nightly-overlay.overlay
+              ];
               nixpkgs.config = {
                 allowUnfree = true;
               };
