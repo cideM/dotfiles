@@ -334,6 +334,8 @@ in
           }
         })
 
+        require'treesitter-context'.setup{ enable = true }
+
         -- Treesitter
         require'nvim-treesitter.configs'.setup {
           ensure_installed = {},
@@ -379,6 +381,7 @@ in
         vim-sayonara
         QFEnter
         fzfWrapper
+        nvim-treesitter-context
         indent-blankline-nvim
         fzf-vim
         vim-gutentags
