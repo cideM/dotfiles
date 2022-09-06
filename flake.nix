@@ -91,7 +91,7 @@
             in
             super.stdenv.mkDerivation rec {
               name = "kubectl";
-              version = "1.20.0";
+              version = "1.21.0";
               src = super.fetchurl {
                 url = "https://dl.k8s.io/release/v${version}/bin/${urls."${super.system}"}/kubectl";
                 sha256 = shas."${super.system}";
