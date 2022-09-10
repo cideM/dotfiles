@@ -198,7 +198,7 @@
             ./hosts/nixos/configuration.nix
             home-manager.nixosModules.home-manager
             {
-              nixpkgs.overlays = overlays ++ [ neovim-nightly-overlay.overlay ];
+              nixpkgs.overlays = overlays ++ [];
               nixpkgs.config = {
                 allowUnfree = true;
               };
@@ -206,7 +206,7 @@
               home-manager.useUserPackages = false;
               home-manager.verbose = true;
               home-manager.backupFileExtension = "hm-backup";
-              home-manager.users.tifa = import ./hosts/nixos/home.nix;
+              home-manager.users.fbrs = import ./hosts/nixos/home.nix;
               home-manager.extraSpecialArgs = specialArgs;
             }
           ];

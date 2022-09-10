@@ -6,31 +6,38 @@
       ./hardware-configuration.nix
     ];
 
+  # Bootloader.
   boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 5;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.kernel.sysctl = {
-    "vm.max_map_count" = 262144;
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+
+  # Setup keyfile
+  boot.initrd.secrets = {
+    "/crypto_keyfile.bin" = null;
   };
+
+  # Enable swap on luks
+  boot.initrd.luks.devices."luks-9e289554-acf0-4056-9519-12d23516503b".device = "/dev/disk/by-uuid/9e289554-acf0-4056-9519-12d23516503b";
+  boot.initrd.luks.devices."luks-9e289554-acf0-4056-9519-12d23516503b".keyFile = "/crypto_keyfile.bin";
+
+  boot.loader.systemd-boot.configurationLimit = 5;
 
   services.logind.extraConfig = ''
     RuntimeDirectorySize=20G
   '';
 
-  services.openvpn = {
-    servers = {
-      fra1 = {
-        config = "config /home/tifa/fra1.ovpn";
-        autoStart = false;
-      };
-      nyc = {
-        config = "config /home/tifa/expressvpn_usa_new_york_udp.ovpn";
-        autoStart = false;
-      };
-    };
-  };
+  # services.openvpn = {
+  #   servers = {
+  #     fra1 = {
+  #       config = "config /home/fbrs/fra1.ovpn";
+  #       autoStart = false;
+  #     };
+  #     nyc = {
+  #       config = "config /home/fbrs/expressvpn_usa_new_york_udp.ovpn";
+  #       autoStart = false;
+  #     };
+  #   };
+  # };
 
   fonts = {
     fontDir.enable = true;
@@ -40,9 +47,6 @@
     fonts = [ pkgs.operatorMonoFont ];
   };
 
-  systemd.network.enable = true;
-
-  hardware.steam-hardware.enable = true;
   programs.steam = {
     enable = true;
   };
@@ -52,12 +56,24 @@
     networkmanager.enable = true;
   };
 
-  i18n.defaultLocale = "en_US.UTF-8";
   i18n = {
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "de_DE.utf8";
+      LC_IDENTIFICATION = "de_DE.utf8";
+      LC_MEASUREMENT = "de_DE.utf8";
+      LC_MONETARY = "de_DE.utf8";
+      LC_NAME = "de_DE.utf8";
+      LC_NUMERIC = "de_DE.utf8";
+      LC_PAPER = "de_DE.utf8";
+      LC_TELEPHONE = "de_DE.utf8";
+      LC_TIME = "de_DE.utf8";
+    };
     inputMethod = {
       enabled = "fcitx5";
       fcitx5.addons = with pkgs; [
         fcitx5-mozc
+        fcitx5-gtk
         fcitx5-chinese-addons
       ];
     };
@@ -67,7 +83,7 @@
 
   nix = {
     settings = {
-      trusted-users = [ "root" "tifa" ];
+      trusted-users = [ "root" "fbrs" ];
       extra-sandbox-paths = [ "/bin/sh=${pkgs.bash}/bin/sh" ];
     };
     package = pkgs.nixUnstable;
@@ -88,9 +104,7 @@
     git
   ];
 
-  hardware.nvidia.modesetting.enable = true;
   programs.xwayland.enable = true;
-  hardware.opengl.enable = true;
 
   services.xserver = {
     enable = true;
@@ -123,54 +137,37 @@
 
   programs.adb.enable = true;
 
-  services.openssh = {
-    enable = false;
-    authorizedKeysFiles = [ "/home/tifa/.ssh/authorized_keys" ];
-    passwordAuthentication = false; # originally true
-    permitRootLogin = "no";
-    kbdInteractiveAuthentication = false;
-  };
-
   services.geoclue2.enable = true;
+  services.printing.enable = true;
 
+  sound.enable = true;
   security.rtkit.enable = true;
+   
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+   
   hardware = {
+    nvidia.modesetting.enable = true;
+    opengl.enable = true;
+    # Enable udev rules for Steam hardware such as the Steam Controller, other supported controllers and the HTC Vive
+    steam-hardware.enable = true;
     pulseaudio.enable = false;
-    cpu.amd.updateMicrocode = true;
+    # Allow installing more firmwares, without this WiFi might not work
+    # https://github.com/NixOS/nixpkgs/issues/163586
+    # But it's unclear if I actually need this
+    # Okay I think I should enable this since updateMicrocode depends on this in hardware-configuration.nix
     enableRedistributableFirmware = true;
   };
 
-  # sound.enable = true;
-  # hardware.pulseaudio =
-  #   {
-  #     enable = true;
-  #     package = pkgs.pulseaudioFull;
-  #     extraConfig = ''
-  #       load-module module-echo-cancel
-  #     '';
-  #     extraModules = [ pkgs.pulseaudio-modules-bt ];
-  #   };
-
-  # hardware.bluetooth = {
-  #   enable = true;
-  #   settings = {
-  #     General = {
-  #       Enable = "Source,Sink,Media,Socket";
-  #       ControllerMode = "bedr";
-  #     };
-  #   };
-  # };
-
   xdg.mime.enable = true;
 
-  users.users.tifa = {
+  users.users.fbrs = {
     isNormalUser = true;
+    description = "Florian";
     shell = pkgs.fish;
     extraGroups = [ "adbusers" "wheel" "docker" "networkmanager" ];
   };
@@ -178,17 +175,13 @@
   virtualisation.docker.enable = true;
   virtualisation.libvirtd.enable = true;
 
+  nixpkgs.config.allowUnfree = true;
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "20.03"; # Did you read the comment?
-
-  boot.initrd.luks.devices.luksroot = {
-    device = "/dev/disk/by-uuid/3fd381f4-c774-43cd-b229-77d8969ca4b5";
-    preLVM = true;
-    allowDiscards = true;
-  };
+  system.stateVersion = "22.05"; # Did you read the comment?
 }

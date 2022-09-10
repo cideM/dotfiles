@@ -10,22 +10,38 @@
     ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ "dm-snapshot" ];
+  boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  boot.kernel.sysctl = {
+    "vm.max_map_count" = 262144;
+  };
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/f282d547-46e2-4987-b96e-c77cb274b804";
+    { device = "/dev/disk/by-uuid/8b2970b7-e9d4-4516-ba8d-f319f1af1325";
       fsType = "ext4";
     };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/F70F-3BEF";
+  boot.initrd.luks.devices."luks-3f717a24-e783-41a7-8887-e0e4b62879a6".device = "/dev/disk/by-uuid/3f717a24-e783-41a7-8887-e0e4b62879a6";
+
+  fileSystems."/boot/efi" =
+    { device = "/dev/disk/by-uuid/2F55-3BD2";
       fsType = "vfat";
     };
 
-  swapDevices = [ ];
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/460f326f-feff-4265-ac0c-c602633d5223"; }
+    ];
 
+  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
+  # (the default) this is the recommended approach. When using systemd-networkd it's
+  # still possible to use this option, but it's recommended to use it in conjunction
+  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
+  networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp7s0.useDHCP = lib.mkDefault true;
+
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   # high-resolution display
   hardware.video.hidpi.enable = lib.mkDefault true;
 }
