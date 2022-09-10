@@ -48,8 +48,7 @@
     roboto
     roboto-mono
 
-    firefox
-    google-chrome
+    firefox-wayland
 
     slack
   ];
