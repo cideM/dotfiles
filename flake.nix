@@ -84,13 +84,17 @@
                 "aarch64-darwin" = "darwin/amd64";
                 "x86_64-linux" = "linux/amd64";
               };
+              shas = {
+                "aarch64-darwin" = "1jlzrlzn063kq0w6yvrdavfiwpdm7g644yh9xknhaq05pd56l142";
+                "x86_64-linux" = "pYlQB/Mx8I0uCC6xJFh2SUlVnzC8xb6uJsOPPickJiw=";
+              };
             in
             super.stdenv.mkDerivation rec {
               name = "kubectl";
               version = "1.20.0";
               src = super.fetchurl {
                 url = "https://dl.k8s.io/release/v${version}/bin/${urls."${super.system}"}/kubectl";
-                sha256 = "1jlzrlzn063kq0w6yvrdavfiwpdm7g644yh9xknhaq05pd56l142";
+                sha256 = shas."${super.system}";
               };
               dontConfigure = true;
               dontUnpack = true;
