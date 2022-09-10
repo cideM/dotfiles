@@ -202,7 +202,7 @@
             ./hosts/nixos/configuration.nix
             home-manager.nixosModules.home-manager
             {
-              nixpkgs.overlays = overlays ++ [];
+              nixpkgs.overlays = overlays ++ [ ];
               nixpkgs.config = {
                 allowUnfree = true;
               };
