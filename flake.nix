@@ -86,7 +86,7 @@
               };
               shas = {
                 "aarch64-darwin" = "1jlzrlzn063kq0w6yvrdavfiwpdm7g644yh9xknhaq05pd56l142";
-                "x86_64-linux" = "pYlQB/Mx8I0uCC6xJFh2SUlVnzC8xb6uJsOPPickJiw=";
+                "x86_64-linux" = "sha256-n3Ty+n7jKtB+FyEXJZkiSEcDEMoZiCFFGIBrObHa2fA=";
               };
             in
             super.stdenv.mkDerivation rec {
