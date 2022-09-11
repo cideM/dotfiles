@@ -151,7 +151,6 @@
   };
    
   hardware = {
-    nvidia.modesetting.enable = true;
     opengl.enable = true;
     # Enable udev rules for Steam hardware such as the Steam Controller, other supported controllers and the HTC Vive
     steam-hardware.enable = true;
