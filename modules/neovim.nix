@@ -245,6 +245,8 @@ in
         nmap ga <Plug>(EasyAlign)
 
         " ======= fzf =======================
+        let g:fzf_preview_window = ['up:60%', 'ctrl-/']
+        let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
         nnoremap <leader>f :Files<cr>
         nnoremap <leader>l :BLines<cr>
         nnoremap <leader>t :Tags<cr>
