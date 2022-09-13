@@ -27,6 +27,7 @@ with pkgs;
     hyperfine
     jq
     kubectl
+    tldr
     luajitPackages.luacheck
     ncdu
     nixpkgs-fmt
