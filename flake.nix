@@ -102,6 +102,7 @@
               installPhase = ''
                 mkdir -p $out/bin
                 cp $src $out/bin/kubectl
+                chmod +x $out/bin/kubectl
               '';
             };
         })
