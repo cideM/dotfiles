@@ -26,19 +26,6 @@
     RuntimeDirectorySize=20G
   '';
 
-  # services.openvpn = {
-  #   servers = {
-  #     fra1 = {
-  #       config = "config /home/fbrs/fra1.ovpn";
-  #       autoStart = false;
-  #     };
-  #     nyc = {
-  #       config = "config /home/fbrs/expressvpn_usa_new_york_udp.ovpn";
-  #       autoStart = false;
-  #     };
-  #   };
-  # };
-
   fonts = {
     fontDir.enable = true;
     fontconfig = {
