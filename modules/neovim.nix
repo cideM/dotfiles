@@ -195,6 +195,7 @@ in
         " Fish is really slow on MacOS somehow
         set shell=${pkgs.dash}/bin/dash
         let g:yui_comments = 'bg'
+        let g:github_hide_inactive_statusline = v:false
         colorscheme github_light
 
         let g:EditorConfig_max_line_indicator = "exceeding"
