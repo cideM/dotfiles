@@ -85,7 +85,7 @@
                 "x86_64-linux" = "linux/amd64";
               };
               shas = {
-                "aarch64-darwin" = "1jlzrlzn063kq0w6yvrdavfiwpdm7g644yh9xknhaq05pd56l142";
+                "aarch64-darwin" = "06y4h34kbahqlj9q1dsr3kbpj3yszf4mx9l1wjyxr1h4b5qw5p7r";
                 "x86_64-linux" = "sha256-n3Ty+n7jKtB+FyEXJZkiSEcDEMoZiCFFGIBrObHa2fA=";
               };
             in
