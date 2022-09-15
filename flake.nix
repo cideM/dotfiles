@@ -181,7 +181,7 @@
             }
             {
               nixpkgs.overlays = overlays ++ [
-                # neovim-nightly-overlay.overlay
+                neovim-nightly-overlay.overlay
               ];
 
               nixpkgs.config = {
