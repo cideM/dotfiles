@@ -81,6 +81,9 @@ in
         set foldmethod=expr
         set foldexpr=nvim_treesitter#foldexpr()
       '';
+      html = ''
+        setl formatprg=prettier\ --parser\ html\ --stdin-filepath\ %
+      '';
       css = ''
         setl formatprg=prettier\ --parser\ css\ --stdin-filepath\ %
       '';
