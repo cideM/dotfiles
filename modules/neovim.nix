@@ -196,7 +196,7 @@ in
         set shell=${pkgs.dash}/bin/dash
         let g:yui_comments = 'bg'
         let g:github_hide_inactive_statusline = v:false
-        colorscheme space_vim_theme
+        colorscheme yui
 
         let g:EditorConfig_max_line_indicator = "exceeding"
         let g:EditorConfig_preserve_formatoptions = 1
