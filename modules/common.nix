@@ -9,6 +9,7 @@ with pkgs;
     coreutils-full
     curl
     du-dust
+    anki-bin
     entr
     exa
     fastmod
