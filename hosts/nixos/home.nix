@@ -42,8 +42,7 @@
     noto-fonts-emoji
 
     source-han-sans
-    source-han-sans-japanese
-    source-han-serif-japanese
+    source-han-serif
 
     roboto
     roboto-mono
