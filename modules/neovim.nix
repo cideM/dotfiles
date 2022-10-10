@@ -323,9 +323,10 @@ in
 
         require('lspfuzzy').setup {}
 
-        require'lightspeed'.setup {
-          ignore_case = true,
-        }
+        require('leap').set_default_keymaps()
+        -- require'lightspeed'.setup {
+        --   ignore_case = true,
+        -- }
 
         require("winshift").setup({
           highlight_moving_win = true,  -- Highlight the window being moved
@@ -391,11 +392,12 @@ in
         indent-blankline-nvim
         fzf-vim
         vim-gutentags
+        pkgs.nvim-leap
         vim-sandwich
         pkgs.truezen
         sad-vim
         vim-dirvish
-        lightspeed-nvim
+        # lightspeed-nvim
 
         # Themes
         edge

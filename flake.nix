@@ -9,6 +9,9 @@
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
+    nvim-leap.url = "github:ggandor/leap.nvim";
+    nvim-leap.flake = false;
+
     parinfer-rust.url = "github:eraserhd/parinfer-rust";
     parinfer-rust.flake = false;
 
@@ -72,6 +75,7 @@
     , doomonetheme
     , rosepine
     , parinfer-rust
+    , nvim-leap
     , githubtheme
     , truezen
     }:
@@ -105,6 +109,10 @@
                 chmod +x $out/bin/kubectl
               '';
             };
+        })
+
+        (self: super: {
+          nvim-leap = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "nvim-leap"; src = nvim-leap; };
         })
 
         (self: super: {

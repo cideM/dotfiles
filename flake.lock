@@ -192,6 +192,22 @@
         "type": "github"
       }
     },
+    "nvim-leap": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1664617317,
+        "narHash": "sha256-xmqb3s31J1UxifXauBzBo5EkhafBEnq2YUYKRXJLGB0=",
+        "owner": "ggandor",
+        "repo": "leap.nvim",
+        "rev": "5a09c30bf676d1392ff00eb9a41e0a1fc9b60a1b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ggandor",
+        "repo": "leap.nvim",
+        "type": "github"
+      }
+    },
     "operatorMono": {
       "flake": false,
       "locked": {
@@ -237,6 +253,7 @@
         "nixpkgs": [
           "unstable"
         ],
+        "nvim-leap": "nvim-leap",
         "operatorMono": "operatorMono",
         "parinfer-rust": "parinfer-rust",
         "rosepine": "rosepine",
