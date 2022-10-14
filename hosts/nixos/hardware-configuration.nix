@@ -5,10 +5,12 @@
 
 {
   imports =
-    [ (modulesPath + "/hardware/network/broadcom-43xx.nix")
+    [
+      (modulesPath + "/hardware/network/broadcom-43xx.nix")
       (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
+  boot.supportedFilesystems = [ "ntfs" ];
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
@@ -18,20 +20,21 @@
   };
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/8b2970b7-e9d4-4516-ba8d-f319f1af1325";
+    {
+      device = "/dev/disk/by-uuid/8b2970b7-e9d4-4516-ba8d-f319f1af1325";
       fsType = "ext4";
     };
 
   boot.initrd.luks.devices."luks-3f717a24-e783-41a7-8887-e0e4b62879a6".device = "/dev/disk/by-uuid/3f717a24-e783-41a7-8887-e0e4b62879a6";
 
   fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/2F55-3BD2";
+    {
+      device = "/dev/disk/by-uuid/2F55-3BD2";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/460f326f-feff-4265-ac0c-c602633d5223"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/460f326f-feff-4265-ac0c-c602633d5223"; }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
