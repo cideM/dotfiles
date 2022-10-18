@@ -13,7 +13,6 @@
 
   programs.alacritty.enable = true;
   programs.alacritty.settings.font.size = 14;
-  programs.alacritty.settings.font.use_thin_strokes = true;
 
   home.stateVersion = "20.09";
 
