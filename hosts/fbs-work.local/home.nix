@@ -29,7 +29,7 @@
   };
 
   home.packages = with pkgs; [
-    nixFlakes
+    nixVersions.stable
     unixtools.watch
     home-manager.defaultPackage.aarch64-darwin
     operatorMonoFont
