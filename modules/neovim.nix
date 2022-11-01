@@ -264,8 +264,8 @@ in
 
         nnoremap <leader>/ :nohlsearch<CR>
 
-        nnoremap <leader>T :lcd %:p:h<bar>split term://fish<CR>
-        nnoremap <leader>o :split term://fish<CR>
+        nnoremap <leader>T :split<bar>lcd %:p:h<bar>term fish<CR>
+        nnoremap <leader>o :split<bar>term fish<CR>
 
         vnoremap <leader>gl :<C-U>execute ':Git log -L' . line("'<") . ',' . line("'>") . ':%'<CR>
 
