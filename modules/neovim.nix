@@ -291,7 +291,7 @@ in
         packadd nvim-lspconfig
         lua <<EOF
         vim.api.nvim_set_keymap('n', '<leader>L', "<cmd>lua vim.diagnostic.setloclist()<cr>", { noremap=true, silent=true })
-        vim.api.nvim_set_keymap('n', '<leader>d', "<cmd>lua vim.lsp.buf.document_symbol()<cr>", { noremap=true, silent=true })
+        vim.api.nvim_set_keymap('n', '<leader>]', "<cmd>lua vim.lsp.buf.document_symbol()<cr>", { noremap=true, silent=true })
         vim.api.nvim_set_keymap('i', '<c-h>', "<cmd>lua vim.lsp.buf.signature_help()<cr>", { noremap=true, silent=true })
         vim.api.nvim_set_keymap('n', '<leader>w', "<cmd>lua vim.lsp.buf.workspace_symbol()<cr>", { noremap=true, silent=true })
         vim.api.nvim_set_keymap('n', '<leader>e', "<cmd>lua vim.lsp.buf.rename()<cr>", { noremap=true, silent=true })
@@ -323,10 +323,7 @@ in
 
         require('lspfuzzy').setup {}
 
-        require('leap').set_default_keymaps()
-        -- require'lightspeed'.setup {
-        --   ignore_case = true,
-        -- }
+        require('leap').add_default_mappings()
 
         require("winshift").setup({
           highlight_moving_win = true,  -- Highlight the window being moved
@@ -397,7 +394,6 @@ in
         pkgs.truezen
         sad-vim
         vim-dirvish
-        # lightspeed-nvim
 
         # Themes
         edge
