@@ -192,6 +192,38 @@
         "type": "github"
       }
     },
+    "nvim-catppuccin-theme": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1667749312,
+        "narHash": "sha256-vhKhEXCkmz0KH8LlZzcOvGkvdwp7TtI7ZV7ZxojgnAI=",
+        "owner": "catppuccin",
+        "repo": "nvim",
+        "rev": "cd676faa020b34e6617398835b5fa3d1c2e8895c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "nvim",
+        "type": "github"
+      }
+    },
+    "nvim-kanagawa-theme": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1667989325,
+        "narHash": "sha256-OTxkCnNo4Pg8UppJpxPMy+FVP0Ebgvc6rEsUPRUxn4M=",
+        "owner": "rebelot",
+        "repo": "kanagawa.nvim",
+        "rev": "52cfa270317121672c1416c725361fa653684de0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rebelot",
+        "repo": "kanagawa.nvim",
+        "type": "github"
+      }
+    },
     "nvim-leap": {
       "flake": false,
       "locked": {
@@ -253,6 +285,8 @@
         "nixpkgs": [
           "unstable"
         ],
+        "nvim-catppuccin-theme": "nvim-catppuccin-theme",
+        "nvim-kanagawa-theme": "nvim-kanagawa-theme",
         "nvim-leap": "nvim-leap",
         "operatorMono": "operatorMono",
         "parinfer-rust": "parinfer-rust",

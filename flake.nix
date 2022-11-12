@@ -12,6 +12,12 @@
     nvim-leap.url = "github:ggandor/leap.nvim";
     nvim-leap.flake = false;
 
+    nvim-catppuccin-theme.url = "github:catppuccin/nvim";
+    nvim-catppuccin-theme.flake = false;
+
+    nvim-kanagawa-theme.url = "github:rebelot/kanagawa.nvim";
+    nvim-kanagawa-theme.flake = false;
+
     parinfer-rust.url = "github:eraserhd/parinfer-rust";
     parinfer-rust.flake = false;
 
@@ -75,6 +81,8 @@
     , doomonetheme
     , rosepine
     , parinfer-rust
+    , nvim-kanagawa-theme
+    , nvim-catppuccin-theme
     , nvim-leap
     , githubtheme
     , truezen
@@ -113,6 +121,14 @@
 
         (self: super: {
           nvim-leap = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "nvim-leap"; src = nvim-leap; };
+        })
+
+        (self: super: {
+          nvim-kanagawa-theme = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "nvim-kanagawa-theme"; src = nvim-kanagawa-theme; };
+        })
+
+        (self: super: {
+          nvim-catppuccin-theme = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "nvim-catppuccin-theme"; src = nvim-catppuccin-theme; };
         })
 
         (self: super: {

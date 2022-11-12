@@ -392,6 +392,8 @@ in
         fzf-vim
         vim-gutentags
         pkgs.nvim-leap
+        pkgs.nvim-kanagawa-theme
+        pkgs.nvim-catppuccin-theme
         vim-sandwich
         pkgs.truezen
         sad-vim
