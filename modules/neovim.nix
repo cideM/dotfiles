@@ -317,6 +317,7 @@ in
         vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
 
         nvim_lsp.rust_analyzer.setup{}
+        nvim_lsp.tsserver.setup{}
         nvim_lsp.gopls.setup{}
         nvim_lsp.sumneko_lua.setup{}
         nvim_lsp.eslint.setup{}
