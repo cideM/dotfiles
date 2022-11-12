@@ -198,6 +198,7 @@ in
         " Fish is really slow on MacOS somehow
         set shell=${pkgs.dash}/bin/dash
         let g:yui_comments = 'bg'
+        let g:material_style = 'lighter'
         let g:github_hide_inactive_statusline = v:false
         colorscheme yui
 
