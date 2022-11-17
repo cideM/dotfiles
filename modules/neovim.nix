@@ -113,7 +113,7 @@ in
         set foldexpr=nvim_treesitter#foldexpr()
       '';
       sql = ''
-        setl formatprg=${pkgs.pgformatter}/bin/pg_format
+        setl formatprg=${pkgs.pgformatter}/bin/pg_format -g
       '';
       go = ''
         setl formatprg=gofmt makeprg=go\ build\ -o\ /dev/null
