@@ -342,6 +342,8 @@ in
 
         require'treesitter-context'.setup{ enable = true }
 
+        require('gitsigns').setup()
+
         -- Treesitter
         require'nvim-treesitter.configs'.setup {
           ensure_installed = {},
@@ -372,6 +374,7 @@ in
 
         # Git
         vim-fugitive
+        gitsigns-nvim
         conflict-marker-vim
         vim-rhubarb
 
