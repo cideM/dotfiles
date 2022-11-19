@@ -75,9 +75,6 @@ in
         setl wildignore+=*node_modules*,package-lock.json,yarn-lock.json
         setl errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m,%-G%.%#
         setl makeprg=${pkgs.nodePackages.eslint}/bin/eslint\ --format\ compact
-        nnoremap <buffer> <silent> <localleader>f :!${pkgs.nodePackages.eslint}/bin/eslint --fix %<cr>
-        nnoremap <buffer> <silent> <localleader>F :%!prettier --parser typescript --stdin-filepath %<cr>
-        nnoremap <buffer> <silent> <localleader>d :!prettier --version<cr>
         set foldmethod=expr
         set foldexpr=nvim_treesitter#foldexpr()
       '';
