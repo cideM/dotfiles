@@ -235,9 +235,12 @@ in
         tnoremap <Esc>     <C-\><C-n>
         nnoremap <BS>      <C-^>
         nnoremap <leader><leader> :update<cr>
-        nnoremap <leader>z        :wq<cr>
         nnoremap <Leader>q :Sayonara<CR>
         nnoremap <Leader>Q :Sayonara!<CR>
+        " https://github.com/junegunn/fzf.vim/pull/628
+        inoremap <expr> <c-x><c-f> fzf#vim#complete("rg --files --hidden --no-ignore --null <Bar> xargs --null realpath --relative-to " . expand("%:h"))
+
+        nnoremap <leader>G :Gitsigns<CR>
 
         " ======= easy align ================
         let g:easy_align_ignore_groups = []
@@ -289,7 +292,7 @@ in
         packadd nvim-lspconfig
         lua <<EOF
         vim.api.nvim_set_keymap('n', '<leader>L', "<cmd>lua vim.diagnostic.setloclist()<cr>", { noremap=true, silent=true })
-        vim.api.nvim_set_keymap('n', '<leader>]', "<cmd>lua vim.lsp.buf.document_symbol()<cr>", { noremap=true, silent=true })
+        vim.api.nvim_set_keymap('n', '<leader>S', "<cmd>lua vim.lsp.buf.document_symbol()<cr>", { noremap=true, silent=true })
         vim.api.nvim_set_keymap('i', '<c-h>', "<cmd>lua vim.lsp.buf.signature_help()<cr>", { noremap=true, silent=true })
         vim.api.nvim_set_keymap('n', '<leader>w', "<cmd>lua vim.lsp.buf.workspace_symbol()<cr>", { noremap=true, silent=true })
         vim.api.nvim_set_keymap('n', '<leader>e', "<cmd>lua vim.lsp.buf.rename()<cr>", { noremap=true, silent=true })
