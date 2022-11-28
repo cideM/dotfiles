@@ -194,17 +194,22 @@ in
         set statusline+=\ %f\ %m%=\ %y\ %q\ %3l:%2c\ \|%3p%%\ 
         " Fish is really slow on MacOS somehow
         set shell=${pkgs.dash}/bin/dash
-        let g:yui_comments = 'bg'
-        let g:material_style = 'lighter'
-        let g:github_hide_inactive_statusline = v:false
-        colorscheme yui
 
-        let g:EditorConfig_max_line_indicator = "exceeding"
-        let g:EditorConfig_preserve_formatoptions = 1
+        " COLOR STUFF
+        let g:yui_comments = 'bg'
+
+        let g:material_style = 'lighter'
+
+        let g:github_hide_inactive_statusline = v:false
 
         let g:doom_one_terminal_colors = v:true
         let g:doom_one_italic_comments = v:true
         let g:doom_one_cursor_coloring = v:true
+
+        colorscheme yui
+
+        let g:EditorConfig_max_line_indicator = "exceeding"
+        let g:EditorConfig_preserve_formatoptions = 1
 
         let g:gutentags_exclude_filetypes = ["haskell", "purs", "purescript"]
         let g:gutentags_file_list_command = 'rg\ --files'
@@ -395,14 +400,12 @@ in
         fzf-vim
         vim-gutentags
         pkgs.nvim-leap
-        pkgs.nvim-kanagawa-theme
-        pkgs.nvim-catppuccin-theme
         vim-sandwich
-        pkgs.truezen
         sad-vim
         vim-dirvish
 
         # Themes
+        lush-nvim
         edge
         one-nvim
         pkgs.spacevim
@@ -410,7 +413,12 @@ in
         pkgs.doomonetheme
         material-nvim
         pkgs.githubtheme
+        zenbones-nvim
         tokyonight-nvim
+        pkgs.nvim-kanagawa-theme
+        pkgs.nvim-catppuccin-theme
+        rose-pine
+        neovim-ayu
 
         # Language stuff
         { plugin = pkgs.parinfer-rust; optional = true; }
