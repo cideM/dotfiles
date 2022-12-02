@@ -88,7 +88,7 @@ in
         setl formatprg=prettier\ --parser\ scss\ --stdin-filepath\ %
       '';
       nix = ''
-        setl formatprg=nixpkgs-fmt
+        setl formatprg=${pkgs.alejandra}
         set foldmethod=expr
         set foldexpr=nvim_treesitter#foldexpr()
       '';
