@@ -17,7 +17,10 @@ in
   config = {
     xdg.configFile = makeFtPlugins {
       xml = ''
-        setl formatprg=prettier\ --stdin-filepath\ %";
+        setl formatprg=prettier\ --stdin-filepath\ %
+      '';
+      zig = ''
+        setl formatprg=${pkgs.zig}/bin/zig\ fmt\ --stdin
       '';
       sh = ''
         setl makeprg=shellcheck\ -f\ gcc\ %
@@ -325,6 +328,7 @@ in
         nvim_lsp.rust_analyzer.setup{}
         nvim_lsp.tsserver.setup{}
         nvim_lsp.gopls.setup{}
+        nvim_lsp.zls.setup{}
         nvim_lsp.sumneko_lua.setup{}
         nvim_lsp.eslint.setup{}
 
@@ -354,7 +358,7 @@ in
           ensure_installed = {},
           highlight = {
             enable = true,
-            disable = {"javascript"},
+            disable = {"zig"},
           },
           incremental_selection = {
             enable = true,
@@ -366,7 +370,7 @@ in
           },
           indent = {
             enable = true,
-            disable = {"haskell","nix"},
+            disable = {},
           }
         }
         EOF
@@ -427,6 +431,7 @@ in
         # Syntax
         haskell-vim
         dhall-vim
+        zig-vim
         Jenkinsfile-vim-syntax
         purescript-vim
         pkgs.vim-js
