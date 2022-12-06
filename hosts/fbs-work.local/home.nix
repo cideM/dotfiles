@@ -101,6 +101,15 @@
     [core]
         editor = nvim
         excludesfile = ~/.gitignore
+        pager = delta
+
+    [interactive]
+        diffFilter = delta --color-only
+
+    [delta]
+        navigate = true
+        side-by-side = true
+        syntax-theme = "GitHub"
 
     [filter "lfs"]
         clean = git-lfs clean -- %f

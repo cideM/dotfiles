@@ -4,6 +4,7 @@ with pkgs;
 
 {
   home.packages = [
+    delta
     bashInteractive
     bat
     coreutils-full

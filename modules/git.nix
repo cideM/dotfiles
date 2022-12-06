@@ -1,6 +1,17 @@
 { ... }:
 {
   programs.git = {
+    delta = {
+      enable = true;
+      options = {
+        hunk-header-style = "omit";
+        syntax-theme = "GitHub";
+        navigate = "true";
+        side-by-side = "true";
+        line-numbers = "true";
+      };
+    };
+
     enable = true;
 
     ignores = [

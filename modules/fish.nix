@@ -17,7 +17,7 @@ let
 
     bind \cb edit_command_buffer
 
-    set -x BAT_THEME "ansi"
+    set -x BAT_THEME "GitHub"
 
     set -x MANPAGER 'nvim +Man!'
     set -x lucid_prompt_symbol '$'
