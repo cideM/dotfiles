@@ -37,7 +37,7 @@ let
     set -x NIX_PATH ~/.nix-defexpr/channels $NIX_PATH
 
     abbr -a g 'git'
-    abbr -a dc ${if pkgs.stdenv.isDarwin then "'docker compose'" else "'docker-compose'"}
+    abbr -a dc 'docker compose'
     abbr -a tf 'terraform'
 
     alias dash 'dash -E'
