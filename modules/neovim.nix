@@ -417,6 +417,7 @@ in
         pkgs.doomonetheme
         material-nvim
         pkgs.githubtheme
+        everforest
         zenbones-nvim
         tokyonight-nvim
         pkgs.nvim-kanagawa-theme
