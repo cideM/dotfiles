@@ -2,6 +2,8 @@
   description = "今日は";
 
   inputs = rec {
+    helix.url = "github:helix-editor/helix";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "unstable";
@@ -29,9 +31,6 @@
 
     nix-env-fish.url = "github:lilyball/nix-env.fish";
     nix-env-fish.flake = false;
-
-    truezen.url = "github:Pocco81/true-zen.nvim";
-    truezen.flake = false;
 
     rosepine.url = "github:rose-pine/neovim";
     rosepine.flake = false;
@@ -85,7 +84,7 @@
     , nvim-catppuccin-theme
     , nvim-leap
     , githubtheme
-    , truezen
+    , helix
     }:
     let
       overlays = [
@@ -140,11 +139,11 @@
         })
 
         (self: super: {
-          yui = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "yui"; src = yui; };
+          helix = helix.packages.${super.system}.helix;
         })
 
         (self: super: {
-          truezen = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "truezen"; src = truezen; };
+          yui = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec { version = "latest"; pname = "yui"; src = yui; };
         })
 
         (self: super: {
