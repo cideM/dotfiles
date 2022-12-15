@@ -93,36 +93,6 @@
     let
       overlays = [
         (self: super: {
-          kubectl =
-            let
-              urls = {
-                "aarch64-darwin" = "darwin/amd64";
-                "x86_64-linux" = "linux/amd64";
-              };
-              shas = {
-                "aarch64-darwin" = "06y4h34kbahqlj9q1dsr3kbpj3yszf4mx9l1wjyxr1h4b5qw5p7r";
-                "x86_64-linux" = "sha256-n3Ty+n7jKtB+FyEXJZkiSEcDEMoZiCFFGIBrObHa2fA=";
-              };
-            in
-            super.stdenv.mkDerivation rec {
-              name = "kubectl";
-              version = "1.21.0";
-              src = super.fetchurl {
-                url = "https://dl.k8s.io/release/v${version}/bin/${urls."${super.system}"}/kubectl";
-                sha256 = shas."${super.system}";
-              };
-              dontConfigure = true;
-              dontUnpack = true;
-              dontBuild = true;
-              installPhase = ''
-                mkdir -p $out/bin
-                cp $src $out/bin/kubectl
-                chmod +x $out/bin/kubectl
-              '';
-            };
-        })
-
-        (self: super: {
           volta = super.rustPlatform.buildRustPackage rec {
             pname = "volta";
             version = "1.1.0";

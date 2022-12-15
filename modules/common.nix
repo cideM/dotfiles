@@ -29,7 +29,6 @@ with pkgs;
     htop
     hyperfine
     jq
-    kubectl
     tldr
     luajitPackages.luacheck
     ncdu
