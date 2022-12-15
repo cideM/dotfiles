@@ -4,6 +4,7 @@ with pkgs;
 
 {
   home.packages = [
+    alejandra
     delta
     bashInteractive
     bat
