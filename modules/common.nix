@@ -49,6 +49,7 @@ with pkgs;
     universal-ctags
     unzip
     vim
+    volta
     wget
   ];
 

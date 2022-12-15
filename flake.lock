@@ -465,6 +465,7 @@
         "spacevimtheme": "spacevimtheme",
         "unstable": "unstable",
         "vim-js": "vim-js",
+        "volta-src": "volta-src",
         "winshift": "winshift",
         "yui": "yui"
       }
@@ -567,6 +568,22 @@
       "original": {
         "owner": "yuezk",
         "repo": "vim-js",
+        "type": "github"
+      }
+    },
+    "volta-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1670097555,
+        "narHash": "sha256-gdczASboJzSEyzA/36k0ci/MG4rCfMvZ8juIKbJfISs=",
+        "owner": "volta-cli",
+        "repo": "volta",
+        "rev": "4911a887cc4902e12523c92ab08727a15b316eae",
+        "type": "github"
+      },
+      "original": {
+        "owner": "volta-cli",
+        "repo": "volta",
         "type": "github"
       }
     },
