@@ -331,6 +331,7 @@ in
         nvim_lsp.zls.setup{}
         nvim_lsp.sumneko_lua.setup{}
         nvim_lsp.eslint.setup{}
+        nvim_lsp.solargraph.setup{}
 
         require('lspfuzzy').setup {}
 
