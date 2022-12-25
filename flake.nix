@@ -91,11 +91,17 @@
   }: let
     overlays = [
       (self: super: {
+      (self: super: let
+        shas = {
+          "aarch64-darwin" = "sha256-P/jW95Udtw9ZjlS/ipaOTCup56fAZAXktHsUbJV+GxY=";
+          "x86_64-linux" = super.lib.fakeSha256;
+        };
+      in {
         volta = super.rustPlatform.buildRustPackage rec {
           pname = "volta";
           version = "1.1.0";
           src = volta-src;
-          cargoSha256 = "sha256-HueJpSJYIJ3MpmekK6iphZ1g+MeCP4vxoo2pReYT/dw=";
+          cargoSha256 = shas."${super.system}";
           buildInputs = super.lib.optionals super.stdenv.isDarwin [super.darwin.apple_sdk.frameworks.Security super.libiconv];
 
           meta = with super.lib; {
