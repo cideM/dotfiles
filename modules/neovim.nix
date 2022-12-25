@@ -20,7 +20,7 @@ in
         setl formatprg=prettier\ --stdin-filepath\ %
       '';
       zig = ''
-        setl formatprg=${pkgs.zig}/bin/zig\ fmt\ --stdin
+        setl formatprg=${pkgs.zigpkgs.master}/bin/zig\ fmt\ --stdin
       '';
       sh = ''
         setl makeprg=shellcheck\ -f\ gcc\ %

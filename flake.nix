@@ -4,6 +4,8 @@
   inputs = rec {
     helix.url = "github:helix-editor/helix";
 
+    zig-overlay.url = "github:mitchellh/zig-overlay";
+
     volta-src.url = "github:volta-cli/volta";
     volta-src.flake = false;
 
@@ -77,6 +79,7 @@
     lucid-fish-prompt,
     neovim-nightly-overlay,
     volta-src,
+    zig-overlay,
     yui,
     spacevimtheme,
     vim-js,
@@ -90,7 +93,7 @@
     helix,
   }: let
     overlays = [
-      (self: super: {
+      (final: prev: rec {zigpkgs = zig-overlay.packages.${prev.system};})
       (self: super: let
         shas = {
           "aarch64-darwin" = "sha256-P/jW95Udtw9ZjlS/ipaOTCup56fAZAXktHsUbJV+GxY=";
