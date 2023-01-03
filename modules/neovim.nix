@@ -129,7 +129,7 @@ in
         set foldexpr=nvim_treesitter#foldexpr()
       '';
       haskell = ''
-        setl formatprg=ormolu
+        setl formatprg=ormolu\ --stdin-input-file\ %
         nnoremap <buffer> <localleader>t :silent !fast-tags -R .<cr>
       '';
       markdown = ''
