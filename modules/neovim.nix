@@ -385,7 +385,6 @@ in
         # Git
         vim-fugitive
         gitsigns-nvim
-        conflict-marker-vim
         vim-rhubarb
 
         vim-unimpaired
@@ -393,10 +392,8 @@ in
         vim-repeat
         vim-commentary
         editorconfig-vim
-        vim-easy-align
         vim-eunuch
         vim-indent-object
-        vim-dirvish
         vim-sayonara
         QFEnter
         fzfWrapper
