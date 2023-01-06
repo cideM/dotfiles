@@ -409,20 +409,12 @@ in
         # Themes
         lush-nvim
         edge
-        one-nvim
         pkgs.spacevim
         pkgs.yui
-        pkgs.doomonetheme
-        material-nvim
         pkgs.githubtheme
         everforest
-        zenbones-nvim
         tokyonight-nvim
-        pkgs.nvim-kanagawa-theme
-        pkgs.nvim-catppuccin-theme
         rose-pine
-        neovim-ayu
-        pkgs.apprentice-lush-theme
         pkgs.arctic-lush-theme
         pkgs.jellybeans-lush-theme
         pkgs.onedarkpro-lush-theme

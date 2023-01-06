@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "apprentice-lush": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1660704167,
-        "narHash": "sha256-GCgcIVMYWhIbqi7TmIMhcEKf1002MuGux15Y+fzRwUk=",
-        "owner": "adisen99",
-        "repo": "apprentice.nvim",
-        "rev": "ef980c7feccd0d3ea650f93494b4d13a16c1471a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "adisen99",
-        "repo": "apprentice.nvim",
-        "type": "github"
-      }
-    },
     "arctic-lush": {
       "flake": false,
       "locked": {
@@ -61,22 +45,6 @@
       "original": {
         "owner": "numtide",
         "repo": "devshell",
-        "type": "github"
-      }
-    },
-    "doomonetheme": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1671922186,
-        "narHash": "sha256-lfs1ZfoLI/AP+iwtnSO0OlMGTXesr0G8ncW0lLMEZH8=",
-        "owner": "NTBBloodbath",
-        "repo": "doom-one.nvim",
-        "rev": "a43528cbd7908ccec7af4587ec8e18be149095bd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NTBBloodbath",
-        "repo": "doom-one.nvim",
         "type": "github"
       }
     },
@@ -482,38 +450,6 @@
         "type": "github"
       }
     },
-    "nvim-catppuccin-theme": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1672227409,
-        "narHash": "sha256-B/ZiZEwz+8aSlO9SG1Nw5RLQqpNXkUvi+2l+tJVzV5s=",
-        "owner": "catppuccin",
-        "repo": "nvim",
-        "rev": "3020af75aae098a77737d91ee37c7147c8450d99",
-        "type": "github"
-      },
-      "original": {
-        "owner": "catppuccin",
-        "repo": "nvim",
-        "type": "github"
-      }
-    },
-    "nvim-kanagawa-theme": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1672693353,
-        "narHash": "sha256-KP3DgywCxMnKuB/Rg2VRFQpKULLKR5dX98j10Fm1IQ4=",
-        "owner": "rebelot",
-        "repo": "kanagawa.nvim",
-        "rev": "476eb2289d47d132ebacc1a4d459e3204866599b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "rebelot",
-        "repo": "kanagawa.nvim",
-        "type": "github"
-      }
-    },
     "nvim-leap": {
       "flake": false,
       "locked": {
@@ -581,9 +517,7 @@
     },
     "root": {
       "inputs": {
-        "apprentice-lush": "apprentice-lush",
         "arctic-lush": "arctic-lush",
-        "doomonetheme": "doomonetheme",
         "githubtheme": "githubtheme",
         "helix": "helix",
         "home-manager": "home-manager",
@@ -595,8 +529,6 @@
         "nixpkgs": [
           "unstable"
         ],
-        "nvim-catppuccin-theme": "nvim-catppuccin-theme",
-        "nvim-kanagawa-theme": "nvim-kanagawa-theme",
         "nvim-leap": "nvim-leap",
         "onedarkpro-lush": "onedarkpro-lush",
         "operatorMono": "operatorMono",

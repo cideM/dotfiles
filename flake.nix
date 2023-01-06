@@ -16,9 +16,6 @@
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
-    apprentice-lush.url = "github:adisen99/apprentice.nvim";
-    apprentice-lush.flake = false;
-
     arctic-lush.url = "github:rockyzhang24/arctic.nvim";
     arctic-lush.flake = false;
 
@@ -30,12 +27,6 @@
 
     nvim-leap.url = "github:ggandor/leap.nvim";
     nvim-leap.flake = false;
-
-    nvim-catppuccin-theme.url = "github:catppuccin/nvim";
-    nvim-catppuccin-theme.flake = false;
-
-    nvim-kanagawa-theme.url = "github:rebelot/kanagawa.nvim";
-    nvim-kanagawa-theme.flake = false;
 
     parinfer-rust.url = "github:eraserhd/parinfer-rust";
     parinfer-rust.flake = false;
@@ -51,9 +42,6 @@
 
     rosepine.url = "github:rose-pine/neovim";
     rosepine.flake = false;
-
-    doomonetheme.url = "github:NTBBloodbath/doom-one.nvim";
-    doomonetheme.flake = false;
 
     spacevimtheme.url = "github:liuchengxu/space-vim-theme";
     spacevimtheme.flake = false;
@@ -95,15 +83,11 @@
     yui,
     spacevimtheme,
     vim-js,
-    doomonetheme,
     rosepine,
     parinfer-rust,
-    nvim-kanagawa-theme,
-    nvim-catppuccin-theme,
     nvim-leap,
     githubtheme,
     helix,
-    apprentice-lush,
     arctic-lush,
     jellybeans-lush,
     onedarkpro-lush,
@@ -130,14 +114,6 @@
           version = "latest";
           pname = "arctic-lush-theme";
           src = arctic-lush;
-        };
-      })
-
-      (self: super: {
-        apprentice-lush-theme = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-          version = "latest";
-          pname = "apprentice-lush-theme";
-          src = apprentice-lush;
         };
       })
 
@@ -179,22 +155,6 @@
       })
 
       (self: super: {
-        nvim-kanagawa-theme = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-          version = "latest";
-          pname = "nvim-kanagawa-theme";
-          src = nvim-kanagawa-theme;
-        };
-      })
-
-      (self: super: {
-        nvim-catppuccin-theme = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-          version = "latest";
-          pname = "nvim-catppuccin-theme";
-          src = nvim-catppuccin-theme;
-        };
-      })
-
-      (self: super: {
         parinfer-rust = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
           version = "latest";
           pname = "parinfer-rust";
@@ -219,14 +179,6 @@
           version = "latest";
           pname = "yui";
           src = yui;
-        };
-      })
-
-      (self: super: {
-        doomonetheme = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-          version = "latest";
-          pname = "doomonetheme";
-          src = doomonetheme;
         };
       })
 
