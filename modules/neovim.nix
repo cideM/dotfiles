@@ -422,6 +422,10 @@ in
         pkgs.nvim-catppuccin-theme
         rose-pine
         neovim-ayu
+        pkgs.apprentice-lush-theme
+        pkgs.arctic-lush-theme
+        pkgs.jellybeans-lush-theme
+        pkgs.onedarkpro-lush-theme
 
         # Language stuff
         { plugin = pkgs.parinfer-rust; optional = true; }

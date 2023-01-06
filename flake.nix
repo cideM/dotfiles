@@ -16,6 +16,18 @@
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
+    apprentice-lush.url = "github:adisen99/apprentice.nvim";
+    apprentice-lush.flake = false;
+
+    arctic-lush.url = "github:rockyzhang24/arctic.nvim";
+    arctic-lush.flake = false;
+
+    jellybeans-lush.url = "github:metalelf0/jellybeans-nvim";
+    jellybeans-lush.flake = false;
+
+    onedarkpro-lush.url = "github:olimorris/onedarkpro.nvim";
+    onedarkpro-lush.flake = false;
+
     nvim-leap.url = "github:ggandor/leap.nvim";
     nvim-leap.flake = false;
 
@@ -91,9 +103,46 @@
     nvim-leap,
     githubtheme,
     helix,
+    apprentice-lush,
+    arctic-lush,
+    jellybeans-lush,
+    onedarkpro-lush,
   }: let
     overlays = [
+      (self: super: {
+        onedarkpro-lush-theme = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+          version = "latest";
+          pname = "onedarkpro-theme";
+          src = onedarkpro-lush;
+        };
+      })
+
+      (self: super: {
+        jellybeans-lush-theme = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+          version = "latest";
+          pname = "jellybeans-theme";
+          src = jellybeans-lush;
+        };
+      })
+
+      (self: super: {
+        arctic-lush-theme = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+          version = "latest";
+          pname = "arctic-lush-theme";
+          src = arctic-lush;
+        };
+      })
+
+      (self: super: {
+        apprentice-lush-theme = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+          version = "latest";
+          pname = "apprentice-lush-theme";
+          src = apprentice-lush;
+        };
+      })
+
       (final: prev: rec {zigpkgs = zig-overlay.packages.${prev.system};})
+
       (self: super: let
         shas = {
           "aarch64-darwin" = "sha256-P/jW95Udtw9ZjlS/ipaOTCup56fAZAXktHsUbJV+GxY=";

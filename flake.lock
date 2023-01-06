@@ -1,5 +1,37 @@
 {
   "nodes": {
+    "apprentice-lush": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1660704167,
+        "narHash": "sha256-GCgcIVMYWhIbqi7TmIMhcEKf1002MuGux15Y+fzRwUk=",
+        "owner": "adisen99",
+        "repo": "apprentice.nvim",
+        "rev": "ef980c7feccd0d3ea650f93494b4d13a16c1471a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "adisen99",
+        "repo": "apprentice.nvim",
+        "type": "github"
+      }
+    },
+    "arctic-lush": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1670883296,
+        "narHash": "sha256-8cr36Rl7e91E8/fyaN0DlcBzWD5lZJ7ZQkaePxDKS5U=",
+        "owner": "rockyzhang24",
+        "repo": "arctic.nvim",
+        "rev": "f248bff30e500bd1359d0084b608680dcb5eb664",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rockyzhang24",
+        "repo": "arctic.nvim",
+        "type": "github"
+      }
+    },
     "crane": {
       "flake": false,
       "locked": {
@@ -249,6 +281,22 @@
         "type": "github"
       }
     },
+    "jellybeans-lush": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1647863512,
+        "narHash": "sha256-/eZdhDZmcWSTDlOdl8f7lhU6QGyc/WUAIICp9Jze/aA=",
+        "owner": "metalelf0",
+        "repo": "jellybeans-nvim",
+        "rev": "f77b75443adf6461ded30de0243f49771f933d06",
+        "type": "github"
+      },
+      "original": {
+        "owner": "metalelf0",
+        "repo": "jellybeans-nvim",
+        "type": "github"
+      }
+    },
     "lspfuzzy": {
       "flake": false,
       "locked": {
@@ -482,6 +530,22 @@
         "type": "github"
       }
     },
+    "onedarkpro-lush": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1672855836,
+        "narHash": "sha256-j5swUXwCPEkmqJA0T+6zX6+kNeecJBfy+iIA1RsGhL0=",
+        "owner": "olimorris",
+        "repo": "onedarkpro.nvim",
+        "rev": "335166c57b37e81989c0e3826e9f03759d64f39c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "olimorris",
+        "repo": "onedarkpro.nvim",
+        "type": "github"
+      }
+    },
     "operatorMono": {
       "flake": false,
       "locked": {
@@ -517,10 +581,13 @@
     },
     "root": {
       "inputs": {
+        "apprentice-lush": "apprentice-lush",
+        "arctic-lush": "arctic-lush",
         "doomonetheme": "doomonetheme",
         "githubtheme": "githubtheme",
         "helix": "helix",
         "home-manager": "home-manager",
+        "jellybeans-lush": "jellybeans-lush",
         "lspfuzzy": "lspfuzzy",
         "lucid-fish-prompt": "lucid-fish-prompt",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
@@ -531,6 +598,7 @@
         "nvim-catppuccin-theme": "nvim-catppuccin-theme",
         "nvim-kanagawa-theme": "nvim-kanagawa-theme",
         "nvim-leap": "nvim-leap",
+        "onedarkpro-lush": "onedarkpro-lush",
         "operatorMono": "operatorMono",
         "parinfer-rust": "parinfer-rust",
         "rosepine": "rosepine",
