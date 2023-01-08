@@ -215,9 +215,6 @@ in
         let mapleader = " "
         let maplocalleader = ","
 
-        let g:indent_blankline_show_current_context = v:true
-        let g:indent_blankline_show_current_context_start = v:true
-
         imap     jk        <Esc>
         tnoremap <Esc>     <C-\><C-n>
         nnoremap <BS>      <C-^>
@@ -377,7 +374,6 @@ in
         QFEnter
         fzfWrapper
         nvim-treesitter-context
-        indent-blankline-nvim
         fzf-vim
         vim-gutentags
         pkgs.nvim-leap
