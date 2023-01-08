@@ -224,8 +224,6 @@ in
         " https://github.com/junegunn/fzf.vim/pull/628
         inoremap <expr> <c-x><c-f> fzf#vim#complete("rg --files --hidden --no-ignore --null <Bar> xargs --null realpath --relative-to " . expand("%:h"))
 
-        nnoremap <leader>G :Gitsigns<CR>
-
         " ======= fzf =======================
         let g:fzf_preview_window = ['up:60%', 'ctrl-/']
         let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
@@ -308,8 +306,6 @@ in
 
         require'treesitter-context'.setup{ enable = true }
 
-        require('gitsigns').setup()
-
         -- Treesitter
         require'nvim-treesitter.configs'.setup {
           ensure_installed = {},
@@ -340,7 +336,6 @@ in
 
         # Git
         vim-fugitive
-        gitsigns-nvim
         vim-rhubarb
 
         vim-unimpaired
