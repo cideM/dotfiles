@@ -24,7 +24,6 @@ in
       '';
       sh = ''
         setl makeprg=shellcheck\ -f\ gcc\ %
-        nnoremap <buffer> <localleader>m :silent make<cr>
       '';
       rust = ''
         setl formatprg=rustfmt
@@ -34,7 +33,6 @@ in
       '';
       purescript = ''
         setl formatprg=purty\ format\ -
-        nnoremap <buffer> <localleader>t :!spago docs --format ctags
       '';
       json = ''
         setl formatprg=prettier\ --stdin-filepath\ %
@@ -50,10 +48,6 @@ in
         setl laststatus=0 noshowmode noruler
         aug fzf | au! BufLeave <buffer> set laststatus& showmode ruler | aug END
       '';
-      qf = ''
-        nnoremap <buffer> <left> :colder<cr>
-        nnoremap <buffer> <right> :cnewer<cr>
-      '';
       clojure = ''
         packadd conjure
         packadd parinfer
@@ -68,7 +62,6 @@ in
         setl wildignore+=*node_modules*,package-lock.json,yarn-lock.json
         setl errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m,%-G%.%#
         setl makeprg=${pkgs.nodePackages.eslint}/bin/eslint\ --format\ compact
-        nnoremap <buffer> <silent> <localleader>f :!${pkgs.nodePackages.eslint}/bin/eslint --fix %<cr>
         set foldmethod=expr
         set foldexpr=nvim_treesitter#foldexpr()
       '';
@@ -77,7 +70,6 @@ in
         setl formatprg=prettier\ --parser\ typescript\ --stdin-filepath\ %
         setl wildignore+=*node_modules*,package-lock.json,yarn-lock.json
         setl errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m,%-G%.%#
-        setl makeprg=${pkgs.nodePackages.eslint}/bin/eslint\ --format\ compact
         set foldmethod=expr
         set foldexpr=nvim_treesitter#foldexpr()
       '';
@@ -102,8 +94,6 @@ in
         setl noexpandtab
       '';
       lua = ''
-        setl makeprg=luacheck\ --formatter\ plain
-        nnoremap <buffer> <localleader>m :make %<cr>
         set foldmethod=expr
         set foldexpr=nvim_treesitter#foldexpr()
         set formatprg=stylua\ -
@@ -116,21 +106,19 @@ in
         setl formatprg=${pkgs.pgformatter}/bin/pg_format\ -g
       '';
       go = ''
-        setl formatprg=gofmt makeprg=go\ build\ -o\ /dev/null
-        nnoremap <buffer> <localleader>m :make %<cr>
+        setl formatprg=gofmt
+        setl makeprg=go\ build\ -o\ /dev/null
         function! GoImports()
             let saved = winsaveview()
             %!goimports
             call winrestview(saved)
         endfunction
         nnoremap <buffer> <localleader>i :call GoImports()<cr>
-        nnoremap <buffer> <localleader>t :execute ':silent !for f in ./{cmd, internal, pkg}; if test -d $f; ctags -R $f; end; end'<CR>
         set foldmethod=expr
         set foldexpr=nvim_treesitter#foldexpr()
       '';
       haskell = ''
         setl formatprg=ormolu\ --stdin-input-file\ %
-        nnoremap <buffer> <localleader>t :silent !fast-tags -R .<cr>
       '';
       markdown = ''
         setl formatprg=prettier\ --stdin-filepath\ %
