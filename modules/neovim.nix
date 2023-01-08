@@ -310,19 +310,14 @@ in
           ensure_installed = {},
           highlight = {
             enable = true,
-            disable = {"zig"},
+            disable = {"zig", "nix"},
           },
           incremental_selection = {
-            enable = true,
-            keymaps = {
-              init_selection = "<C-n>",
-              node_incremental = "<C-w>",
-              node_decremental = "<A-w>",
-            },
+            enable = false,
           },
           indent = {
             enable = true,
-            disable = {},
+            disable = {"zig", "nix"},
           }
         }
         EOF
