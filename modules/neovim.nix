@@ -306,19 +306,6 @@ in
 
         require('leap').add_default_mappings()
 
-        require("winshift").setup({
-          highlight_moving_win = true,  -- Highlight the window being moved
-          focused_hl_group = "Visual",  -- The highlight group used for the moving window
-          moving_win_options = {
-            -- These are local options applied to the moving window while it's
-            -- being moved. They are unset when you leave Win-Move mode.
-            wrap = false,
-            cursorline = false,
-            cursorcolumn = false,
-            colorcolumn = "",
-          }
-        })
-
         require'treesitter-context'.setup{ enable = true }
 
         require('gitsigns').setup()
@@ -357,7 +344,6 @@ in
         vim-rhubarb
 
         vim-unimpaired
-        pkgs.winshift
         vim-repeat
         vim-commentary
         editorconfig-vim
