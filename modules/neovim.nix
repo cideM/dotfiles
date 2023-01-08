@@ -226,13 +226,6 @@ in
 
         nnoremap <leader>G :Gitsigns<CR>
 
-        " ======= easy align ================
-        let g:easy_align_ignore_groups = []
-        " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-        vmap <Enter> <Plug>(EasyAlign)
-        " Start interactive EasyAlign for a motion/text object (e.g. gaip)
-        nmap ga <Plug>(EasyAlign)
-
         " ======= fzf =======================
         let g:fzf_preview_window = ['up:60%', 'ctrl-/']
         let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
