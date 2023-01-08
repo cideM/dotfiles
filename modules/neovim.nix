@@ -256,6 +256,21 @@ in
         silent! xmap <unique> gd <Plug>(operator-sandwich-delete)
         silent! xmap <unique> gr <Plug>(operator-sandwich-replace)
 
+        silent! omap <unique> ib <Plug>(textobj-sandwich-auto-i)
+        silent! xmap <unique> ib <Plug>(textobj-sandwich-auto-i)
+        silent! omap <unique> ab <Plug>(textobj-sandwich-auto-a)
+        silent! xmap <unique> ab <Plug>(textobj-sandwich-auto-a)
+
+        silent! omap <unique> iq <Plug>(textobj-sandwich-query-i)
+        silent! xmap <unique> iq <Plug>(textobj-sandwich-query-i)
+        silent! omap <unique> aq <Plug>(textobj-sandwich-query-a)
+        silent! xmap <unique> aq <Plug>(textobj-sandwich-query-a)
+
+        silent! xmap <unique> im <Plug>(textobj-sandwich-literal-query-i)
+        silent! xmap <unique> am <Plug>(textobj-sandwich-literal-query-a)
+        silent! omap <unique> im <Plug>(textobj-sandwich-literal-query-i)
+        silent! omap <unique> am <Plug>(textobj-sandwich-literal-query-a)
+
         " ======= lsp =======================
         packadd nvim-lspconfig
         lua <<EOF
