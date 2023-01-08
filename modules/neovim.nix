@@ -328,14 +328,14 @@ in
           ensure_installed = {},
           highlight = {
             enable = true,
-            disable = {"zig", "nix"},
+            disable = {"zig", "nix", "bash", "dockerfile"},
           },
           incremental_selection = {
             enable = false,
           },
           indent = {
             enable = true,
-            disable = {"zig", "nix"},
+            disable = {"zig", "nix", "bash", "dockerfile"},
           }
         }
         EOF
