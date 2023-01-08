@@ -188,15 +188,6 @@ in
 
         " COLOR STUFF
         let g:yui_comments = 'bg'
-
-        let g:material_style = 'lighter'
-
-        let g:github_hide_inactive_statusline = v:false
-
-        let g:doom_one_terminal_colors = v:true
-        let g:doom_one_italic_comments = v:true
-        let g:doom_one_cursor_coloring = v:true
-
         colorscheme yui
 
         let g:EditorConfig_max_line_indicator = "exceeding"
@@ -395,17 +386,10 @@ in
         vim-dirvish
 
         # Themes
-        lush-nvim
         edge
         pkgs.spacevim
         pkgs.yui
-        pkgs.githubtheme
         everforest
-        tokyonight-nvim
-        rose-pine
-        pkgs.arctic-lush-theme
-        pkgs.jellybeans-lush-theme
-        pkgs.onedarkpro-lush-theme
 
         # Language stuff
         { plugin = pkgs.parinfer-rust; optional = true; }
