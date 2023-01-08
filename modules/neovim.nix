@@ -195,11 +195,6 @@ in
 
         let g:gutentags_exclude_filetypes = ["haskell", "purs", "purescript"]
         let g:gutentags_file_list_command = 'rg\ --files'
-        " Okay very long story fucking short: due to whatever interactions my
-        " Nix shells on Darwin have some weird stuff prepended to PATH, among
-        " them some Toolchains/XcodeDefault.xctoolchain/bin which causes MacOS
-        " ctags to be used which is of course from the stone age. At some point I
-        " have to stop using Nix.
         let g:gutentags_ctags_executable = '${pkgs.universal-ctags}/bin/ctags'
 
         aug terminsert | exe "au! TermOpen * startinsert | setl nonu nornu" | aug END
@@ -251,34 +246,42 @@ in
 
         " ======= sandwich ==================
         let g:sandwich_no_default_key_mappings = 1
-        silent! nmap <unique><silent> <leader>d <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
-        silent! nmap <unique><silent> <leader>p <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
-        silent! nmap <unique><silent> <leader>D <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
-        silent! nmap <unique><silent> <leader>P <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
+        silent! nmap <unique><silent> gd <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
+        silent! nmap <unique><silent> gr <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
+        silent! nmap <unique><silent> gdb <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
+        silent! nmap <unique><silent> grb <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
 
         let g:operator_sandwich_no_default_key_mappings = 1
-        silent! nmap <unique> <leader>a <Plug>(operator-sandwich-add)
-        silent! xmap <unique> <leader>a <Plug>(operator-sandwich-add)
-        silent! omap <unique> <leader>a <Plug>(operator-sandwich-g@)
-        silent! xmap <unique> <leader>d <Plug>(operator-sandwich-delete)
-        silent! xmap <unique> <leader>p <Plug>(operator-sandwich-replace)
+        silent! map <unique> ga <Plug>(operator-sandwich-add)
+        silent! xmap <unique> gd <Plug>(operator-sandwich-delete)
+        silent! xmap <unique> gr <Plug>(operator-sandwich-replace)
 
         " ======= lsp =======================
         packadd nvim-lspconfig
         lua <<EOF
-        vim.api.nvim_set_keymap('n', '<leader>L', "<cmd>lua vim.diagnostic.setloclist()<cr>", { noremap=true, silent=true })
-        vim.api.nvim_set_keymap('n', '<leader>S', "<cmd>lua vim.lsp.buf.document_symbol()<cr>", { noremap=true, silent=true })
-        vim.api.nvim_set_keymap('i', '<c-h>', "<cmd>lua vim.lsp.buf.signature_help()<cr>", { noremap=true, silent=true })
-        vim.api.nvim_set_keymap('n', '<leader>w', "<cmd>lua vim.lsp.buf.workspace_symbol()<cr>", { noremap=true, silent=true })
-        vim.api.nvim_set_keymap('n', '<leader>e', "<cmd>lua vim.lsp.buf.rename()<cr>", { noremap=true, silent=true })
-        vim.api.nvim_set_keymap('n', '<leader>n', "<cmd>lua vim.diagnostic.goto_next({ float = true })<cr>", { noremap=true, silent=true })
-        vim.api.nvim_set_keymap('n', '<leader>p', "<cmd>lua vim.diagnostic.goto_prev({ float = true })<cr>", { noremap=true, silent=true })
-        vim.api.nvim_set_keymap('n', ']i', '<cmd>lua vim.lsp.buf.implementation()<cr>', { noremap=true, silent=true })
-        vim.api.nvim_set_keymap('n', ']t', '<cmd>lua vim.lsp.buf.type_definition()<cr>', { noremap=true, silent=true })
-        vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', { noremap=true, silent=true })
-        vim.api.nvim_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', { noremap=true, silent=true })
-        vim.api.nvim_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', { noremap=true, silent=true })
-        vim.api.nvim_set_keymap('n', '<C-p>', "<cmd>lua vim.diagnostic.open_float()<cr>", { noremap=true, silent=true })
+
+        local bufopts = { noremap=true, silent=true, buffer=bufnr }
+        vim.keymap.set('n', '<leader>d', vim.lsp.buf.definition, bufopts)
+        vim.keymap.set('n', '<leader>D', vim.lsp.buf.declaration, bufopts)
+        vim.keymap.set('n', 'Q', vim.lsp.buf.type_definition, bufopts)
+        vim.keymap.set('n', '<leader>i', vim.lsp.buf.implementation, bufopts)
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+        vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+        vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+        vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+        vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+        vim.keymap.set('n', '<leader>wl', function()
+          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        end, bufopts)
+        vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, bufopts)
+        vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, bufopts)
+        vim.keymap.set('n', '<leader>R', vim.lsp.buf.references, bufopts)
+        vim.keymap.set('n', '<C-f>', function() vim.lsp.buf.format { async = false } end, bufopts)
+        vim.keymap.set('n', '<leader>s', vim.lsp.buf.document_symbol, bufopts)
+        vim.keymap.set('n', '<leader>S', vim.lsp.buf.workspace_symbol, bufopts)
+        vim.keymap.set('n', '<C-n>', function () vim.diagnostic.goto_next{ float = true } end, bufopts)
+        vim.keymap.set('n', '<C-p>', function () vim.diagnostic.goto_prev{ float = true } end, bufopts)
 
         local nvim_lsp = require'lspconfig'
 
