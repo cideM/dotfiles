@@ -14,7 +14,7 @@
       inputs.nixpkgs.follows = "unstable";
     };
 
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    /* neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay"; */
 
     arctic-lush.url = "github:rockyzhang24/arctic.nvim";
     arctic-lush.flake = false;
@@ -77,7 +77,7 @@
     winshift,
     nix-env-fish,
     lucid-fish-prompt,
-    neovim-nightly-overlay,
+    /* neovim-nightly-overlay, */
     volta-src,
     zig-overlay,
     yui,
@@ -254,12 +254,7 @@
             };
           }
           {
-            nixpkgs.overlays =
-              overlays
-              ++ [
-                neovim-nightly-overlay.overlay
-              ];
-
+            nixpkgs.overlays = overlays;
             nixpkgs.config = {
               allowUnfree = true;
             };
@@ -277,11 +272,7 @@
         ./hosts/nixos/configuration.nix
         home-manager.nixosModules.home-manager
         {
-          nixpkgs.overlays =
-            overlays
-            ++ [
-              neovim-nightly-overlay.overlay
-            ];
+          nixpkgs.overlays = overlays;
           nixpkgs.config = {
             allowUnfree = true;
           };
