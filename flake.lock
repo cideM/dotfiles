@@ -587,11 +587,11 @@
     "yui": {
       "flake": false,
       "locked": {
-        "lastModified": 1652700192,
-        "narHash": "sha256-IEbd2grifqSPhjmT1cRtgpM2cXsBc/GxE744chuk4Fs=",
+        "lastModified": 1673345719,
+        "narHash": "sha256-eIGGYtpmayYq6PmdJpSpf9rL3jOpxvZHQBwcEvgubfc=",
         "owner": "cidem",
         "repo": "yui",
-        "rev": "14b91bc3bc98fb0589c704deba8858ff6bcb1d84",
+        "rev": "a0d1e6c83f3821c7a378dcbd43cfd68353932987",
         "type": "github"
       },
       "original": {
