@@ -28,16 +28,6 @@
   };
 
   home.packages = with pkgs; [
-    (
-      (pkgs.vscode.override { isInsiders = true; }).overrideAttrs (oldAttrs: rec {
-        src = (builtins.fetchTarball {
-          url = "https://code.visualstudio.com/sha/download?build=insider&os=darwin-arm64";
-          sha256 = "063ghqhp3mmfm1dsn28d4275nh2qgpk6nsayjlrs14x6vmpn01kr";
-        });
-        version = "latest";
-      })
-    )
-
     nixVersions.stable
     unixtools.watch
     home-manager.defaultPackage.aarch64-darwin

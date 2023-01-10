@@ -22,15 +22,6 @@
   home.stateVersion = "20.09";
 
   home.packages = with pkgs; [
-    ((pkgs.vscode.override { isInsiders = true; }).overrideAttrs
-      (oldAttrs: rec {
-        src = (builtins.fetchTarball {
-          url = "https://code.visualstudio.com/sha/download?build=insider&os=linux-x64";
-          sha256 = "0i093mzmy0wxpxjkd1dyxg4mipcqmvr253rddgh9acvk1fgylnyk";
-        });
-        version = "latest";
-      }))
-
     iotop
     xsel
     insomnia
