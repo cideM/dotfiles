@@ -122,7 +122,7 @@
       (self: super: let
         shas = {
           "aarch64-darwin" = "sha256-P/jW95Udtw9ZjlS/ipaOTCup56fAZAXktHsUbJV+GxY=";
-          "x86_64-linux" = super.lib.fakeSha256;
+          "x86_64-linux" = "sha256-P/jW95Udtw9ZjlS/ipaOTCup56fAZAXktHsUbJV+GxY=";
         };
       in {
         volta = super.rustPlatform.buildRustPackage rec {
