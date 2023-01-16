@@ -164,11 +164,11 @@
     "githubtheme": {
       "flake": false,
       "locked": {
-        "lastModified": 1673175379,
-        "narHash": "sha256-jgZ5YQeEvNbcc3AtZthQyherxaeEXbbfSQAjq9vtzoo=",
+        "lastModified": 1673867577,
+        "narHash": "sha256-Qm9ffdkHfG5+PLQ8PbOeFMywBbKVGqX8886clQbJzyg=",
         "owner": "projekt0n",
         "repo": "github-nvim-theme",
-        "rev": "8dcfe1f69c1863650260fb2a9cf6cdf9d065515c",
+        "rev": "24c8706c9ad26b944f5a76dea999dca8708f252e",
         "type": "github"
       },
       "original": {
@@ -184,11 +184,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1673853493,
-        "narHash": "sha256-S0ZDEJ6HEDcuFFt4yrsngkWq3cvxZa/xZAYAtZXp5xc=",
+        "lastModified": 1673887282,
+        "narHash": "sha256-a4nn3dXHRMqevAU17ceLLyd9gA87HlwHr8y7r1liOEo=",
         "owner": "helix-editor",
         "repo": "helix",
-        "rev": "d3e0f18c89c94c887d50d2487a4ee76eb96dda2b",
+        "rev": "3cf5216dbd1b9c767e6a922f93f1a3b1a2955d02",
         "type": "github"
       },
       "original": {
@@ -378,11 +378,11 @@
     "onedarkpro-lush": {
       "flake": false,
       "locked": {
-        "lastModified": 1673387580,
-        "narHash": "sha256-xNLfgNes6i/lexFF6O5Cul6y7PYD4FUMcr5GQHmSYaI=",
+        "lastModified": 1673889564,
+        "narHash": "sha256-7YjEo+nFNgBiRv+w8zuprSV05Fxk1leRH2facQX96B8=",
         "owner": "olimorris",
         "repo": "onedarkpro.nvim",
-        "rev": "cf006baefa1d0ad6dafeb8f9a99cfe971ad7f0b4",
+        "rev": "b79fb0bb8d2eec8f29437aa3b05c6fedfac575f8",
         "type": "github"
       },
       "original": {
