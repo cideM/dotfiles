@@ -28,15 +28,21 @@ in
       rust = ''
         setl formatprg=rustfmt
         setl makeprg=cargo\ check
+        set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
       '';
       purescript = ''
         setl formatprg=purty\ format\ -
       '';
       json = ''
         setl formatprg=prettier\ --stdin-filepath\ %
+        set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
       '';
       yaml = ''
         setl formatprg=prettier\ --stdin-filepath\ %
+        set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
       '';
       fzf = ''
         setl laststatus=0 noshowmode noruler
@@ -48,18 +54,24 @@ in
         setl errorformat=%f:%l:%c:\ Parse\ %t%*[^:]:\ %m,%f:%l:%c:\ %t%*[^:]:\ %m
         setl makeprg=clj-kondo\ --lint\ %
         setl wildignore+=*.clj-kondo*
+        set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
       '';
       javascript = ''
         setl formatprg=prettier\ --stdin-filepath\ %
         setl wildignore+=*node_modules*,package-lock.json,yarn-lock.json
         setl errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m,%-G%.%#
         setl makeprg=${pkgs.nodePackages.eslint}/bin/eslint\ --format\ compact
+        set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
       '';
       typescript = ''
         setl formatexpr=
         setl formatprg=prettier\ --parser\ typescript\ --stdin-filepath\ %
         setl wildignore+=*node_modules*,package-lock.json,yarn-lock.json
         setl errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m,%-G%.%#
+        set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
       '';
       html = ''
         setl formatprg=prettier\ --parser\ html\ --stdin-filepath\ %
@@ -72,6 +84,8 @@ in
       '';
       nix = ''
         setl formatprg=${pkgs.alejandra}/bin/alejandra\ -q
+        set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
       '';
       dhall = ''
         setl formatprg=dhall\ format
@@ -80,9 +94,13 @@ in
         setl noexpandtab
       '';
       lua = ''
+        set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
         set formatprg=stylua\ -
       '';
       python = ''
+        set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
       '';
       sql = ''
         setl formatprg=${pkgs.pgformatter}/bin/pg_format\ -g
@@ -96,6 +114,8 @@ in
             call winrestview(saved)
         endfunction
         nnoremap <buffer> <localleader>i :call GoImports()<cr>
+        set foldmethod=expr
+        set foldexpr=nvim_treesitter#foldexpr()
       '';
       haskell = ''
         setl formatprg=ormolu\ --stdin-input-file\ %
@@ -301,6 +321,23 @@ in
 
         require('leap').add_default_mappings()
 
+        require'treesitter-context'.setup{ enable = true }
+
+        -- Treesitter
+        require'nvim-treesitter.configs'.setup {
+          ensure_installed = {},
+          highlight = {
+            enable = true,
+            disable = {"zig", "nix", "bash", "dockerfile", "toml", "typescript"},
+          },
+          incremental_selection = {
+            enable = false,
+          },
+          indent = {
+            enable = true,
+            disable = {"zig", "nix", "bash", "dockerfile", "toml", "typescript"},
+          }
+        }
         EOF
       '';
 
@@ -320,6 +357,7 @@ in
         vim-sayonara
         QFEnter
         fzfWrapper
+        nvim-treesitter-context
         fzf-vim
         vim-gutentags
         pkgs.nvim-leap
@@ -335,6 +373,7 @@ in
         { plugin = pkgs.parinfer-rust; optional = true; }
         { plugin = conjure; optional = true; }
 
+        (nvim-treesitter.withPlugins (p: pkgs.tree-sitter.allGrammars))
       ];
     };
   };
