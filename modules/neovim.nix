@@ -342,9 +342,11 @@ in
       '';
 
       plugins = with pkgs.vimPlugins; [
+        # LSP
         { plugin = nvim-lspconfig; optional = true; }
         pkgs.lspfuzzy
 
+        # Git
         vim-fugitive
         vim-rhubarb
 
@@ -365,15 +367,29 @@ in
         sad-vim
         vim-dirvish
 
+        # Themes
         edge
         pkgs.spacevim
         pkgs.yui
         everforest
 
+        # Language stuff
         { plugin = pkgs.parinfer-rust; optional = true; }
         { plugin = conjure; optional = true; }
 
+        # Syntax
+        haskell-vim
+        dhall-vim
+        zig-vim
+        Jenkinsfile-vim-syntax
+        purescript-vim
+        pkgs.vim-js
+        vim-lua
+        vim-jsx-pretty
+        vim-nix
+        vim-terraform
         (nvim-treesitter.withPlugins (p: pkgs.tree-sitter.allGrammars))
+
       ];
     };
   };
