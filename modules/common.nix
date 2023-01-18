@@ -62,6 +62,13 @@ with pkgs;
       font_size = 16.0,
       font = wezterm.font('Operator Mono SSm', { weight = 'Book' }),
       line_height = 1.2,
+      keys = {
+        {
+          key = 'w',
+          mods = 'CMD',
+          action = wezterm.action.CloseCurrentPane { confirm = true },
+        },
+      },
     }
   '';
 
