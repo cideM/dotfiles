@@ -50,8 +50,20 @@ with pkgs;
     unzip
     vim
     volta
+    wezterm
     wget
   ];
+
+  xdg.configFile."wezterm/wezterm.lua".text = ''
+    local wezterm = require 'wezterm'
+    return {
+      color_scheme = "Edge Light (base16)",
+      default_prog = { '${pkgs.fish}/bin/fish', '-l' },
+      font_size = 16.0,
+      font = wezterm.font('Operator Mono SSm', { weight = 'Book' }),
+      line_height = 1.2,
+    }
+  '';
 
   home.sessionVariables = {
     LANG = "en_US.UTF-8";
