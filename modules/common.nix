@@ -60,7 +60,7 @@ with pkgs;
       color_scheme = "Edge Light (base16)",
       default_prog = { '${pkgs.fish}/bin/fish', '-l' },
       font_size = 15.0,
-      font = wezterm.font('Operator Mono SSm', { weight = 'Book' }),
+      -- font = wezterm.font('Operator Mono SSm', { weight = 'Book' }),
       line_height = 1.1,
       keys = {
         {
