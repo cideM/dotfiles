@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 return {
 	color_scheme = "Edge Light (base16)",
 	default_prog = { "FISH_SHELL_PATH", "-l" },
-	font_size = 13.0,
+	font_size = 14.0,
 	-- font = wezterm.font('SF Mono'),
 	font = wezterm.font("Operator Mono SSm", { weight = "DemiLight" }),
 	keys = {
