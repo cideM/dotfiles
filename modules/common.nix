@@ -24,7 +24,6 @@ with pkgs;
     gnupg
     gnused
     gzip
-    helix
     htop
     hyperfine
     jq

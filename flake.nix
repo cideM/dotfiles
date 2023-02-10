@@ -2,8 +2,6 @@
   description = "今日は";
 
   inputs = rec {
-    helix.url = "github:helix-editor/helix";
-
     zig-overlay.url = "github:mitchellh/zig-overlay";
 
     volta-src.url = "github:volta-cli/volta";
@@ -87,7 +85,6 @@
     parinfer-rust,
     nvim-leap,
     githubtheme,
-    helix,
     arctic-lush,
     jellybeans-lush,
     onedarkpro-lush,
@@ -168,10 +165,6 @@
           pname = "winshift";
           src = winshift;
         };
-      })
-
-      (self: super: {
-        helix = helix.packages.${super.system}.helix;
       })
 
       (self: super: {
