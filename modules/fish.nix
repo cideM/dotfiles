@@ -14,9 +14,6 @@ let
     set -x FZF_CTRL_T_OPTS "--preview '${pkgs.bat}/bin/bat {}'"
     set -x FZF_CTRL_T_COMMAND '${pkgs.fd}/bin/fd -L $dir --type f 2> /dev/null'
 
-    test -d $HOME/.volta || mkdir $HOME/.volta
-    set -x VOLTA_HOME $HOME/.volta
-
     bind \cb edit_command_buffer
 
     set -x MANPAGER 'nvim +Man!'
@@ -31,7 +28,7 @@ let
     set -x GOPATH ~/go
     set -x GOCACHE $XDG_CACHE_HOME/go-build
 
-    fish_add_path -p ~/bin /usr/local/bin/ $VOLTA_HOME/bin
+    fish_add_path -p ~/bin /usr/local/bin/
 
     # https://discourse.nixos.org/t/how-is-nix-path-managed-regarding-nix-channel/6079/3?u=cidem
     set -x NIX_PATH ~/.nix-defexpr/channels $NIX_PATH

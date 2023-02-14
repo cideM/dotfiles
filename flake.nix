@@ -4,9 +4,6 @@
   inputs = rec {
     zig-overlay.url = "github:mitchellh/zig-overlay";
 
-    volta-src.url = "github:volta-cli/volta";
-    volta-src.flake = false;
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "unstable";
@@ -76,7 +73,6 @@
     nix-env-fish,
     lucid-fish-prompt,
     /* neovim-nightly-overlay, */
-    volta-src,
     zig-overlay,
     yui,
     spacevimtheme,
@@ -115,33 +111,6 @@
       })
 
       (final: prev: rec {zigpkgs = zig-overlay.packages.${prev.system};})
-
-      (self: super: let
-        shas = {
-          "aarch64-darwin" = "sha256-WoFaddsozapWTHmisxOYJb8NJtdN/GTKLgsFAEd6Uwg=";
-          "x86_64-linux" = "sha256-WoFaddsozapWTHmisxOYJb8NJtdN/GTKLgsFAEd6Uwg=";
-        };
-      in {
-        volta = super.rustPlatform.buildRustPackage rec {
-          pname = "volta";
-          version = "1.1.0";
-          src = volta-src;
-          cargoSha256 = shas."${super.system}";
-          buildInputs = super.lib.optionals super.stdenv.isDarwin [super.darwin.apple_sdk.frameworks.Security super.libiconv];
-
-          meta = with super.lib; {
-            description = "The Hassle-Free JavaScript Tool Manager";
-            longDescription = ''
-              Volta’s job is to get out of your way.
-
-              With Volta, you can select a Node engine once and then stop worrying about it. You can switch between projects and stop having to manually switch between Nodes. You can install npm package binaries in your toolchain without having to periodically reinstall them or figure out why they’ve stopped working.
-            '';
-            homepage = "https://docs.volta.sh";
-            license = with licenses; [bsd2];
-            # maintainers = with maintainers; [ fbrs ];
-          };
-        };
-      })
 
       (self: super: {
         nvim-leap = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {

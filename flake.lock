@@ -334,22 +334,6 @@
         "type": "github"
       }
     },
-    "volta-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1674595751,
-        "narHash": "sha256-+j3WRpunV+3YfZnyuKA/CsiKr+gOaP2NbmnyoGMN+Mg=",
-        "owner": "volta-cli",
-        "repo": "volta",
-        "rev": "2ce6db05ce448e9c5934df940b1c5a9aea554440",
-        "type": "github"
-      },
-      "original": {
-        "owner": "volta-cli",
-        "repo": "volta",
-        "type": "github"
-      }
-    },
     "winshift": {
       "flake": false,
       "locked": {
