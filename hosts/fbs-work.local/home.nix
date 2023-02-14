@@ -7,7 +7,6 @@
     (import ../../modules/fish.nix)
     (import ../../modules/common.nix)
     (import ../../modules/alacritty)
-    (import ../../modules/wezterm)
   ];
 
   programs.man.enable = true;
