@@ -1,5 +1,9 @@
-{ lib, config, pkgs, ... }:
 {
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   programs.alacritty = {
     settings = {
       colors = (import ./colors.nix).oneLight;
@@ -35,6 +39,46 @@
           key = "S";
           mods = "Control";
         }
+        {
+          chars = "`c";
+          key = "S";
+          mods = "Command";
+        }
+        {
+          chars = "`x";
+          key = "X";
+          mods = "Command";
+        }
+        {
+          chars = "`0";
+          key = "Key0";
+          mods = "Command";
+        }
+        {
+          chars = "`1";
+          key = "Key1";
+          mods = "Command";
+        }
+        {
+          chars = "`2";
+          key = "Key2";
+          mods = "Command";
+        }
+        {
+          chars = "`3";
+          key = "Key3";
+          mods = "Command";
+        }
+        {
+          chars = "`'";
+          key = "Apostrophe";
+          mods = "Command";
+        }
+        {
+          chars = "`;";
+          key = "Semicolon";
+          mods = "Command";
+        }
       ];
       window = {
         decorations = "full";
@@ -52,7 +96,7 @@
         TERM = "alacritty";
       };
       shell = {
-        args = [ "-l" ];
+        args = ["-l"];
         program = "${pkgs.fish}/bin/fish";
       };
     };
