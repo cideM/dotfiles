@@ -70,6 +70,16 @@
           mods = "Command";
         }
         {
+          chars = "`4";
+          key = "Key4";
+          mods = "Command";
+        }
+        {
+          chars = "`5";
+          key = "Key5";
+          mods = "Command";
+        }
+        {
           chars = "`'";
           key = "Apostrophe";
           mods = "Command";
