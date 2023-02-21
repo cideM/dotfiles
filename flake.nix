@@ -208,7 +208,6 @@
           system = "aarch64-darwin";
         };
         modules = [
-          ./modules/regs.nix
           {
             home = {
               homeDirectory = "/Users/fbs";
@@ -230,7 +229,6 @@
       system = "x86_64-linux";
 
       modules = [
-        ./modules/regs.nix
         ./hosts/nixos/configuration.nix
         home-manager.nixosModules.home-manager
         {

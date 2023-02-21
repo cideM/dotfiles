@@ -1,8 +1,5 @@
-{ pkgs, ... }:
-
-with pkgs;
-
-{
+{pkgs, ...}:
+with pkgs; {
   home.packages = [
     alejandra
     bashInteractive
@@ -64,6 +61,22 @@ with pkgs;
   programs.direnv.nix-direnv.enable = true;
 
   # https://github.com/rycee/home-manager/issues/432
-  home.extraOutputsToInstall = [ "info" "man" "share" "icons" "doc" ];
-}
+  home.extraOutputsToInstall = ["info" "man" "share" "icons" "doc"];
 
+  xdg.configFile."nix/registry.json".text = builtins.toJSON {
+    version = 2;
+    flakes = {
+      fbrs = {
+        from = {
+          id = "fbrs";
+          type = "indirect";
+        };
+        to = {
+          type = "github";
+          owner = "cidem";
+          repo = "nix-templates";
+        };
+      };
+    };
+  };
+}

@@ -45,12 +45,6 @@
     experimental-features = nix-command flakes
   '';
 
-  xdg.configFile."nix/registry.json".text =
-    builtins.toJSON {
-      version = 2;
-      flakes = pkgs.lib.attrValues config.common.flake_registries;
-    };
-
   home.file.".gitignore".text = ''
     .direnv/
   '';
