@@ -38,7 +38,7 @@ with pkgs; {
     rsync
     shellcheck
     stylua
-    sumneko-lua-language-server
+    lua-language-server
     time
     tokei
     tree

@@ -314,7 +314,7 @@ in
         nvim_lsp.tsserver.setup{}
         nvim_lsp.gopls.setup{}
         nvim_lsp.zls.setup{}
-        nvim_lsp.sumneko_lua.setup{}
+        nvim_lsp.lua_ls.setup{}
         nvim_lsp.eslint.setup{}
 
         require('lspfuzzy').setup {}
