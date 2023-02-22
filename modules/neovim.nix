@@ -121,6 +121,7 @@ in
         setl formatprg=ormolu\ --stdin-input-file\ %
       '';
       markdown = ''
+        :TSContextDisable
         setl formatprg=prettier\ --stdin-filepath\ %
       '';
     };
