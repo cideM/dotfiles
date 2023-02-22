@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "arctic-lush": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1676508580,
-        "narHash": "sha256-pxPI8I6XSgL1Tp8uDfL0CbJflbaAFHUQ0AZfTKMHeNs=",
-        "owner": "rockyzhang24",
-        "repo": "arctic.nvim",
-        "rev": "40124a113b9876ef345f4ed550afc25462c782e3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "rockyzhang24",
-        "repo": "arctic.nvim",
-        "type": "github"
-      }
-    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -62,22 +46,6 @@
         "type": "github"
       }
     },
-    "githubtheme": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1676630209,
-        "narHash": "sha256-KGG/hSH6tvwj9HsZ9cjK6XNbei3vua25+GnLF116Yv4=",
-        "owner": "projekt0n",
-        "repo": "github-nvim-theme",
-        "rev": "e21282d37eef01c8ebce0b42c76750bda4396163",
-        "type": "github"
-      },
-      "original": {
-        "owner": "projekt0n",
-        "repo": "github-nvim-theme",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -96,22 +64,6 @@
       "original": {
         "owner": "nix-community",
         "repo": "home-manager",
-        "type": "github"
-      }
-    },
-    "jellybeans-lush": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1647863512,
-        "narHash": "sha256-/eZdhDZmcWSTDlOdl8f7lhU6QGyc/WUAIICp9Jze/aA=",
-        "owner": "metalelf0",
-        "repo": "jellybeans-nvim",
-        "rev": "f77b75443adf6461ded30de0243f49771f933d06",
-        "type": "github"
-      },
-      "original": {
-        "owner": "metalelf0",
-        "repo": "jellybeans-nvim",
         "type": "github"
       }
     },
@@ -179,38 +131,6 @@
         "type": "github"
       }
     },
-    "nvim-leap": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1676565101,
-        "narHash": "sha256-REKznVWUbAYgoVehh2EmouLsgDjiSu3XEuWwoLzzKlc=",
-        "owner": "ggandor",
-        "repo": "leap.nvim",
-        "rev": "9a69febb2e5a4f5f5a55dd2d7173098fde917bc5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ggandor",
-        "repo": "leap.nvim",
-        "type": "github"
-      }
-    },
-    "onedarkpro-lush": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1676639561,
-        "narHash": "sha256-1tEFKas0Zn8wOxGVUYkiTH7qIOVpi2o3GGnxUdtlY+s=",
-        "owner": "olimorris",
-        "repo": "onedarkpro.nvim",
-        "rev": "828d1af53c466a2cf4940e8dc920b1ea026a455a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "olimorris",
-        "repo": "onedarkpro.nvim",
-        "type": "github"
-      }
-    },
     "operatorMono": {
       "flake": false,
       "locked": {
@@ -246,26 +166,20 @@
     },
     "root": {
       "inputs": {
-        "arctic-lush": "arctic-lush",
         "flake-utils": "flake-utils",
-        "githubtheme": "githubtheme",
         "home-manager": "home-manager",
-        "jellybeans-lush": "jellybeans-lush",
         "lspfuzzy": "lspfuzzy",
         "lucid-fish-prompt": "lucid-fish-prompt",
         "nix-env-fish": "nix-env-fish",
         "nixpkgs": [
           "unstable"
         ],
-        "nvim-leap": "nvim-leap",
-        "onedarkpro-lush": "onedarkpro-lush",
         "operatorMono": "operatorMono",
         "parinfer-rust": "parinfer-rust",
         "rosepine": "rosepine",
         "spacevimtheme": "spacevimtheme",
         "unstable": "unstable",
         "vim-js": "vim-js",
-        "winshift": "winshift",
         "yui": "yui",
         "zig-overlay": "zig-overlay"
       }
@@ -346,22 +260,6 @@
       "original": {
         "owner": "yuezk",
         "repo": "vim-js",
-        "type": "github"
-      }
-    },
-    "winshift": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1662472840,
-        "narHash": "sha256-mW3kaducHWRlDx18WcwcbWDlNnAyHgELS3XjpeFFCgs=",
-        "owner": "sindrets",
-        "repo": "winshift.nvim",
-        "rev": "37468ed6f385dfb50402368669766504c0e15583",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sindrets",
-        "repo": "winshift.nvim",
         "type": "github"
       }
     },

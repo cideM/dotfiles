@@ -365,11 +365,12 @@ in
         vim-indent-object
         vim-sayonara
         QFEnter
+        winshift-nvim
         fzfWrapper
         nvim-treesitter-context
         fzf-vim
         vim-gutentags
-        pkgs.nvim-leap
+        leap-nvim
         vim-sandwich
         sad-vim
         vim-dirvish
@@ -382,6 +383,7 @@ in
         pkgs.yui
         everforest
         tokyonight-nvim
+        pkgs.rosepine
 
         # Language stuff
         { plugin = pkgs.parinfer-rust; optional = true; }
