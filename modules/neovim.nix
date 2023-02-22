@@ -20,7 +20,7 @@ in
         setl formatprg=prettier\ --stdin-filepath\ %
       '';
       zig = ''
-        setl formatprg=${pkgs.zigpkgs.master}/bin/zig\ fmt\ --stdin
+        setl formatprg=zig\ fmt\ --stdin
       '';
       sh = ''
         setl makeprg=shellcheck\ -f\ gcc\ %
@@ -61,7 +61,7 @@ in
         setl formatprg=prettier\ --stdin-filepath\ %
         setl wildignore+=*node_modules*,package-lock.json,yarn-lock.json
         setl errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m,%-G%.%#
-        setl makeprg=${pkgs.nodePackages.eslint}/bin/eslint\ --format\ compact
+        setl makeprg=eslint\ --format\ compact
         set foldmethod=expr
         set foldexpr=nvim_treesitter#foldexpr()
       '';
@@ -83,7 +83,7 @@ in
         setl formatprg=prettier\ --parser\ scss\ --stdin-filepath\ %
       '';
       nix = ''
-        setl formatprg=${pkgs.alejandra}/bin/alejandra\ -q
+        setl formatprg=alejandra\ -q
         set foldmethod=expr
         set foldexpr=nvim_treesitter#foldexpr()
       '';
@@ -103,7 +103,7 @@ in
         set foldexpr=nvim_treesitter#foldexpr()
       '';
       sql = ''
-        setl formatprg=${pkgs.pgformatter}/bin/pg_format\ -g
+        setl formatprg=pg_format\ -g
       '';
       go = ''
         setl formatprg=gofmt
