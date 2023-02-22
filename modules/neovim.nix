@@ -336,6 +336,12 @@ in
           indent = {
             enable = true,
             disable = {"zig", "nix", "dockerfile", "bash", "toml", "tsx", "typescript"},
+          },
+        }
+
+        require("zen-mode").setup {
+          window = {
+            backdrop = 1,
           }
         }
         EOF
@@ -366,12 +372,15 @@ in
         vim-sandwich
         sad-vim
         vim-dirvish
+        zen-mode-nvim
+        twilight-nvim
 
         # Themes
         edge
         pkgs.spacevim
         pkgs.yui
         everforest
+        tokyonight-nvim
 
         # Language stuff
         { plugin = pkgs.parinfer-rust; optional = true; }
