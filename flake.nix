@@ -9,7 +9,10 @@
       inputs.nixpkgs.follows = "unstable";
     };
 
-    /* neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay"; */
+    /*
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    */
+    flake-utils.url = "github:numtide/flake-utils";
 
     arctic-lush.url = "github:rockyzhang24/arctic.nvim";
     arctic-lush.flake = false;
@@ -66,13 +69,16 @@
     self,
     unstable,
     home-manager,
+    flake-utils,
     operatorMono,
     nixpkgs,
     lspfuzzy,
     winshift,
     nix-env-fish,
     lucid-fish-prompt,
-    /* neovim-nightly-overlay, */
+    /*
+    neovim-nightly-overlay,
+    */
     zig-overlay,
     yui,
     spacevimtheme,
@@ -246,9 +252,19 @@
       ];
     in
       unstable.lib.nixosSystem {inherit system modules specialArgs;};
-  in {
-    # TODO: https://github.com/mjlbach/nix-dotfiles/blob/master/nixpkgs/flake.nix
-    nixosConfigurations.nixos = desktop;
-    inherit homeConfigurations;
-  };
+  in
+    {
+      # TODO: https://github.com/mjlbach/nix-dotfiles/blob/master/nixpkgs/flake.nix
+      nixosConfigurations.nixos = desktop;
+      inherit homeConfigurations;
+    }
+    // flake-utils.lib.eachDefaultSystem (
+      system: let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in rec {
+        devShell = pkgs.mkShell {
+          buildInputs = with pkgs; [alejandra nodePackages.prettier];
+        };
+      }
+    );
 }
