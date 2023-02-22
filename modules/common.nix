@@ -1,7 +1,6 @@
 {pkgs, ...}:
 with pkgs; {
   home.packages = [
-    alejandra
     bashInteractive
     bat
     coreutils-full
@@ -24,20 +23,15 @@ with pkgs; {
     hyperfine
     jq
     tldr
-    luajitPackages.luacheck
     # broken on Darwin because of the Zig it uses?
     # ncdu
-    nixpkgs-fmt
     nixpkgs-review
-    nodePackages.vscode-langservers-extracted
     rclone
     restic
     ripgrep
     rlwrap
     rsync
     shellcheck
-    stylua
-    lua-language-server
     time
     tokei
     tree
