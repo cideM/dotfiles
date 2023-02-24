@@ -329,7 +329,7 @@ in
           ensure_installed = {},
           highlight = {
             enable = true,
-            disable = {"typescript", "fish", "zig", "tsx", "bash", "nix", "markdown_inline"},
+            disable = {},
           },
           incremental_selection = {
             enable = false,
