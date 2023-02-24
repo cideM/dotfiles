@@ -329,7 +329,7 @@ in
           ensure_installed = {},
           highlight = {
             enable = true,
-            disable = {"typescript", "fish", "zig", "tsx", "bash"},
+            disable = {"typescript", "fish", "zig", "tsx", "bash", "nix", "markdown_inline"},
           },
           incremental_selection = {
             enable = false,
@@ -400,7 +400,7 @@ in
         vim-jsx-pretty
         vim-nix
         vim-terraform
-        (nvim-treesitter.withPlugins (p: pkgs.tree-sitter.allGrammars))
+        nvim-treesitter.withAllGrammars
 
       ];
     };
