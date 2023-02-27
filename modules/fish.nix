@@ -18,6 +18,8 @@ let
 
     set -x MANPAGER 'nvim +Man!'
 
+    fish_config theme choose rose_pine_dawn
+
     # https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
     # XDG_RUNTIME_DIR should be set by pam_systemd
     set -x XDG_CONFIG_HOME $HOME/.config
@@ -87,12 +89,17 @@ in
     plugins = [
       {
         name = "nix-env";
-        src = nix-env-fish;
+        src = pkgs.nix-env-fish.src;
+      }
+
+      {
+        name = "rose-pine";
+        src = pkgs.rose-pine-fish.src;
       }
 
       {
         name = "lucid";
-        src = lucid-fish-prompt;
+        src = pkgs.lucid-fish-prompt.src;
       }
     ];
   };

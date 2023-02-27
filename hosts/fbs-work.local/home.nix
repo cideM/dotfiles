@@ -1,5 +1,9 @@
-{ pkgs, home-manager, config, ... }:
 {
+  pkgs,
+  home-manager,
+  config,
+  ...
+}: {
   imports = [
     (import ../../modules/neovim.nix)
     (import ../../modules/tmux.nix)
@@ -35,7 +39,9 @@
   ];
 
   # https://github.com/nix-community/home-manager/issues/2942
-  nixpkgs.config.allowUnfreePredicate = (pkg: true);
+  nixpkgs.config.allowUnfreePredicate = pkg: true;
+
+  xdg.configFile."fish/themes/rose_pine_dawn.theme".source = "${pkgs.rose-pine-fish}/themes/Rosé Pine Dawn.theme";
 
   xdg.configFile.".gemrc".text = ''
     :ipv4_fallback_enabled: true

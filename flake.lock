@@ -83,7 +83,7 @@
         "type": "github"
       }
     },
-    "lucid-fish-prompt": {
+    "lucid-fish-prompt-src": {
       "flake": false,
       "locked": {
         "lastModified": 1670948184,
@@ -99,7 +99,7 @@
         "type": "github"
       }
     },
-    "nix-env-fish": {
+    "nix-env-fish-src": {
       "flake": false,
       "locked": {
         "lastModified": 1638213644,
@@ -169,19 +169,53 @@
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "lspfuzzy": "lspfuzzy",
-        "lucid-fish-prompt": "lucid-fish-prompt",
-        "nix-env-fish": "nix-env-fish",
+        "lucid-fish-prompt-src": "lucid-fish-prompt-src",
+        "nix-env-fish-src": "nix-env-fish-src",
         "nixpkgs": [
           "unstable"
         ],
         "operatorMono": "operatorMono",
         "parinfer-rust": "parinfer-rust",
+        "rose-pine-alacritty-src": "rose-pine-alacritty-src",
+        "rose-pine-fish-src": "rose-pine-fish-src",
         "rosepine": "rosepine",
         "spacevimtheme": "spacevimtheme",
         "unstable": "unstable",
         "vim-js": "vim-js",
         "yui": "yui",
         "zig-overlay": "zig-overlay"
+      }
+    },
+    "rose-pine-alacritty-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1651345231,
+        "narHash": "sha256-fjzKxSXGv0yLmT+VAonRCxlqQldxrHWUQgsOugobFoU=",
+        "owner": "rose-pine",
+        "repo": "alacritty",
+        "rev": "7c3625f3d0f34359ba114e09b1ba3f3c1bed399a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rose-pine",
+        "repo": "alacritty",
+        "type": "github"
+      }
+    },
+    "rose-pine-fish-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1663356772,
+        "narHash": "sha256-bSGGksL/jBNqVV0cHZ8eJ03/8j3HfD9HXpDa8G/Cmi8=",
+        "owner": "rose-pine",
+        "repo": "fish",
+        "rev": "38aab5baabefea1bc7e560ba3fbdb53cb91a6186",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rose-pine",
+        "repo": "fish",
+        "type": "github"
       }
     },
     "rosepine": {

@@ -6,7 +6,7 @@
 }: {
   programs.alacritty = {
     settings = {
-      colors = (import ./colors.nix).oneLight;
+      colors = (builtins.fromJSON (builtins.readFile "${pkgs.rose-pine-alacritty}/rose-pine-dawn.json")).colors;
       font = (import ./fonts.nix).mono;
       key_bindings = [
         {

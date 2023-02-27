@@ -17,14 +17,20 @@
     parinfer-rust.url = "github:eraserhd/parinfer-rust";
     parinfer-rust.flake = false;
 
-    lucid-fish-prompt.url = "github:mattgreen/lucid.fish";
-    lucid-fish-prompt.flake = false;
+    lucid-fish-prompt-src.url = "github:mattgreen/lucid.fish";
+    lucid-fish-prompt-src.flake = false;
 
-    nix-env-fish.url = "github:lilyball/nix-env.fish";
-    nix-env-fish.flake = false;
+    nix-env-fish-src.url = "github:lilyball/nix-env.fish";
+    nix-env-fish-src.flake = false;
+
+    rose-pine-alacritty-src.url = "github:rose-pine/alacritty";
+    rose-pine-alacritty-src.flake = false;
 
     rosepine.url = "github:rose-pine/neovim";
     rosepine.flake = false;
+
+    rose-pine-fish-src.url = "github:rose-pine/fish";
+    rose-pine-fish-src.flake = false;
 
     spacevimtheme.url = "github:liuchengxu/space-vim-theme";
     spacevimtheme.flake = false;
@@ -53,10 +59,12 @@
     home-manager,
     flake-utils,
     operatorMono,
+    rose-pine-fish-src,
+    rose-pine-alacritty-src,
     nixpkgs,
     lspfuzzy,
-    nix-env-fish,
-    lucid-fish-prompt,
+    nix-env-fish-src,
+    lucid-fish-prompt-src,
     zig-overlay,
     yui,
     spacevimtheme,
@@ -126,10 +134,53 @@
           src = vim-js;
         };
       })
+
+      (self: super: {
+        rose-pine-fish = super.pkgs.stdenv.mkDerivation {
+          pname = "rose-pine-fish";
+          version = "latest";
+          src = rose-pine-fish-src;
+          buildPhases = ["installPhase"];
+          installPhase = ''
+            mkdir $out
+            cp -R $src/themes $out/themes
+          '';
+        };
+      })
+
+      (self: super: {
+        rose-pine-alacritty = super.stdenv.mkDerivation {
+          pname = "rose-pine-alacritty";
+          version = "latest";
+          src = rose-pine-alacritty-src;
+          dontUnpack = true;
+          dontBuild = true;
+          installPhase = ''
+            mkdir $out
+            cat $src/dist/rose-pine-dawn.yml | ${super.yj}/bin/yj > $out/rose-pine-dawn.json
+          '';
+        };
+      })
+
+      (self: super: {
+        lucid-fish-prompt = super.fishPlugins.buildFishPlugin rec {
+          pname = "lucid-fish-prompt";
+          version = "latest";
+          src = lucid-fish-prompt-src;
+        };
+      })
+
+      (self: super: {
+        nix-env-fish = super.fishPlugins.buildFishPlugin rec {
+          pname = "nix-env-fish";
+          version = "latest";
+          src = nix-env-fish-src;
+        };
+      })
     ];
 
     specialArgs = {
-      inherit home-manager nix-env-fish lucid-fish-prompt;
+      inherit home-manager;
     };
 
     homeConfigurations = {
