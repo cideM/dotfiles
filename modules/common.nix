@@ -17,6 +17,7 @@ with pkgs; {
     git-lfs
     gnugrep
     gnupg
+    nodePackages.vscode-langservers-extracted
     gnused
     gzip
     htop
