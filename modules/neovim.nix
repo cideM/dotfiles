@@ -93,6 +93,9 @@ in
       make = ''
         setl noexpandtab
       '';
+      graphql = ''
+        setl formatprg=prettier\ --parser=graphql
+      '';
       lua = ''
         set foldmethod=expr
         set foldexpr=nvim_treesitter#foldexpr()
