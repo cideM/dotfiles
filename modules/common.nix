@@ -17,16 +17,14 @@ with pkgs; {
     git-lfs
     gnugrep
     gnupg
-    nodePackages.vscode-langservers-extracted
     gnused
     gzip
     htop
     hyperfine
     jq
-    tldr
-    # broken on Darwin because of the Zig it uses?
-    # ncdu
     nixpkgs-review
+    nodePackages.vscode-langservers-extracted
+    nushell
     rclone
     restic
     ripgrep
@@ -34,6 +32,7 @@ with pkgs; {
     rsync
     shellcheck
     time
+    tldr
     tokei
     tree
     universal-ctags
