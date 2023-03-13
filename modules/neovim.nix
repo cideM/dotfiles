@@ -378,6 +378,7 @@ in
         vim-dirvish
         zen-mode-nvim
         twilight-nvim
+        vim-cursorword
 
         # Themes
         edge
