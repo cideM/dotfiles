@@ -191,7 +191,8 @@ in
 
         " COLOR STUFF
         let g:yui_comments = 'bg'
-        colorscheme rose-pine
+        " colorscheme rose-pine
+        colorscheme yui
 
         let g:EditorConfig_max_line_indicator = "exceeding"
         let g:EditorConfig_preserve_formatoptions = 1
