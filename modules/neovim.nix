@@ -192,6 +192,7 @@ in
         " COLOR STUFF
         let g:yui_comments = 'bg'
         " colorscheme rose-pine
+        let g:yui_lightline = v:true
         colorscheme yui
 
         let g:EditorConfig_max_line_indicator = "exceeding"
@@ -232,6 +233,10 @@ in
         nnoremap <leader>m :Marks<cr>
         nnoremap <leader>b :Buffers<cr>
         nnoremap <leader>W :Windows<cr>
+
+        let g:lightline = {
+        \ 'colorscheme': 'yui'
+        \ }
 
         nmap     <leader>F :call FormatBuffer()<cr>
         nnoremap <leader>R :set operatorfunc=ReflowComment<cr>g@
@@ -278,7 +283,6 @@ in
         " ======= lsp =======================
         packadd nvim-lspconfig
         lua <<EOF
-
         local bufopts = { noremap=true, silent=true, buffer=bufnr }
         vim.keymap.set('n', '<leader>d', vim.lsp.buf.definition, bufopts)
         vim.keymap.set('n', '<leader>D', vim.lsp.buf.declaration, bufopts)
@@ -380,6 +384,7 @@ in
         zen-mode-nvim
         twilight-nvim
         vim-cursorword
+        lightline-vim
 
         # Themes
         edge

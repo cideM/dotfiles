@@ -25,6 +25,16 @@
           mods = "Control";
         }
         {
+          action = "ResetFontSize";
+          key = "Key0";
+          mods = "Command|Shift";
+        }
+        {
+          action = "ResetFontSize";
+          key = "Key0";
+          mods = "Control|Shift";
+        }
+        {
           chars = "`|";
           key = "Backslash";
           mods = "Control";
