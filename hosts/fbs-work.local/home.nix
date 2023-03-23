@@ -18,15 +18,6 @@
   programs.alacritty.enable = true;
   programs.alacritty.settings.font.size = 14;
 
-  # https://github.com/nix-community/home-manager/issues/1439#issuecomment-1440763587
-  home.activation = {
-    linkDesktopApplications = {
-      after = ["writeBoundary" "createXdgUserDirectories"];
-      before = [];
-      data = "/usr/bin/update-desktop-database";
-    };
-  };
-
   home.stateVersion = "20.09";
 
   programs.fish.interactiveShellInit = ''
