@@ -382,6 +382,7 @@ in
         sad-vim
         vim-dirvish
         zen-mode-nvim
+        copilot-vim
         twilight-nvim
         vim-cursorword
         lightline-vim
