@@ -253,6 +253,9 @@ in
         map      <leader>C <Plug>(sad-change-backward)
         map      <leader>c <Plug>(sad-change-forward)
 
+        " ======= copilot ==================
+        imap <S-Tab> <Plug>(copilot-suggest)
+
         " ======= sandwich ==================
         let g:sandwich_no_default_key_mappings = 1
         silent! nmap <unique><silent> gd <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)

@@ -76,10 +76,15 @@
       (final: prev: rec {zigpkgs = zig-overlay.packages.${prev.system};})
 
       (final: prev: {
-        copilot-vim = prev.copilot-vim.overrideAttrs (old: {
-          # nativeBuildInputs = old.nativeBuildInputs ++ [prev.nodejs];
-          buildInputs = old.buildInputs ++ [prev.nodejs];
-        });
+        vimPlugins =
+          prev.vimPlugins
+          // {
+            copilot-vim = prev.vimPlugins.copilot-vim.overrideAttrs (old: {
+              postInstall = ''
+                sed -i "s!  let node = get(g:, 'copilot_node_command', ''\'''\')!  let node = get(g:, 'copilot_node_command', '${prev.nodejs}/bin/node')!g" $out/autoload/copilot/agent.vim
+              '';
+            });
+          };
       })
 
       (self: super: {
