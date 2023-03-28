@@ -202,6 +202,11 @@ in
         let g:gutentags_file_list_command = 'rg\ --files'
         let g:gutentags_ctags_executable = '${pkgs.universal-ctags}/bin/ctags'
 
+        function! SynGroup()
+            let l:s = synID(line('.'), col('.'), 1)
+            echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+        endfun
+
         aug terminsert | exe "au! TermOpen * startinsert | setl nonu nornu" | aug END
 
         aug quickfix
@@ -255,6 +260,9 @@ in
 
         " ======= copilot ==================
         imap <S-Tab> <Plug>(copilot-suggest)
+        imap <C-j> <Plug>(copilot-next)
+        imap <C-h> <Plug>(copilot-previous)
+        imap <C-d> <Plug>(copilot-dismiss)
 
         " ======= sandwich ==================
         let g:sandwich_no_default_key_mappings = 1
