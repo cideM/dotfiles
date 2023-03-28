@@ -81,7 +81,9 @@
           // {
             copilot-vim = prev.vimPlugins.copilot-vim.overrideAttrs (old: {
               postInstall = ''
-                sed -i "s!  let node = get(g:, 'copilot_node_command', ''\'''\')!  let node = get(g:, 'copilot_node_command', '${prev.nodejs}/bin/node')!g" $out/autoload/copilot/agent.vim
+                substituteInPlace $out/autoload/copilot/agent.vim \
+                  --replace "  let node = get(g:, 'copilot_node_command', ''\'''\')" \
+                            "  let node = get(g:, 'copilot_node_command', '${prev.nodejs}/bin/node')"
               '';
             });
           };
