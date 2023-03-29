@@ -22,6 +22,7 @@ with pkgs; {
     htop
     hyperfine
     jq
+    oil
     nixpkgs-review
     nodePackages.vscode-langservers-extracted
     nushell

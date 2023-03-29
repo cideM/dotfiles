@@ -44,6 +44,7 @@
     yui.url = "github:cidem/yui";
     yui.flake = false;
 
+    # unstable-local.url = "path:/Users/fbs/private/nixpkgs";
     unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs.follows = "unstable";
 
@@ -56,6 +57,7 @@
   outputs = {
     self,
     unstable,
+    # unstable-local,
     home-manager,
     flake-utils,
     operatorMono,
