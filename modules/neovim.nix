@@ -192,7 +192,7 @@ in
         " COLOR STUFF
         let g:yui_comments = 'bg'
         " colorscheme rose-pine
-        let g:yui_lightline = v:true
+        " let g:yui_lightline = v:true
         colorscheme yui
 
         let g:EditorConfig_max_line_indicator = "exceeding"
@@ -239,9 +239,9 @@ in
         nnoremap <leader>b :Buffers<cr>
         nnoremap <leader>W :Windows<cr>
 
-        let g:lightline = {
-        \ 'colorscheme': 'yui'
-        \ }
+        " let g:lightline = {
+        " \ 'colorscheme': 'yui'
+        " \ }
 
         nmap     <leader>F :call FormatBuffer()<cr>
         nnoremap <leader>R :set operatorfunc=ReflowComment<cr>g@
@@ -396,7 +396,7 @@ in
         copilot-vim
         twilight-nvim
         vim-cursorword
-        lightline-vim
+        # lightline-vim
 
         # Themes
         edge
