@@ -316,6 +316,8 @@ in
         vim.keymap.set('n', '<leader>S', vim.lsp.buf.workspace_symbol, bufopts)
         vim.keymap.set('n', '<C-n>', function () vim.diagnostic.goto_next{ float = true } end, bufopts)
         vim.keymap.set('n', '<C-p>', function () vim.diagnostic.goto_prev{ float = true } end, bufopts)
+        vim.keymap.set('n', '<leader>ps', vim.diagnostic.open_float, bufopts)
+        vim.keymap.set('n', '<leader>pl', vim.diagnostic.setloclist, bufopts)
 
         local nvim_lsp = require'lspconfig'
 
