@@ -349,7 +349,7 @@ in
           ensure_installed = {},
           highlight = {
             enable = true,
-            disable = {},
+            disable = {"help"},
           },
           incremental_selection = {
             enable = false,
