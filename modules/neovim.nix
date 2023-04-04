@@ -349,7 +349,7 @@ in
           ensure_installed = {},
           highlight = {
             enable = true,
-            disable = {"help"},
+            disable = {"help", "gitcommit"},
           },
           incremental_selection = {
             enable = false,
