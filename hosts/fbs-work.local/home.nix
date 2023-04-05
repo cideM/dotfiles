@@ -101,6 +101,9 @@
         smudge = git-lfs smudge -- %f
         process = git-lfs filter-process
         required = true
+
+    [url "git@github.com:"]
+        insteadOf = https://github.com/
   '';
 
   fonts.fontconfig.enable = true;

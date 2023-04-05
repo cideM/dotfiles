@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   programs.git = {
     enable = true;
 
@@ -30,6 +29,12 @@
     };
 
     extraConfig = {
+      url = {
+        "git@github.com:" = {
+          insteadOf = "https://github.com";
+        };
+      };
+
       github.user = "yuuki@protonmail.com";
 
       init = {
