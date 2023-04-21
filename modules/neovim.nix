@@ -195,9 +195,6 @@ in
         " let g:yui_lightline = v:true
         colorscheme yui
 
-        let g:EditorConfig_max_line_indicator = "exceeding"
-        let g:EditorConfig_preserve_formatoptions = 1
-
         let g:gutentags_exclude_filetypes = ["haskell", "purs", "purescript", "git", "gitcommit"]
         let g:gutentags_file_list_command = 'rg\ --files'
         let g:gutentags_ctags_executable = '${pkgs.universal-ctags}/bin/ctags'
@@ -380,7 +377,6 @@ in
         vim-unimpaired
         vim-repeat
         vim-commentary
-        editorconfig-vim
         vim-eunuch
         vim-indent-object
         vim-sayonara
