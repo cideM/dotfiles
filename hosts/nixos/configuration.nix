@@ -34,6 +34,8 @@
     fonts = [ pkgs.operatorMonoFont ];
   };
 
+  programs.fish.enable = true;
+
   programs.steam = {
     enable = true;
   };
@@ -73,15 +75,11 @@
       trusted-users = [ "root" "fbrs" ];
       extra-sandbox-paths = [ "/bin/sh=${pkgs.bash}/bin/sh" ];
     };
-    package = pkgs.nixUnstable;
     extraOptions = ''
       experimental-features = nix-command flakes
       keep-outputs = true
       keep-derivations = true
     '';
-    registry = {
-      fbrs = config.common.flake_registries.fbrs;
-    };
   };
 
   environment.systemPackages = with pkgs; [

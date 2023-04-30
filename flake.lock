@@ -302,14 +302,17 @@
     "yui": {
       "flake": false,
       "locked": {
-        "lastModified": 1681818175,
-        "narHash": "sha256-X/CnUfye5gYGUyEMBdSR6apttlx64QDzGs3Aa8+gWhs=",
-        "path": "/Users/fbs/private/yui",
-        "type": "path"
+        "lastModified": 1682712454,
+        "narHash": "sha256-NKNKjb502Q4aLqDLK/CsB9EDHXZElk7gUAc3Cvrku58=",
+        "owner": "cidem",
+        "repo": "yui",
+        "rev": "0379830fcb10e5f2641f6facf76fd908d284e515",
+        "type": "github"
       },
       "original": {
-        "path": "/Users/fbs/private/yui",
-        "type": "path"
+        "owner": "cidem",
+        "repo": "yui",
+        "type": "github"
       }
     },
     "zig-overlay": {
