@@ -56,7 +56,7 @@
     bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "${pkgs.xsel}/bin/xsel -i --clipboard"
   '';
 
-  # xdg.configFile."fish/themes/rose_pine_dawn.theme".source = "${pkgs.rose-pine-fish}/themes/Rosé Pine Dawn.theme";
+  xdg.configFile."fish/themes/rose_pine_dawn.theme".source = "${pkgs.rose-pine-fish}/themes/Rosé Pine Dawn.theme";
 
   xdg.configFile.".gemrc".text = ''
     :ipv4_fallback_enabled: true
