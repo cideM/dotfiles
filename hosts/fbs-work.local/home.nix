@@ -11,6 +11,7 @@
     (import ../../modules/fish.nix)
     (import ../../modules/common.nix)
     (import ../../modules/alacritty)
+    (import ../../modules/vim.nix)
   ];
 
   programs.man.enable = true;

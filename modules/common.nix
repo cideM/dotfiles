@@ -38,7 +38,7 @@ with pkgs; {
     tree
     universal-ctags
     unzip
-    vim
+    vis
     wget
   ];
 
