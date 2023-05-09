@@ -10,7 +10,7 @@ args @ {
     set vb
     set tw=72
     set com=b:#,:%,n:>
-    set list 
+    set list
     set lcs=tab:»·
     set lcs+=trail:·
     '';
