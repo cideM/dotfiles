@@ -357,11 +357,6 @@ in
           },
         }
 
-        require("zen-mode").setup {
-          window = {
-            backdrop = 1,
-          }
-        }
         EOF
       '';
 
@@ -390,9 +385,8 @@ in
         vim-sandwich
         sad-vim
         vim-dirvish
-        zen-mode-nvim
         copilot-vim
-        twilight-nvim
+        no-neck-pain-nvim
         vim-cursorword
         lightline-vim
 
