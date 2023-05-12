@@ -191,7 +191,6 @@ in
 
         " COLOR STUFF
         let g:yui_comments = 'bg'
-        " colorscheme rose-pine
         let g:yui_lightline = v:true
         colorscheme yui
 
@@ -395,8 +394,6 @@ in
         pkgs.spacevim
         pkgs.yui
         everforest
-        tokyonight-nvim
-        pkgs.rosepine
 
         # Language stuff
         { plugin = pkgs.parinfer-rust; optional = true; }
