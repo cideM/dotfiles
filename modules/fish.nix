@@ -16,6 +16,8 @@ let
 
     bind \cb edit_command_buffer
 
+    set -x BAT_THEME 'GitHub'
+
     set -x MANPAGER 'nvim +Man!'
 
     fish_config theme choose rose_pine_dawn
