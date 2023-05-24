@@ -232,7 +232,6 @@
       unstable.lib.nixosSystem {inherit system modules specialArgs;};
   in
     {
-      # TODO: https://github.com/mjlbach/nix-dotfiles/blob/master/nixpkgs/flake.nix
       nixosConfigurations.nixos = desktop;
       inherit homeConfigurations;
     }
