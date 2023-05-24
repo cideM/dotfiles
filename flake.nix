@@ -11,9 +11,6 @@
 
     flake-utils.url = "github:numtide/flake-utils";
 
-    parinfer-rust.url = "github:eraserhd/parinfer-rust";
-    parinfer-rust.flake = false;
-
     nix-env-fish-src.url = "github:lilyball/nix-env.fish";
     nix-env-fish-src.flake = false;
 
@@ -54,7 +51,6 @@
     yui,
     spacevimtheme,
     vim-js,
-    parinfer-rust,
   }: let
     overlays = [
       (final: prev: rec {zigpkgs = zig-overlay.packages.${prev.system};})
@@ -71,14 +67,6 @@
               '';
             });
           };
-      })
-
-      (self: super: {
-        parinfer-rust = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-          version = "latest";
-          pname = "parinfer-rust";
-          src = parinfer-rust;
-        };
       })
 
       (self: super: {

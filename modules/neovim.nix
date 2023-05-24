@@ -48,15 +48,6 @@ in
         setl laststatus=0 noshowmode noruler
         aug fzf | au! BufLeave <buffer> set laststatus& showmode ruler | aug END
       '';
-      clojure = ''
-        packadd conjure
-        packadd parinfer
-        setl errorformat=%f:%l:%c:\ Parse\ %t%*[^:]:\ %m,%f:%l:%c:\ %t%*[^:]:\ %m
-        setl makeprg=clj-kondo\ --lint\ %
-        setl wildignore+=*.clj-kondo*
-        set foldmethod=expr
-        set foldexpr=nvim_treesitter#foldexpr()
-      '';
       javascript = ''
         setl formatprg=prettier\ --stdin-filepath\ %
         setl wildignore+=*node_modules*,package-lock.json,yarn-lock.json
@@ -394,10 +385,6 @@ in
         pkgs.spacevim
         pkgs.yui
         everforest
-
-        # Language stuff
-        { plugin = pkgs.parinfer-rust; optional = true; }
-        { plugin = conjure; optional = true; }
 
         # Syntax
         haskell-vim
