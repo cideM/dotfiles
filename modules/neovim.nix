@@ -339,7 +339,6 @@ in
         vim-dirvish
         copilot-vim
         no-neck-pain-nvim
-        vim-cursorword
 
         # Themes
         edge
