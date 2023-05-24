@@ -33,9 +33,6 @@ let
     # https://discourse.nixos.org/t/how-is-nix-path-managed-regarding-nix-channel/6079/3?u=cidem
     set -x NIX_PATH ~/.nix-defexpr/channels $NIX_PATH
 
-    abbr -a g 'git'
-    abbr -a dc 'docker compose'
-
     source ${pkgs.fzf}/share/fzf/key-bindings.fish && fzf_key_bindings
   '';
 
@@ -65,17 +62,6 @@ in
             git commit --fixup $commit
             GIT_SEQUENCE_EDITOR=true git rebase $commit~1 --interactive --autosquash
           end
-        '';
-      };
-
-      gc = {
-        description = "fzf git checkout";
-        body = ''
-          git ch (git b -a --sort=-committerdate | 
-            fzf --preview 'git log (echo {} | sed -E -e \'s/^(\+|\*)//\' | string trim) -- ' | 
-            sed -E -e 's/^(\+|\*)//' | 
-            xargs basename | 
-            string trim)
         '';
       };
 
