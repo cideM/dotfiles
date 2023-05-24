@@ -182,7 +182,6 @@ in
 
         " COLOR STUFF
         let g:yui_comments = 'bg'
-        let g:yui_lightline = v:true
         colorscheme yui
 
         let g:gutentags_exclude_filetypes = ["haskell", "purs", "purescript", "git", "gitcommit"]
@@ -225,10 +224,6 @@ in
         nnoremap <leader>m :Marks<cr>
         nnoremap <leader>b :Buffers<cr>
         nnoremap <leader>W :Windows<cr>
-
-        let g:lightline = {
-        \ 'colorscheme': 'yui'
-        \ }
 
         nmap     <leader>F :call FormatBuffer()<cr>
         nnoremap <leader>R :set operatorfunc=ReflowComment<cr>g@
@@ -347,7 +342,6 @@ in
         copilot-vim
         no-neck-pain-nvim
         vim-cursorword
-        lightline-vim
 
         # Themes
         edge
