@@ -85,22 +85,6 @@
         "type": "github"
       }
     },
-    "lucid-fish-prompt-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1670948184,
-        "narHash": "sha256-6HepVxMm9LdJoifczvQS98kAc1+RTKJh+OHRf28nhZM=",
-        "owner": "mattgreen",
-        "repo": "lucid.fish",
-        "rev": "b6aca138ce47289f2083bcb63c062d47dcaf4368",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mattgreen",
-        "repo": "lucid.fish",
-        "type": "github"
-      }
-    },
     "nix-env-fish-src": {
       "flake": false,
       "locked": {
@@ -150,90 +134,21 @@
         "url": "ssh://git@github.com/cidem/operatormono"
       }
     },
-    "parinfer-rust": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1682348307,
-        "narHash": "sha256-EVFuCZo6lYXEOWQzTW7BEfB5PIbO4YA4dCMo7N4oWrM=",
-        "owner": "eraserhd",
-        "repo": "parinfer-rust",
-        "rev": "3c769707ad3b18d530f696fe42a9d495139149ab",
-        "type": "github"
-      },
-      "original": {
-        "owner": "eraserhd",
-        "repo": "parinfer-rust",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "lspfuzzy": "lspfuzzy",
-        "lucid-fish-prompt-src": "lucid-fish-prompt-src",
         "nix-env-fish-src": "nix-env-fish-src",
         "nixpkgs": [
           "unstable"
         ],
         "operatorMono": "operatorMono",
-        "parinfer-rust": "parinfer-rust",
-        "rose-pine-alacritty-src": "rose-pine-alacritty-src",
-        "rose-pine-fish-src": "rose-pine-fish-src",
-        "rosepine": "rosepine",
         "spacevimtheme": "spacevimtheme",
         "unstable": "unstable",
         "vim-js": "vim-js",
         "yui": "yui",
         "zig-overlay": "zig-overlay"
-      }
-    },
-    "rose-pine-alacritty-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1651345231,
-        "narHash": "sha256-fjzKxSXGv0yLmT+VAonRCxlqQldxrHWUQgsOugobFoU=",
-        "owner": "rose-pine",
-        "repo": "alacritty",
-        "rev": "7c3625f3d0f34359ba114e09b1ba3f3c1bed399a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "rose-pine",
-        "repo": "alacritty",
-        "type": "github"
-      }
-    },
-    "rose-pine-fish-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1663356772,
-        "narHash": "sha256-bSGGksL/jBNqVV0cHZ8eJ03/8j3HfD9HXpDa8G/Cmi8=",
-        "owner": "rose-pine",
-        "repo": "fish",
-        "rev": "38aab5baabefea1bc7e560ba3fbdb53cb91a6186",
-        "type": "github"
-      },
-      "original": {
-        "owner": "rose-pine",
-        "repo": "fish",
-        "type": "github"
-      }
-    },
-    "rosepine": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1682890070,
-        "narHash": "sha256-46iR2frP+y18XXOtOLZITiGXTE7xf80o3zh5u3oi5ng=",
-        "owner": "rose-pine",
-        "repo": "neovim",
-        "rev": "2eace84d649d76d41dcd44a87a17f64c7c4a586d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "rose-pine",
-        "repo": "neovim",
-        "type": "github"
       }
     },
     "spacevimtheme": {
