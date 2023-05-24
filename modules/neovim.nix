@@ -331,7 +331,6 @@ in
         vim-indent-object
         vim-sayonara
         QFEnter
-        winshift-nvim
         fzfWrapper
         nvim-treesitter-context
         fzf-vim
