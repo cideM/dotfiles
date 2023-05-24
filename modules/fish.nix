@@ -1,7 +1,6 @@
 { pkgs
 , config
 , nix-env-fish
-, lucid-fish-prompt
 , ...
 }:
 let
@@ -99,10 +98,6 @@ in
         src = pkgs.rose-pine-fish.src;
       }
 
-      {
-        name = "lucid";
-        src = pkgs.lucid-fish-prompt.src;
-      }
     ];
   };
 }

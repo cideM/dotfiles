@@ -14,9 +14,6 @@
     parinfer-rust.url = "github:eraserhd/parinfer-rust";
     parinfer-rust.flake = false;
 
-    lucid-fish-prompt-src.url = "github:mattgreen/lucid.fish";
-    lucid-fish-prompt-src.flake = false;
-
     nix-env-fish-src.url = "github:lilyball/nix-env.fish";
     nix-env-fish-src.flake = false;
 
@@ -64,7 +61,6 @@
     nixpkgs,
     lspfuzzy,
     nix-env-fish-src,
-    lucid-fish-prompt-src,
     zig-overlay,
     yui,
     spacevimtheme,
@@ -173,14 +169,6 @@
             mkdir $out
             cat $src/dist/rose-pine-dawn.yml | ${super.yj}/bin/yj > $out/rose-pine-dawn.json
           '';
-        };
-      })
-
-      (self: super: {
-        lucid-fish-prompt = super.fishPlugins.buildFishPlugin rec {
-          pname = "lucid-fish-prompt";
-          version = "latest";
-          src = lucid-fish-prompt-src;
         };
       })
 
