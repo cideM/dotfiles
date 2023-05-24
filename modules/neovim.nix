@@ -328,7 +328,6 @@ in
         vim-unimpaired
         vim-repeat
         vim-commentary
-        vim-eunuch
         vim-indent-object
         vim-sayonara
         QFEnter
