@@ -28,21 +28,14 @@
     or set -p MANPATH "/Users/fbs/.nix-profile/share/man"
   '';
 
-  home.sessionVariables = pkgs.lib.attrsets.optionalAttrs config.programs.alacritty.enable {
-    TERMINFO_DIRS = "${pkgs.alacritty.terminfo.outPath}/share/terminfo";
-  };
-
   home.packages = with pkgs; [
     nixVersions.stable
     unixtools.watch
     home-manager.defaultPackage.aarch64-darwin
-    operatorMonoFont
   ];
 
   # https://github.com/nix-community/home-manager/issues/2942
   nixpkgs.config.allowUnfreePredicate = pkg: true;
-
-  xdg.configFile."fish/themes/rose_pine_dawn.theme".source = "${pkgs.rose-pine-fish}/themes/Rosé Pine Dawn.theme";
 
   xdg.configFile.".gemrc".text = ''
     :ipv4_fallback_enabled: true

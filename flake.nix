@@ -17,15 +17,6 @@
     nix-env-fish-src.url = "github:lilyball/nix-env.fish";
     nix-env-fish-src.flake = false;
 
-    rose-pine-alacritty-src.url = "github:rose-pine/alacritty";
-    rose-pine-alacritty-src.flake = false;
-
-    rosepine.url = "github:rose-pine/neovim";
-    rosepine.flake = false;
-
-    rose-pine-fish-src.url = "github:rose-pine/fish";
-    rose-pine-fish-src.flake = false;
-
     spacevimtheme.url = "github:liuchengxu/space-vim-theme";
     spacevimtheme.flake = false;
 
@@ -56,8 +47,6 @@
     home-manager,
     flake-utils,
     operatorMono,
-    rose-pine-fish-src,
-    rose-pine-alacritty-src,
     nixpkgs,
     lspfuzzy,
     nix-env-fish-src,
@@ -65,7 +54,6 @@
     yui,
     spacevimtheme,
     vim-js,
-    rosepine,
     parinfer-rust,
   }: let
     overlays = [
@@ -102,14 +90,6 @@
       })
 
       (self: super: {
-        rosepine = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-          version = "latest";
-          pname = "rosepine";
-          src = rosepine;
-        };
-      })
-
-      (self: super: {
         lspfuzzy = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
           version = "latest";
           pname = "lspfuzzy";
@@ -142,33 +122,6 @@
           version = "latest";
           pname = "vim-js";
           src = vim-js;
-        };
-      })
-
-      (self: super: {
-        rose-pine-fish = super.pkgs.stdenv.mkDerivation {
-          pname = "rose-pine-fish";
-          version = "latest";
-          src = rose-pine-fish-src;
-          buildPhases = ["installPhase"];
-          installPhase = ''
-            mkdir $out
-            cp -R $src/themes $out/themes
-          '';
-        };
-      })
-
-      (self: super: {
-        rose-pine-alacritty = super.stdenv.mkDerivation {
-          pname = "rose-pine-alacritty";
-          version = "latest";
-          src = rose-pine-alacritty-src;
-          dontUnpack = true;
-          dontBuild = true;
-          installPhase = ''
-            mkdir $out
-            cat $src/dist/rose-pine-dawn.yml | ${super.yj}/bin/yj > $out/rose-pine-dawn.json
-          '';
         };
       })
 
