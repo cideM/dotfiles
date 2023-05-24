@@ -9,9 +9,6 @@
       inputs.nixpkgs.follows = "unstable";
     };
 
-    /*
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    */
     flake-utils.url = "github:numtide/flake-utils";
 
     parinfer-rust.url = "github:eraserhd/parinfer-rust";
