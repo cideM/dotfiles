@@ -9,21 +9,6 @@
     userEmail = "yuuki@protonmail.com";
     userName = "Florian Beeres";
 
-    aliases = {
-      r = "branch --sort=-committerdate";
-      s = "status";
-      a = "add";
-      co = "commit";
-      ch = "checkout";
-      ds = "diff --staged";
-      b = "branch";
-      cb = "rev-parse --abbrev-ref HEAD";
-      dd = "diff";
-      pl = "pull";
-      ps = "push";
-      l = "log";
-    };
-
     lfs = {
       enable = true;
     };
