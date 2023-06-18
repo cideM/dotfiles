@@ -19,7 +19,37 @@
   programs.alacritty.enable = true;
   programs.alacritty.settings.font.size = 14;
 
-  home.stateVersion = "20.09";
+  home = {
+    stateVersion = "20.09";
+    packages = with pkgs; [
+      nixVersions.stable
+      unixtools.watch
+      home-manager.defaultPackage.aarch64-darwin
+    ];
+
+    file = {
+      ".gitignore" = {
+        text = ''
+          .direnv
+        '';
+      };
+
+      "/Library/Preferences/glow/glow.yml" = {
+        text = ''
+          # style name or JSON path (default "auto")
+          style: "light"
+          # show local files only; no network (TUI-mode only)
+          local: true
+          # mouse support (TUI-mode only)
+          mouse: false
+          # use pager to display markdown
+          pager: false
+          # word-wrap at width
+          width: 80
+        '';
+      };
+    };
+  };
 
   programs.fish.interactiveShellInit = ''
     fish_add_path /opt/local/bin /opt/local/sbin
@@ -27,12 +57,6 @@
     contains "/Users/fbs/.nix-profile/share/man" $MANPATH
     or set -p MANPATH "/Users/fbs/.nix-profile/share/man"
   '';
-
-  home.packages = with pkgs; [
-    nixVersions.stable
-    unixtools.watch
-    home-manager.defaultPackage.aarch64-darwin
-  ];
 
   # https://github.com/nix-community/home-manager/issues/2942
   nixpkgs.config.allowUnfreePredicate = pkg: true;
@@ -43,10 +67,6 @@
 
   xdg.configFile."nix/nix.conf".text = ''
     experimental-features = nix-command flakes
-  '';
-
-  home.file.".gitignore".text = ''
-    .direnv/
   '';
 
   # Can't use programs.git because https://github.com/NixOS/nixpkgs/issues/62353
