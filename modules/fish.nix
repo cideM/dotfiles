@@ -33,14 +33,20 @@ let
     # https://discourse.nixos.org/t/how-is-nix-path-managed-regarding-nix-channel/6079/3?u=cidem
     set -x NIX_PATH ~/.nix-defexpr/channels $NIX_PATH
 
-    abbr -a g 'git'
-    abbr -a dc 'docker compose'
   '';
 
 in
 {
   programs.fish = {
     enable = true;
+
+    shellAbbrs = {
+      g = "git";
+      dc = "docker compose";
+      tf = "terraform";
+      n = "nvim";
+      k = "kubectl";
+    };
 
     interactiveShellInit = fishConfig;
 
