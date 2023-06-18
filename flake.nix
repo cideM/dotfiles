@@ -86,11 +86,15 @@
       })
 
       (self: super: {
-        yui = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-          version = "latest";
-          pname = "yui";
-          src = yui;
-        };
+        vimPlugins =
+          super.vimPlugins
+          // {
+            yui = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+              version = "latest";
+              pname = "yui";
+              src = yui;
+            };
+          };
       })
 
       (self: super: {
@@ -106,11 +110,17 @@
       })
 
       (self: super: {
-        spacevim = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-          version = "latest";
-          pname = "spacevim";
-          src = spacevimtheme;
-        };
+        vimPlugins =
+          super.vimPlugins
+          // {
+            mini = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+              version = "latest";
+              pname = "mini";
+              src = mini-nvim-src;
+            };
+          };
+      })
+
       (self: super: {
         vimPlugins =
           super.vimPlugins
@@ -135,6 +145,16 @@
           };
       })
 
+      (self: super: {
+        vimPlugins =
+          super.vimPlugins
+          // {
+            spacevim = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+              version = "latest";
+              pname = "spacevim";
+              src = spacevimtheme;
+            };
+          };
       })
 
       (self: super: {
@@ -150,11 +170,15 @@
       })
 
       (self: super: {
-        vim-js = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-          version = "latest";
-          pname = "vim-js";
-          src = vim-js;
-        };
+        vimPlugins =
+          super.vimPlugins
+          // {
+            vim-js = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+              version = "latest";
+              pname = "vim-js";
+              src = vim-js;
+            };
+          };
       })
 
       (self: super: {

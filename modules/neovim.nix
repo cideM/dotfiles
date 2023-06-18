@@ -252,7 +252,6 @@ in
         imap <C-d> <Plug>(copilot-dismiss)
 
         " ======= lsp =======================
-        packadd nvim-lspconfig
         lua <<EOF
         require('mini.cursorword').setup()
         require("substitute").setup({})
@@ -338,8 +337,8 @@ in
 
       plugins = with pkgs.vimPlugins; [
         # LSP
-        { plugin = nvim-lspconfig; optional = true; }
-        pkgs.lspfuzzy
+        nvim-lspconfig
+        lspfuzzy
 
         # Git
         vim-fugitive
@@ -367,8 +366,8 @@ in
 
         # Themes
         edge
-        pkgs.spacevim
-        pkgs.yui
+        spacevim
+        yui
         rose-pine
         everforest
         catppuccin-nvim
@@ -380,7 +379,7 @@ in
         zig-vim
         Jenkinsfile-vim-syntax
         purescript-vim
-        pkgs.vim-js
+        vim-js
         vim-lua
         vim-jsx-pretty
         vim-nix
