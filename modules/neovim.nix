@@ -249,6 +249,33 @@ in
         imap <C-h> <Plug>(copilot-previous)
         imap <C-d> <Plug>(copilot-dismiss)
 
+        " ======= sandwich ==================
+        let g:sandwich_no_default_key_mappings = 1
+        silent! nmap <unique><silent> gd <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
+        silent! nmap <unique><silent> gr <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)
+        silent! nmap <unique><silent> gdb <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
+        silent! nmap <unique><silent> grb <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)
+
+        let g:operator_sandwich_no_default_key_mappings = 1
+        silent! map <unique> ga <Plug>(operator-sandwich-add)
+        silent! xmap <unique> gd <Plug>(operator-sandwich-delete)
+        silent! xmap <unique> gr <Plug>(operator-sandwich-replace)
+
+        silent! omap <unique> ib <Plug>(textobj-sandwich-auto-i)
+        silent! xmap <unique> ib <Plug>(textobj-sandwich-auto-i)
+        silent! omap <unique> ab <Plug>(textobj-sandwich-auto-a)
+        silent! xmap <unique> ab <Plug>(textobj-sandwich-auto-a)
+
+        silent! omap <unique> iq <Plug>(textobj-sandwich-query-i)
+        silent! xmap <unique> iq <Plug>(textobj-sandwich-query-i)
+        silent! omap <unique> aq <Plug>(textobj-sandwich-query-a)
+        silent! xmap <unique> aq <Plug>(textobj-sandwich-query-a)
+
+        silent! xmap <unique> im <Plug>(textobj-sandwich-literal-query-i)
+        silent! xmap <unique> am <Plug>(textobj-sandwich-literal-query-a)
+        silent! omap <unique> im <Plug>(textobj-sandwich-literal-query-i)
+        silent! omap <unique> am <Plug>(textobj-sandwich-literal-query-a)
+
         " ======= lsp =======================
         lua <<EOF
         require('mini.cursorword').setup()
@@ -353,6 +380,7 @@ in
         fzf-vim
         vim-gutentags
         leap-nvim
+        vim-sandwich
         sad-vim
         copilot-vim
         mini
