@@ -25,6 +25,11 @@
           mods = "Control";
         }
         {
+          chars = "`-";
+          key = "Minus";
+          mods = "Command";
+        }
+        {
           action = "ResetFontSize";
           key = "Key0";
           mods = "Command|Shift";
@@ -38,6 +43,11 @@
           chars = "`|";
           key = "Backslash";
           mods = "Control";
+        }
+        {
+          chars = "`|";
+          key = "Backslash";
+          mods = "Command";
         }
         {
           chars = "`x";
