@@ -355,6 +355,7 @@ in
         edge
         pkgs.spacevim
         pkgs.yui
+        rose-pine
         everforest
         catppuccin-nvim
         kanagawa-nvim
