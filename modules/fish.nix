@@ -95,7 +95,6 @@ in
         name = "lucid";
         src = pkgs.lucid-fish-prompt.src;
       }
-
     ];
   };
 }

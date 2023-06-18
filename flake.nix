@@ -118,7 +118,7 @@
       })
 
       (self: super: {
-        lucid-fish-prompt = super.fishPlugins.buildFishPlugin rec {
+        lucid-fish-prompt = super.pkgs.stdenv.mkDerivation {
           pname = "lucid-fish-prompt";
           version = "latest";
           src = lucid-fish-prompt-src;
@@ -126,7 +126,7 @@
       })
 
       (self: super: {
-        nix-fish = super.fishPlugins.buildFishPlugin rec {
+        nix-fish = super.pkgs.stdenv.mkDerivation rec {
           pname = "nix-fish";
           version = "latest";
           src = nix-fish-src;

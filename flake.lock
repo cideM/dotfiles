@@ -85,6 +85,22 @@
         "type": "github"
       }
     },
+    "lucid-fish-prompt-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1670948184,
+        "narHash": "sha256-6HepVxMm9LdJoifczvQS98kAc1+RTKJh+OHRf28nhZM=",
+        "owner": "mattgreen",
+        "repo": "lucid.fish",
+        "rev": "b6aca138ce47289f2083bcb63c062d47dcaf4368",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mattgreen",
+        "repo": "lucid.fish",
+        "type": "github"
+      }
+    },
     "nix-fish-src": {
       "flake": false,
       "locked": {
@@ -139,6 +155,7 @@
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "lspfuzzy": "lspfuzzy",
+        "lucid-fish-prompt-src": "lucid-fish-prompt-src",
         "nix-fish-src": "nix-fish-src",
         "nixpkgs": [
           "unstable"
