@@ -14,6 +14,7 @@ with pkgs; {
     gawk
     gh
     git-lfs
+    glow
     gnugrep
     gnupg
     gnused
