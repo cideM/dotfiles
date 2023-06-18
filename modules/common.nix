@@ -11,7 +11,6 @@ with pkgs; {
     fastmod
     fd
     findutils
-    fzf
     gawk
     gh
     git-lfs
@@ -53,6 +52,13 @@ with pkgs; {
 
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
+  programs.fzf = {
+    enable = true;
+    enableFishIntegration = true;
+    tmux = {
+      enableShellIntegration = true;
+    };
+  };
 
   # https://github.com/rycee/home-manager/issues/432
   home.extraOutputsToInstall = ["info" "man" "share" "icons" "doc"];
