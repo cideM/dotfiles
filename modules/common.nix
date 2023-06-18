@@ -50,13 +50,18 @@ with pkgs; {
     SHELL = "${pkgs.fish}/bin/fish";
   };
 
-  programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enable = true;
   programs.fzf = {
     enable = true;
     enableFishIntegration = true;
     tmux = {
       enableShellIntegration = true;
+    };
+  };
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv = {
+      enable = true;
     };
   };
 
