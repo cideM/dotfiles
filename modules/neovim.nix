@@ -356,6 +356,7 @@ in
         pkgs.spacevim
         pkgs.yui
         everforest
+        kanagawa-nvim
 
         # Syntax
         haskell-vim
