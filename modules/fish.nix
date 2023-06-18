@@ -29,10 +29,6 @@ let
     set -x GOCACHE $XDG_CACHE_HOME/go-build
 
     fish_add_path -p ~/bin /usr/local/bin/
-
-    # https://discourse.nixos.org/t/how-is-nix-path-managed-regarding-nix-channel/6079/3?u=cidem
-    set -x NIX_PATH ~/.nix-defexpr/channels $NIX_PATH
-
   '';
 
 in
