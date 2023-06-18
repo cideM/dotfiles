@@ -14,6 +14,9 @@
     nix-fish-src.url = "github:kidonng/nix.fish";
     nix-fish-src.flake = false;
 
+    lucid-fish-prompt-src.url = "github:mattgreen/lucid.fish";
+    lucid-fish-prompt-src.flake = false;
+
     spacevimtheme.url = "github:liuchengxu/space-vim-theme";
     spacevimtheme.flake = false;
 
@@ -47,6 +50,7 @@
     nixpkgs,
     lspfuzzy,
     nix-fish-src,
+    lucid-fish-prompt-src,
     zig-overlay,
     yui,
     spacevimtheme,
@@ -110,6 +114,14 @@
           version = "latest";
           pname = "vim-js";
           src = vim-js;
+        };
+      })
+
+      (self: super: {
+        lucid-fish-prompt = super.fishPlugins.buildFishPlugin rec {
+          pname = "lucid-fish-prompt";
+          version = "latest";
+          src = lucid-fish-prompt-src;
         };
       })
 

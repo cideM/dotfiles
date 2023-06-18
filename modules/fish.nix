@@ -1,5 +1,6 @@
 { pkgs
 , config
+
 , ...
 }:
 let
@@ -89,6 +90,12 @@ in
         name = "nix-env";
         src = pkgs.nix-fish.src;
       }
+
+      {
+        name = "lucid";
+        src = pkgs.lucid-fish-prompt.src;
+      }
+
     ];
   };
 }
