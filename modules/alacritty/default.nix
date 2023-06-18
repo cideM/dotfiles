@@ -105,10 +105,10 @@
           key = "T";
           mods = "Command";
         }
-        # FZF: CMD+C -> ALT+C to cd into the selected directory
+        # FZF: CMD+G -> ALT+C to cd into the selected directory
         {
           chars = "\\x1bc";
-          key = "C";
+          key = "G";
           mods = "Command";
         }
       ];
