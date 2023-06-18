@@ -101,6 +101,22 @@
         "type": "github"
       }
     },
+    "mini-nvim-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1686840601,
+        "narHash": "sha256-jZ2bF549298A+bBGs10ZjRWgXgqTCINMsAW8o0x7L3c=",
+        "owner": "echasnovski",
+        "repo": "mini.nvim",
+        "rev": "3a11a130bac227462dd226669d260c4bbe33fb5b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "echasnovski",
+        "repo": "mini.nvim",
+        "type": "github"
+      }
+    },
     "nix-fish-src": {
       "flake": false,
       "locked": {
@@ -156,6 +172,7 @@
         "home-manager": "home-manager",
         "lspfuzzy": "lspfuzzy",
         "lucid-fish-prompt-src": "lucid-fish-prompt-src",
+        "mini-nvim-src": "mini-nvim-src",
         "nix-fish-src": "nix-fish-src",
         "nixpkgs": [
           "unstable"

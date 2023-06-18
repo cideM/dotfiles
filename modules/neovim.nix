@@ -254,6 +254,7 @@ in
         " ======= lsp =======================
         packadd nvim-lspconfig
         lua <<EOF
+        require('mini.cursorword').setup()
         require("substitute").setup({})
         vim.keymap.set("n", "<leader>c", require('substitute').operator, { noremap = true })
         vim.keymap.set("n", "<leader>cc", require('substitute').line, { noremap = true })
@@ -353,6 +354,7 @@ in
         sad-vim
         vim-dirvish
         copilot-vim
+        mini
         no-neck-pain-nvim
         substitute
         lightline-vim

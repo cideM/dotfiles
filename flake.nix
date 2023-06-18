@@ -20,6 +20,9 @@
     substitute-nvim-src.url = "github:gbprod/substitute.nvim";
     substitute-nvim-src.flake = false;
 
+    mini-nvim-src.url = "github:echasnovski/mini.nvim";
+    mini-nvim-src.flake = false;
+
     spacevimtheme.url = "github:liuchengxu/space-vim-theme";
     spacevimtheme.flake = false;
 
@@ -51,6 +54,7 @@
     flake-utils,
     operatorMono,
     nixpkgs,
+    mini-nvim-src,
     lspfuzzy,
     nix-fish-src,
     lucid-fish-prompt-src,
