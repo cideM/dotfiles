@@ -177,8 +177,6 @@ in
         set grepformat=%f:%l:%c:%m
         set path-=/usr/include list lcs=trail:¬,tab:\ \ 
         set statusline+=\ %f\ %m%=\ %y\ %q\ %3l:%2c\ \|%3p%%\ 
-        " Fish is really slow on MacOS somehow
-        set shell=${pkgs.dash}/bin/dash
 
         " COLOR STUFF
         let g:yui_comments = 'bg'
