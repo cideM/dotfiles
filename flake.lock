@@ -85,19 +85,19 @@
         "type": "github"
       }
     },
-    "nix-env-fish-src": {
+    "nix-fish-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1638213644,
-        "narHash": "sha256-RG/0rfhgq6aEKNZ0XwIqOaZ6K5S4+/Y5EEMnIdtfPhk=",
-        "owner": "lilyball",
-        "repo": "nix-env.fish",
-        "rev": "7b65bd228429e852c8fdfa07601159130a818cfa",
+        "lastModified": 1660828659,
+        "narHash": "sha256-gVHF7qJrqoiUJm0EirP5uAG37P0rbsFIIlc1TtSKsWE=",
+        "owner": "kidonng",
+        "repo": "nix.fish",
+        "rev": "19cfe6c7f1e8ae60865b22197fc43506d78888f8",
         "type": "github"
       },
       "original": {
-        "owner": "lilyball",
-        "repo": "nix-env.fish",
+        "owner": "kidonng",
+        "repo": "nix.fish",
         "type": "github"
       }
     },
@@ -139,7 +139,7 @@
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "lspfuzzy": "lspfuzzy",
-        "nix-env-fish-src": "nix-env-fish-src",
+        "nix-fish-src": "nix-fish-src",
         "nixpkgs": [
           "unstable"
         ],

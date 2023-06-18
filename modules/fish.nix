@@ -1,6 +1,5 @@
 { pkgs
 , config
-, nix-env-fish
 , ...
 }:
 let
@@ -74,7 +73,7 @@ in
     plugins = [
       {
         name = "nix-env";
-        src = pkgs.nix-env-fish.src;
+        src = pkgs.nix-fish.src;
       }
     ];
   };

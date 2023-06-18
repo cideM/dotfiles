@@ -11,8 +11,8 @@
 
     flake-utils.url = "github:numtide/flake-utils";
 
-    nix-env-fish-src.url = "github:lilyball/nix-env.fish";
-    nix-env-fish-src.flake = false;
+    nix-fish-src.url = "github:kidonng/nix.fish";
+    nix-fish-src.flake = false;
 
     spacevimtheme.url = "github:liuchengxu/space-vim-theme";
     spacevimtheme.flake = false;
@@ -46,7 +46,7 @@
     operatorMono,
     nixpkgs,
     lspfuzzy,
-    nix-env-fish-src,
+    nix-fish-src,
     zig-overlay,
     yui,
     spacevimtheme,
@@ -114,10 +114,10 @@
       })
 
       (self: super: {
-        nix-env-fish = super.fishPlugins.buildFishPlugin rec {
-          pname = "nix-env-fish";
+        nix-fish = super.fishPlugins.buildFishPlugin rec {
+          pname = "nix-fish";
           version = "latest";
-          src = nix-env-fish-src;
+          src = nix-fish-src;
         };
       })
     ];
