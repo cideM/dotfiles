@@ -184,7 +184,7 @@ in
         colorscheme yui
 
         let g:gutentags_exclude_filetypes = ["haskell", "purs", "purescript", "git", "gitcommit"]
-        let g:gutentags_file_list_command = 'rg\ --files'
+        let g:gutentags_file_list_command = 'rg --files'
         let g:gutentags_ctags_executable = '${pkgs.universal-ctags}/bin/ctags'
 
         function! SynGroup()
