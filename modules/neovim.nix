@@ -356,6 +356,7 @@ in
         pkgs.spacevim
         pkgs.yui
         everforest
+        catppuccin-nvim
         kanagawa-nvim
 
         # Syntax
