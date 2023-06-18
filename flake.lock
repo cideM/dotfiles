@@ -149,6 +149,22 @@
         "type": "github"
       }
     },
+    "oil-nvim-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1686965087,
+        "narHash": "sha256-6Tf3MMEA5TdiAanb9+emd8OmMtg3YmPgDFl1oEFjkq4=",
+        "owner": "stevearc",
+        "repo": "oil.nvim",
+        "rev": "6f8bf067c09e96d6bff548b5e6addb6d9c25a678",
+        "type": "github"
+      },
+      "original": {
+        "owner": "stevearc",
+        "repo": "oil.nvim",
+        "type": "github"
+      }
+    },
     "operatorMono": {
       "flake": false,
       "locked": {
@@ -177,6 +193,7 @@
         "nixpkgs": [
           "unstable"
         ],
+        "oil-nvim-src": "oil-nvim-src",
         "operatorMono": "operatorMono",
         "spacevimtheme": "spacevimtheme",
         "substitute-nvim-src": "substitute-nvim-src",

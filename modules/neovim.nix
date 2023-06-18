@@ -260,6 +260,9 @@ in
         vim.keymap.set("n", "<leader>cc", require('substitute').line, { noremap = true })
         vim.keymap.set("n", "<leader>C", require('substitute').eol, { noremap = true })
         vim.keymap.set("x", "<leader>c", require('substitute').visual, { noremap = true })
+        require("oil").setup()
+        vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
+
         vim.loader.enable()
 
         local bufopts = { noremap=true, silent=true, buffer=bufnr }
@@ -352,9 +355,9 @@ in
         vim-gutentags
         leap-nvim
         sad-vim
-        vim-dirvish
         copilot-vim
         mini
+        oil
         no-neck-pain-nvim
         substitute
         lightline-vim
