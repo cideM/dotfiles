@@ -22,9 +22,9 @@ with pkgs; {
     htop
     hyperfine
     jq
-    oil
     nixpkgs-review
     nushell
+    oil
     rclone
     restic
     ripgrep
