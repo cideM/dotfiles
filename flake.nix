@@ -17,6 +17,9 @@
     lucid-fish-prompt-src.url = "github:mattgreen/lucid.fish";
     lucid-fish-prompt-src.flake = false;
 
+    substitute-nvim-src.url = "github:gbprod/substitute.nvim";
+    substitute-nvim-src.flake = false;
+
     spacevimtheme.url = "github:liuchengxu/space-vim-theme";
     spacevimtheme.flake = false;
 
@@ -51,6 +54,7 @@
     lspfuzzy,
     nix-fish-src,
     lucid-fish-prompt-src,
+    substitute-nvim-src,
     zig-overlay,
     yui,
     spacevimtheme,
@@ -82,11 +86,15 @@
       })
 
       (self: super: {
-        lspfuzzy = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-          version = "latest";
-          pname = "lspfuzzy";
-          src = lspfuzzy;
-        };
+        vimPlugins =
+          super.vimPlugins
+          // {
+            substitute = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+              version = "latest";
+              pname = "substitute";
+              src = substitute-nvim-src;
+            };
+          };
       })
 
       (self: super: {
@@ -95,6 +103,18 @@
           pname = "spacevim";
           src = spacevimtheme;
         };
+      (self: super: {
+        vimPlugins =
+          super.vimPlugins
+          // {
+            lspfuzzy = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+              version = "latest";
+              pname = "lspfuzzy";
+              src = lspfuzzy;
+            };
+          };
+      })
+
       })
 
       (self: super: {

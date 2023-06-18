@@ -242,8 +242,8 @@ in
         vnoremap <leader>gl :<C-U>execute ':Git log -L' . line("'<") . ',' . line("'>") . ':%'<CR>
 
         " ======= sad =======================
-        map      <leader>C <Plug>(sad-change-backward)
-        map      <leader>c <Plug>(sad-change-forward)
+        map      <leader>sR <Plug>(sad-change-backward)
+        map      <leader>sr <Plug>(sad-change-forward)
 
         " ======= copilot ==================
         imap <S-Tab> <Plug>(copilot-suggest)
@@ -254,6 +254,11 @@ in
         " ======= lsp =======================
         packadd nvim-lspconfig
         lua <<EOF
+        require("substitute").setup({})
+        vim.keymap.set("n", "<leader>c", require('substitute').operator, { noremap = true })
+        vim.keymap.set("n", "<leader>cc", require('substitute').line, { noremap = true })
+        vim.keymap.set("n", "<leader>C", require('substitute').eol, { noremap = true })
+        vim.keymap.set("x", "<leader>c", require('substitute').visual, { noremap = true })
         vim.loader.enable()
 
         local bufopts = { noremap=true, silent=true, buffer=bufnr }
@@ -349,6 +354,7 @@ in
         vim-dirvish
         copilot-vim
         no-neck-pain-nvim
+        substitute
         lightline-vim
 
         # Themes

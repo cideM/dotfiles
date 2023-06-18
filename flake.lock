@@ -162,6 +162,7 @@
         ],
         "operatorMono": "operatorMono",
         "spacevimtheme": "spacevimtheme",
+        "substitute-nvim-src": "substitute-nvim-src",
         "unstable": "unstable",
         "vim-js": "vim-js",
         "yui": "yui",
@@ -181,6 +182,22 @@
       "original": {
         "owner": "liuchengxu",
         "repo": "space-vim-theme",
+        "type": "github"
+      }
+    },
+    "substitute-nvim-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1684221105,
+        "narHash": "sha256-9ISimUoD6VgEmr7EbzXyFf2J0jMEZcHCzfo9QWeumcw=",
+        "owner": "gbprod",
+        "repo": "substitute.nvim",
+        "rev": "46a78e02b5b009d22df7566cbc25f4ef565c5731",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gbprod",
+        "repo": "substitute.nvim",
         "type": "github"
       }
     },
