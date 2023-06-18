@@ -300,6 +300,8 @@ in
 
         require('lspfuzzy').setup {}
 
+        require('leap').add_default_mappings()
+
         require'treesitter-context'.setup{ enable = true }
 
         -- Treesitter
@@ -340,6 +342,7 @@ in
         nvim-treesitter-context
         fzf-vim
         vim-gutentags
+        leap-nvim
         sad-vim
         vim-dirvish
         copilot-vim
