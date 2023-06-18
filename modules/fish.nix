@@ -8,11 +8,6 @@ let
   # https://github.com/rycee/home-manager/blob/master/modules/programs/fzf.nix#blob-path
   # It's pointless to use home manager programs.fzf if I'm setting these anyway
   fishConfig = ''
-    set -x FZF_DEFAULT_COMMAND '${pkgs.fd}/bin/fd --type f 2> /dev/null'
-    set -x FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border --no-color'
-    set -x FZF_CTRL_T_OPTS "--preview '${pkgs.bat}/bin/bat {}'"
-    set -x FZF_CTRL_T_COMMAND '${pkgs.fd}/bin/fd -L $dir --type f 2> /dev/null'
-
     bind \cb edit_command_buffer
 
     set -x BAT_THEME 'GitHub'

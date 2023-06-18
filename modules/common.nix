@@ -55,7 +55,27 @@ with pkgs; {
     enableFishIntegration = true;
     tmux = {
       enableShellIntegration = true;
+      shellIntegrationOptions = [
+        "-p 80%,80%"
+      ];
     };
+    changeDirWidgetCommand = "fd --type d --hidden --follow --exclude .git";
+    changeDirWidgetOptions = [
+      "--preview '${pkgs.exa}/bin/exa --oneline --git --long {}'"
+      "--color=light"
+    ];
+    historyWidgetOptions = [
+      "--sort"
+    ];
+    fileWidgetCommand = "fd --type f --hidden --follow --exclude .git";
+    fileWidgetOptions = [
+      "--preview '${pkgs.bat}/bin/bat --color=always --style=numbers --line-range :300 {}'"
+      "--color=light"
+    ];
+    defaultCommand = "fd --type f --hidden --follow --exclude .git";
+    defaultOptions = [
+      "--color=light"
+    ];
   };
 
   programs.dircolors = {
