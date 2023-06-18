@@ -385,7 +385,6 @@ in
         copilot-vim
         mini
         oil
-        no-neck-pain-nvim
         substitute
         nvim-autopairs
         lightline-vim
