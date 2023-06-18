@@ -24,7 +24,6 @@ with pkgs; {
     jq
     oil
     nixpkgs-review
-    nodePackages.vscode-langservers-extracted
     nushell
     rclone
     restic
