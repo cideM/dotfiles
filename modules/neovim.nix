@@ -130,6 +130,7 @@ in {
         set wildignore+=*.git/*,*.min.*,./result/*
           \,*.map,*.idea,*build/*,.direnv/*,*dist/*,*compiled/*,*tmp/*
         set inccommand=split
+        set completeopt-=preview
         set splitbelow
         set splitright
         set foldlevelstart=99
