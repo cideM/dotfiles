@@ -28,8 +28,14 @@
     };
 
     indexed_colors = [
-      { index = 16; color = "0xb15c00"; }
-      { index = 17; color = "0xc64343"; }
+      {
+        index = 16;
+        color = "0xb15c00";
+      }
+      {
+        index = 17;
+        color = "0xc64343";
+      }
     ];
   };
 
@@ -48,7 +54,7 @@
       cursor = "0x444444";
       text = "0xeeeeee";
     };
-    indexed_colors = [ ];
+    indexed_colors = [];
     normal = {
       black = "0xeeeeee";
       blue = "0x0087af";

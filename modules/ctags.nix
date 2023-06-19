@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   xdg.configFile."ctags/1.ctags".text = ''
     --exclude=compiled
     --exclude=build

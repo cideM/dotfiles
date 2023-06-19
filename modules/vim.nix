@@ -32,7 +32,8 @@ in {
         html = ''
           set indentexpr=""
         '';
-      } // {
+      }
+      // {
         ".vim/after/plugin/sensible.vim" = {
           text = ''
             set listchars=eol:¬,space:\ ,lead:\ ,trail:·,nbsp:◇,tab:→\ ,extends:❯,precedes:❮,multispace:\·\ \ \,leadmultispace:\│\ \ \ ,

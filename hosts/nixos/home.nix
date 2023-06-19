@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     (import ../../modules/neovim.nix)
     (import ../../modules/git.nix)

@@ -1,9 +1,8 @@
-{ ... }:
-{
+{...}: {
   programs.tmux = {
     enable = true;
     sensibleOnTop = false;
-    plugins = [ ];
+    plugins = [];
     extraConfig = ''
       set -g default-terminal "tmux-256color"
 
@@ -45,7 +44,7 @@
 
       # Vim style pane selection
       bind h select-pane -L
-      bind j select-pane -D 
+      bind j select-pane -D
       bind k select-pane -U
       bind l select-pane -R
 

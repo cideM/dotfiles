@@ -1,10 +1,11 @@
-{ config, pkgs, ... }:
 {
-
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -31,7 +32,7 @@
     fontconfig = {
       enable = true;
     };
-    fonts = [ pkgs.operatorMonoFont ];
+    fonts = [pkgs.operatorMonoFont];
   };
 
   programs.fish.enable = true;
@@ -72,8 +73,8 @@
 
   nix = {
     settings = {
-      trusted-users = [ "root" "fbrs" ];
-      extra-sandbox-paths = [ "/bin/sh=${pkgs.bash}/bin/sh" ];
+      trusted-users = ["root" "fbrs"];
+      extra-sandbox-paths = ["/bin/sh=${pkgs.bash}/bin/sh"];
     };
     extraOptions = ''
       experimental-features = nix-command flakes
@@ -92,7 +93,7 @@
 
   services.xserver = {
     enable = true;
-    videoDrivers = [ "nvidia" ];
+    videoDrivers = ["nvidia"];
     layout = "us";
     # https://discourse.nixos.org/t/problem-with-xkboptions-it-doesnt-seem-to-take-effect/5269/2
     xkbOptions = "ctrl:nocaps";
@@ -126,14 +127,14 @@
 
   sound.enable = true;
   security.rtkit.enable = true;
-   
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-   
+
   hardware = {
     opengl.enable = true;
     # Enable udev rules for Steam hardware such as the Steam Controller, other supported controllers and the HTC Vive
@@ -152,7 +153,7 @@
     isNormalUser = true;
     description = "Florian";
     shell = pkgs.fish;
-    extraGroups = [ "adbusers" "wheel" "docker" "networkmanager" ];
+    extraGroups = ["adbusers" "wheel" "docker" "networkmanager"];
   };
 
   virtualisation.docker.enable = true;
