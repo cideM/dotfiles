@@ -278,7 +278,6 @@ in
 
         " ======= lsp =======================
         lua <<EOF
-        require('mini.cursorword').setup()
         require("substitute").setup({})
         vim.keymap.set("n", "<leader>c", require('substitute').operator, { noremap = true })
         vim.keymap.set("n", "<leader>cc", require('substitute').line, { noremap = true })
@@ -381,7 +380,6 @@ in
         vim-sandwich
         sad-vim
         copilot-vim
-        mini
         oil
         substitute
         zen-mode-nvim
