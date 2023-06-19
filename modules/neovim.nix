@@ -386,6 +386,7 @@ in
         mini
         oil
         substitute
+        zen-mode-nvim
         nvim-autopairs
         lightline-vim
 
