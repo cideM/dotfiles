@@ -186,8 +186,6 @@ in
 
         nmap     <leader>F :call FormatBuffer()<cr>
 
-        nnoremap <leader>/ :nohlsearch<CR>
-
         nnoremap <leader>T :split<bar>lcd %:p:h<bar>term fish<CR>
         nnoremap <leader>o :split<bar>term fish<CR>
 
