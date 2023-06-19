@@ -235,8 +235,6 @@ in
         " ======= lsp =======================
         lua <<EOF
 
-        vim.loader.enable()
-
         local bufopts = { noremap=true, silent=true, buffer=bufnr }
         vim.keymap.set('n', '<leader>d', vim.lsp.buf.definition, bufopts)
         vim.keymap.set('n', '<leader>D', vim.lsp.buf.declaration, bufopts)
