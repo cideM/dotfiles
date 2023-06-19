@@ -317,8 +317,6 @@ in
 
         require('leap').add_default_mappings()
 
-        require'treesitter-context'.setup{ enable = true }
-
         -- Treesitter
         require'nvim-treesitter.configs'.setup {
           ensure_installed = {},
@@ -353,7 +351,6 @@ in
         vim-indent-object
         QFEnter
         fzfWrapper
-        nvim-treesitter-context
         fzf-vim
         vim-gutentags
         leap-nvim
