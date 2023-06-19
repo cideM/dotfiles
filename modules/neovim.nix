@@ -268,9 +268,6 @@ in
         " ======= lsp =======================
         lua <<EOF
 
-        require("oil").setup()
-        vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
-
         vim.loader.enable()
 
         local bufopts = { noremap=true, silent=true, buffer=bufnr }
@@ -363,7 +360,6 @@ in
         vim-sandwich
         sad-vim
         copilot-vim
-        oil
 
         # Themes
         edge
