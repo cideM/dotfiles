@@ -33,6 +33,18 @@ in
 
     shellAbbrs = {
       g = "git";
+      ga = "git add";
+      gb = "git branch";
+      gc = "git commit -v";
+      gco = "git checkout";
+      gd = "git diff";
+      gds = "git diff --staged";
+      gl = "git log";
+      gls = "git log --stat";
+      gp = "git push";
+      gpf = "git push --force-with-lease";
+      gpl = "git pull";
+      gs = "git status";
       dc = "docker compose";
       tf = "terraform";
       n = "nvim";
