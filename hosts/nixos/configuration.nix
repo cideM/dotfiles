@@ -85,7 +85,6 @@
   environment.systemPackages = with pkgs; [
     curl
     gnumake
-    vim
     git
   ];
 
