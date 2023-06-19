@@ -383,7 +383,6 @@ in
         rose-pine
         everforest
         catppuccin-nvim
-        kanagawa-nvim
 
         # Syntax
         haskell-vim
