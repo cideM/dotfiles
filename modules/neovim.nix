@@ -297,7 +297,6 @@ in
         vim.keymap.set('n', 'Q', vim.lsp.buf.type_definition, bufopts)
         vim.keymap.set('n', '<leader>i', vim.lsp.buf.implementation, bufopts)
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
         vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
         vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, bufopts)
         vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
