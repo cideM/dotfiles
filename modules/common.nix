@@ -23,21 +23,16 @@ with pkgs; {
     hyperfine
     jq
     nixpkgs-review
-    nushell
     oil
     rclone
-    restic
     ripgrep
     rlwrap
-    rsync
     shellcheck
     time
-    tldr
     tokei
     tree
     universal-ctags
     unzip
-    vis
     wget
   ];
 
