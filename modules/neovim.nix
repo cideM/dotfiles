@@ -125,6 +125,7 @@ in
         set shiftwidth=2
         set timeoutlen=500
         set colorcolumn=+0
+        set cursorline
         set formatoptions+=r
         set mouse=a
         set nonumber

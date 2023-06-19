@@ -53,7 +53,9 @@ in {
         set formatoptions+=r
         set modelines=1
         set background=light
+        set number
         set hidden
+        set cursorline
         set noerrorbells
         set noexpandtab
         set nostartofline
