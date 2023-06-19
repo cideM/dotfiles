@@ -48,12 +48,6 @@ with pkgs; {
   programs.fzf = {
     enable = true;
     enableFishIntegration = true;
-    tmux = {
-      enableShellIntegration = true;
-      shellIntegrationOptions = [
-        "-p 80%,80%"
-      ];
-    };
     changeDirWidgetCommand = "fd --type d --hidden --follow --exclude .git";
     changeDirWidgetOptions = [
       "--preview '${pkgs.exa}/bin/exa --oneline --git --long {}'"
