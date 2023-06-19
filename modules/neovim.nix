@@ -209,8 +209,6 @@ in
         tnoremap <Esc>     <C-\><C-n>
         nnoremap <BS>      <C-^>
         nnoremap <leader><leader> :update<cr>
-        nnoremap <Leader>q :Sayonara<CR>
-        nnoremap <Leader>Q :Sayonara!<CR>
         " https://github.com/junegunn/fzf.vim/pull/628
         inoremap <expr> <c-x><c-f> fzf#vim#complete("rg --files --hidden --no-ignore --null <Bar> xargs --null realpath --relative-to " . expand("%:h"))
 
@@ -370,7 +368,6 @@ in
         vim-repeat
         vim-commentary
         vim-indent-object
-        vim-sayonara
         QFEnter
         fzfWrapper
         nvim-treesitter-context
