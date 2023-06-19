@@ -78,8 +78,6 @@ in
       lua = ''
         set formatprg=stylua\ -
       '';
-      python = ''
-      '';
       sql = ''
         setl formatprg=pg_format\ -g
       '';
