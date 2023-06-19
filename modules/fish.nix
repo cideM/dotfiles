@@ -1,9 +1,8 @@
-{ pkgs
-, config
-
-, ...
-}:
-let
+{
+  pkgs,
+  config,
+  ...
+}: let
   # These options are set by home manager programs.fzf
   # https://github.com/rycee/home-manager/blob/master/modules/programs/fzf.nix#blob-path
   # It's pointless to use home manager programs.fzf if I'm setting these anyway
@@ -25,9 +24,7 @@ let
 
     fish_add_path -p ~/bin /usr/local/bin/
   '';
-
-in
-{
+in {
   programs.fish = {
     enable = true;
 
@@ -78,10 +75,10 @@ in
       gc = {
         description = "fzf git checkout";
         body = ''
-          git ch (git b -a --sort=-committerdate | 
-            fzf --preview 'git log (echo {} | sed -E -e \'s/^(\+|\*)//\' | string trim) -- ' | 
-            sed -E -e 's/^(\+|\*)//' | 
-            xargs basename | 
+          git ch (git b -a --sort=-committerdate |
+            fzf --preview 'git log (echo {} | sed -E -e \'s/^(\+|\*)//\' | string trim) -- ' |
+            sed -E -e 's/^(\+|\*)//' |
+            xargs basename |
             string trim)
         '';
       };
