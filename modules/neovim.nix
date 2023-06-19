@@ -382,7 +382,6 @@ in
         copilot-vim
         oil
         substitute
-        zen-mode-nvim
         lightline-vim
 
         # Themes
