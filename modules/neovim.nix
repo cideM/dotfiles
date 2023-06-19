@@ -222,10 +222,6 @@ in
         nnoremap <leader>b :Buffers<cr>
         nnoremap <leader>W :Windows<cr>
 
-        let g:lightline = {
-        \ 'colorscheme': 'yui'
-        \ }
-
         nmap     <leader>F :call FormatBuffer()<cr>
         nnoremap <leader>R :set operatorfunc=ReflowComment<cr>g@
         vnoremap <leader>R :<C-u>call ReflowComment(visualmode())<cr>
@@ -379,7 +375,6 @@ in
         copilot-vim
         oil
         substitute
-        lightline-vim
 
         # Themes
         edge
