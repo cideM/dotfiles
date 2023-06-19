@@ -153,13 +153,11 @@ in
         set foldmethod=indent
         set expandtab
         set tabstop=2
-        set laststatus=2
         set shiftwidth=2
-        set colorcolumn=100
         set timeoutlen=500
-        set formatoptions=crqjn
+        set colorcolumn=+0
+        set formatoptions+=r
         set mouse=a
-        set hidden
         set nonumber
         set ignorecase
         set smartcase
@@ -172,9 +170,11 @@ in
         set foldlevelstart=99
         set undofile
         set termguicolors
-        set grepprg=rg\ --vimgrep\ --smart-case
+        set grepprg=rg\ -H\ --vimgrep\ --smart-case
         set grepformat=%f:%l:%c:%m
-        set path-=/usr/include list lcs=trail:¬,tab:\ \ 
+        set path-=/usr/include
+        set list
+        set listchars=eol:¬,space:\ ,lead:\ ,trail:·,nbsp:◇,tab:→\ ,extends:❯,precedes:❮,multispace:\·\ \ \,leadmultispace:\│\ \ \ ,
         set statusline+=\ %f\ %m%=\ %y\ %q\ %3l:%2c\ \|%3p%%\ 
 
         " COLOR STUFF
