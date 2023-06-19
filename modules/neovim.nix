@@ -136,19 +136,6 @@ in
           call winrestview(view)
         endfunction
 
-        function! ReflowComment(type, ...)
-            let l:fp = &formatprg
-            set formatprg=
-
-            if a:type ==? 'v'
-                normal! '<v'>gq
-            else
-                normal! '[v']gq
-            endif
-
-            let &formatprg = l:fp
-        endfunction
-
         set background=light
         set foldmethod=indent
         set expandtab
@@ -218,8 +205,6 @@ in
         nnoremap <leader>W :Windows<cr>
 
         nmap     <leader>F :call FormatBuffer()<cr>
-        nnoremap <leader>R :set operatorfunc=ReflowComment<cr>g@
-        vnoremap <leader>R :<C-u>call ReflowComment(visualmode())<cr>
 
         nnoremap <leader>/ :nohlsearch<CR>
 
