@@ -1,19 +1,17 @@
-args@{ config
-, lib
-, pkgs
-, ...
+args @ {
+  config,
+  lib,
+  pkgs,
+  ...
 }:
-
 with lib;
-with types;
-let
-
-  makeFtPlugins = ftplugins: with attrsets;
-    mapAttrs'
-      (key: value: nameValuePair "nvim/after/ftplugin/${key}.vim" ({ text = value; }))
+with types; let
+  makeFtPlugins = ftplugins:
+    with attrsets;
+      mapAttrs'
+      (key: value: nameValuePair "nvim/after/ftplugin/${key}.vim" {text = value;})
       ftplugins;
-in
-{
+in {
   config = {
     xdg.configFile = makeFtPlugins {
       xml = ''
@@ -290,9 +288,7 @@ in
         vim-jsx-pretty
         vim-nix
         vim-terraform
-
       ];
     };
   };
 }
-
