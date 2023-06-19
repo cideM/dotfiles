@@ -229,8 +229,8 @@ in
         vnoremap <leader>gl :<C-U>execute ':Git log -L' . line("'<") . ',' . line("'>") . ':%'<CR>
 
         " ======= sad =======================
-        map      <leader>sR <Plug>(sad-change-backward)
-        map      <leader>sr <Plug>(sad-change-forward)
+        map      <leader>C <Plug>(sad-change-backward)
+        map      <leader>c <Plug>(sad-change-forward)
 
         " ======= copilot ==================
         imap <S-Tab> <Plug>(copilot-suggest)
@@ -267,11 +267,6 @@ in
 
         " ======= lsp =======================
         lua <<EOF
-        require("substitute").setup({})
-        vim.keymap.set("n", "<leader>c", require('substitute').operator, { noremap = true })
-        vim.keymap.set("n", "<leader>cc", require('substitute').line, { noremap = true })
-        vim.keymap.set("n", "<leader>C", require('substitute').eol, { noremap = true })
-        vim.keymap.set("x", "<leader>c", require('substitute').visual, { noremap = true })
 
         require("oil").setup()
         vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
@@ -369,7 +364,6 @@ in
         sad-vim
         copilot-vim
         oil
-        substitute
 
         # Themes
         edge
