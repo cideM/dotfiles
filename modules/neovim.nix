@@ -285,7 +285,6 @@ in
         vim.keymap.set("n", "<leader>C", require('substitute').eol, { noremap = true })
         vim.keymap.set("x", "<leader>c", require('substitute').visual, { noremap = true })
 
-        require("nvim-autopairs").setup {}
         require("oil").setup()
         vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
 
@@ -386,7 +385,6 @@ in
         oil
         substitute
         zen-mode-nvim
-        nvim-autopairs
         lightline-vim
 
         # Themes
