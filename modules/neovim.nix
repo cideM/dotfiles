@@ -232,6 +232,10 @@ in
         silent! omap <unique> im <Plug>(textobj-sandwich-literal-query-i)
         silent! omap <unique> am <Plug>(textobj-sandwich-literal-query-a)
 
+        lua require('lspfuzzy').setup {}
+
+        lua require('leap').add_default_mappings()
+
         " ======= lsp =======================
         lua <<EOF
 
@@ -270,10 +274,6 @@ in
         nvim_lsp.zls.setup{}
         nvim_lsp.lua_ls.setup{}
         nvim_lsp.eslint.setup{}
-
-        require('lspfuzzy').setup {}
-
-        require('leap').add_default_mappings()
 
         EOF
       '';
