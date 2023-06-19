@@ -20,14 +20,14 @@ in
         setl formatprg=prettier\ --stdin-filepath\ %
       '';
       zig = ''
-        setl formatprg=zig\ fmt\ --stdin
+        compiler zig
       '';
       sh = ''
-        setl makeprg=shellcheck\ -f\ gcc\ %
+        compiler shellcheck
       '';
       rust = ''
+        compiler rustc
         setl formatprg=rustfmt
-        setl makeprg=cargo\ check
         set foldmethod=expr
         set foldexpr=nvim_treesitter#foldexpr()
       '';
@@ -49,18 +49,18 @@ in
         aug fzf | au! BufLeave <buffer> set laststatus& showmode ruler | aug END
       '';
       javascript = ''
+        compiler eslint
         setl formatprg=prettier\ --stdin-filepath\ %
         setl wildignore+=*node_modules*,package-lock.json,yarn-lock.json
-        setl errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m,%-G%.%#
         setl makeprg=eslint\ --format\ compact
         set foldmethod=expr
         set foldexpr=nvim_treesitter#foldexpr()
       '';
       typescript = ''
+        compiler tsc
         setl formatexpr=
         setl formatprg=prettier\ --parser\ typescript\ --stdin-filepath\ %
         setl wildignore+=*node_modules*,package-lock.json,yarn-lock.json
-        setl errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m,%-G%.%#
         set foldmethod=expr
         set foldexpr=nvim_treesitter#foldexpr()
       '';
@@ -100,8 +100,7 @@ in
         setl formatprg=pg_format\ -g
       '';
       go = ''
-        setl formatprg=gofmt
-        setl makeprg=go\ build\ -o\ /dev/null
+        compiler go
         function! GoImports()
             let saved = winsaveview()
             %!goimports
