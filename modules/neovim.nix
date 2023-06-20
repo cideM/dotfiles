@@ -270,6 +270,7 @@ in {
         fzfWrapper
         fzf-vim
         vim-gutentags
+        vim-dirvish
         leap-nvim
         nvim-surround
         sad-vim
