@@ -42,6 +42,12 @@ in {
       gpf = "git push --force-with-lease";
       gpl = "git pull";
       gs = "git status";
+      gst = "git stash";
+      gsta = "git stash apply";
+      gstl = "git stash list";
+      gstp = "git stash pop";
+      gstc = "git stash clear";
+      gstd = "git stash drop";
       dc = "docker compose";
       tf = "terraform";
       n = "nvim";
