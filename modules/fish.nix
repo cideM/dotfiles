@@ -54,7 +54,7 @@ in {
       gi = {
         description = "Pick commit for interactive rebase";
         body = ''
-          set -l commit (git log --pretty=oneline | fzf --preview 'git show (echo {} | awk \'{ print $1 }\')' | awk '{ print $1 }')
+          set -l commit (git log --oneline --decorate | fzf --preview 'git show (echo {} | awk \'{ print $1 }\')' | awk '{ print $1 }')
           if test -n "$commit"
             git rebase $commit~1 --interactive --autosquash
           end
@@ -64,7 +64,7 @@ in {
       gf = {
         description = "Fixup a commit then autosquash";
         body = ''
-          set -l commit (git log --pretty=oneline | fzf --preview 'git show (echo {} | awk \'{ print $1 }\')' | awk '{ print $1 }')
+          set -l commit (git log --oneline --decorate | fzf --preview 'git show (echo {} | awk \'{ print $1 }\')' | awk '{ print $1 }')
           if test -n "$commit"
             git commit --fixup $commit
             GIT_SEQUENCE_EDITOR=true git rebase $commit~1 --interactive --autosquash
