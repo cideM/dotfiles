@@ -33,6 +33,8 @@ in {
       ga = "git add";
       gb = "git branch";
       gc = "git commit -v";
+      gca = "git commit -v -a";
+      gcam = "git commit -v -a --amend";
       gco = "git checkout";
       gd = "git diff";
       gds = "git diff --staged";
@@ -49,6 +51,8 @@ in {
       gstc = "git stash clear";
       gstd = "git stash drop";
       dc = "docker compose";
+      grc = "git rebase --continue";
+      gra = "git rebase --abort";
       tf = "terraform";
       n = "nvim";
       k = "kubectl";
