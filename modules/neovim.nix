@@ -209,6 +209,8 @@ in {
 
         lua require('lspfuzzy').setup {}
 
+        lua require('gitsigns').setup()
+
         lua require('leap').add_default_mappings()
 
         " ======= lsp =======================
@@ -261,6 +263,7 @@ in {
         # Git
         vim-fugitive
         vim-rhubarb
+        gitsigns-nvim
 
         vim-unimpaired
         vim-repeat
