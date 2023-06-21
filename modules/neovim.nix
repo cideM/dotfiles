@@ -215,6 +215,24 @@ in {
 
         " ======= lsp =======================
         lua <<EOF
+        vim.diagnostic.config({
+          virtual_text = {
+            source = "if_many",
+            prefix = "● ",
+          },
+          update_in_insert = true,
+          underline = true,
+          severity_sort = true,
+          float = {
+            focusable = false,
+            focus = false,
+            style = "minimal",
+            border = "single",
+            source = "if_many",
+            header = "",
+            prefix = "",
+          },
+        })
 
         local bufopts = { noremap=true, silent=true, buffer=bufnr }
         vim.keymap.set('n', '<leader>d', vim.lsp.buf.definition, bufopts)
@@ -232,7 +250,7 @@ in {
         vim.keymap.set('n', '<leader>S', vim.lsp.buf.workspace_symbol, bufopts)
         vim.keymap.set('n', '<C-n>', function () vim.diagnostic.goto_next{ float = true } end, bufopts)
         vim.keymap.set('n', '<C-p>', function () vim.diagnostic.goto_prev{ float = true } end, bufopts)
-        vim.keymap.set('n', '<leader>ps', vim.diagnostic.open_float, bufopts)
+        vim.keymap.set('n', '<leader>ps', function () vim.diagnostic.open_float({ pad_top = 0, pad_bottom = 0, border = "single" }) end, bufopts)
         vim.keymap.set('n', '<leader>pl', vim.diagnostic.setloclist, bufopts)
 
         local nvim_lsp = require'lspconfig'
