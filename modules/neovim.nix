@@ -220,7 +220,7 @@ in {
             source = "if_many",
             prefix = "● ",
           },
-          update_in_insert = true,
+          update_in_insert = false,
           underline = true,
           severity_sort = true,
           float = {
