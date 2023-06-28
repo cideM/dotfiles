@@ -174,6 +174,8 @@ in {
         imap     jk        <Esc>
         tnoremap <Esc>     <C-\><C-n>
         nnoremap <BS>      <C-^>
+        nnoremap <Leader>q :Sayonara!<CR>
+        nnoremap <Leader>Q :Sayonara<CR>
         nnoremap <leader><leader> :update<cr>
         " https://github.com/junegunn/fzf.vim/pull/628
         " TODO: this should consider what's before the cursor in case that is a valid path
@@ -297,6 +299,7 @@ in {
         nvim-surround
         sad-vim
         copilot-vim
+        vim-sayonara
 
         # Themes
         edge
