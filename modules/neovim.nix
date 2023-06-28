@@ -81,6 +81,7 @@ in {
       '';
       go = ''
         compiler go
+        set formatprg=gofmt
         function! GoImports()
             let saved = winsaveview()
             %!goimports
