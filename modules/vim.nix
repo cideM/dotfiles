@@ -1,45 +1,24 @@
 args @ {
   config,
-  lib,
   pkgs,
   ...
-}:
-with lib;
-with types; let
-  makeIndentPlugins = ftplugins:
-    with attrsets;
-      mapAttrs'
-      (key: value: nameValuePair ".vim/after/indent/${key}.vim" {text = value;})
-      ftplugins;
-
-  makeFtPlugins = ftplugins:
-    with attrsets;
-      mapAttrs'
-      (key: value: nameValuePair ".vim/after/ftplugin/${key}.vim" {text = value;})
-      ftplugins;
-in {
+}: {
   config = {
-    home.file =
-      makeFtPlugins {
-        go = ''
-          compiler go
-        '';
-        typescript = ''
-          set re=0
-        '';
-      }
-      // makeIndentPlugins {
-        html = ''
-          set indentexpr=""
-        '';
-      }
-      // {
-        ".vim/after/plugin/sensible.vim" = {
-          text = ''
-            set listchars=eol:¬,space:\ ,lead:\ ,trail:·,nbsp:◇,tab:→\ ,extends:❯,precedes:❮,multispace:\·\ \ \,leadmultispace:\│\ \ \ ,
-          '';
-        };
-      };
+    home.file = {
+      ".vim/after/ftplugin/go.vim".text = "compiler go";
+      ".vim/after/ftplugin/nix.vim".text = "setl kp=\"\"";
+      ".vim/after/ftplugin/html.vim".text = ''
+        setlocal keywordprg=open\ https://developer.mozilla.org/search?topic=api\\&topic=html\\&q=\
+      '';
+      ".vim/after/ftplugin/css.vim".text = ''
+        setlocal keywordprg=open\ https://developer.mozilla.org/search?topic=api\\&topic=css\\&q=\
+      '';
+      ".vim/after/indent/html.vim".text = "set indentexpr=\"\"";
+      ".vim/after/ftplugin/typescript.vim".text = "set re=0";
+      ".vim/after/plugin/sensible.vim".text = ''
+        set listchars=eol:¬,space:\ ,lead:\ ,trail:·,nbsp:◇,tab:→\ ,extends:❯,precedes:❮,multispace:\·\ \ \,leadmultispace:\│\ \ \ ,
+      '';
+    };
     programs.vim = {
       enable = true;
       extraConfig = ''
@@ -48,31 +27,46 @@ in {
 
         packadd! matchit
 
+        function! SynGroup()
+            let l:s = synID(line('.'), col('.'), 1)
+            echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+        endfun
+
         set hlsearch
         set visualbell
-        set textwidth=72
+        set textwidth=80
+        set colorcolumn=+0
+        set foldmethod=indent
         set formatoptions+=r
         set modelines=1
         set background=light
         set number
+        set ignorecase
+        set smartcase
         set hidden
-        set cursorline
         set noerrorbells
         set noexpandtab
         set nostartofline
+        " I don't want all of this autoselect business since it results in
+        " Vim using VisualNOS for any and all selections
+        set clipboard="unnamed,unnamedplus"
         set autoindent
         set termguicolors
         set backspace=2
         set laststatus=2
         set list
-        set listchars=eol:¬,space:\ ,lead:\ ,trail:·,nbsp:◇,tab:→\ ,extends:❯,precedes:❮,multispace:\·\ \ \,leadmultispace:\│\ \ \ ,
-        set grepprg=rg\ -H\ --vimgrep
-        colorscheme catppuccin_latte
+        set grepprg=rg\ -H\ --vimgrep\ --smart-case
+        colorscheme yui
+        let g:yui_comments = 'emphasize'
 
         let mapleader = " "
         nnoremap <BS> <C-^>
+
+        " Vim: also for text used to show unprintable characters in the text, 'listchars'.
+        " Neovim: Text displayed differently from what it really is. But not 'listchars' whitespace.
+        hi! link SpecialKey Whitespace
       '';
-      plugins = with pkgs.vimPlugins; [vim-sensible editorconfig-vim catppuccin-vim];
+      plugins = with pkgs.vimPlugins; [vim-sensible editorconfig-vim yui];
     };
   };
 }
