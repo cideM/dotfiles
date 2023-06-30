@@ -115,12 +115,24 @@ in {
           call winrestview(view)
         endfunction
 
+        let g:loaded_gzip = 1
+        let g:loaded_netrw = 1
+        let g:loaded_netrwPlugin = 1
+        let g:loaded_netrwSettings = 1
+        let g:loaded_zip = 1
+        let g:loaded_zipPlugin = 1
+        let g:loaded_tar = 1
+        let g:loaded_tarPlugin = 1
+        let g:loaded_vimball = 1
+        let g:loaded_vimballPlugin = 1
+
         set background=light
         set foldmethod=indent
         set expandtab
         set tabstop=2
         set shiftwidth=2
         set timeoutlen=500
+        set diffopt=internal,filler,closeoff,algorithm:minimal
         set colorcolumn=+0
         set cursorline
         set formatoptions+=r
@@ -207,6 +219,10 @@ in {
         imap <C-j> <Plug>(copilot-next)
         imap <C-h> <Plug>(copilot-previous)
         imap <C-d> <Plug>(copilot-dismiss)
+
+        let g:lightline = {
+        \ 'colorscheme': 'yui'
+        \ }
 
         lua require("nvim-surround").setup {}
 
@@ -299,6 +315,7 @@ in {
         nvim-surround
         sad-vim
         copilot-vim
+        lightline-vim
         vim-sayonara
 
         # Themes
