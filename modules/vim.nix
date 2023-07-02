@@ -47,9 +47,6 @@ args @ {
         set noerrorbells
         set noexpandtab
         set nostartofline
-        " I don't want all of this autoselect business since it results in
-        " Vim using VisualNOS for any and all selections
-        set clipboard="unnamed,unnamedplus"
         set autoindent
         set termguicolors
         set backspace=2
