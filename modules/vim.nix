@@ -20,6 +20,14 @@ args @ {
       '';
     };
     programs.vim = {
+      packageConfigurable = pkgs.vim-full.override {
+        darwinSupport = true;
+        guiSupport = false;
+        netbeansSupport = false;
+        cscopeSupport = false;
+        rubySupport = false;
+        pythonSupport = false;
+      };
       enable = true;
       extraConfig = ''
         unlet! skip_defaults_vim
