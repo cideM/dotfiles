@@ -76,6 +76,8 @@ args @ {
         set nostartofline
         set autoindent
         set termguicolors
+        set undodir=$HOME/.vim/undo
+        set undofile
         set backspace=2
         set laststatus=2
         set list
