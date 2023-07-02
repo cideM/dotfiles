@@ -82,8 +82,8 @@ args @ {
         set laststatus=2
         set list
         set grepprg=rg\ -H\ --vimgrep\ --smart-case
-        colorscheme yui
         let g:yui_comments = 'emphasize'
+        colorscheme yui
 
         let mapleader = " "
         nnoremap <BS> <C-^>
