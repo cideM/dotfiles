@@ -72,6 +72,7 @@ args @ {
         set ignorecase
         set smartcase
         set hidden
+        set wildoptions=fuzzy,pum
         set noerrorbells
         set noexpandtab
         set nostartofline
