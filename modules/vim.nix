@@ -9,15 +9,26 @@ args @ {
         compiler go
         set formatprg=gofmt
       '';
-      ".vim/after/ftplugin/nix.vim".text = "setl kp=\"\"";
+      ".vim/after/ftplugin/nix.vim".text = ''
+        setl keywordprg=""
+        setl formatprg=alejandra\ -q
+      '';
       ".vim/after/ftplugin/html.vim".text = ''
         setlocal keywordprg=open\ https://developer.mozilla.org/search?topic=api\\&topic=html\\&q=\
+        setl formatprg=prettier\ --stdin-filepath\ %
       '';
       ".vim/after/ftplugin/css.vim".text = ''
         setlocal keywordprg=open\ https://developer.mozilla.org/search?topic=api\\&topic=css\\&q=\
+        setl formatprg=prettier\ --stdin-filepath\ %
+      '';
+      ".vim/after/ftplugin/javascript.vim".text = ''
+        setl formatprg=prettier\ --stdin-filepath\ %
+      '';
+      ".vim/after/ftplugin/typescript.vim".text = ''
+        set re=0
+        setl formatprg=prettier\ --stdin-filepath\ %
       '';
       ".vim/after/indent/html.vim".text = "set indentexpr=\"\"";
-      ".vim/after/ftplugin/typescript.vim".text = "set re=0";
       ".vim/after/plugin/sensible.vim".text = ''
         set listchars=eol:¬,space:\ ,lead:\ ,trail:·,nbsp:◇,tab:→\ ,extends:❯,precedes:❮,multispace:\·\ \ \,leadmultispace:\│\ \ \ ,
       '';
