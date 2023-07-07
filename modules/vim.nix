@@ -5,7 +5,10 @@ args @ {
 }: {
   config = {
     home.file = {
-      ".vim/after/ftplugin/go.vim".text = "compiler go";
+      ".vim/after/ftplugin/go.vim".text = ''
+        compiler go
+        set formatprg=gofmt
+      '';
       ".vim/after/ftplugin/nix.vim".text = "setl kp=\"\"";
       ".vim/after/ftplugin/html.vim".text = ''
         setlocal keywordprg=open\ https://developer.mozilla.org/search?topic=api\\&topic=html\\&q=\
