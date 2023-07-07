@@ -64,6 +64,7 @@ args @ {
         set textwidth=80
         set colorcolumn=+0
         set foldmethod=indent
+        set foldlevelstart=99
         set formatoptions+=r
         set modelines=1
         set background=light
