@@ -24,7 +24,7 @@ with pkgs; {
     jq
     nixpkgs-review
     oil
-    rclone
+    #rclone
     ripgrep
     rlwrap
     shellcheck
