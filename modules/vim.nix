@@ -35,7 +35,7 @@ args @ {
     };
     programs.vim = {
       packageConfigurable = pkgs.vim-full.override {
-        darwinSupport = true;
+        darwinSupport = pkgs.stdenv.isDarwin;
         guiSupport = false;
         netbeansSupport = false;
         cscopeSupport = false;
