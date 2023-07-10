@@ -32,7 +32,6 @@
     gnome.gnome-tweaks
 
     sublime-merge
-    sublime4
 
     ledger-live-desktop
     openvpn
