@@ -23,6 +23,9 @@
     substitute-nvim-src.url = "github:gbprod/substitute.nvim";
     substitute-nvim-src.flake = false;
 
+    terminal-nvim-src.url = "github:rebelot/terminal.nvim";
+    terminal-nvim-src.flake = false;
+
     mini-nvim-src.url = "github:echasnovski/mini.nvim";
     mini-nvim-src.flake = false;
 
@@ -70,10 +73,23 @@
     azabiong-vim-highlighter,
     yui,
     spacevimtheme,
+    terminal-nvim-src,
     vim-js,
   }: let
     overlays = [
       (final: prev: rec {zigpkgs = zig-overlay.packages.${prev.system};})
+
+      (self: super: {
+        vimPlugins =
+          super.vimPlugins
+          // {
+            terminal = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+              version = "latest";
+              pname = "terminal";
+              src = terminal-nvim-src;
+            };
+          };
+      })
 
       (final: prev: {
         vimPlugins =

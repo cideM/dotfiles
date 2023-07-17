@@ -214,6 +214,7 @@
         "operatorMono": "operatorMono",
         "spacevimtheme": "spacevimtheme",
         "substitute-nvim-src": "substitute-nvim-src",
+        "terminal-nvim-src": "terminal-nvim-src",
         "unstable": "unstable",
         "vim-js": "vim-js",
         "yui": "yui",
@@ -264,6 +265,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "terminal-nvim-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1680868638,
+        "narHash": "sha256-joPamdYT5zXrF3r8w7I+ItCn33GFqbx5QX4/c6EJC/0=",
+        "owner": "rebelot",
+        "repo": "terminal.nvim",
+        "rev": "764b7c137512bcfba2e45cf3e25c08a9f4d3b733",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rebelot",
+        "repo": "terminal.nvim",
         "type": "github"
       }
     },
