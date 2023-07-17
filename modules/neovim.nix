@@ -36,10 +36,6 @@ in {
       yaml = ''
         setl formatprg=prettier\ --stdin-filepath\ %
       '';
-      fzf = ''
-        setl laststatus=0 noshowmode noruler
-        aug fzf | au! BufLeave <buffer> set laststatus& showmode ruler | aug END
-      '';
       javascript = ''
         compiler eslint
         setl formatprg=prettier\ --stdin-filepath\ %
@@ -189,24 +185,31 @@ in {
         nnoremap <Leader>q :Sayonara!<CR>
         nnoremap <Leader>Q :Sayonara<CR>
         nnoremap <leader>w :silent update<cr>
-        " https://github.com/junegunn/fzf.vim/pull/628
-        " TODO: this should consider what's before the cursor in case that is a valid path
-        inoremap <expr> <c-x><c-f> fzf#vim#complete("rg --files --hidden --no-ignore --null <Bar> xargs --null realpath --relative-to " . expand("%:h"))
 
-        " ======= fzf =======================
-        let g:fzf_preview_window = ['up:60%', 'ctrl-/']
-        let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
-        nnoremap <leader>f :Files<cr>
-        nnoremap <leader>l :BLines<cr>
-        nnoremap <leader>t :Tags<cr>
-        nnoremap <leader>m :Marks<cr>
-        nnoremap <leader>b :Buffers<cr>
-        nnoremap <leader>W :Windows<cr>
+        hi! link FzfLuaHeaderBind DiffText
+        hi! link FzfLuaHeaderText DiffDelete
+        lua <<EOF
+        require'fzf-lua'.setup {
+          fzf_opts = {
+            ['--no-color'] = "",
+          },
+          grep = {
+            no_header_i = false,
+            no_header = false,
+          },
+        }
+        EOF
+
+        inoremap <c-x><c-f> <cmd>lua require("fzf-lua").complete_path()<cr>
+        nnoremap <leader>f :lua require('fzf-lua').files()<cr>
+        nnoremap <leader>l :lua require('fzf-lua').blines()<cr>
+        nnoremap <leader>T :lua require('fzf-lua').tags()<cr>
+        nnoremap <leader>m :lua require('fzf-lua').marks()<cr>
+        nnoremap <leader>b :lua require('fzf-lua').buffers()<cr>
+        nnoremap <leader>W :lua require('fzf-lua').live_grep()<cr>
+        nnoremap <leader>gl :lua require('fzf-lua').git_commits()<cr>
 
         nmap     <leader>F :call FormatBuffer()<cr>
-
-        nnoremap <leader>T :split<bar>lcd %:p:h<bar>term fish<CR>
-        nnoremap <leader>o :split<bar>term fish<CR>
 
         vnoremap <leader>gl :<C-U>execute ':Git log -L' . line("'<") . ',' . line("'>") . ':%'<CR>
 
@@ -281,10 +284,11 @@ in {
           },
         })
 
+        local fzflua = require('fzf-lua')
         local bufopts = { noremap=true, silent=true, buffer=bufnr }
-        vim.keymap.set('n', '<leader>d', vim.lsp.buf.definition, bufopts)
-        vim.keymap.set('n', '<leader>D', vim.lsp.buf.declaration, bufopts)
-        vim.keymap.set('n', 'Q', vim.lsp.buf.type_definition, bufopts)
+        vim.keymap.set('n', '<leader>d', fzflua.lsp_definitions, bufopts)
+        vim.keymap.set('n', '<leader>D', fzflua.lsp_declarations, bufopts)
+        vim.keymap.set('n', 'Q', fzflua.lsp_typedefs, bufopts)
         vim.keymap.set('n', '<leader>i', vim.lsp.buf.implementation, bufopts)
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
         vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
@@ -293,8 +297,8 @@ in {
         vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, bufopts)
         vim.keymap.set('n', '<leader>R', vim.lsp.buf.references, bufopts)
         vim.keymap.set('n', '<C-f>', function() vim.lsp.buf.format { async = false } end, bufopts)
-        vim.keymap.set('n', '<leader>s', vim.lsp.buf.document_symbol, bufopts)
-        vim.keymap.set('n', '<leader>S', vim.lsp.buf.workspace_symbol, bufopts)
+        vim.keymap.set('n', '<leader>s', fzflua.lsp_document_symbols, bufopts)
+        vim.keymap.set('n', '<leader>S', fzflua.lsp_finder, bufopts)
         vim.keymap.set('n', '<C-n>', function () vim.diagnostic.goto_next{ float = true } end, bufopts)
         vim.keymap.set('n', '<C-p>', function () vim.diagnostic.goto_prev{ float = true } end, bufopts)
         vim.keymap.set('n', '<leader>ps', function () vim.diagnostic.open_float({ pad_top = 0, pad_bottom = 0, border = "single" }) end, bufopts)
@@ -340,7 +344,6 @@ in {
       plugins = with pkgs.vimPlugins; [
         # LSP
         nvim-lspconfig
-        lspfuzzy
 
         # Git
         vim-fugitive
@@ -354,8 +357,10 @@ in {
         vim-commentary
         vim-indent-object
         QFEnter
-        fzfWrapper
+        # fzfWrapper
         nvim-treesitter-context
+        # fzf-vim
+        fzf-lua
         vim-gutentags
         vim-dirvish
         leap-nvim
