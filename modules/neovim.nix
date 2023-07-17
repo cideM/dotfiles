@@ -245,6 +245,10 @@ in {
 
         lua require('leap').add_default_mappings()
 
+        lua <<EOF
+        require("highlight-undo").setup()
+        EOF
+
         " ======= lsp =======================
         lua <<EOF
         require("terminal").setup({
@@ -344,6 +348,7 @@ in {
         gitsigns-nvim
 
         vim-unimpaired
+        highlight-undo-nvim
         azabiong-vim-highlighter
         vim-repeat
         vim-commentary
