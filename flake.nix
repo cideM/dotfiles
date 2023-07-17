@@ -14,6 +14,9 @@
     nix-fish-src.url = "github:kidonng/nix.fish";
     nix-fish-src.flake = false;
 
+    azabiong-vim-highlighter.url = "github:azabiong/vim-highlighter";
+    azabiong-vim-highlighter.flake = false;
+
     lucid-fish-prompt-src.url = "github:mattgreen/lucid.fish";
     lucid-fish-prompt-src.flake = false;
 
@@ -64,6 +67,7 @@
     lucid-fish-prompt-src,
     substitute-nvim-src,
     zig-overlay,
+    azabiong-vim-highlighter,
     yui,
     spacevimtheme,
     vim-js,
@@ -82,6 +86,18 @@
                             "  let node = get(g:, 'copilot_node_command', '${prev.nodejs}/bin/node')"
               '';
             });
+          };
+      })
+
+      (self: super: {
+        vimPlugins =
+          super.vimPlugins
+          // {
+            azabiong-vim-highlighter = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+              version = "latest";
+              pname = "azabiong-vim-highlighter";
+              src = azabiong-vim-highlighter;
+            };
           };
       })
 

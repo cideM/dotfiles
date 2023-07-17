@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "azabiong-vim-highlighter": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1689063804,
+        "narHash": "sha256-Z9sB4cFKG7UQTTiTiv41sO9NYslU1c8oOFMxSSKWgVc=",
+        "owner": "azabiong",
+        "repo": "vim-highlighter",
+        "rev": "daadc139cc1b762f5a940a91946b176c2c61f843",
+        "type": "github"
+      },
+      "original": {
+        "owner": "azabiong",
+        "repo": "vim-highlighter",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -184,6 +200,7 @@
     },
     "root": {
       "inputs": {
+        "azabiong-vim-highlighter": "azabiong-vim-highlighter",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "lspfuzzy": "lspfuzzy",

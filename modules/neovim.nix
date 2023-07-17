@@ -303,6 +303,7 @@ in {
         gitsigns-nvim
 
         vim-unimpaired
+        azabiong-vim-highlighter
         vim-repeat
         vim-commentary
         vim-indent-object
