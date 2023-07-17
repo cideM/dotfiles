@@ -289,7 +289,7 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in rec {
         devShell = pkgs.mkShell {
-          buildInputs = with pkgs; [alejandra nodePackages.prettier];
+          buildInputs = with pkgs; [alejandra nodePackages.prettier stylua];
         };
       }
     );
