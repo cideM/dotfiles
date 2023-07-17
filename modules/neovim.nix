@@ -188,7 +188,7 @@ in {
         nnoremap <BS>      <C-^>
         nnoremap <Leader>q :Sayonara!<CR>
         nnoremap <Leader>Q :Sayonara<CR>
-        nnoremap <leader><leader> :update<cr>
+        nnoremap <leader>w :silent update<cr>
         " https://github.com/junegunn/fzf.vim/pull/628
         " TODO: this should consider what's before the cursor in case that is a valid path
         inoremap <expr> <c-x><c-f> fzf#vim#complete("rg --files --hidden --no-ignore --null <Bar> xargs --null realpath --relative-to " . expand("%:h"))
