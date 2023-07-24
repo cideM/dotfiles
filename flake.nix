@@ -29,9 +29,6 @@
     mini-nvim-src.url = "github:echasnovski/mini.nvim";
     mini-nvim-src.flake = false;
 
-    oil-nvim-src.url = "github:stevearc/oil.nvim";
-    oil-nvim-src.flake = false;
-
     spacevimtheme.url = "github:liuchengxu/space-vim-theme";
     spacevimtheme.flake = false;
 
@@ -64,7 +61,6 @@
     operatorMono,
     nixpkgs,
     mini-nvim-src,
-    oil-nvim-src,
     lspfuzzy,
     nix-fish-src,
     lucid-fish-prompt-src,
@@ -149,18 +145,6 @@
               version = "latest";
               pname = "mini";
               src = mini-nvim-src;
-            };
-          };
-      })
-
-      (self: super: {
-        vimPlugins =
-          super.vimPlugins
-          // {
-            oil = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-              version = "latest";
-              pname = "oil";
-              src = oil-nvim-src;
             };
           };
       })
