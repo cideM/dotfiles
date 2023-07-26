@@ -352,7 +352,7 @@ in {
 
         vim-unimpaired
         highlight-undo-nvim
-        azabiong-vim-highlighter
+        # azabiong-vim-highlighter
         vim-repeat
         vim-commentary
         vim-indent-object
@@ -367,7 +367,7 @@ in {
         nvim-surround
         sad-vim
         copilot-vim
-        lightline-vim
+        # lightline-vim
         vim-sayonara
         terminal
 
