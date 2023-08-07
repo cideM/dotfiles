@@ -228,6 +228,9 @@ in {
         imap <C-h> <Plug>(copilot-previous)
         imap <C-d> <Plug>(copilot-dismiss)
 
+        nnoremap <leader>T :split<bar>lcd %:p:h<bar>term fish<CR>
+        nnoremap <leader>o :split<bar>term fish<CR>
+
         let g:lightline = {
         \ 'colorscheme': 'yui'
         \ }
@@ -255,16 +258,6 @@ in {
 
         " ======= lsp =======================
         lua <<EOF
-        require("terminal").setup({
-          layout = { border = "rounded", open_cmd = "float", height = 0.8, width = 0.6 },
-          cmd = { vim.o.shell },
-        })
-        local term_map = require("terminal.mappings")
-        vim.keymap.set("n", "<leader>to", term_map.toggle)
-        vim.keymap.set("n", "<leader>tt", term_map.run(vim.o.shell))
-        vim.keymap.set("n", "<leader>tk", term_map.kill)
-        vim.keymap.set("n", "<leader>t]", term_map.cycle_next)
-        vim.keymap.set("n", "<leader>t[", term_map.cycle_prev)
 
         vim.diagnostic.config({
           virtual_text = {
@@ -370,7 +363,6 @@ in {
         copilot-vim
         # lightline-vim
         vim-sayonara
-        terminal
 
         # Themes
         edge
