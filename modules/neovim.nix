@@ -336,24 +336,17 @@ in {
       '';
 
       plugins = with pkgs.vimPlugins; [
-        # LSP
         nvim-lspconfig
-
-        # Git
         vim-fugitive
         vim-rhubarb
         gitsigns-nvim
-
         vim-unimpaired
-        # azabiong-vim-highlighter
         github-nvim-theme
         vim-repeat
         vim-commentary
         vim-indent-object
         QFEnter
-        # fzfWrapper
         nvim-treesitter-context
-        # fzf-vim
         fzf-lua
         vim-gutentags
         vim-dirvish
