@@ -14,23 +14,11 @@
     nix-fish-src.url = "github:kidonng/nix.fish";
     nix-fish-src.flake = false;
 
-    azabiong-vim-highlighter.url = "github:azabiong/vim-highlighter";
-    azabiong-vim-highlighter.flake = false;
-
     github-nvim-theme.url = "github:projekt0n/github-nvim-theme";
     github-nvim-theme.flake = false;
 
     lucid-fish-prompt-src.url = "github:mattgreen/lucid.fish";
     lucid-fish-prompt-src.flake = false;
-
-    substitute-nvim-src.url = "github:gbprod/substitute.nvim";
-    substitute-nvim-src.flake = false;
-
-    terminal-nvim-src.url = "github:rebelot/terminal.nvim";
-    terminal-nvim-src.flake = false;
-
-    mini-nvim-src.url = "github:echasnovski/mini.nvim";
-    mini-nvim-src.flake = false;
 
     spacevimtheme.url = "github:liuchengxu/space-vim-theme";
     spacevimtheme.flake = false;
@@ -63,47 +51,17 @@
     flake-utils,
     operatorMono,
     nixpkgs,
-    mini-nvim-src,
     lspfuzzy,
     nix-fish-src,
     lucid-fish-prompt-src,
-    substitute-nvim-src,
     zig-overlay,
-    azabiong-vim-highlighter,
     github-nvim-theme,
     yui,
     spacevimtheme,
-    terminal-nvim-src,
     vim-js,
   }: let
     overlays = [
       (final: prev: rec {zigpkgs = zig-overlay.packages.${prev.system};})
-
-      (self: super: {
-        vimPlugins =
-          super.vimPlugins
-          // {
-            terminal = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-              version = "latest";
-              pname = "terminal";
-              src = terminal-nvim-src;
-            };
-          };
-      })
-
-      (final: prev: {
-        vimPlugins =
-          prev.vimPlugins
-          // {
-            copilot-vim = prev.vimPlugins.copilot-vim.overrideAttrs (old: {
-              postInstall = ''
-                substituteInPlace $out/autoload/copilot/agent.vim \
-                  --replace "  let node = get(g:, 'copilot_node_command', ''\'''\')" \
-                            "  let node = get(g:, 'copilot_node_command', '${prev.nodejs}/bin/node')"
-              '';
-            });
-          };
-      })
 
       (self: super: {
         vimPlugins =
@@ -121,46 +79,10 @@
         vimPlugins =
           super.vimPlugins
           // {
-            azabiong-vim-highlighter = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-              version = "latest";
-              pname = "azabiong-vim-highlighter";
-              src = azabiong-vim-highlighter;
-            };
-          };
-      })
-
-      (self: super: {
-        vimPlugins =
-          super.vimPlugins
-          // {
             yui = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
               version = "latest";
               pname = "yui";
               src = yui;
-            };
-          };
-      })
-
-      (self: super: {
-        vimPlugins =
-          super.vimPlugins
-          // {
-            substitute = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-              version = "latest";
-              pname = "substitute";
-              src = substitute-nvim-src;
-            };
-          };
-      })
-
-      (self: super: {
-        vimPlugins =
-          super.vimPlugins
-          // {
-            mini = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-              version = "latest";
-              pname = "mini";
-              src = mini-nvim-src;
             };
           };
       })

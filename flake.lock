@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "azabiong-vim-highlighter": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1690683816,
-        "narHash": "sha256-cRkReFyc8TA2vbPdsKeOr82dvMKT+HRyJsREJxdXMuY=",
-        "owner": "azabiong",
-        "repo": "vim-highlighter",
-        "rev": "74f0f4da4ea52d59b8697116a8e0d54f24a026f1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "azabiong",
-        "repo": "vim-highlighter",
-        "type": "github"
-      }
-    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -88,11 +72,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1691039228,
-        "narHash": "sha256-iPNZJ1LvfUf1Y456ewC0DXgf99TNssG8OLObOyqxO6M=",
+        "lastModified": 1691312444,
+        "narHash": "sha256-J9e9dGwAPTX+UlAn8jehoyaEq6fwK+L+gunfx0cYT4E=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "86dd48d70a2e2c17e84e747ba4faa92453e68d4a",
+        "rev": "903e06d734bcae48efb79b9afd51b406d2744179",
         "type": "github"
       },
       "original": {
@@ -130,22 +114,6 @@
       "original": {
         "owner": "mattgreen",
         "repo": "lucid.fish",
-        "type": "github"
-      }
-    },
-    "mini-nvim-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1690916566,
-        "narHash": "sha256-4zjsOW/DUUqdDnrUrGhKxBv7cl82W6/VFCe85wTfLL4=",
-        "owner": "echasnovski",
-        "repo": "mini.nvim",
-        "rev": "ddb435633319d06a466c74833ef340839b931bfe",
-        "type": "github"
-      },
-      "original": {
-        "owner": "echasnovski",
-        "repo": "mini.nvim",
         "type": "github"
       }
     },
@@ -200,21 +168,17 @@
     },
     "root": {
       "inputs": {
-        "azabiong-vim-highlighter": "azabiong-vim-highlighter",
         "flake-utils": "flake-utils",
         "github-nvim-theme": "github-nvim-theme",
         "home-manager": "home-manager",
         "lspfuzzy": "lspfuzzy",
         "lucid-fish-prompt-src": "lucid-fish-prompt-src",
-        "mini-nvim-src": "mini-nvim-src",
         "nix-fish-src": "nix-fish-src",
         "nixpkgs": [
           "unstable"
         ],
         "operatorMono": "operatorMono",
         "spacevimtheme": "spacevimtheme",
-        "substitute-nvim-src": "substitute-nvim-src",
-        "terminal-nvim-src": "terminal-nvim-src",
         "unstable": "unstable",
         "vim-js": "vim-js",
         "yui": "yui",
@@ -237,22 +201,6 @@
         "type": "github"
       }
     },
-    "substitute-nvim-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1689863405,
-        "narHash": "sha256-3rAYqqk5HUFqRMb2GNW326mHiVSOc+pIJ/FN5N58nAU=",
-        "owner": "gbprod",
-        "repo": "substitute.nvim",
-        "rev": "89dbe55cccee36bcb5e2be8c2d92ff8716601734",
-        "type": "github"
-      },
-      "original": {
-        "owner": "gbprod",
-        "repo": "substitute.nvim",
-        "type": "github"
-      }
-    },
     "systems": {
       "locked": {
         "lastModified": 1681028828,
@@ -268,29 +216,13 @@
         "type": "github"
       }
     },
-    "terminal-nvim-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1680868638,
-        "narHash": "sha256-joPamdYT5zXrF3r8w7I+ItCn33GFqbx5QX4/c6EJC/0=",
-        "owner": "rebelot",
-        "repo": "terminal.nvim",
-        "rev": "764b7c137512bcfba2e45cf3e25c08a9f4d3b733",
-        "type": "github"
-      },
-      "original": {
-        "owner": "rebelot",
-        "repo": "terminal.nvim",
-        "type": "github"
-      }
-    },
     "unstable": {
       "locked": {
-        "lastModified": 1691003216,
-        "narHash": "sha256-Qq/MPkhS12Bl0X060pPvX3v9ac3f2rRQfHjjozPh/Qs=",
+        "lastModified": 1691371061,
+        "narHash": "sha256-BxPbPVlBIoneaXIBiHd0LVzA+L4nmvFCNBU6TmQAiMM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "4a56ce9727a0c5478a836a0d8a8f641c5b9a3d5f",
+        "rev": "5068bc8fe943bde3c446326da8d0ca9c93d5a682",
         "type": "github"
       },
       "original": {
@@ -339,11 +271,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1691022241,
-        "narHash": "sha256-PzROWjRNca7sV095gonGJz93k9sDQmvxf7dSZvK42mQ=",
+        "lastModified": 1691410097,
+        "narHash": "sha256-HoZ/JwddeysSKNYr7h3AqReCMXPcqgqW/eBVOekxhFM=",
         "owner": "mitchellh",
         "repo": "zig-overlay",
-        "rev": "a135bdb385d1a439648648872309dcaa8f2c69d2",
+        "rev": "9eda53e9001c54c810e24efe256c28d57a75d20d",
         "type": "github"
       },
       "original": {
