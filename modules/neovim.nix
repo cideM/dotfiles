@@ -353,6 +353,7 @@ in {
         vim-unimpaired
         highlight-undo-nvim
         # azabiong-vim-highlighter
+        github-nvim-theme
         vim-repeat
         vim-commentary
         vim-indent-object

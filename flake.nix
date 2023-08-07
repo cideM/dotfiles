@@ -17,6 +17,9 @@
     azabiong-vim-highlighter.url = "github:azabiong/vim-highlighter";
     azabiong-vim-highlighter.flake = false;
 
+    github-nvim-theme.url = "github:projekt0n/github-nvim-theme";
+    github-nvim-theme.flake = false;
+
     lucid-fish-prompt-src.url = "github:mattgreen/lucid.fish";
     lucid-fish-prompt-src.flake = false;
 
@@ -67,6 +70,7 @@
     substitute-nvim-src,
     zig-overlay,
     azabiong-vim-highlighter,
+    github-nvim-theme,
     yui,
     spacevimtheme,
     terminal-nvim-src,
@@ -98,6 +102,18 @@
                             "  let node = get(g:, 'copilot_node_command', '${prev.nodejs}/bin/node')"
               '';
             });
+          };
+      })
+
+      (self: super: {
+        vimPlugins =
+          super.vimPlugins
+          // {
+            github-nvim-theme = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+              version = "latest";
+              pname = "github-nvim-theme";
+              src = github-nvim-theme;
+            };
           };
       })
 

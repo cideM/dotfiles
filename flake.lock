@@ -65,6 +65,22 @@
         "type": "github"
       }
     },
+    "github-nvim-theme": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1690973293,
+        "narHash": "sha256-A6O2+BgKCqHQE/sGlNrDHeObkQ8372HjtbrEn41gJbs=",
+        "owner": "projekt0n",
+        "repo": "github-nvim-theme",
+        "rev": "832d7836a84fa60842a30f6eccd5432c7585d506",
+        "type": "github"
+      },
+      "original": {
+        "owner": "projekt0n",
+        "repo": "github-nvim-theme",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -186,6 +202,7 @@
       "inputs": {
         "azabiong-vim-highlighter": "azabiong-vim-highlighter",
         "flake-utils": "flake-utils",
+        "github-nvim-theme": "github-nvim-theme",
         "home-manager": "home-manager",
         "lspfuzzy": "lspfuzzy",
         "lucid-fish-prompt-src": "lucid-fish-prompt-src",
