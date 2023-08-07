@@ -197,6 +197,11 @@ in {
             no_header_i = false,
             no_header = false,
           },
+          winopts = {
+            preview = {
+              flip_columns = 180,
+            },
+          },
         }
         EOF
 
