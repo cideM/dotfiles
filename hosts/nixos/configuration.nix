@@ -32,7 +32,7 @@
     fontconfig = {
       enable = true;
     };
-    fonts = [pkgs.operatorMonoFont];
+    packages = [pkgs.operatorMonoFont];
   };
 
   programs.fish.enable = true;
