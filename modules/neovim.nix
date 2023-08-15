@@ -341,7 +341,6 @@ in {
         vim-rhubarb
         gitsigns-nvim
         vim-unimpaired
-        github-nvim-theme
         vim-repeat
         vim-commentary
         vim-indent-object
@@ -363,6 +362,7 @@ in {
         yui
         rose-pine
         everforest
+        github-nvim-theme
         catppuccin-nvim
 
         # Syntax
