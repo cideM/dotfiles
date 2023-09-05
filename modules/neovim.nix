@@ -30,6 +30,9 @@ in {
       purescript = ''
         setl formatprg=purty\ format\ -
       '';
+      python = ''
+        setl formatprg=black\ -
+      '';
       json = ''
         setl formatprg=prettier\ --stdin-filepath\ %
       '';
@@ -314,6 +317,7 @@ in {
         nvim_lsp.zls.setup{}
         nvim_lsp.lua_ls.setup{}
         nvim_lsp.eslint.setup{}
+        nvim_lsp.ruff_lsp.setup {}
 
         require'treesitter-context'.setup{ enable = true }
 
