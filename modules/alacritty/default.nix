@@ -123,15 +123,15 @@
         }
       ];
       window = {
-        decorations = "full";
+        decorations = "buttonless";
         dynamic_padding = true;
         dimensions = {
           columns = 90;
           lines = 50;
         };
         padding = {
-          x = 10;
-          y = 10;
+          x = 30;
+          y = 30;
         };
       };
       env = {
