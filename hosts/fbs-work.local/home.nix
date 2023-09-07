@@ -17,7 +17,7 @@
   programs.man.enable = true;
 
   programs.alacritty.enable = true;
-  programs.alacritty.settings.font.size = 14;
+  programs.alacritty.settings.font.size = 15;
 
   home = {
     stateVersion = "20.09";
