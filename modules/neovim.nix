@@ -31,7 +31,7 @@ in {
         setl formatprg=purty\ format\ -
       '';
       python = ''
-        setl formatprg=black\ -
+        setl formatprg=black\ -q\ -
       '';
       json = ''
         setl formatprg=prettier\ --stdin-filepath\ %
