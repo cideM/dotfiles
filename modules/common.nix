@@ -21,6 +21,7 @@ with pkgs; {
     htop
     hyperfine
     jq
+    micro
     nixpkgs-review
     oil
     rclone
