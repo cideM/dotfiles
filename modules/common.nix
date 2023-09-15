@@ -7,7 +7,6 @@ with pkgs; {
     curl
     du-dust
     entr
-    exa
     fastmod
     fd
     findutils
@@ -24,7 +23,7 @@ with pkgs; {
     jq
     nixpkgs-review
     oil
-    #rclone
+    rclone
     ripgrep
     rlwrap
     shellcheck
@@ -50,7 +49,7 @@ with pkgs; {
     enableFishIntegration = true;
     changeDirWidgetCommand = "fd --type d --hidden --follow --exclude .git";
     changeDirWidgetOptions = [
-      "--preview '${pkgs.exa}/bin/exa --oneline --git --long {}'"
+      "--preview '${pkgs.eza}/bin/eza --oneline --git --long {}'"
       "--color=light"
     ];
     historyWidgetOptions = [
