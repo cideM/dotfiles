@@ -369,7 +369,6 @@ in {
       plugins = with pkgs.vimPlugins; [
         nvim-lspconfig
         vim-fugitive
-        vim-rhubarb
         gitsigns-nvim
         vim-unimpaired
         vim-repeat

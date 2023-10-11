@@ -18,9 +18,11 @@ with pkgs; {
     gnupg
     gnused
     gzip
+    helix
     htop
     hyperfine
     jq
+    kakoune
     micro
     nixpkgs-review
     oil
@@ -33,6 +35,7 @@ with pkgs; {
     tree
     universal-ctags
     unzip
+    vis
     wget
   ];
 
