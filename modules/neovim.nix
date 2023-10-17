@@ -265,23 +265,6 @@ in {
         silent! omap <unique> im <Plug>(textobj-sandwich-literal-query-i)
         silent! omap <unique> am <Plug>(textobj-sandwich-literal-query-a)
 
-        lua <<EOF
-        require("nvim-surround").setup {
-          keymaps = {
-            insert = "<C-g>s",
-            insert_line = "<C-g>S",
-            normal = "ys",
-            normal_cur = "yss",
-            normal_line = "yS",
-            normal_cur_line = "ySS",
-            visual = "S",
-            visual_line = "gS",
-            delete = "<leader>ds",
-            change = "cs"
-          }
-        }
-        EOF
-
         lua require('gitsigns').setup()
 
         lua require('leap').add_default_mappings()
