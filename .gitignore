@@ -22,3 +22,4 @@ tags
 result
 tags.lock
 tags.temp
+*.sublime-workspace
