@@ -67,7 +67,7 @@
         vimPlugins =
           super.vimPlugins
           // {
-            github-nvim-theme = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+            github-nvim-theme = super.pkgs.vimUtils.buildVimPlugin rec {
               version = "latest";
               pname = "github-nvim-theme";
               src = github-nvim-theme;
@@ -79,7 +79,7 @@
         vimPlugins =
           super.vimPlugins
           // {
-            yui = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+            yui = super.pkgs.vimUtils.buildVimPlugin rec {
               version = "latest";
               pname = "yui";
               src = yui;
@@ -91,7 +91,7 @@
         vimPlugins =
           super.vimPlugins
           // {
-            lspfuzzy = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+            lspfuzzy = super.pkgs.vimUtils.buildVimPlugin rec {
               version = "latest";
               pname = "lspfuzzy";
               src = lspfuzzy;
@@ -103,7 +103,7 @@
         vimPlugins =
           super.vimPlugins
           // {
-            spacevim = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+            spacevim = super.pkgs.vimUtils.buildVimPlugin rec {
               version = "latest";
               pname = "spacevim";
               src = spacevimtheme;
@@ -127,7 +127,7 @@
         vimPlugins =
           super.vimPlugins
           // {
-            vim-js = super.pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+            vim-js = super.pkgs.vimUtils.buildVimPlugin rec {
               version = "latest";
               pname = "vim-js";
               src = vim-js;
