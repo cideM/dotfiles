@@ -63,7 +63,7 @@ in {
       gc = {
         description = "fzf git checkout";
         body = ''
-          git ch (git branch -a --sort=-committerdate |
+          git checkout (git branch -a --sort=-committerdate |
             fzf --preview 'git log (echo {} | sed -E -e \'s/^(\+|\*)//\' | string trim) -- ' |
             sed -E -e 's/^(\+|\*)//' |
             xargs basename |
