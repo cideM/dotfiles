@@ -192,14 +192,14 @@ in {
         hi! link FzfLuaHeaderBind DiffText
         hi! link FzfLuaHeaderText DiffDelete
         lua <<EOF
-        require'fzf-lua'.setup {
-          fzf_opts = {
-            ['--no-color'] = "",
-          },
-          grep = {
-            no_header_i = false,
-            no_header = false,
-          },
+        require'fzf-lua'.setup {"max-perf",
+          -- fzf_opts = {
+          --   ['--no-color'] = "",
+          -- },
+          -- grep = {
+          --   no_header_i = false,
+          --   no_header = false,
+          -- },
           winopts = {
             preview = {
               flip_columns = 180,
@@ -211,11 +211,15 @@ in {
         inoremap <c-x><c-f> <cmd>lua require("fzf-lua").complete_path()<cr>
         nnoremap <leader>f :lua require('fzf-lua').files()<cr>
         nnoremap <leader>l :lua require('fzf-lua').blines()<cr>
-        nnoremap <leader>T :lua require('fzf-lua').tags()<cr>
+        nnoremap <leader>j :lua require('fzf-lua').jumps()<cr>
+        nnoremap <leader>t :lua require('fzf-lua').tags()<cr>
         nnoremap <leader>m :lua require('fzf-lua').marks()<cr>
         nnoremap <leader>b :lua require('fzf-lua').buffers()<cr>
         nnoremap <leader>W :lua require('fzf-lua').live_grep()<cr>
-        nnoremap <leader>gl :lua require('fzf-lua').git_commits()<cr>
+        nnoremap <leader>gc :lua require('fzf-lua').git_commits()<cr>
+        nnoremap <leader>gb :lua require('fzf-lua').git_branches()<cr>
+        nnoremap <leader>gs :lua require('fzf-lua').git_status()<cr>
+        nnoremap <leader>gS :lua require('fzf-lua').git_stash()<cr>
 
         nmap     <leader>F :call FormatBuffer()<cr>
 
