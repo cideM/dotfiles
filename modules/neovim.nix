@@ -193,9 +193,9 @@ in {
         hi! link FzfLuaHeaderText DiffDelete
         lua <<EOF
         require'fzf-lua'.setup {"max-perf",
-          -- fzf_opts = {
-          --   ['--no-color'] = "",
-          -- },
+          fzf_opts = {
+            ['--no-color'] = "",
+          },
           -- grep = {
           --   no_header_i = false,
           --   no_header = false,
