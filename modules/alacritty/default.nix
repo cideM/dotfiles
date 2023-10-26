@@ -123,7 +123,7 @@
         }
       ];
       window = {
-        decorations = "buttonless";
+        decorations = "full";
         dynamic_padding = true;
         dimensions = {
           columns = 90;
