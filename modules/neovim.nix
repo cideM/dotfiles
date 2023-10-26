@@ -152,7 +152,7 @@ in {
         set grepformat=%f:%l:%c:%m
         set path-=/usr/include
         set list
-        set listchars=eol:¬,space:\ ,lead:\ ,trail:·,nbsp:◇,tab:→\ ,extends:❯,precedes:❮,multispace:\·\ \ \,leadmultispace:\│\ \ \ ,
+        set listchars=eol:¬,space:\ ,lead:\ ,trail:␣,nbsp:◇,tab:⇥\ ,extends:❯,precedes:❮,multispace:\·\ \ \,leadmultispace:\┊\ \ \ ,
         set statusline+=\ %f\ %m%=\ %y\ %q\ %3l:%2c\ \|%3p%%\ 
 
         " COLOR STUFF
