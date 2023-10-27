@@ -333,6 +333,23 @@ in {
         nvim_lsp.eslint.setup{}
         nvim_lsp.ruff_lsp.setup {}
 
+        require'treesitter-context'.setup{ enable = true }
+
+        require'nvim-treesitter.configs'.setup {
+          ensure_installed = {},
+          highlight = {
+            enable = true,
+            disable = {"help", "gitcommit"},
+          },
+          incremental_selection = {
+            enable = false,
+          },
+          indent = {
+            enable = true,
+            disable = {},
+          },
+        }
+
         EOF
       '';
 
@@ -345,6 +362,7 @@ in {
         vim-commentary
         vim-indent-object
         QFEnter
+        nvim-treesitter-context
         fzf-lua
         vim-gutentags
         vim-dirvish
@@ -375,6 +393,8 @@ in {
         vim-jsx-pretty
         vim-nix
         vim-terraform
+
+        nvim-treesitter.withAllGrammars
       ];
     };
   };
