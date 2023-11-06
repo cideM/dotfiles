@@ -45,6 +45,10 @@ in {
         setl wildignore+=*node_modules*,package-lock.json,yarn-lock.json
         setl makeprg=eslint\ --format\ compact
       '';
+      astro = ''
+        setl formatprg=prettier\ --stdin-filepath\ %
+        setl wildignore+=*node_modules*,package-lock.json,yarn-lock.json,./.astro
+      '';
       typescript = ''
         compiler tsc
         setl formatexpr=
@@ -326,6 +330,7 @@ in {
         vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
 
         nvim_lsp.rust_analyzer.setup{}
+        nvim_lsp.astro.setup{}
         nvim_lsp.tsserver.setup{}
         nvim_lsp.gopls.setup{}
         nvim_lsp.zls.setup{}
