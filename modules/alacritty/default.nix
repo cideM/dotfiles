@@ -30,6 +30,16 @@
           mods = "Command";
         }
         {
+          action = "DecreaseFontSize";
+          key = "Minus";
+          mods = "Command|Shift";
+        }
+        {
+          action = "DecreaseFontSize";
+          key = "Minus";
+          mods = "Control|Shift";
+        }
+        {
           action = "ResetFontSize";
           key = "Key0";
           mods = "Command|Shift";
