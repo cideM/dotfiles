@@ -206,7 +206,7 @@ in {
           -- },
           winopts = {
             preview = {
-              flip_columns = 180,
+              flip_columns = 200,
             },
           },
         }
