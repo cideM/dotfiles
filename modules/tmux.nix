@@ -108,13 +108,13 @@
       set-option -g status-style bg=default
       set-option -g status-right ' #[fg=colour7] #(date "+%a %b %d %H:%M") '
 
-      set-option -g pane-active-border-style fg=colour2
+      set-option -g pane-active-border-style fg=colour1
       set-option -g pane-border-style fg=colour8
       set-option -g pane-border-status bottom
       set-option -g pane-border-format "#{b:pane_title}"
 
       set-window-option -g window-status-format '#[fg=colour8] [#I] #W #F'
-      set-window-option -g window-status-current-format '#[fg=colour2] [#I] #W #F'
+      set-window-option -g window-status-current-format '#[fg=colour1] [#I] #W #F'
     '';
   };
 }
