@@ -29,9 +29,9 @@
     lspfuzzy.url = "github:ojroques/nvim-lspfuzzy";
     lspfuzzy.flake = false;
 
-    yui.url = "github:cidem/yui";
+    yui.url = "github:cidem/yui?ref=simplify";
     # yui.url = "path:/Users/fbs/private/yui";
-    yui.flake = false;
+    yui.flake = true;
 
     # unstable-local.url = "path:/Users/fbs/private/nixpkgs";
     unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -76,14 +76,14 @@
       })
 
       (self: super: {
+        yui-alacritty-theme = yui.packages.${super.system}.alacritty;
+      })
+
+      (self: super: {
         vimPlugins =
           super.vimPlugins
           // {
-            yui = super.pkgs.vimUtils.buildVimPlugin rec {
-              version = "latest";
-              pname = "yui";
-              src = yui;
-            };
+            yui = yui.packages.${super.system}.nvim;
           };
       })
 

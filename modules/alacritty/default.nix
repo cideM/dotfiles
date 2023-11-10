@@ -6,7 +6,9 @@
 }: {
   programs.alacritty = {
     settings = {
-      colors = (import ./colors.nix).oneLight;
+      import = [
+        "${pkgs.yui-alacritty-theme}/yui.yml"
+      ];
       font = (import ./fonts.nix).mono;
       key_bindings = [
         {
