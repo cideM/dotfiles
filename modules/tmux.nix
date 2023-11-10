@@ -4,14 +4,23 @@
     sensibleOnTop = false;
     plugins = [];
     extraConfig = ''
-      set -g default-terminal "tmux-256color"
+      set -g default-terminal "alacritty"
 
       set-option -g mouse off
 
       set-window-option -g mode-keys vi
 
       # Describe outer terminal for overrides!
-      set -as terminal-overrides ',*:Tc'
+      # set -as terminal-overrides ',*:Tc'
+
+      # Enable 24 bit true colors
+      set -ga terminal-overrides ',*:RGB'
+
+      # Enable undercurl
+      set -sa terminal-overrides ',*:Smulx=\E[4::%p1%dm'
+
+      # Enable undercurl colors
+      set -sa terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'
 
       set-option -g focus-events
 
