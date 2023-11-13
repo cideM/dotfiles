@@ -285,16 +285,15 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1699648669,
-        "narHash": "sha256-lYF01Ay8tJlXHugxlbg5DKRd+HXMuGFNuMCRGfkntdg=",
+        "lastModified": 1699885386,
+        "narHash": "sha256-njU9lYlFlgR6BwuTmrsF30R28fS9NqkbhHsJHwD7LoI=",
         "owner": "cidem",
         "repo": "yui",
-        "rev": "5c64cd04d3fbd56c79cb867875e4d220282f9b92",
+        "rev": "fb85fb0d06dc54fc6d9b9c13836ecedadff838dc",
         "type": "github"
       },
       "original": {
         "owner": "cidem",
-        "ref": "simplify",
         "repo": "yui",
         "type": "github"
       }

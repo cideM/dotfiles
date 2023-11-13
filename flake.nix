@@ -29,8 +29,8 @@
     lspfuzzy.url = "github:ojroques/nvim-lspfuzzy";
     lspfuzzy.flake = false;
 
-    yui.url = "github:cidem/yui?ref=simplify";
     # yui.url = "path:/Users/fbs/private/yui";
+    yui.url = "github:cidem/yui";
     yui.flake = true;
 
     # unstable-local.url = "path:/Users/fbs/private/nixpkgs";
