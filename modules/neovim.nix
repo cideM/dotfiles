@@ -130,6 +130,7 @@ in {
         let g:loaded_vimballPlugin = 1
 
         set background=light
+        set exrc
         set foldmethod=indent
         set expandtab
         set tabstop=2
