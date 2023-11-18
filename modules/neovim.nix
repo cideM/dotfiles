@@ -314,8 +314,8 @@ in {
         vim.keymap.set('n', '<C-f>', function() vim.lsp.buf.format { async = false } end, bufopts)
         vim.keymap.set('n', '<leader>s', fzflua.lsp_document_symbols, bufopts)
         vim.keymap.set('n', '<leader>S', fzflua.lsp_live_workspace_symbols, bufopts)
-        vim.keymap.set('n', '<C-n>', function () vim.diagnostic.goto_next{ float = true } end, bufopts)
-        vim.keymap.set('n', '<C-p>', function () vim.diagnostic.goto_prev{ float = true } end, bufopts)
+        vim.keymap.set('n', '<leader>]', function () vim.diagnostic.goto_next{ float = true } end, bufopts)
+        vim.keymap.set('n', '<leader>[', function () vim.diagnostic.goto_prev{ float = true } end, bufopts)
         vim.keymap.set('n', '<leader>ps', function () vim.diagnostic.open_float({ pad_top = 0, pad_bottom = 0, border = "single" }) end, bufopts)
         vim.keymap.set('n', '<leader>pl', vim.diagnostic.setloclist, bufopts)
 
