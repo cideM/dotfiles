@@ -49,10 +49,10 @@ args @ {
 
         packadd! matchit
 
-        function! SynGroup()
-            let l:s = synID(line('.'), col('.'), 1)
-            echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
-        endfun
+        function! SynStack()
+          echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+        endfunc
+        map gm :call SynStack()<CR>
 
         let g:loaded_gzip = 1
         let g:loaded_zip = 1

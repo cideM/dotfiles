@@ -169,10 +169,10 @@ in {
         let g:gutentags_file_list_command = 'rg --files'
         let g:gutentags_ctags_executable = '${pkgs.universal-ctags}/bin/ctags'
 
-        function! SynGroup()
-            let l:s = synID(line('.'), col('.'), 1)
-            echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
-        endfun
+        function! SynStack()
+          echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+        endfunc
+        map gm :call SynStack()<CR>
 
         aug terminsert | exe "au! TermOpen * startinsert | setl nonu nornu" | aug END
 
