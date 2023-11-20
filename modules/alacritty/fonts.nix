@@ -2,23 +2,23 @@
   monaspace = {
     bold = {
       family = "Monaspace Krypton";
-      style = "Medium";
+      style = "Bold";
     };
     bold_italic = {
-      family = "Monaspace Radon";
-      style = "Medium";
+      family = "Monaspace Krypton";
+      style = "Bold Italic";
     };
     glyph_offset = {
       x = 0;
       y = 2;
     };
     italic = {
-      family = "Monaspace Radon";
-      style = "ExtraLight";
+      family = "Monaspace Krypton";
+      style = "Italic";
     };
     normal = {
       family = "Monaspace Krypton";
-      style = "Light";
+      style = "Regular";
     };
     offset = {
       x = 0;
@@ -26,14 +26,14 @@
     };
   };
 
-  mono = {
+  operatorMono = {
     bold = {
       family = "Operator Mono SSm";
-      style = "Medium";
+      style = "Bold";
     };
     bold_italic = {
       family = "Operator Mono SSm";
-      style = "Medium Italic";
+      style = "Bold Italic";
     };
     glyph_offset = {
       x = 0;
