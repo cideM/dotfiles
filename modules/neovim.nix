@@ -161,7 +161,6 @@ in {
         set statusline+=\ %f\ %m%=\ %y\ %q\ %3l:%2c\ \|%3p%%\ 
 
         " COLOR STUFF
-        let g:yui_comments = 'bg'
         let g:yui_lightline = v:true
         colorscheme yui
 
