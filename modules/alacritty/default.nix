@@ -9,7 +9,7 @@
       import = [
         "${pkgs.yui-alacritty-theme}/yui.yml"
       ];
-      font = (import ./fonts.nix).mono;
+      font = (import ./fonts.nix).monaspace;
       key_bindings = [
         {
           action = "SpawnNewInstance";

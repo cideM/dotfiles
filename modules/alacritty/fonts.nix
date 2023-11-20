@@ -1,4 +1,31 @@
 {
+  monaspace = {
+    bold = {
+      family = "Monaspace Krypton";
+      style = "Medium";
+    };
+    bold_italic = {
+      family = "Monaspace Radon";
+      style = "Medium";
+    };
+    glyph_offset = {
+      x = 0;
+      y = 2;
+    };
+    italic = {
+      family = "Monaspace Radon";
+      style = "ExtraLight";
+    };
+    normal = {
+      family = "Monaspace Krypton";
+      style = "Light";
+    };
+    offset = {
+      x = 0;
+      y = 4;
+    };
+  };
+
   mono = {
     bold = {
       family = "Operator Mono SSm";
