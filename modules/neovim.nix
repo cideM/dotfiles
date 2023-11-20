@@ -133,7 +133,7 @@ in {
         set exrc
         set foldmethod=indent
         set expandtab
-        set tabstop=2
+        set tabstop=4
         set shiftwidth=2
         set timeoutlen=500
         set diffopt=internal,filler,closeoff,algorithm:minimal
