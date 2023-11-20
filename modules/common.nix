@@ -22,13 +22,15 @@ with pkgs; {
     hyperfine
     jq
     nixpkgs-review
-    oil
+    # broken
+    # oil
     rclone
     ripgrep
     rlwrap
     shellcheck
     time
-    tokei
+    # broken
+    # tokei
     tree
     universal-ctags
     unzip
