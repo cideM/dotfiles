@@ -23,6 +23,7 @@
     stateVersion = "20.09";
     packages = with pkgs; [
       nixVersions.stable
+      monaspace
       unixtools.watch
       home-manager.defaultPackage.aarch64-darwin
     ];
