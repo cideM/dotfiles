@@ -384,6 +384,7 @@ in {
         yui
         rose-pine
         everforest
+        melange-nvim
         github-nvim-theme
         catppuccin-nvim
 
