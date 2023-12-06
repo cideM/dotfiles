@@ -396,6 +396,7 @@ in {
         vim-jsx-pretty
         vim-nix
         vim-terraform
+        janet-vim
 
         nvim-treesitter.withAllGrammars
       ];

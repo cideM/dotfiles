@@ -100,6 +100,22 @@
         "type": "github"
       }
     },
+    "janet-vim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1688329303,
+        "narHash": "sha256-FbwatEyvvB4VY5fIF+HgRqFdeuEQI2ceb2MrZAL/HlA=",
+        "owner": "janet-lang",
+        "repo": "janet.vim",
+        "rev": "dc14b02f2820bc2aca777a1eeec48627ae6555bf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "janet-lang",
+        "repo": "janet.vim",
+        "type": "github"
+      }
+    },
     "lspfuzzy": {
       "flake": false,
       "locked": {
@@ -202,6 +218,7 @@
         "flake-utils": "flake-utils",
         "github-nvim-theme": "github-nvim-theme",
         "home-manager": "home-manager",
+        "janet-vim": "janet-vim",
         "lspfuzzy": "lspfuzzy",
         "lucid-fish-prompt-src": "lucid-fish-prompt-src",
         "nix-fish-src": "nix-fish-src",

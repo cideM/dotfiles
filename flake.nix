@@ -14,6 +14,9 @@
     nix-fish-src.url = "github:kidonng/nix.fish";
     nix-fish-src.flake = false;
 
+    janet-vim.url = "github:janet-lang/janet.vim";
+    janet-vim.flake = false;
+
     github-nvim-theme.url = "github:projekt0n/github-nvim-theme";
     github-nvim-theme.flake = false;
 
@@ -45,6 +48,7 @@
 
   outputs = {
     self,
+    janet-vim,
     unstable,
     # unstable-local,
     home-manager,
@@ -121,6 +125,18 @@
             cp -R "$src" "$out/share/fonts/operator-mono"
           '';
         };
+      })
+
+      (self: super: {
+        vimPlugins =
+          super.vimPlugins
+          // {
+            janet-vim = super.pkgs.vimUtils.buildVimPlugin rec {
+              version = "latest";
+              pname = "janet-vim";
+              src = janet-vim;
+            };
+          };
       })
 
       (self: super: {
