@@ -164,10 +164,6 @@ in {
         let g:yui_lightline = v:true
         colorscheme yui
 
-        let g:gutentags_exclude_filetypes = ["haskell", "purs", "purescript", "git", "gitcommit"]
-        let g:gutentags_file_list_command = 'rg --files'
-        let g:gutentags_ctags_executable = '${pkgs.universal-ctags}/bin/ctags'
-
         function! SynStack()
           echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
         endfunc
@@ -369,7 +365,6 @@ in {
         QFEnter
         nvim-treesitter-context
         fzf-lua
-        vim-gutentags
         vim-dirvish
         leap-nvim
         vim-sandwich
@@ -377,22 +372,14 @@ in {
         copilot-vim
         # lightline-vim
         vim-sayonara
-
-        # Themes
-        edge
         yui
 
         # Syntax
-        haskell-vim
         dhall-vim
         zig-vim
         Jenkinsfile-vim-syntax
         purescript-vim
-        vim-js
-        vim-lua
-        vim-jsx-pretty
         vim-nix
-        vim-terraform
         janet-vim
 
         nvim-treesitter.withAllGrammars
