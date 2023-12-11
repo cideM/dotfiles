@@ -381,9 +381,6 @@ in {
         # Themes
         edge
         yui
-        everforest
-        github-nvim-theme
-        catppuccin-nvim
 
         # Syntax
         haskell-vim

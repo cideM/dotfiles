@@ -4,6 +4,8 @@
   inputs = rec {
     zig-overlay.url = "github:mitchellh/zig-overlay";
 
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "unstable";
@@ -17,14 +19,8 @@
     janet-vim.url = "github:janet-lang/janet.vim";
     janet-vim.flake = false;
 
-    github-nvim-theme.url = "github:projekt0n/github-nvim-theme";
-    github-nvim-theme.flake = false;
-
     lucid-fish-prompt-src.url = "github:mattgreen/lucid.fish";
     lucid-fish-prompt-src.flake = false;
-
-    spacevimtheme.url = "github:liuchengxu/space-vim-theme";
-    spacevimtheme.flake = false;
 
     vim-js.url = "github:yuezk/vim-js";
     vim-js.flake = false;
@@ -53,31 +49,20 @@
     # unstable-local,
     home-manager,
     flake-utils,
+    neovim-nightly-overlay,
     operatorMono,
     nixpkgs,
     lspfuzzy,
     nix-fish-src,
     lucid-fish-prompt-src,
     zig-overlay,
-    github-nvim-theme,
     yui,
-    spacevimtheme,
     vim-js,
   }: let
     overlays = [
-      (final: prev: rec {zigpkgs = zig-overlay.packages.${prev.system};})
+      neovim-nightly-overlay.overlay
 
-      (self: super: {
-        vimPlugins =
-          super.vimPlugins
-          // {
-            github-nvim-theme = super.pkgs.vimUtils.buildVimPlugin rec {
-              version = "latest";
-              pname = "github-nvim-theme";
-              src = github-nvim-theme;
-            };
-          };
-      })
+      (final: prev: rec {zigpkgs = zig-overlay.packages.${prev.system};})
 
       (self: super: {
         yui-alacritty-theme = yui.packages.${super.system}.alacritty;
@@ -99,18 +84,6 @@
               version = "latest";
               pname = "lspfuzzy";
               src = lspfuzzy;
-            };
-          };
-      })
-
-      (self: super: {
-        vimPlugins =
-          super.vimPlugins
-          // {
-            spacevim = super.pkgs.vimUtils.buildVimPlugin rec {
-              version = "latest";
-              pname = "spacevim";
-              src = spacevimtheme;
             };
           };
       })
