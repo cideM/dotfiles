@@ -162,6 +162,7 @@ in {
 
         " COLOR STUFF
         let g:yui_lightline = v:true
+        let g:yui_comments = 'emphasize'
         colorscheme yui
 
         function! SynStack()
