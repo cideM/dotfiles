@@ -373,7 +373,13 @@ in {
         copilot-vim
         # lightline-vim
         vim-sayonara
+
+        # Themes
         yui
+        edge
+        kanagawa-nvim
+        catppuccin-nvim
+        everforest
 
         # Syntax
         dhall-vim
