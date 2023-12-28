@@ -274,9 +274,6 @@ in {
 
         lua require('leap').add_default_mappings()
 
-        let g:conjure#mapping#doc_word = 'K'
-        vim.g['conjure#extract#tree_sitter#enabled'] = true
-
         " ======= lsp =======================
         lua <<EOF
 
@@ -377,7 +374,6 @@ in {
         # lightline-vim
         vim-sayonara
         nvim-treesitter.withAllGrammars
-        conjure
 
         # Themes
         yui
