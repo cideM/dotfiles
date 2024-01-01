@@ -24,10 +24,7 @@
   home.packages = with pkgs; [
     iotop
     xsel
-    insomnia
     pavucontrol
-    spotify
-    obsidian
     _1password-gui
 
     gnome.gnome-tweaks
