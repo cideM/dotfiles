@@ -28,6 +28,7 @@
     pavucontrol
     spotify
     obsidian
+    _1password-gui
 
     gnome.gnome-tweaks
 
