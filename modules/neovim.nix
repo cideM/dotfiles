@@ -367,6 +367,7 @@ in {
         nvim-treesitter-context
         fzf-lua
         vim-dirvish
+        no-neck-pain
         leap-nvim
         vim-sandwich
         sad-vim

@@ -340,6 +340,22 @@
         "type": "github"
       }
     },
+    "no-neck-pain-nvim-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1703460188,
+        "narHash": "sha256-q+3+DI5j/DVrCK/U9UP+SOpbepyHUZNNDw0zabVymL8=",
+        "owner": "shortcuts",
+        "repo": "no-neck-pain.nvim",
+        "rev": "b305821ca45897db6276e9ae5893747bb24040c7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "shortcuts",
+        "repo": "no-neck-pain.nvim",
+        "type": "github"
+      }
+    },
     "operatorMono": {
       "flake": false,
       "locked": {
@@ -369,6 +385,7 @@
         "nixpkgs": [
           "unstable"
         ],
+        "no-neck-pain-nvim-src": "no-neck-pain-nvim-src",
         "operatorMono": "operatorMono",
         "unstable": "unstable",
         "vim-js": "vim-js",
