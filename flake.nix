@@ -141,6 +141,12 @@
       })
 
       (self: super: {
+        oil = super.oil.overrideAttrs (old: {
+          env.NIX_CFLAGS_COMPILE = super.lib.optionalString super.stdenv.cc.isClang "-Wno-error=incompatible-function-pointer-types";
+        });
+      })
+
+      (self: super: {
         lucid-fish-prompt = super.pkgs.stdenv.mkDerivation {
           pname = "lucid-fish-prompt";
           version = "latest";
