@@ -69,7 +69,7 @@
       (final: prev: rec {zigpkgs = zig-overlay.packages.${prev.system};})
 
       (self: super: {
-        yui-alacritty-theme = yui.packages.${super.system}.alacritty;
+        yui-alacritty-theme = yui.packages.${super.system}.alacrittyToml;
       })
 
       (self: super: {

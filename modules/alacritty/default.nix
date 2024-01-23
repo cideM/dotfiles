@@ -7,7 +7,7 @@
   programs.alacritty = {
     settings = {
       import = [
-        "${pkgs.yui-alacritty-theme}/yui.yml"
+        "${pkgs.yui-alacritty-theme}/yui.toml"
       ];
       font = (import ./fonts.nix).operatorMono;
       keyboard = {
