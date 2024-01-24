@@ -18,6 +18,11 @@
             mods = "Control|Alt";
           }
           {
+            chars = "`'";
+            key = "'";
+            mods = "Command";
+          }
+          {
             chars = "\\u0014";
             key = "T";
             mods = "Command";
@@ -121,11 +126,6 @@
           {
             chars = "`5";
             key = "Key5";
-            mods = "Command";
-          }
-          {
-            chars = "\u001D\"";
-            key = "'";
             mods = "Command";
           }
           {
