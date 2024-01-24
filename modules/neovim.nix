@@ -119,9 +119,6 @@ in {
         endfunction
 
         let g:loaded_gzip = 1
-        let g:loaded_netrw = 1
-        let g:loaded_netrwPlugin = 1
-        let g:loaded_netrwSettings = 1
         let g:loaded_zip = 1
         let g:loaded_zipPlugin = 1
         let g:loaded_tar = 1
@@ -365,6 +362,7 @@ in {
         vim-indent-object
         QFEnter
         nvim-treesitter-context
+        vim-rhubarb
         fzf-lua
         vim-dirvish
         no-neck-pain
