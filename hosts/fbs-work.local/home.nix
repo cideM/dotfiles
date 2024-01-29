@@ -45,6 +45,7 @@
 
   xdg.configFile."nix/nix.conf".text = ''
     experimental-features = nix-command flakes
+    sandbox = true
   '';
 
   # Can't use programs.git because https://github.com/NixOS/nixpkgs/issues/62353
