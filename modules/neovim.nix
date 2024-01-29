@@ -267,8 +267,6 @@ in {
         silent! omap <unique> im <Plug>(textobj-sandwich-literal-query-i)
         silent! omap <unique> am <Plug>(textobj-sandwich-literal-query-a)
 
-        lua require('gitsigns').setup()
-
         lua require('leap').add_default_mappings()
 
         " ======= lsp =======================
@@ -355,7 +353,6 @@ in {
       plugins = with pkgs.vimPlugins; [
         nvim-lspconfig
         vim-fugitive
-        gitsigns-nvim
         vim-unimpaired
         vim-repeat
         vim-commentary
