@@ -366,6 +366,7 @@ in {
         leap-nvim
         vim-sandwich
         sad-vim
+        vim-eunuch
         copilot-vim
         # lightline-vim
         vim-sayonara
