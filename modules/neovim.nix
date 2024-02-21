@@ -383,6 +383,10 @@ in {
         kanagawa-nvim
         catppuccin-nvim
         everforest
+        onedarkpro-nvim
+        oxocarbon-nvim
+        papercolor-theme
+        onehalf
 
         # Syntax
         dhall-vim
