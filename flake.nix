@@ -6,6 +6,9 @@
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
+    github-nvim-theme-src.url = "github:projekt0n/github-nvim-theme";
+    github-nvim-theme-src.flake = false;
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "unstable";
@@ -49,6 +52,7 @@
     self,
     janet-vim,
     unstable,
+    github-nvim-theme-src,
     # unstable-local,
     home-manager,
     flake-utils,
@@ -77,6 +81,18 @@
           super.vimPlugins
           // {
             yui = yui.packages.${super.system}.nvim;
+          };
+      })
+
+      (self: super: {
+        vimPlugins =
+          super.vimPlugins
+          // {
+            github-nvim-theme = super.pkgs.vimUtils.buildVimPlugin rec {
+              version = "latest";
+              pname = "no-neck-pain";
+              src = github-nvim-theme-src;
+            };
           };
       })
 

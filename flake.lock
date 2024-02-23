@@ -140,6 +140,22 @@
         "type": "github"
       }
     },
+    "github-nvim-theme-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1706710373,
+        "narHash": "sha256-FO4mwRY2qjutjVTiW0wN5KVhuoBZmycfOwMFInaTnNo=",
+        "owner": "projekt0n",
+        "repo": "github-nvim-theme",
+        "rev": "d92e1143e5aaa0d7df28a26dd8ee2102df2cadd8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "projekt0n",
+        "repo": "github-nvim-theme",
+        "type": "github"
+      }
+    },
     "hercules-ci-effects": {
       "inputs": {
         "flake-parts": "flake-parts_2",
@@ -376,6 +392,7 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
+        "github-nvim-theme-src": "github-nvim-theme-src",
         "home-manager": "home-manager",
         "janet-vim": "janet-vim",
         "lspfuzzy": "lspfuzzy",

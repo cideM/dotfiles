@@ -376,6 +376,7 @@ in {
         yui
         edge
         kanagawa-nvim
+        github-nvim-theme
         catppuccin-nvim
         everforest
         onedarkpro-nvim
