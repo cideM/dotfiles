@@ -328,6 +328,7 @@ in {
         nvim_lsp.zls.setup{}
         nvim_lsp.lua_ls.setup{}
         nvim_lsp.eslint.setup{}
+        nvim_lsp.biome.setup{}
         nvim_lsp.ruff_lsp.setup {}
 
         require'treesitter-context'.setup{ enable = true }
