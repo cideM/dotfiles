@@ -88,6 +88,7 @@
     curl
     gnumake
     git
+    gnomeExtensions.kimpanel
   ];
 
   programs.xwayland.enable = true;
