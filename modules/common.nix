@@ -33,6 +33,7 @@ with pkgs; {
     universal-ctags
     unzip
     wget
+    zed-editor
   ];
 
   home.sessionVariables = {
