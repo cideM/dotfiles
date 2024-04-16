@@ -356,7 +356,6 @@ in {
         vim-fugitive
         vim-unimpaired
         vim-repeat
-        vim-commentary
         vim-indent-object
         QFEnter
         nvim-treesitter-context
