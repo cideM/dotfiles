@@ -267,6 +267,10 @@ in {
         silent! omap <unique> im <Plug>(textobj-sandwich-literal-query-i)
         silent! omap <unique> am <Plug>(textobj-sandwich-literal-query-a)
 
+        nnoremap H :Gitsigns preview_hunk<CR>
+        nnoremap ]c :Gitsigns next_hunk<CR>
+        nnoremap [c :Gitsigns prev_hunk<CR>
+
         lua require('gitsigns').setup()
 
         lua require('leap').add_default_mappings()
