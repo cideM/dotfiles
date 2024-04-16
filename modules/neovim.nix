@@ -190,7 +190,7 @@ in {
         hi! link FzfLuaHeaderBind DiffText
         hi! link FzfLuaHeaderText DiffDelete
         lua <<EOF
-        require'fzf-lua'.setup {"max-perf",
+        require'fzf-lua'.setup {"default",
           fzf_opts = {
             ['--no-color'] = "",
           },
@@ -203,6 +203,11 @@ in {
               flip_columns = 230,
             },
           },
+          lsp = {
+            symbols = {
+              symbol_style = 3,
+            }
+          }
         }
         EOF
 
