@@ -32,9 +32,6 @@
 
   programs.fish.interactiveShellInit = ''
     fish_add_path /opt/local/bin /opt/local/sbin
-
-    contains "/Users/fbs/.nix-profile/share/man" $MANPATH
-    or set -p MANPATH "/Users/fbs/.nix-profile/share/man"
   '';
 
   # https://github.com/nix-community/home-manager/issues/2942
