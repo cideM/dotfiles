@@ -26,6 +26,7 @@
       monaspace
       unixtools.watch
       home-manager.defaultPackage.aarch64-darwin
+      (pkgs.writeShellScriptBin "gsed" "exec -a $0 ${gnused}/bin/sed $@")
     ];
   };
 
