@@ -169,6 +169,14 @@ in {
 
         aug terminsert | exe "au! TermOpen * startinsert | setl nonu nornu" | aug END
 
+        aug tscontext
+          au!
+          au ColorScheme * hi! link TreesitterContext NormalFloat
+            \ | hi! link TreesitterContextLineNumber LineNr
+            \ | hi! link TreesitterContextSeparator FloatBorder
+            \ | hi TreesitterContextLineNumberBottom gui=underline
+        aug END
+
         aug quickfix
             au!
             au QuickFixCmdPost [^l]* cwindow
@@ -278,7 +286,11 @@ in {
 
         lua require('gitsigns').setup()
 
-        lua require('leap').add_default_mappings()
+        lua require('leap').create_default_mappings()
+        lua require('leap.user').set_repeat_keys('<enter>', '<backspace>')
+        lua require('leap').opts.special_keys.prev_target = '<backspace>'
+        lua require('leap').opts.special_keys.prev_group = '<backspace>'
+        lua require('leap').opts.safe_labels = {}
 
         " ======= lsp =======================
         lua <<EOF
