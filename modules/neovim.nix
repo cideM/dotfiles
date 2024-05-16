@@ -150,7 +150,7 @@ in {
         set foldlevelstart=99
         set undofile
         set termguicolors
-        set grepprg=rg\ -H\ --vimgrep\ --smart-case
+        set grepprg=rg\ -H\ --vimgrep\ -I\ --smart-case
         set grepformat=%f:%l:%c:%m
         set path-=/usr/include
         set list
@@ -325,7 +325,6 @@ in {
         vim.keymap.set('n', '<leader>D', fzflua.lsp_declarations, bufopts)
         vim.keymap.set('n', 'Q', fzflua.lsp_typedefs, bufopts)
         vim.keymap.set('n', '<leader>i', fzflua.lsp_implementations, bufopts)
-        vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
         vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
         vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, bufopts)
         vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, bufopts)
@@ -334,10 +333,6 @@ in {
         vim.keymap.set('n', '<C-f>', function() vim.lsp.buf.format { async = false } end, bufopts)
         vim.keymap.set('n', '<leader>s', fzflua.lsp_document_symbols, bufopts)
         vim.keymap.set('n', '<leader>S', fzflua.lsp_live_workspace_symbols, bufopts)
-        vim.keymap.set('n', '<leader>]', function () vim.diagnostic.goto_next{ float = true } end, bufopts)
-        vim.keymap.set('n', '<leader>[', function () vim.diagnostic.goto_prev{ float = true } end, bufopts)
-        vim.keymap.set('n', '<leader>ps', function () vim.diagnostic.open_float({ pad_top = 0, pad_bottom = 0, border = "single" }) end, bufopts)
-        vim.keymap.set('n', '<leader>pl', vim.diagnostic.setloclist, bufopts)
 
         local nvim_lsp = require'lspconfig'
 
