@@ -3,6 +3,7 @@ with pkgs; {
   home.packages = [
     bashInteractive
     bat
+    btop
     coreutils-full
     curl
     du-dust
