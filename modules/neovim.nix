@@ -169,14 +169,6 @@ in {
 
         aug terminsert | exe "au! TermOpen * startinsert | setl nonu nornu" | aug END
 
-        aug tscontext
-          au!
-          au ColorScheme * hi! link TreesitterContext NormalFloat
-            \ | hi! link TreesitterContextLineNumber LineNr
-            \ | hi! link TreesitterContextSeparator FloatBorder
-            \ | hi TreesitterContextLineNumberBottom gui=underline
-        aug END
-
         aug quickfix
             au!
             au QuickFixCmdPost [^l]* cwindow
