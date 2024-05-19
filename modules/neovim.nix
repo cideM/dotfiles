@@ -196,7 +196,6 @@ in {
 
         imap     jk        <Esc>
         tnoremap <Esc>     <C-\><C-n>
-        nnoremap <BS>      <C-^>
         nnoremap <Leader>q :Sayonara!<CR>
         nnoremap <Leader>Q :Sayonara<CR>
         nnoremap <leader>w :silent update<cr>
