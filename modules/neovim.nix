@@ -175,6 +175,20 @@ in {
             au QuickFixCmdPost l* lwindow
         aug END
 
+        lua <<EOF
+        vim.g.clipboard = {
+          name = 'OSC 52',
+          copy = {
+            ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+            ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+          },
+          paste = {
+            ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+            ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+          },
+        }
+        EOF
+
         aug highlight_yank | exe "au! TextYankPost * silent! lua require'vim.highlight'.on_yank()" | aug END
 
         let mapleader = " "
