@@ -68,7 +68,7 @@
     vim-js,
   }: let
     overlays = [
-      neovim-nightly-overlay.overlay
+      neovim-nightly-overlay.overlays.default
 
       (final: prev: rec {zigpkgs = zig-overlay.packages.${prev.system};})
 
