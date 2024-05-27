@@ -150,7 +150,7 @@ in {
         set foldlevelstart=99
         set undofile
         set termguicolors
-        set grepprg=rg\ -H\ --vimgrep\ -I\ --smart-case
+        set grepprg=rg\ -H\ --vimgrep\ --smart-case
         set grepformat=%f:%l:%c:%m
         set path-=/usr/include
         set list
@@ -175,20 +175,6 @@ in {
             au QuickFixCmdPost l* lwindow
         aug END
 
-        lua <<EOF
-        vim.g.clipboard = {
-          name = 'OSC 52',
-          copy = {
-            ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
-            ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
-          },
-          paste = {
-            ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
-            ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
-          },
-        }
-        EOF
-
         aug highlight_yank | exe "au! TextYankPost * silent! lua require'vim.highlight'.on_yank()" | aug END
 
         let mapleader = " "
@@ -199,6 +185,14 @@ in {
         nnoremap <Leader>q :Sayonara!<CR>
         nnoremap <Leader>Q :Sayonara<CR>
         nnoremap <leader>w :silent update<cr>
+
+        vnoremap <leader>y  "+y
+        nnoremap <leader>Y  "+yg_
+        nnoremap <leader>y  "+y
+        nnoremap <leader>p "+p
+        nnoremap <leader>P "+P
+        vnoremap <leader>p "+p
+        vnoremap <leader>P "+P
 
         lua <<EOF
         require("oil").setup()
@@ -397,7 +391,7 @@ in {
         sad-vim
         vim-eunuch
         copilot-vim
-        # lightline-vim
+        lightline-vim
         vim-sayonara
         nvim-treesitter.withAllGrammars
 
