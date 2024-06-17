@@ -284,12 +284,6 @@ in {
         silent! omap <unique> im <Plug>(textobj-sandwich-literal-query-i)
         silent! omap <unique> am <Plug>(textobj-sandwich-literal-query-a)
 
-        nnoremap H :Gitsigns preview_hunk<CR>
-        nnoremap ]c :Gitsigns next_hunk<CR>
-        nnoremap [c :Gitsigns prev_hunk<CR>
-
-        lua require('gitsigns').setup()
-
         lua require('leap').create_default_mappings()
         lua require('leap.user').set_repeat_keys('<enter>', '<backspace>')
         lua require('leap').opts.special_keys.prev_target = '<backspace>'
@@ -376,7 +370,6 @@ in {
       plugins = with pkgs.vimPlugins; [
         nvim-lspconfig
         vim-fugitive
-        gitsigns-nvim
         vim-unimpaired
         vim-repeat
         vim-indent-object
