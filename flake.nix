@@ -28,9 +28,6 @@
     vim-js.url = "github:yuezk/vim-js";
     vim-js.flake = false;
 
-    no-neck-pain-nvim-src.url = "github:shortcuts/no-neck-pain.nvim";
-    no-neck-pain-nvim-src.flake = false;
-
     lspfuzzy.url = "github:ojroques/nvim-lspfuzzy";
     lspfuzzy.flake = false;
 
@@ -63,7 +60,6 @@
     nix-fish-src,
     lucid-fish-prompt-src,
     zig-overlay,
-    no-neck-pain-nvim-src,
     yui,
     vim-js,
   }: let
@@ -92,18 +88,6 @@
               version = "latest";
               pname = "no-neck-pain";
               src = github-nvim-theme-src;
-            };
-          };
-      })
-
-      (self: super: {
-        vimPlugins =
-          super.vimPlugins
-          // {
-            no-neck-pain = super.pkgs.vimUtils.buildVimPlugin rec {
-              version = "latest";
-              pname = "no-neck-pain";
-              src = no-neck-pain-nvim-src;
             };
           };
       })
