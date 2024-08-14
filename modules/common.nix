@@ -107,6 +107,10 @@ with pkgs; {
   # https://github.com/rycee/home-manager/issues/432
   home.extraOutputsToInstall = ["info" "man" "share" "icons" "doc"];
 
+  xdg.configFile."git/attributes".text = ''
+    *.lockb binary diff=lockb
+  '';
+
   xdg.configFile."nix/registry.json".text = builtins.toJSON {
     version = 2;
     flakes = {

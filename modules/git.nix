@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   programs.git = {
     enable = true;
 
@@ -32,6 +32,10 @@
 
       diff = {
         algorithm = "histogram";
+        lockb = {
+          textconv = "${pkgs.bun}/bin/bun";
+          binary = true;
+        };
       };
 
       pull = {

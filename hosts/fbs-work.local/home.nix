@@ -55,6 +55,10 @@
         algorithm = histogram
         colorMoved = default
 
+    [diff "lockb"]
+        binary = true
+        textconv = ${pkgs.bun}/bin/bun
+
     [pull]
         rebase = true
 
