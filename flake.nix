@@ -4,6 +4,11 @@
   inputs = rec {
     zig-overlay.url = "github:mitchellh/zig-overlay";
 
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
     github-nvim-theme-src.url = "github:projekt0n/github-nvim-theme";
@@ -55,6 +60,7 @@
     flake-utils,
     neovim-nightly-overlay,
     operatorMono,
+    lix-module,
     nixpkgs,
     lspfuzzy,
     nix-fish-src,
@@ -187,6 +193,7 @@
             };
           }
           ./hosts/fbs-work.local/home.nix
+          lix-module.nixosModules.default
         ];
       };
     };
