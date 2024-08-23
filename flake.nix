@@ -75,14 +75,14 @@
       (final: prev: rec {zigpkgs = zig-overlay.packages.${prev.system};})
 
       (self: super: {
-        yui-alacritty-theme = yui.packages.${super.system}.alacrittyToml;
+        yui-alacritty-theme = yui.packages.${super.system}.alacritty;
       })
 
       (self: super: {
         vimPlugins =
           super.vimPlugins
           // {
-            yui = yui.packages.${super.system}.nvim;
+            yui = yui.packages.${super.system}.neovim;
           };
       })
 
@@ -92,7 +92,7 @@
           // {
             github-nvim-theme = super.pkgs.vimUtils.buildVimPlugin rec {
               version = "latest";
-              pname = "no-neck-pain";
+              pname = "github-nvim-theme";
               src = github-nvim-theme-src;
             };
           };
@@ -144,6 +144,12 @@
               src = vim-js;
             };
           };
+      })
+
+      (final: prev: {
+        fishPlugins = prev.fishPlugins.overrideScope (finalx: prevx: {
+          yui = yui.packages.${final.system}.fish_light;
+        });
       })
 
       (self: super: {

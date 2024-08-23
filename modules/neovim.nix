@@ -62,7 +62,7 @@ in {
         setl formatprg=prettier\ --parser\ css\ --stdin-filepath\ %
       '';
       scss = ''
-        setl formatprg=prettier\ --parser\ scss\ --stdin-filepath\ %
+        setl formatprg=prettier\ --parser\ scss
       '';
       nix = ''
         setl formatprg=alejandra\ -q
@@ -162,6 +162,10 @@ in {
         let g:yui_comments = 'emphasize'
         colorscheme yui
 
+        " let g:lightline = {
+        " \ 'colorscheme': 'yui'
+        " \ }
+
         function! SynStack()
           echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
         endfunc
@@ -176,6 +180,9 @@ in {
         aug END
 
         aug highlight_yank | exe "au! TextYankPost * silent! lua require'vim.highlight'.on_yank()" | aug END
+
+        " Won't work on linux
+        command! -nargs=1 Browse silent execute '!open' shellescape(<q-args>,1)
 
         let mapleader = " "
         let maplocalleader = ","
@@ -252,10 +259,6 @@ in {
 
         nnoremap <leader>T :split<bar>lcd %:p:h<bar>term fish<CR>
         nnoremap <leader>o :split<bar>term fish<CR>
-
-        let g:lightline = {
-        \ 'colorscheme': 'yui'
-        \ }
 
         " ======= sandwich ==================
         let g:sandwich_no_default_key_mappings = 1
@@ -377,28 +380,22 @@ in {
         nvim-treesitter-context
         vim-rhubarb
         fzf-lua
-        no-neck-pain
         oil-nvim
         leap-nvim
         vim-sandwich
+        twilight-nvim
         sad-vim
         vim-eunuch
         copilot-vim
-        lightline-vim
+        # lightline-vim
         vim-sayonara
         nvim-treesitter.withAllGrammars
 
         # Themes
         yui
-        edge
-        kanagawa-nvim
         github-nvim-theme
         catppuccin-nvim
         everforest
-        onedarkpro-nvim
-        oxocarbon-nvim
-        papercolor-theme
-        onehalf
 
         # Syntax
         dhall-vim
