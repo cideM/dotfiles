@@ -208,19 +208,14 @@ in {
 
         hi! link FzfLuaHeaderBind DiffText
         hi! link FzfLuaHeaderText DiffDelete
+
         lua <<EOF
         require'fzf-lua'.setup {"default",
-          fzf_opts = {
-            ['--no-color'] = "",
-          },
-          -- grep = {
-          --   no_header_i = false,
-          --   no_header = false,
-          -- },
           winopts = {
             preview = {
               flip_columns = 230,
             },
+            backdrop = 80,
           },
           lsp = {
             symbols = {
@@ -228,6 +223,14 @@ in {
             }
           }
         }
+        vim.keymap.set({ "i" }, "<C-x><C-f>",
+          function()
+            require("fzf-lua").complete_file({
+              cmd = "rg --files",
+              winopts = { preview = { hidden = "nohidden" } }
+            })
+          end, { silent = true, desc = "Fuzzy complete file" }
+        )
         EOF
 
         inoremap <c-x><c-f> <cmd>lua require("fzf-lua").complete_path()<cr>
@@ -287,11 +290,25 @@ in {
         silent! omap <unique> im <Plug>(textobj-sandwich-literal-query-i)
         silent! omap <unique> am <Plug>(textobj-sandwich-literal-query-a)
 
-        lua require('leap').create_default_mappings()
-        lua require('leap.user').set_repeat_keys('<enter>', '<backspace>')
-        lua require('leap').opts.special_keys.prev_target = '<backspace>'
-        lua require('leap').opts.special_keys.prev_group = '<backspace>'
-        lua require('leap').opts.safe_labels = {}
+        lua <<EOF
+        local flash = require("flash")
+        flash.setup{
+          modes = {
+            search = {
+              enabled = true,
+            }
+          },
+        }
+        vim.keymap.set({ "n", "x", "o" }, "s", function() flash.jump() end)
+        vim.keymap.set({ "n", "x", "o" }, "S", function() flash.treesitter() end)
+        vim.keymap.set("o", "r", function() flash.remote() end)
+        EOF
+
+        " lua require('leap').create_default_mappings()
+        " lua require('leap.user').set_repeat_keys('<enter>', '<backspace>')
+        " lua require('leap').opts.special_keys.prev_target = '<backspace>'
+        " lua require('leap').opts.special_keys.prev_group = '<backspace>'
+        " lua require('leap').opts.safe_labels = {}
 
         " ======= lsp =======================
         lua <<EOF
@@ -359,7 +376,7 @@ in {
             disable = {"help", "gitcommit"},
           },
           incremental_selection = {
-            enable = false,
+            enable = true,
           },
           indent = {
             enable = true,
@@ -381,7 +398,8 @@ in {
         vim-rhubarb
         fzf-lua
         oil-nvim
-        leap-nvim
+        # leap-nvim
+        flash-nvim
         vim-sandwich
         twilight-nvim
         sad-vim
