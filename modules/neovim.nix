@@ -223,8 +223,12 @@ in {
             symbols = {
               symbol_style = 3,
             }
-          }
+          },
+          fzf_opts = {
+            ['--no-color'] = "",
+          },
         }
+
         vim.keymap.set({ "i" }, "<C-x><C-f>",
           function()
             require("fzf-lua").complete_file({
