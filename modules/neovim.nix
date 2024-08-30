@@ -403,7 +403,7 @@ in {
         vim-rhubarb
         fzf-lua
         oil-nvim
-        # leap-nvim
+        zen-mode-nvim
         flash-nvim
         vim-sandwich
         twilight-nvim
