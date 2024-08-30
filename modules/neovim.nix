@@ -118,6 +118,8 @@ in {
           call winrestview(view)
         endfunction
 
+        packadd cfilter
+
         let g:loaded_gzip = 1
         let g:loaded_zip = 1
         let g:loaded_zipPlugin = 1
