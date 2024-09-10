@@ -282,11 +282,6 @@ in {
         vim.keymap.set("o", "r", function() flash.remote() end)
         EOF
 
-        lua require('gitsigns').setup()
-        nnoremap H :Gitsigns preview_hunk<CR>
-        nnoremap ]c :Gitsigns next_hunk<CR>
-        nnoremap [c :Gitsigns prev_hunk<CR>
-
         " ======= lsp =======================
         lua <<EOF
 
@@ -367,7 +362,6 @@ in {
       plugins = with pkgs.vimPlugins; [
         nvim-lspconfig
         vim-fugitive
-        gitsigns-nvim
         vim-unimpaired
         vim-repeat
         vim-indent-object
