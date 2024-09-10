@@ -203,11 +203,6 @@ in {
         vnoremap <leader>p "+p
         vnoremap <leader>P "+P
 
-        lua <<EOF
-        require("oil").setup()
-        vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-        EOF
-
         hi! link FzfLuaHeaderBind DiffText
         hi! link FzfLuaHeaderText DiffDelete
 
@@ -356,7 +351,6 @@ in {
         nvim-treesitter-context
         vim-rhubarb
         fzf-lua
-        oil-nvim
         zen-mode-nvim
         vim-sandwich
         twilight-nvim
