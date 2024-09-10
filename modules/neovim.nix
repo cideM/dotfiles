@@ -269,19 +269,6 @@ in {
         nnoremap <leader>T :split<bar>lcd %:p:h<bar>term fish<CR>
         nnoremap <leader>o :split<bar>term fish<CR>
 
-        lua <<EOF
-        local flash = require("flash")
-        flash.setup{
-          modes = {
-            search = {
-              enabled = true,
-            }
-          },
-        }
-        vim.keymap.set({ "n", "x", "o" }, "Z", function() flash.treesitter() end)
-        vim.keymap.set("o", "r", function() flash.remote() end)
-        EOF
-
         " ======= lsp =======================
         lua <<EOF
 
@@ -371,7 +358,6 @@ in {
         fzf-lua
         oil-nvim
         zen-mode-nvim
-        flash-nvim
         vim-sandwich
         twilight-nvim
         sad-vim
