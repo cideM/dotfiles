@@ -174,6 +174,8 @@ in {
         endfunc
         map gm :call SynStack()<CR>
 
+        au BufNewFile,BufRead Jenkinsfile* setf groovy
+
         aug terminsert | exe "au! TermOpen * startinsert | setl nonu nornu" | aug END
 
         aug quickfix
