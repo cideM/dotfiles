@@ -147,6 +147,7 @@ in {
           \,*.map,*.idea,*build/*,.direnv/*,*dist/*,*compiled/*,*tmp/*
         set inccommand=split
         set completeopt-=preview
+        set complete=.,b,u
         set splitbelow
         set splitright
         set foldlevelstart=99
