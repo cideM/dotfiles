@@ -368,15 +368,6 @@ in {
         yui
         github-nvim-theme
         catppuccin-nvim
-        everforest
-
-        # Syntax
-        dhall-vim
-        zig-vim
-        Jenkinsfile-vim-syntax
-        purescript-vim
-        vim-nix
-        janet-vim
       ];
     };
   };
