@@ -210,6 +210,26 @@ in {
         hi! link FzfLuaHeaderText DiffDelete
 
         lua <<EOF
+        require('leap').create_default_mappings()
+        EOF
+
+        let g:sandwich_no_default_key_mappings = 1
+        " add
+        nmap za <Plug>(sandwich-add)
+        xmap za <Plug>(sandwich-add)
+        omap za <Plug>(sandwich-add)
+
+        " delete
+        nmap zd <Plug>(sandwich-delete)
+        xmap zd <Plug>(sandwich-delete)
+        nmap zdb <Plug>(sandwich-delete-auto)
+
+        " replace
+        nmap zr <Plug>(sandwich-replace)
+        xmap zr <Plug>(sandwich-replace)
+        nmap zrb <Plug>(sandwich-replace-auto)
+
+        lua <<EOF
         require'fzf-lua'.setup {"default",
           winopts = {
             preview = {
@@ -356,12 +376,14 @@ in {
         fzf-lua
         zen-mode-nvim
         vim-sandwich
-        twilight-nvim
         sad-vim
+        vim-dirvish
+        leap-nvim
         vim-eunuch
         copilot-vim
         # lightline-vim
         vim-sayonara
+        janet-vim
         nvim-treesitter.withAllGrammars
 
         # Themes
