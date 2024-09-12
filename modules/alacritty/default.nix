@@ -137,6 +137,7 @@
         ];
       };
       window = {
+        option_as_alt = "OnlyLeft";
         decorations = "full";
         dynamic_padding = true;
         dimensions = {
