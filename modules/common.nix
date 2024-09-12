@@ -34,8 +34,12 @@ with pkgs; {
     universal-ctags
     unzip
     wget
-    # broken
-    # zed-editor
+    # Editors
+    # zed-editor <-- broken
+    helix
+    micro
+    nano
+    vis
   ];
 
   home.sessionVariables = {
