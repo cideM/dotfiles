@@ -26,7 +26,6 @@
       monaspace
       unixtools.watch
       home-manager.defaultPackage.aarch64-darwin
-      (pkgs.writeShellScriptBin "gsed" "exec -a $0 ${gnused}/bin/sed $@")
     ];
   };
 
@@ -45,6 +44,9 @@
     experimental-features = nix-command flakes
     sandbox = true
   '';
+
+  home.file."bin/gsed".source = "${pkgs.gnused}/bin/sed";
+  home.file."bin/gsed".executable = true;
 
   # Can't use programs.git because https://github.com/NixOS/nixpkgs/issues/62353
   xdg.configFile."git/config".text = ''
