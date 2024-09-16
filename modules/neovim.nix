@@ -41,9 +41,15 @@ in {
       '';
       javascript = ''
         compiler eslint
-        setl formatprg=prettier\ --stdin-filepath\ %
         setl wildignore+=*node_modules*,package-lock.json,yarn-lock.json
-        setl makeprg=eslint\ --format\ compact
+
+        if executable('deno')
+          setl formatprg=deno\ fmt\ -
+          setl makeprg=deno\ lint\ %
+        else
+          setl formatprg=prettier\ --stdin-filepath\ %
+          setl makeprg=eslint\ --format\ compact
+        endif
       '';
       astro = ''
         setl formatprg=prettier\ --stdin-filepath\ %
@@ -52,8 +58,12 @@ in {
       typescript = ''
         compiler tsc
         setl formatexpr=
-        setl formatprg=prettier\ --parser\ typescript\ --stdin-filepath\ %
         setl wildignore+=*node_modules*,package-lock.json,yarn-lock.json
+        if executable('deno')
+          setl formatprg=deno\ fmt\ -
+        else
+          setl formatprg=prettier\ --parser\ typescript\ --stdin-filepath\ %
+        endif
       '';
       html = ''
         setl formatprg=prettier\ --parser\ html\ --stdin-filepath\ %
@@ -336,13 +346,18 @@ in {
 
         nvim_lsp.rust_analyzer.setup{}
         nvim_lsp.astro.setup{}
-        nvim_lsp.tsserver.setup{}
+        nvim_lsp.tsserver.setup {
+          on_attach = on_attach,
+          root_dir = nvim_lsp.util.root_pattern("package.json", "tsconfig.json"),
+          single_file_support = false
+        }
         nvim_lsp.gopls.setup{}
         nvim_lsp.zls.setup{}
         nvim_lsp.lua_ls.setup{}
         nvim_lsp.eslint.setup{}
         nvim_lsp.biome.setup{}
         nvim_lsp.ruff_lsp.setup {}
+        nvim_lsp.denols.setup {}
 
         require'treesitter-context'.setup{ enable = true }
 
