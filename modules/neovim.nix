@@ -199,6 +199,8 @@ in {
         " Won't work on linux
         command! -nargs=1 Browse silent execute '!open' shellescape(<q-args>,1)
 
+        set fillchars+=vert:│
+
         let mapleader = " "
         let maplocalleader = ","
 
