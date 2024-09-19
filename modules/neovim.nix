@@ -222,6 +222,11 @@ in {
         hi! link FzfLuaHeaderText DiffDelete
 
         lua <<EOF
+        require'zen-mode'.setup {
+          window = {
+            backdrop = 1
+          }
+        }
         require('leap').create_default_mappings()
         EOF
 
