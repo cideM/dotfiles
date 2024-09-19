@@ -355,8 +355,11 @@ in {
         nvim_lsp.astro.setup{}
         nvim_lsp.tsserver.setup {
           on_attach = on_attach,
-          root_dir = nvim_lsp.util.root_pattern("package.json", "tsconfig.json"),
-          single_file_support = false
+          root_dir = nvim_lsp.util.root_pattern("package.json"),
+          single_file_support = false,
+            init_options = {
+              preferences = { includeCompletionsForModuleExports = false }
+            }
         }
         nvim_lsp.gopls.setup{}
         nvim_lsp.zls.setup{}
@@ -364,7 +367,10 @@ in {
         nvim_lsp.eslint.setup{}
         nvim_lsp.biome.setup{}
         nvim_lsp.ruff_lsp.setup {}
-        nvim_lsp.denols.setup {}
+        nvim_lsp.denols.setup {
+          on_attach = on_attach,
+          root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
+        }
 
         require'treesitter-context'.setup{ enable = true }
 
