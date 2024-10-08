@@ -222,11 +222,6 @@ in {
         hi! link FzfLuaHeaderText DiffDelete
 
         lua <<EOF
-        require'zen-mode'.setup {
-          window = {
-            backdrop = 1
-          }
-        }
         require('leap').create_default_mappings()
         EOF
 
@@ -402,7 +397,6 @@ in {
         nvim-treesitter-context
         vim-rhubarb
         fzf-lua
-        zen-mode-nvim
         vim-sandwich
         sad-vim
         vim-dirvish
