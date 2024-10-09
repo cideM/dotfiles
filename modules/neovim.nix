@@ -290,12 +290,6 @@ in {
         map      <leader>C <Plug>(sad-change-backward)
         map      <leader>c <Plug>(sad-change-forward)
 
-        " ======= copilot ==================
-        imap <S-Tab> <Plug>(copilot-suggest)
-        imap <C-j> <Plug>(copilot-next)
-        imap <C-h> <Plug>(copilot-previous)
-        imap <C-d> <Plug>(copilot-dismiss)
-
         nnoremap <leader>T :split<bar>lcd %:p:h<bar>term fish<CR>
         nnoremap <leader>o :split<bar>term fish<CR>
 
@@ -402,7 +396,6 @@ in {
         vim-dirvish
         leap-nvim
         vim-eunuch
-        copilot-vim
         # lightline-vim
         vim-sayonara
         janet-vim
