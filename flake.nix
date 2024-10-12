@@ -199,7 +199,7 @@
             };
           }
           ./hosts/fbs-work.local/home.nix
-          lix-module.nixosModules.default
+          # lix-module.nixosModules.default
         ];
       };
     };
