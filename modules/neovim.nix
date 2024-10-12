@@ -69,9 +69,11 @@ in {
         setl formatprg=prettier\ --parser\ html\ --stdin-filepath\ %
       '';
       css = ''
+        setlocal iskeyword+=-
         setl formatprg=prettier\ --parser\ css\ --stdin-filepath\ %
       '';
       scss = ''
+        setlocal iskeyword+=-
         setl formatprg=prettier\ --parser\ scss
       '';
       nix = ''
