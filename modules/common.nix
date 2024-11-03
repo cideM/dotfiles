@@ -19,9 +19,13 @@ with pkgs; {
     gnupg
     gnused
     gzip
+    helix
+    hledger
     htop
     hyperfine
     jq
+    micro
+    nano
     nixpkgs-review
     oil
     rclone
@@ -33,13 +37,8 @@ with pkgs; {
     tree
     universal-ctags
     unzip
-    wget
-    # Editors
-    # zed-editor <-- broken
-    helix
-    micro
-    nano
     vis
+    wget
   ];
 
   home.sessionVariables = {

@@ -201,6 +201,22 @@
         "type": "github"
       }
     },
+    "github-markdown-toc-go-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1709995589,
+        "narHash": "sha256-IR+1MNWGPiZ5pRO5t7/mE9PlWyrf7vMRkFCX8FKxbFk=",
+        "owner": "ekalinin",
+        "repo": "github-markdown-toc.go",
+        "rev": "a8881c8b0d42e693c8deae7505d181a28cefd320",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ekalinin",
+        "repo": "github-markdown-toc.go",
+        "type": "github"
+      }
+    },
     "github-nvim-theme-src": {
       "flake": false,
       "locked": {
@@ -487,6 +503,7 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
+        "github-markdown-toc-go-src": "github-markdown-toc-go-src",
         "github-nvim-theme-src": "github-nvim-theme-src",
         "home-manager": "home-manager",
         "janet-vim": "janet-vim",
