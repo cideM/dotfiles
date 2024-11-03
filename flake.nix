@@ -4,6 +4,11 @@
   inputs = rec {
     zig-overlay.url = "github:mitchellh/zig-overlay";
 
+    github-markdown-toc-go-src = {
+      url = "github:ekalinin/github-markdown-toc.go";
+      flake = false;
+    };
+
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -61,6 +66,7 @@
     neovim-nightly-overlay,
     operatorMono,
     lix-module,
+    github-markdown-toc-go-src,
     nixpkgs,
     lspfuzzy,
     nix-fish-src,
@@ -73,6 +79,15 @@
       neovim-nightly-overlay.overlays.default
 
       (final: prev: rec {zigpkgs = zig-overlay.packages.${prev.system};})
+
+      (self: super: {
+        github-markdown-toc = super.buildGoModule {
+          name = "github-markdown-toc-go";
+          version = "latest";
+          src = github-markdown-toc-go-src;
+          vendorHash = "sha256-K5yb7bnW6eS5UESK9wgNEUwGjB63eJk6+B0jFFiFero=";
+        };
+      })
 
       (self: super: {
         yui-alacritty-theme = yui.packages.${super.system}.alacritty;
