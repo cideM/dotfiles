@@ -37,7 +37,7 @@
     };
     glyph_offset = {
       x = 0;
-      y = 1;
+      y = 3;
     };
     italic = {
       family = "Operator Mono SSm";
@@ -49,7 +49,7 @@
     };
     offset = {
       x = 0;
-      y = 2;
+      y = 5;
     };
   };
 
