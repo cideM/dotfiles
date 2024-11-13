@@ -14,6 +14,7 @@ with pkgs; {
     gawk
     gh
     git-lfs
+    github-markdown-toc
     glow
     gnugrep
     gnupg
@@ -25,6 +26,7 @@ with pkgs; {
     hyperfine
     jq
     micro
+    monaspace
     nano
     nixpkgs-review
     oil
@@ -39,6 +41,7 @@ with pkgs; {
     unzip
     vis
     wget
+    xsv
   ];
 
   home.sessionVariables = {
