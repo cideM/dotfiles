@@ -56,7 +56,10 @@
 
     [diff]
         algorithm = histogram
+        colorWords = true
         colorMoved = default
+        noprefix = true
+        wordRegex = "\\w+|."
 
     [diff "lockb"]
         binary = true
@@ -73,7 +76,7 @@
         name = Florian Beeres
 
     [github]
-        user = "yuuki@protonmail.com";
+        user = "yuuki@protonmail.com"
 
     [core]
         editor = nvim

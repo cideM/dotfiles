@@ -32,6 +32,10 @@
 
       diff = {
         algorithm = "histogram";
+        colorWords = true;
+        colorMoved = "default";
+        wordRegex = "\\w+|.";
+        noprefix = true;
         lockb = {
           textconv = "${pkgs.bun}/bin/bun";
           binary = true;
@@ -40,10 +44,6 @@
 
       pull = {
         rebase = true;
-      };
-
-      diff = {
-        colorMoved = "default";
       };
 
       difftool = {
