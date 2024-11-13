@@ -4,6 +4,9 @@
   inputs = rec {
     zig-overlay.url = "github:mitchellh/zig-overlay";
 
+    hledger-src.url = "github:simonmichael/hledger";
+    hledger-src.flake = false;
+
     github-markdown-toc-go-src = {
       url = "github:ekalinin/github-markdown-toc.go";
       flake = false;
@@ -45,6 +48,10 @@
     yui.url = "github:cidem/yui";
     yui.flake = true;
 
+    nixMaster = {
+      url = "github:NixOS/nixpkgs/master";
+    };
+
     # unstable-local.url = "path:/Users/fbs/private/nixpkgs";
     unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs.follows = "unstable";
@@ -61,8 +68,10 @@
     unstable,
     github-nvim-theme-src,
     # unstable-local,
+    nixMaster,
     home-manager,
     flake-utils,
+    hledger-src,
     neovim-nightly-overlay,
     operatorMono,
     lix-module,
@@ -79,6 +88,13 @@
       neovim-nightly-overlay.overlays.default
 
       (final: prev: rec {zigpkgs = zig-overlay.packages.${prev.system};})
+
+      (final: prev: {
+        master-packages = import nixMaster {
+          system = final.system;
+          config.allowUnfree = true;
+        };
+      })
 
       (self: super: {
         github-markdown-toc = super.buildGoModule {

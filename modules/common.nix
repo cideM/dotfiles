@@ -20,7 +20,7 @@ with pkgs; {
     gnused
     gzip
     helix
-    hledger
+    master-packages.haskellPackages.hledger_1_40
     htop
     hyperfine
     jq
