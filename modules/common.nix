@@ -7,6 +7,7 @@ with pkgs; {
     coreutils-full
     curl
     du-dust
+    dua
     entr
     fastmod
     fd
