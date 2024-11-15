@@ -19,6 +19,9 @@
     set -x XDG_DATA_HOME $HOME/.local/share
     set -x XDG_CACHE_HOME $HOME/.cache
 
+    fish_add_path /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/
+    fish_add_path /Applications/Sublime\ Merge.app/Contents/SharedSupport/bin/
+
     set -x GOPATH ~/go
     set -x GOCACHE $XDG_CACHE_HOME/go-build
 
