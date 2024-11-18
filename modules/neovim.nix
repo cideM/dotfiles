@@ -201,6 +201,11 @@ in {
         " Won't work on linux
         command! -nargs=1 Browse silent execute '!open' shellescape(<q-args>,1)
 
+        lua require('gitsigns').setup()
+        nnoremap H :Gitsigns preview_hunk<CR>
+        nnoremap ]c :Gitsigns next_hunk<CR>
+        nnoremap [c :Gitsigns prev_hunk<CR>
+
         set fillchars+=vert:│
 
         let mapleader = " "
@@ -411,6 +416,7 @@ in {
         fzf-lua
         vim-sandwich
         sad-vim
+        gitsigns-nvim
         vim-dirvish
         leap-nvim
         vim-eunuch
