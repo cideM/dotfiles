@@ -22,10 +22,10 @@ with pkgs; {
     gnused
     gzip
     helix
-    master-packages.haskellPackages.hledger_1_40
     htop
     hyperfine
     jq
+    master-packages.haskellPackages.hledger_1_40
     micro
     monaspace
     nano
