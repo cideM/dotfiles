@@ -11,6 +11,7 @@
     (import ../../modules/fish.nix)
     (import ../../modules/common.nix)
     (import ../../modules/alacritty)
+    (import ../../modules/git.nix)
     (import ../../modules/vim.nix)
   ];
 
@@ -46,49 +47,6 @@
 
   home.file."bin/gsed".source = "${pkgs.gnused}/bin/sed";
   home.file."bin/gsed".executable = true;
-
-  # Can't use programs.git because https://github.com/NixOS/nixpkgs/issues/62353
-  xdg.configFile."git/config".text = ''
-    [push]
-        default = simple
-
-    [diff]
-        algorithm = histogram
-        colorWords = true
-        colorMoved = default
-        noprefix = true
-        wordRegex = "\\w+|."
-
-    [diff "lockb"]
-        binary = true
-        textconv = ${pkgs.bun}/bin/bun
-
-    [pull]
-        rebase = true
-
-    [merge]
-        conflictStyle = diff3
-
-    [user]
-        email = yuuki@protonmail.com
-        name = Florian Beeres
-
-    [github]
-        user = "yuuki@protonmail.com"
-
-    [core]
-        editor = nvim
-        excludesfile = ~/.gitignore
-
-    [filter "lfs"]
-        clean = git-lfs clean -- %f
-        smudge = git-lfs smudge -- %f
-        process = git-lfs filter-process
-        required = true
-
-    [url "git@github.com:"]
-        insteadOf = https://github.com/
-  '';
 
   fonts.fontconfig.enable = true;
 

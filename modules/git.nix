@@ -1,75 +1,53 @@
 {pkgs, ...}: {
-  programs.git = {
-    enable = true;
+  # Can't use programs.git because https://github.com/NixOS/nixpkgs/issues/62353
+  xdg.configFile."git/config".text = ''
+    [push]
+        default = simple
 
-    ignores = [
-      ".direnv"
-    ];
+    [diff]
+        algorithm = histogram
+        colorWords = true
+        colorMoved = default
+        noprefix = true
+        wordRegex = "\\w+|."
 
-    userEmail = "yuuki@protonmail.com";
-    userName = "Florian Beeres";
+    [diff "lockb"]
+        binary = true
+        textconv = ${pkgs.bun}/bin/bun
 
-    lfs = {
-      enable = true;
-    };
+    [pull]
+        rebase = true
 
-    extraConfig = {
-      url = {
-        "git@github.com:" = {
-          insteadOf = "https://github.com";
-        };
-      };
+    [merge]
+        tool = nvimdiff1
+        conflictStyle = zdiff3
 
-      github.user = "yuuki@protonmail.com";
+    [mergetool "nvimdiff1"]
+        hideResolved = true
+        keepBackup = false
+        prompt = false
 
-      init = {
-        defaultBranch = "main";
-      };
+    [alias]
+        mt = mergetool
 
-      push = {
-        default = "simple";
-      };
+    [user]
+        email = yuuki@protonmail.com
+        name = Florian Beeres
 
-      diff = {
-        algorithm = "histogram";
-        colorWords = true;
-        colorMoved = "default";
-        wordRegex = "\\w+|.";
-        noprefix = true;
-        lockb = {
-          textconv = "${pkgs.bun}/bin/bun";
-          binary = true;
-        };
-      };
+    [github]
+        user = "yuuki@protonmail.com"
 
-      pull = {
-        rebase = true;
-      };
+    [core]
+        editor = nvim
+        excludesfile = ~/.gitignore
 
-      difftool = {
-        prompt = false;
-      };
+    [filter "lfs"]
+        clean = git-lfs clean -- %f
+        smudge = git-lfs smudge -- %f
+        process = git-lfs filter-process
+        required = true
 
-      "difftool \"nvim\"" = {
-        cmd = "nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'";
-      };
-
-      merge = {
-        conflictStyle = "diff3";
-      };
-
-      "mergetool \"nvim-merge\"" = {
-        cmd = "nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'";
-      };
-
-      mergetool = {
-        prompt = true;
-      };
-
-      core = {
-        editor = "nvim";
-        ignorecase = false;
-      };
-    };
-  };
+    [url "git@github.com:"]
+        insteadOf = https://github.com/
+  '';
 }
