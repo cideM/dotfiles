@@ -220,9 +220,6 @@ in {
         vnoremap <leader>p "+p
         vnoremap <leader>P "+P
 
-        hi! link FzfLuaHeaderBind DiffText
-        hi! link FzfLuaHeaderText DiffDelete
-
         lua <<EOF
         require('leap').create_default_mappings()
         EOF
@@ -249,15 +246,34 @@ in {
             preview = {
               flip_columns = 230,
             },
-            backdrop = 80,
+            backdrop = 100,
+            border = "thicc",
+          },
+          hls = {
+            header_bind = "String",
+            header_text = "String",
+            path_linenr = "Normal",
+            path_colnr = "Normal",
           },
           lsp = {
             symbols = {
               symbol_style = 3,
             }
           },
-          fzf_opts = {
-            ['--no-color'] = "",
+          fzf_colors = {
+            ["fg"]          = { "fg", "CursorLine" },
+            ["bg"]          = { "bg", "Normal" },
+            ["hl"]          = { "fg", "Comment" },
+            ["fg+"]         = { "fg", "Normal" },
+            ["bg+"]         = { "bg", "CursorLine" },
+            ["hl+"]         = { "fg", "Statement" },
+            ["info"]        = { "fg", "PreProc" },
+            ["prompt"]      = { "fg", "Conditional" },
+            ["pointer"]     = { "fg", "Exception" },
+            ["marker"]      = { "fg", "Keyword" },
+            ["spinner"]     = { "fg", "Label" },
+            ["header"]      = { "fg", "Comment" },
+            ["gutter"]      = "-1",
           },
         }
 
