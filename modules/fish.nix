@@ -13,6 +13,8 @@
 
     set -x MANPAGER 'nvim +Man!'
 
+    set -x NNN_FIFO /tmp/nnn.fifo
+
     # https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
     # XDG_RUNTIME_DIR should be set by pam_systemd
     set -x XDG_CONFIG_HOME $HOME/.config
