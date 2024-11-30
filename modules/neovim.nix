@@ -212,6 +212,9 @@ in {
         " Won't work on linux
         command! -nargs=1 Browse silent execute '!open' shellescape(<q-args>,1)
 
+        " Timestamp with 2024-11-28 14:35:55
+        iab <expr> tds strftime("%F %T")
+
         lua require('gitsigns').setup()
         nnoremap H :Gitsigns preview_hunk<CR>
         nnoremap ]c :Gitsigns next_hunk<CR>
@@ -389,7 +392,7 @@ in {
         nvim_lsp.lua_ls.setup{}
         nvim_lsp.eslint.setup{}
         nvim_lsp.biome.setup{}
-        nvim_lsp.ruff_lsp.setup {}
+        nvim_lsp.ruff.setup {}
         nvim_lsp.denols.setup {
           on_attach = on_attach,
           root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
