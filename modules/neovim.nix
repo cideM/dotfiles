@@ -177,6 +177,17 @@ in {
         " let g:yui_comments = 'emphasize'
         colorscheme yui
 
+        lua <<EOF
+          local appleInterfaceStyle = vim.fn.system({"defaults", "read", "-g", "AppleInterfaceStyle"})
+          if appleInterfaceStyle:find("Dark") then
+            vim.cmd("source ~/private/yui/colors/yui_dark.vim")
+            vim.o.background = 'dark'
+          else
+            vim.cmd("source ~/private/yui/colors/yui.vim")
+            vim.o.background = 'light'
+          end
+        EOF
+
         " let g:lightline = {
         " \ 'colorscheme': 'yui'
         " \ }
