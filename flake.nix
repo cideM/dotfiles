@@ -2,6 +2,22 @@
   description = "今日は";
 
   inputs = rec {
+    nixpkgs.url = "github:NixOS/nixpkgs?rev=0ef26b5dd6150d5a7438014d22e90ea24a611b06";
+
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-2.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    home-manager = {
+      url = "github:nix-community/home-manager?rev=f3111f62a23451114433888902a55cf0692b408d";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixMaster = {
+      url = "github:NixOS/nixpkgs/master";
+    };
+
     zig-overlay.url = "github:mitchellh/zig-overlay";
 
     hledger-src.url = "github:simonmichael/hledger";
@@ -12,20 +28,10 @@
       flake = false;
     };
 
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
     github-nvim-theme-src.url = "github:projekt0n/github-nvim-theme";
     github-nvim-theme-src.flake = false;
-
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "unstable";
-    };
 
     flake-utils.url = "github:numtide/flake-utils";
 
@@ -48,14 +54,6 @@
     yui.url = "github:cidem/yui";
     yui.flake = true;
 
-    nixMaster = {
-      url = "github:NixOS/nixpkgs/master";
-    };
-
-    # unstable-local.url = "path:/Users/fbs/private/nixpkgs";
-    unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixpkgs.follows = "unstable";
-
     operatorMono = {
       url = "git+ssh://git@github.com/cidem/operatormono?ref=main";
       flake = false;
@@ -65,9 +63,7 @@
   outputs = {
     self,
     janet-vim,
-    unstable,
     github-nvim-theme-src,
-    # unstable-local,
     nixMaster,
     home-manager,
     flake-utils,
@@ -213,7 +209,7 @@
     homeConfigurations = {
       work-m1 = home-manager.lib.homeManagerConfiguration rec {
         extraSpecialArgs = specialArgs;
-        pkgs = import unstable {
+        pkgs = import nixpkgs {
           system = "aarch64-darwin";
         };
         modules = [
@@ -230,7 +226,7 @@
             };
           }
           ./hosts/fbs-work.local/home.nix
-          # lix-module.nixosModules.default
+          lix-module.nixosModules.default
         ];
       };
     };
@@ -255,7 +251,7 @@
         }
       ];
     in
-      unstable.lib.nixosSystem {inherit system modules specialArgs;};
+      nixpkgs.lib.nixosSystem {inherit system modules specialArgs;};
   in
     {
       nixosConfigurations.nixos = desktop;

@@ -22,6 +22,9 @@
         tool = nvimdiff1
         conflictStyle = zdiff3
 
+    [mergetool]
+        keepBackup = false
+
     [mergetool "nvimdiff1"]
         hideResolved = true
         keepBackup = false
