@@ -2,7 +2,7 @@
   description = "今日は";
 
   inputs = rec {
-    nixpkgs.url = "github:NixOS/nixpkgs?rev=0ef26b5dd6150d5a7438014d22e90ea24a611b06";
+    nixpkgs.url = "github:NixOS/nixpkgs?rev=36fcc808a13782146ab0549ad52c27551af5c49f";
 
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-2.tar.gz";
