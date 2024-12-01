@@ -27,6 +27,9 @@ in {
         compiler rustc
         setl formatprg=rustfmt
       '';
+      janet = ''
+        setl formatprg=janet-format
+      '';
       purescript = ''
         setl formatprg=purty\ format\ -
       '';
@@ -431,6 +434,7 @@ in {
         vim-sandwich
         sad-vim
         gitsigns-nvim
+        conjure
         vim-dirvish
         leap-nvim
         vim-eunuch
