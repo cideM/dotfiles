@@ -92,7 +92,7 @@ in {
         setl formatprg=prettier\ --parser=graphql
       '';
       lua = ''
-        set formatprg=stylua\ -
+        set formatprg=stylua\ --stdin-filepath\ %\ -
       '';
       sql = ''
         setl formatprg=pg_format\ -g
