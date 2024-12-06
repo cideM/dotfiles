@@ -324,6 +324,7 @@ in {
 
         nmap     <leader>F :call FormatBuffer()<cr>
 
+        let g:conjure#filetypes = ["clojure", "fennel", "janet", "scheme", "racket", "lisp"]
         let g:conjure#log#hud#anchor="SE"
         let g:conjure#log#hud#width=1
         let g:conjure#log#wrap=v:true
