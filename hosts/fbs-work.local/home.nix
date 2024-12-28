@@ -13,6 +13,7 @@
     (import ../../modules/alacritty)
     (import ../../modules/git.nix)
     (import ../../modules/vim.nix)
+    (import ../../modules/helix.nix)
   ];
 
   programs.man.enable = true;
