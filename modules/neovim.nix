@@ -92,7 +92,7 @@ in {
         setl formatprg=prettier\ --parser=graphql
       '';
       lua = ''
-        set formatprg=stylua\ --stdin-filepath\ %\ -
+        set formatprg=stylua\ --search-parent-directories\ --stdin-filepath\ %\ -
       '';
       sql = ''
         setl formatprg=pg_format\ -g
@@ -177,7 +177,7 @@ in {
 
         " COLOR STUFF
         let g:yui_lightline = v:true
-        " let g:yui_comments = 'emphasize'
+        let g:yui_comments = 'bg'
         colorscheme yui
 
         lua <<EOF
@@ -283,18 +283,19 @@ in {
             }
           },
           fzf_colors = {
-            ["fg"]          = { "fg", "CursorLine" },
+            ["fg"]          = { "fg", "Normal" },
             ["bg"]          = { "bg", "Normal" },
-            ["hl"]          = { "fg", "Comment" },
-            ["fg+"]         = { "fg", "Normal" },
-            ["bg+"]         = { "bg", "CursorLine" },
-            ["hl+"]         = { "fg", "Statement" },
-            ["info"]        = { "fg", "PreProc" },
-            ["prompt"]      = { "fg", "Conditional" },
-            ["pointer"]     = { "fg", "Exception" },
-            ["marker"]      = { "fg", "Keyword" },
-            ["spinner"]     = { "fg", "Label" },
-            ["header"]      = { "fg", "Comment" },
+            ["hl"]          = { "fg", "Search" },
+            ["selected-hl"] = { "fg", "Search" },
+            ["fg+"]         = { "fg", {"CursorLine", "Normal"} },
+            ["bg+"]         = { "bg", {"CursorLine", "Normal"} },
+            ["hl+"]         = { "fg", "Search", "underline" },
+            ["info"]        = { "fg", "Normal" },
+            ["prompt"]      = { "fg", "Normal" },
+            ["pointer"]     = { "fg", "Normal" },
+            ["marker"]      = { "fg", "Normal" },
+            ["spinner"]     = { "fg", "Normal" },
+            ["header"]      = { "fg", "Normal" },
             ["gutter"]      = "-1",
           },
         }
