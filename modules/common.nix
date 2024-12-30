@@ -105,6 +105,12 @@ with pkgs; {
     };
   };
 
+  programs.man.enable = true;
+
+  xdg.configFile.".gemrc".text = ''
+    :ipv4_fallback_enabled: true
+  '';
+
   home.file = {
     ".gitignore" = {
       text = ''

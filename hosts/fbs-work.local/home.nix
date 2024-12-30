@@ -16,8 +16,6 @@
     (import ../../modules/helix.nix)
   ];
 
-  programs.man.enable = true;
-
   programs.alacritty.enable = true;
   programs.alacritty.settings.font.size = 13;
 
@@ -36,10 +34,6 @@
 
   # https://github.com/nix-community/home-manager/issues/2942
   nixpkgs.config.allowUnfreePredicate = pkg: true;
-
-  xdg.configFile.".gemrc".text = ''
-    :ipv4_fallback_enabled: true
-  '';
 
   xdg.configFile."nix/nix.conf".text = ''
     experimental-features = nix-command flakes
