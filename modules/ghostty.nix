@@ -3,7 +3,7 @@ args @ {
   pkgs,
   ...
 }: {
-  xdg.configFile."/ghostty/config".text = ''
+  xdg.configFile."ghostty/config".text = ''
     font-family = "Operator Mono SSm"
     font-style = Book
     font-style-italic = Book Italic
@@ -13,7 +13,7 @@ args @ {
     adjust-cell-height = 20%
     cursor-invert-fg-bg = false
     cursor-color = red
-    theme = light:primary,dark:everblush
+    theme = light:primary,dark:Everblush
     window-padding-x = 10
     window-padding-balance = true
   '';

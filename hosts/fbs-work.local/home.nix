@@ -14,6 +14,7 @@
     (import ../../modules/git.nix)
     (import ../../modules/vim.nix)
     (import ../../modules/helix.nix)
+    (import ../../modules/ghostty.nix)
   ];
 
   programs.alacritty.enable = true;

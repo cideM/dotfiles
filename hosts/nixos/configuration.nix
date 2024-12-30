@@ -141,7 +141,6 @@
     graphics.enable = true;
     # Enable udev rules for Steam hardware such as the Steam Controller, other supported controllers and the HTC Vive
     steam-hardware.enable = true;
-    pulseaudio.enable = false;
     # Allow installing more firmwares, without this WiFi might not work
     # https://github.com/NixOS/nixpkgs/issues/163586
     # But it's unclear if I actually need this

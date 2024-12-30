@@ -8,6 +8,7 @@
     (import ../../modules/common.nix)
     (import ../../modules/alacritty)
     (import ../../modules/vim.nix)
+    (import ../../modules/ghostty.nix)
   ];
 
   home.sessionVariables = {

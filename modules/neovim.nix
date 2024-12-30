@@ -181,13 +181,15 @@ in {
         colorscheme yui
 
         lua <<EOF
-          local appleInterfaceStyle = vim.fn.system({"defaults", "read", "-g", "AppleInterfaceStyle"})
-          if appleInterfaceStyle:find("Dark") then
-            vim.cmd("source ~/private/yui/colors/yui_dark.vim")
-            vim.o.background = 'dark'
-          else
-            vim.cmd("source ~/private/yui/colors/yui.vim")
-            vim.o.background = 'light'
+          if vim.fn.executable("defaults") == 1 then
+            local appleInterfaceStyle = vim.fn.system({"defaults", "read", "-g", "AppleInterfaceStyle"})
+            if appleInterfaceStyle:find("Dark") then
+              vim.cmd("source ~/private/yui/colors/yui_dark.vim")
+              vim.o.background = 'dark'
+            else
+              vim.cmd("source ~/private/yui/colors/yui.vim")
+              vim.o.background = 'light'
+            end
           end
         EOF
 

@@ -6,9 +6,11 @@
 }: {
   programs.alacritty = {
     settings = {
-      import = [
-        "${pkgs.yui-alacritty-theme}/alacritty/yui_light.toml"
-      ];
+      general = {
+        import = [
+          "${pkgs.yui-alacritty-theme}/alacritty/yui_light.toml"
+        ];
+      };
       font = (import ./fonts.nix).operatorMono;
       keyboard = {
         bindings = [
@@ -152,9 +154,11 @@
       env = {
         TERM = "alacritty";
       };
-      shell = {
-        args = ["-l"];
-        program = "${pkgs.fish}/bin/fish";
+      terminal = {
+        shell = {
+          args = ["-l"];
+          program = "${pkgs.fish}/bin/fish";
+        };
       };
     };
   };
