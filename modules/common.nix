@@ -30,7 +30,7 @@ with pkgs; {
     monaspace
     nano
     nixpkgs-review
-    oil
+    oils-for-unix
     rclone
     ripgrep
     rlwrap
