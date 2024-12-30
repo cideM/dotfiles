@@ -27,7 +27,7 @@
     pavucontrol
     _1password-gui
 
-    gnome.gnome-tweaks
+    gnome-tweaks
 
     sublime-merge
 
