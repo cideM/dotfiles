@@ -22,31 +22,23 @@
   home.stateVersion = "20.09";
 
   home.packages = with pkgs; [
-    iotop
-    xsel
-    pavucontrol
     _1password-gui
-
+    firefox-wayland
+    ghostty
     gnome-tweaks
-
-    sublime-merge
-
-    ledger-live-desktop
-    openvpn
-
+    iotop
     kanji-stroke-order-font
-
+    ledger-live-desktop
     noto-fonts-emoji
-
-    source-han-sans
-    source-han-serif
-
+    openvpn
+    pavucontrol
     roboto
     roboto-mono
-
-    firefox-wayland
-
     slack
+    source-han-sans
+    source-han-serif
+    sublime-merge
+    xsel
   ];
 
   programs.tmux.extraConfig = ''
