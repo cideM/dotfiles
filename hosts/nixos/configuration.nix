@@ -96,7 +96,9 @@
     videoDrivers = ["nvidia"];
     layout = "us";
     # https://discourse.nixos.org/t/problem-with-xkboptions-it-doesnt-seem-to-take-effect/5269/2
-    xkbOptions = "ctrl:nocaps";
+    xkb = {
+      options = "ctrl:nocaps";
+    };
 
     displayManager = {
       gdm = {
