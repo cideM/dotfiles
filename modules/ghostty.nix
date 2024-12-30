@@ -13,7 +13,7 @@ args @ {
     adjust-cell-height = 20%
     cursor-invert-fg-bg = false
     cursor-color = red
-    theme = light:primary,dark:Everblush
+    theme = light:primary,dark:GitHub Dark
     window-padding-x = 10
     window-padding-balance = true
   '';
