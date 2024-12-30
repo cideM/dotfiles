@@ -55,7 +55,7 @@
     lspfuzzy.url = "github:ojroques/nvim-lspfuzzy";
     lspfuzzy.flake = false;
 
-    yui.url = "path:/Users/fbs/private/yui";
+    yui.url = "path:/home/fbrs/private/yui";
     # yui.url = "github:cidem/yui";
     yui.flake = true;
 
@@ -247,7 +247,9 @@
           nixpkgs.overlays =
             overlays
             ++ [
-              ghostty.packages.${system}.default
+              (self: super: {
+                ghostty = ghostty.packages.${super.system}.default;
+              })
             ];
           nixpkgs.config = {
             allowUnfree = true;
