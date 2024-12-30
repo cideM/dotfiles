@@ -60,7 +60,8 @@
       LC_TIME = "de_DE.utf8";
     };
     inputMethod = {
-      enabled = "fcitx5";
+      type = "fcitx5";
+      enable = true;
       fcitx5.addons = with pkgs; [
         fcitx5-mozc
         fcitx5-gtk
@@ -94,10 +95,10 @@
   services.xserver = {
     enable = true;
     videoDrivers = ["nvidia"];
-    layout = "us";
     # https://discourse.nixos.org/t/problem-with-xkboptions-it-doesnt-seem-to-take-effect/5269/2
     xkb = {
       options = "ctrl:nocaps";
+      layout = "us";
     };
 
     displayManager = {
@@ -137,7 +138,7 @@
   };
 
   hardware = {
-    opengl.enable = true;
+    graphics.enable = true;
     # Enable udev rules for Steam hardware such as the Steam Controller, other supported controllers and the HTC Vive
     steam-hardware.enable = true;
     pulseaudio.enable = false;
