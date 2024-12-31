@@ -17,6 +17,10 @@ in {
       xml = ''
         setl formatprg=prettier\ --stdin-filepath\ %
       '';
+      cpp = ''
+        compiler gcc
+        setl formatprg=clang-format
+      '';
       zig = ''
         compiler zig
       '';
@@ -177,7 +181,7 @@ in {
 
         " COLOR STUFF
         let g:yui_lightline = v:true
-        let g:yui_comments = 'bg'
+        let g:yui_comments = 'fade'
         colorscheme yui
 
         lua <<EOF
