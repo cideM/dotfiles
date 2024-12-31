@@ -51,6 +51,7 @@ with pkgs; {
     LC_CTYPE = "en_US.UTF-8";
     VISUAL = "nvim";
     EDITOR = "nvim";
+    DEVELOPER_DIR = "";
     SHELL = "${pkgs.fish}/bin/fish";
   };
 
