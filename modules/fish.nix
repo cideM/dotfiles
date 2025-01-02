@@ -23,8 +23,6 @@
     set -x XDG_RUNTIME_DIR $HOME/.runtime
     mkdir -p $XDG_RUNTIME_DIR
 
-    set -x DEVELOPER_DIR ""
-
     fish_add_path /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/
     fish_add_path /Applications/Sublime\ Merge.app/Contents/SharedSupport/bin/
 
