@@ -291,11 +291,11 @@ in {
           fzf_colors = {
             ["fg"]          = { "fg", "Normal" },
             ["bg"]          = { "bg", "Normal" },
-            ["hl"]          = { "fg", "Search" },
-            ["selected-hl"] = { "fg", "Search" },
+            ["hl"]          = { "fg", "DiffAdd" },
+            ["selected-hl"] = { "fg", "DiffAdd" },
             ["fg+"]         = { "fg", {"CursorLine", "Normal"} },
             ["bg+"]         = { "bg", {"CursorLine", "Normal"} },
-            ["hl+"]         = { "fg", "Search", "underline" },
+            ["hl+"]         = { "fg", "DiffAdd", "underline" },
             ["info"]        = { "fg", "Normal" },
             ["prompt"]      = { "fg", "Normal" },
             ["pointer"]     = { "fg", "Normal" },
@@ -407,6 +407,7 @@ in {
         nvim_lsp.lua_ls.setup{}
         nvim_lsp.eslint.setup{}
         nvim_lsp.biome.setup{}
+        nvim_lsp.clangd.setup{}
         nvim_lsp.ruff.setup {}
         nvim_lsp.denols.setup {
           on_attach = on_attach,
