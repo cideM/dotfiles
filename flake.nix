@@ -55,7 +55,8 @@
     lspfuzzy.url = "github:ojroques/nvim-lspfuzzy";
     lspfuzzy.flake = false;
 
-    yui.url = "path:/home/fbrs/private/yui";
+    # yui.url = "path:/home/fbrs/private/yui";
+    yui.url = "path:/Users/fbs/private/yui";
     # yui.url = "github:cidem/yui";
     yui.flake = true;
 
@@ -105,6 +106,10 @@
           src = github-markdown-toc-go-src;
           vendorHash = "sha256-K5yb7bnW6eS5UESK9wgNEUwGjB63eJk6+B0jFFiFero=";
         };
+      })
+
+      (self: super: {
+        yui-ghostty-theme = yui.packages.${super.system}.ghostty;
       })
 
       (self: super: {
