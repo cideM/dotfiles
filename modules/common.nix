@@ -38,6 +38,7 @@ with pkgs; {
     time
     tokei
     tree
+    uni
     universal-ctags
     unzip
     vis
