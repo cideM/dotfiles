@@ -448,6 +448,9 @@ in {
         vim-eunuch
         # lightline-vim
         vim-sayonara
+        zen-mode-nvim
+        minimap-vim
+        twilight-nvim
         janet-vim
         nvim-treesitter.withAllGrammars
 
