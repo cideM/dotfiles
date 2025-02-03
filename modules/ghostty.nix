@@ -12,6 +12,7 @@ args @ {
     font-style-bold-italic = Bold Italic
     font-style-bold = Bold
     font-size = 14
+    font-thicken = true
     shell-integration-features = no-cursor
     adjust-cell-height = 20%
     cursor-invert-fg-bg = false
