@@ -84,6 +84,16 @@
       (final: prev: rec {zigpkgs = zig-overlay.packages.${prev.system};})
 
       (self: super: {
+        haskellPackages = super.haskellPackages.override {
+          overrides = hsSelf: hsSuper: {
+            hledger_1_41 = hsSuper.hledger_1_41.override {
+              hledger-lib = super.haskell.lib.doJailbreak hsSuper.hledger-lib_1_41;
+            };
+          };
+        };
+      })
+
+      (self: super: {
         github-markdown-toc = super.buildGoModule {
           name = "github-markdown-toc-go";
           version = "latest";
