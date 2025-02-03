@@ -25,12 +25,13 @@ with pkgs; {
     htop
     hyperfine
     jq
-    master-packages.haskellPackages.hledger_1_40
+    haskellPackages.hledger_1_41
     micro
     monaspace
     nano
     nixpkgs-review
-    oils-for-unix
+    # https://github.com/oils-for-unix/oils/issues/2226
+    # oils-for-unix
     rclone
     ripgrep
     rlwrap
@@ -45,7 +46,6 @@ with pkgs; {
     unzip
     vis
     wget
-    xsv
   ];
 
   programs.taskwarrior = {

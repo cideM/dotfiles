@@ -10,7 +10,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs";
 
     lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-2.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -19,14 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixMaster = {
-      url = "github:NixOS/nixpkgs/master";
-    };
-
     zig-overlay.url = "github:mitchellh/zig-overlay";
-
-    hledger-src.url = "github:simonmichael/hledger";
-    hledger-src.flake = false;
 
     github-markdown-toc-go-src = {
       url = "github:ekalinin/github-markdown-toc.go";
@@ -70,11 +63,9 @@
     self,
     janet-vim,
     github-nvim-theme-src,
-    nixMaster,
     home-manager,
     flake-utils,
     ghostty,
-    hledger-src,
     neovim-nightly-overlay,
     operatorMono,
     lix-module,
@@ -91,13 +82,6 @@
       neovim-nightly-overlay.overlays.default
 
       (final: prev: rec {zigpkgs = zig-overlay.packages.${prev.system};})
-
-      (final: prev: {
-        master-packages = import nixMaster {
-          system = final.system;
-          config.allowUnfree = true;
-        };
-      })
 
       (self: super: {
         github-markdown-toc = super.buildGoModule {
