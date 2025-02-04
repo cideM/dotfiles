@@ -70,7 +70,7 @@ with pkgs; {
   nix = {
     gc = {
       automatic = true;
-      frequency = daily;
+      frequency = "daily";
     };
   };
 
