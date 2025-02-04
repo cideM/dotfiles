@@ -31,7 +31,7 @@ with pkgs; {
     nano
     nixpkgs-review
     # https://github.com/oils-for-unix/oils/issues/2226
-    # oils-for-unix
+    oils-for-unix
     rclone
     ripgrep
     rlwrap

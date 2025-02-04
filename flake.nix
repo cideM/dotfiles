@@ -94,6 +94,12 @@
       })
 
       (self: super: {
+        oils-for-unix = super.oils-for-unix.overrideAttrs (old: {
+          patches = [./oils_patch.diff];
+        });
+      })
+
+      (self: super: {
         github-markdown-toc = super.buildGoModule {
           name = "github-markdown-toc-go";
           version = "latest";
