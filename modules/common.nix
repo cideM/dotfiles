@@ -67,6 +67,13 @@ with pkgs; {
     };
   };
 
+  nix = {
+    gc = {
+      automatic = true;
+      frequency = daily;
+    };
+  };
+
   home.sessionVariables = {
     LANG = "en_US.UTF-8";
     LC_ALL = "en_US.UTF-8";
