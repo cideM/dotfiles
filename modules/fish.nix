@@ -13,11 +13,6 @@
 
     set -x MANPAGER 'nvim +Man!'
 
-    # MacPorts
-    if not contains /opt/local/share/man $MANPATH
-      set --append MANPATH /opt/local/share/man
-    end
-
     set -x NNN_FIFO /tmp/nnn.fifo
 
     # https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html

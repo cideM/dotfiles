@@ -31,6 +31,11 @@
 
   programs.fish.interactiveShellInit = ''
     fish_add_path /opt/local/bin /opt/local/sbin
+
+    # MacPorts
+    if not contains /opt/local/share/man $MANPATH
+      set --append MANPATH /opt/local/share/man
+    end
   '';
 
   # https://github.com/nix-community/home-manager/issues/2942
