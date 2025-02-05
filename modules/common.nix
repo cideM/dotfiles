@@ -21,16 +21,15 @@ with pkgs; {
     gnupg
     gnused
     gzip
+    haskellPackages.hledger_1_41
     helix
     htop
     hyperfine
     jq
-    haskellPackages.hledger_1_41
     micro
     monaspace
     nano
     nixpkgs-review
-    # https://github.com/oils-for-unix/oils/issues/2226
     oils-for-unix
     rclone
     ripgrep
