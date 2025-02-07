@@ -77,10 +77,8 @@
     zig-overlay,
     yui,
     vim-js,
-  }: let
+  } @ inputs: let
     overlays = [
-      neovim-nightly-overlay.overlays.default
-
       (final: prev: rec {zigpkgs = zig-overlay.packages.${prev.system};})
 
       (self: super: {
@@ -214,7 +212,7 @@
     ];
 
     specialArgs = {
-      inherit home-manager;
+      inherit home-manager inputs;
     };
 
     homeConfigurations = {

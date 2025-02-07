@@ -2,6 +2,7 @@ args @ {
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 with lib;
@@ -121,6 +122,8 @@ in {
 
     programs.neovim = {
       enable = true;
+       
+      package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
 
       extraConfig = builtins.readFile ./init.vim;
 
