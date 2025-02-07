@@ -45,9 +45,6 @@
     vim-js.url = "github:yuezk/vim-js";
     vim-js.flake = false;
 
-    lspfuzzy.url = "github:ojroques/nvim-lspfuzzy";
-    lspfuzzy.flake = false;
-
     # yui.url = "path:/home/fbrs/private/yui";
     yui.url = "path:/Users/fbs/private/yui";
     # yui.url = "github:cidem/yui";
@@ -71,7 +68,6 @@
     lix-module,
     github-markdown-toc-go-src,
     nixpkgs,
-    lspfuzzy,
     nix-fish-src,
     lucid-fish-prompt-src,
     zig-overlay,
@@ -130,18 +126,6 @@
               version = "latest";
               pname = "github-nvim-theme";
               src = github-nvim-theme-src;
-            };
-          };
-      })
-
-      (self: super: {
-        vimPlugins =
-          super.vimPlugins
-          // {
-            lspfuzzy = super.pkgs.vimUtils.buildVimPlugin rec {
-              version = "latest";
-              pname = "lspfuzzy";
-              src = lspfuzzy;
             };
           };
       })
