@@ -117,23 +117,6 @@ with pkgs; {
     };
   };
 
-  programs.nnn = {
-    enable = true;
-    plugins = {
-      mappings = {
-        p = "preview-tui";
-      };
-      src =
-        (pkgs.fetchFromGitHub {
-          owner = "jarun";
-          repo = "nnn";
-          rev = "v5.0";
-          sha256 = "sha256-HShHSjqD0zeE1/St1Y2dUeHfac6HQnPFfjmFvSuEXUA=";
-        })
-        + "/plugins";
-    };
-  };
-
   programs.man.enable = true;
 
   xdg.dataFile."task/hooks/on-modify.timewarrior" = {
