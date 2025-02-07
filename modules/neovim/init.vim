@@ -26,7 +26,7 @@ set smartcase
 set wildignore+=*.git/*,*.min.*,./result/*
   \,*.map,*.idea,*build/*,.direnv/*,*dist/*,*compiled/*,*tmp/*
 set inccommand=split
-set completeopt-=preview
+set completeopt+=popup,fuzzy
 set complete=.,b,u
 set splitbelow
 set splitright
