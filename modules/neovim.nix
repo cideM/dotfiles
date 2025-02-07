@@ -231,8 +231,6 @@ in {
 
         imap     jk        <Esc>
         tnoremap <Esc>     <C-\><C-n>
-        nnoremap <Leader>q :Sayonara!<CR>
-        nnoremap <Leader>Q :Sayonara<CR>
         nnoremap <leader>w :silent update<cr>
 
         vnoremap <leader>y  "+y
@@ -435,7 +433,6 @@ in {
         vim-unimpaired
         vim-repeat
         vim-indent-object
-        QFEnter
         nvim-treesitter-context
         vim-rhubarb
         fzf-lua
@@ -447,16 +444,11 @@ in {
         leap-nvim
         vim-eunuch
         # lightline-vim
-        vim-sayonara
-        zen-mode-nvim
-        minimap-vim
-        twilight-nvim
         janet-vim
         nvim-treesitter.withAllGrammars
 
         # Themes
         yui
-        github-nvim-theme
         catppuccin-nvim
       ];
     };
