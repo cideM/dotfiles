@@ -36,9 +36,7 @@ with pkgs; {
     ripgrep
     rlwrap
     shellcheck
-    tasksh
     time
-    timewarrior
     tokei
     tree
     uni
@@ -47,25 +45,6 @@ with pkgs; {
     vis
     wget
   ];
-
-  programs.taskwarrior = {
-    package = pkgs.taskwarrior3;
-    enable = true;
-    colorTheme = "no-color";
-    config = {
-      news.version = "3.3.0";
-      context = {
-        work = {
-          read = "+work";
-          write = "+work";
-        };
-        home = {
-          read = "-work +home";
-          write = "+home";
-        };
-      };
-    };
-  };
 
   nix = {
     gc = {
@@ -118,11 +97,6 @@ with pkgs; {
   };
 
   programs.man.enable = true;
-
-  xdg.dataFile."task/hooks/on-modify.timewarrior" = {
-    executable = true;
-    source = "${pkgs.timewarrior}/share/doc/timew/ext/on-modify.timewarrior";
-  };
 
   xdg.configFile.".gemrc".text = ''
     :ipv4_fallback_enabled: true
