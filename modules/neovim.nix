@@ -407,7 +407,11 @@ in {
           root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
         }
 
-        require'treesitter-context'.setup{ enable = true }
+        require'treesitter-context'.setup{
+          enable = true,
+          max_lines = 8,
+          multiwindow = true
+        }
 
         require'nvim-treesitter.configs'.setup {
           ensure_installed = {},
