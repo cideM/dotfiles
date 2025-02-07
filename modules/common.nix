@@ -27,8 +27,6 @@ with pkgs; {
     htop
     hyperfine
     jq
-    micro
-    monaspace
     nano
     nixpkgs-review
     oils-for-unix
@@ -42,7 +40,6 @@ with pkgs; {
     uni
     universal-ctags
     unzip
-    vis
     wget
   ];
 
