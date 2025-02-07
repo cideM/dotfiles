@@ -84,6 +84,7 @@ in {
         setl formatprg=prettier\ --parser\ scss
       '';
       nix = ''
+        setlocal iskeyword+=-
         setl formatprg=alejandra\ -q
       '';
       dhall = ''
