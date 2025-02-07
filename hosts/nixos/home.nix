@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    (import ../../modules/neovim.nix)
+    (import ../../modules/neovim)
     (import ../../modules/git.nix)
     (import ../../modules/tmux.nix)
     (import ../../modules/ctags.nix)

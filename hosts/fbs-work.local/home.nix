@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    (import ../../modules/neovim.nix)
+    (import ../../modules/neovim)
     (import ../../modules/tmux.nix)
     (import ../../modules/ctags.nix)
     (import ../../modules/fish.nix)
