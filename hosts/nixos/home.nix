@@ -6,7 +6,6 @@
     (import ../../modules/fish.nix)
     (import ../../modules/common.nix)
     (import ../../modules/alacritty)
-    (import ../../modules/vim.nix)
     (import ../../modules/ghostty.nix)
   ];
 
