@@ -134,7 +134,7 @@ in {
         vim-indent-object
         nvim-treesitter-context
         vim-rhubarb
-        fzf-lua
+        telescope-nvim
         vim-sandwich
         sad-vim
         gitsigns-nvim

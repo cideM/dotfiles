@@ -136,67 +136,6 @@ nmap zr <Plug>(sandwich-replace)
 xmap zr <Plug>(sandwich-replace)
 nmap zrb <Plug>(sandwich-replace-auto)
 
-lua <<EOF
-require'fzf-lua'.setup {"default",
-  winopts = {
-    preview = {
-      flip_columns = 230,
-    },
-    backdrop = 100,
-    border = "thicc",
-  },
-  hls = {
-    header_bind = "String",
-    header_text = "String",
-    path_linenr = "Normal",
-    path_colnr = "Normal",
-  },
-  lsp = {
-    symbols = {
-      symbol_style = 3,
-    }
-  },
-  fzf_colors = {
-    ["fg"]          = { "fg", "Normal" },
-    ["bg"]          = { "bg", "Normal" },
-    ["hl"]          = { "fg", "DiffAdd" },
-    ["selected-hl"] = { "fg", "DiffAdd" },
-    ["fg+"]         = { "fg", {"CursorLine", "Normal"} },
-    ["bg+"]         = { "bg", {"CursorLine", "Normal"} },
-    ["hl+"]         = { "fg", "DiffAdd", "underline" },
-    ["info"]        = { "fg", "Normal" },
-    ["prompt"]      = { "fg", "Normal" },
-    ["pointer"]     = { "fg", "Normal" },
-    ["marker"]      = { "fg", "Normal" },
-    ["spinner"]     = { "fg", "Normal" },
-    ["header"]      = { "fg", "Normal" },
-    ["gutter"]      = "-1",
-  },
-}
-
-vim.keymap.set({ "i" }, "<C-x><C-f>",
-  function()
-    require("fzf-lua").complete_file({
-      cmd = "rg --files",
-      winopts = { preview = { hidden = "nohidden" } }
-    })
-  end, { silent = true, desc = "Fuzzy complete file" }
-)
-EOF
-
-inoremap <c-x><c-f> <cmd>lua require("fzf-lua").complete_path()<cr>
-nnoremap <leader>f :lua require('fzf-lua').files()<cr>
-nnoremap <leader>l :lua require('fzf-lua').blines()<cr>
-nnoremap <leader>j :lua require('fzf-lua').jumps()<cr>
-nnoremap <leader>t :lua require('fzf-lua').tags()<cr>
-nnoremap <leader>m :lua require('fzf-lua').marks()<cr>
-nnoremap <leader>b :lua require('fzf-lua').buffers()<cr>
-nnoremap <leader>W :lua require('fzf-lua').live_grep()<cr>
-nnoremap <leader>gc :lua require('fzf-lua').git_commits()<cr>
-nnoremap <leader>gb :lua require('fzf-lua').git_branches()<cr>
-nnoremap <leader>gs :lua require('fzf-lua').git_status()<cr>
-nnoremap <leader>gS :lua require('fzf-lua').git_stash()<cr>
-
 nmap     <leader>F :call FormatBuffer()<cr>
 
 let g:conjure#filetypes = ["clojure", "fennel", "janet", "scheme", "racket", "lisp"]
@@ -215,6 +154,23 @@ nnoremap <leader>o :split<bar>term fish<CR>
 
 " ======= lsp =======================
 lua <<EOF
+require('telescope').setup{
+  defaults = {
+    layout_strategy = 'flex',
+    layout_config = {
+      flex = {
+        flip_columns = 200
+      },
+    },
+  },
+}
+
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+vim.keymap.set('n', 'grO', builtin.lsp_dynamic_workspace_symbols, { desc = 'Telescope workspace symbols' })
 
 vim.diagnostic.config({
   virtual_text = {
@@ -235,20 +191,8 @@ vim.diagnostic.config({
   },
 })
 
-local fzflua = require('fzf-lua')
 local bufopts = { noremap=true, silent=true, buffer=bufnr }
-vim.keymap.set('n', '<leader>d', fzflua.lsp_definitions, bufopts)
-vim.keymap.set('n', '<leader>D', fzflua.lsp_declarations, bufopts)
-vim.keymap.set('n', 'Q', fzflua.lsp_typedefs, bufopts)
-vim.keymap.set('n', '<leader>i', fzflua.lsp_implementations, bufopts)
-vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, bufopts)
-vim.keymap.set('n', '<leader>a', fzflua.lsp_code_actions, bufopts)
-vim.keymap.set('n', '<leader>R', fzflua.lsp_references, bufopts)
 vim.keymap.set('n', '<C-f>', function() vim.lsp.buf.format { async = false } end, bufopts)
-vim.keymap.set('n', '<leader>s', fzflua.lsp_document_symbols, bufopts)
-vim.keymap.set('n', '<leader>S', fzflua.lsp_live_workspace_symbols, bufopts)
 
 local nvim_lsp = require'lspconfig'
 
