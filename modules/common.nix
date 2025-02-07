@@ -6,6 +6,7 @@ with pkgs; {
     btop
     coreutils-full
     curl
+    diffoci
     du-dust
     dua
     entr
