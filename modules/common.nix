@@ -155,7 +155,7 @@ with pkgs; {
     "/Library/Preferences/glow/glow.yml" = {
       text = ''
         # style name or JSON path (default "auto")
-        style: "light"
+        style: "auto"
         # show local files only; no network (TUI-mode only)
         local: true
         # mouse support (TUI-mode only)
