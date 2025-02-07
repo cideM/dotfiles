@@ -1,17 +1,3 @@
-" Format the buffer with the current formatprg. Most of the custom code here
-" is just so my jump list isn't cluttered and I always end up at the first
-" line when undoing a FormatBuffer call. See the linked post.
-function! FormatBuffer()
-  setl formatexpr=
-  let view = winsaveview()
-  " https://vim.fandom.com/wiki/Restore_the_cursor_position_after_undoing_text_change_made_by_a_script
-  normal ix
-  normal x
-  try | silent undojoin | catch | endtry
-  keepjumps normal ggVGgq
-  call winrestview(view)
-endfunction
-
 packadd cfilter
 
 let g:loaded_gzip = 1
@@ -136,8 +122,6 @@ nmap zr <Plug>(sandwich-replace)
 xmap zr <Plug>(sandwich-replace)
 nmap zrb <Plug>(sandwich-replace-auto)
 
-nmap     <leader>F :call FormatBuffer()<cr>
-
 let g:conjure#filetypes = ["clojure", "fennel", "janet", "scheme", "racket", "lisp"]
 let g:conjure#log#hud#anchor="SE"
 let g:conjure#log#hud#width=1
@@ -191,14 +175,7 @@ vim.diagnostic.config({
   },
 })
 
-local bufopts = { noremap=true, silent=true, buffer=bufnr }
-vim.keymap.set('n', '<C-f>', function() vim.lsp.buf.format { async = false } end, bufopts)
-
 local nvim_lsp = require'lspconfig'
-
-local on_attach = function(client, bufnr)
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-end
 
 nvim_lsp.util.default_config = vim.tbl_extend("force", nvim_lsp.util.default_config, { on_attach = on_attach })
 

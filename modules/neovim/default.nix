@@ -65,7 +65,6 @@ in {
       '';
       typescript = ''
         compiler tsc
-        setl formatexpr=
         setl wildignore+=*node_modules*,package-lock.json,yarn-lock.json
         if executable('deno')
           setl formatprg=deno\ fmt\ -
