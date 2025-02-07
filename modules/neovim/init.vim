@@ -157,6 +157,7 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live gr
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 vim.keymap.set('n', 'grO', builtin.lsp_dynamic_workspace_symbols, { desc = 'Telescope workspace symbols' })
+vim.keymap.set('n', '<leader>l', builtin.current_buffer_fuzzy_find, { desc = 'Telescope fuzzy current buffer' })
 
 vim.diagnostic.config({
   virtual_text = {
