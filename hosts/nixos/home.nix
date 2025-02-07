@@ -2,7 +2,6 @@
   imports = [
     (import ../../modules/neovim)
     (import ../../modules/git.nix)
-    (import ../../modules/tmux.nix)
     (import ../../modules/ctags.nix)
     (import ../../modules/fish.nix)
     (import ../../modules/common.nix)
@@ -41,10 +40,6 @@
     sublime-merge
     xsel
   ];
-
-  programs.tmux.extraConfig = ''
-    bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "${pkgs.xsel}/bin/xsel -i --clipboard"
-  '';
 
   xdg.configFile.".gemrc".text = ''
     :ipv4_fallback_enabled: true

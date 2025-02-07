@@ -6,7 +6,6 @@
 }: {
   imports = [
     (import ../../modules/neovim)
-    (import ../../modules/tmux.nix)
     (import ../../modules/ctags.nix)
     (import ../../modules/fish.nix)
     (import ../../modules/common.nix)
@@ -50,8 +49,4 @@
   home.file."bin/gsed".executable = true;
 
   fonts.fontconfig.enable = true;
-
-  programs.tmux.extraConfig = ''
-    bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel "pbcopy"
-  '';
 }
