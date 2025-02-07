@@ -34,7 +34,6 @@ set foldlevelstart=99
 set undofile
 set termguicolors
 set grepprg=rg\ -H\ --vimgrep\ --smart-case
-set grepformat=%f:%l:%c:%m
 set path-=/usr/include
 set list
 set listchars=eol:¬,space:\ ,lead:\ ,trail:␣,nbsp:◇,tab:⇥\ ,extends:❯,precedes:❮,multispace:\·\ \ \,leadmultispace:\┊\ \ \ ,
