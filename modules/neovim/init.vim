@@ -9,6 +9,10 @@ let g:loaded_tarPlugin = 1
 let g:loaded_vimball = 1
 let g:loaded_vimballPlugin = 1
 
+set number
+set numberwidth=3
+set statuscolumn=%l\ %s\ %C
+set signcolumn=yes:1
 set background=light
 set exrc
 set foldmethod=indent
@@ -21,7 +25,6 @@ set colorcolumn=+0
 set cursorline
 set formatoptions+=r
 set mouse=a
-set nonumber
 set ignorecase
 set smartcase
 set wildignore+=*.git/*,*.min.*,./result/*
