@@ -1,3 +1,4 @@
+" https://neovim.io/doc/user/news.html
 packadd cfilter
 
 let g:loaded_gzip = 1
