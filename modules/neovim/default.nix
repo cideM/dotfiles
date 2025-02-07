@@ -127,7 +127,6 @@ in {
       plugins = with pkgs.vimPlugins; [
         nvim-lspconfig
         vim-fugitive
-        vim-unimpaired
         vim-repeat
         vim-indent-object
         nvim-treesitter-context
