@@ -399,22 +399,6 @@
         "url": "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0.tar.gz"
       }
     },
-    "lspfuzzy": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1716194671,
-        "narHash": "sha256-6gbCAqrj1zhMBMiba9DFvvNn+p3EIAFuj4kt6MYwZ2Q=",
-        "owner": "ojroques",
-        "repo": "nvim-lspfuzzy",
-        "rev": "6ada99d800f1f91e70d7ac13d6363d5d64a89df3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ojroques",
-        "repo": "nvim-lspfuzzy",
-        "type": "github"
-      }
-    },
     "lucid-fish-prompt-src": {
       "flake": false,
       "locked": {
@@ -608,7 +592,6 @@
         "home-manager": "home-manager",
         "janet-vim": "janet-vim",
         "lix-module": "lix-module",
-        "lspfuzzy": "lspfuzzy",
         "lucid-fish-prompt-src": "lucid-fish-prompt-src",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nix-fish-src": "nix-fish-src",
@@ -722,8 +705,8 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1736847178,
-        "narHash": "sha256-9gcqL0yz81BcJZ8lNegxWCHuYrzN+k7bA6Tfg0vhBKQ=",
+        "lastModified": 1738965638,
+        "narHash": "sha256-RdBVgabqnyGanSaguF4vqcdefEciNcnHnPxQ0Ot3JpE=",
         "path": "/Users/fbs/private/yui",
         "type": "path"
       },
