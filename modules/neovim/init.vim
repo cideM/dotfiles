@@ -206,6 +206,10 @@ nvim_lsp.util.default_config = vim.tbl_extend("force", nvim_lsp.util.default_con
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single", focusable = true })
 
+vim.keymap.set('n', '<C-f>', vim.lsp.buf.format, {
+  desc = "format the buffer with LSP"
+})
+
 nvim_lsp.rust_analyzer.setup{}
 nvim_lsp.astro.setup{}
 nvim_lsp.ts_ls.setup {
