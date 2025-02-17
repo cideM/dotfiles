@@ -27,6 +27,7 @@ with pkgs; {
     htop
     hyperfine
     jq
+    lsd
     nano
     nixpkgs-review
     oils-for-unix
@@ -62,22 +63,22 @@ with pkgs; {
   programs.fzf = {
     enable = true;
     enableFishIntegration = true;
-    changeDirWidgetCommand = "fd --type d --hidden --follow --exclude .git";
+    changeDirWidgetCommand = "fd --type d --hidden --follow --exclude .git .";
     changeDirWidgetOptions = [
-      "--preview '${pkgs.eza}/bin/eza --oneline --git --long {}'"
-      "--color=light"
+      "--preview '${pkgs.lsd}/bin/lsd --oneline --color=never --git --long {}'"
+      "--style=minimal"
     ];
     historyWidgetOptions = [
       "--sort"
     ];
-    fileWidgetCommand = "fd --type f --hidden --follow --exclude .git";
+    fileWidgetCommand = "fd --type f --hidden --follow --exclude .git . \\$dir";
     fileWidgetOptions = [
       "--preview '${pkgs.bat}/bin/bat --color=always --style=numbers --line-range :300 {}'"
-      "--color=light"
+      "--style=minimal"
     ];
-    defaultCommand = "fd --type f --hidden --follow --exclude .git";
+    defaultCommand = "fd --type f --hidden --follow --exclude .git .";
     defaultOptions = [
-      "--color=light"
+      "--style=minimal"
     ];
   };
 

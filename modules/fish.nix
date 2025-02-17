@@ -3,9 +3,6 @@
   config,
   ...
 }: let
-  # These options are set by home manager programs.fzf
-  # https://github.com/rycee/home-manager/blob/master/modules/programs/fzf.nix#blob-path
-  # It's pointless to use home manager programs.fzf if I'm setting these anyway
   fishConfig = ''
     bind \cb edit_command_buffer
 
