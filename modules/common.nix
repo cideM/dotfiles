@@ -27,7 +27,7 @@ with pkgs; {
     htop
     hyperfine
     jq
-    lsd
+    eza
     nano
     nixpkgs-review
     oils-for-unix
@@ -65,7 +65,7 @@ with pkgs; {
     enableFishIntegration = true;
     changeDirWidgetCommand = "fd --type d --hidden --follow --exclude .git .";
     changeDirWidgetOptions = [
-      "--preview '${pkgs.lsd}/bin/lsd --oneline --color=never --git --long {}'"
+      "--preview '${pkgs.eza}/bin/eza --oneline --color=never --git --long {}'"
       "--style=minimal"
     ];
     historyWidgetOptions = [
