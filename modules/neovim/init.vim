@@ -141,28 +141,45 @@ nnoremap <leader>o :split<bar>term fish<CR>
 
 autocmd TextYankPost * silent! lua vim.hl.on_yank {higroup='Visual', timeout=300}
 
-" ======= lsp =======================
 lua <<EOF
-require('telescope').setup{
-  defaults = {
-    layout_strategy = 'flex',
-    layout_config = {
-      flex = {
-        flip_columns = 200
-      },
-    },
-  },
-}
 
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
-vim.keymap.set('n', '<leader>fb', function () builtin.buffers({
-  sort_lastused = true,
-}) end, { desc = 'Telescope buffers' })
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
-vim.keymap.set('n', 'grO', builtin.lsp_dynamic_workspace_symbols, { desc = 'Telescope workspace symbols' })
-vim.keymap.set('n', '<leader>l', builtin.current_buffer_fuzzy_find, { desc = 'Telescope fuzzy current buffer' })
+local fzfLua = require('fzf-lua')
+vim.keymap.set('n', '<leader>ff', fzfLua.files, {
+  desc = "fzf-lua files"
+})
+vim.keymap.set('n', '<leader>fb', fzfLua.buffers, {
+  desc = "fzf-lua buffers"
+})
+vim.keymap.set('n', '<leader>fl', fzfLua.blines, {
+  desc = "fzf-lua current buffer lines"
+})
+vim.keymap.set('n', '<leader>sw', fzfLua.grep_cword, {
+  desc = "fzf-lua search word under cursor"
+})
+vim.keymap.set('v', '<leader>sv', fzfLua.grep_visual, {
+  desc = "fzf-lua search visual selection"
+})
+vim.keymap.set('n', '<leader>sp', fzfLua.live_grep_native, {
+  desc = "fzf-lua live grep current project (performant version)"
+})
+vim.keymap.set('n', '<leader>lr', fzfLua.lsp_references, {
+  desc = "fzf-lua LSP references"
+})
+vim.keymap.set('n', '<leader>ld', fzfLua.lsp_definitions, {
+  desc = "fzf-lua LSP definitions"
+})
+vim.keymap.set('n', '<leader>li', fzfLua.lsp_implementations, {
+  desc = "fzf-lua LSP implementations"
+})
+vim.keymap.set('n', '<leader>ls', fzfLua.lsp_document_symbols, {
+  desc = "fzf-lua LSP document symbols"
+})
+vim.keymap.set('n', '<leader>lw', fzfLua.lsp_live_workspace_symbols, {
+  desc = "fzf-lua LSP live workspace symbols"
+})
+vim.keymap.set('n', '<leader>la', fzfLua.lsp_code_actions, {
+  desc = "fzf-lua LSP code actions"
+})
 
 vim.diagnostic.config({
   virtual_text = {

@@ -134,11 +134,11 @@ in {
         vim-indent-object
         nvim-treesitter-context
         vim-rhubarb
-        telescope-nvim
         vim-sandwich
         sad-vim
         gitsigns-nvim
         conjure
+        fzf-lua
         vim-dirvish
         leap-nvim
         vim-eunuch
