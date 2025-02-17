@@ -41,7 +41,7 @@ set grepprg=rg\ -H\ --vimgrep\ --smart-case
 set path-=/usr/include
 set list
 set listchars=eol:¬,space:\ ,lead:\ ,trail:␣,nbsp:◇,tab:⇥\ ,extends:❯,precedes:❮,multispace:\·\ \ \,leadmultispace:\┊\ \ \ ,
-set statusline+=\ %f\ %m%=\ %y\ %q\ %3l:%2c\ \|%3p%%\ 
+set statusline=\ %f\ %m%=\ %y\ %q\ %3l:%2c\ \|%3p%%\ 
 
 " COLOR STUFF
 let g:yui_lightline = v:true
