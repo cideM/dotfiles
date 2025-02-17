@@ -59,6 +59,17 @@ lua <<EOF
       vim.o.background = 'light'
     end
   end
+
+  if vim.uv.os_uname().sysname == "Darwin" then
+    vim.api.nvim_create_user_command('Browse', function (t)
+      local args = vim.fn.shellescape(table.concat(t.fargs, " "), 1)
+      vim.fn.system('open ' .. args)
+    end, {
+      desc = "Call the MacOS 'open' utility on the given string",
+      nargs = 1
+    })
+  end
+
 EOF
 
 " let g:lightline = {
@@ -74,9 +85,6 @@ aug quickfix
     au QuickFixCmdPost [^l]* cwindow
     au QuickFixCmdPost l* lwindow
 aug END
-
-" Won't work on linux
-command! -nargs=1 Browse silent execute '!open' shellescape(<q-args>,1)
 
 " Timestamp with 2024-11-28 14:35:55
 iab <expr> tds strftime("%F %T")
