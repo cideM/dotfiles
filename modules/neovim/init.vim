@@ -75,8 +75,6 @@ aug quickfix
     au QuickFixCmdPost l* lwindow
 aug END
 
-aug highlight_yank | exe "au! TextYankPost * silent! lua require'vim.highlight'.on_yank()" | aug END
-
 " Won't work on linux
 command! -nargs=1 Browse silent execute '!open' shellescape(<q-args>,1)
 
