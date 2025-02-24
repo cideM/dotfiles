@@ -62,7 +62,7 @@ lua <<EOF
 
   if vim.uv.os_uname().sysname == "Darwin" then
     vim.api.nvim_create_user_command('Browse', function (t)
-      local args = vim.fn.shellescape(table.concat(t.fargs, " "), 1)
+      local args = table.concat(t.fargs, " ")
       vim.fn.system('open ' .. args)
     end, {
       desc = "Call the MacOS 'open' utility on the given string",
