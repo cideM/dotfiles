@@ -23,7 +23,7 @@
     packages = with pkgs; [
       nixVersions.stable
       unixtools.watch
-      home-manager.defaultPackage.aarch64-darwin
+      home-manager.packages.aarch64-darwin.default
     ];
   };
 
