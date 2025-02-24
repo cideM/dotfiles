@@ -149,6 +149,10 @@ autocmd TextYankPost * silent! lua vim.hl.on_yank {higroup='Visual', timeout=300
 
 lua <<EOF
 
+vim.keymap.set('n', '<BS>', '<C-^>', {
+  desc = "Switch to most recent buffer"
+})
+
 local fzfLua = require('fzf-lua')
 vim.keymap.set('n', '<leader>ff', fzfLua.files, {
   desc = "fzf-lua files"
