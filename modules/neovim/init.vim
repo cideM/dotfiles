@@ -9,7 +9,7 @@ let g:loaded_tarPlugin = 1
 let g:loaded_vimball = 1
 let g:loaded_vimballPlugin = 1
 
-set number
+set nonumber
 set numberwidth=3
 set statuscolumn=%l\ %s\ %C
 set signcolumn=yes:1
