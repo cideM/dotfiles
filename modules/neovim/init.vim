@@ -145,7 +145,7 @@ map      <leader>c <Plug>(sad-change-forward)
 nnoremap <leader>T :split<bar>lcd %:p:h<bar>term fish<CR>
 nnoremap <leader>o :split<bar>term fish<CR>
 
-autocmd TextYankPost * silent! lua vim.hl.on_yank {higroup='Visual', timeout=300}
+autocmd TextYankPost * silent! lua vim.hl.on_yank {higroup='CurSearch', timeout=300}
 
 lua <<EOF
 
