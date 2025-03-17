@@ -1,15 +1,44 @@
 {pkgs, ...}: {
   # Can't use programs.git because https://github.com/NixOS/nixpkgs/issues/62353
   xdg.configFile."git/config".text = ''
+    [column]
+        ui = auto
+
     [push]
         default = simple
+        autoSetupRemote = true
+        followTags = true
+
+    [help]
+        autocorrect = prompt
+
+    [commit]
+        verbose = true
+
+    [rerere]
+        enabled = true
+        autoupdate = true
+
+    [fetch]
+        prune = true
+        pruneTags = true
+        all = true
+
+    [branch]
+        sort = -committerdate
+
+    [tag]
+        sort = version:refname
+
+    [init]
+        defaultBranch = main
 
     [diff]
         algorithm = histogram
-        colorWords = true
-        colorMoved = default
+        colorMoved = plain
+        renames = true
+        mnemonicPrefix = true
         noprefix = true
-        wordRegex = "\\w+|."
 
     [diff "lockb"]
         binary = true
@@ -17,6 +46,11 @@
 
     [pull]
         rebase = true
+
+    [rebase]
+        autoSquash = true
+        autoStash = true
+        updateRefs = true
 
     [merge]
         tool = nvimdiff1
