@@ -122,7 +122,6 @@ in {
 
     programs.neovim = {
       enable = true;
-       
       package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
 
       extraConfig = builtins.readFile ./init.vim;
@@ -142,9 +141,11 @@ in {
         vim-dirvish
         leap-nvim
         vim-eunuch
+        grug-far-nvim
         # lightline-vim
         janet-vim
         nvim-treesitter.withAllGrammars
+        zen-mode-nvim
 
         # Themes
         yui
