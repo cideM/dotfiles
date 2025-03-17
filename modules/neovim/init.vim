@@ -255,7 +255,7 @@ nvim_lsp.denols.setup {
 
 require'treesitter-context'.setup{
   enable = true,
-  max_lines = 8,
+  max_lines = 4,
   multiwindow = true
 }
 
