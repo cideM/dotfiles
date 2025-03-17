@@ -154,6 +154,17 @@ vim.keymap.set('n', '<BS>', '<C-^>', {
 })
 
 local fzfLua = require('fzf-lua')
+
+fzfLua.setup{
+  winopts = {
+    height = 0.9,
+    preview = {
+      layout = "flex",
+      flip_columns = 150,
+    },
+  },
+}
+
 vim.keymap.set('n', '<leader>ff', fzfLua.files, {
   desc = "fzf-lua files"
 })
