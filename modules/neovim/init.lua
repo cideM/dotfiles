@@ -275,12 +275,17 @@ vim.keymap.set('n', '<BS>', '<C-^>', {
   desc = "Switch to most recent buffer"
 })
 
-vim.keymap.set('n', '<C-f>', vim.lsp.buf.format, {
+vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+
+vim.keymap.set('n', '<C-f>', function()
+  require("conform").format()
+end, {
   desc = "format the buffer with LSP"
 })
 
 vim.keymap.set('n', 'th', function()
   vim.api.nvim_open_win(0, false, {
+    split = "above",
     win = 0
   })
   vim.cmd('lcd ' .. vim.fn.expand('%:p:h'))
@@ -289,6 +294,7 @@ end, { desc = "Open terminal in current folder" })
 
 vim.keymap.set('n', 'to', function()
   vim.api.nvim_open_win(0, false, {
+    split = "above",
     win = 0
   })
   vim.cmd('term fish')
@@ -373,3 +379,25 @@ end, { desc = 'Git log for selected line range' })
 
 vim.keymap.set('', '<leader>C', '<Plug>(sad-change-backward)', { desc = 'Sad change backward' })
 vim.keymap.set('', '<leader>c', '<Plug>(sad-change-forward)', { desc = 'Sad change forward' })
+
+require("conform").setup({
+  formatters_by_ft = {
+    lua = { "stylua", lsp_format = "fallback" },
+    go = { "goimports", "gofmt" },
+    rust = { "rustfmt", lsp_format = "fallback" },
+    nix = { "alejandra" },
+    ts = { "biome-organize-imports", "biome", "prettier", lsp_format = "fallback" },
+    js = { "biome-organize-imports", "biome", "prettier", lsp_format = "fallback" },
+    json = { "jq" },
+    bash = { "shfmt" },
+    xml = { "xmllint" },
+    zig = { "zigfmt" },
+  },
+  default_format_opts = {
+    lsp_format = "fallback",
+  },
+  format_on_save = {
+    lsp_format = "fallback",
+    timeout_ms = 500,
+  },
+})
