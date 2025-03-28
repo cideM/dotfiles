@@ -346,19 +346,19 @@ vim.keymap.set('v', '<leader>P', '"+P', { desc = 'Paste from system clipboard be
 vim.g.sandwich_no_default_key_mappings = 1
 
 -- add
-vim.keymap.set('n', 'za', '<Plug>(sandwich-add)', { noremap = false, desc = 'Sandwich add operator' })
-vim.keymap.set('x', 'za', '<Plug>(sandwich-add)', { noremap = false, desc = 'Sandwich add in visual mode' })
-vim.keymap.set('o', 'za', '<Plug>(sandwich-add)', { noremap = false, desc = 'Sandwich add in operator pending mode' })
+vim.keymap.set('n', 'za', '<Plug>(sandwich-add)', { desc = 'Sandwich add operator' })
+vim.keymap.set('x', 'za', '<Plug>(sandwich-add)', { desc = 'Sandwich add in visual mode' })
+vim.keymap.set('o', 'za', '<Plug>(sandwich-add)', { desc = 'Sandwich add in operator pending mode' })
 
 -- delete
-vim.keymap.set('n', 'zd', '<Plug>(sandwich-delete)', { noremap = false, desc = 'Sandwich delete operator' })
-vim.keymap.set('x', 'zd', '<Plug>(sandwich-delete)', { noremap = false, desc = 'Sandwich delete in visual mode' })
-vim.keymap.set('n', 'zdb', '<Plug>(sandwich-delete-auto)', { noremap = false, desc = 'Sandwich auto delete' })
+vim.keymap.set('n', 'zd', '<Plug>(sandwich-delete)', { desc = 'Sandwich delete operator' })
+vim.keymap.set('x', 'zd', '<Plug>(sandwich-delete)', { desc = 'Sandwich delete in visual mode' })
+vim.keymap.set('n', 'zdb', '<Plug>(sandwich-delete-auto)', { desc = 'Sandwich auto delete' })
 
 -- replace
-vim.keymap.set('n', 'zr', '<Plug>(sandwich-replace)', { noremap = false, desc = 'Sandwich replace operator' })
-vim.keymap.set('x', 'zr', '<Plug>(sandwich-replace)', { noremap = false, desc = 'Sandwich replace in visual mode' })
-vim.keymap.set('n', 'zrb', '<Plug>(sandwich-replace-auto)', { noremap = false, desc = 'Sandwich auto replace' })
+vim.keymap.set('n', 'zr', '<Plug>(sandwich-replace)', { desc = 'Sandwich replace operator' })
+vim.keymap.set('x', 'zr', '<Plug>(sandwich-replace)', { desc = 'Sandwich replace in visual mode' })
+vim.keymap.set('n', 'zrb', '<Plug>(sandwich-replace-auto)', { desc = 'Sandwich auto replace' })
 
 vim.g["conjure#filetypes"] = { "clojure", "fennel", "janet", "scheme", "racket", "lisp" }
 vim.g["conjure#log#hud#anchor"] = "SE"
@@ -371,5 +371,5 @@ vim.keymap.set('v', '<leader>gl', function()
   vim.cmd('Git log -L' .. start_line .. ',' .. end_line .. ':%')
 end, { desc = 'Git log for selected line range' })
 
-vim.keymap.set('', '<leader>C', '<Plug>(sad-change-backward)', { noremap = false, desc = 'Sad change backward' })
-vim.keymap.set('', '<leader>c', '<Plug>(sad-change-forward)', { noremap = false, desc = 'Sad change forward' })
+vim.keymap.set('', '<leader>C', '<Plug>(sad-change-backward)', { desc = 'Sad change backward' })
+vim.keymap.set('', '<leader>c', '<Plug>(sad-change-forward)', { desc = 'Sad change forward' })
