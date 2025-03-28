@@ -10,7 +10,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs";
 
     lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-3.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -255,7 +255,7 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in rec {
         devShell = pkgs.mkShell {
-          buildInputs = with pkgs; [janet jpm alejandra nodePackages.prettier stylua];
+          buildInputs = with pkgs; [janet jpm alejandra nodePackages.prettier lua-language-server lua];
         };
       }
     );

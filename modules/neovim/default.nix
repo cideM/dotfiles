@@ -124,7 +124,7 @@ in {
       enable = true;
       package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
 
-      extraConfig = builtins.readFile ./init.vim;
+      extraLuaConfig = builtins.readFile ./init.lua;
 
       plugins = with pkgs.vimPlugins; [
         nvim-lspconfig
@@ -138,8 +138,10 @@ in {
         gitsigns-nvim
         conjure
         fzf-lua
+        conform-nvim
         vim-dirvish
         leap-nvim
+        mini-align
         vim-eunuch
         grug-far-nvim
         # lightline-vim
