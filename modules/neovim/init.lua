@@ -10,6 +10,7 @@ vim.g.loaded_vimball = 1
 vim.g.loaded_vimballPlugin = 1
 
 vim.o.number = true
+vim.o.winborder = "rounded"
 vim.o.numberwidth = 3
 vim.o.statuscolumn = "%l %s %C"
 vim.o.statusline = " %f %m%= %y %q %3l:%2c |%3p%% "
@@ -42,7 +43,7 @@ vim.opt.wildignore:append({
 vim.o.inccommand = "split"
 vim.opt.completeopt:append({ "fuzzy", "noselect" })
 vim.opt.completeopt:remove({ "popup" })
-vim.opt.complete = { "b", "u" }
+vim.opt.complete = { ".", "b", "u" }
 vim.o.signcolumn = "yes:1"
 vim.o.splitbelow = true
 vim.o.splitright = true
@@ -141,8 +142,43 @@ vim.lsp.config('eslint', {
     'eslint.config.mts',
     'eslint.config.cts',
   },
+  settings = {
+    validate = 'on',
+    packageManager = nil,
+    useESLintClass = false,
+    experimental = {
+      useFlatConfig = false,
+    },
+    codeActionOnSave = {
+      enable = false,
+      mode = 'all',
+    },
+    format = true,
+    quiet = false,
+    onIgnoredFiles = 'off',
+    rulesCustomizations = {},
+    run = 'onType',
+    problems = {
+      shortenToSingleLine = false,
+    },
+    -- nodePath configures the directory in which the eslint server should start its node_modules resolution.
+    -- This path is relative to the workspace folder (root dir) of the server instance.
+    nodePath = '',
+    -- use the workspace folder location or the file location (if no workspace folder is open) as the working directory
+    workingDirectory = { mode = 'location' },
+    codeAction = {
+      disableRuleComment = {
+        enable = true,
+        location = 'separateLine',
+      },
+      showDocumentation = {
+        enable = true,
+      }
+    }
+  }
 })
-vim.lsp.enable("eslint")
+-- Not working well
+-- vim.lsp.enable("eslint")
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
@@ -152,18 +188,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
         autotrigger = true
       })
     end
-
-    if client:supports_method('textDocument/formatting') then
-      vim.keymap.set('n', '<C-f>', function() vim.lsp.buf.format({ bufnr = args.buf, id = client.id }) end, {
-        desc = "Switch to most recent buffer"
-      })
-    end
   end,
 })
 
 vim.diagnostic.config({
-  virtual_text = false, -- virtual_lines seems to duplicate virtual_text?
-  virtual_lines = true
+  virtual_text = true,
+  virtual_lines = {
+    current_line = true
+  }
 })
 
 -- Platform specific code
@@ -384,20 +416,26 @@ require("conform").setup({
   formatters_by_ft = {
     lua = { "stylua", lsp_format = "fallback" },
     go = { "goimports", "gofmt" },
-    rust = { "rustfmt", lsp_format = "fallback" },
+    rust = { "rustfmt" },
     nix = { "alejandra" },
-    ts = { "biome-organize-imports", "biome", "prettier", lsp_format = "fallback" },
-    js = { "biome-organize-imports", "biome", "prettier", lsp_format = "fallback" },
+    ts = { "biome-organize-imports", "biome", "prettier" },
+    tsx = { "biome-organize-imports", "biome", "prettier" },
+    typescript = { "biome-organize-imports", "biome", "prettier" },
+    typescriptreact = { "biome-organize-imports", "biome", "prettier" },
+    js = { "biome-organize-imports", "biome", "prettier" },
+    jsx = { "biome-organize-imports", "biome", "prettier" },
+    javascript = { "biome-organize-imports", "biome", "prettier" },
     json = { "jq" },
     bash = { "shfmt" },
     xml = { "xmllint" },
     zig = { "zigfmt" },
   },
   default_format_opts = {
-    lsp_format = "fallback",
+    lsp_format = "never",
   },
+  log_level = vim.log.levels.DEBUG,
   format_on_save = {
-    lsp_format = "fallback",
+    lsp_format = "never",
     timeout_ms = 500,
   },
 })
