@@ -127,7 +127,6 @@ in {
       extraLuaConfig = builtins.readFile ./init.lua;
 
       plugins = with pkgs.vimPlugins; [
-        nvim-lspconfig
         vim-fugitive
         vim-repeat
         vim-indent-object
