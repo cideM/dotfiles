@@ -86,6 +86,11 @@ vim.lsp.config('gopls', {
   cmd = { 'gopls' },
   filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
   root_markers = { 'go.mod', 'go.sum' },
+  settings = {
+    gopls = {
+      staticcheck = true
+    }
+  }
 })
 vim.lsp.enable("gopls")
 
@@ -179,6 +184,7 @@ vim.lsp.config('eslint', {
 })
 -- Not working well
 -- vim.lsp.enable("eslint")
+require'lspconfig'.eslint.setup{}
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
@@ -193,9 +199,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 vim.diagnostic.config({
   virtual_text = true,
-  virtual_lines = {
-    current_line = true
-  }
+  virtual_lines = false;
+  -- virtual_lines = {
+  --   severity = {
+  --     min = vim.diagnostic.severity.ERROR,
+  --   },
+  -- },
 })
 
 -- Platform specific code
