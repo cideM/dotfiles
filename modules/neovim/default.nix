@@ -149,6 +149,7 @@ in {
         janet-vim
         nvim-treesitter.withAllGrammars
         zen-mode-nvim
+        terminal-nvim
 
         # Themes
         yui

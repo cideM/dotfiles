@@ -324,23 +324,6 @@ end, {
   desc = "format the buffer with LSP"
 })
 
-vim.keymap.set('n', 'th', function()
-  vim.api.nvim_open_win(0, false, {
-    split = "above",
-    win = 0
-  })
-  vim.cmd('lcd ' .. vim.fn.expand('%:p:h'))
-  vim.cmd('term fish')
-end, { desc = "Open terminal in current folder" })
-
-vim.keymap.set('n', 'to', function()
-  vim.api.nvim_open_win(0, false, {
-    split = "above",
-    win = 0
-  })
-  vim.cmd('term fish')
-end, { desc = "Open terminal" })
-
 require('leap').create_default_mappings()
 
 require 'treesitter-context'.setup {
@@ -448,3 +431,26 @@ require("conform").setup({
     timeout_ms = 500,
   },
 })
+
+local terminalDefaultLayout = {
+  open_cmd = "float",
+  border = "rounded",
+}
+require("terminal").setup({
+  layout = terminalDefaultLayout
+})
+
+local term_map = require("terminal.mappings")
+vim.keymap.set({ "n", "x" }, "<leader>ts", term_map.operator_send, { expr = true })
+vim.keymap.set("n", "<leader>to", term_map.toggle)
+vim.keymap.set("n", "<leader>tO", term_map.toggle({ open_cmd = "enew" }))
+vim.keymap.set("n", "<leader>tr", term_map.run)
+vim.keymap.set("n", "<leader>tR", term_map.run(nil, { layout = { open_cmd = "enew" } }))
+vim.keymap.set("n", "<leader>tk", term_map.kill)
+vim.keymap.set("n", "<leader>t]", term_map.cycle_next)
+vim.keymap.set("n", "<leader>t[", term_map.cycle_prev)
+vim.keymap.set("n", "<leader>tl", term_map.move({ open_cmd = "belowright vnew" }))
+vim.keymap.set("n", "<leader>tL", term_map.move({ open_cmd = "botright vnew" }))
+vim.keymap.set("n", "<leader>th", term_map.move({ open_cmd = "belowright new" }))
+vim.keymap.set("n", "<leader>tH", term_map.move({ open_cmd = "botright new" }))
+vim.keymap.set("n", "<leader>tf", term_map.move(terminalDefaultLayout))
