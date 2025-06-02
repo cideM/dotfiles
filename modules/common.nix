@@ -22,7 +22,7 @@ with pkgs; {
     gnupg
     gnused
     gzip
-    haskellPackages.hledger_1_41
+    hledger
     htop
     hyperfine
     jq
