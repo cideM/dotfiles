@@ -452,16 +452,59 @@ require("terminal").setup({
 })
 
 local term_map = require("terminal.mappings")
-vim.keymap.set({ "n", "x" }, "<leader>ts", term_map.operator_send, { expr = true })
-vim.keymap.set("n", "<leader>to", term_map.toggle)
-vim.keymap.set("n", "<leader>tO", term_map.toggle({ open_cmd = "enew" }))
-vim.keymap.set("n", "<leader>tr", term_map.run)
-vim.keymap.set("n", "<leader>tR", term_map.run(nil, { layout = { open_cmd = "enew" } }))
-vim.keymap.set("n", "<leader>tk", term_map.kill)
-vim.keymap.set("n", "<leader>t]", term_map.cycle_next)
-vim.keymap.set("n", "<leader>t[", term_map.cycle_prev)
-vim.keymap.set("n", "<leader>tl", term_map.move({ open_cmd = "belowright vnew" }))
-vim.keymap.set("n", "<leader>tL", term_map.move({ open_cmd = "botright vnew" }))
-vim.keymap.set("n", "<leader>th", term_map.move({ open_cmd = "belowright new" }))
-vim.keymap.set("n", "<leader>tH", term_map.move({ open_cmd = "botright new" }))
-vim.keymap.set("n", "<leader>tf", term_map.move(terminalDefaultLayout))
+vim.keymap.set(
+  { "n", "x" },
+  "<leader>ts",
+  term_map.operator_send,
+  { expr = true },
+  { desc = "terminal: send operator to terminal (terminal has to be active)" }
+)
+vim.keymap.set("n", "<leader>to", term_map.toggle, { desc = "terminal: toggle" })
+vim.keymap.set("n", "<leader>tr", term_map.run, { desc = "terminal: run" })
+vim.keymap.set("n", "<leader>tk", term_map.kill, { desc = "terminal: kill" })
+vim.keymap.set("n", "<leader>t]", term_map.cycle_next, { desc = "terminal: next" })
+vim.keymap.set("n", "<leader>t[", term_map.cycle_prev, { desc = "terminal: prev" })
+vim.keymap.set(
+  "n",
+  "<leader>tf",
+  term_map.move(terminalDefaultLayout),
+  { desc = "terminal: move window back to default layout" }
+)
+
+require("nvim-treesitter.configs").setup({
+  textobjects = {
+    select = {
+      enable = true,
+      lookahead = true,
+      keymaps = {
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
+      },
+    },
+    swap = {
+      enable = true,
+      swap_next = {
+        ["<leader>a"] = "@parameter.inner",
+      },
+      swap_previous = {
+        ["<leader>A"] = "@parameter.inner",
+      },
+    },
+    lsp_interop = {
+      enable = true,
+      border = "none",
+      floating_preview_opts = {},
+      peek_definition_code = {
+        ["<leader>df"] = "@function.outer",
+        ["<leader>dF"] = "@class.outer",
+      },
+    },
+  },
+})
+
+vim.keymap.set("n", "<leader>q", ":bd<cr>", { desc = "kill current buffer " })
+vim.keymap.set("n", "<leader>Q", function()
+  vim.cmd.enew()
+  vim.cmd.bdel("#")
+end, { desc = "kill current buffer without changing windows layout" })

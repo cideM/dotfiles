@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "checkmate-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1748775708,
+        "narHash": "sha256-eLmZTarcL84whiEQLMVgl0/X5zoETWxGMQuUo6m4aOg=",
+        "owner": "bngarren",
+        "repo": "checkmate.nvim",
+        "rev": "7a987d1983b45c21e6137b338dd8b7d67243ead7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bngarren",
+        "repo": "checkmate.nvim",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -567,6 +583,7 @@
     },
     "root": {
       "inputs": {
+        "checkmate-nvim": "checkmate-nvim",
         "flake-utils": "flake-utils",
         "ghostty": "ghostty",
         "github-markdown-toc-go-src": "github-markdown-toc-go-src",

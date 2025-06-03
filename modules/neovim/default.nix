@@ -140,14 +140,16 @@ in {
         conform-nvim
         nvim-lspconfig # for eslint
         vim-dirvish
+        which-key-nvim
         leap-nvim
+        nvim-treesitter-textobjects
         mini-align
         vim-eunuch
         grug-far-nvim
-        nvim-bufdel
         # lightline-vim
         janet-vim
         nvim-treesitter.withAllGrammars
+        checkmate-nvim-plugin
         terminal-nvim
 
         # Themes

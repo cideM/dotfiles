@@ -14,6 +14,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    checkmate-nvim = {
+      url = "github:bngarren/checkmate.nvim";
+      flake = false;
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -73,6 +78,7 @@
     zig-overlay,
     yui,
     vim-js,
+    checkmate-nvim,
   } @ inputs: let
     overlays = [
       (final: prev: rec {zigpkgs = zig-overlay.packages.${prev.system};})
@@ -99,6 +105,18 @@
           super.vimPlugins
           // {
             yui = yui.packages.${super.system}.neovim;
+          };
+      })
+
+      (self: super: {
+        vimPlugins =
+          super.vimPlugins
+          // {
+            checkmate-nvim-plugin = super.pkgs.vimUtils.buildVimPlugin rec {
+              version = "latest";
+              pname = "checkmate-nvim-plugin";
+              src = checkmate-nvim;
+            };
           };
       })
 
