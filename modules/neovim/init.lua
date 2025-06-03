@@ -343,21 +343,6 @@ require("treesitter-context").setup({
   multiwindow = true,
 })
 
-require("nvim-treesitter.configs").setup({
-  ensure_installed = {},
-  highlight = {
-    enable = true,
-    disable = { "help", "gitcommit" },
-  },
-  incremental_selection = {
-    enable = true,
-  },
-  indent = {
-    enable = true,
-    disable = {},
-  },
-})
-
 require("gitsigns").setup()
 vim.keymap.set("n", "H", function()
   require("gitsigns").preview_hunk_inline()
@@ -472,6 +457,24 @@ vim.keymap.set(
 )
 
 require("nvim-treesitter.configs").setup({
+  ensure_installed = {},
+  highlight = {
+    enable = true,
+    disable = { "help", "gitcommit" },
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gn",
+      node_incremental = "<TAB>",
+      node_decremental = "<S-TAB>",
+      scope_incremental = "gn",
+    },
+  },
+  indent = {
+    enable = true,
+    disable = {},
+  },
   textobjects = {
     select = {
       enable = true,
@@ -479,7 +482,6 @@ require("nvim-treesitter.configs").setup({
       keymaps = {
         ["af"] = "@function.outer",
         ["if"] = "@function.inner",
-        ["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
       },
     },
     swap = {
