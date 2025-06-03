@@ -307,6 +307,9 @@ vim.keymap.set("n", "<leader>lr", fzfLua.lsp_references, {
 vim.keymap.set("n", "<leader>ld", fzfLua.lsp_definitions, {
   desc = "fzf-lua LSP definitions",
 })
+vim.keymap.set("n", "<leader>ly", fzfLua.lsp_typedefs, {
+  desc = "fzf-lua LSP Type definitions",
+})
 vim.keymap.set("n", "<leader>li", fzfLua.lsp_implementations, {
   desc = "fzf-lua LSP implementations",
 })
