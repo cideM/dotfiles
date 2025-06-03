@@ -148,7 +148,6 @@ in {
         # lightline-vim
         janet-vim
         nvim-treesitter.withAllGrammars
-        zen-mode-nvim
         terminal-nvim
 
         # Themes
