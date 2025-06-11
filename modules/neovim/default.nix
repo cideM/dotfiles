@@ -127,28 +127,33 @@ in {
       extraLuaConfig = builtins.readFile ./init.lua;
 
       plugins = with pkgs.vimPlugins; [
+        # essential
         vim-fugitive
+        sad-vim
+        fzf-lua
+        conform-nvim
+        grug-far-nvim
+        nvim-treesitter.withAllGrammars
+        vim-sandwich
+        leap-nvim
+
+        # optional
         vim-repeat
         vim-indent-object
         nvim-treesitter-context
         vim-rhubarb
-        vim-sandwich
-        sad-vim
         gitsigns-nvim
         conjure
-        fzf-lua
-        conform-nvim
         nvim-lspconfig # for eslint
         vim-dirvish
         which-key-nvim
-        leap-nvim
         nvim-treesitter-textobjects
         mini-align
+        winshift-nvim
+        vim-hardtime
         vim-eunuch
-        grug-far-nvim
         # lightline-vim
         janet-vim
-        nvim-treesitter.withAllGrammars
         checkmate-nvim-plugin
         terminal-nvim
 

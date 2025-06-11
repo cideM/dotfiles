@@ -505,6 +505,8 @@ require("nvim-treesitter.configs").setup({
   },
 })
 
+require("mini.align").setup()
+
 vim.keymap.set("n", "<leader>q", ":bd<cr>", { desc = "kill current buffer " })
 vim.keymap.set("n", "<leader>Q", function()
   vim.cmd.enew()
