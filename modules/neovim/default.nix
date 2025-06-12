@@ -148,6 +148,7 @@ in {
         vim-dirvish
         which-key-nvim
         nvim-treesitter-textobjects
+        nvim-bufdel
         mini-align
         winshift-nvim
         vim-hardtime
