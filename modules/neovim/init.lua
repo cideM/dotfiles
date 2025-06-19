@@ -283,6 +283,8 @@ fzfLua.setup({
   },
 })
 
+fzfLua.register_ui_select()
+
 vim.keymap.set("n", "<leader>ff", fzfLua.files, {
   desc = "fzf-lua files",
 })
