@@ -23,6 +23,7 @@
       nixVersions.stable
       unixtools.watch
       home-manager.packages.aarch64-darwin.default
+      aerospace
     ];
   };
 
