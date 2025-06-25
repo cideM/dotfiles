@@ -11,6 +11,7 @@ with pkgs; {
     du-dust
     dua
     entr
+    eza
     fastmod
     fd
     findutils
@@ -23,11 +24,11 @@ with pkgs; {
     gnupg
     gnused
     gzip
+    haskellPackages.tasklite
     hledger
     htop
     hyperfine
     jq
-    eza
     nano
     nixpkgs-review
     oils-for-unix
