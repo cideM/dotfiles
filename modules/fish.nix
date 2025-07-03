@@ -10,6 +10,8 @@
 
     set -x MANPAGER 'nvim +Man!'
 
+    set -x VOLTA_HOME $HOME/.volta
+
     # https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
     # XDG_RUNTIME_DIR should be set by pam_systemd
     set -x XDG_CONFIG_HOME $HOME/.config
@@ -24,7 +26,7 @@
     set -x GOPATH ~/go
     set -x GOCACHE $XDG_CACHE_HOME/go-build
 
-    fish_add_path -p ~/bin /usr/local/bin/
+    fish_add_path -p ~/bin /usr/local/bin/ $VOLTA_HOME/bin
   '';
 in {
   programs.fish = {
