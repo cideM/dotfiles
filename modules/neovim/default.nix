@@ -134,6 +134,7 @@ in {
         conform-nvim
         grug-far-nvim
         nvim-treesitter.withAllGrammars
+        zen-mode-nvim
         vim-sandwich
         leap-nvim
 
