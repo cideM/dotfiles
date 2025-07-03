@@ -24,12 +24,14 @@ with pkgs; {
     gnupg
     gnused
     gzip
-    haskellPackages.tasklite
     hledger
     htop
     hyperfine
     jq
+    micro
     nano
+    nix-output-monitor
+    nh
     nixpkgs-review
     oils-for-unix
     rclone
