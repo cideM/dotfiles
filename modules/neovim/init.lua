@@ -516,3 +516,14 @@ vim.keymap.set("n", "<leader>Q", function()
   vim.cmd.enew()
   vim.cmd.bdel("#")
 end, { desc = "kill current buffer without changing windows layout" })
+
+vim.keymap.set("n", "<leader>r", function()
+  vim.ui.input({ prompt = "shell commandline: " }, function(str)
+    if str and str ~= "" then
+      vim.cmd("noswapfile vnew")
+      vim.bo.buftype = "nofile"
+      vim.bo.bufhidden = "wipe"
+      vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.fn.systemlist(str))
+    end
+  end)
+end)
