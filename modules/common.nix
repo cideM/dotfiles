@@ -4,7 +4,6 @@ with pkgs; {
     bashInteractive
     bat
     btop
-    claude-code
     coreutils-full
     curl
     diffoci
