@@ -13,11 +13,15 @@ args @ {
     font-style-bold = Bold
     font-size = 15
     font-thicken = true
+    font-thicken-string = 50
     shell-integration-features = no-cursor
-    adjust-cell-height = 20%
+    adjust-cell-height = 10%
+    adjust-cell-width = -5%
     cursor-invert-fg-bg = false
     cursor-style = block
     cursor-color = red
+    macos-titlebar-style = transparent
+    minimum-contrast = 1.1
     theme = light:yui_light,dark:yui_dark
     window-padding-x = 14
     window-padding-balance = true
