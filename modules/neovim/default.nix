@@ -142,15 +142,15 @@ in {
         vim-repeat
         vim-indent-object
         nvim-treesitter-context
+        nvim-bufdel
         vim-rhubarb
         gitsigns-nvim
         conjure
-        nvim-lspconfig # for eslint
+        nvim-lspconfig
         vim-dirvish
         which-key-nvim
         nvim-treesitter-textobjects
         nvim-bufdel
-        mini-align
         winshift-nvim
         vim-hardtime
         vim-eunuch
