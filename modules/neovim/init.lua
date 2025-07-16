@@ -74,125 +74,11 @@ vim.g.yui_lightline = true
 vim.g.yui_comments = "fade"
 vim.cmd.colorscheme("yui")
 
-vim.lsp.config("luals", {
-  -- https://luals.github.io/wiki/configuration/#configuration-file
-  cmd = { "lua-language-server" },
-  filetypes = { "lua" },
-  root_markers = { ".luarc.json", ".luarc.jsonc" },
-})
-vim.lsp.enable("luals")
-
-vim.lsp.config("deno", {
-  filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
-  cmd = { "deno", "lsp" },
-  root_markers = { "deno.lock", "deno.json" },
-  workspace_required = true,
-})
-vim.lsp.enable("deno")
-
-vim.lsp.config("gopls", {
-  cmd = { "gopls" },
-  filetypes = { "go", "gomod", "gowork", "gotmpl" },
-  root_markers = { "go.mod", "go.sum" },
-  settings = {
-    gopls = {
-      staticcheck = true,
-    },
-  },
-})
+vim.lsp.enable("denols")
 vim.lsp.enable("gopls")
-
-vim.lsp.config("zls", {
-  cmd = { "zls" },
-  filetypes = { "zig" },
-  root_markers = { "go.mod", "go.sum" },
-})
 vim.lsp.enable("zls")
-
-vim.lsp.config("ts", {
-  cmd = { "typescript-language-server", "--stdio" },
-  filetypes = {
-    "javascript",
-    "javascriptreact",
-    "javascript.jsx",
-    "typescript",
-    "typescriptreact",
-    "typescript.tsx",
-  },
-  root_markers = {
-    "tsconfig.json",
-    "jsconfig.json",
-    "package.json",
-    ".git",
-  },
-})
-vim.lsp.enable("ts")
-
-vim.lsp.config("eslint", {
-  cmd = { "vscode-eslint-language-server", "--stdio" },
-  filetypes = {
-    "javascript",
-    "javascriptreact",
-    "javascript.jsx",
-    "typescript",
-    "typescriptreact",
-    "typescript.tsx",
-    "vue",
-    "svelte",
-    "astro",
-  },
-  root_markers = {
-    ".eslintrc",
-    ".eslintrc.js",
-    ".eslintrc.cjs",
-    ".eslintrc.yaml",
-    ".eslintrc.yml",
-    ".eslintrc.json",
-    "eslint.config.js",
-    "eslint.config.mjs",
-    "eslint.config.cjs",
-    "eslint.config.ts",
-    "eslint.config.mts",
-    "eslint.config.cts",
-  },
-  settings = {
-    validate = "on",
-    packageManager = nil,
-    useESLintClass = false,
-    experimental = {
-      useFlatConfig = false,
-    },
-    codeActionOnSave = {
-      enable = false,
-      mode = "all",
-    },
-    format = true,
-    quiet = false,
-    onIgnoredFiles = "off",
-    rulesCustomizations = {},
-    run = "onType",
-    problems = {
-      shortenToSingleLine = false,
-    },
-    -- nodePath configures the directory in which the eslint server should start its node_modules resolution.
-    -- This path is relative to the workspace folder (root dir) of the server instance.
-    nodePath = "",
-    -- use the workspace folder location or the file location (if no workspace folder is open) as the working directory
-    workingDirectory = { mode = "location" },
-    codeAction = {
-      disableRuleComment = {
-        enable = true,
-        location = "separateLine",
-      },
-      showDocumentation = {
-        enable = true,
-      },
-    },
-  },
-})
--- Not working well
--- vim.lsp.enable("eslint")
-require("lspconfig").eslint.setup({})
+vim.lsp.enable("ts_ls")
+vim.lsp.enable("eslint")
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
@@ -208,14 +94,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 vim.diagnostic.config({
   virtual_text = false,
   virtual_lines = false,
-  -- virtual_lines = {
-  --   severity = {
-  --     min = vim.diagnostic.severity.ERROR,
-  --   },
-  -- },
 })
 
--- Platform specific code
 if vim.fn.executable("defaults") == 1 then
   local appleInterfaceStyle = vim.fn.system({ "defaults", "read", "-g", "AppleInterfaceStyle" })
   if appleInterfaceStyle:find("Dark") then
@@ -509,13 +389,8 @@ require("nvim-treesitter.configs").setup({
   },
 })
 
-require("mini.align").setup()
-
-vim.keymap.set("n", "<leader>q", ":bd<cr>", { desc = "kill current buffer " })
-vim.keymap.set("n", "<leader>Q", function()
-  vim.cmd.enew()
-  vim.cmd.bdel("#")
-end, { desc = "kill current buffer without changing windows layout" })
+vim.keymap.set("n", "<leader>q", ":BufDel<CR>", { desc = "delete current buffer" })
+vim.keymap.set("n", "<leader>Q", ":BufDelOthers<CR>", { desc = "delete all other buffers" })
 
 vim.keymap.set("n", "<leader>r", function()
   vim.ui.input({ prompt = "shell commandline: " }, function(str)
