@@ -42,6 +42,7 @@
   xdg.configFile."nix/nix.conf".text = ''
     experimental-features = nix-command flakes
     sandbox = true
+    include /Users/fbs/.git-token
   '';
 
   home.file."bin/gsed".source = "${pkgs.gnused}/bin/sed";
