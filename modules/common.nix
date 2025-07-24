@@ -27,6 +27,7 @@ with pkgs; {
     hledger
     htop
     hyperfine
+    jujutsu
     jq
     micro
     nano
