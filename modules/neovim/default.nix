@@ -156,7 +156,6 @@ in {
         vim-eunuch
         # lightline-vim
         janet-vim
-        checkmate-nvim-plugin
         terminal-nvim
 
         # Themes
