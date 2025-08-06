@@ -142,7 +142,6 @@ in {
         vim-repeat
         vim-indent-object
         nvim-treesitter-context
-        nvim-bufdel
         vim-rhubarb
         gitsigns-nvim
         conjure
@@ -150,9 +149,6 @@ in {
         vim-dirvish
         which-key-nvim
         nvim-treesitter-textobjects
-        nvim-bufdel
-        winshift-nvim
-        vim-hardtime
         vim-eunuch
         # lightline-vim
         janet-vim

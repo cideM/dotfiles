@@ -389,9 +389,6 @@ require("nvim-treesitter.configs").setup({
   },
 })
 
-vim.keymap.set("n", "<leader>q", ":BufDel<CR>", { desc = "delete current buffer" })
-vim.keymap.set("n", "<leader>Q", ":BufDelOthers<CR>", { desc = "delete all other buffers" })
-
 vim.keymap.set("n", "<leader>r", function()
   vim.ui.input({ prompt = "shell commandline: " }, function(str)
     if str and str ~= "" then
