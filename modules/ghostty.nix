@@ -13,7 +13,7 @@ args @ {
     font-style-bold = Bold
     font-size = 15
     font-thicken = true
-    font-thicken-string = 50
+    font-thicken-strength = 70
     shell-integration-features = no-cursor
     adjust-cell-height = 10%
     adjust-cell-width = -5%
