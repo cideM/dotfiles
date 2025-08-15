@@ -2,6 +2,11 @@
   description = "今日は";
 
   inputs = rec {
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+      flake = true;
+    };
+
     nixpkgs.url = "github:NixOS/nixpkgs";
 
     lix-module = {
@@ -57,6 +62,7 @@
     github-nvim-theme-src,
     home-manager,
     flake-utils,
+    ghostty,
     neovim-nightly-overlay,
     operatorMono,
     lix-module,
@@ -209,7 +215,13 @@
         ./hosts/nixos/configuration.nix
         home-manager.nixosModules.home-manager
         {
-          nixpkgs.overlays = overlays;
+          nixpkgs.overlays =
+            overlays
+            ++ [
+              (self: super: {
+                ghostty = ghostty.packages.${super.system}.default;
+              })
+            ];
           nixpkgs.config = {
             allowUnfree = true;
           };
