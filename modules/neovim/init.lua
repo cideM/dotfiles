@@ -125,7 +125,6 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   desc = "Set groovy filetype in Jenkinsfile",
 })
 
--- Do I still need this?
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
   pattern = { "*" },
   callback = function()
@@ -309,34 +308,6 @@ require("conform").setup({
     timeout_ms = 500,
   },
 })
-
-local terminalDefaultLayout = {
-  open_cmd = "float",
-  border = "rounded",
-}
-require("terminal").setup({
-  layout = terminalDefaultLayout,
-})
-
-local term_map = require("terminal.mappings")
-vim.keymap.set(
-  { "n", "x" },
-  "<leader>ts",
-  term_map.operator_send,
-  { expr = true },
-  { desc = "terminal: send operator to terminal (terminal has to be active)" }
-)
-vim.keymap.set("n", "<leader>to", term_map.toggle, { desc = "terminal: toggle" })
-vim.keymap.set("n", "<leader>tr", term_map.run, { desc = "terminal: run" })
-vim.keymap.set("n", "<leader>tk", term_map.kill, { desc = "terminal: kill" })
-vim.keymap.set("n", "<leader>t]", term_map.cycle_next, { desc = "terminal: next" })
-vim.keymap.set("n", "<leader>t[", term_map.cycle_prev, { desc = "terminal: prev" })
-vim.keymap.set(
-  "n",
-  "<leader>tf",
-  term_map.move(terminalDefaultLayout),
-  { desc = "terminal: move window back to default layout" }
-)
 
 require("nvim-treesitter.configs").setup({
   ensure_installed = {},

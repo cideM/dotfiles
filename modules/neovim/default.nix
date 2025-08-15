@@ -152,7 +152,6 @@ in {
         vim-eunuch
         # lightline-vim
         janet-vim
-        terminal-nvim
 
         # Themes
         yui

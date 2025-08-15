@@ -17,6 +17,7 @@ with pkgs; {
     findutils
     gawk
     gh
+    ghostty
     git-lfs
     github-markdown-toc
     glow
