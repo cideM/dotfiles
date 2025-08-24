@@ -9,7 +9,7 @@ vim.g.loaded_tarPlugin = 1
 vim.g.loaded_vimball = 1
 vim.g.loaded_vimballPlugin = 1
 
-vim.o.number = true
+vim.o.number = false
 vim.o.winborder = "rounded"
 vim.o.numberwidth = 3
 vim.o.linebreak = true
@@ -45,7 +45,7 @@ vim.o.inccommand = "split"
 vim.opt.completeopt:append({ "fuzzy", "noselect" })
 vim.opt.completeopt:remove({ "popup" })
 vim.opt.complete = { ".", "b", "u" }
-vim.o.signcolumn = "yes:1"
+vim.o.signcolumn = "auto:1"
 vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.foldlevelstart = 99
@@ -55,6 +55,7 @@ vim.o.grepprg = "rg -H --vimgrep --smart-case"
 vim.opt.path:remove("/usr/include")
 vim.o.list = true
 vim.opt.fillchars:append({ vert = "│" })
+vim.opt.fillchars:append({ eob = " " })
 vim.opt.listchars = {
   eol = "¬",
   space = " ",
