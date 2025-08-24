@@ -237,6 +237,15 @@ vim.keymap.set("n", "[c", function()
   require("gitsigns").prev_hunk()
 end, { desc = "Jump to previous hunk" })
 
+-- Terminal
+vim.keymap.set("n", "<leader>tv", ":vert term fish<CR>", {
+  desc = "Open terminal in a vertical split (to the side)",
+})
+
+vim.keymap.set("n", "<leader>tt", ":hor term fish<CR>", {
+  desc = "Open terminal in a horizontal split (down)",
+})
+
 vim.keymap.set("i", "jk", "<Esc>", { desc = "Exit insert mode with jk" })
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 vim.keymap.set("n", "<leader>w", function()
