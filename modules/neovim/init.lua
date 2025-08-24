@@ -12,6 +12,7 @@ vim.g.loaded_vimballPlugin = 1
 vim.o.number = true
 vim.o.winborder = "rounded"
 vim.o.numberwidth = 3
+vim.o.linebreak = true
 vim.o.statuscolumn = "%l %s %C"
 vim.o.statusline = " %f %m%= %y %q %3l:%2c |%3p%% "
 vim.o.background = "light"
