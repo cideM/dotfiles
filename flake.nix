@@ -2,6 +2,7 @@
   description = "今日は";
 
   inputs = rec {
+    # It's broken on MacOS in Nixpkgs! That's why you need this instead of just pkgs.ghostty
     ghostty = {
       url = "github:ghostty-org/ghostty";
       flake = true;
