@@ -22,7 +22,7 @@ vim.o.expandtab = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 2
 vim.o.timeoutlen = 500
-vim.opt.diffopt = { internal = true, filler = true, closeoff = true, algorithm = "minimal" }
+vim.opt.diffopt = { internal = true, filler = true, closeoff = true, algorithm = "myers" }
 vim.o.colorcolumn = "+0"
 vim.o.cursorline = true
 vim.opt.formatoptions:append("r")
