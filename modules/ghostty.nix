@@ -14,7 +14,7 @@ args @ {
     font-size = 14
     font-thicken = true
     font-thicken-strength = 20
-    shell-integration-features = no-cursor
+    shell-integration-features = no-cursor,sudo
     adjust-cell-height = 8%
     adjust-cell-width = -6%
     theme = light:yui_light,dark:yui_dark
