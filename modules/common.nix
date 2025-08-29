@@ -1,5 +1,6 @@
-{pkgs, ...}:
-with pkgs; {
+{ pkgs, ... }:
+with pkgs;
+{
   home.packages = [
     bashInteractive
     bat
@@ -108,6 +109,7 @@ with pkgs; {
     ".gitignore" = {
       text = ''
         .direnv
+        .devenv
       '';
     };
 
@@ -128,7 +130,13 @@ with pkgs; {
   };
 
   # https://github.com/rycee/home-manager/issues/432
-  home.extraOutputsToInstall = ["info" "man" "share" "icons" "doc"];
+  home.extraOutputsToInstall = [
+    "info"
+    "man"
+    "share"
+    "icons"
+    "doc"
+  ];
 
   xdg.configFile."git/attributes".text = ''
     *.lockb binary diff=lockb

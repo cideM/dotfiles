@@ -1,10 +1,13 @@
-args @ {
+args@{
   config,
   pkgs,
   ...
-}: {
-  xdg.configFile."ghostty/themes/yui_dark".text = builtins.readFile "${pkgs.yui-ghostty-theme}/ghostty/yui_dark";
-  xdg.configFile."ghostty/themes/yui_light".text = builtins.readFile "${pkgs.yui-ghostty-theme}/ghostty/yui_light";
+}:
+{
+  xdg.configFile."ghostty/themes/yui_dark".text =
+    builtins.readFile "${pkgs.yui-ghostty-theme}/ghostty/yui_dark";
+  xdg.configFile."ghostty/themes/yui_light".text =
+    builtins.readFile "${pkgs.yui-ghostty-theme}/ghostty/yui_light";
   xdg.configFile."ghostty/config".text = ''
     font-family = "Operator Mono SSm"
     font-style = Book
