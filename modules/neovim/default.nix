@@ -85,7 +85,7 @@ in {
       '';
       nix = ''
         setlocal iskeyword+=-
-        setl formatprg=alejandra\ -q
+        setl formatprg=nixfmt\ -q
       '';
       dhall = ''
         setl formatprg=dhall\ format

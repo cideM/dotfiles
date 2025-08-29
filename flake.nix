@@ -239,7 +239,7 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in rec {
         devShell = pkgs.mkShell {
-          buildInputs = with pkgs; [janet jpm alejandra nodePackages.prettier lua-language-server lua stylua];
+          buildInputs = with pkgs; [janet jpm nixfmt nodePackages.prettier lua-language-server lua stylua];
         };
       }
     );

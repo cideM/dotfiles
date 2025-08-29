@@ -297,7 +297,7 @@ require("conform").setup({
     lua = { "stylua", lsp_format = "fallback" },
     go = { "goimports", "gofmt" },
     rust = { "rustfmt" },
-    nix = { "alejandra" },
+    nix = { "nixfmt" },
     ts = { "biome-organize-imports", "biome", "prettier" },
     tsx = { "biome-organize-imports", "biome", "prettier" },
     typescript = { "biome-organize-imports", "biome", "prettier" },
