@@ -3,7 +3,8 @@
   home-manager,
   config,
   ...
-}: {
+}:
+{
   imports = [
     (import ../../modules/neovim)
     (import ../../modules/ctags.nix)
@@ -41,7 +42,7 @@
 
   xdg.configFile."nix/nix.conf".text = ''
     experimental-features = nix-command flakes
-    sandbox = true
+    sandbox = false
     include /Users/fbs/.git-token
   '';
 
