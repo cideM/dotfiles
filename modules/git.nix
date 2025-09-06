@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # Can't use programs.git because https://github.com/NixOS/nixpkgs/issues/62353
   xdg.configFile."git/config".text = ''
     [column]
@@ -11,6 +12,9 @@
 
     [help]
         autocorrect = prompt
+
+    [gpg]
+        program = ${pkgs.gnupg}/bin/gpg
 
     [commit]
         verbose = true
