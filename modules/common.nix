@@ -28,7 +28,8 @@ with pkgs;
     hledger
     htop
     hyperfine
-    jujutsu
+    # broken right now
+    # jujutsu
     jq
     micro
     nano
