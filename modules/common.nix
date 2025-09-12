@@ -25,11 +25,11 @@ with pkgs;
     gnupg
     gnused
     gzip
+    helix
     hledger
     htop
     hyperfine
-    # broken right now
-    # jujutsu
+    jujutsu
     jq
     micro
     nano
