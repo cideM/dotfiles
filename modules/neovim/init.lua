@@ -381,3 +381,10 @@ vim.keymap.set("n", "<leader>r", function()
     end
   end)
 end)
+
+vim.cmd([[
+  hi Whitespace guifg=bg
+  hi NonText guifg=bg
+  set laststatus=3
+  set nocursorline
+]])
