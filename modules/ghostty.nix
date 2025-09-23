@@ -20,6 +20,7 @@ args@{
     shell-integration-features = no-cursor,sudo
     adjust-cell-height = 8%
     adjust-cell-width = -6%
+    quick-terminal-position = center
     theme = light:yui_light,dark:yui_dark
     window-padding-x = 20
     keybind = shift+enter=text:\x1b\r
