@@ -226,16 +226,16 @@ require("treesitter-context").setup({
   multiwindow = true,
 })
 
-require("gitsigns").setup()
-vim.keymap.set("n", "H", function()
-  require("gitsigns").preview_hunk_inline()
-end, { desc = "Preview current hunk inline" })
-vim.keymap.set("n", "]c", function()
-  require("gitsigns").next_hunk()
-end, { desc = "Jump to next hunk" })
-vim.keymap.set("n", "[c", function()
-  require("gitsigns").prev_hunk()
-end, { desc = "Jump to previous hunk" })
+-- require("gitsigns").setup()
+-- vim.keymap.set("n", "H", function()
+--   require("gitsigns").preview_hunk_inline()
+-- end, { desc = "Preview current hunk inline" })
+-- vim.keymap.set("n", "]c", function()
+--   require("gitsigns").next_hunk()
+-- end, { desc = "Jump to next hunk" })
+-- vim.keymap.set("n", "[c", function()
+--   require("gitsigns").prev_hunk()
+-- end, { desc = "Jump to previous hunk" })
 
 -- Terminal
 vim.keymap.set("n", "<leader>tv", ":vert term fish<CR>", {
