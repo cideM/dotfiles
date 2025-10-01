@@ -23,3 +23,4 @@ result
 tags.lock
 tags.temp
 *.sublime-workspace
+.claude
