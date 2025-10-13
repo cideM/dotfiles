@@ -93,6 +93,25 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
+local flash = require("flash")
+flash.setup()
+
+vim.keymap.set({ "n", "x", "o" }, "s", function()
+  require("flash").jump()
+end, { desc = "Flash" })
+
+vim.keymap.set({ "n", "x", "o" }, "S", function()
+  require("flash").treesitter()
+end, { desc = "Flash Treesitter" })
+
+vim.keymap.set("o", "r", function()
+  flash.remote()
+end, { desc = "Remote Flash" })
+
+vim.keymap.set("c", "<c-s>", function()
+  flash.toggle()
+end, { desc = "Toggle Flash Search" })
+
 vim.diagnostic.config({
   virtual_text = false,
   virtual_lines = false,
@@ -152,60 +171,6 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   end,
 })
 
-local fzfLua = require("fzf-lua")
-
-fzfLua.setup({
-  winopts = {
-    height = 0.9,
-    preview = {
-      layout = "flex",
-      flip_columns = 150,
-    },
-  },
-})
-
-fzfLua.register_ui_select()
-
-vim.keymap.set("n", "<leader>ff", fzfLua.files, {
-  desc = "fzf-lua files",
-})
-vim.keymap.set("n", "<leader>fb", fzfLua.buffers, {
-  desc = "fzf-lua buffers",
-})
-vim.keymap.set("n", "<leader>fl", fzfLua.blines, {
-  desc = "fzf-lua current buffer lines",
-})
-vim.keymap.set("n", "<leader>sw", fzfLua.grep_cword, {
-  desc = "fzf-lua search word under cursor",
-})
-vim.keymap.set("v", "<leader>sv", fzfLua.grep_visual, {
-  desc = "fzf-lua search visual selection",
-})
-vim.keymap.set("n", "<leader>sp", fzfLua.live_grep_native, {
-  desc = "fzf-lua live grep current project (performant version)",
-})
-vim.keymap.set("n", "<leader>lr", fzfLua.lsp_references, {
-  desc = "fzf-lua LSP references",
-})
-vim.keymap.set("n", "<leader>ld", fzfLua.lsp_definitions, {
-  desc = "fzf-lua LSP definitions",
-})
-vim.keymap.set("n", "<leader>ly", fzfLua.lsp_typedefs, {
-  desc = "fzf-lua LSP Type definitions",
-})
-vim.keymap.set("n", "<leader>li", fzfLua.lsp_implementations, {
-  desc = "fzf-lua LSP implementations",
-})
-vim.keymap.set("n", "<leader>ls", fzfLua.lsp_document_symbols, {
-  desc = "fzf-lua LSP document symbols",
-})
-vim.keymap.set("n", "<leader>lw", fzfLua.lsp_live_workspace_symbols, {
-  desc = "fzf-lua LSP live workspace symbols",
-})
-vim.keymap.set("n", "<leader>la", fzfLua.lsp_code_actions, {
-  desc = "fzf-lua LSP code actions",
-})
-
 vim.keymap.set("n", "<BS>", "<C-^>", {
   desc = "Switch to most recent buffer",
 })
@@ -218,24 +183,11 @@ end, {
   desc = "format the buffer with LSP",
 })
 
-require("leap").create_default_mappings()
-
 require("treesitter-context").setup({
   enable = true,
   max_lines = 4,
   multiwindow = true,
 })
-
--- require("gitsigns").setup()
--- vim.keymap.set("n", "H", function()
---   require("gitsigns").preview_hunk_inline()
--- end, { desc = "Preview current hunk inline" })
--- vim.keymap.set("n", "]c", function()
---   require("gitsigns").next_hunk()
--- end, { desc = "Jump to next hunk" })
--- vim.keymap.set("n", "[c", function()
---   require("gitsigns").prev_hunk()
--- end, { desc = "Jump to previous hunk" })
 
 -- Terminal
 vim.keymap.set("n", "<leader>tv", ":vert term fish<CR>", {
@@ -260,23 +212,6 @@ vim.keymap.set("n", "<leader>p", '"+p', { desc = "Paste from system clipboard af
 vim.keymap.set("n", "<leader>P", '"+P', { desc = "Paste from system clipboard before cursor" })
 vim.keymap.set("v", "<leader>p", '"+p', { desc = "Paste from system clipboard after selection" })
 vim.keymap.set("v", "<leader>P", '"+P', { desc = "Paste from system clipboard before selection" })
-
-vim.g.sandwich_no_default_key_mappings = 1
-
--- add
-vim.keymap.set("n", "za", "<Plug>(sandwich-add)", { desc = "Sandwich add operator" })
-vim.keymap.set("x", "za", "<Plug>(sandwich-add)", { desc = "Sandwich add in visual mode" })
-vim.keymap.set("o", "za", "<Plug>(sandwich-add)", { desc = "Sandwich add in operator pending mode" })
-
--- delete
-vim.keymap.set("n", "zd", "<Plug>(sandwich-delete)", { desc = "Sandwich delete operator" })
-vim.keymap.set("x", "zd", "<Plug>(sandwich-delete)", { desc = "Sandwich delete in visual mode" })
-vim.keymap.set("n", "zdb", "<Plug>(sandwich-delete-auto)", { desc = "Sandwich auto delete" })
-
--- replace
-vim.keymap.set("n", "zr", "<Plug>(sandwich-replace)", { desc = "Sandwich replace operator" })
-vim.keymap.set("x", "zr", "<Plug>(sandwich-replace)", { desc = "Sandwich replace in visual mode" })
-vim.keymap.set("n", "zrb", "<Plug>(sandwich-replace-auto)", { desc = "Sandwich auto replace" })
 
 vim.g["conjure#filetypes"] = { "clojure", "fennel", "janet", "scheme", "racket", "lisp" }
 vim.g["conjure#log#hud#anchor"] = "SE"
@@ -312,12 +247,20 @@ require("conform").setup({
   },
   default_format_opts = {
     lsp_format = "never",
+    timeout_ms = 1000,
   },
   log_level = vim.log.levels.DEBUG,
   format_on_save = {
     lsp_format = "never",
-    timeout_ms = 500,
   },
+})
+
+vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+
+vim.keymap.set("n", "<C-f>", function()
+  require("conform").format()
+end, {
+  desc = "format the buffer with LSP",
 })
 
 require("nvim-treesitter.configs").setup({
@@ -327,7 +270,7 @@ require("nvim-treesitter.configs").setup({
     disable = { "help", "gitcommit" },
   },
   incremental_selection = {
-    enable = true,
+    enable = false,
     keymaps = {
       init_selection = "gn",
       node_incremental = "<TAB>",
@@ -336,12 +279,12 @@ require("nvim-treesitter.configs").setup({
     },
   },
   indent = {
-    enable = true,
+    enable = false,
     disable = {},
   },
   textobjects = {
     select = {
-      enable = true,
+      enable = false,
       lookahead = true,
       keymaps = {
         ["af"] = "@function.outer",
@@ -351,7 +294,7 @@ require("nvim-treesitter.configs").setup({
       },
     },
     swap = {
-      enable = true,
+      enable = false,
       swap_next = {
         ["<leader>a"] = "@parameter.inner",
       },
@@ -360,7 +303,7 @@ require("nvim-treesitter.configs").setup({
       },
     },
     lsp_interop = {
-      enable = true,
+      enable = false,
       border = "none",
       floating_preview_opts = {},
       peek_definition_code = {
@@ -382,9 +325,9 @@ vim.keymap.set("n", "<leader>r", function()
   end)
 end)
 
-vim.cmd([[
-  hi Whitespace guifg=bg
-  hi NonText guifg=bg
-  set laststatus=3
-  set nocursorline
-]])
+function findFuncFd(file)
+  local cmdstr = "fd --type file --full-path --color never " .. file
+  return vim.fn.systemlist(cmdstr)
+end
+
+vim.o.findfunc = "v:lua.findFuncFd"

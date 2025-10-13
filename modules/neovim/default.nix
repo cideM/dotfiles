@@ -1,4 +1,4 @@
-args @ {
+args@{
   config,
   lib,
   pkgs,
@@ -6,13 +6,14 @@ args @ {
   ...
 }:
 with lib;
-with types; let
-  makeFtPlugins = ftplugins:
+with types;
+let
+  makeFtPlugins =
+    ftplugins:
     with attrsets;
-      mapAttrs'
-      (key: value: nameValuePair "nvim/after/ftplugin/${key}.vim" {text = value;})
-      ftplugins;
-in {
+    mapAttrs' (key: value: nameValuePair "nvim/after/ftplugin/${key}.vim" { text = value; }) ftplugins;
+in
+{
   config = {
     xdg.configFile = makeFtPlugins {
       xml = ''
@@ -134,20 +135,16 @@ in {
         conform-nvim
         grug-far-nvim
         nvim-treesitter.withAllGrammars
-        zen-mode-nvim
-        vim-sandwich
-        leap-nvim
+        flash-nvim
 
         # optional
         vim-repeat
         vim-indent-object
         nvim-treesitter-context
         vim-rhubarb
-        gitsigns-nvim
         conjure
         nvim-lspconfig
         vim-dirvish
-        which-key-nvim
         nvim-treesitter-textobjects
         vim-eunuch
         # lightline-vim
