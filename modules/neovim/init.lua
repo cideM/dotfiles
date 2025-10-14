@@ -82,6 +82,60 @@ vim.lsp.enable("zls")
 vim.lsp.enable("ts_ls")
 vim.lsp.enable("eslint")
 
+local fzfLua = require("fzf-lua")
+
+fzfLua.setup({
+  winopts = {
+    height = 0.9,
+    preview = {
+      layout = "flex",
+      flip_columns = 150,
+    },
+  },
+})
+
+fzfLua.register_ui_select()
+
+vim.keymap.set("n", "<leader>g", fzfLua.global, {
+  desc = "fzf-lua global picker (no prefix -> files, $ -> buffers, @ -> symbols -> # global symbols)",
+})
+
+vim.keymap.set("n", "<leader>ff", fzfLua.files, {
+  desc = "fzf-lua files",
+})
+
+vim.keymap.set("n", "<leader>fb", fzfLua.buffers, {
+  desc = "fzf-lua buffers",
+})
+
+vim.keymap.set("n", "<leader>fg", fzfLua.live_grep_native, {
+  desc = "fzf-lua live grep current project (performant version)",
+})
+
+vim.keymap.set("n", "<leader>fr", fzfLua.lsp_references, {
+  desc = "fzf-lua LSP references",
+})
+
+vim.keymap.set("n", "<leader>fs", fzfLua.lsp_document_symbols, {
+  desc = "fzf-lua LSP document symbols",
+})
+
+vim.keymap.set("n", "<leader>fw", fzfLua.lsp_live_workspace_symbols, {
+  desc = "fzf-lua LSP live workspace symbols",
+})
+
+vim.keymap.set("n", "<leader>fi", fzfLua.lsp_live_workspace_symbols, {
+  desc = "fzf-lua LSP live workspace symbols",
+})
+
+vim.keymap.set("n", "<leader>fa", fzfLua.lsp_code_actions, {
+  desc = "fzf-lua LSP code actions",
+})
+
+vim.keymap.set({ "n", "v", "i" }, "<C-x><C-f>", function()
+  fzfLua.complete_path()
+end, { silent = true, desc = "Fuzzy complete path" })
+
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))

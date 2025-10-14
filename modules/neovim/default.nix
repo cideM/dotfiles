@@ -133,7 +133,6 @@ in
         sad-vim
         fzf-lua
         conform-nvim
-        grug-far-nvim
         nvim-treesitter.withAllGrammars
         flash-nvim
 
