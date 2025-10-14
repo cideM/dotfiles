@@ -42,7 +42,6 @@ with pkgs;
     ripgrep
     rlwrap
     shellcheck
-    time
     tokei
     tree
     uni
