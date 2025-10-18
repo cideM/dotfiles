@@ -36,7 +36,6 @@ with pkgs;
     nano
     nix-output-monitor
     nh
-    nixpkgs-review
     oils-for-unix
     rclone
     ripgrep
@@ -51,6 +50,7 @@ with pkgs;
   ];
 
   nix = {
+    package = pkgs.lixPackageSets.stable.lix;
     gc = {
       automatic = true;
       dates = "daily";

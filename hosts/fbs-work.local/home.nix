@@ -21,7 +21,6 @@
   home = {
     stateVersion = "20.09";
     packages = with pkgs; [
-      nixVersions.stable
       unixtools.watch
       home-manager.packages.aarch64-darwin.default
       aerospace
