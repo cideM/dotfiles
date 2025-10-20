@@ -24,9 +24,6 @@
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
-    github-nvim-theme-src.url = "github:projekt0n/github-nvim-theme";
-    github-nvim-theme-src.flake = false;
-
     flake-utils.url = "github:numtide/flake-utils";
 
     nix-fish-src.url = "github:kidonng/nix.fish";
@@ -35,8 +32,8 @@
     janet-vim.url = "github:janet-lang/janet.vim";
     janet-vim.flake = false;
 
-    lucid-fish-prompt-src.url = "github:mattgreen/lucid.fish";
-    lucid-fish-prompt-src.flake = false;
+    nvim-alabaster-scheme-src.url = "github:p00f/alabaster.nvim";
+    nvim-alabaster-scheme-src.flake = false;
 
     vim-js.url = "github:yuezk/vim-js";
     vim-js.flake = false;
@@ -56,16 +53,15 @@
     {
       self,
       janet-vim,
-      github-nvim-theme-src,
       home-manager,
       flake-utils,
       ghostty,
       neovim-nightly-overlay,
       operatorMono,
+      nvim-alabaster-scheme-src,
       github-markdown-toc-go-src,
       nixpkgs,
       nix-fish-src,
-      lucid-fish-prompt-src,
       zig-overlay,
       yui,
       vim-js,
@@ -107,16 +103,6 @@
         })
 
         (self: super: {
-          vimPlugins = super.vimPlugins // {
-            github-nvim-theme = super.pkgs.vimUtils.buildVimPlugin rec {
-              version = "latest";
-              pname = "github-nvim-theme";
-              src = github-nvim-theme-src;
-            };
-          };
-        })
-
-        (self: super: {
           operatorMonoFont = super.pkgs.stdenv.mkDerivation {
             name = "operator-mono-font";
             src = operatorMono;
@@ -140,6 +126,16 @@
 
         (self: super: {
           vimPlugins = super.vimPlugins // {
+            nvim-alabaster-theme = super.pkgs.vimUtils.buildVimPlugin rec {
+              version = "latest";
+              pname = "nvim-alabaster-theme";
+              src = nvim-alabaster-scheme-src;
+            };
+          };
+        })
+
+        (self: super: {
+          vimPlugins = super.vimPlugins // {
             vim-js = super.pkgs.vimUtils.buildVimPlugin rec {
               version = "latest";
               pname = "vim-js";
@@ -154,20 +150,6 @@
               yui = yui.packages.${final.system}.fish_light;
             }
           );
-        })
-
-        (self: super: {
-          oil = super.oil.overrideAttrs (old: {
-            env.NIX_CFLAGS_COMPILE = super.lib.optionalString super.stdenv.cc.isClang "-Wno-error=incompatible-function-pointer-types";
-          });
-        })
-
-        (self: super: {
-          lucid-fish-prompt = super.pkgs.stdenv.mkDerivation {
-            pname = "lucid-fish-prompt";
-            version = "latest";
-            src = lucid-fish-prompt-src;
-          };
         })
 
         (self: super: {

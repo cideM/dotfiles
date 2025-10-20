@@ -215,22 +215,6 @@
         "type": "github"
       }
     },
-    "github-nvim-theme-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1735641120,
-        "narHash": "sha256-/A4hkKTzjzeoR1SuwwklraAyI8oMkhxrwBBV9xb59PA=",
-        "owner": "projekt0n",
-        "repo": "github-nvim-theme",
-        "rev": "c106c9472154d6b2c74b74565616b877ae8ed31d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "projekt0n",
-        "repo": "github-nvim-theme",
-        "type": "github"
-      }
-    },
     "gitignore": {
       "inputs": {
         "nixpkgs": [
@@ -311,22 +295,6 @@
       "original": {
         "owner": "janet-lang",
         "repo": "janet.vim",
-        "type": "github"
-      }
-    },
-    "lucid-fish-prompt-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1670948184,
-        "narHash": "sha256-6HepVxMm9LdJoifczvQS98kAc1+RTKJh+OHRf28nhZM=",
-        "owner": "mattgreen",
-        "repo": "lucid.fish",
-        "rev": "b6aca138ce47289f2083bcb63c062d47dcaf4368",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mattgreen",
-        "repo": "lucid.fish",
         "type": "github"
       }
     },
@@ -475,6 +443,22 @@
         "type": "github"
       }
     },
+    "nvim-alabaster-scheme-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1760719058,
+        "narHash": "sha256-rLYA4WI5PsqH5qzOZaCCBpehdwTHqQqokUJEcexzWsE=",
+        "owner": "p00f",
+        "repo": "alabaster.nvim",
+        "rev": "f7d0ed5d6d0dd449b39acd3610a41b55bb693648",
+        "type": "github"
+      },
+      "original": {
+        "owner": "p00f",
+        "repo": "alabaster.nvim",
+        "type": "github"
+      }
+    },
     "operatorMono": {
       "flake": false,
       "locked": {
@@ -497,13 +481,12 @@
         "flake-utils": "flake-utils",
         "ghostty": "ghostty",
         "github-markdown-toc-go-src": "github-markdown-toc-go-src",
-        "github-nvim-theme-src": "github-nvim-theme-src",
         "home-manager": "home-manager",
         "janet-vim": "janet-vim",
-        "lucid-fish-prompt-src": "lucid-fish-prompt-src",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nix-fish-src": "nix-fish-src",
         "nixpkgs": "nixpkgs_4",
+        "nvim-alabaster-scheme-src": "nvim-alabaster-scheme-src",
         "operatorMono": "operatorMono",
         "vim-js": "vim-js",
         "yui": "yui",

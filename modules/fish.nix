@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: let
+}:
+let
   fishConfig = ''
     bind \cb edit_command_buffer
 
@@ -28,7 +29,8 @@
 
     fish_add_path -p ~/bin /usr/local/bin/ $VOLTA_HOME/bin
   '';
-in {
+in
+{
   programs.fish = {
     enable = true;
 
@@ -76,8 +78,7 @@ in {
       };
 
       fish_greeting = {
-        body = ''
-        '';
+        body = '''';
       };
     };
 
@@ -93,8 +94,8 @@ in {
       }
 
       {
-        name = "lucid";
-        src = pkgs.lucid-fish-prompt.src;
+        name = "hydro";
+        src = pkgs.fishPlugins.hydro.src;
       }
     ];
   };
