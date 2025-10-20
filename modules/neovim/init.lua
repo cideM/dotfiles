@@ -166,6 +166,23 @@ vim.keymap.set("c", "<c-s>", function()
   flash.toggle()
 end, { desc = "Toggle Flash Search" })
 
+vim.g.sandwich_no_default_key_mappings = 1
+
+-- add
+vim.keymap.set("n", "za", "<Plug>(sandwich-add)", { desc = "Sandwich add operator" })
+vim.keymap.set("x", "za", "<Plug>(sandwich-add)", { desc = "Sandwich add in visual mode" })
+vim.keymap.set("o", "za", "<Plug>(sandwich-add)", { desc = "Sandwich add in operator pending mode" })
+
+-- delete
+vim.keymap.set("n", "zd", "<Plug>(sandwich-delete)", { desc = "Sandwich delete operator" })
+vim.keymap.set("x", "zd", "<Plug>(sandwich-delete)", { desc = "Sandwich delete in visual mode" })
+vim.keymap.set("n", "zdb", "<Plug>(sandwich-delete-auto)", { desc = "Sandwich auto delete" })
+
+-- replace
+vim.keymap.set("n", "zr", "<Plug>(sandwich-replace)", { desc = "Sandwich replace operator" })
+vim.keymap.set("x", "zr", "<Plug>(sandwich-replace)", { desc = "Sandwich replace in visual mode" })
+vim.keymap.set("n", "zrb", "<Plug>(sandwich-replace-auto)", { desc = "Sandwich auto replace" })
+
 vim.diagnostic.config({
   virtual_text = false,
   virtual_lines = false,

@@ -135,6 +135,7 @@ in
         conform-nvim
         nvim-treesitter.withAllGrammars
         flash-nvim
+        vim-sandwich
 
         # optional
         vim-repeat
