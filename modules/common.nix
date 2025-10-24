@@ -8,7 +8,6 @@ with pkgs;
     claude-code
     coreutils-full
     curl
-    devenv
     diffoci
     du-dust
     dua
