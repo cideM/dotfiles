@@ -32,6 +32,7 @@ with pkgs;
     jujutsu
     jq
     micro
+    moreutils
     nano
     nix-output-monitor
     nh
