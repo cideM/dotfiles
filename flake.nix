@@ -33,8 +33,8 @@
     vim-js.flake = false;
 
     # yui.url = "path:/home/fbrs/private/yui";
-    yui.url = "path:/Users/fbs/private/yui";
-    # yui.url = "github:cidem/yui";
+    # yui.url = "path:/Users/fbs/private/yui";
+    yui.url = "github:cidem/yui";
     yui.flake = true;
 
     operatorMono = {
@@ -182,23 +182,22 @@
         };
       };
 
-      desktop =
+      vm =
         let
-          system = "x86_64-linux";
+          system = "aarch64-linux";
 
           modules = [
-            ./hosts/nixos/configuration.nix
+            ./hosts/vm/configuration.nix
             home-manager.nixosModules.home-manager
             {
-              nixpkgs.overlays = overlays ++ [];
+              nixpkgs.overlays = overlays;
               nixpkgs.config = {
                 allowUnfree = true;
               };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = false;
               home-manager.verbose = true;
-              home-manager.backupFileExtension = "hm-backup";
-              home-manager.users.fbrs = import ./hosts/nixos/home.nix;
+              home-manager.users.fbrs = import ./hosts/vm/home.nix;
               home-manager.extraSpecialArgs = specialArgs;
             }
           ];
@@ -206,7 +205,7 @@
         nixpkgs.lib.nixosSystem { inherit system modules specialArgs; };
     in
     {
-      nixosConfigurations.nixos = desktop;
+      nixosConfigurations.vm = vm;
       inherit homeConfigurations;
     }
     // flake-utils.lib.eachDefaultSystem (
