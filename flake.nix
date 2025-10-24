@@ -2,12 +2,6 @@
   description = "今日は";
 
   inputs = rec {
-    # It's broken on MacOS in Nixpkgs! That's why you need this instead of just pkgs.ghostty
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-      flake = true;
-    };
-
     nixpkgs.url = "github:NixOS/nixpkgs";
 
     home-manager = {
@@ -55,7 +49,6 @@
       janet-vim,
       home-manager,
       flake-utils,
-      ghostty,
       neovim-nightly-overlay,
       operatorMono,
       nvim-alabaster-scheme-src,
@@ -197,11 +190,7 @@
             ./hosts/nixos/configuration.nix
             home-manager.nixosModules.home-manager
             {
-              nixpkgs.overlays = overlays ++ [
-                (self: super: {
-                  ghostty = ghostty.packages.${super.system}.default;
-                })
-              ];
+              nixpkgs.overlays = overlays ++ [];
               nixpkgs.config = {
                 allowUnfree = true;
               };
