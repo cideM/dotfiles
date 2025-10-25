@@ -93,7 +93,7 @@ vm/secrets:
 	# Age keys
 	rsync -av -e 'ssh $(SSH_OPTIONS)' \
 		--mkpath \
-		$(HOME)/.config/sops/age/vm.txt $(NIXUSER)@$(NIXADDR):~/.config/sops/age/vm.txt
+		$(HOME)/.config/sops/age/keys.txt $(NIXUSER)@$(NIXADDR):~/.config/sops/age/keys.txt
 
 # copy the Nix configurations into the VM.
 vm/copy:
