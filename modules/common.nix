@@ -41,6 +41,7 @@ with pkgs;
     ripgrep
     rlwrap
     shellcheck
+    sops
     tokei
     tree
     uni
