@@ -90,6 +90,10 @@ vm/secrets:
 	rsync -av -e 'ssh $(SSH_OPTIONS)' \
 		--exclude='environment' \
 		$(HOME)/.ssh/ $(NIXUSER)@$(NIXADDR):~/.ssh
+	# Age keys
+	rsync -av -e 'ssh $(SSH_OPTIONS)' \
+		--mkpath \
+		$(HOME)/.config/sops/age/vm.txt $(NIXUSER)@$(NIXADDR):~/.config/sops/age/vm.txt
 
 # copy the Nix configurations into the VM.
 vm/copy:
