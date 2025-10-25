@@ -66,6 +66,7 @@
   };
 
   programs = {
+    bcc.enable = true;
     fish.enable = true;
     gnupg.agent = {
       enable = true;
