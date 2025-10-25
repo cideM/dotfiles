@@ -40,6 +40,7 @@ with pkgs;
     rclone
     ripgrep
     rlwrap
+    rsync
     shellcheck
     sops
     ssh-to-age
