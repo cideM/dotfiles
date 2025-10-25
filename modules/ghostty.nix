@@ -14,7 +14,7 @@ args@{
     font-style-italic = Book Italic
     font-style-bold-italic = Bold Italic
     font-style-bold = Bold
-    font-size = 14
+    font-size = ${if pkgs.stdenv.isDarwin then "14" else "13"}
     font-thicken = true
     font-thicken-strength = 20
     shell-integration-features = no-cursor,sudo
