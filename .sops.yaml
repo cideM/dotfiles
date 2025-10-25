@@ -1,0 +1,9 @@
+keys:
+  - &admin age1hp9semlpts72frwzvx5savfe7l0l8hx2s6uujz4tj4nps8cyeseqtfph8z
+  - &user_vm age1dss2w56jzvue9zx52nvtcsrq9cgtypfayf9sq9dal5vyn4lpvy5qql8g0r
+creation_rules:
+  - path_regex: secrets/secrets.yaml
+    key_groups:
+    - age:
+      - *admin
+      - *user_vm
