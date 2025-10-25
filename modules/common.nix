@@ -42,6 +42,7 @@ with pkgs;
     rlwrap
     shellcheck
     sops
+    ssh-to-age
     tokei
     tree
     uni
