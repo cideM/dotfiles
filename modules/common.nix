@@ -2,6 +2,7 @@
 with pkgs;
 {
   home.packages = [
+    age
     bashInteractive
     bat
     btop
