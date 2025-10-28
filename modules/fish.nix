@@ -14,12 +14,10 @@ let
     set -x VOLTA_HOME $HOME/.volta
 
     # https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
-    # XDG_RUNTIME_DIR should be set by pam_systemd
+    # XDG_RUNTIME_DIR is set by pam_systemd and should not be overridden
     set -x XDG_CONFIG_HOME $HOME/.config
     set -x XDG_DATA_HOME $HOME/.local/share
     set -x XDG_CACHE_HOME $HOME/.cache
-    set -x XDG_RUNTIME_DIR $HOME/.runtime
-    mkdir -p $XDG_RUNTIME_DIR
 
     fish_add_path /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/
     fish_add_path /Applications/Sublime\ Merge.app/Contents/SharedSupport/bin/

@@ -22,7 +22,6 @@
       home-manager.packages.aarch64-linux.default
       ghostty
       kanji-stroke-order-font
-      wl-clipboard
     ];
     sessionVariables = {
       GTK_IM_MODULE = "fcitx";

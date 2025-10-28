@@ -146,6 +146,7 @@
     gnumake
     git
     xclip
+    wl-clipboard
     killall
 
     # https://github.com/mitchellh/nixos-config/blob/main/machines/vm-shared.nix
