@@ -51,9 +51,9 @@
     xserver = {
       enable = true;
       xkb.layout = "us";
-      desktopManager.gnome.enable = true;
-      displayManager.gdm.enable = true;
     };
+    desktopManager.gnome.enable = true;
+    displayManager.gdm.enable = true;
     flatpak.enable = true;
   };
 
@@ -137,6 +137,7 @@
       experimental-features = nix-command flakes
       keep-outputs = true
       keep-derivations = true
+      extra-access-tokens = !include ${config.sops.secrets."git_token".path}
     '';
   };
 
@@ -175,6 +176,22 @@
     config = {
       allowUnfree = true;
       allowUnsupportedSystem = true;
+    };
+  };
+
+  sops = {
+    defaultSopsFile = ../../secrets/secrets.yaml;
+    age.keyFile = "/home/fbrs/.config/sops/age/keys.txt";
+    secrets = {
+      hello = {
+        owner = config.users.users.fbrs.name;
+      };
+      git_token = {
+        owner = config.users.users.fbrs.name;
+      };
+      claude_api_key = {
+        owner = config.users.users.fbrs.name;
+      };
     };
   };
 

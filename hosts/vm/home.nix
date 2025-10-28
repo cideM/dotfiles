@@ -2,6 +2,7 @@
   pkgs,
   home-manager,
   config,
+  osConfig,
   ...
 }:
 {
@@ -21,7 +22,7 @@
       home-manager.packages.aarch64-linux.default
       ghostty
       kanji-stroke-order-font
-      xsel
+      wl-clipboard
     ];
     sessionVariables = {
       GTK_IM_MODULE = "fcitx";
@@ -37,4 +38,14 @@
       enable = true;
     };
   };
+
+  home.file = {
+    ".claude/anthropic_key.sh" = {
+      text = ''
+        cat ${osConfig.sops.secrets."claude_api_key".path}
+      '';
+      executable = true;
+    };
+  };
+
 }

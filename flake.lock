@@ -405,9 +405,30 @@
         "nixpkgs": "nixpkgs_2",
         "nvim-alabaster-scheme-src": "nvim-alabaster-scheme-src",
         "operatorMono": "operatorMono",
+        "sops-nix": "sops-nix",
         "vim-js": "vim-js",
         "yui": "yui",
         "zig-overlay": "zig-overlay"
+      }
+    },
+    "sops-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1760998189,
+        "narHash": "sha256-ee2e1/AeGL5X8oy/HXsZQvZnae6XfEVdstGopKucYLY=",
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "rev": "5a7d18b5c55642df5c432aadb757140edfeb70b3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "type": "github"
       }
     },
     "systems": {

@@ -4,6 +4,11 @@
   inputs = rec {
     nixpkgs.url = "github:NixOS/nixpkgs";
 
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -58,6 +63,7 @@
       zig-overlay,
       yui,
       vim-js,
+      sops-nix,
     }@inputs:
     let
       overlays = [
@@ -188,8 +194,12 @@
 
           modules = [
             ./hosts/vm/configuration.nix
+            sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
             {
+              home-manager.sharedModules = [
+                sops-nix.homeManagerModules.sops
+              ];
               nixpkgs.overlays = overlays;
               nixpkgs.config = {
                 allowUnfree = true;
