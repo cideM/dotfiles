@@ -220,6 +220,20 @@ elseif vim.fn.executable("busctl") ~= 0 then
 else
 end
 
+if vim.uv.os_uname().sysname == "Linux" then
+  vim.g.clipboard = {
+    name = "wl",
+    copy = {
+      ["+"] = { "wl-copy", "--primary" },
+      ["*"] = { "wl-copy", "--primary" },
+    },
+    paste = {
+      ["+"] = { "wl-paste", "--primary" },
+      ["*"] = { "wl-paste", "--primary" },
+    },
+  }
+end
+
 if vim.uv.os_uname().sysname == "Darwin" then
   vim.api.nvim_create_user_command("Browse", function(t)
     local args = table.concat(t.fargs, " ")
