@@ -96,9 +96,9 @@ fzfLua.setup({
 
 fzfLua.register_ui_select()
 
--- vim.keymap.set("n", "<leader>g", fzfLua.global, {
---   desc = "fzf-lua global picker (no prefix -> files, $ -> buffers, @ -> symbols -> # global symbols)",
--- })
+vim.keymap.set("n", "<leader>g", fzfLua.global, {
+  desc = "fzf-lua global picker (no prefix -> files, $ -> buffers, @ -> symbols -> # global symbols)",
+})
 
 vim.keymap.set("n", "<leader>ff", fzfLua.files, {
   desc = "fzf-lua files",
@@ -197,19 +197,27 @@ if vim.fn.executable("defaults") == 1 then
     vim.cmd("source ~/private/yui/colors/yui.vim")
     vim.o.background = "light"
   end
-  elseif vim.fn.executable('busctl') ~= 0 then
-    -- Get the current color scheme from xdg-desktop-portal using busctl
-    local result = vim.fn.system({
-      "busctl", "--user", "call", "org.freedesktop.portal.Desktop", "/org/freedesktop/portal/desktop",
-      "org.freedesktop.portal.Settings", "ReadOne", "ss", "org.freedesktop.appearance", "color-scheme"
-    })
-    -- The result is in the form of "v u 0" for light and "v u 1" for dark
-    local color_scheme = result:match("u%s+(%d+)")
+elseif vim.fn.executable("busctl") ~= 0 then
+  -- Get the current color scheme from xdg-desktop-portal using busctl
+  local result = vim.fn.system({
+    "busctl",
+    "--user",
+    "call",
+    "org.freedesktop.portal.Desktop",
+    "/org/freedesktop/portal/desktop",
+    "org.freedesktop.portal.Settings",
+    "ReadOne",
+    "ss",
+    "org.freedesktop.appearance",
+    "color-scheme",
+  })
+  -- The result is in the form of "v u 0" for light and "v u 1" for dark
+  local color_scheme = result:match("u%s+(%d+)")
 
-    if color_scheme == '1' then
-      background = 'dark'
-    end
-  else
+  if color_scheme == "1" then
+    background = "dark"
+  end
+else
 end
 
 if vim.uv.os_uname().sysname == "Darwin" then
