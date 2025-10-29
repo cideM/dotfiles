@@ -96,9 +96,9 @@ fzfLua.setup({
 
 fzfLua.register_ui_select()
 
-vim.keymap.set("n", "<leader>g", fzfLua.global, {
-  desc = "fzf-lua global picker (no prefix -> files, $ -> buffers, @ -> symbols -> # global symbols)",
-})
+-- vim.keymap.set("n", "<leader>g", fzfLua.global, {
+--   desc = "fzf-lua global picker (no prefix -> files, $ -> buffers, @ -> symbols -> # global symbols)",
+-- })
 
 vim.keymap.set("n", "<leader>ff", fzfLua.files, {
   desc = "fzf-lua files",
