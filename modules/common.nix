@@ -10,7 +10,7 @@ with pkgs;
     coreutils-full
     curl
     diffoci
-    du-dust
+    dust
     dua
     entr
     eza

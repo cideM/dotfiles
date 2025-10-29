@@ -1,14 +1,7 @@
 # Mostly taken from:
 # https://github.com/mitchellh/nixos-config/
-{
-  config,
-  pkgs,
-  ...
-}:
-{
-  imports = [
-    ./hwconf.nix
-  ];
+{ config, pkgs, ... }: {
+  imports = [ ./hwconf.nix ];
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
@@ -51,17 +44,47 @@
     xserver = {
       enable = true;
       xkb.layout = "us";
+      desktopManager.gnome.enable = true;
+      displayManager.gdm.enable = true;
     };
-    desktopManager.gnome.enable = true;
-    displayManager.gdm.enable = true;
     flatpak.enable = true;
   };
 
+  environment.gnome.excludePackages = with pkgs; [
+    baobab # disk usage analyzer
+    cheese # photo booth
+    eog # image viewer
+    epiphany # web browser
+    gedit # text editor
+    simple-scan # document scanner
+    totem # video player
+    yelp # help viewer
+    evince # document viewer
+    file-roller # archive manager
+    geary # email client
+    seahorse # password manager
+
+    # these should be self explanatory
+    gnome-calculator
+    gnome-calendar
+    gnome-characters
+    gnome-clocks
+    gnome-contacts
+    gnome-font-viewer
+    gnome-logs
+    gnome-maps
+    gnome-music
+    gnome-photos
+    gnome-screenshot
+    gnome-system-monitor
+    gnome-weather
+    gnome-disk-utility
+    gnome-connections
+  ];
+
   fonts = {
     fontDir.enable = true;
-    fontconfig = {
-      enable = true;
-    };
+    fontconfig = { enable = true; };
     packages = [ pkgs.operatorMonoFont ];
   };
 
@@ -101,7 +124,7 @@
       enable = true;
       type = "fcitx5";
       fcitx5.addons = with pkgs; [
-        fcitx5-chinese-addons
+        qt6Packages.fcitx5-chinese-addons
         fcitx5-gtk
         fcitx5-hangul
         fcitx5-mozc
@@ -122,21 +145,16 @@
   time.timeZone = "Europe/Berlin";
 
   nix = {
-    package = pkgs.lixPackageSets.stable.lix;
+    optimise.automatic = true;
     gc = {
       automatic = true;
       dates = "daily";
     };
-    settings = {
-      trusted-users = [
-        "root"
-        "fbrs"
-      ];
-    };
+    settings = { trusted-users = [ "root" "fbrs" ]; };
     extraOptions = ''
       experimental-features = nix-command flakes
-      keep-outputs = true
-      keep-derivations = true
+      keep-outputs = false
+      keep-derivations = false
       extra-access-tokens = !include ${config.sops.secrets."git_token".path}
     '';
   };
@@ -164,12 +182,7 @@
       isNormalUser = true;
       description = "Florian";
       shell = pkgs.fish;
-      extraGroups = [
-        "adbusers"
-        "wheel"
-        "docker"
-        "networkmanager"
-      ];
+      extraGroups = [ "adbusers" "wheel" "docker" "networkmanager" ];
     };
   };
 
@@ -184,15 +197,9 @@
     defaultSopsFile = ../../secrets/secrets.yaml;
     age.keyFile = "/home/fbrs/.config/sops/age/keys.txt";
     secrets = {
-      hello = {
-        owner = config.users.users.fbrs.name;
-      };
-      git_token = {
-        owner = config.users.users.fbrs.name;
-      };
-      claude_api_key = {
-        owner = config.users.users.fbrs.name;
-      };
+      hello = { owner = config.users.users.fbrs.name; };
+      git_token = { owner = config.users.users.fbrs.name; };
+      claude_api_key = { owner = config.users.users.fbrs.name; };
     };
   };
 

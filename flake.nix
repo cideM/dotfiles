@@ -2,7 +2,7 @@
   description = "今日は";
 
   inputs = rec {
-    nixpkgs.url = "github:NixOS/nixpkgs";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -10,7 +10,7 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -48,34 +48,11 @@
     };
   };
 
-  outputs =
-    {
-      self,
-      janet-vim,
-      home-manager,
-      flake-utils,
-      neovim-nightly-overlay,
-      operatorMono,
-      nvim-alabaster-scheme-src,
-      github-markdown-toc-go-src,
-      nixpkgs,
-      nix-fish-src,
-      zig-overlay,
-      yui,
-      vim-js,
-      sops-nix,
-    }@inputs:
+  outputs = { self, janet-vim, home-manager, flake-utils, neovim-nightly-overlay
+    , operatorMono, nvim-alabaster-scheme-src, github-markdown-toc-go-src
+    , nixpkgs, nix-fish-src, zig-overlay, yui, vim-js, sops-nix, }@inputs:
     let
       overlays = [
-        (final: prev: {
-          inherit (prev.lixPackageSets.stable)
-            nixpkgs-review
-            nix-eval-jobs
-            nix-fast-build
-            colmena
-            ;
-        })
-
         (final: prev: rec { zigpkgs = zig-overlay.packages.${prev.system}; })
 
         (self: super: {
@@ -144,11 +121,8 @@
         })
 
         (final: prev: {
-          fishPlugins = prev.fishPlugins.overrideScope (
-            finalx: prevx: {
-              yui = yui.packages.${final.system}.fish_light;
-            }
-          );
+          fishPlugins = prev.fishPlugins.overrideScope
+            (finalx: prevx: { yui = yui.packages.${final.system}.fish_light; });
         })
 
         (self: super: {
@@ -160,16 +134,12 @@
         })
       ];
 
-      specialArgs = {
-        inherit home-manager inputs;
-      };
+      specialArgs = { inherit home-manager inputs; };
 
       homeConfigurations = {
         work-m1 = home-manager.lib.homeManagerConfiguration rec {
           extraSpecialArgs = specialArgs;
-          pkgs = import nixpkgs {
-            system = "aarch64-darwin";
-          };
+          pkgs = import nixpkgs { system = "aarch64-darwin"; };
           modules = [
             {
               home = {
@@ -179,59 +149,47 @@
             }
             {
               nixpkgs.overlays = overlays;
-              nixpkgs.config = {
-                allowUnfree = true;
-              };
+              nixpkgs.config = { allowUnfree = true; };
             }
             ./hosts/fbs-work.local/home.nix
           ];
         };
       };
 
-      vm =
-        let
-          system = "aarch64-linux";
+      vm = let
+        system = "aarch64-linux";
 
-          modules = [
-            ./hosts/vm/configuration.nix
-            sops-nix.nixosModules.sops
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.sharedModules = [
-                sops-nix.homeManagerModules.sops
-              ];
-              nixpkgs.overlays = overlays;
-              nixpkgs.config = {
-                allowUnfree = true;
-              };
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = false;
-              home-manager.verbose = true;
-              home-manager.users.fbrs = import ./hosts/vm/home.nix;
-              home-manager.extraSpecialArgs = specialArgs;
-            }
-          ];
-        in
-        nixpkgs.lib.nixosSystem { inherit system modules specialArgs; };
-    in
-    {
+        modules = [
+          ./hosts/vm/configuration.nix
+          sops-nix.nixosModules.sops
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.sharedModules = [ sops-nix.homeManagerModules.sops ];
+            nixpkgs.overlays = overlays;
+            nixpkgs.config = { allowUnfree = true; };
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = false;
+            home-manager.verbose = true;
+            home-manager.users.fbrs = import ./hosts/vm/home.nix;
+            home-manager.extraSpecialArgs = specialArgs;
+          }
+        ];
+      in nixpkgs.lib.nixosSystem { inherit system modules specialArgs; };
+    in {
       nixosConfigurations.vm = vm;
       inherit homeConfigurations;
-    }
-    // flake-utils.lib.eachDefaultSystem (
-      system:
+    } // flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
           system = system;
           config.allowUnfree = true;
         };
-      in
-      rec {
+      in rec {
         devShell = pkgs.mkShell {
           buildInputs = with pkgs; [
             janet
             jpm
-            nixfmt
+            nixfmt-classic
             nodePackages.prettier
             lua-language-server
             lua
@@ -239,6 +197,5 @@
             claude-code
           ];
         };
-      }
-    );
+      });
 }

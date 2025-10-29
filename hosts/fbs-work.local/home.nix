@@ -16,7 +16,7 @@
   ];
 
   nix = {
-    package = pkgs.lixPackageSets.stable.lix;
+    package = pkgs.nixVersions.latest
     gc = {
       automatic = true;
       dates = "daily";
