@@ -189,7 +189,7 @@
           buildInputs = with pkgs; [
             janet
             jpm
-            nixfmt-classic
+            nixfmt
             nodePackages.prettier
             lua-language-server
             lua
