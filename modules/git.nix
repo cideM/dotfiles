@@ -81,6 +81,7 @@
     [core]
         editor = nvim
         excludesfile = ~/.gitignore
+        pager = 'less'
 
     [filter "lfs"]
         clean = git-lfs clean -- %f
