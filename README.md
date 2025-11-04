@@ -1,27 +1,7 @@
-# Welcome
-
-Nix Flake for my M1 laptop and NixOS desktop computer.
-
-## MacOS (`aarch64-darwin`)
-
-The `nix-shell` command is for the first run, afterwards just run `home-manager`
+# Getting Started
 
 ```shell
-$ cat /etc/nix/nix.conf
-build-users-group = nixbld
-experimental-features = nix-command flakes
-bash-prompt-prefix = (nix:$name)\040
-max-jobs = auto
-substituters = https://cache.nixos.org https://cache.lix.systems
-trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o=
-extra-nix-path = nixpkgs=flake:nixpkgs
-trusted-users = root fbs
-...
 $ nix-shell -p lix --command "nix build --experimental-features 'nix-command flakes' '.#homeConfigurations.work-m1.activationPackage'"
 $ ./result/activate
-$ home-manager build --flake .#work-m1
+$ nh home switch . -c work-m1
 ```
-
-## NixOS
-
-`sudo nixos-rebuild switch --flake .`
