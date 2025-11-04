@@ -126,8 +126,6 @@ with pkgs;
     };
   };
 
-  programs.man.enable = true;
-
   xdg.dataFile."task/hooks/on-modify.timewarrior" = {
     executable = true;
     source = "${pkgs.timewarrior}/share/doc/timew/ext/on-modify.timewarrior";
