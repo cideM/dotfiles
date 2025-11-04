@@ -83,10 +83,6 @@
         })
 
         (self: super: {
-          yui-alacritty-theme = yui.packages.${super.system}.alacritty;
-        })
-
-        (self: super: {
           vimPlugins = super.vimPlugins // {
             yui = yui.packages.${super.system}.neovim;
           };

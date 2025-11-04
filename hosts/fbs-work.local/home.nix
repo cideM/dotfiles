@@ -10,7 +10,6 @@
     (import ../../modules/ctags.nix)
     (import ../../modules/fish.nix)
     (import ../../modules/common.nix)
-    (import ../../modules/alacritty)
     (import ../../modules/git.nix)
     (import ../../modules/ghostty.nix)
   ];
