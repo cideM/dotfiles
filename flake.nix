@@ -66,11 +66,14 @@
         "aarch64-darwin"
       ];
 
+      imports = [
+        inputs.home-manager.flakeModules.home-manager
+      ];
+
       flake =
         let
           inherit (inputs)
             janet-vim
-            home-manager
             neovim-nightly-overlay
             operatorMono
             nvim-alabaster-scheme-src
@@ -160,14 +163,15 @@
               };
             })
           ];
-
-          specialArgs = { inherit home-manager inputs; };
         in
         {
           homeConfigurations = {
-            work-m1 = home-manager.lib.homeManagerConfiguration rec {
-              extraSpecialArgs = specialArgs;
-              pkgs = import nixpkgs { system = "aarch64-darwin"; };
+            work-m1 = inputs.home-manager.lib.homeManagerConfiguration {
+              extraSpecialArgs = { inherit inputs; };
+              pkgs = import nixpkgs {
+                system = "aarch64-darwin";
+                config.allowUnfree = true;
+              };
               modules = [
                 {
                   home = {
@@ -199,6 +203,7 @@
               lua-language-server
               lua
               stylua
+              home-manager
             ];
           };
         };

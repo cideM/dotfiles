@@ -1,6 +1,5 @@
 {
   pkgs,
-  home-manager,
   config,
   ...
 }:
@@ -26,7 +25,6 @@
     stateVersion = "20.09";
     packages = with pkgs; [
       unixtools.watch
-      home-manager.packages.aarch64-darwin.default
       aerospace
     ];
     file = {
