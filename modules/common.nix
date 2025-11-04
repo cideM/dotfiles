@@ -60,7 +60,7 @@ with pkgs;
     enable = true;
     colorTheme = "no-color";
     config = {
-      news.version = "3.3.0";
+      news.version = "3.4.2";
       context = {
         work = {
           read = "+work";
