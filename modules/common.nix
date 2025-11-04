@@ -42,6 +42,9 @@ with pkgs;
     rlwrap
     rsync
     shellcheck
+    tasksh
+    time
+    timewarrior
     sops
     ssh-to-age
     tokei
@@ -51,6 +54,32 @@ with pkgs;
     unzip
     wget
   ];
+
+  programs.taskwarrior = {
+    package = pkgs.taskwarrior3;
+    enable = true;
+    colorTheme = "no-color";
+    config = {
+      news.version = "3.3.0";
+      context = {
+        work = {
+          read = "+work";
+          write = "+work";
+        };
+        home = {
+          read = "-work +home";
+          write = "+home";
+        };
+      };
+    };
+  };
+
+  nix = {
+    gc = {
+      automatic = true;
+      frequency = "daily";
+    };
+  };
 
   home.sessionVariables = {
     LANG = "en_US.UTF-8";
@@ -95,6 +124,13 @@ with pkgs;
         "--style=minimal"
       ];
     };
+  };
+
+  programs.man.enable = true;
+
+  xdg.dataFile."task/hooks/on-modify.timewarrior" = {
+    executable = true;
+    source = "${pkgs.timewarrior}/share/doc/timew/ext/on-modify.timewarrior";
   };
 
   xdg.configFile.".gemrc".text = ''
