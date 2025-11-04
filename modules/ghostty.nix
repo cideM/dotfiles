@@ -23,6 +23,7 @@ args@{
     quick-terminal-position = center
     theme = light:yui_light,dark:yui_dark
     window-padding-x = 20
+    window-padding-y = 20
     keybind = shift+enter=text:\x1b\r
     keybind = global:cmd+backquote=toggle_quick_terminal
     keybind = ctrl+shift+w=close_surface
