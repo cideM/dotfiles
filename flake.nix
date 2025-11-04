@@ -48,9 +48,23 @@
     };
   };
 
-  outputs = { self, janet-vim, home-manager, flake-utils, neovim-nightly-overlay
-    , operatorMono, nvim-alabaster-scheme-src, github-markdown-toc-go-src
-    , nixpkgs, nix-fish-src, zig-overlay, yui, vim-js, sops-nix, }@inputs:
+  outputs =
+    {
+      self,
+      janet-vim,
+      home-manager,
+      flake-utils,
+      neovim-nightly-overlay,
+      operatorMono,
+      nvim-alabaster-scheme-src,
+      github-markdown-toc-go-src,
+      nixpkgs,
+      nix-fish-src,
+      zig-overlay,
+      yui,
+      vim-js,
+      sops-nix,
+    }@inputs:
     let
       overlays = [
         (final: prev: rec { zigpkgs = zig-overlay.packages.${prev.system}; })
@@ -121,8 +135,9 @@
         })
 
         (final: prev: {
-          fishPlugins = prev.fishPlugins.overrideScope
-            (finalx: prevx: { yui = yui.packages.${final.system}.fish_light; });
+          fishPlugins = prev.fishPlugins.overrideScope (
+            finalx: prevx: { yui = yui.packages.${final.system}.fish_light; }
+          );
         })
 
         (self: super: {
@@ -149,42 +164,28 @@
             }
             {
               nixpkgs.overlays = overlays;
-              nixpkgs.config = { allowUnfree = true; };
+              nixpkgs.config = {
+                allowUnfree = true;
+              };
             }
             ./hosts/fbs-work.local/home.nix
           ];
         };
       };
 
-      vm = let
-        system = "aarch64-linux";
-
-        modules = [
-          ./hosts/vm/configuration.nix
-          sops-nix.nixosModules.sops
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.sharedModules = [ sops-nix.homeManagerModules.sops ];
-            nixpkgs.overlays = overlays;
-            nixpkgs.config = { allowUnfree = true; };
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = false;
-            home-manager.verbose = true;
-            home-manager.users.fbrs = import ./hosts/vm/home.nix;
-            home-manager.extraSpecialArgs = specialArgs;
-          }
-        ];
-      in nixpkgs.lib.nixosSystem { inherit system modules specialArgs; };
-    in {
-      nixosConfigurations.vm = vm;
+    in
+    {
       inherit homeConfigurations;
-    } // flake-utils.lib.eachDefaultSystem (system:
+    }
+    // flake-utils.lib.eachDefaultSystem (
+      system:
       let
         pkgs = import nixpkgs {
           system = system;
           config.allowUnfree = true;
         };
-      in rec {
+      in
+      rec {
         devShell = pkgs.mkShell {
           buildInputs = with pkgs; [
             janet
@@ -197,5 +198,6 @@
             claude-code
           ];
         };
-      });
+      }
+    );
 }
