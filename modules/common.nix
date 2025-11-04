@@ -10,8 +10,8 @@ with pkgs;
     coreutils-full
     curl
     diffoci
-    dust
     dua
+    dust
     entr
     eza
     fastmod
@@ -34,19 +34,19 @@ with pkgs;
     micro
     moreutils
     nano
-    nix-output-monitor
     nh
+    nix-output-monitor
     oils-for-unix
     rclone
     ripgrep
     rlwrap
     rsync
     shellcheck
+    sops
+    ssh-to-age
     tasksh
     time
     timewarrior
-    sops
-    ssh-to-age
     tokei
     tree
     uni
