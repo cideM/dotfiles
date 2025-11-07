@@ -9,9 +9,7 @@ let
     bind \cb edit_command_buffer
 
     set -x BAT_THEME 'GitHub'
-
     set -x MANPAGER 'nvim +Man!'
-
     set -x VOLTA_HOME $HOME/.volta
 
     # https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
@@ -36,7 +34,6 @@ in
         shellAbbrs = {
           g = "git";
           dc = "docker compose";
-          tf = "terraform";
           n = "nvim";
           k = "kubectl";
         };
@@ -73,17 +70,6 @@ in
                 git commit --fixup $commit
                 GIT_SEQUENCE_EDITOR=true git rebase $commit~1 --interactive --autosquash
               end
-            '';
-          };
-
-          gc = {
-            description = "fzf git checkout";
-            body = ''
-              git checkout (git branch -a --sort=-committerdate |
-                fzf --preview 'git log (echo {} | sed -E -e \'s/^(\+|\*)//\' | string trim) -- ' |
-                sed -E -e 's/^(\+|\*)//' |
-                xargs basename |
-                string trim)
             '';
           };
 
