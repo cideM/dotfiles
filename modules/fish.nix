@@ -5,6 +5,7 @@
 }:
 let
   fishConfig = ''
+    #  alt+e
     bind \cb edit_command_buffer
 
     set -x BAT_THEME 'GitHub'
@@ -19,13 +20,10 @@ let
     set -x XDG_DATA_HOME $HOME/.local/share
     set -x XDG_CACHE_HOME $HOME/.cache
 
-    fish_add_path /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/
-    fish_add_path /Applications/Sublime\ Merge.app/Contents/SharedSupport/bin/
-
     set -x GOPATH ~/go
     set -x GOCACHE $XDG_CACHE_HOME/go-build
 
-    fish_add_path -p ~/bin /usr/local/bin/ $VOLTA_HOME/bin
+    fish_add_path -p /usr/local/bin/ $VOLTA_HOME/bin
   '';
 in
 {
@@ -46,6 +44,8 @@ in
         interactiveShellInit =
           fishConfig
           + lib.optionalString pkgs.stdenv.isDarwin ''
+            fish_add_path /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/
+            fish_add_path /Applications/Sublime\ Merge.app/Contents/SharedSupport/bin/
             fish_add_path /opt/local/bin /opt/local/sbin
 
             # MacPorts
