@@ -36,6 +36,7 @@
         gzip
         hledger
         hyperfine
+        jrnl
         jq
         micro
         moreutils
@@ -59,6 +60,29 @@
         unzip
         wget
       ];
+
+      xdg.configFile."jrnl/jrnl.yaml".source = (pkgs.formats.yaml { }).generate "" {
+        colors = {
+          body = "NONE";
+          date = "NONE";
+          tags = "NONE";
+          title = "NONE";
+        };
+        default_hour = 9;
+        default_minute = 0;
+        editor = "nvim";
+        encrypt = true;
+        highlight = true;
+        indent_character = "|";
+        journals = {
+          default = "/Users/fbs/private/journal/journal.txt";
+        };
+        linewrap = 79;
+        tagsymbols = "#@";
+        template = false;
+        timeformat = "%F %r";
+        version = "v${pkgs.jrnl.version}";
+      };
 
       programs.taskwarrior = {
         package = pkgs.taskwarrior3;
