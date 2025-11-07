@@ -1,6 +1,6 @@
 {
-  pkgs,
   config,
+  inputs,
   ...
 }:
 let
@@ -29,72 +29,85 @@ let
   '';
 in
 {
-  programs.fish = {
-    enable = true;
+  flake.modules.homeManager.fish =
+    { pkgs, lib, ... }:
+    {
+      programs.fish = {
+        enable = true;
 
-    shellAbbrs = {
-      g = "git";
-      dc = "docker compose";
-      tf = "terraform";
-      n = "nvim";
-      k = "kubectl";
+        shellAbbrs = {
+          g = "git";
+          dc = "docker compose";
+          tf = "terraform";
+          n = "nvim";
+          k = "kubectl";
+        };
+
+        interactiveShellInit =
+          fishConfig
+          + lib.optionalString pkgs.stdenv.isDarwin ''
+            fish_add_path /opt/local/bin /opt/local/sbin
+
+            # MacPorts
+            if not contains /opt/local/share/man $MANPATH
+              set --append MANPATH /opt/local/share/man
+            end
+          '';
+
+        functions = {
+          gi = {
+            description = "Pick commit for interactive rebase";
+            body = ''
+              set -l commit (git log --oneline --decorate | fzf --preview 'git show (echo {} | awk \'{ print $1 }\')' | awk '{ print $1 }')
+              if test -n "$commit"
+                git rebase $commit~1 --interactive --autosquash
+              end
+            '';
+          };
+
+          gf = {
+            description = "Fixup a commit then autosquash";
+            body = ''
+              set -l commit (git log --oneline --decorate | fzf --preview 'git show (echo {} | awk \'{ print $1 }\')' | awk '{ print $1 }')
+              if test -n "$commit"
+                git commit --fixup $commit
+                GIT_SEQUENCE_EDITOR=true git rebase $commit~1 --interactive --autosquash
+              end
+            '';
+          };
+
+          gc = {
+            description = "fzf git checkout";
+            body = ''
+              git checkout (git branch -a --sort=-committerdate |
+                fzf --preview 'git log (echo {} | sed -E -e \'s/^(\+|\*)//\' | string trim) -- ' |
+                sed -E -e 's/^(\+|\*)//' |
+                xargs basename |
+                string trim)
+            '';
+          };
+
+          fish_greeting = {
+            body = '''';
+          };
+        };
+
+        plugins = [
+          {
+            name = "nix-env";
+            src = inputs.nix-fish-src;
+          }
+
+          {
+            name = "yui";
+            src = inputs.yui.packages.${pkgs.stdenv.hostPlatform.system}.fish_light.src;
+          }
+
+          {
+            name = "hydro";
+            src = pkgs.fishPlugins.hydro.src;
+          }
+        ];
+      };
     };
-
-    interactiveShellInit = fishConfig;
-
-    functions = {
-      gi = {
-        description = "Pick commit for interactive rebase";
-        body = ''
-          set -l commit (git log --oneline --decorate | fzf --preview 'git show (echo {} | awk \'{ print $1 }\')' | awk '{ print $1 }')
-          if test -n "$commit"
-            git rebase $commit~1 --interactive --autosquash
-          end
-        '';
-      };
-
-      gf = {
-        description = "Fixup a commit then autosquash";
-        body = ''
-          set -l commit (git log --oneline --decorate | fzf --preview 'git show (echo {} | awk \'{ print $1 }\')' | awk '{ print $1 }')
-          if test -n "$commit"
-            git commit --fixup $commit
-            GIT_SEQUENCE_EDITOR=true git rebase $commit~1 --interactive --autosquash
-          end
-        '';
-      };
-
-      gc = {
-        description = "fzf git checkout";
-        body = ''
-          git checkout (git branch -a --sort=-committerdate |
-            fzf --preview 'git log (echo {} | sed -E -e \'s/^(\+|\*)//\' | string trim) -- ' |
-            sed -E -e 's/^(\+|\*)//' |
-            xargs basename |
-            string trim)
-        '';
-      };
-
-      fish_greeting = {
-        body = '''';
-      };
-    };
-
-    plugins = [
-      {
-        name = "nix-env";
-        src = pkgs.nix-fish.src;
-      }
-
-      {
-        name = "yui";
-        src = pkgs.fishPlugins.yui.src;
-      }
-
-      {
-        name = "hydro";
-        src = pkgs.fishPlugins.hydro.src;
-      }
-    ];
-  };
 }

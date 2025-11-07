@@ -1,95 +1,118 @@
-{ pkgs, ... }:
+{ ... }:
 {
-  # Can't use programs.git because https://github.com/NixOS/nixpkgs/issues/62353
-  xdg.configFile."git/config".text = ''
-    [column]
-        ui = auto
+  flake.modules.homeManager.git =
+    { pkgs, lib, ... }:
+    {
+      home.packages = [
+        pkgs.git-lfs
+        pkgs.gh
+        pkgs.delta
+      ];
 
-    [push]
-        default = simple
-        autoSetupRemote = true
-        followTags = true
+      xdg.configFile = {
+        "git/.gitignore".text = ''
+          .direnv
+          .devenv
+        '';
 
-    [help]
-        autocorrect = prompt
+        "git/attributes".text = ''
+          *.lockb binary diff=lockb
+        '';
 
-    [gpg]
-        program = ${pkgs.gnupg}/bin/gpg
+        # Can't use programs.git because https://github.com/NixOS/nixpkgs/issues/62353
+        "git/config" = lib.mkIf pkgs.stdenv.isDarwin {
+          text = ''
+            [column]
+                ui = auto
 
-    [commit]
-        verbose = true
+            [push]
+                default = simple
+                autoSetupRemote = true
+                followTags = true
 
-    [rerere]
-        enabled = true
-        autoupdate = true
+            [help]
+                autocorrect = prompt
 
-    [fetch]
-        prune = true
-        pruneTags = true
-        all = true
+            [gpg]
+                program = ${pkgs.gnupg}/bin/gpg
 
-    [branch]
-        sort = -committerdate
+            [commit]
+                verbose = true
 
-    [tag]
-        sort = version:refname
+            [rerere]
+                enabled = true
+                autoupdate = true
 
-    [init]
-        defaultBranch = main
+            [fetch]
+                prune = true
+                pruneTags = true
+                all = true
 
-    [diff]
-        algorithm = histogram
-        colorMoved = plain
-        renames = true
-        mnemonicPrefix = true
-        noprefix = true
+            [branch]
+                sort = -committerdate
 
-    [diff "lockb"]
-        binary = true
-        textconv = ${pkgs.bun}/bin/bun
+            [tag]
+                sort = version:refname
 
-    [pull]
-        rebase = true
+            [init]
+                defaultBranch = main
 
-    [rebase]
-        autoSquash = true
-        autoStash = true
-        updateRefs = true
+            [diff]
+                algorithm = histogram
+                colorMoved = plain
+                renames = true
+                mnemonicPrefix = true
+                noprefix = true
 
-    [merge]
-        tool = nvimdiff1
-        conflictStyle = zdiff3
+            [diff "lockb"]
+                binary = true
+                textconv = ${pkgs.bun}/bin/bun
 
-    [mergetool]
-        keepBackup = false
+            [pull]
+                rebase = true
 
-    [mergetool "nvimdiff1"]
-        hideResolved = true
-        keepBackup = false
-        prompt = false
+            [rebase]
+                autoSquash = true
+                autoStash = true
+                updateRefs = true
 
-    [alias]
-        mt = mergetool
+            [merge]
+                tool = nvimdiff1
+                conflictStyle = zdiff3
 
-    [user]
-        email = yuuki@protonmail.com
-        name = Florian Beeres
+            [mergetool]
+                keepBackup = false
 
-    [github]
-        user = "yuuki@protonmail.com"
+            [mergetool "nvimdiff1"]
+                hideResolved = true
+                keepBackup = false
+                prompt = false
 
-    [core]
-        editor = nvim
-        excludesfile = ~/.gitignore
-        pager = 'less'
+            [alias]
+                mt = mergetool
 
-    [filter "lfs"]
-        clean = git-lfs clean -- %f
-        smudge = git-lfs smudge -- %f
-        process = git-lfs filter-process
-        required = true
+            [user]
+                email = yuuki@protonmail.com
+                name = Florian Beeres
 
-    [url "git@github.com:"]
-        insteadOf = https://github.com/
-  '';
+            [github]
+                user = "yuuki@protonmail.com"
+
+            [core]
+                editor = nvim
+                excludesfile = ~/.gitignore
+                pager = 'less'
+
+            [filter "lfs"]
+                clean = git-lfs clean -- %f
+                smudge = git-lfs smudge -- %f
+                process = git-lfs filter-process
+                required = true
+
+            [url "git@github.com:"]
+                insteadOf = https://github.com/
+          '';
+        };
+      };
+    };
 }

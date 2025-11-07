@@ -126,6 +126,21 @@
         "type": "github"
       }
     },
+    "import-tree": {
+      "locked": {
+        "lastModified": 1762327901,
+        "narHash": "sha256-AJ96FNj50DU0bTyIzAPkPOjCZTHqjURVjok8qoXvmqM=",
+        "owner": "vic",
+        "repo": "import-tree",
+        "rev": "90fa129798be99cde036b78658e89475710966a1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vic",
+        "repo": "import-tree",
+        "type": "github"
+      }
+    },
     "janet-vim": {
       "flake": false,
       "locked": {
@@ -296,6 +311,7 @@
         "flake-parts": "flake-parts",
         "github-markdown-toc-go-src": "github-markdown-toc-go-src",
         "home-manager": "home-manager",
+        "import-tree": "import-tree",
         "janet-vim": "janet-vim",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nix-fish-src": "nix-fish-src",
