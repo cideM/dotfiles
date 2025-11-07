@@ -10,18 +10,6 @@
         vendorHash = "sha256-K5yb7bnW6eS5UESK9wgNEUwGjB63eJk6+B0jFFiFero=";
       };
 
-      glowConfig = ''
-        # style name or JSON path (default "auto")
-        style: "auto"
-        # show local files only; no network (TUI-mode only)
-        local: true
-        # mouse support (TUI-mode only)
-        mouse: false
-        # use pager to display markdown
-        pager: false
-        # word-wrap at width
-        width: 80
-      '';
     in
     {
       home.packages = with pkgs; [
@@ -42,7 +30,6 @@
         findutils
         gawk
         github-markdown-toc
-        glow
         gnugrep
         gnupg
         gnused
@@ -153,14 +140,6 @@
         ".gemrc".text = ''
           :ipv4_fallback_enabled: true
         '';
-
-        "glow/glow.yml" = lib.mkIf (!pkgs.stdenv.isDarwin) {
-          text = glowConfig;
-        };
-      };
-
-      home.file."/Library/Preferences/glow/glow.yml" = lib.mkIf pkgs.stdenv.isDarwin {
-        text = glowConfig;
       };
 
       # https://github.com/rycee/home-manager/issues/432
