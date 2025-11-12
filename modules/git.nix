@@ -100,7 +100,7 @@
 
             [core]
                 editor = nvim
-                excludesfile = ~/.gitignore
+                excludesfile = ~/.config/git/.gitignore
                 pager = 'less'
 
             [filter "lfs"]
