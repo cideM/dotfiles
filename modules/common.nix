@@ -57,6 +57,7 @@
         tree
         uni
         universal-ctags
+        unixtools.watch
         unzip
         wget
       ];
