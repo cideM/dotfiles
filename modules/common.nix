@@ -38,9 +38,11 @@
         hyperfine
         jrnl
         jq
+        mdformat
         micro
         moreutils
         nh
+        nodePackages.prettier
         nix-output-monitor
         oils-for-unix
         rclone

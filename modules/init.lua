@@ -9,6 +9,8 @@ vim.g.loaded_tarPlugin = 1
 vim.g.loaded_vimball = 1
 vim.g.loaded_vimballPlugin = 1
 
+vim.g.markdown_folding = 1
+
 vim.o.number = false
 vim.o.winborder = "rounded"
 vim.o.numberwidth = 3
@@ -281,14 +283,6 @@ vim.keymap.set("n", "<BS>", "<C-^>", {
   desc = "Switch to most recent buffer",
 })
 
-vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-
-vim.keymap.set("n", "<C-f>", function()
-  require("conform").format()
-end, {
-  desc = "format the buffer with LSP",
-})
-
 require("treesitter-context").setup({
   enable = true,
   max_lines = 4,
@@ -333,7 +327,21 @@ end, { desc = "Git log for selected line range" })
 vim.keymap.set("", "<leader>C", "<Plug>(sad-change-backward)", { desc = "Sad change backward" })
 vim.keymap.set("", "<leader>c", "<Plug>(sad-change-forward)", { desc = "Sad change forward" })
 
+vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+
+vim.keymap.set("n", "<C-f>", function()
+  require("conform").format()
+end, {
+  desc = "format the buffer with LSP",
+})
+
 require("conform").setup({
+  formatters = {
+    mdformat = {
+      command = "mdformat",
+      args = { "--number", "-" },
+    },
+  },
   formatters_by_ft = {
     lua = { "stylua", lsp_format = "fallback" },
     go = { "goimports", "gofmt" },
@@ -350,14 +358,15 @@ require("conform").setup({
     bash = { "shfmt" },
     xml = { "xmllint" },
     zig = { "zigfmt" },
+    markdown = { "prettier", "mdformat", stop_after_first = true },
   },
   default_format_opts = {
     lsp_format = "never",
-    timeout_ms = 1000,
   },
   log_level = vim.log.levels.DEBUG,
   format_on_save = {
     lsp_format = "never",
+    timeout_ms = 2000,
   },
 })
 
