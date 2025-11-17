@@ -344,7 +344,7 @@ require("conform").setup({
   },
   formatters_by_ft = {
     lua = { "stylua", lsp_format = "fallback" },
-    go = { "goimports", "gofmt" },
+    go = { "gofmt" },
     rust = { "rustfmt" },
     nix = { "nixfmt" },
     ts = { "biome-organize-imports", "biome", "prettier" },
@@ -365,9 +365,9 @@ require("conform").setup({
   },
   log_level = vim.log.levels.DEBUG,
   format_on_save = {
-    lsp_format = "never",
-    timeout_ms = 2000,
+    timeout_ms = 500,
   },
+  format_after_save = {},
 })
 
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
