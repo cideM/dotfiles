@@ -80,7 +80,7 @@
         journals = {
           default = "/Users/fbs/private/journal/journal.txt";
         };
-        linewrap = 79;
+        linewrap = "auto";
         tagsymbols = "#@";
         template = false;
         timeformat = "%F %r";
