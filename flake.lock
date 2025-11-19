@@ -381,11 +381,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1743191255,
-        "narHash": "sha256-Cqk3UVJ8kmHYiQ/ggmHA03Bu7Dr/Yaaoa+dI0YKYdIY=",
+        "lastModified": 1763569818,
+        "narHash": "sha256-NsJXntIH7SinM21/x+kqlVUwdGsjOBC6JKQWpAY5/3k=",
         "owner": "cidem",
         "repo": "yui",
-        "rev": "ec7141eba11f43faf3187649114213a30f5b4ce6",
+        "rev": "141b95aac549639bf12e948e3f03e39fff7cb5f0",
         "type": "github"
       },
       "original": {

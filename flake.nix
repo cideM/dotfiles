@@ -42,7 +42,6 @@
     vim-js.url = "github:yuezk/vim-js";
     vim-js.flake = false;
 
-    # yui.url = "path:/home/fbrs/private/yui";
     # yui.url = "path:/Users/fbs/private/yui";
     yui.url = "github:cidem/yui";
     yui.flake = true;

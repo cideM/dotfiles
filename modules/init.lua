@@ -17,7 +17,6 @@ vim.o.numberwidth = 3
 vim.o.linebreak = true
 vim.o.statuscolumn = "%l %s %C"
 vim.o.statusline = " %f %m%= %y %q %3l:%2c |%3p%% "
-vim.o.background = "light"
 vim.o.exrc = true
 vim.o.foldmethod = "indent"
 vim.o.expandtab = true
@@ -189,52 +188,6 @@ vim.diagnostic.config({
   virtual_text = false,
   virtual_lines = false,
 })
-
-if vim.fn.executable("defaults") == 1 then
-  local appleInterfaceStyle = vim.fn.system({ "defaults", "read", "-g", "AppleInterfaceStyle" })
-  if appleInterfaceStyle:find("Dark") then
-    vim.cmd("source ~/private/yui/colors/yui_dark.vim")
-    vim.o.background = "dark"
-  else
-    vim.cmd("source ~/private/yui/colors/yui.vim")
-    vim.o.background = "light"
-  end
-elseif vim.fn.executable("busctl") ~= 0 then
-  -- Get the current color scheme from xdg-desktop-portal using busctl
-  local result = vim.fn.system({
-    "busctl",
-    "--user",
-    "call",
-    "org.freedesktop.portal.Desktop",
-    "/org/freedesktop/portal/desktop",
-    "org.freedesktop.portal.Settings",
-    "ReadOne",
-    "ss",
-    "org.freedesktop.appearance",
-    "color-scheme",
-  })
-  -- The result is in the form of "v u 0" for light and "v u 1" for dark
-  local color_scheme = result:match("u%s+(%d+)")
-
-  if color_scheme == "1" then
-    background = "dark"
-  end
-else
-end
-
-if vim.uv.os_uname().sysname == "Linux" then
-  vim.g.clipboard = {
-    name = "wl",
-    copy = {
-      ["+"] = { "wl-copy", "--primary" },
-      ["*"] = { "wl-copy", "--primary" },
-    },
-    paste = {
-      ["+"] = { "wl-paste", "--primary" },
-      ["*"] = { "wl-paste", "--primary" },
-    },
-  }
-end
 
 if vim.uv.os_uname().sysname == "Darwin" then
   vim.api.nvim_create_user_command("Browse", function(t)
