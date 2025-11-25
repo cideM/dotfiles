@@ -297,7 +297,7 @@ require("conform").setup({
   },
   formatters_by_ft = {
     lua = { "stylua", lsp_format = "fallback" },
-    go = { "gofmt" },
+    go = { "gofmt", "goimports" },
     rust = { "rustfmt" },
     nix = { "nixfmt" },
     ts = { "biome-organize-imports", "biome", "prettier" },
