@@ -45,6 +45,7 @@
         nodePackages.prettier
         nix-output-monitor
         oils-for-unix
+        pandoc
         rclone
         ripgrep
         rlwrap
