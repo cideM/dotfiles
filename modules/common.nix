@@ -29,6 +29,7 @@
         fd
         findutils
         gawk
+        gh-markdown-preview
         github-markdown-toc
         gnugrep
         gnupg
