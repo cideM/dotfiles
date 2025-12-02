@@ -15,6 +15,7 @@ vim.o.number = false
 vim.o.winborder = "rounded"
 vim.o.numberwidth = 3
 vim.o.linebreak = true
+vim.o.laststatus = 3
 vim.o.statuscolumn = "%l %s %C"
 vim.o.statusline = " %f %m%= %y %q %3l:%2c |%3p%% "
 vim.o.exrc = true
@@ -25,7 +26,7 @@ vim.o.shiftwidth = 2
 vim.o.timeoutlen = 500
 vim.opt.diffopt = { internal = true, filler = true, closeoff = true, algorithm = "myers" }
 vim.o.colorcolumn = "+0"
-vim.o.cursorline = true
+vim.o.cursorline = false
 vim.opt.formatoptions:append("r")
 vim.o.mouse = "a"
 vim.o.ignorecase = true
@@ -54,7 +55,7 @@ vim.o.undofile = true
 vim.o.termguicolors = true
 vim.o.grepprg = "rg -H --vimgrep --smart-case"
 vim.opt.path:remove("/usr/include")
-vim.o.list = true
+vim.o.list = false
 vim.opt.fillchars:append({ vert = "│" })
 vim.opt.fillchars:append({ eob = " " })
 vim.opt.listchars = {
