@@ -39,6 +39,7 @@
         hyperfine
         jrnl
         jq
+        lua
         mdformat
         micro
         moreutils
