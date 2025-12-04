@@ -99,20 +99,12 @@ fzfLua.setup({
 
 fzfLua.register_ui_select()
 
-vim.keymap.set("n", "<leader>g", fzfLua.global, {
-  desc = "fzf-lua global picker (no prefix -> files, $ -> buffers, @ -> symbols -> # global symbols)",
-})
-
 vim.keymap.set("n", "<leader>ff", fzfLua.files, {
   desc = "fzf-lua files",
 })
 
 vim.keymap.set("n", "<leader>fb", fzfLua.buffers, {
   desc = "fzf-lua buffers",
-})
-
-vim.keymap.set("n", "<leader>fg", fzfLua.live_grep_native, {
-  desc = "fzf-lua live grep current project (performant version)",
 })
 
 vim.keymap.set("n", "<leader>fr", fzfLua.lsp_references, {
@@ -126,18 +118,6 @@ vim.keymap.set("n", "<leader>fs", fzfLua.lsp_document_symbols, {
 vim.keymap.set("n", "<leader>fw", fzfLua.lsp_live_workspace_symbols, {
   desc = "fzf-lua LSP live workspace symbols",
 })
-
-vim.keymap.set("n", "<leader>fi", fzfLua.lsp_live_workspace_symbols, {
-  desc = "fzf-lua LSP live workspace symbols",
-})
-
-vim.keymap.set("n", "<leader>fa", fzfLua.lsp_code_actions, {
-  desc = "fzf-lua LSP code actions",
-})
-
-vim.keymap.set({ "n", "v", "i" }, "<C-x><C-f>", function()
-  fzfLua.complete_path()
-end, { silent = true, desc = "Fuzzy complete path" })
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
@@ -282,14 +262,6 @@ end, { desc = "Git log for selected line range" })
 vim.keymap.set("", "<leader>C", "<Plug>(sad-change-backward)", { desc = "Sad change backward" })
 vim.keymap.set("", "<leader>c", "<Plug>(sad-change-forward)", { desc = "Sad change forward" })
 
-vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-
-vim.keymap.set("n", "<C-f>", function()
-  require("conform").format()
-end, {
-  desc = "format the buffer with LSP",
-})
-
 require("conform").setup({
   formatters = {
     mdformat = {
@@ -330,7 +302,7 @@ vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 vim.keymap.set("n", "<C-f>", function()
   require("conform").format()
 end, {
-  desc = "format the buffer with LSP",
+  desc = "Format the buffer with Conform",
 })
 
 require("nvim-treesitter.configs").setup({
@@ -340,7 +312,7 @@ require("nvim-treesitter.configs").setup({
     disable = { "help", "gitcommit" },
   },
   incremental_selection = {
-    enable = false,
+    enable = true,
     keymaps = {
       init_selection = "gn",
       node_incremental = "<TAB>",
@@ -349,12 +321,12 @@ require("nvim-treesitter.configs").setup({
     },
   },
   indent = {
-    enable = false,
+    enable = true,
     disable = {},
   },
   textobjects = {
     select = {
-      enable = false,
+      enable = true,
       lookahead = true,
       keymaps = {
         ["af"] = "@function.outer",
@@ -364,7 +336,7 @@ require("nvim-treesitter.configs").setup({
       },
     },
     swap = {
-      enable = false,
+      enable = true,
       swap_next = {
         ["<leader>a"] = "@parameter.inner",
       },
@@ -385,7 +357,7 @@ require("nvim-treesitter.configs").setup({
 })
 
 vim.keymap.set("n", "<leader>r", function()
-  vim.ui.input({ prompt = "shell commandline: " }, function(str)
+  vim.ui.input({ prompt = "shell commandline: ", complete = "shellcmdline" }, function(str)
     if str and str ~= "" then
       vim.cmd("noswapfile vnew")
       vim.bo.buftype = "nofile"
