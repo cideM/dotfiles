@@ -83,6 +83,7 @@ vim.lsp.enable("gopls")
 vim.lsp.enable("zls")
 vim.lsp.enable("ts_ls")
 vim.lsp.enable("eslint")
+vim.lsp.enable("lua_ls")
 
 local fzfLua = require("fzf-lua")
 
