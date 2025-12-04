@@ -395,9 +395,9 @@ vim.keymap.set("n", "<leader>r", function()
   end)
 end)
 
-function findFuncFd(file)
+function FindFuncFd(file)
   local cmdstr = "fd --type file --full-path --color never " .. file
   return vim.fn.systemlist(cmdstr)
 end
 
-vim.o.findfunc = "v:lua.findFuncFd"
+vim.o.findfunc = "v:lua.FindFuncFd"
