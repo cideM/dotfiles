@@ -55,7 +55,7 @@ vim.o.undofile = true
 vim.o.termguicolors = true
 vim.o.grepprg = "rg -H --vimgrep --smart-case"
 vim.opt.path:remove("/usr/include")
-vim.o.list = false
+vim.o.list = true
 vim.opt.fillchars:append({ vert = "│" })
 vim.opt.fillchars:append({ eob = " " })
 vim.opt.listchars = {
@@ -64,11 +64,11 @@ vim.opt.listchars = {
   lead = " ",
   trail = "␣",
   nbsp = "◇",
-  tab = "⇥ ",
+  tab = "│ ",
   extends = "❯",
   precedes = "❮",
   multispace = "·  ",
-  leadmultispace = "┊  ",
+  leadmultispace = "│  ",
 }
 
 vim.g.mapleader = " "
