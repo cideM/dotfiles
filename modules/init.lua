@@ -14,6 +14,13 @@ vim.g.markdown_folding = 1
 vim.o.number = false
 vim.o.winborder = "rounded"
 vim.o.numberwidth = 3
+
+vim.o.autocomplete = true
+vim.opt.complete = { "w", "o", ".", "b", "u" }
+vim.opt.completeopt = { "fuzzy", "noselect", "menuone", "popup" }
+vim.o.pummaxwidth = 80
+-- vim.o.pummaxheight = 7
+
 vim.o.linebreak = true
 vim.o.laststatus = 3
 vim.o.statuscolumn = "%l %s %C"
@@ -44,9 +51,6 @@ vim.opt.wildignore:append({
   "*tmp/*",
 })
 vim.o.inccommand = "split"
-vim.opt.completeopt:append({ "fuzzy", "noselect" })
-vim.opt.completeopt:remove({ "popup" })
-vim.opt.complete = { ".", "b", "u" }
 vim.o.signcolumn = "auto:1"
 vim.o.splitbelow = true
 vim.o.splitright = true
