@@ -284,6 +284,7 @@ require("conform").setup({
     typescriptreact = { "biome-organize-imports", "biome", "prettier" },
     js = { "biome-organize-imports", "biome", "prettier" },
     jsx = { "biome-organize-imports", "biome", "prettier" },
+    janet = { "janet-format" },
     javascript = { "biome-organize-imports", "biome", "prettier" },
     json = { "jq" },
     bash = { "shfmt" },
