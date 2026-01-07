@@ -111,8 +111,24 @@ vim.keymap.set("n", "<leader>fb", fzfLua.buffers, {
   desc = "fzf-lua buffers",
 })
 
+vim.keymap.set("n", "<leader>fa", fzfLua.lsp_code_actions, {
+  desc = "fzf-lua LSP actions",
+})
+
+vim.keymap.set("n", "<leader>fd", fzfLua.lsp_definitions, {
+  desc = "fzf-lua LSP definitions",
+})
+
+vim.keymap.set("n", "<leader>fp", fzfLua.diagnostics_document, {
+  desc = "fzf-lua LSP document diagnostics",
+})
+
 vim.keymap.set("n", "<leader>fr", fzfLua.lsp_references, {
   desc = "fzf-lua LSP references",
+})
+
+vim.keymap.set("n", "<leader>fi", fzfLua.lsp_implementations, {
+  desc = "fzf-lua LSP implementations",
 })
 
 vim.keymap.set("n", "<leader>fs", fzfLua.lsp_document_symbols, {
@@ -286,6 +302,7 @@ require("conform").setup({
     jsx = { "biome-organize-imports", "biome", "prettier" },
     janet = { "janet-format" },
     javascript = { "biome-organize-imports", "biome", "prettier" },
+    astro = { "prettier" },
     json = { "jq" },
     bash = { "shfmt" },
     xml = { "xmllint" },
