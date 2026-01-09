@@ -13,6 +13,7 @@
         "git/.gitignore".text = ''
           .direnv
           .devenv
+          .envrc
         '';
 
         "git/attributes".text = ''
