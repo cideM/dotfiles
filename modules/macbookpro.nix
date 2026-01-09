@@ -41,13 +41,6 @@ in
               pkgs.lib.optionals pkgs.stdenv.isDarwin [ gsed ];
           };
 
-          nix = {
-            package = pkgs.nixVersions.latest;
-            gc = {
-              automatic = true;
-              dates = "daily";
-            };
-          };
         }
       ];
     }
