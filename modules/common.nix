@@ -114,6 +114,7 @@
           automatic = true;
           dates = "daily";
         };
+        package = pkgs.lixPackageSets.stable.lix;
       };
 
       home.sessionVariables = {

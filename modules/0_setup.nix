@@ -17,6 +17,15 @@
     let
       overlays = [
         (final: prev: rec { zigpkgs = inputs.zig-overlay.packages.${prev.system}; })
+
+        (final: prev: {
+          inherit (prev.lixPackageSets.stable)
+            nixpkgs-review
+            nix-eval-jobs
+            nix-fast-build
+            colmena
+            ;
+        })
       ];
 
       pkgs = import inputs.nixpkgs {
