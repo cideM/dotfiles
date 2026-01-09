@@ -168,7 +168,7 @@ in
             conjure
             nvim-lspconfig
             vim-dirvish
-            nvim-treesitter-textobjects
+            # nvim-treesitter-textobjects
             nvim-alabaster-theme
             vim-eunuch
             # lightline-vim

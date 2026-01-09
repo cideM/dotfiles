@@ -327,54 +327,11 @@ end, {
   desc = "Format the buffer with Conform",
 })
 
-require("nvim-treesitter.configs").setup({
+require("nvim-treesitter.config").setup({
   ensure_installed = {},
   highlight = {
     enable = true,
-    disable = { "help", "gitcommit" },
-  },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "gn",
-      node_incremental = "<TAB>",
-      node_decremental = "<S-TAB>",
-      scope_incremental = "gn",
-    },
-  },
-  indent = {
-    enable = true,
-    disable = {},
-  },
-  textobjects = {
-    select = {
-      enable = true,
-      lookahead = true,
-      keymaps = {
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@comment.outer",
-        ["ic"] = "@comment.inner",
-      },
-    },
-    swap = {
-      enable = true,
-      swap_next = {
-        ["<leader>a"] = "@parameter.inner",
-      },
-      swap_previous = {
-        ["<leader>A"] = "@parameter.inner",
-      },
-    },
-    lsp_interop = {
-      enable = false,
-      border = "none",
-      floating_preview_opts = {},
-      peek_definition_code = {
-        ["<leader>df"] = "@function.outer",
-        ["<leader>dF"] = "@class.outer",
-      },
-    },
+    disable = { "csv", "help", "gitcommit" },
   },
 })
 
