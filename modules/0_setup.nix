@@ -26,6 +26,10 @@
             colmena
             ;
         })
+
+        (final: prev: {
+          jrnl = prev.jrnl.overridePythonAttrs (old: { doCheck = false; });
+        })
       ];
 
       pkgs = import inputs.nixpkgs {
