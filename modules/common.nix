@@ -29,6 +29,7 @@
         fd
         findutils
         gawk
+        gemini-cli
         gh-markdown-preview
         github-markdown-toc
         gnugrep
