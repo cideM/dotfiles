@@ -10,7 +10,6 @@ let
 
     set -x BAT_THEME 'GitHub'
     set -x MANPAGER 'nvim +Man!'
-    set -x VOLTA_HOME $HOME/.volta
 
     # https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
     # XDG_RUNTIME_DIR is set by pam_systemd and should not be overridden
@@ -20,8 +19,6 @@ let
 
     set -x GOPATH ~/go
     set -x GOCACHE $XDG_CACHE_HOME/go-build
-
-    fish_add_path -p /usr/local/bin/ $VOLTA_HOME/bin
   '';
 in
 {
@@ -74,7 +71,7 @@ in
           };
 
           fish_greeting = {
-            body = '''';
+            body = "";
           };
         };
 
