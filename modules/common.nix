@@ -47,6 +47,7 @@
         moreutils
         nh
         nodePackages.prettier
+        nodejs
         nix-output-monitor
         oils-for-unix
         pandoc
