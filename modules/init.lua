@@ -283,12 +283,6 @@ vim.keymap.set("", "<leader>C", "<Plug>(sad-change-backward)", { desc = "Sad cha
 vim.keymap.set("", "<leader>c", "<Plug>(sad-change-forward)", { desc = "Sad change forward" })
 
 require("conform").setup({
-  formatters = {
-    mdformat = {
-      command = "mdformat",
-      args = { "--number", "-" },
-    },
-  },
   formatters_by_ft = {
     lua = { "stylua", lsp_format = "fallback" },
     go = { "gofmt", "goimports" },
@@ -307,7 +301,7 @@ require("conform").setup({
     bash = { "shfmt" },
     xml = { "xmllint" },
     zig = { "zigfmt" },
-    markdown = { "prettier", "mdformat", stop_after_first = true },
+    markdown = { "prettier", stop_after_first = true },
   },
   default_format_opts = {
     lsp_format = "never",

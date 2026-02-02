@@ -148,7 +148,7 @@ in
           enable = true;
           package = inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
-          extraLuaConfig = builtins.readFile ./init.lua;
+          initLua = builtins.readFile ./init.lua;
 
           plugins = with pkgs.vimPlugins; [
             # essential

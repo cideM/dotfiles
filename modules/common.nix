@@ -42,7 +42,6 @@
         jrnl
         jq
         lua
-        mdformat
         micro
         moreutils
         nh
@@ -117,7 +116,7 @@
           automatic = true;
           dates = "daily";
         };
-        package = pkgs.lixPackageSets.stable.lix;
+        # package = pkgs.lixPackageSets.stable.lix;
       };
 
       home.sessionVariables = {

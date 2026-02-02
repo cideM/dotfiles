@@ -18,17 +18,19 @@
       overlays = [
         (final: prev: rec { zigpkgs = inputs.zig-overlay.packages.${prev.system}; })
 
-        (final: prev: {
-          inherit (prev.lixPackageSets.stable)
-            nixpkgs-review
-            nix-eval-jobs
-            nix-fast-build
-            colmena
-            ;
-        })
+        # (final: prev: {
+        #   inherit (prev.lixPackageSets.stable)
+        #     nixpkgs-review
+        #     nix-eval-jobs
+        #     nix-fast-build
+        #     colmena
+        #     ;
+        # })
 
         (final: prev: {
-          jrnl = prev.jrnl.overridePythonAttrs (old: { doCheck = false; });
+          jrnl = prev.jrnl.overridePythonAttrs (old: {
+            doCheck = false;
+          });
         })
       ];
 
