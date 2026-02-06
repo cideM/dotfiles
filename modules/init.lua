@@ -15,7 +15,7 @@ vim.o.number = false
 vim.o.winborder = "rounded"
 vim.o.numberwidth = 3
 
-vim.o.autocomplete = true
+vim.o.autocomplete = false
 vim.opt.complete = { "w", "o", ".", "b", "u" }
 vim.opt.completeopt = { "fuzzy", "noselect", "menuone", "popup" }
 vim.o.pummaxwidth = 80
@@ -127,6 +127,10 @@ vim.keymap.set("n", "<leader>fr", fzfLua.lsp_references, {
   desc = "fzf-lua LSP references",
 })
 
+vim.keymap.set("n", "<leader>ft", fzfLua.lsp_typedefs, {
+  desc = "fzf-lua LSP type definitions",
+})
+
 vim.keymap.set("n", "<leader>fi", fzfLua.lsp_implementations, {
   desc = "fzf-lua LSP implementations",
 })
@@ -144,7 +148,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
     if client:supports_method("textDocument/completion") then
       vim.lsp.completion.enable(true, client.id, args.buf, {
-        autotrigger = true,
+        autotrigger = false,
       })
     end
   end,
