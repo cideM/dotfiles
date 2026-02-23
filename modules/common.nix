@@ -29,7 +29,6 @@
         fd
         findutils
         gawk
-        gemini-cli
         gh-markdown-preview
         github-markdown-toc
         glow
@@ -37,7 +36,6 @@
         gnupg
         gnused
         gzip
-        helix
         hledger
         hyperfine
         jrnl
@@ -50,7 +48,6 @@
         nodejs
         nix-output-monitor
         oils-for-unix
-        pandoc
         rclone
         ripgrep
         rlwrap
