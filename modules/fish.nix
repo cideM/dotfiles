@@ -73,6 +73,18 @@ in
           fish_greeting = {
             body = "";
           };
+
+          fish_title = {
+            description = "Set terminal tab title";
+            body = ''
+              set -l branch (git branch --show-current 2>/dev/null)
+              if test -n "$branch"
+                echo "$branch "(basename $PWD)
+              else
+                string join / -- (string split / -- $PWD)[-2..-1]
+              end
+            '';
+          };
         };
 
         plugins = [
