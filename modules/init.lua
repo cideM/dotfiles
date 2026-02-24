@@ -1,14 +1,5 @@
 vim.cmd.packadd("cfilter") -- quickfix filtering with :Cfilter and :Lfilter
 
--- prevent loading code that I never use
-vim.g.loaded_gzip = 1
-vim.g.loaded_zip = 1
-vim.g.loaded_zipPlugin = 1
-vim.g.loaded_tar = 1
-vim.g.loaded_tarPlugin = 1
-vim.g.loaded_vimball = 1
-vim.g.loaded_vimballPlugin = 1
-
 vim.g.markdown_folding = 1
 
 vim.o.number = false
@@ -31,7 +22,6 @@ vim.o.expandtab = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 2
 vim.o.timeoutlen = 500
-vim.opt.diffopt = { internal = true, filler = true, closeoff = true, algorithm = "myers" }
 vim.o.colorcolumn = "+0"
 vim.o.cursorline = false
 vim.opt.formatoptions:append("r")
@@ -56,7 +46,6 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.foldlevelstart = 99
 vim.o.undofile = true
-vim.o.termguicolors = true
 vim.o.grepprg = "rg -H --vimgrep --smart-case"
 vim.opt.path:remove("/usr/include")
 vim.o.list = true
@@ -78,7 +67,6 @@ vim.opt.listchars = {
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
-vim.g.yui_lightline = true
 vim.g.yui_comments = "fade"
 vim.cmd.colorscheme("yui")
 
@@ -158,11 +146,11 @@ local flash = require("flash")
 flash.setup()
 
 vim.keymap.set({ "n", "x", "o" }, "s", function()
-  require("flash").jump()
+  flash.jump()
 end, { desc = "Flash" })
 
 vim.keymap.set({ "n", "x", "o" }, "S", function()
-  require("flash").treesitter()
+  flash.treesitter()
 end, { desc = "Flash Treesitter" })
 
 vim.keymap.set("o", "r", function()
@@ -198,7 +186,7 @@ vim.diagnostic.config({
 if vim.uv.os_uname().sysname == "Darwin" then
   vim.api.nvim_create_user_command("Browse", function(t)
     local args = table.concat(t.fargs, " ")
-    vim.fn.system("open " .. args)
+    vim.fn.system({ "open", args })
   end, {
     desc = "Call the MacOS 'open' utility on the given string",
     nargs = 1,
@@ -224,11 +212,19 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
 })
 
 vim.api.nvim_create_autocmd({ "QuickFixCmdPost" }, {
-  pattern = { "[^l]*", "l*" },
+  pattern = { "[^l]*" },
   callback = function()
     vim.cmd.cwindow()
   end,
   desc = "Open the quickfix window",
+})
+
+vim.api.nvim_create_autocmd({ "QuickFixCmdPost" }, {
+  pattern = { "l*" },
+  callback = function()
+    vim.cmd.lwindow()
+  end,
+  desc = "Open the location list window",
 })
 
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
@@ -292,12 +288,9 @@ require("conform").setup({
     go = { "gofmt", "goimports" },
     rust = { "rustfmt" },
     nix = { "nixfmt" },
-    ts = { "biome-organize-imports", "biome", "prettier" },
-    tsx = { "biome-organize-imports", "biome", "prettier" },
     typescript = { "biome-organize-imports", "biome", "prettier" },
     typescriptreact = { "biome-organize-imports", "biome", "prettier" },
-    js = { "biome-organize-imports", "biome", "prettier" },
-    jsx = { "biome-organize-imports", "biome", "prettier" },
+    javascriptreact = { "biome-organize-imports", "biome", "prettier" },
     janet = { "janet-format" },
     javascript = { "biome-organize-imports", "biome", "prettier" },
     astro = { "prettier" },
@@ -310,11 +303,9 @@ require("conform").setup({
   default_format_opts = {
     lsp_format = "never",
   },
-  log_level = vim.log.levels.DEBUG,
   format_on_save = {
     timeout_ms = 500,
   },
-  format_after_save = {},
 })
 
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
@@ -329,7 +320,7 @@ require("nvim-treesitter.config").setup({
   ensure_installed = {},
   highlight = {
     enable = true,
-    disable = { "csv", "help", "gitcommit" },
+    disable = { "csv", "vimdoc", "gitcommit" },
   },
 })
 
