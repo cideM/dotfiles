@@ -30,7 +30,6 @@
         findutils
         gawk
         gh-markdown-preview
-        github-markdown-toc
         glow
         gnugrep
         gnupg
