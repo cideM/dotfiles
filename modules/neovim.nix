@@ -25,12 +25,6 @@ in
   flake.modules.homeManager.nvim =
     { pkgs, ... }:
     let
-      nvim-alabaster-theme = pkgs.vimUtils.buildVimPlugin {
-        version = "latest";
-        pname = "nvim-alabaster-theme";
-        src = inputs.nvim-alabaster-scheme-src;
-      };
-
       janet-vim = pkgs.vimUtils.buildVimPlugin rec {
         version = "latest";
         pname = "janet-vim";
@@ -131,12 +125,6 @@ in
             go = ''
               compiler go
               setl formatprg=gofmt
-              function! GoImports()
-                  let saved = winsaveview()
-                  %!goimports
-                  call winrestview(saved)
-              endfunction
-              nnoremap <buffer> <localleader>i :call GoImports()<cr>
             '';
             haskell = ''
               setl formatprg=ormolu\ --stdin-input-file\ %
@@ -159,24 +147,22 @@ in
             nvim-treesitter.withAllGrammars
             flash-nvim
             vim-sandwich
+            inputs.yui.packages.${pkgs.system}.neovim
 
             # optional
             vim-repeat
+            render-markdown-nvim
             vim-indent-object
             nvim-treesitter-context
             vim-rhubarb
             conjure
             nvim-lspconfig
             vim-dirvish
-            # nvim-treesitter-textobjects
-            nvim-alabaster-theme
             vim-eunuch
-            # lightline-vim
             janet-vim
+            # lightline-vim
+            # nvim-treesitter-textobjects
 
-            # Themes
-            inputs.yui.packages.${pkgs.system}.neovim
-            catppuccin-nvim
           ];
         };
       };
