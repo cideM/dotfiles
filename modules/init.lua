@@ -107,6 +107,14 @@ vim.keymap.set("n", "<leader>fd", fzfLua.lsp_definitions, {
   desc = "fzf-lua LSP definitions",
 })
 
+vim.keymap.set("n", "<leader>fl", fzfLua.live_grep_native, {
+  desc = "fzf-lua performant version of live_grep",
+})
+
+vim.keymap.set("n", "<leader>fv", fzfLua.live_grep_native, {
+  desc = "fzf-lua grep_visual",
+})
+
 vim.keymap.set("n", "<leader>fp", fzfLua.diagnostics_document, {
   desc = "fzf-lua LSP document diagnostics",
 })
