@@ -27,6 +27,7 @@
         eza
         fastmod
         fd
+        figlet
         findutils
         gawk
         gh-markdown-preview
