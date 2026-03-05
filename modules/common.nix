@@ -53,6 +53,7 @@
         rlwrap
         rsync
         shellcheck
+        slides
         sops
         ssh-to-age
         tasksh
