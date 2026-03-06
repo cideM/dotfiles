@@ -142,7 +142,7 @@
         };
         fzf = {
           enable = true;
-          enableFishIntegration = true;
+          enableFishIntegration = false;
           changeDirWidgetCommand = "fd --type d --hidden --follow --exclude .git .";
           changeDirWidgetOptions = [
             "--preview '${pkgs.eza}/bin/eza --oneline --color=never --git --long {}'"
