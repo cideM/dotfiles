@@ -42,6 +42,7 @@
         jq
         lua
         micro
+        mkdocs
         moreutils
         nh
         nodePackages.prettier

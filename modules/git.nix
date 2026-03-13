@@ -6,7 +6,6 @@
       home.packages = [
         pkgs.git-lfs
         pkgs.gh
-        pkgs.delta
       ];
 
       xdg.configFile = {
