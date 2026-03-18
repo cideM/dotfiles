@@ -94,11 +94,6 @@ in
           }
 
           {
-            name = "yui";
-            src = inputs.yui.packages.${pkgs.stdenv.hostPlatform.system}.fish_light.src;
-          }
-
-          {
             name = "hydro";
             src = pkgs.fishPlugins.hydro.src;
           }
