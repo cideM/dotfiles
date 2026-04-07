@@ -47,7 +47,7 @@
           janet
           jpm
           nixfmt
-          nodePackages.prettier
+          prettier
           lua-language-server
           lua
           stylua

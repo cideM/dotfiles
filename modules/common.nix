@@ -45,7 +45,7 @@
         mkdocs
         moreutils
         nh
-        nodePackages.prettier
+        prettier
         nodejs
         nix-output-monitor
         oils-for-unix
