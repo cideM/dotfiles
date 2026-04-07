@@ -17,6 +17,7 @@
         bashInteractive
         bat
         btop
+        check-jsonschema
         claude-code
         coreutils-full
         curl
@@ -38,17 +39,17 @@
         gzip
         hledger
         hyperfine
-        jrnl
         jq
+        jrnl
         lua
         micro
         mkdocs
         moreutils
         nh
-        prettier
-        nodejs
         nix-output-monitor
+        nodejs
         oils-for-unix
+        prettier
         rclone
         ripgrep
         rlwrap
