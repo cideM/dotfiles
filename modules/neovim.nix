@@ -133,6 +133,7 @@ in
             vim-indent-object
             nvim-treesitter-context
             vim-rhubarb
+            gitsigns-nvim
             conjure
             nvim-lspconfig
             vim-dirvish
