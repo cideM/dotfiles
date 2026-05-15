@@ -354,6 +354,10 @@ vim.keymap.set("n", "<leader>r", function()
   end)
 end)
 
+vim.keymap.set("n", "<leader>cp", function()
+  vim.fn.setreg("+", vim.fn.expand("%:p"))
+end, { desc = "Copy absolute file path" })
+
 function FindFuncFd(file)
   local cmdstr = "fd --type file --full-path --color never " .. file
   return vim.fn.systemlist(cmdstr)
