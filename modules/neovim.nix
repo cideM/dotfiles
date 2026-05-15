@@ -129,7 +129,6 @@ in
 
             # optional
             vim-repeat
-            render-markdown-nvim
             vim-indent-object
             nvim-treesitter-context
             vim-rhubarb
