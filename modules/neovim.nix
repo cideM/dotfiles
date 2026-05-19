@@ -126,6 +126,7 @@ in
             vim-sandwich
             inputs.yui.packages.${pkgs.system}.neovim
             zen-mode-nvim
+            snacks-nvim
 
             # optional
             vim-repeat

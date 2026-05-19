@@ -358,6 +358,20 @@ vim.keymap.set("n", "<leader>cp", function()
   vim.fn.setreg("+", vim.fn.expand("%:p"))
 end, { desc = "Copy absolute file path" })
 
+vim.keymap.set("n", "<leader>z", "<cmd>ZenMode<CR>", { desc = "Toggle ZenMode" })
+
+-- Scratch buffer
+local snacks = require("snacks")
+
+snacks.setup({ scratch = {} })
+
+vim.keymap.set("n", "<leader>.", function()
+  snacks.scratch.open({
+    file = vim.fn.stdpath("data") .. "/scratch.md",
+    ft = "markdown",
+  })
+end, { desc = "Toggle global scratch buffer" })
+
 function FindFuncFd(file)
   local cmdstr = "fd --type file --full-path --color never " .. file
   return vim.fn.systemlist(cmdstr)
