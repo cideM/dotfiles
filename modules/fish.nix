@@ -30,6 +30,11 @@ in
 
         shellAbbrs = {
           g = "git";
+          gs = "git status";
+          ga = "git add";
+          gc = "git commit";
+          gp = "git push";
+          gd = "git diff";
           dc = "docker compose";
           n = "nvim";
           k = "kubectl";
