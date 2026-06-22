@@ -16,6 +16,8 @@
     { system, ... }:
     let
       overlays = [
+        inputs.claude-code.overlays.default
+
         (final: prev: rec { zigpkgs = inputs.zig-overlay.packages.${prev.system}; })
 
         # (final: prev: {

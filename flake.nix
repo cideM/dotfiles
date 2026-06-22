@@ -2,6 +2,9 @@
   description = "今日は";
 
   inputs = rec {
+
+    claude-code.url = "github:sadjow/claude-code-nix";
+
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     import-tree.url = "github:vic/import-tree";
