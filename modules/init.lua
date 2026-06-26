@@ -287,6 +287,9 @@ vim.keymap.set("n", "<leader>P", '"+P', { desc = "Paste from system clipboard be
 vim.keymap.set("v", "<leader>p", '"+p', { desc = "Paste from system clipboard after selection" })
 vim.keymap.set("v", "<leader>P", '"+P', { desc = "Paste from system clipboard before selection" })
 
+vim.keymap.set("n", "]p", ":put<CR>", { desc = "Put register below on a new line" })
+vim.keymap.set("n", "[p", ":put!<CR>", { desc = "Put register above on a new line" })
+
 vim.g["conjure#filetypes"] = { "clojure", "fennel", "janet", "scheme", "racket", "lisp" }
 vim.g["conjure#log#hud#anchor"] = "SE"
 vim.g["conjure#log#hud#width"] = 1
@@ -384,3 +387,6 @@ function FindFuncFd(file)
 end
 
 vim.o.findfunc = "v:lua.FindFuncFd"
+
+vim.cmd("packadd nvim.undotree")
+vim.keymap.set("n", "<leader>u", require("undotree").open)
