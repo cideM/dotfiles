@@ -21,6 +21,7 @@ in
         {
           imports = [
             config.flake.modules.homeManager.nvim
+            config.flake.modules.homeManager.nvim2
             config.flake.modules.homeManager.fish
             config.flake.modules.homeManager.ghostty
             config.flake.modules.homeManager.common
