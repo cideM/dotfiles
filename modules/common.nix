@@ -144,7 +144,7 @@
         };
         fzf = {
           enable = true;
-          enableFishIntegration = false;
+          enableFishIntegration = true;
           changeDirWidgetCommand = "fd --type d --hidden --follow --exclude .git .";
           changeDirWidgetOptions = [
             "--preview '${pkgs.eza}/bin/eza --oneline --color=never --git --long {}'"
@@ -161,6 +161,10 @@
           defaultCommand = "fd --type f --hidden --follow --exclude .git .";
           defaultOptions = [
             "--style=minimal"
+            # Use the terminal's 16 ANSI colors (our yui palette) instead of
+            # fzf's hardcoded 256-color "dark" theme, which it defaults to on a
+            # truecolor terminal.
+            "--color=16"
           ];
         };
       };
