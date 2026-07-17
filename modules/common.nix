@@ -170,8 +170,11 @@
             "--style=minimal"
             # Use the terminal's 16 ANSI colors (our yui palette) instead of
             # fzf's hardcoded 256-color "dark" theme, which it defaults to on a
-            # truecolor terminal.
-            "--color=16"
+            # truecolor terminal. bg+:8 paints the selected line with yui's
+            # bright-black (a subtle gray), because fzf's 16-color scheme
+            # otherwise uses ANSI black (palette 0) for it — and yui maps
+            # black to fg, which makes the selected line's text invisible.
+            "--color=16,bg+:8"
           ];
         };
       };
