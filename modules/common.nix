@@ -146,19 +146,25 @@
         fzf = {
           enable = true;
           enableFishIntegration = true;
-          changeDirWidgetCommand = "fd --type d --hidden --follow --exclude .git .";
-          changeDirWidgetOptions = [
-            "--preview '${pkgs.eza}/bin/eza --oneline --color=never --git --long {}'"
-            "--style=minimal"
-          ];
-          historyWidgetOptions = [
-            "--sort"
-          ];
-          fileWidgetCommand = "fd --type f --hidden --follow --exclude .git . \\$dir";
-          fileWidgetOptions = [
-            "--preview '${pkgs.bat}/bin/bat --color=always --style=numbers --line-range :300 {}'"
-            "--style=minimal"
-          ];
+          changeDirWidget = {
+            command = "fd --type d --hidden --follow --exclude .git .";
+            options = [
+              "--preview '${pkgs.eza}/bin/eza --oneline --color=never --git --long {}'"
+              "--style=minimal"
+            ];
+          };
+          historyWidget = {
+            options = [
+              "--sort"
+            ];
+          };
+          fileWidget = {
+            command = "fd --type f --hidden --follow --exclude .git . \\$dir";
+            options = [
+              "--preview '${pkgs.bat}/bin/bat --color=always --style=numbers --line-range :300 {}'"
+              "--style=minimal"
+            ];
+          };
           defaultCommand = "fd --type f --hidden --follow --exclude .git .";
           defaultOptions = [
             "--style=minimal"
