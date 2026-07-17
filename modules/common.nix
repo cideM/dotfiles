@@ -68,6 +68,7 @@
         unixtools.watch
         unzip
         wget
+        worktrunk
       ];
 
       xdg.configFile."jrnl/jrnl.yaml".source = (pkgs.formats.yaml { }).generate "" {
