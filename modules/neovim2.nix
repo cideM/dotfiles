@@ -23,8 +23,9 @@
         plugins = with pkgs.vimPlugins; [
           vim-fugitive
           nvim-lspconfig
-          vim-dirvish
           fzf-lua
+          gitsigns-nvim
+          inputs.yui.packages.${pkgs.system}.neovim
         ];
 
         luaRcContent = builtins.readFile ./n2-init.lua;

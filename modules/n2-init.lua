@@ -82,6 +82,26 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
+-- Manual completion trigger. autotrigger is off above, so ask the server
+-- explicitly; falls back to <C-n> when no LSP is attached to the buffer.
+local function trigger_completion()
+  if vim.bo.omnifunc == "v:lua.vim.lsp.omnifunc" then
+    vim.lsp.completion.get()
+    return nil
+  end
+  return "<C-n>"
+end
+
+-- <C-Space> reaches Neovim as <C-@> in some terminals, so map both.
+vim.keymap.set("i", "<C-Space>", trigger_completion, {
+  expr = true,
+  desc = "Trigger LSP completion",
+})
+vim.keymap.set("i", "<C-@>", trigger_completion, {
+  expr = true,
+  desc = "Trigger LSP completion",
+})
+
 vim.diagnostic.config({
   virtual_text = false,
   virtual_lines = false,
@@ -149,6 +169,17 @@ vim.keymap.set("n", "<leader>fs", fzfLua.lsp_document_symbols, {
 vim.keymap.set("n", "<leader>fw", fzfLua.lsp_live_workspace_symbols, {
   desc = "fzf-lua LSP live workspace symbols",
 })
+
+require("gitsigns").setup()
+vim.keymap.set("n", "H", function()
+  require("gitsigns").preview_hunk_inline()
+end, { desc = "Preview current hunk inline" })
+vim.keymap.set("n", "]c", function()
+  require("gitsigns").next_hunk()
+end, { desc = "Jump to next hunk" })
+vim.keymap.set("n", "[c", function()
+  require("gitsigns").prev_hunk()
+end, { desc = "Jump to previous hunk" })
 
 -- TERMINAL
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
