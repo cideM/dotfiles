@@ -26,6 +26,7 @@
           fzf-lua
           gitsigns-nvim
           inputs.yui.packages.${pkgs.system}.neovim
+          guh-nvim
         ];
 
         luaRcContent = builtins.readFile ./n2-init.lua;
