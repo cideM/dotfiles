@@ -37,6 +37,7 @@
         gnupg
         gnused
         gzip
+        helix
         hledger
         hyperfine
         jq
