@@ -24,13 +24,6 @@ in
 {
   flake.modules.homeManager.nvim =
     { pkgs, ... }:
-    let
-      janet-vim = pkgs.vimUtils.buildVimPlugin rec {
-        version = "latest";
-        pname = "janet-vim";
-        src = inputs.janet-vim;
-      };
-    in
     {
       config = {
         xdg.configFile =

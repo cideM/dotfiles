@@ -230,3 +230,8 @@ vim.keymap.set("n", "<leader>p", '"+p', { desc = "Paste from system clipboard af
 vim.keymap.set("n", "<leader>P", '"+P', { desc = "Paste from system clipboard before cursor" })
 vim.keymap.set("v", "<leader>p", '"+p', { desc = "Paste from system clipboard after selection" })
 vim.keymap.set("v", "<leader>P", '"+P', { desc = "Paste from system clipboard before selection" })
+
+vim.g["conjure#filetypes"] = { "clojure", "fennel", "janet", "scheme", "racket", "lisp" }
+vim.g["conjure#log#hud#anchor"] = "SE"
+vim.g["conjure#log#hud#width"] = 1
+vim.g["conjure#log#wrap"] = true

@@ -23,7 +23,9 @@
         plugins = with pkgs.vimPlugins; [
           vim-fugitive
           nvim-lspconfig
+          conjure
           fzf-lua
+          janet-vim
           gitsigns-nvim
           inputs.yui.packages.${pkgs.system}.neovim
           guh-nvim

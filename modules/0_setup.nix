@@ -34,6 +34,16 @@
             doCheck = false;
           });
         })
+
+        (final: prev: {
+          vimPlugins = prev.vimPlugins // {
+            janet-vim = prev.vimUtils.buildVimPlugin {
+              version = "latest";
+              pname = "janet-vim";
+              src = inputs.janet-vim;
+            };
+          };
+        })
       ];
 
       pkgs = import inputs.nixpkgs {
