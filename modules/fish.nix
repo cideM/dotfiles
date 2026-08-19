@@ -37,7 +37,6 @@ in
           gd = "git diff";
           dc = "docker compose";
           n = "nvim";
-          n2 = "n2";
           k = "kubectl";
         };
 

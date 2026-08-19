@@ -39,6 +39,10 @@ vim.opt.wildignore:append({
   "*dist/*",
   "*compiled/*",
   "*tmp/*",
+  "*node_modules*",
+  "package-lock.json",
+  "yarn.lock",
+  "./.astro",
 })
 vim.o.inccommand = "split"
 vim.o.signcolumn = "auto:1"
@@ -150,24 +154,29 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
-local flash = require("flash")
-flash.setup()
+-- Manual completion trigger. autotrigger is off above, so ask the server
+-- explicitly; falls back to <C-n> when no LSP is attached to the buffer.
+local function trigger_completion()
+  if vim.bo.omnifunc == "v:lua.vim.lsp.omnifunc" then
+    vim.lsp.completion.get()
+    return nil
+  end
+  return "<C-n>"
+end
 
-vim.keymap.set({ "n", "x", "o" }, "s", function()
-  flash.jump()
-end, { desc = "Flash" })
+-- <C-Space> reaches Neovim as <C-@> in some terminals, so map both.
+vim.keymap.set("i", "<C-Space>", trigger_completion, {
+  expr = true,
+  desc = "Trigger LSP completion",
+})
+vim.keymap.set("i", "<C-@>", trigger_completion, {
+  expr = true,
+  desc = "Trigger LSP completion",
+})
 
-vim.keymap.set({ "n", "x", "o" }, "S", function()
-  flash.treesitter()
-end, { desc = "Flash Treesitter" })
-
-vim.keymap.set("o", "r", function()
-  flash.remote()
-end, { desc = "Remote Flash" })
-
-vim.keymap.set("c", "<c-s>", function()
-  flash.toggle()
-end, { desc = "Toggle Flash Search" })
+vim.keymap.set({ "n", "x", "o" }, "s", "<Plug>(leap)", { desc = "Leap" })
+vim.keymap.set({ "x", "o" }, "x", "<Plug>(leap-next-to)", { desc = "Leap next to" })
+vim.keymap.set("n", "S", "<Plug>(leap-from-window)", { desc = "Leap from window" })
 
 vim.g.sandwich_no_default_key_mappings = 1
 
