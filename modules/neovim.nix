@@ -35,6 +35,7 @@ in
             fzf-lua
             conform-nvim
             nvim-treesitter.withAllGrammars
+            nvim-bufdel
             vim-sandwich
             leap-nvim
             inputs.yui.packages.${pkgs.system}.neovim

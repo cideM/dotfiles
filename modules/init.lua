@@ -399,3 +399,6 @@ vim.o.findfunc = "v:lua.FindFuncFd"
 
 vim.cmd("packadd nvim.undotree")
 vim.keymap.set("n", "<leader>u", require("undotree").open)
+
+vim.keymap.set("n", "<leader>q", ":BufDel!<CR>", { desc = "Delete current buffer and ignore changes" })
+vim.keymap.set("n", "<leader>Q", ":BufDelOthers<CR>", { desc = "Delete all listed buffers except current one" })
