@@ -13,7 +13,7 @@ vim.o.pummaxwidth = 80
 -- vim.o.pummaxheight = 7
 
 vim.o.linebreak = true
-vim.o.laststatus = 3
+vim.o.laststatus = 2
 vim.o.statuscolumn = "%l %s %C"
 vim.o.statusline = " %f %m%= %y %q %3l:%2c |%3p%% "
 vim.o.exrc = true
