@@ -48,7 +48,6 @@ in
             gitsigns-nvim
             conjure
             nvim-lspconfig
-            vim-dirvish
             vim-eunuch
             janet-vim
           ];
