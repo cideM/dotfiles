@@ -33,6 +33,7 @@ in
           gs = "git status";
           gc = "git commit";
           gp = "git push";
+          gpl = "gh pr list";
           gd = "git diff";
           gw = "git worktree";
           gwl = "git worktree list";
