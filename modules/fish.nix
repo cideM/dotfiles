@@ -31,10 +31,11 @@ in
         shellAbbrs = {
           g = "git";
           gs = "git status";
-          ga = "git add";
           gc = "git commit";
           gp = "git push";
           gd = "git diff";
+          gw = "git worktree";
+          gwl = "git worktree list";
           dc = "docker compose";
           n = "nvim";
           k = "kubectl";
@@ -72,6 +73,32 @@ in
                 git commit --fixup $commit
                 GIT_SEQUENCE_EDITOR=true git rebase $commit~1 --interactive --autosquash
               end
+            '';
+          };
+
+          gwa = {
+            description = "Create a worktree with a new branch next to the current repo";
+            body = ''
+              read -P 'New branch: ' -l branch
+              or return
+              if test -z "$branch"
+                echo "no branch name given" >&2
+                return 1
+              end
+
+              set -l base (git for-each-ref --format='%(refname:short)' refs/heads refs/remotes \
+                | string match -v -r '/HEAD$' \
+                | fzf --prompt 'Start from> ' --preview 'git log --oneline -20 {}')
+              if test -z "$base"
+                return 1
+              end
+
+              set -l root (git rev-parse --show-toplevel)
+              or return
+              set -l dir (dirname $root)/(string replace --all / - $branch)
+
+              git worktree add $dir -b $branch $base
+              and cd $dir
             '';
           };
 
