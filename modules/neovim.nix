@@ -36,6 +36,7 @@ in
             conform-nvim
             nvim-treesitter.withAllGrammars
             nvim-bufdel
+            diffview-nvim
             vim-sandwich
             leap-nvim
             inputs.yui.packages.${pkgs.system}.neovim
