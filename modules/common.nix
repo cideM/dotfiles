@@ -62,6 +62,7 @@
         sops
         ssh-to-age
         tasksh
+        tig
         time
         timewarrior
         tokei
