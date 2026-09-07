@@ -46,6 +46,7 @@
         micro
         mkdocs
         moreutils
+        neomutt
         nh
         nix-output-monitor
         nodejs
