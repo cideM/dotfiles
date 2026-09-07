@@ -13,6 +13,7 @@
     in
     {
       home.packages = with pkgs; [
+        aerc
         age
         bashInteractive
         bat
