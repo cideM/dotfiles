@@ -309,6 +309,23 @@
         "url": "ssh://git@github.com/cidem/operatormono"
       }
     },
+    "prr-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1788784641,
+        "narHash": "sha256-yqUzxRCW4dAwAZ8IA18VFOxsqclK9eltGmfHJXKChVQ=",
+        "owner": "cideM",
+        "repo": "prr",
+        "rev": "347c38c8077778e204e10a3c137fe0a9ebc6fd29",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cideM",
+        "ref": "integration",
+        "repo": "prr",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "claude-code": "claude-code",
@@ -322,6 +339,7 @@
         "nixpkgs": "nixpkgs_2",
         "nvim-alabaster-scheme-src": "nvim-alabaster-scheme-src",
         "operatorMono": "operatorMono",
+        "prr-src": "prr-src",
         "sops-nix": "sops-nix",
         "vim-js": "vim-js",
         "yui": "yui",

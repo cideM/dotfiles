@@ -42,7 +42,25 @@
               pname = "janet-vim";
               src = inputs.janet-vim;
             };
+            # Same source as the prr package below, so syntax and binary agree.
+            prr-vim = prev.vimUtils.buildVimPlugin {
+              pname = "prr-vim";
+              version = inputs.prr-src.shortRev;
+              src = "${inputs.prr-src}/vim";
+            };
           };
+        })
+
+        # prr from the fork's integration branch (see flake.nix). importCargoLock
+        # needs no hash while every dependency comes from crates.io. Bump with
+        # `nix flake update prr-src`.
+        (final: prev: {
+          prr = prev.prr.overrideAttrs (old: {
+            src = inputs.prr-src;
+            cargoDeps = prev.rustPlatform.importCargoLock {
+              lockFile = "${inputs.prr-src}/Cargo.lock";
+            };
+          });
         })
       ];
 

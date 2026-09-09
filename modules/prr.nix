@@ -1,34 +1,25 @@
 { ... }:
 {
   # prr (https://github.com/danobi/prr) reviews GitHub PRs as a text file and
-  # posts the annotations as inline review comments. It wants a config file
-  # holding a GitHub token. Instead of storing that anywhere, the wrapper
-  # builds a throwaway config per invocation from `gh auth token`, so the
-  # token is only ever read from gh's keychain entry.
+  # posts the annotations as inline review comments. The package comes from the
+  # fork's integration branch (flake input `prr-src`, overlay in 0_setup.nix)
+  # until the token_command and review thread changes land upstream.
+  #
+  # The token is never stored: `token_command` reads it from gh's keychain
+  # entry on every run.
   flake.modules.homeManager.prr =
-    { pkgs, ... }:
+    { pkgs, config, ... }:
     {
       home.packages = [
-        (pkgs.writeShellApplication {
-          name = "prr";
-          runtimeInputs = [
-            pkgs.prr
-            pkgs.gh
-            pkgs.coreutils
-          ];
-          text = ''
-            workdir="''${XDG_DATA_HOME:-$HOME/.local/share}/prr"
-            mkdir -p "$workdir"
-
-            cfg="$(mktemp -t prr-config.XXXXXX)"
-            trap 'rm -f "$cfg"' EXIT
-
-            printf '[prr]\ntoken = "%s"\nworkdir = "%s"\n' \
-              "$(gh auth token)" "$workdir" > "$cfg"
-
-            prr --config "$cfg" "$@"
-          '';
-        })
+        pkgs.prr
+        pkgs.gh
       ];
+
+      xdg.configFile."prr/config.toml".text = ''
+        [prr]
+        token_command = "gh auth token"
+        workdir = "${config.xdg.dataHome}/prr"
+        activate_pr_metadata_experiment = true
+      '';
     };
 }
