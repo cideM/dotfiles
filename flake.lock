@@ -107,6 +107,26 @@
         "type": "github"
       }
     },
+    "herdr": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2",
+        "rust-overlay": "rust-overlay"
+      },
+      "locked": {
+        "lastModified": 1788808373,
+        "narHash": "sha256-SUYF4bbaYwNgoe498VoCUzuLPcjBLQXR0o0DWjjoSnI=",
+        "owner": "herdrdev",
+        "repo": "herdr",
+        "rev": "b99002ac99b09e00b4ca692436cb15a6b0d676f1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "herdrdev",
+        "ref": "v0.9.0",
+        "repo": "herdr",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -230,6 +250,22 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1779911860,
+        "narHash": "sha256-ubcLAcKBDCZjhxw/kH5DL5GdBZQdzLqpkTe7HonvJVs=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "c0a89c379b4ac67c7b13b051ddbd4e0dbc9b0eaf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1788179007,
         "narHash": "sha256-hn1oU2rue2SYK8dAr8+WNZWtbsz1S2W5mnHlSEuh3bo=",
         "owner": "nixos",
@@ -244,7 +280,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1678500213,
         "narHash": "sha256-A5s2rXawJ+dCThkMXoMuYW8dgyUmkElcyfVJUot/Vr0=",
@@ -260,7 +296,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_5": {
       "locked": {
         "lastModified": 1771043024,
         "narHash": "sha256-O1XDr7EWbRp+kHrNNgLWgIrB0/US5wvw9K6RERWAj6I=",
@@ -312,11 +348,11 @@
     "prr-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1788784641,
-        "narHash": "sha256-yqUzxRCW4dAwAZ8IA18VFOxsqclK9eltGmfHJXKChVQ=",
+        "lastModified": 1788960932,
+        "narHash": "sha256-1CZRyoCr6G0wNdRNUdPzaS/+XXxrFePt9LnRsG53NDY=",
         "owner": "cideM",
         "repo": "prr",
-        "rev": "347c38c8077778e204e10a3c137fe0a9ebc6fd29",
+        "rev": "0bb2de8d6ce16b7ac9c0228a4ca350a7a38dba4a",
         "type": "github"
       },
       "original": {
@@ -331,12 +367,13 @@
         "claude-code": "claude-code",
         "flake-parts": "flake-parts",
         "github-markdown-toc-go-src": "github-markdown-toc-go-src",
+        "herdr": "herdr",
         "home-manager": "home-manager",
         "import-tree": "import-tree",
         "janet-vim": "janet-vim",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nix-fish-src": "nix-fish-src",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_3",
         "nvim-alabaster-scheme-src": "nvim-alabaster-scheme-src",
         "operatorMono": "operatorMono",
         "prr-src": "prr-src",
@@ -344,6 +381,27 @@
         "vim-js": "vim-js",
         "yui": "yui",
         "zig-overlay": "zig-overlay"
+      }
+    },
+    "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "herdr",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1783577481,
+        "narHash": "sha256-EWMxOWrJ031f8f/lrcEmhTRs4npw1/5N3Hcjin846c8=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "4cdea398dc491b082dccdce0fad1ed0b75fa3394",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
       }
     },
     "sops-nix": {
@@ -416,26 +474,23 @@
     "yui": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1784294877,
-        "narHash": "sha256-Stb8icUzExaMrtggk5gLsPMPBmHARVnGjSr0Cr/R3gc=",
-        "owner": "cidem",
-        "repo": "yui",
-        "rev": "5a43193c81aa999f5f77eabb01719141441dba6c",
-        "type": "github"
+        "lastModified": 1788944487,
+        "narHash": "sha256-KhHhOmHwZMXnVFzmwtfeUMUJhktebUpKYQrM9Bd9SQU=",
+        "path": "/Users/fbs/private/yui",
+        "type": "path"
       },
       "original": {
-        "owner": "cidem",
-        "repo": "yui",
-        "type": "github"
+        "path": "/Users/fbs/private/yui",
+        "type": "path"
       }
     },
     "zig-overlay": {
       "inputs": {
         "flake-compat": "flake-compat",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_5",
         "systems": "systems_2"
       },
       "locked": {

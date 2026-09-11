@@ -2,6 +2,7 @@
   description = "今日は";
 
   inputs = rec {
+    herdr.url = "github:herdrdev/herdr/v0.9.0";
 
     claude-code.url = "github:sadjow/claude-code-nix";
 
@@ -56,8 +57,8 @@
       flake = false;
     };
 
-    # yui.url = "path:/Users/fbs/private/yui";
-    yui.url = "github:cidem/yui";
+    yui.url = "path:/Users/fbs/private/yui";
+    # yui.url = "github:cidem/yui";
     yui.flake = true;
 
     operatorMono = {
