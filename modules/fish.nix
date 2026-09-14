@@ -33,6 +33,7 @@ in
           gs = "git status";
           gc = "git commit";
           gp = "git push";
+          gpr = "gh pr list  --search 'draft:false review:required'";
           gpl = "gh pr list";
           gd = "git diff";
           gw = "git worktree";
