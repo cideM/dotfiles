@@ -14,8 +14,38 @@
       yuiTheme = builtins.fromTOML (
         builtins.readFile "${inputs.yui.packages.${system}.herdr}/herdr/yui.toml"
       );
+      herdr = inputs.herdr.packages.${system}.default;
+      # https://github.com/kryptamine/herdr-auto-title: keeps tab titles in step
+      # with the work in each tab. Upstream installs it with
+      # `herdr plugin install`, which clones and `go build`s on the machine; the
+      # build step only runs in that command, so a prebuilt package registered
+      # via `herdr plugin link` works just as well.
+      autoTitle = pkgs.buildGoModule rec {
+        pname = "herdr-auto-title";
+        version = "0.5.0";
+        src = pkgs.fetchFromGitHub {
+          owner = "kryptamine";
+          repo = "herdr-auto-title";
+          rev = "v${version}";
+          hash = "sha256-IophxKOw4kbYApUu61paYrX1wYcocvaKqb/zEbNeycw=";
+        };
+        vendorHash = "sha256-QxFp1b7pf7bn3Hh0hyaj8ke5Z61N+WwjhHt3pFiapTs=";
+        subPackages = [ "cmd/herdr-auto-title" ];
+        # herdr starts the plugin with `./herdr-auto-title`, run from the
+        # directory holding herdr-plugin.toml, so both live at the package root.
+        postInstall = ''
+          mv $out/bin/herdr-auto-title $out/herdr-auto-title
+          rmdir $out/bin
+          cp $src/herdr-plugin.toml $out/
+        '';
+      };
       # Keys under `theme` are owned by yui.
       settings = {
+        # herdr shows a first-run setup screen until it has written
+        # `onboarding = false` into config.toml itself. That write fails against
+        # the read-only store symlink ("failed to save onboarding setting:
+        # Permission denied"), so the key is set here instead.
+        onboarding = false;
         ui = {
           # Shapes as well as colors for agent state.
           status_indicators = "symbols";
@@ -26,7 +56,18 @@
       };
     in
     {
-      home.packages = [ inputs.herdr.packages.${system}.default ];
+      home.packages = [ herdr ];
+
+      # herdr keeps its plugin registry (~/.config/herdr/plugins.json) as
+      # mutable state and stores the canonical store path in it, so the link is
+      # refreshed on every activation instead of being written as a file.
+      # Linking is idempotent and works with or without a running server.
+      # Plugins only start when the server restores a session: after the first
+      # activation, and after each plugin upgrade, run `herdr server stop` once
+      # (the next `herdr` brings the session back with the plugin running).
+      home.activation.linkHerdrAutoTitle = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        run ${herdr}/bin/herdr plugin link ${autoTitle}
+      '';
 
       xdg.configFile."herdr/config.toml".source = (pkgs.formats.toml { }).generate "herdr-config.toml" (
         lib.recursiveUpdate settings yuiTheme
