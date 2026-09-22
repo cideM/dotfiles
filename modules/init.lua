@@ -272,6 +272,16 @@ vim.keymap.set("n", "[c", function()
   require("gitsigns").prev_hunk()
 end, { desc = "Jump to previous hunk" })
 
+-- No nerd font in the terminal, so keep diffview on plain text markers.
+require("diffview").setup({
+  use_icons = false,
+  signs = {
+    fold_closed = ">",
+    fold_open = "v",
+    done = "*",
+  },
+})
+
 -- Terminal
 vim.keymap.set("n", "<leader>tv", ":vert term fish<CR>", {
   desc = "Open terminal in a vertical split (to the side)",
