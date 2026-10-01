@@ -282,6 +282,22 @@
     },
     "nixpkgs_4": {
       "locked": {
+        "lastModified": 1767640445,
+        "narHash": "sha256-UWYqmD7JFBEDBHWYcqE6s6c77pWdcU/i+bwD6XxMb8A=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "9f0c42f8bc7151b8e7e5840fb3bd454ad850d8c5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_5": {
+      "locked": {
         "lastModified": 1678500213,
         "narHash": "sha256-A5s2rXawJ+dCThkMXoMuYW8dgyUmkElcyfVJUot/Vr0=",
         "owner": "NixOS",
@@ -296,7 +312,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_5": {
+    "nixpkgs_6": {
       "locked": {
         "lastModified": 1771043024,
         "narHash": "sha256-O1XDr7EWbRp+kHrNNgLWgIrB0/US5wvw9K6RERWAj6I=",
@@ -325,6 +341,24 @@
       "original": {
         "owner": "p00f",
         "repo": "alabaster.nvim",
+        "type": "github"
+      }
+    },
+    "openspec": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_4"
+      },
+      "locked": {
+        "lastModified": 1790631997,
+        "narHash": "sha256-RT1ELWha5l3BNr8YY5mYnsUhdAmuiTdv5UXZut9zoNk=",
+        "owner": "Fission-AI",
+        "repo": "OpenSpec",
+        "rev": "d4e1c77ebae0bd96a7c649fa35edef997989450a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Fission-AI",
+        "repo": "OpenSpec",
         "type": "github"
       }
     },
@@ -375,6 +409,7 @@
         "nix-fish-src": "nix-fish-src",
         "nixpkgs": "nixpkgs_3",
         "nvim-alabaster-scheme-src": "nvim-alabaster-scheme-src",
+        "openspec": "openspec",
         "operatorMono": "operatorMono",
         "prr-src": "prr-src",
         "sops-nix": "sops-nix",
@@ -474,7 +509,7 @@
     "yui": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": "nixpkgs_5"
       },
       "locked": {
         "lastModified": 1789054417,
@@ -490,7 +525,7 @@
     "zig-overlay": {
       "inputs": {
         "flake-compat": "flake-compat",
-        "nixpkgs": "nixpkgs_5",
+        "nixpkgs": "nixpkgs_6",
         "systems": "systems_2"
       },
       "locked": {
