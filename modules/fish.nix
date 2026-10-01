@@ -104,6 +104,40 @@ in
             '';
           };
 
+          gwp = {
+            description = "Pick a PR with fzf and check it out in a new worktree next to the current repo";
+            body = ''
+              set -l pick (gh pr list --limit 100 \
+                --json number,headRefName,title,author \
+                --template '{{range .}}{{.number}}{{"\t"}}{{.headRefName}}{{"\t"}}{{.title}}{{"\t"}}{{.author.login}}{{"\n"}}{{end}}' \
+                | fzf --prompt 'PR> ' --delimiter \t --with-nth 1,3,4 \
+                    --preview 'gh pr view {1}' --preview-window 'down,60%,wrap')
+              if test -z "$pick"
+                return 1
+              end
+
+              set -l fields (string split \t -- $pick)
+              set -l number $fields[1]
+              set -l branch $fields[2]
+
+              set -l root (git rev-parse --show-toplevel)
+              or return
+              set -l dir (dirname $root)/(string replace --all / - $branch)
+
+              if test -d $dir
+                echo "worktree $dir already exists, switching to it" >&2
+                cd $dir
+                return
+              end
+
+              # Start detached so gh can create/fetch the PR branch itself; this
+              # also handles PRs from forks.
+              git worktree add --detach $dir
+              and cd $dir
+              and gh pr checkout $number
+            '';
+          };
+
           fish_greeting = {
             body = "";
           };
