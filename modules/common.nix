@@ -22,6 +22,7 @@
         claude-code
         coreutils-full
         curl
+        delta
         diffoci
         dua
         dust
