@@ -8,6 +8,8 @@
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    openspec.url = "github:Fission-AI/OpenSpec";
+
     import-tree.url = "github:vic/import-tree";
 
     sops-nix = {

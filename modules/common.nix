@@ -52,6 +52,7 @@
         nix-output-monitor
         nodejs
         oils-for-unix
+        openspec
         prettier
         rclone
         ripgrep
