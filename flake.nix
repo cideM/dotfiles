@@ -2,8 +2,6 @@
   description = "今日は";
 
   inputs = rec {
-    herdr.url = "github:herdrdev/herdr/v0.9.0";
-
     claude-code.url = "github:sadjow/claude-code-nix";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
