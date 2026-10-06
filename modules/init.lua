@@ -391,12 +391,25 @@ end, { desc = "Toggle ZenMode" })
 -- Scratch buffer
 local snacks = require("snacks")
 
-snacks.setup({ scratch = {} })
+snacks.setup({
+  scratch = {
+    ft = function()
+      if vim.bo.buftype == "" and vim.bo.filetype ~= "" then
+        return vim.bo.filetype
+      end
+      return "text"
+    end,
+    win = {
+      width = 0.6,
+      height = 0.6,
+    },
+  },
+})
 
 vim.keymap.set("n", "<leader>.", function()
   snacks.scratch.open({
-    file = vim.fn.stdpath("data") .. "/scratch.md",
-    ft = "markdown",
+    file = vim.fn.stdpath("data") .. "/scratch.txt",
+    ft = "text",
   })
 end, { desc = "Toggle global scratch buffer" })
 
