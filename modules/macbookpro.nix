@@ -26,7 +26,6 @@ in
             config.flake.modules.homeManager.herdr
             config.flake.modules.homeManager.common
             config.flake.modules.homeManager.git
-            config.flake.modules.homeManager.prr
           ];
 
           home = {

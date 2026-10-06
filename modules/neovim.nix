@@ -51,7 +51,6 @@ in
             nvim-lspconfig
             vim-eunuch
             janet-vim
-            prr-vim
           ];
         };
       };
