@@ -282,6 +282,32 @@ require("diffview").setup({
   },
 })
 
+local function default_branch()
+  local r = vim.system({ "git", "symbolic-ref", "--short", "refs/remotes/origin/HEAD" }, { text = true }):wait()
+  if r.code == 0 then
+    return (vim.trim(r.stdout):gsub("^origin/", ""))
+  end
+  -- origin/HEAD not set locally: fall back to whichever of these exists
+  for _, name in ipairs({ "main", "master" }) do
+    if vim.system({ "git", "show-ref", "--verify", "--quiet", "refs/heads/" .. name }):wait().code == 0 then
+      return name
+    end
+  end
+end
+
+vim.keymap.set("n", "<leader>dvm", function()
+  local branch = default_branch()
+  if not branch then
+    vim.notify("Could not determine default branch", vim.log.levels.ERROR)
+    return
+  end
+  vim.cmd(("DiffviewFileHistory --range=%s..HEAD --imply-local"):format(branch))
+end, { desc = "DiffviewFileHistory <default branch>..HEAD" })
+
+vim.keymap.set("n", "<leader>dvc", ":DiffviewClose<CR>", {
+  desc = "DiffviewClose",
+})
+
 -- Terminal
 vim.keymap.set("n", "<leader>tv", ":vert term fish<CR>", {
   desc = "Open terminal in a vertical split (to the side)",
