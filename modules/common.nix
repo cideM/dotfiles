@@ -69,6 +69,7 @@
         timewarrior
         tokei
         tree
+        twitch-dl
         uni
         universal-ctags
         unixtools.watch
