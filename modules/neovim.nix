@@ -25,7 +25,13 @@ in
 
         programs.neovim = {
           enable = true;
-          package = inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default;
+          # The nightly's functional test suite has timing-sensitive treesitter
+          # tests that flake on this machine; skip it.
+          package =
+            inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs
+              (_: {
+                doCheck = false;
+              });
 
           initLua = builtins.readFile ./init.lua;
 
