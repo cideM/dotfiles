@@ -33,6 +33,7 @@
         figlet
         findutils
         gawk
+        gh-dash
         gh-markdown-preview
         glow
         gnugrep
