@@ -36,27 +36,28 @@ in
           initLua = builtins.readFile ./init.lua;
 
           plugins = with pkgs.vimPlugins; [
-            vim-fugitive
-            sad-vim
-            fzf-lua
             conform-nvim
-            nvim-treesitter.withAllGrammars
-            nvim-bufdel
-            diffview-nvim
-            vim-sandwich
-            leap-nvim
-            inputs.yui.packages.${pkgs.system}.neovim
-            zen-mode-nvim
-            snacks-nvim
-            vim-repeat
-            vim-indent-object
-            nvim-treesitter-context
-            vim-rhubarb
-            gitsigns-nvim
             conjure
-            nvim-lspconfig
-            vim-eunuch
+            diffview-nvim
+            fzf-lua
+            gitsigns-nvim
+            inputs.yui.packages.${pkgs.system}.neovim
             janet-vim
+            leap-nvim
+            nvim-bufdel
+            nvim-lspconfig
+            nvim-treesitter-context
+            nvim-treesitter.withAllGrammars
+            octo-nvim
+            sad-vim
+            snacks-nvim
+            vim-eunuch
+            vim-fugitive
+            vim-indent-object
+            vim-repeat
+            vim-rhubarb
+            vim-sandwich
+            zen-mode-nvim
           ];
         };
       };
