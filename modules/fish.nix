@@ -25,8 +25,40 @@ in
   flake.modules.homeManager.fish =
     { pkgs, lib, ... }:
     {
+      programs.eza = {
+        enable = true;
+        enableFishIntegration = true;
+        git = true;
+        icons = "auto";
+        extraOptions = [
+          "--group-directories-first"
+          "--header"
+        ];
+      };
+
       programs.fish = {
         enable = true;
+
+        # programs.eza aliases `eza` itself to carry the flags above, so every
+        # alias below inherits icons, git status, grouped dirs and a header.
+        # It also defines these defaults (overridable, they use mkDefault):
+        #   ls  = eza         plain listing, drop-in for ls
+        #   ll  = eza -l      long listing: perms, size, date, git status
+        #   lla = eza -la     long listing including dotfiles
+        shellAliases = {
+          # Long listing including dotfiles (module default is just -a)
+          la = "eza -la";
+          # Two-level tree that skips gitignored files plus the usual noise dirs
+          lt = "eza --tree --level=2 --git-ignore --ignore-glob='.git|node_modules|.direnv|result'";
+          # Same tree but also shows dotfiles
+          lta = "eza --tree --level=2 --git-ignore --ignore-glob='.git|node_modules|.direnv|result' -a";
+          # Long listing of directories only
+          ld = "eza -lD";
+          # Long listing sorted by size, largest last
+          lS = "eza -l --sort=size";
+          # Long listing sorted by modification time, newest last
+          lm = "eza -l --sort=modified";
+        };
 
         shellAbbrs = {
           g = "git";

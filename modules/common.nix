@@ -27,7 +27,6 @@
         dua
         dust
         entr
-        eza
         fastmod
         fd
         figlet
