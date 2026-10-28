@@ -468,3 +468,10 @@ vim.keymap.set({ "n", "x", "o" }, "<A-i>", function()
     vim.lsp.buf.selection_range(-vim.v.count1)
   end
 end, { desc = "Select child treesitter node or inner incremental lsp selections" })
+
+require("octo").setup({
+  picker = "fzf-lua",
+  file_panel = {
+    icons = false,
+  },
+})
