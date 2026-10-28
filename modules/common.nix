@@ -42,6 +42,7 @@
         helix
         hledger
         hyperfine
+        janet
         jq
         jrnl
         lua
