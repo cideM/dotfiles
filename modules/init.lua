@@ -80,6 +80,7 @@ vim.lsp.enable("zls")
 vim.lsp.enable("ts_ls")
 vim.lsp.enable("eslint")
 vim.lsp.enable("lua_ls")
+vim.lsp.enable("gleam")
 
 local fzfLua = require("fzf-lua")
 
@@ -353,6 +354,7 @@ require("conform").setup({
   formatters_by_ft = {
     lua = { "stylua", lsp_format = "fallback" },
     go = { "gofmt", "goimports" },
+    gleam = { "gleam" },
     rust = { "rustfmt" },
     nix = { "nixfmt" },
     typescript = { "biome-organize-imports", "biome", "prettier" },
