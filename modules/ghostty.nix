@@ -25,6 +25,7 @@
         font-thicken = true
         font-thicken-strength = 20
         shell-integration-features = no-cursor,sudo
+        split-preserve-zoom = navigation
         adjust-cell-height = 8%
         adjust-cell-width = -6%
         quick-terminal-position = center
