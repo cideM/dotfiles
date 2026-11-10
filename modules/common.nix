@@ -64,10 +64,8 @@
         slides
         sops
         ssh-to-age
-        tasksh
         tig
         time
-        timewarrior
         tokei
         tree
         twitch-dl
@@ -99,25 +97,6 @@
         template = false;
         timeformat = "%F %r";
         version = "v${pkgs.jrnl.version}";
-      };
-
-      programs.taskwarrior = {
-        package = pkgs.taskwarrior3;
-        enable = true;
-        colorTheme = "no-color";
-        config = {
-          news.version = "3.4.2";
-          context = {
-            work = {
-              read = "+work";
-              write = "+work";
-            };
-            home = {
-              read = "-work +home";
-              write = "+home";
-            };
-          };
-        };
       };
 
       nix = {
@@ -186,11 +165,6 @@
             "--color=16,bg+:8,fg+:0"
           ];
         };
-      };
-
-      xdg.dataFile."task/hooks/on-modify.timewarrior" = {
-        executable = true;
-        source = "${pkgs.timewarrior}/share/doc/timew/ext/on-modify.timewarrior";
       };
 
       xdg.configFile = {

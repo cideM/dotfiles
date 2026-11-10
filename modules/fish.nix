@@ -170,6 +170,53 @@ in
             '';
           };
 
+          gpd = {
+            description = "Dashboard of my open PRs: conflicts, CI, unresolved review threads";
+            body = ''
+              set -l query '
+                query {
+                  search(query: "is:pr is:open author:@me archived:false", type: ISSUE, first: 100) {
+                    nodes {
+                      ... on PullRequest {
+                        url number title isDraft
+                        repository { nameWithOwner }
+                        mergeable
+                        reviewDecision
+                        commits(last: 1) { nodes { commit { statusCheckRollup { state } } } }
+                        reviewThreads(first: 100) { nodes { isResolved } }
+                      }
+                    }
+                  }
+                }'
+
+              # GitHub computes mergeable lazily, so right after a base branch
+              # moves it reads "?" until the next call. PRs that need work sort
+              # first. The URL column is hidden and feeds the preview/enter.
+              set -l rows (gh api graphql -f query=$query --jq '
+                ["URL", "PR", "MERGE", "CI", "THREADS", "REVIEW", "TITLE"],
+                (.data.search.nodes
+                  | map({
+                      url,
+                      pr: "\(.repository.nameWithOwner)#\(.number)",
+                      merge: ({MERGEABLE: "ok", CONFLICTING: "CONFLICT"}[.mergeable] // "?"),
+                      ci: ({SUCCESS: "ok", PENDING: "pending", EXPECTED: "pending", FAILURE: "FAIL", ERROR: "FAIL"}[.commits.nodes[0].commit.statusCheckRollup.state // ""] // "-"),
+                      threads: ([.reviewThreads.nodes[] | select(.isResolved | not)] | length),
+                      review: (.reviewDecision // "-" | ascii_downcase),
+                      title: ((if .isDraft then "[draft] " else "" end) + .title)
+                    })
+                  | sort_by(.merge != "CONFLICT" and .ci != "FAIL" and .threads == 0)
+                  | .[]
+                  | [.url, .pr, .merge, .ci, .threads, .review, .title])
+                | @tsv')
+              or return
+
+              printf '%s\n' $rows | column -t -s \t \
+                | fzf --layout reverse --header-lines 1 --with-nth 2.. --no-sort \
+                    --preview 'gh pr view {1}' --preview-window 'down,60%,wrap' \
+                    --bind 'enter:execute-silent(gh pr view --web {1})'
+            '';
+          };
+
           fish_greeting = {
             body = "";
           };
